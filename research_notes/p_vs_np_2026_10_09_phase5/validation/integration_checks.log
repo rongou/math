@@ -1,0 +1,125 @@
+Previous artifacts preserved: 99 files, including uncommitted Phases 3 and 4.
+test_model_failure_times_against_literal_functions_and_real_gates (test_splice_probe.BottleneckTests.test_model_failure_times_against_literal_functions_and_real_gates) ... ok
+test_model_union_does_not_choose_a_different_template_at_each_address (test_splice_probe.BottleneckTests.test_model_union_does_not_choose_a_different_template_at_each_address) ... ok
+test_no_contradiction_is_clamped_to_N_plus_one (test_splice_probe.BottleneckTests.test_no_contradiction_is_clamped_to_N_plus_one) ... ok
+test_thresholding_min_max_matches_boolean_reachability (test_splice_probe.BottleneckTests.test_thresholding_min_max_matches_boolean_reachability) ... ok
+test_budgets_and_invalid_inputs (test_splice_probe.ReproductionTests.test_budgets_and_invalid_inputs) ... ok
+test_compiler_does_not_enumerate_centers_or_cuts (test_splice_probe.ReproductionTests.test_compiler_does_not_enumerate_centers_or_cuts) ... ok
+test_parameter_samples_remain_symbolic (test_splice_probe.ReproductionTests.test_parameter_samples_remain_symbolic) ... ok
+test_saved_report_replays (test_splice_probe.ReproductionTests.test_saved_report_replays) ... ok
+test_all_splice_paths_have_single_coordinate_steps (test_splice_probe.SplicingTests.test_all_splice_paths_have_single_coordinate_steps) ... ok
+test_connected_union_retains_noise_and_breaks_the_old_radius_bound (test_splice_probe.SplicingTests.test_connected_union_retains_noise_and_breaks_the_old_radius_bound) ... ok
+test_exact_splice_distance_by_independent_enumeration (test_splice_probe.SplicingTests.test_exact_splice_distance_by_independent_enumeration) ... ok
+test_inner_selector_gates_and_all_cut_endpoints (test_splice_probe.SplicingTests.test_inner_selector_gates_and_all_cut_endpoints) ... ok
+test_old_parity_witness_is_repaired_but_a_larger_one_is_not (test_splice_probe.SplicingTests.test_old_parity_witness_is_repaired_but_a_larger_one_is_not) ... ok
+test_prefix_suffix_criterion_for_arbitrary_small_center_sets (test_splice_probe.SplicingTests.test_prefix_suffix_criterion_for_arbitrary_small_center_sets) ... ok
+test_conditional_times_and_unsigned_infinity (test_splice_probe.WordAndFoldingTests.test_conditional_times_and_unsigned_infinity) ... ok
+test_full_width_addition_carry_and_bound (test_splice_probe.WordAndFoldingTests.test_full_width_addition_carry_and_bound) ... ok
+test_local_folding_matches_an_independent_unfolded_circuit (test_splice_probe.WordAndFoldingTests.test_local_folding_matches_an_independent_unfolded_circuit) ... ok
+test_unsigned_min_max_less_all_words_through_width_four (test_splice_probe.WordAndFoldingTests.test_unsigned_min_max_less_all_words_through_width_four) ... ok
+test_word_and_node_limits_are_enforced (test_splice_probe.WordAndFoldingTests.test_word_and_node_limits_are_enforced) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 12.634s
+
+OK
+Exact splice replay matches.
+
+Temporary proof artifacts retained in /tmp/phase5-splice-check.7ozSs4eV
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+'PromiseCounting.mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcubeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.compatible_of_common_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcube_inter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.free_after_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_subcube_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_inter_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.outside_low_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.rejected_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.certificate_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.no_certificate_of_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.flipAt_mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.isolated_yes_certificate_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+'SeparatedTubes.disagreement_contains_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.supported_distance_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.junta_distance_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.hammingDist_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.subcube_step_induction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.adjacent_centers_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.accepting_subcube_one_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.free_card_le_of_subcube_in_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.accepting_subcube_free_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.relative_certificate_free_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.center_subcube_accepted' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+'PrefixSplicing.minmax_threshold' depends on axioms: [propext]
+'PrefixSplicing.splice_zero' depends on axioms: [propext, Quot.sound]
+'PrefixSplicing.splice_last' depends on axioms: [propext, Quot.sound]
+'PrefixSplicing.splice_adjacent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrefixSplicing.mem_spliceSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrefixSplicing.card_spliceSet_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrefixSplicing.splice_of_matching_prefix_suffix' depends on axioms: [propext, Quot.sound]
+'PrefixSplicing.accepted_subcube_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Eight new splicing/counting lemmas checked; standard permitted axioms only.
+Previous artifacts preserved: 99 files, including uncommitted Phases 3 and 4.
+
+Phase 5 checks complete. This is not a full GapMCSP correctness or lower-bound proof.
+	Command being timed: "research_notes/p_vs_np_2026_10_09_phase5/validation/check.sh /tmp/family112-build-validation.xWSfhA/project/lean"
+	User time (seconds): 30.66
+	System time (seconds): 10.83
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6910672
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 926717
+	Voluntary context switches: 4492
+	Involuntary context switches: 1729
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1208
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+INTEGRATION_EXIT_STATUS=0

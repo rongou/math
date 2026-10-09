@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "status": "pass",
+  "toolchain": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "project": "/tmp/family112-build-validation.xWSfhA/project/lean",
+  "driver": "validation/check.sh",
+  "log": "validation/integration_checks.log",
+  "flags": [
+    "--trust=0",
+    "--error=warning",
+    "-j1",
+    "-M16384"
+  ],
+  "source_sha256": "8976e4579f30a4a96588445ae581817f125bf83eb56c5b544459a3a453e86eea",
+  "phase2_helper_sha256": "56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4",
+  "mathlib_hamming_sha256": "7d247632b790bfc237d79d3c040fb7f21d9cff00d190a67e120ccb73056460a6",
+  "axiom_reports": {
+    "disagreement_contains_subcube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "supported_distance_lower_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "junta_distance_lower_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "hammingDist_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "subcube_step_induction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "adjacent_centers_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "accepting_subcube_one_center": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "free_card_le_of_subcube_in_ball": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "accepting_subcube_free_card_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "relative_certificate_free_budget": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "center_subcube_accepted": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scope": "General Boolean separated-tube certificate bounds and ordinary-junta disagreement/distance bounds. Not circuit minimization or full GapMCSP completeness.",
+  "resource_note": {
+    "failed_cap_MiB": 4096,
+    "failed_log": "validation/integration_attempt_4GiB.log",
+    "successful_cap_MiB": 16384,
+    "max_rss_KiB": 6907440,
+    "elapsed_wall": "0:19.73"
+  },
+  "not_formalized": [
+    "General compiler semantics and gate-count asymptotics",
+    "Cross-family parity balance",
+    "Fixed-beta entropy limit",
+    "Exact N-t certificate sharpness away from center",
+    "External magnification theorem"
+  ]
+}

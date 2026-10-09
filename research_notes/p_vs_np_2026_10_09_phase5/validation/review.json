@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "kind": "Self-review plus independent computational interpretations; no separate human or agent referee.",
+  "agents_spawned": 0,
+  "verdict": "Connectedness and exact prefix paths for the specified core remain insufficient; full budgeted closure is unresolved.",
+  "checked_boundaries": [
+    {
+      "topic": "Retention of earlier hypotheses",
+      "result": "The accepted set is the union with the old noisy binary-center tubes, not a noiseless replacement."
+    },
+    {
+      "topic": "Which inputs are spliced",
+      "result": "Only center functions are spliced exactly. Splices of arbitrary old noisy inputs are not claimed to lie in this set."
+    },
+    {
+      "topic": "Coordinate order",
+      "result": "Standard numeric binary address order is essential to the 2m+4 selector cost; arbitrary coordinate permutations are not included."
+    },
+    {
+      "topic": "Matching-length quantifiers",
+      "result": "A whole fixed model must match a prefix. Maximize its first-failure time only after computing that model, not independently per address."
+    },
+    {
+      "topic": "No hidden SAT or arithmetic gate",
+      "result": "Bottleneck minima, maxima, additions and final comparisons are ordinary gate networks with bit-width cost charged."
+    },
+    {
+      "topic": "Sentinels",
+      "result": "Unsigned infinity is 2^(m+1)-1 in the word circuit; full consistency is clamped to N+1 before interpreting prefix length."
+    },
+    {
+      "topic": "Constant folding",
+      "result": "Only local Boolean identities, identical-node sharing and identities valid for every unsigned word are used."
+    },
+    {
+      "topic": "Old geometry is invalid after enlargement",
+      "result": "A radius-two ball plus a prefix step contains a three-free-bit cube. The new proof uses cardinality rather than the old separated-ball bound."
+    },
+    {
+      "topic": "Full promise incompleteness",
+      "result": "At m>=4k+3 the low-coordinate parity has at most 8k gates and distance at least N/4 from every exact splice; the new set still misses YES inputs."
+    },
+    {
+      "topic": "Finite versus asymptotic",
+      "result": "Complete gate checks cover the stated 8/16-input cases. Larger cases compare numeric algorithms with explicit center sets. None is an asymptotic lower-bound proof."
+    },
+    {
+      "topic": "Formal compilation repair",
+      "result": "An initial complement-cardinality instance mismatch was fixed by rewriting Finset.card_compl. The retained error-generated placeholder is not accepted; only the final successful standard-axiom run is evidence."
+    }
+  ],
+  "not_established": [
+    "Full GapMCSP lower bound",
+    "A full budgeted closure counterexample",
+    "A resource-sensitive full-solver certificate lemma",
+    "P versus NP separation",
+    "Novelty"
+  ]
+}

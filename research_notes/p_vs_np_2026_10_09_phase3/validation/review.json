@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "kind": "Self-review and independent computational cross-checks, not independent agent or human refereeing.",
+  "agents_spawned": 0,
+  "candidate": "Derive the Phase 2 large-certificate-subcube contradiction using only small ordinary outer size, NO soundness, and completeness on all radius-t perturbations of k-juntas and their full-parity shifts.",
+  "verdict": "Refuted for that specific weakened completeness premise. The full promise-sensitive circuit lemma remains open.",
+  "scope_checks": [
+    {
+      "topic": "Full YES completeness",
+      "result": "Explicitly absent. Intermediate-support parity has 4k gates and distance N/2 from every center for m>=2k+2; it is a missed YES table at large lengths."
+    },
+    {
+      "topic": "Soundness",
+      "result": "Under the stated inner budget inequality, every accepted table belongs to YES, hence no NO or gap table is accepted."
+    },
+    {
+      "topic": "Fixed beta",
+      "result": "For each fixed beta in (0,1/3), k=beta*m-2log2(m)+O(1), t=Theta(N^beta/m^2); no beta(m) tending to zero is substituted."
+    },
+    {
+      "topic": "Outer quantifiers",
+      "result": "For any epsilon>0 choose beta_0 with H(beta)<epsilon below beta_0. For each such fixed beta, the exact gate upper bound is eventually below N^(1+epsilon)."
+    },
+    {
+      "topic": "Strict center separation",
+      "result": "The sufficient condition is distance>2t+1, not just >2t. Centers 000 and 111 at t=1 are an explicit endpoint counterexample."
+    },
+    {
+      "topic": "k=0 cross-family distance",
+      "result": "Full-parity shifts change the coarse lower bound to N/2, not N. The max(1,2k) exponent handles this."
+    },
+    {
+      "topic": "Sharing metric",
+      "result": "Counts reachable outgoing wire slots, including parallel uses. The bound is representation-specific and is not a minimum-reuse or minimum-formula lower bound."
+    },
+    {
+      "topic": "Counter cost",
+      "result": "Every population counter, comparison, parity input negation and OR gate is expanded into the declared ordinary basis; center functions are not enumerated by the recognizer."
+    },
+    {
+      "topic": "Certificates",
+      "result": "Coordinate subcubes, not NP witnesses or arbitrary fibers of decoded gate values. Initial-restriction overlap uses the Phase 2 definition unchanged."
+    },
+    {
+      "topic": "Formalization boundary",
+      "result": "General separated-tube geometry and ordinary-junta distance are Lean theorems. Shifted cross-family balance, compiler correctness for all sizes and fixed-beta asymptotics have explicit manual proofs plus bounded tests."
+    },
+    {
+      "topic": "Finite-versus-asymptotic",
+      "result": "Small atlas and giant integer parameter examples are controls only. Huge circuits are never constructed or claimed exhaustively checked."
+    },
+    {
+      "topic": "Initial regression adjustment",
+      "result": "All geometric assertions passed; the initially guessed coverage threshold >100 was corrected to the exact count of 87 eligible code/radius configurations through three coordinates."
+    },
+    {
+      "topic": "Reproduction resource failure",
+      "result": "An initial -M4096 run failed while loading the unchanged Mathlib-heavy helper. The successful driver uses -M16384; the final exit-zero run and all 11 permitted axiom reports were checked."
+    }
+  ],
+  "not_established": [
+    "An unrestricted-circuit lower bound for full fixed-beta GapMCSP",
+    "A sharing-sensitive upper bound on certificate cost for full solvers",
+    "P=NP or P!=NP",
+    "Novelty of the elementary construction",
+    "A general impossibility theorem for every structured-YES-subfamily strategy"
+  ],
+  "next_candidate_filter": "A further hypothesis must not be satisfied by the explicit tube recognizers; full YES completeness or a materially different family cannot be silently replaced by cardinality/local robustness alone."
+}

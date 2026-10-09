@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "source_revision": "b7a801fa37212562ebcae6af2a68107e986c1fed",
+  "scope": "A bounded Phase 5 test of exact prefix-splicing paths and connectedness, retaining the old noisy family.",
+  "outcome": "A small ordinary connected-family recognizer still has no sufficiently large accepting subcube. The full-solver certificate bridge remains unproved.",
+  "new_results": [
+    "Exact center splices cost at most the union of input gates plus 2m+4 gates, and remain YES at the same fixed-beta parameters.",
+    "Earliest contradiction times in weighted implication graphs compute longest extendable prefixes and suffixes without center/cut enumeration.",
+    "The ordinary gate bound is O(binomial(m,k)^2*(m+1)*(N+2^(3k))); the connected union retains exponent 1+2H(beta)+o(1).",
+    "The accepted union is connected. The old dimension<=R bound fails, but cardinality gives dimension O(N^beta/log N).",
+    "The previous six-variable parity witness is accepted; a low-coordinate parity on seven variables, and its asymptotic analogue, remains a missed YES table."
+  ],
+  "checks": {
+    "new_python_tests": 19,
+    "prior_python_tests": 126,
+    "total_python_tests": 145,
+    "new_lean_statements": 8,
+    "complete_table_model_cases": 768,
+    "complete_outer_input_comparisons": 66048,
+    "larger_numeric_matching_checks": 24,
+    "actual_inner_splice_checks": 32,
+    "prior_artifacts_preserved": 99,
+    "final_integration_exit_status": 0
+  },
+  "complete_outer_examples": [
+    {
+      "accepted_components": 1,
+      "accepted_tables": 48,
+      "all_input_comparisons": 256,
+      "centers": 4,
+      "circuit_sha256": "9b087a897d15d8a697abed6991e61f924c690a7edad48b0ba894783e954d43fb",
+      "construction": {
+        "copied_legacy_literal_gates": 1932,
+        "exact_node_sharing": true,
+        "gate_requests": 17690,
+        "legacy_radius": 0,
+        "ordinary_gates": 12096,
+        "splice_allocated_gates": 11688,
+        "word_calls": 4726
+      },
+      "k": 0,
+      "m": 3,
+      "old_noisy_tables": 4,
+      "radius": 0,
+      "splice_tables": 48
+    },
+    {
+      "accepted_components": 1,
+      "accepted_tables": 256,
+      "all_input_comparisons": 256,
+      "centers": 72,
+      "circuit_sha256": "ac02571aebfa1c28e3910776a0c1de704a066a089c45e096a6b6d52348d65b5c",
+      "construction": {
+        "copied_legacy_literal_gates": 86768,
+        "exact_node_sharing": true,
+        "gate_requests": 1434094,
+        "legacy_radius": 0,
+        "ordinary_gates": 1119834,
+        "splice_allocated_gates": 1098495,
+        "word_calls": 236950
+      },
+      "k": 1,
+      "m": 3,
+      "old_noisy_tables": 72,
+      "radius": 0,
+      "splice_tables": 256
+    },
+    {
+      "accepted_components": 1,
+      "accepted_tables": 616,
+      "all_input_comparisons": 65536,
+      "centers": 4,
+      "circuit_sha256": "83f5e9cbb8b833901a954e6ce9c9ad5d88de8d4ff29d10b7620fd932110f22de",
+      "construction": {
+        "copied_legacy_literal_gates": 2394,
+        "exact_node_sharing": true,
+        "gate_requests": 24741,
+        "legacy_radius": 2,
+        "ordinary_gates": 17013,
+        "splice_allocated_gates": 16267,
+        "word_calls": 6262
+      },
+      "k": 0,
+      "m": 4,
+      "old_noisy_tables": 548,
+      "radius": 2,
+      "splice_tables": 112
+    }
+  ],
+  "parity_witnesses": [
+    {
+      "distance_from_exact_splices": 0,
+      "distance_from_old_centers": 32,
+      "is_exact_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 32,
+      "suffix": 32,
+      "target": "parity on the three lowest address bits"
+    },
+    {
+      "distance_from_exact_splices": 32,
+      "distance_from_old_centers": 64,
+      "is_exact_splice": false,
+      "k": 1,
+      "m": 7,
+      "prefix": 32,
+      "suffix": 32,
+      "target": "parity on the three lowest address bits"
+    }
+  ],
+  "radius_bound_counterexample": {
+    "accepted_completions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "dimension": 3,
+    "free_coordinates": [
+      0,
+      1,
+      2
+    ],
+    "k": 0,
+    "m": 4,
+    "old_radius": 2
+  },
+  "formal_scope": "See formal_validation.json: eight finite semantic/counting lemmas, not the whole compiler or magnification chain.",
+  "review": "Self-review with independent numeric, literal-function and gate interpretations; no external human or agent referee.",
+  "not_established": [
+    "Full YES completeness",
+    "Closure under arbitrary noisy splices or iterated operations",
+    "A useful positive full-solver certificate extraction inequality",
+    "A P versus NP separation",
+    "Novelty"
+  ],
+  "artifact_hashes": {
+    ".gitignore": "03e87c591ea25f2bcf681ae4a3110538d4be229103f5ce4ac336f5fab275c9f3",
+    "README.md": "5fb349959bbc4e9c9367b875daa50a5b4e4018d6a54133b61aa0f245bd7cea43",
+    "experiments/splice_probe.py": "2f99e6487a64642f2f6d2b92549fa98f1044db63d86220e057b5f7969d1d2476",
+    "experiments/splice_results.json": "bba170be47e2f373ada1c533e1783a56fbfdddbfea52835d8586a8cbea8de03e",
+    "experiments/test_splice_probe.py": "00cb34edf6a995ccea1404a6f9af46bc2443d6ba14d2dbeee90a117058d4cd07",
+    "sources/splicing_audit.json": "8d23b96e0ca38ee9eb25b11f90d9eb45133183eb6a1a2178aa75f5ee0f79d726",
+    "validation/PrefixSplicing.lean": "c684b5caa4b917956377bfcc7834f960361e277f7f89288807d9836f6f7e5075",
+    "validation/check.sh": "8b6c102f752e9c8aef9c45af39bfe65e6b4285e65223556dbcb38c3021842bcd",
+    "validation/formal_validation.json": "1b5e4f4e68b54ce3355eb0b03e75560a27b6ae30654f2b658878be3d04dcfa79",
+    "validation/initial_compile_attempt.log": "7ca7a2439e95043e3cf37e8bf2a3bb218dc367d7cc3d7d09d53d735c20312c8d",
+    "validation/integration_checks.log": "9a3dc6631a7c37b00195404481ab99f21bf22229868c9e5cc5ee6cf4e0af8aac",
+    "validation/prior_manifest.json": "168d261f1c4d6d84b1778d21a7d98e5d2792380e92970929a020aaccad6b30ef",
+    "validation/prior_regression.log": "70ac0f678b718692608c3257eb2d787e7d0ed0ec63978728fecc4bf5f602b02c",
+    "validation/review.json": "9f418397080a0180e6044526732bd337b974ac43e145e77c1444745848e088c1"
+  }
+}

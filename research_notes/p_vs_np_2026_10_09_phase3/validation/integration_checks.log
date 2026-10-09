@@ -1,0 +1,106 @@
+Previous phases preserved: 70 tracked files match.
+test_comparator_all_inputs_and_endpoints (test_tube_probe.ArithmeticCircuitTests.test_comparator_all_inputs_and_endpoints) ... ok
+test_interpreter_rejects_forward_wires_and_unknown_gates (test_tube_probe.ArithmeticCircuitTests.test_interpreter_rejects_forward_wires_and_unknown_gates) ... ok
+test_population_counters_all_inputs (test_tube_probe.ArithmeticCircuitTests.test_population_counters_all_inputs) ... ok
+test_xor_is_four_ordinary_gates (test_tube_probe.ArithmeticCircuitTests.test_xor_is_four_ordinary_gates) ... ok
+test_all_cube_masks_match_independent_ternary_generator (test_tube_probe.GeometryTests.test_all_cube_masks_match_independent_ternary_generator) ... ok
+test_exact_eight_bit_control_and_omitted_one_gate_function (test_tube_probe.GeometryTests.test_exact_eight_bit_control_and_omitted_one_gate_function) ... ok
+test_general_separated_tube_lemma_exhaustively_through_three_coordinates (test_tube_probe.GeometryTests.test_general_separated_tube_lemma_exhaustively_through_three_coordinates) ... ok
+test_relative_certificates_charge_only_new_fixed_coordinates (test_tube_probe.GeometryTests.test_relative_certificates_charge_only_new_fixed_coordinates) ... ok
+test_unique_decoding_separation_is_not_enough (test_tube_probe.GeometryTests.test_unique_decoding_separation_is_not_enough) ... ok
+test_cli_rejects_conflicting_write_and_check_without_running (test_tube_probe.ResourceAndReportTests.test_cli_rejects_conflicting_write_and_check_without_running) ... ok
+test_fixed_beta_schedule_integer_checks_and_no_materialization (test_tube_probe.ResourceAndReportTests.test_fixed_beta_schedule_integer_checks_and_no_materialization) ... ok
+test_literal_sharing_not_hidden_truth_table_enumeration (test_tube_probe.ResourceAndReportTests.test_literal_sharing_not_hidden_truth_table_enumeration) ... ok
+test_resource_and_parameter_guards (test_tube_probe.ResourceAndReportTests.test_resource_and_parameter_guards) ... ok
+test_saved_report_replays_exactly (test_tube_probe.ResourceAndReportTests.test_saved_report_replays_exactly) ... ok
+test_actual_outer_circuits_beyond_full_atlas (test_tube_probe.SemanticFamilyTests.test_actual_outer_circuits_beyond_full_atlas) ... ok
+test_block_majority_distance_matches_explicit_centers (test_tube_probe.SemanticFamilyTests.test_block_majority_distance_matches_explicit_centers) ... ok
+test_blocks_partition_addresses_and_keep_selected_coordinates (test_tube_probe.SemanticFamilyTests.test_blocks_partition_addresses_and_keep_selected_coordinates) ... ok
+test_coarse_minimum_distance_bound_in_its_declared_regime (test_tube_probe.SemanticFamilyTests.test_coarse_minimum_distance_bound_in_its_declared_regime) ... ok
+test_explicit_missing_cheap_parities_prove_incompleteness (test_tube_probe.SemanticFamilyTests.test_explicit_missing_cheap_parities_prove_incompleteness) ... ok
+test_inner_dnf_and_parity_shift_all_small_functions (test_tube_probe.SemanticFamilyTests.test_inner_dnf_and_parity_shift_all_small_functions) ... ok
+test_shift_family_includes_projections_and_full_parity (test_tube_probe.SemanticFamilyTests.test_shift_family_includes_projections_and_full_parity) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 3.929s
+
+OK
+Exact tube replay matches the saved artifact.
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+'PromiseCounting.mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcubeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.compatible_of_common_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcube_inter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.free_after_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_subcube_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_inter_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.outside_low_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.rejected_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.certificate_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.no_certificate_of_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.flipAt_mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.isolated_yes_certificate_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+'SeparatedTubes.disagreement_contains_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.supported_distance_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.junta_distance_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.hammingDist_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.subcube_step_induction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.adjacent_centers_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.accepting_subcube_one_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.free_card_le_of_subcube_in_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.accepting_subcube_free_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.relative_certificate_free_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SeparatedTubes.center_subcube_accepted' depends on axioms: [propext, Classical.choice, Quot.sound]
+Lean verification: 11 theorems; only standard permitted axioms.
+Previous phases preserved: 70 tracked files match.
+
+Phase 3 checks completed. This does not verify the external magnification theorem or prove full GapMCSP hardness.
+	Command being timed: "research_notes/p_vs_np_2026_10_09_phase3/validation/check.sh /tmp/family112-build-validation.xWSfhA/project/lean"
+	User time (seconds): 13.03
+	System time (seconds): 6.83
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6907440
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 489109
+	Voluntary context switches: 3319
+	Involuntary context switches: 1218
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 672
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+INTEGRATION_EXIT_STATUS=0

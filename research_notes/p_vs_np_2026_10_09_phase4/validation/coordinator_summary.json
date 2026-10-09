@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "source_revision": "b7a801fa37212562ebcae6af2a68107e986c1fed",
+  "scope": "One bounded Phase 4 investigation of actual shared-DAG costs and one round of noisy Boolean composition.",
+  "outcome": "A precise counterexample to the single-round strengthening. No positive full-solver certificate extraction lemma obtained.",
+  "new_results": [
+    "A1 contains every binary Boolean combination of two Phase 3 noisy inputs, not only the old centers.",
+    "Overlapping support consistency reduces to Boolean binary constraints with a single global operation/shift template.",
+    "An explicit ordinary-gate recognizer has size O(binomial(m,k)^2*(N*m+2^(3k))), without a SAT oracle.",
+    "In the fixed-beta regime beta<1/5, all accepted tables are YES, while every accepting subcube has dimension at most 2r.",
+    "For every epsilon>0 and every sufficiently small fixed beta, the size is eventually below N^(1+epsilon).",
+    "A second inexpensive XOR yields an explicit missed YES table; full budgeted closure is not satisfied."
+  ],
+  "checks": {
+    "new_python_tests": 24,
+    "prior_python_tests": 102,
+    "total_python_tests": 126,
+    "new_lean_theorems": 5,
+    "complete_constraint_matrix_cases": 3504,
+    "complete_outer_input_comparisons": 66048,
+    "sampled_64_input_network_cases": 193,
+    "inner_shared_compositions": 48,
+    "prior_artifacts_preserved": 85,
+    "final_integration_exit_status": 0
+  },
+  "full_finite_circuit_examples": [
+    {
+      "accepted_tables": 4,
+      "center_minimum_distance": 4,
+      "centers": 4,
+      "circuit_sha256": "5820dff0dc3ebdf2d6d799720a55f4e0c0e4417efe378ea73464df6691886d8e",
+      "input_comparisons": 256,
+      "k": 0,
+      "m": 3,
+      "ordinary_gates": 1932,
+      "radius": 0
+    },
+    {
+      "accepted_tables": 72,
+      "center_minimum_distance": 2,
+      "centers": 72,
+      "certificate_atlas": {
+        "accepting_subcubes_by_dimension": {
+          "0": 72
+        },
+        "maximum_accepting_dimension": 0,
+        "minimum_certificate_histogram": {
+          "8": 72
+        },
+        "subcubes_examined": 6561
+      },
+      "circuit_sha256": "6aebf26ea19aa5f8637225e8f7351f60001be699bfe47ece1287a82edfda0c3a",
+      "input_comparisons": 256,
+      "k": 1,
+      "m": 3,
+      "omitted_five_gate_table": 120,
+      "ordinary_gates": 86768,
+      "phase3_missed_AND_now_accepted": true,
+      "radius": 0
+    },
+    {
+      "accepted_tables": 548,
+      "center_minimum_distance": 8,
+      "centers": 4,
+      "circuit_sha256": "e3daa90fa231ad7b23a7b3fa66ca3ae7c6bbc60647331bdfffef850c39f9287d",
+      "input_comparisons": 65536,
+      "k": 0,
+      "m": 4,
+      "ordinary_gates": 2394,
+      "radius": 2
+    }
+  ],
+  "noisy_64_input_example": {
+    "accepted_count_from_disjoint_ball_count": 1281896,
+    "binary_centers": 616,
+    "center_minimum_distance": 16,
+    "certificate_dimension_bound_from_separation": 2,
+    "circuit_sha256": "532669596807fb4bb6fea461b04cda08ad28901f62336127fa3770471af80098",
+    "forced_positive_samples": 128,
+    "k": 1,
+    "m": 6,
+    "omitted_distance": 32,
+    "omitted_three_bit_parity": 10851025925711500950,
+    "ordinary_gates": 529259,
+    "output_radius": 2,
+    "primitive_centers": 28,
+    "sample_count": 193,
+    "seed_radius": 1
+  },
+  "one_more_round_witness": {
+    "first_cost": {
+      "allocated_gates": 7,
+      "left_gates": 0,
+      "reachable_composition_gates": 4,
+      "right_gates": 0,
+      "shared_gates": 0,
+      "top_gates": 4,
+      "union_gates": 0
+    },
+    "first_is_binary_center": true,
+    "first_table": 7378697629483820646,
+    "second_cost": {
+      "allocated_gates": 11,
+      "left_gates": 4,
+      "reachable_composition_gates": 8,
+      "right_gates": 0,
+      "shared_gates": 0,
+      "top_gates": 4,
+      "union_gates": 4
+    },
+    "second_distance_from_binary_centers": 32,
+    "second_is_accepted": false,
+    "second_table": 10851025925711500950
+  },
+  "formal_scope": "Five composition/gate-set lemmas. The 2-SAT/compiler and asymptotic arguments are not claimed fully formalized.",
+  "review_kind": "Self-review and independent computational interpretations, not human or multi-agent refereeing.",
+  "not_established": [
+    "Full budgeted closure counterexample",
+    "Full fixed-beta GapMCSP lower bound",
+    "NP-hardness of higher-arity structured recognition",
+    "A P versus NP separation",
+    "Novelty"
+  ],
+  "artifact_hashes": {
+    ".gitignore": "03e87c591ea25f2bcf681ae4a3110538d4be229103f5ce4ac336f5fab275c9f3",
+    "README.md": "d43cb256a2dccb8316baeca4097b64253b1274f1ee203ab348457211029bb07e",
+    "experiments/composition_probe.py": "e9d531b8cda518a4be3c156358d041817b40e5c03cb1a26991b8eb738f26322e",
+    "experiments/composition_results.json": "92ee855ca0c0fba27dfc51611638fd5330de2dfc09a48b669abea436cdcf4d4a",
+    "experiments/test_composition_probe.py": "e830dbe15432fc538c633ec03aba78e2f56a9988d206c8cbbe63c83e9622e84b",
+    "sources/composition_audit.json": "8d651295a92645367578bd2390698a604e5e32253470f5871c24143e7d13866c",
+    "validation/BudgetedComposition.lean": "fdc45da20b3026bceb0887c62ffdd292171c171e238dbbd9c9b63b3271ed884b",
+    "validation/check.sh": "89f3177ce000ee363f5fde6bbb69c71a9f289052331d13ddcd298b6e1430c355",
+    "validation/formal_validation.json": "e836dbee4fd66026bcf4b9d491a4b294205f6eddca172c1400b863fef0c32489",
+    "validation/integration_checks.log": "de475f544ccb9bd2e94fe8e61ef9d2ad6dccf29877b67a8ad196d92321591ca8",
+    "validation/prior_manifest.json": "725cedea3cde65a0863c68fc2ad20b4302fd81d443b1745134d7cf0ec27e7236",
+    "validation/prior_regression.log": "46c81e472cdf1c92a7f4444fd150bb09655787ac2f00e503fb6c6f378a67fb10",
+    "validation/review.json": "b8a056cfd616f5cd14816fd448ef061521f7c5839850cbf4def15401dd8bb3ab"
+  }
+}

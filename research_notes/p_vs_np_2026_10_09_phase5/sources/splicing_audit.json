@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "scope": "Bounded exact-prefix-splicing investigation; no novelty or comprehensive literature claim.",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "A Linear-Time Algorithm for Testing the Truth of Certain Quantified Boolean Formulas",
+      "authors": [
+        "Bengt Aspvall",
+        "Michael F. Plass",
+        "Robert Endre Tarjan"
+      ],
+      "publication": "Information Processing Letters 8(3), 1979, pp. 121-123",
+      "url": "https://mathweb.ucsd.edu/~sbuss/CourseWeb/Math268_2007WS/2SAT.pdf",
+      "locator": "Theorem 1, printed page 122; implication construction, printed page 121",
+      "provenance": "Full primary text checked in Phase 4; used here only for the ordinary 2-SAT criterion.",
+      "not_attributed": "The splicing recognizer and its gate-size bound are manual constructions here."
+    }
+  ],
+  "bounded_new_search": "A search for min/max bottleneck Floyd recurrences was used only as background. No additional external theorem is assumed by the gate-count argument.",
+  "manual_arguments": [
+    "Exact splice inner cost is the union of the input cones plus at most 2m+4 gates.",
+    "Prefix/suffix matching lengths characterize existence of a cut.",
+    "Earliest implication-edge activation times and min/max closure recover first inconsistent prefixes.",
+    "Unsigned min/max circuits yield O(binomial(m,k)^2*(m+1)*(N+2^(3k))) gates.",
+    "Adding exact center splices connects the old noisy family without accepting a NO instance in the stated regime.",
+    "Counting centers, cuts and Hamming balls bounds all accepting subcube dimensions by O(N^beta/log N).",
+    "A low-coordinate parity remains a missed YES table at distance at least N/4 from every exact splice."
+  ],
+  "limits": [
+    "Exact splices of centers, not arbitrary noisy splices or iterated closure.",
+    "No full GapMCSP correctness claim.",
+    "No claim of a full internal-oracle barrier.",
+    "No inference that the construction is novel from the bounded search."
+  ]
+}

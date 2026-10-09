@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "kind": "Self-review plus independent computational interpretations; no independent agent or human refereeing.",
+  "agents_spawned": 0,
+  "verdict": "A concrete small recognizer defeats the single-round strengthening. Full budgeted closure remains open and is not claimed false.",
+  "checks": [
+    {
+      "topic": "Primitive family preserved",
+      "result": "The same Phase 3 k and seed radius r are used; all supports and both parity shifts are retained. The new family includes every old noisy input."
+    },
+    {
+      "topic": "Noise accumulation",
+      "result": "Output radius is 2r, not r. A disjoint-error XOR witness tests the necessity of this accounting."
+    },
+    {
+      "topic": "All binary operations",
+      "result": "All 16 truth functions are covered; AND/NAND/XOR with recoded primitive inputs generate the same center family. Actual top-gate circuits use at most four ordinary gates."
+    },
+    {
+      "topic": "Global template consistency",
+      "result": "One operation and shift pair must work on every common-coordinate slice. The code uses OR-of-ANDs in this order, and a regression case distinguishes the wrong order."
+    },
+    {
+      "topic": "CSP variables",
+      "result": "Unknown row and column primitive values are independent choices, even for identical address supports; they are not raw outer inputs or free certificates."
+    },
+    {
+      "topic": "No hidden oracle",
+      "result": "2-SAT is expanded into ordinary implication-edge signals, cubic Boolean reachability matrices, and conflict checks."
+    },
+    {
+      "topic": "Decoder scope",
+      "result": "Exact recognition is claimed only when 2k<m and 2R<2^(m-2k-1). Unsupported parameters are rejected."
+    },
+    {
+      "topic": "NO soundness",
+      "result": "The structural check must remain; accepting all augmented 2k-variable functions would not preserve the inner budget."
+    },
+    {
+      "topic": "Shared cost",
+      "result": "Reachable gate-ID union/intersection counts preserve real reuse. Allocated unreachable gates and optimal semantic circuit size are not conflated."
+    },
+    {
+      "topic": "Fixed-beta order",
+      "result": "For any epsilon>0, choose a small beta_0<1/5 with 2H(beta)<epsilon below it; beta then stays fixed as m grows."
+    },
+    {
+      "topic": "Center geometry",
+      "result": "Two composed-center descriptions together use at most 4k coordinates plus parity; fibers give distance at least 2^(m-4k-1), with strict >2R+1 needed for certificates."
+    },
+    {
+      "topic": "Completeness limit",
+      "result": "A second cheap XOR produces parity on 2k+1 variables, at distance N/2 from every new center. This is a missed YES input, not a NO-soundness failure."
+    },
+    {
+      "topic": "Formal scope",
+      "result": "Five new Lean composition/gate-set lemmas and the unchanged old helpers are checked. General 2-SAT/compiler semantics, augmented-feature separation and asymptotics remain manual arguments."
+    },
+    {
+      "topic": "Finite scope",
+      "result": "The 64-input network is sampled, not exhaustively evaluated. Its accepted count comes from independently checked center separation and the ball-size formula."
+    }
+  ],
+  "not_established": [
+    "Full GapMCSP circuit lower bound",
+    "Positive full-solver certificate extraction inequality",
+    "NP-hardness of the higher-arity structured recognition problem",
+    "Novelty",
+    "P versus NP separation"
+  ]
+}

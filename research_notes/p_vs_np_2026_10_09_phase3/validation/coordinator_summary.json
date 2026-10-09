@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "source_revision": "b7a801fa37212562ebcae6af2a68107e986c1fed",
+  "scope": "Bounded Phase 3 investigation of a structured-YES-subfamily/sharing candidate.",
+  "outcome": "The specified weakened completeness hypothesis is insufficient, even at fixed positive beta. The full GapMCSP certificate goal remains unproved.",
+  "new_results": [
+    "Explicit ordinary circuits recognize all radius-t perturbations of all k-juntas and their full-parity shifts.",
+    "The fixed-beta parameters make accepted tables a strict subset of YES and give gate size N^(1+H(beta)+o(1)).",
+    "Every accepting input certificate fixes at least N-t coordinates when center distance exceeds 2t+1.",
+    "General separated-tube and ordinary-junta distance lemmas formalized in Lean.",
+    "Exact accounting identifies reuse of decoded block majorities; it is not free raw-input conditioning."
+  ],
+  "checks": {
+    "new_python_tests": 21,
+    "prior_python_tests": 81,
+    "total_python_tests": 102,
+    "full_small_circuits": 54,
+    "all_input_comparisons": 6480,
+    "general_small_geometry_configurations": 87,
+    "selected_subcubes": 6561,
+    "additional_inner_patching_cases": 48,
+    "formal_theorems": 11,
+    "prior_files_preserved": 70,
+    "final_integration_exit_status": 0
+  },
+  "small_control": {
+    "accepted_count": 144,
+    "center_minimum_distance": 4,
+    "centers": [
+      0,
+      15,
+      51,
+      60,
+      85,
+      90,
+      102,
+      105,
+      150,
+      153,
+      165,
+      170,
+      195,
+      204,
+      240,
+      255
+    ],
+    "certificate_profile": {
+      "accepting_subcubes_by_dimension": {
+        "0": 144,
+        "1": 128
+      },
+      "maximum_accepting_dimension": 1,
+      "minimum_certificate_histogram": {
+        "7": 144
+      },
+      "subcubes_examined": 6561
+    },
+    "k": 1,
+    "m": 3,
+    "omitted_one_gate_AND_table": 136,
+    "omitted_table_distance": 2,
+    "outer_gate_count": 1917,
+    "radius": 1,
+    "shifted": true
+  },
+  "formal_vs_manual": "See formal_validation.json and README. Neither the general recognizer proof nor the magnification theorem is claimed fully Lean-formalized.",
+  "review": "Self-review with independent computational interpretations, not independent human or agent refereeing.",
+  "not_established": [
+    "Full fixed-beta GapMCSP circuit lower bound",
+    "P versus NP separation",
+    "A positive general sharing-sensitive certificate extraction lemma",
+    "Novelty"
+  ],
+  "artifact_hashes": {
+    ".gitignore": "03e87c591ea25f2bcf681ae4a3110538d4be229103f5ce4ac336f5fab275c9f3",
+    "README.md": "6ccb17a588669180413faca39f3ea96fb1c9738c67a03991fbca5f9f9691384b",
+    "experiments/test_tube_probe.py": "cf1c6dd1155b55504eccf0674aa5a6cac5c4695f017cf90e479900eb9f2770eb",
+    "experiments/tube_probe.py": "0ea3a209798a942320fd441673336d510df0737500be24ea970e42a1bdd00220",
+    "experiments/tube_results.json": "dd1b1ec5bb0991587e4090b4003dc8e27df3f2f26ce6736830f9882e3721e871",
+    "sources/structured_family_audit.json": "8ee6a75704af4fae9df2a0262cd6f46b6865a32cb0a33c940e8ac4a3361fa3cd",
+    "validation/SeparatedTubes.lean": "8976e4579f30a4a96588445ae581817f125bf83eb56c5b544459a3a453e86eea",
+    "validation/check.sh": "15158b9d6b3959ca4e7c733e415c12731c6b97d2cd475248f6d483314e96ca98",
+    "validation/formal_validation.json": "e3d4f600240844d55120e48ab83f9dd54da9f232262e07809c2e44a58374b6aa",
+    "validation/integration_attempt_4GiB.log": "fe4b17ef0fa41cb09b430eb9ebc2a541dad6145ea9c79979387291beed8b9717",
+    "validation/integration_checks.log": "915481d5e983fcdf2a9b23d723fb5fb0fcd454bf89c050482ba0f068903f0ce3",
+    "validation/prior_manifest.json": "72ba47e5811a77498f0a6498a8606e28e7058e7a86b0ad37ff8fe97ec26a69b2",
+    "validation/prior_regression.log": "d5518bcacbb1a3e045456123cc799467f71c653371437b2dd29963995f060297",
+    "validation/review.json": "87f8dbb55de6c5b7153293852a0013b84077d43a18dd9d5c776f2e416153e651"
+  }
+}

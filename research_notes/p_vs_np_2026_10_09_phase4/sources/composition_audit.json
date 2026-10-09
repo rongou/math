@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "scope": "Bounded audit for one noisy binary-composition round of the Phase 3 family. Not a novelty certification or a survey of all functional-decomposition algorithms.",
+  "primary_sources": [
+    {
+      "id": "S1",
+      "authors": [
+        "Bengt Aspvall",
+        "Michael F. Plass",
+        "Robert Endre Tarjan"
+      ],
+      "title": "A Linear-Time Algorithm for Testing the Truth of Certain Quantified Boolean Formulas",
+      "publication": "Information Processing Letters 8(3), 1979, pp. 121-123",
+      "doi": "10.1016/0020-0190(79)90002-4",
+      "retrieved_pdf": "https://mathweb.ucsd.edu/~sbuss/CourseWeb/Math268_2007WS/2SAT.pdf",
+      "locators": [
+        "Implication graph construction, printed p. 121",
+        "Theorem 1 and constructive converse, printed p. 122"
+      ],
+      "checked": "The existential 2-CNF instance is satisfiable iff no literal shares a strongly connected component with its complement.",
+      "use_limit": "The source does not supply our composed-junta recognizer, its augmented-parity fibers, or its Boolean gate count. The source RAM-time bound is not used as a gate bound."
+    }
+  ],
+  "manual_new_deductions": [
+    "All binary combinations of the old radius-r family lie within radius 2r of binary combinations of its centers.",
+    "For fixed support pair, operation and global shift flags, decoded feature consistency is a Boolean binary-constraint problem independently on each common-coordinate slice.",
+    "A fixed Boolean transitive-closure network implements those 2-SAT checks in O(2^(3k)) gates per support pair.",
+    "Together with majority decoding and mismatch counting, the outer size is O(binomial(m,k)^2*(N*m+2^(3k))).",
+    "For fixed beta<1/5, the same k and r as Phase 3 give sound acceptance, separated tubes, and exponent 1+2H(beta)+o(1).",
+    "Parity on 2k+1 address variables is a cheap missed YES instance obtained by a further XOR round."
+  ],
+  "scope_limits": [
+    "One round is relative to the old family, not a fixed-point closure property of the new family.",
+    "The full GapMCSP promise is not solved; explicit YES tables are rejected.",
+    "Higher-arity constraints do not by themselves prove NP-hardness of the structured decomposition problem.",
+    "No claim is made that the particular full method satisfies a literature internal-oracle closure condition.",
+    "The elementary combination is not claimed novel."
+  ],
+  "prior_sources": [
+    "../p_vs_np_2026_10_09_phase3/sources/structured_family_audit.json",
+    "../p_vs_np_2026_10_09_phase2/sources/formula_sharing_audit.json"
+  ]
+}

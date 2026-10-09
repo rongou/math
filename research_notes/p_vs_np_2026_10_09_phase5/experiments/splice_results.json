@@ -1,0 +1,681 @@
+{
+  "all_input_comparisons": 66048,
+  "complete_outer_replays": [
+    {
+      "accepted_components": 1,
+      "accepted_tables": 48,
+      "all_input_comparisons": 256,
+      "centers": 4,
+      "circuit_sha256": "9b087a897d15d8a697abed6991e61f924c690a7edad48b0ba894783e954d43fb",
+      "construction": {
+        "copied_legacy_literal_gates": 1932,
+        "exact_node_sharing": true,
+        "gate_requests": 17690,
+        "legacy_radius": 0,
+        "ordinary_gates": 12096,
+        "splice_allocated_gates": 11688,
+        "word_calls": 4726
+      },
+      "k": 0,
+      "m": 3,
+      "old_noisy_tables": 4,
+      "radius": 0,
+      "splice_tables": 48
+    },
+    {
+      "accepted_components": 1,
+      "accepted_tables": 256,
+      "all_input_comparisons": 256,
+      "centers": 72,
+      "circuit_sha256": "ac02571aebfa1c28e3910776a0c1de704a066a089c45e096a6b6d52348d65b5c",
+      "construction": {
+        "copied_legacy_literal_gates": 86768,
+        "exact_node_sharing": true,
+        "gate_requests": 1434094,
+        "legacy_radius": 0,
+        "ordinary_gates": 1119834,
+        "splice_allocated_gates": 1098495,
+        "word_calls": 236950
+      },
+      "k": 1,
+      "m": 3,
+      "old_noisy_tables": 72,
+      "radius": 0,
+      "splice_tables": 256
+    },
+    {
+      "accepted_components": 1,
+      "accepted_tables": 616,
+      "all_input_comparisons": 65536,
+      "centers": 4,
+      "circuit_sha256": "83f5e9cbb8b833901a954e6ce9c9ad5d88de8d4ff29d10b7620fd932110f22de",
+      "construction": {
+        "copied_legacy_literal_gates": 2394,
+        "exact_node_sharing": true,
+        "gate_requests": 24741,
+        "legacy_radius": 2,
+        "ordinary_gates": 17013,
+        "splice_allocated_gates": 16267,
+        "word_calls": 6262
+      },
+      "k": 0,
+      "m": 4,
+      "old_noisy_tables": 548,
+      "radius": 2,
+      "splice_tables": 112
+    }
+  ],
+  "failures": [],
+  "inner_splice_checks": [
+    {
+      "cut": 10,
+      "left_reachable": 29,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 51,
+      "right_reachable": 26,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 31,
+      "left_reachable": 29,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 55,
+      "right_reachable": 30,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 54,
+      "left_reachable": 7,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 50,
+      "right_reachable": 29,
+      "selector_bound": 16,
+      "shared_reachable": 2
+    },
+    {
+      "cut": 62,
+      "left_reachable": 6,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 49,
+      "right_reachable": 29,
+      "selector_bound": 16,
+      "shared_reachable": 2
+    },
+    {
+      "cut": 9,
+      "left_reachable": 30,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 50,
+      "right_reachable": 4,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 8,
+      "left_reachable": 29,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 57,
+      "right_reachable": 32,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 1,
+      "left_reachable": 30,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 48,
+      "right_reachable": 26,
+      "selector_bound": 16,
+      "shared_reachable": 24
+    },
+    {
+      "cut": 52,
+      "left_reachable": 27,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 54,
+      "right_reachable": 32,
+      "selector_bound": 16,
+      "shared_reachable": 21
+    },
+    {
+      "cut": 60,
+      "left_reachable": 27,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 55,
+      "right_reachable": 32,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 36,
+      "left_reachable": 4,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 25,
+      "right_reachable": 5,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 50,
+      "left_reachable": 34,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 56,
+      "right_reachable": 26,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 31,
+      "left_reachable": 32,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 58,
+      "right_reachable": 30,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 27,
+      "left_reachable": 27,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 53,
+      "right_reachable": 30,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 61,
+      "left_reachable": 34,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 56,
+      "right_reachable": 26,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 31,
+      "left_reachable": 29,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 46,
+      "right_reachable": 1,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 43,
+      "left_reachable": 32,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 58,
+      "right_reachable": 30,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 31,
+      "left_reachable": 28,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 50,
+      "right_reachable": 26,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 47,
+      "left_reachable": 3,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 46,
+      "right_reachable": 27,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 52,
+      "left_reachable": 29,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 56,
+      "right_reachable": 31,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 32,
+      "left_reachable": 26,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 53,
+      "right_reachable": 31,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 45,
+      "left_reachable": 2,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 45,
+      "right_reachable": 27,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 54,
+      "left_reachable": 25,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 46,
+      "right_reachable": 25,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 12,
+      "left_reachable": 2,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 22,
+      "right_reachable": 4,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 59,
+      "left_reachable": 2,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 50,
+      "right_reachable": 32,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 1,
+      "left_reachable": 1,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 45,
+      "right_reachable": 28,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 9,
+      "left_reachable": 6,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 48,
+      "right_reachable": 27,
+      "selector_bound": 16,
+      "shared_reachable": 1
+    },
+    {
+      "cut": 50,
+      "left_reachable": 3,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 46,
+      "right_reachable": 27,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 56,
+      "left_reachable": 30,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 55,
+      "right_reachable": 29,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 15,
+      "left_reachable": 4,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 49,
+      "right_reachable": 29,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 49,
+      "left_reachable": 30,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 60,
+      "right_reachable": 34,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    },
+    {
+      "cut": 62,
+      "left_reachable": 33,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 54,
+      "right_reachable": 5,
+      "selector_bound": 16,
+      "shared_reachable": 0
+    },
+    {
+      "cut": 7,
+      "left_reachable": 25,
+      "m": 6,
+      "new_gates": 16,
+      "reachable_total": 48,
+      "right_reachable": 27,
+      "selector_bound": 16,
+      "shared_reachable": 20
+    }
+  ],
+  "numeric_matching_checks": [
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 7,
+      "suffix": 7
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 7,
+      "suffix": 7
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 8,
+      "suffix": 8
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 7,
+      "suffix": 6
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 8,
+      "suffix": 8
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 5,
+      "suffix": 5
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 5,
+      "suffix": 5
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 3,
+      "prefix": 6,
+      "suffix": 7
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 42,
+      "suffix": 26
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 49,
+      "suffix": 19
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 20,
+      "suffix": 45
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 48,
+      "suffix": 17
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 16,
+      "suffix": 52
+    },
+    {
+      "is_splice": false,
+      "k": 1,
+      "m": 6,
+      "prefix": 7,
+      "suffix": 9
+    },
+    {
+      "is_splice": false,
+      "k": 1,
+      "m": 6,
+      "prefix": 7,
+      "suffix": 6
+    },
+    {
+      "is_splice": false,
+      "k": 1,
+      "m": 6,
+      "prefix": 5,
+      "suffix": 7
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 7,
+      "prefix": 34,
+      "suffix": 112
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 7,
+      "prefix": 82,
+      "suffix": 47
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 7,
+      "prefix": 56,
+      "suffix": 73
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 7,
+      "prefix": 128,
+      "suffix": 128
+    },
+    {
+      "is_splice": true,
+      "k": 1,
+      "m": 7,
+      "prefix": 88,
+      "suffix": 57
+    },
+    {
+      "is_splice": false,
+      "k": 1,
+      "m": 7,
+      "prefix": 7,
+      "suffix": 10
+    },
+    {
+      "is_splice": false,
+      "k": 1,
+      "m": 7,
+      "prefix": 7,
+      "suffix": 5
+    },
+    {
+      "is_splice": false,
+      "k": 1,
+      "m": 7,
+      "prefix": 7,
+      "suffix": 5
+    }
+  ],
+  "old_dimension_bound_counterexample": {
+    "accepted_completions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "dimension": 3,
+    "free_coordinates": [
+      0,
+      1,
+      2
+    ],
+    "k": 0,
+    "m": 4,
+    "old_radius": 2
+  },
+  "parity_witnesses": [
+    {
+      "distance_from_exact_splices": 0,
+      "distance_from_old_centers": 32,
+      "is_exact_splice": true,
+      "k": 1,
+      "m": 6,
+      "prefix": 32,
+      "suffix": 32,
+      "target": "parity on the three lowest address bits"
+    },
+    {
+      "distance_from_exact_splices": 32,
+      "distance_from_old_centers": 64,
+      "is_exact_splice": false,
+      "k": 1,
+      "m": 7,
+      "prefix": 32,
+      "suffix": 32,
+      "target": "parity on the three lowest address bits"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Old noisy binary-center tubes UNION exact prefix splices of centers; NOT noisy splices or iterated closure.",
+  "seed": 11205,
+  "symbolic_parameters": [
+    {
+      "beta": "1/16",
+      "c": 1,
+      "cardinality_below_counting_target": true,
+      "cardinality_log_bound": {
+        "accepted_log_bound": 4199445,
+        "center_log_bound": 5126,
+        "noise_log_bound": 4199444,
+        "splice_log_bound": 10765
+      },
+      "epsilon": "3/4",
+      "k": 11,
+      "m": 512,
+      "materialized": false,
+      "old_noisy_inputs_are_YES_by_bound": true,
+      "ordinary_gate_upper_bound": 2159764272992023060652264238725486918142999359145490685239733674995776449994169918007847121948771585615829379702781973132463978704490216986250759934345288867371787121428152517738127521815291170666371086846,
+      "outer_bound_below_target": true,
+      "radius": 8192,
+      "s1": 8388608,
+      "s2": 4294967296,
+      "splice_inner_bound": 99384,
+      "splices_are_YES_by_bound": true,
+      "upper_bound_bit_length": 679
+    },
+    {
+      "beta": "1/32",
+      "c": 1,
+      "cardinality_below_counting_target": true,
+      "cardinality_log_bound": {
+        "accepted_log_bound": 91642746913,
+        "center_log_bound": 16780294,
+        "noise_log_bound": 91642746912,
+        "splice_log_bound": 33562125
+      },
+      "epsilon": "1/2",
+      "k": 23,
+      "m": 1536,
+      "materialized": false,
+      "old_noisy_inputs_are_YES_by_bound": true,
+      "ordinary_gate_upper_bound": 2307727276949994166554542735418804769746027455272286337906179895367592351101203604795322305703006819712492992558195485590781054448356549084087974723068377340018649189271702445751670331042951090344734469454338668799559953596969955216433830995852247488806927754793123753571583766571340087607624946873055770528374255882280324005705639074799986801420774463071851786594084078640586120468950572342479104004472639158213408065395710697097467793310477538183780846503756822325876293883317026092131079843660529469007456042922264087223112327793385020068344655192162437892869408419326,
+      "outer_bound_below_target": true,
+      "radius": 59652322,
+      "s1": 183251937962,
+      "s2": 281474976710656,
+      "splice_inner_bound": 771779688,
+      "splices_are_YES_by_bound": true,
+      "upper_bound_bit_length": 1895
+    },
+    {
+      "beta": "1/64",
+      "c": 1,
+      "cardinality_below_counting_target": true,
+      "cardinality_log_bound": {
+        "accepted_log_bound": 45817182239,
+        "center_log_bound": 4200454,
+        "noise_log_bound": 45817182238,
+        "splice_log_bound": 8403981
+      },
+      "epsilon": "1/3",
+      "k": 21,
+      "m": 3072,
+      "materialized": false,
+      "old_noisy_inputs_are_YES_by_bound": true,
+      "ordinary_gate_upper_bound": 2731562944141077755232694746855095100193365235555545779055147050265906616915572423052196794727135209763510424157358722248401538847321151448182856086520670451567973486997833307058386007542569382068855895801590554424180920547194669246223198830238877940002343583486199681239328636528534805416624435579191678643998102359465269360045769338711175207647011667297231131997050668627296957548677156962039822446397446494651009547497057771486753629667894949233568794196811764083405972884266621956816670132894064750739843302964676102314413455508046016126638593255990078473428072982416072639869471137565624861983492741798400310768560854222546264987283831604360631357256228478807431735239209207257814631253928934750840602336702124763599267490893319953057532434257379039440533936307602177890720815592573605010232201277198458508707462472074031056758332104276193535926410344077186320514754990468486505822838672623264260882085125000374504008811819829397162956269753045952241864105372916516741123145726620463293409625403230923293350306055117082857970015919102,
+      "outer_bound_below_target": true,
+      "radius": 14913080,
+      "s1": 91625968981,
+      "s2": 281474976710656,
+      "splice_inner_bound": 176216160,
+      "splices_are_YES_by_bound": true,
+      "upper_bound_bit_length": 3450
+    }
+  ]
+}

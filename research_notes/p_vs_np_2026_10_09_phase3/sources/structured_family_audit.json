@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "scope": "Bounded source check for a strict-YES-subfamily negative control; not a survey or a novelty certification.",
+  "sources": [
+    {
+      "id": "S1",
+      "authors": [
+        "Igor C. Oliveira",
+        "Jan Pich",
+        "Rahul Santhanam"
+      ],
+      "title": "Hardness Magnification Near State-of-the-Art Lower Bounds",
+      "publication": "Theory of Computing 17(11), 2021",
+      "url": "https://theoryofcomputing.org/articles/v017a011/v017a011.pdf",
+      "locators": [
+        "Theorem 1.4, printed page 6",
+        "Definition 2.4, printed page 11",
+        "Circuit conventions, printed page 4"
+      ],
+      "checked": "One fixed epsilon and every sufficiently small fixed positive beta; N is full truth-table length; NO has size strictly greater than s2; ordinary bounded-fan-in unbounded-depth circuits.",
+      "not_inferred": "No version of the theorem with YES replaced by an arbitrary large easy subfamily."
+    },
+    {
+      "id": "S2",
+      "authors": [
+        "Zhengyang Liu",
+        "Xi Chen",
+        "Rocco A. Servedio",
+        "Ying Sheng",
+        "Jinyu Xie"
+      ],
+      "title": "Distribution-Free Junta Testing",
+      "publication": "STOC 2018",
+      "url": "https://www.cs.columbia.edu/~rocco/Public/stoc18.pdf",
+      "doi": "10.1145/3188745.3188842",
+      "locators": [
+        "Introduction, printed page 749",
+        "Proof of Lemma 3.2, printed page 754"
+      ],
+      "checked": "Definition of k-junta; for a fixed coordinate support, the conditional-mode function selects the most frequent label in each block.",
+      "not_inferred": "Query complexity is not circuit size; the Phase 3 circuit construction and certificate statement are not attributed to this paper."
+    }
+  ],
+  "queries": [
+    "site.cs.columbia.edu junta testing distance majority Boolean k juntas",
+    "site.arxiv.org \"juntas\" \"Hamming balls\""
+  ],
+  "manual_deductions": [
+    "DNF and parity-shift inner upper bound k+k*2^k+4m.",
+    "Exact nearest-junta distance by blockwise majority, then an ordinary gate-list implementation.",
+    "Disagreement support gives junta center separation; opposite parity shifts are balanced when 2k<m.",
+    "Strictly separated Hamming balls cannot share an accepting coordinate subcube.",
+    "At fixed beta<1/3, small outer recognizers have exponent 1+H(beta)+o(1) while accepting only low-complexity tables.",
+    "Full GapMCSP completeness fails on explicit cheap intermediate-support parities."
+  ],
+  "novelty": "All deductions are treated as elementary controls. The bounded searches do not establish that this exact combination is unpublished.",
+  "locality_boundary": "No oracle gates are used. No closure claim about the full method under the literature internal-oracle model follows.",
+  "prior_context": [
+    "../p_vs_np_2026_10_09_phase2/sources/formula_sharing_audit.json",
+    "../p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean",
+    "../p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py"
+  ]
+}

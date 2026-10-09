@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "status": "pass",
+  "source_file": "validation/PrefixSplicing.lean",
+  "source_sha256": "c684b5caa4b917956377bfcc7834f960361e277f7f89288807d9836f6f7e5075",
+  "toolchain": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "project": "/tmp/family112-build-validation.xWSfhA/project/lean",
+  "driver": "validation/check.sh",
+  "valid_log": "validation/integration_checks.log",
+  "flags": [
+    "--trust=0",
+    "--error=warning",
+    "-j1",
+    "-M16384"
+  ],
+  "axiom_reports": {
+    "minmax_threshold": [
+      "propext"
+    ],
+    "splice_zero": [
+      "propext",
+      "Quot.sound"
+    ],
+    "splice_last": [
+      "propext",
+      "Quot.sound"
+    ],
+    "splice_adjacent": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "mem_spliceSet": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "card_spliceSet_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "splice_of_matching_prefix_suffix": [
+      "propext",
+      "Quot.sound"
+    ],
+    "accepted_subcube_count_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "helper_hashes": {
+    "p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean": "56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4",
+    "p_vs_np_2026_10_09_phase3/validation/SeparatedTubes.lean": "8976e4579f30a4a96588445ae581817f125bf83eb56c5b544459a3a453e86eea"
+  },
+  "formal_scope": [
+    "Thresholding min/max gives the Boolean reachability update.",
+    "Splice endpoint and single-coordinate-step semantics.",
+    "Finite splice membership and cardinality upper bound.",
+    "Matching prefix/suffix coverage yields an actual splice.",
+    "An accepted coordinate subcube inside the old set plus splices obeys the claimed cardinality bound."
+  ],
+  "not_formalized": [
+    "Full weighted 2-SAT compiler semantics",
+    "Global graph connectedness theorem",
+    "General gate-count and fixed-beta asymptotic analysis",
+    "Missed-parity witness for every large length",
+    "Full GapMCSP correctness or lower bound"
+  ],
+  "failed_attempt": {
+    "log": "validation/initial_compile_attempt.log",
+    "cause": "Decidable-equality instance mismatch in the cardinality of a complement.",
+    "resolution": "Normalize Finset.card_compl before rewriting with the Phase 2 subcube theorem.",
+    "accepted_as_evidence": false
+  },
+  "resource_use": {
+    "elapsed_wall": "0:41.29",
+    "max_rss_KiB": 6910672,
+    "allocation_cap_MiB": 16384
+  }
+}

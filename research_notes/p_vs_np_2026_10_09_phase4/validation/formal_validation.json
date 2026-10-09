@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "status": "pass",
+  "source_file": "validation/BudgetedComposition.lean",
+  "source_sha256": "fdc45da20b3026bceb0887c62ffdd292171c171e238dbbd9c9b63b3271ed884b",
+  "toolchain": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "project": "/tmp/family112-build-validation.xWSfhA/project/lean",
+  "command": "validation/check.sh /tmp/family112-build-validation.xWSfhA/project/lean",
+  "log": "validation/integration_checks.log",
+  "flags": [
+    "--trust=0",
+    "--error=warning",
+    "-j1",
+    "-M16384"
+  ],
+  "helper_hashes": {
+    "p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean": "56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4",
+    "p_vs_np_2026_10_09_phase3/validation/SeparatedTubes.lean": "8976e4579f30a4a96588445ae581817f125bf83eb56c5b544459a3a453e86eea"
+  },
+  "axiom_reports": {
+    "mem_binaryCenters": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "binary_hamming_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "binary_tube_closure": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "original_tube_subset_binary_double": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "distinct_gate_union_cost": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "formal_scope": [
+    "All binary pointwise combinations belong to the declared finite center set.",
+    "Hamming errors add under arbitrary binary Boolean composition.",
+    "The old noisy family embeds in the doubled-radius binary-center tube.",
+    "Fresh top-node sets plus shared reachable gate-ID sets satisfy the stated cardinality identity."
+  ],
+  "not_formalized": [
+    "General 2-SAT criterion and compiled reachability semantics",
+    "Equivalence of the arbitrary-size support-pair constraint encoding to primitive function existence",
+    "Augmented-parity feature separation and asymptotic cost estimates",
+    "Full GapMCSP correctness or hardness"
+  ],
+  "resource_use": {
+    "elapsed_wall": "0:24.76",
+    "max_rss_KiB": 6909436,
+    "lean_allocation_cap_MiB": 16384
+  },
+  "temporary_artifacts": "The reproduction script prints and retains its fresh helper directory; no previous build artifact is deleted."
+}
