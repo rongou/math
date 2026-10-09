@@ -1,0 +1,6 @@
+'ResearchNotes.FourthMoment.unit_norm_residue_law' does not depend on any axioms
+'ResearchNotes.FourthMoment.principal_iff_balanced' does not depend on any axioms
+'ResearchNotes.FourthMoment.balanced_nonempty_has_mask' does not depend on any axioms
+'ResearchNotes.FourthMoment.active_channels' does not depend on any axioms
+'ResearchNotes.FourthMoment.mobius_parity' does not depend on any axioms
+'ResearchNotes.FourthMoment.sixth_order_resonance' does not depend on any axioms

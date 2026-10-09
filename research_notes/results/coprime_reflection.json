@@ -1,0 +1,56 @@
+{
+  "status": "exact finite identities and a conditional scale obstruction; P4 and RH NOT proved",
+  "source_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "single_conversion_cases": 8,
+  "single_identities_per_case": 2,
+  "coprime_conversion_cases": 7,
+  "bilinear_theta_product_cases": 7,
+  "all_conversion_checks_passed": true,
+  "pilot_scale_budget": {
+    "original_row": "4/3",
+    "product_column": "2",
+    "poisson_row": "8/3",
+    "poisson_row_over_column": "2/3",
+    "nominal_reflected_column": "10/3",
+    "formal_cube_cutoff": "-4/9",
+    "required_strict_gap_available": false,
+    "target_fourth": "10/3",
+    "hypothetical_completed_bound": "14/3",
+    "hypothetical_bound_excess": "4/3",
+    "added_diagonal_mass": "4",
+    "added_diagonal_excess_over_target": "2/3",
+    "same_column_two_poisson_steps": [
+      "4/3",
+      "2"
+    ],
+    "WARNING": "completed bound transfer and weighted reflection are NOT established"
+  },
+  "toy_poisson_then_theta_orbit": [
+    {
+      "cycle": 0,
+      "row": "4/3",
+      "column": "2"
+    },
+    {
+      "cycle": 1,
+      "row": "8/3",
+      "column": "10/3"
+    },
+    {
+      "cycle": 2,
+      "row": "4",
+      "column": "14/3"
+    },
+    {
+      "cycle": 3,
+      "row": "16/3",
+      "column": "6"
+    }
+  ],
+  "divisor_weight_nonmultiplicativity": {
+    "example": "unit weight 0; positive weights 1 on two distinct prime columns",
+    "weight_on_first_prime_product_column": 0,
+    "weight_on_second_prime_product_column": 0,
+    "weight_on_their_product_column": 2
+  }
+}

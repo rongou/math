@@ -1,0 +1,55 @@
+{
+  "status": "static inventory only; this script does not build Lean or run the comparator",
+  "date": "2026-10-09",
+  "repository_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "config": "lean/ComparatorChallenges/QuasiRiemannHypothesis.json",
+  "solution_module": "OAI.NumberTheory.DirichletL.Nonvanishing",
+  "target_declarations": [
+    "OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re"
+  ],
+  "permitted_axioms_in_config": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda_in_config": false,
+  "toolchain_pin": "leanprover/lean4:v4.34.1",
+  "installed_lean": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "tool_paths": {
+    "lake": "/home/rou/.elan/bin/lake",
+    "comparator": "/usr/local/bin/comparator",
+    "landrun": "/home/rou/go/bin/landrun",
+    "lean4export": "/usr/local/bin/lean4export"
+  },
+  "lake_directory_present": false,
+  "local_module_count": 2924,
+  "local_source_line_count": 486490,
+  "external_import_count": 251,
+  "external_import_roots": {
+    "Lean": 1,
+    "Mathlib": 248,
+    "PrimeNumberTheoremAnd": 1,
+    "RellichKondrachov": 1
+  },
+  "largest_local_groups": {
+    "OAI.NumberTheory.DirichletL.Moments": 679,
+    "OAI.NumberTheory.DirichletL.Descent": 419,
+    "OAI.NumberTheory.DirichletL.Detector": 415,
+    "OAI.NumberTheory.DirichletL.Reflection": 266,
+    "OAI.NumberTheory.DirichletL.Energy": 208,
+    "OAI.NumberTheory.DirichletL.PrimeRows": 182,
+    "OAI.NumberTheory.DirichletL.Hecke": 180,
+    "OAI.NumberTheory.DirichletL.Inversion": 155,
+    "OAI.NumberTheory.DirichletL.CubicSieve": 91,
+    "OAI.NumberTheory.DirichletL.Eisenstein": 82,
+    "OAI.NumberTheory.DirichletL.Dictionary": 42,
+    "OAI.NumberTheory.DirichletL.QuadraticSieve": 36
+  },
+  "lexical_review_flags": [],
+  "limitations": [
+    "Module-import closure is not declaration-level proof dependency analysis.",
+    "External packages, macros, raw strings, and generated declarations are not audited.",
+    "No marker hits does not certify soundness or identify all axioms.",
+    "The comparator challenge stub is not in the solution import closure."
+  ]
+}

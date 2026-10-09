@@ -1,0 +1,185 @@
+{
+  "status": "exact finite algebra only; P4 and RH are NOT proved",
+  "source_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "incidence_patterns": [
+    {
+      "columns": [
+        1
+      ],
+      "multiplicity": 1,
+      "exponent": 1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        2
+      ],
+      "multiplicity": 1,
+      "exponent": 1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        1,
+        2
+      ],
+      "multiplicity": 2,
+      "exponent": 2,
+      "mobius_sign": 1,
+      "channel": "cubic"
+    },
+    {
+      "columns": [
+        3
+      ],
+      "multiplicity": 1,
+      "exponent": -1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        1,
+        3
+      ],
+      "multiplicity": 2,
+      "exponent": 0,
+      "mobius_sign": 1,
+      "channel": "mask"
+    },
+    {
+      "columns": [
+        2,
+        3
+      ],
+      "multiplicity": 2,
+      "exponent": 0,
+      "mobius_sign": 1,
+      "channel": "mask"
+    },
+    {
+      "columns": [
+        1,
+        2,
+        3
+      ],
+      "multiplicity": 3,
+      "exponent": 1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        4
+      ],
+      "multiplicity": 1,
+      "exponent": -1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        1,
+        4
+      ],
+      "multiplicity": 2,
+      "exponent": 0,
+      "mobius_sign": 1,
+      "channel": "mask"
+    },
+    {
+      "columns": [
+        2,
+        4
+      ],
+      "multiplicity": 2,
+      "exponent": 0,
+      "mobius_sign": 1,
+      "channel": "mask"
+    },
+    {
+      "columns": [
+        1,
+        2,
+        4
+      ],
+      "multiplicity": 3,
+      "exponent": 1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        3,
+        4
+      ],
+      "multiplicity": 2,
+      "exponent": -2,
+      "mobius_sign": 1,
+      "channel": "cubic"
+    },
+    {
+      "columns": [
+        1,
+        3,
+        4
+      ],
+      "multiplicity": 3,
+      "exponent": -1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        2,
+        3,
+        4
+      ],
+      "multiplicity": 3,
+      "exponent": -1,
+      "mobius_sign": -1,
+      "channel": "sextic"
+    },
+    {
+      "columns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "multiplicity": 4,
+      "exponent": 0,
+      "mobius_sign": 1,
+      "channel": "mask"
+    }
+  ],
+  "verification": {
+    "local_fourier_equalities": 355,
+    "crt_fourier_equalities": 721,
+    "split_prime_norms": [
+      7,
+      7,
+      13,
+      19
+    ],
+    "inert_prime_norm": 25,
+    "complete_fourth_moment": {
+      "residue_count": 2275,
+      "column_count": 7,
+      "direct": 179509530,
+      "grouped_diagonal": 179509530
+    }
+  },
+  "exponent_budget": {
+    "row_exponent": "4/3",
+    "P4_target": "10/3",
+    "trivial_fourth_bound": "16/3",
+    "elementary_completion_fourth_bound": "5",
+    "gap_to_P4": "5/3",
+    "replica_extraction_from_elementary_bound": "43/36",
+    "positive_coefficient_lower_bound": "38/9",
+    "positive_coefficient_excess_over_P4": "8/9"
+  }
+}

@@ -1,0 +1,6 @@
+'ResearchNotes.CoprimeScales.poisson_involution' depends on axioms: [propext, Quot.sound]
+'ResearchNotes.CoprimeScales.theta_involution' depends on axioms: [propext, Quot.sound]
+'ResearchNotes.CoprimeScales.cycle_formula' depends on axioms: [propext, Quot.sound]
+'ResearchNotes.CoprimeScales.short_row_cycle_grows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResearchNotes.CoprimeScales.pilot_outside_canonical_range' does not depend on any axioms
+'ResearchNotes.CoprimeScales.pilot_completed_budget_exceeds_target' does not depend on any axioms

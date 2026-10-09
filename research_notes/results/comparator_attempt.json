@@ -1,0 +1,98 @@
+{
+  "status": "timed out during solution dependency build; no comparator verdict; proof NOT verified",
+  "source_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "started_utc": "2026-10-09T23:04:12.852543+00:00",
+  "isolated_directory": "/tmp/rh-comparator-fkzoq9se",
+  "time_limit_seconds_after_extraction": 900,
+  "checkout_lean_directory_modified": false,
+  "stages": [
+    {
+      "name": "dependency setup",
+      "command": [
+        "lake",
+        "update"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 124.83
+    },
+    {
+      "name": "dependency cache",
+      "command": [
+        "lake",
+        "exe",
+        "cache",
+        "get"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 14.624
+    },
+    {
+      "name": "comparator",
+      "command": [
+        "lake",
+        "env",
+        "comparator",
+        "ComparatorChallenges/QuasiRiemannHypothesis.json"
+      ],
+      "exit_code": 124,
+      "elapsed_seconds": 760.033
+    }
+  ],
+  "comparator_completed_successfully": false,
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "initial_manifest_sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+  "lakefile_sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74",
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "final_manifest_sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+  "manifest_changed": false,
+  "finished_utc": "2026-10-09T23:19:16.641651+00:00",
+  "critical_source_integrity": [
+    {
+      "file": "lean/lean-toolchain",
+      "matches_pinned_source": true,
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+    },
+    {
+      "file": "lean/lakefile.lean",
+      "matches_pinned_source": true,
+      "sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74"
+    },
+    {
+      "file": "lean/lake-manifest.json",
+      "matches_pinned_source": true,
+      "sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794"
+    },
+    {
+      "file": "lean/ComparatorChallenges/QuasiRiemannHypothesis.lean",
+      "matches_pinned_source": true,
+      "sha256": "065f8c9a01d28db78c8b1bfc5083b535082a2d2aac2230d563f98b8caa812cc5"
+    },
+    {
+      "file": "lean/ComparatorChallenges/QuasiRiemannHypothesis.json",
+      "matches_pinned_source": true,
+      "sha256": "46ebb7edc11f69536210f502b4bcbd36bbaf3f0872c16748b6c8ce43991bf320"
+    },
+    {
+      "file": "lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean",
+      "matches_pinned_source": true,
+      "sha256": "d98c4a7e074469b429890e1c21b8cc76c410026525a776895293cdc0f9e6ae89"
+    }
+  ],
+  "last_reported_build_counter": {
+    "done": 4412,
+    "total": 7061,
+    "target": "OAI.NumberTheory.DirichletL.Eisenstein.CutoffApproximation (4.2s)",
+    "meaning": "build tasks only, not a percentage of mathematical proof verification"
+  },
+  "challenge_export_observed": true,
+  "postrun_processes_in_isolated_directory": []
+}
