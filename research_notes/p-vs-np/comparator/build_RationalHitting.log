@@ -1,0 +1,79 @@
+warning: PrimeNumberTheoremAnd: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: belyi: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/iut' has local changes
+warning: gromov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/gromov' has local changes
+warning: SphereEversion: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/SphereEversion' has local changes
+warning: schoenflies-lean: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/schoenflies-lean' has local changes
+warning: ClassFieldTheory: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/ClassFieldTheory' has local changes
+warning: AINTLIB: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AINTLIB' has local changes
+warning: AbsorptionCutoff: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AbsorptionCutoff' has local changes
+warning: StrongPNT: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/StrongPNT' has local changes
+warning: carleson: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/carleson' has local changes
+warning: rellich-kondrachov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/rellich-kondrachov' has local changes
+warning: Zeta3Irrational: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/Zeta3Irrational' has local changes
+warning: fixed-point-theorems: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/fixed-point-theorems' has local changes
+✔ [8924/8977] Built OAI.Computability.RationalHitting.Model (3.2s)
+⚠ [8925/8977] Built ComparatorChallenges.RationalHitting (3.2s)
+warning: ComparatorChallenges/RationalHitting.lean:108:8: declaration uses `sorry`
+✔ [8926/8977] Built OAI.Computability.RationalHitting.Evaluation (5.4s)
+✔ [8927/8977] Built OAI.Computability.RationalHitting.Affine (4.9s)
+✔ [8928/8977] Built OAI.Computability.RationalHitting.Wronskian (3.0s)
+✔ [8929/8977] Built OAI.Computability.RationalHitting.LaurentReduction (5.2s)
+✔ [8930/8977] Built OAI.Computability.RationalHitting.SmallExpansion (7.5s)
+✔ [8931/8977] Built OAI.Computability.RationalHitting.Rectangular (3.9s)
+✔ [8932/8977] Built OAI.Computability.RationalHitting.PaddedRank (3.9s)
+✔ [8933/8977] Built OAI.Computability.RationalHitting.QuantumSeries (4.4s)
+✔ [8934/8977] Built OAI.Computability.RationalHitting.QuantumMatrices (4.2s)
+✔ [8935/8977] Built OAI.Computability.RationalHitting.BlockDivision (3.7s)
+✔ [8936/8977] Built OAI.Computability.RationalHitting.Deformation (3.9s)
+✔ [8937/8977] Built OAI.Computability.RationalHitting.CyclotomicGrid (3.8s)
+✔ [8938/8977] Built OAI.Computability.RationalHitting.Certificates (4.2s)
+✔ [8939/8977] Built OAI.Computability.RationalHitting.Generator (7.1s)
+✔ [8940/8977] Built OAI.Computability.RationalHitting.IntegralLift (3.8s)
+✔ [8941/8977] Built OAI.Computability.RationalHitting.EncodingBounds (3.4s)
+✔ [8942/8977] Built OAI.Computability.RationalHitting.Determinant (3.2s)
+✔ [8943/8977] Built OAI.Computability.RationalHitting.Executable (3.2s)
+✔ [8944/8977] Built OAI.Computability.RationalHitting.StackLanguage (3.7s)
+✔ [8945/8977] Built OAI.Computability.RationalHitting.StackSimulation (3.5s)
+✔ [8946/8977] Built OAI.Computability.RationalHitting.FiniteCompiler (6.7s)
+✔ [8947/8977] Built OAI.Computability.RationalHitting.InputAdapter (3.7s)
+✔ [8948/8977] Built OAI.Computability.RationalHitting.OutputAdapter (3.8s)
+✔ [8949/8977] Built OAI.Computability.RationalHitting.Compiler (5.1s)
+✔ [8950/8977] Built OAI.Computability.RationalHitting.StackWords (4.4s)
+✔ [8951/8977] Built OAI.Computability.RationalHitting.BinaryAddition (11s)
+✔ [8952/8977] Built OAI.Computability.RationalHitting.BinaryMultiply (3.8s)
+✔ [8953/8977] Built OAI.Computability.RationalHitting.BinarySubtract (9.9s)
+✔ [8954/8977] Built OAI.Computability.RationalHitting.BinaryDivision (4.1s)
+✔ [8955/8977] Built OAI.Computability.RationalHitting.BinaryGcd (7.3s)
+✔ [8956/8977] Built OAI.Computability.RationalHitting.BinaryFactorial (4.3s)
+✔ [8957/8977] Built OAI.Computability.RationalHitting.BinaryBinomial (4.7s)
+✔ [8958/8977] Built OAI.Computability.RationalHitting.BinomialBounds (5.4s)
+✔ [8959/8977] Built OAI.Computability.RationalHitting.DenseRecords (4.0s)
+✔ [8960/8977] Built OAI.Computability.RationalHitting.SignedBinary (4.9s)
+✔ [8961/8977] Built OAI.Computability.RationalHitting.RationalBinary (8.9s)
+✔ [8962/8977] Built OAI.Computability.RationalHitting.Procedures (3.5s)
+✔ [8963/8977] Built OAI.Computability.RationalHitting.ProcedurePairs (3.5s)
+✔ [8964/8977] Built OAI.Computability.RationalHitting.ProcedureControl (3.6s)
+✔ [8965/8977] Built OAI.Computability.RationalHitting.Feasibility (3.6s)
+✔ [8966/8977] Built OAI.Computability.RationalHitting.Tabulation (3.6s)
+✔ [8967/8977] Built OAI.Computability.RationalHitting.ListProcedures (3.4s)
+✔ [8968/8977] Built OAI.Computability.RationalHitting.SignedArithmetic (4.2s)
+✔ [8969/8977] Built OAI.Computability.RationalHitting.DenseDeterminant (4.1s)
+✔ [8970/8977] Built OAI.Computability.RationalHitting.UnaryArithmetic (3.7s)
+✔ [8971/8977] Built OAI.Computability.RationalHitting.RationalArithmetic (4.8s)
+✔ [8972/8977] Built OAI.Computability.RationalHitting.TaylorComputation (7.2s)
+✔ [8973/8977] Built OAI.Computability.RationalHitting.LiftComputation (3.9s)
+✔ [8974/8977] Built OAI.Computability.RationalHitting.MatrixComputation (3.4s)
+✔ [8975/8977] Built OAI.Computability.RationalHitting.GridComputation (7.0s)
+✔ [8976/8977] Built OAI.Computability.RationalHitting.OutputComputation (3.5s)
+✔ [8977/8977] Built OAI.Computability.RationalHitting.Main (2.0s)
+Build completed successfully (8977 jobs).

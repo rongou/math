@@ -1,0 +1,54 @@
+[19:18:40] snapshot fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb -> /tmp/pvsnp-comparator.qfJEA8
+[19:18:44] lake update (fetch pinned deps + apply compatibility patches)
+[19:21:15] build LogspaceEquality (OAI.Computability.Logspace.Equality)
+[19:24:18]   built in 183s; running comparator
+[19:26:19]   comparator PASS (121s)
+[19:26:19] build ChoicelessPolynomialTime (OAI.ModelTheory.Choiceless.Separation)
+[19:28:34]   built in 135s; running comparator
+[19:29:41]   comparator PASS (67s)
+[19:29:41] build PermanentCubic (OAI.Algebra.Determinantal.Main)
+[19:34:23]   built in 282s; running comparator
+[19:36:59]   comparator PASS (156s)
+[19:36:59] build SmoothInitialForm (OAI.Algebra.Determinantal.InitialForm)
+[19:37:06]   built in 7s; running comparator
+[19:38:53]   comparator PASS (107s)
+[19:38:53] build DepthFive (OAI.Algebra.DepthFive.Bounds)
+[19:39:46]   built in 53s; running comparator
+[19:41:18]   comparator PASS (92s)
+[19:41:18] build MatchingPSD (OAI.Combinatorics.MatchingPSD.Main)
+[19:44:37]   built in 199s; running comparator
+[19:46:09]   comparator PASS (92s)
+[19:46:10] build MatchingAffineLift (OAI.Combinatorics.MatchingPSD.AffineLift)
+[19:46:39]   built in 29s; running comparator
+[19:48:08]   comparator PASS (89s)
+[19:48:08] build WitnessedChoice (OAI.Computability.WitnessedChoice.Main)
+[19:52:37]   built in 269s; running comparator
+[19:54:35]   comparator PASS (118s)
+[19:54:35] build WeisfeilerLeman (OAI.Computability.WeisfeilerLeman.Main)
+[19:57:39]   built in 184s; running comparator
+[19:58:25]   comparator PASS (46s)
+[19:58:25] build TwoWayDeterminization (OAI.Combinatorics.TwoWayAutomata.ExplicitFamily)
+[19:59:29]   built in 64s; running comparator
+[20:00:03]   comparator PASS (34s)
+[20:00:03] build OneWayLiveness (OAI.Combinatorics.Automata.Main)
+[20:00:10]   built in 7s; running comparator
+[20:00:40]   comparator PASS (30s)
+[20:00:40] build OneTapeSpace (OAI.Computability.SpaceSimulation.Main)
+[20:02:07]   built in 87s; running comparator
+[20:03:01]   comparator PASS (54s)
+[20:03:01] build RationalHitting (OAI.Computability.RationalHitting.Main)
+[20:07:15]   built in 254s; running comparator
+[20:09:12]   comparator PASS (117s)
+[20:09:12] build FormulaHitting (OAI.Algebra.FormulaHitting.Hitting)
+[20:09:23]   built in 11s; running comparator
+[20:09:48]   comparator PASS (25s)
+[20:09:48] build UniqueGamesTheorem (OAI.Computability.UniqueGames.Main)
+[20:13:57]   built in 249s; running comparator
+[20:17:07]   comparator PASS (190s)
+[20:17:07] build PerfectCompleteness (OAI.Computability.PerfectCompleteness.Main)
+[20:20:32]   built in 205s; running comparator
+[20:22:50]   comparator PASS (138s)
+[20:22:50] build IndependentSets (OAI.Combinatorics.IndependentSets.Main)
+[20:26:21]   built in 211s; running comparator
+[20:28:06]   comparator PASS (105s)
+[20:28:06] done

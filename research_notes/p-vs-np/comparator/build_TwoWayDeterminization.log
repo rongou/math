@@ -1,0 +1,67 @@
+warning: PrimeNumberTheoremAnd: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: belyi: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/iut' has local changes
+warning: gromov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/gromov' has local changes
+warning: SphereEversion: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/SphereEversion' has local changes
+warning: schoenflies-lean: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/schoenflies-lean' has local changes
+warning: ClassFieldTheory: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/ClassFieldTheory' has local changes
+warning: AINTLIB: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AINTLIB' has local changes
+warning: AbsorptionCutoff: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AbsorptionCutoff' has local changes
+warning: StrongPNT: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/StrongPNT' has local changes
+warning: carleson: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/carleson' has local changes
+warning: rellich-kondrachov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/rellich-kondrachov' has local changes
+warning: Zeta3Irrational: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/Zeta3Irrational' has local changes
+warning: fixed-point-theorems: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/fixed-point-theorems' has local changes
+✔ [8924/8965] Built OAI.Combinatorics.TwoWayAutomata.Model (3.2s)
+⚠ [8925/8965] Built ComparatorChallenges.TwoWayDeterminization (3.2s)
+warning: ComparatorChallenges/TwoWayDeterminization.lean:58:8: declaration uses `sorry`
+✔ [8926/8965] Built OAI.Combinatorics.Automata.Model (3.5s)
+✔ [8927/8965] Built OAI.Combinatorics.TwoWayAutomata.DeterministicCore (2.0s)
+✔ [8928/8965] Built OAI.Combinatorics.TwoWayAutomata.Normalization (3.6s)
+✔ [8929/8965] Built OAI.Combinatorics.TwoWayAutomata.Relations (3.8s)
+✔ [8930/8965] Built OAI.Combinatorics.Automata.Normalization (3.6s)
+✔ [8931/8965] Built OAI.Combinatorics.Automata.Tours (3.7s)
+✔ [8932/8965] Built OAI.Combinatorics.Automata.Wiring (3.0s)
+✔ [8933/8965] Built OAI.Combinatorics.TwoWayAutomata.TransitionBridge (3.4s)
+✔ [8934/8965] Built OAI.Combinatorics.Automata.PathNFA (3.5s)
+✔ [8935/8965] Built OAI.Combinatorics.Automata.Cells (3.4s)
+✔ [8936/8965] Built OAI.Combinatorics.Automata.Rank (3.6s)
+✔ [8937/8965] Built OAI.Combinatorics.TwoWayAutomata.Diagram (5.8s)
+✔ [8938/8965] Built OAI.Combinatorics.Automata.Network (3.6s)
+✔ [8939/8965] Built OAI.Combinatorics.Automata.Diagram (3.4s)
+✔ [8940/8965] Built OAI.Combinatorics.TwoWayAutomata.Network (3.6s)
+✔ [8941/8965] Built OAI.Combinatorics.TwoWayAutomata.Classes (3.6s)
+✔ [8942/8965] Built OAI.Combinatorics.Automata.Diagrams (3.7s)
+✔ [8943/8965] Built OAI.Combinatorics.Automata.Corners (3.9s)
+✔ [8944/8965] Built OAI.Combinatorics.TwoWayAutomata.Transport (3.3s)
+✔ [8945/8965] Built OAI.Combinatorics.TwoWayAutomata.Chain (3.6s)
+✔ [8946/8965] Built OAI.Combinatorics.Automata.Relations (3.0s)
+✔ [8947/8965] Built OAI.Combinatorics.TwoWayAutomata.Nesting (3.6s)
+✔ [8948/8965] Built OAI.Combinatorics.TwoWayAutomata.Tape (3.4s)
+✔ [8949/8965] Built OAI.Combinatorics.Automata.RankLoss (4.0s)
+✔ [8950/8965] Built OAI.Combinatorics.TwoWayAutomata.Representation (3.4s)
+✔ [8951/8965] Built OAI.Combinatorics.TwoWayAutomata.Corners (3.8s)
+✔ [8952/8965] Built OAI.Combinatorics.Automata.Syntactic (3.2s)
+✔ [8953/8965] Built OAI.Combinatorics.TwoWayAutomata.RelationMonoid (3.4s)
+✔ [8954/8965] Built OAI.Combinatorics.Automata.Recognition (3.2s)
+✔ [8955/8965] Built OAI.Combinatorics.TwoWayAutomata.Source (3.8s)
+✔ [8956/8965] Built OAI.Combinatorics.Automata.Main (3.0s)
+✔ [8957/8965] Built OAI.Combinatorics.TwoWayAutomata.RelationBridge (3.1s)
+✔ [8958/8965] Built OAI.Combinatorics.TwoWayAutomata.Amplification (7.3s)
+✔ [8959/8965] Built OAI.Combinatorics.TwoWayAutomata.Retained (3.3s)
+✔ [8960/8965] Built OAI.Combinatorics.TwoWayAutomata.ImageBound (3.7s)
+✔ [8961/8965] Built OAI.Combinatorics.TwoWayAutomata.Recognition (3.1s)
+✔ [8962/8965] Built OAI.Combinatorics.TwoWayAutomata.Main (3.3s)
+✔ [8963/8965] Built OAI.Combinatorics.TwoWayAutomata.DeterministicTransport (2.9s)
+✔ [8964/8965] Built OAI.Combinatorics.TwoWayAutomata.DeterministicBound (3.4s)
+✔ [8965/8965] Built OAI.Combinatorics.TwoWayAutomata.ExplicitFamily (3.2s)
+Build completed successfully (8965 jobs).

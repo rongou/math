@@ -1,0 +1,11 @@
+challenge	build	comparator	build_s	comparator_s
+BinPackingGap	OK	PASS	241	76
+KMedianThreshold	OK	PASS	266	133
+DirectedFeedback	OK	PASS	904	181
+ParityLifts	OK	PASS	78	26
+VariableWL	OK	PASS	241	34
+WLIdentification	OK	PASS	281	29
+TwoWayComplementation	OK	PASS	7	30
+SensitivitySeparation	OK	PASS	56	27
+GotsmanLinial	OK	PASS	15	36
+MatrixMultiplication	OK	PASS	112	97

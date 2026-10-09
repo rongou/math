@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ComparatorChallenges.ChallengePNeNP",
+  "solution_module": "<your solution module>",
+  "theorem_names": [
+    "PvsNP.P_ne_NP"
+  ],
+  "definition_names": [
+    "PvsNP.encodeNat",
+    "PvsNP.encodeBit",
+    "PvsNP.encodePair",
+    "PvsNP.FinitePolyTime",
+    "PvsNP.P",
+    "PvsNP.NP"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

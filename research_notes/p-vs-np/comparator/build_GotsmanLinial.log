@@ -1,0 +1,48 @@
+warning: PrimeNumberTheoremAnd: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: belyi: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/iut' has local changes
+warning: gromov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/gromov' has local changes
+warning: SphereEversion: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/SphereEversion' has local changes
+warning: schoenflies-lean: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/schoenflies-lean' has local changes
+warning: ClassFieldTheory: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/ClassFieldTheory' has local changes
+warning: AINTLIB: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AINTLIB' has local changes
+warning: AbsorptionCutoff: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AbsorptionCutoff' has local changes
+warning: StrongPNT: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/StrongPNT' has local changes
+warning: carleson: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/carleson' has local changes
+warning: rellich-kondrachov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/rellich-kondrachov' has local changes
+warning: Zeta3Irrational: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/Zeta3Irrational' has local changes
+warning: fixed-point-theorems: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/fixed-point-theorems' has local changes
+✔ [3184/3206] Built OAI.Combinatorics.GotsmanLinial.Model (1.3s)
+✔ [3185/3206] Built OAI.Combinatorics.GotsmanLinial.BinomialMoments (1.4s)
+✔ [3186/3206] Built OAI.Combinatorics.GotsmanLinial.ScalarIncrements (1.7s)
+✔ [3187/3206] Built OAI.Combinatorics.GotsmanLinial.HilbertSchmidt (1.6s)
+⚠ [3188/3206] Built ComparatorChallenges.GotsmanLinial (1.4s)
+warning: ComparatorChallenges/GotsmanLinial.lean:49:8: declaration uses `sorry`
+✔ [3189/3206] Built OAI.Combinatorics.GotsmanLinial.ProjectionTrace (1.8s)
+✔ [3190/3206] Built OAI.Combinatorics.GotsmanLinial.Statement (1.4s)
+✔ [3191/3206] Built OAI.Combinatorics.GotsmanLinial.FiniteCoupling (1.3s)
+✔ [3192/3206] Built OAI.Combinatorics.GotsmanLinial.ProjectionBlocks (2.5s)
+✔ [3193/3206] Built OAI.Combinatorics.GotsmanLinial.Walsh (1.7s)
+✔ [3194/3206] Built OAI.Combinatorics.GotsmanLinial.CoordinateMultipliers (2.2s)
+✔ [3195/3206] Built OAI.Combinatorics.GotsmanLinial.WalshDimensions (1.7s)
+✔ [3196/3206] Built OAI.Combinatorics.GotsmanLinial.BlockCoupling (2.1s)
+✔ [3197/3206] Built OAI.Combinatorics.GotsmanLinial.PolynomialDegree (1.8s)
+✔ [3198/3206] Built OAI.Combinatorics.GotsmanLinial.Commutator (2.1s)
+✔ [3199/3206] Built OAI.Combinatorics.GotsmanLinial.CubeOperators (1.9s)
+✔ [3200/3206] Built OAI.Combinatorics.GotsmanLinial.CoordinateDegree (1.6s)
+✔ [3201/3206] Built OAI.Combinatorics.GotsmanLinial.SignParity (1.0s)
+✔ [3202/3206] Built OAI.Combinatorics.GotsmanLinial.WeightedGrading (2.6s)
+✔ [3203/3206] Built OAI.Combinatorics.GotsmanLinial.EdgeRecovery (1.9s)
+✔ [3204/3206] Built OAI.Combinatorics.GotsmanLinial.GradingShift (2.2s)
+✔ [3205/3206] Built OAI.Combinatorics.GotsmanLinial.BlockVanishing (2.2s)
+✔ [3206/3206] Built OAI.Combinatorics.GotsmanLinial.Main (1.8s)
+Build completed successfully (3206 jobs).

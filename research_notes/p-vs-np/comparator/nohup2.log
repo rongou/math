@@ -1,0 +1,31 @@
+[20:28:07] build BinPackingGap (OAI.Computability.BinPacking.Main)
+[20:32:08]   built in 241s; running comparator
+[20:33:24]   comparator PASS (76s)
+[20:33:24] build KMedianThreshold (OAI.Combinatorics.KMedian.Threshold)
+[20:37:50]   built in 266s; running comparator
+[20:40:03]   comparator PASS (133s)
+[20:40:03] build DirectedFeedback (OAI.Computability.DirectedFeedback.Main)
+[20:55:07]   built in 904s; running comparator
+[20:58:08]   comparator PASS (181s)
+[20:58:08] build ParityLifts (OAI.Combinatorics.ParityLifts.Main)
+[20:59:26]   built in 78s; running comparator
+[20:59:52]   comparator PASS (26s)
+[20:59:52] build VariableWL (OAI.Combinatorics.VariableWL.Completeness)
+[21:03:53]   built in 241s; running comparator
+[21:04:27]   comparator PASS (34s)
+[21:04:27] build WLIdentification (OAI.Computability.WLIdentification.Main)
+[21:09:08]   built in 281s; running comparator
+[21:09:37]   comparator PASS (29s)
+[21:09:37] build TwoWayComplementation (OAI.Combinatorics.TwoWayAutomata.Main)
+[21:09:44]   built in 7s; running comparator
+[21:10:14]   comparator PASS (30s)
+[21:10:14] build SensitivitySeparation (OAI.Combinatorics.Sensitivity.Separation)
+[21:11:10]   built in 56s; running comparator
+[21:11:37]   comparator PASS (27s)
+[21:11:37] build GotsmanLinial (OAI.Combinatorics.GotsmanLinial.Main)
+[21:11:52]   built in 15s; running comparator
+[21:12:28]   comparator PASS (36s)
+[21:12:28] build MatrixMultiplication (OAI.LinearAlgebra.MatrixMultiplication.Main)
+[21:14:20]   built in 112s; running comparator
+[21:15:57]   comparator PASS (97s)
+[21:15:57] done

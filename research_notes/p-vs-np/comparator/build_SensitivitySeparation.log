@@ -1,0 +1,68 @@
+warning: PrimeNumberTheoremAnd: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: belyi: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/iut' has local changes
+warning: gromov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/gromov' has local changes
+warning: SphereEversion: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/SphereEversion' has local changes
+warning: schoenflies-lean: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/schoenflies-lean' has local changes
+warning: ClassFieldTheory: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/ClassFieldTheory' has local changes
+warning: AINTLIB: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AINTLIB' has local changes
+warning: AbsorptionCutoff: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AbsorptionCutoff' has local changes
+warning: StrongPNT: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/StrongPNT' has local changes
+warning: carleson: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/carleson' has local changes
+warning: rellich-kondrachov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/rellich-kondrachov' has local changes
+warning: Zeta3Irrational: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/Zeta3Irrational' has local changes
+warning: fixed-point-theorems: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/fixed-point-theorems' has local changes
+✔ [8924/8966] Built OAI.Combinatorics.Sensitivity.Tournament (1.1s)
+✔ [8925/8966] Built OAI.Combinatorics.Sensitivity.FixedCoordinates (1.1s)
+✔ [8926/8966] Built OAI.Combinatorics.Sensitivity.LabelingBounds (1.4s)
+✔ [8927/8966] Built OAI.Combinatorics.Sensitivity.TournamentCyclic (1.2s)
+✔ [8928/8966] Built OAI.Combinatorics.Sensitivity.TournamentCounts (1.3s)
+✔ [8929/8966] Built OAI.Combinatorics.Sensitivity.LabelingEstimate (1.5s)
+✔ [8930/8966] Built OAI.Combinatorics.Sensitivity.Model (3.3s)
+✔ [8931/8966] Built OAI.Combinatorics.Sensitivity.LabelingConstraints (1.2s)
+⚠ [8932/8966] Built ComparatorChallenges.SensitivitySeparation (3.5s)
+warning: ComparatorChallenges/SensitivitySeparation.lean:30:8: declaration uses `sorry`
+✔ [8933/8966] Built OAI.Combinatorics.Sensitivity.ParameterBounds (3.8s)
+✔ [8934/8966] Built OAI.Combinatorics.Sensitivity.ScalarBounds (4.2s)
+✔ [8935/8966] Built OAI.Combinatorics.Sensitivity.LabelingEvents (1.2s)
+✔ [8936/8966] Built OAI.Combinatorics.Sensitivity.ProfileArithmetic (5.6s)
+✔ [8937/8966] Built OAI.Combinatorics.Sensitivity.Labeling (1.4s)
+✔ [8938/8966] Built OAI.Combinatorics.Sensitivity.RecursiveProfiles (3.4s)
+✔ [8939/8966] Built OAI.Combinatorics.Sensitivity.Basic (3.5s)
+✔ [8940/8966] Built OAI.Combinatorics.Sensitivity.HammingBase (3.6s)
+✔ [8941/8966] Built OAI.Combinatorics.Sensitivity.QuantitativeProfiles (3.6s)
+✔ [8942/8966] Built OAI.Combinatorics.Sensitivity.Reindex (3.4s)
+✔ [8943/8966] Built OAI.Combinatorics.Sensitivity.Composition (3.5s)
+✔ [8944/8966] Built OAI.Combinatorics.Sensitivity.RecursiveDefinitions (3.7s)
+✔ [8945/8966] Built OAI.Combinatorics.Sensitivity.SeparationArithmetic (3.7s)
+✔ [8946/8966] Built OAI.Combinatorics.Sensitivity.InitialPredicates (4.1s)
+✔ [8947/8966] Built OAI.Combinatorics.Sensitivity.RecursiveFlips (3.4s)
+✔ [8948/8966] Built OAI.Combinatorics.Sensitivity.Or (3.5s)
+✔ [8949/8966] Built OAI.Combinatorics.Sensitivity.Iterates (3.5s)
+✔ [8950/8966] Built OAI.Combinatorics.Sensitivity.RecursiveBlocks (3.4s)
+✔ [8951/8966] Built OAI.Combinatorics.Sensitivity.RecursiveChildren (3.5s)
+✔ [8952/8966] Built OAI.Combinatorics.Sensitivity.RecursiveSets (3.1s)
+✔ [8953/8966] Built OAI.Combinatorics.Sensitivity.PowerAmplification (3.6s)
+✔ [8954/8966] Built OAI.Combinatorics.Sensitivity.RecursiveFailures (3.2s)
+✔ [8955/8966] Built OAI.Combinatorics.Sensitivity.RecursiveOne (3.4s)
+✔ [8956/8966] Built OAI.Combinatorics.Sensitivity.RecursiveRepair (3.1s)
+✔ [8957/8966] Built OAI.Combinatorics.Sensitivity.RecursiveCandidates (3.0s)
+✔ [8958/8966] Built OAI.Combinatorics.Sensitivity.RecursiveJointZero (3.4s)
+✔ [8959/8966] Built OAI.Combinatorics.Sensitivity.RecursiveZero (3.5s)
+✔ [8960/8966] Built OAI.Combinatorics.Sensitivity.Recursive (3.0s)
+✔ [8961/8966] Built OAI.Combinatorics.Sensitivity.Tower (3.2s)
+✔ [8962/8966] Built OAI.Combinatorics.Sensitivity.TowerProfiles (3.1s)
+✔ [8963/8966] Built OAI.Combinatorics.Sensitivity.Construction (3.2s)
+✔ [8964/8966] Built OAI.Combinatorics.Sensitivity.ConstructedSeed (3.0s)
+✔ [8965/8966] Built OAI.Combinatorics.Sensitivity.SeedAmplification (3.0s)
+✔ [8966/8966] Built OAI.Combinatorics.Sensitivity.Separation (3.0s)
+Build completed successfully (8966 jobs).

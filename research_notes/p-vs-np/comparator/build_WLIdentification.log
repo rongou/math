@@ -1,0 +1,93 @@
+warning: PrimeNumberTheoremAnd: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: belyi: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/iut' has local changes
+warning: gromov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/gromov' has local changes
+warning: SphereEversion: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/SphereEversion' has local changes
+warning: schoenflies-lean: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/schoenflies-lean' has local changes
+warning: ClassFieldTheory: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/ClassFieldTheory' has local changes
+warning: AINTLIB: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AINTLIB' has local changes
+warning: AbsorptionCutoff: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AbsorptionCutoff' has local changes
+warning: StrongPNT: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/StrongPNT' has local changes
+warning: carleson: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/carleson' has local changes
+warning: rellich-kondrachov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/rellich-kondrachov' has local changes
+warning: Zeta3Irrational: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/Zeta3Irrational' has local changes
+warning: fixed-point-theorems: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/fixed-point-theorems' has local changes
+✔ [8924/8991] Built OAI.Computability.WLIdentification.Model (3.2s)
+⚠ [8925/8991] Built ComparatorChallenges.WLIdentification (3.2s)
+warning: ComparatorChallenges/WLIdentification.lean:140:8: declaration uses `sorry`
+✔ [8926/8991] Built OAI.Computability.WLIdentification.Refinement (3.1s)
+✔ [8927/8991] Built OAI.Computability.WLIdentification.PrivateLeaves (3.2s)
+✔ [8928/8991] Built OAI.Computability.WLIdentification.AffineIncidence (3.9s)
+✔ [8929/8991] Built OAI.Computability.WLIdentification.MateReconstruction (3.3s)
+✔ [8930/8991] Built OAI.Computability.WLIdentification.CycleSums (3.2s)
+✔ [8931/8991] Built OAI.Computability.WLIdentification.BijectionGames (3.1s)
+✔ [8932/8991] Built OAI.Computability.WLIdentification.AffineTranslations (3.5s)
+✔ [8933/8991] Built OAI.Computability.WLIdentification.RowOffsets (3.7s)
+✔ [8934/8991] Built OAI.Computability.WLIdentification.ConstraintSchemas (3.5s)
+✔ [8935/8991] Built OAI.Computability.WLIdentification.StableColors (3.1s)
+✔ [8936/8991] Built OAI.Computability.WLIdentification.LinearExtensions (3.4s)
+✔ [8937/8991] Built OAI.Computability.WLIdentification.LocalImages (3.4s)
+✔ [8938/8991] Built OAI.Computability.WLIdentification.ScalarExtension (3.3s)
+✔ [8939/8991] Built OAI.Computability.WLIdentification.GlobalSolvability (3.9s)
+✔ [8940/8991] Built OAI.Computability.WLIdentification.AcceptingMates (3.2s)
+✔ [8941/8991] Built OAI.Computability.WLIdentification.RejectingMates (3.4s)
+✔ [8942/8991] Built OAI.Computability.WLIdentification.BufferedCircuits (3.9s)
+✔ [8943/8991] Built OAI.Computability.WLIdentification.AcceptingBroadcast (3.5s)
+✔ [8944/8991] Built OAI.Computability.WLIdentification.CircuitReduction (3.6s)
+✔ [8945/8991] Built OAI.Computability.WLIdentification.BinaryAddresses (3.4s)
+✔ [8946/8991] Built OAI.Computability.WLIdentification.AddressArithmetic (3.6s)
+✔ [8947/8991] Built OAI.Computability.WLIdentification.CellularCircuits (3.6s)
+✔ [8948/8991] Built OAI.Computability.WLIdentification.MachineCells (3.3s)
+✔ [8949/8991] Built OAI.Computability.WLIdentification.MachineReduction (3.4s)
+✔ [8950/8991] Built OAI.Computability.WLIdentification.StackMachines (3.6s)
+✔ [8951/8991] Built OAI.Computability.WLIdentification.TapeCompiler (3.4s)
+✔ [8952/8991] Built OAI.Computability.WLIdentification.StackCommands (3.5s)
+✔ [8953/8991] Built OAI.Computability.WLIdentification.FiniteRefinement (3.6s)
+✔ [8954/8991] Built OAI.Computability.WLIdentification.WordCommands (3.3s)
+✔ [8955/8991] Built OAI.Computability.WLIdentification.BoundedWords (4.7s)
+✔ [8956/8991] Built OAI.Computability.WLIdentification.WordExpressions (3.6s)
+✔ [8957/8991] Built OAI.Computability.WLIdentification.ExpressionCompiler (4.1s)
+✔ [8958/8991] Built OAI.Computability.WLIdentification.ExpressionBounds (3.3s)
+✔ [8959/8991] Built OAI.Computability.WLIdentification.PolynomialWords (3.2s)
+✔ [8960/8991] Built OAI.Computability.WLIdentification.WordArithmetic (3.3s)
+✔ [8961/8991] Built OAI.Computability.WLIdentification.PolynomialArithmetic (3.4s)
+✔ [8962/8991] Built OAI.Computability.WLIdentification.FiniteEncoding (3.2s)
+✔ [8963/8991] Built OAI.Computability.WLIdentification.ExponentialComputation (3.2s)
+✔ [8964/8991] Built OAI.Computability.WLIdentification.NumericKernel (4.5s)
+✔ [8965/8991] Built OAI.Computability.WLIdentification.GraphEnumeration (3.3s)
+✔ [8966/8991] Built OAI.Computability.WLIdentification.NumericRefinement (5.4s)
+✔ [8967/8991] Built OAI.Computability.WLIdentification.RefinementCorrectness (3.5s)
+✔ [8968/8991] Built OAI.Computability.WLIdentification.DimensionDecider (4.2s)
+✔ [8969/8991] Built OAI.Computability.WLIdentification.FinitePresentation (4.1s)
+✔ [8970/8991] Built OAI.Computability.WLIdentification.PresentationArithmetic (3.9s)
+✔ [8971/8991] Built OAI.Computability.WLIdentification.LocalPresentation (3.1s)
+✔ [8972/8991] Built OAI.Computability.WLIdentification.LeafPresentation (3.8s)
+✔ [8973/8991] Built OAI.Computability.WLIdentification.AffinePresentation (4.9s)
+✔ [8974/8991] Built OAI.Computability.WLIdentification.TypedArithmetic (2.0s)
+✔ [8975/8991] Built OAI.Computability.WLIdentification.RingPresentation (5.1s)
+✔ [8976/8991] Built OAI.Computability.WLIdentification.RingCodes (4.7s)
+✔ [8977/8991] Built OAI.Computability.WLIdentification.RingMembership (3.2s)
+✔ [8978/8991] Built OAI.Computability.WLIdentification.RingLegality (5.2s)
+✔ [8979/8991] Built OAI.Computability.WLIdentification.TypedCases (8.0s)
+✔ [8980/8991] Built OAI.Computability.WLIdentification.SchemaPresentation (20s)
+✔ [8981/8991] Built OAI.Computability.WLIdentification.CircuitPresentation (3.4s)
+✔ [8982/8991] Built OAI.Computability.WLIdentification.CircuitCodes (3.1s)
+✔ [8983/8991] Built OAI.Computability.WLIdentification.CircuitForms (17s)
+✔ [8984/8991] Built OAI.Computability.WLIdentification.ProductPresentation (3.3s)
+✔ [8985/8991] Built OAI.Computability.WLIdentification.CarryPresentation (4.0s)
+✔ [8986/8991] Built OAI.Computability.WLIdentification.CellularPresentation (4.2s)
+✔ [8987/8991] Built OAI.Computability.WLIdentification.SeedBits (3.2s)
+✔ [8988/8991] Built OAI.Computability.WLIdentification.SeedLetter (2.0s)
+✔ [8989/8991] Built OAI.Computability.WLIdentification.MachinePresentation (2.9s)
+✔ [8990/8991] Built OAI.Computability.WLIdentification.Hardness (4.1s)
+✔ [8991/8991] Built OAI.Computability.WLIdentification.Main (2.9s)
+Build completed successfully (8991 jobs).

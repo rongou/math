@@ -1,0 +1,65 @@
+warning: PrimeNumberTheoremAnd: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: belyi: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/iut' has local changes
+warning: gromov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/gromov' has local changes
+warning: SphereEversion: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/SphereEversion' has local changes
+warning: schoenflies-lean: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/schoenflies-lean' has local changes
+warning: ClassFieldTheory: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/ClassFieldTheory' has local changes
+warning: AINTLIB: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AINTLIB' has local changes
+warning: AbsorptionCutoff: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/AbsorptionCutoff' has local changes
+warning: StrongPNT: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/StrongPNT' has local changes
+warning: carleson: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/carleson' has local changes
+warning: rellich-kondrachov: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/rellich-kondrachov' has local changes
+warning: Zeta3Irrational: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/Zeta3Irrational' has local changes
+warning: fixed-point-theorems: repository '/tmp/pvsnp-comparator.qfJEA8/lean/.lake/packages/fixed-point-theorems' has local changes
+⚠ [8924/8963] Built ComparatorChallenges.LogspaceEquality (3.4s)
+warning: ComparatorChallenges/LogspaceEquality.lean:136:8: declaration uses `sorry`
+✔ [8925/8963] Built OAI.Computability.Logspace.Deterministic (3.9s)
+✔ [8926/8963] Built OAI.Computability.Logspace.TransitionTables (3.3s)
+✔ [8927/8963] Built OAI.Computability.Logspace.AffineSampling (8.4s)
+✔ [8928/8963] Built OAI.Computability.Logspace.Amplification (3.6s)
+✔ [8929/8963] Built OAI.Computability.Logspace.CounterPrograms (5.9s)
+✔ [8930/8963] Built OAI.Computability.Logspace.ProbabilityHierarchy (8.2s)
+✔ [8931/8963] Built OAI.Computability.Logspace.ConfigurationGraph (4.7s)
+✔ [8932/8963] Built OAI.Computability.Logspace.RecursivePrograms (7.6s)
+✔ [8933/8963] Built OAI.Computability.Logspace.ProbabilityAtoms (7.3s)
+✔ [8934/8963] Built OAI.Computability.Logspace.ContourTraversal (5.6s)
+✔ [8935/8963] Built OAI.Computability.Logspace.CatalyticComparison (5.9s)
+✔ [8936/8963] Built OAI.Computability.Logspace.CompressionBounds (6.6s)
+✔ [8937/8963] Built OAI.Computability.Logspace.AllocationPrograms (6.0s)
+✔ [8938/8963] Built OAI.Computability.Logspace.DyadicArithmetic (14s)
+✔ [8939/8963] Built OAI.Computability.Logspace.EstimatorBounds (8.8s)
+✔ [8940/8963] Built OAI.Computability.Logspace.ContourPrograms (7.9s)
+✔ [8941/8963] Built OAI.Computability.Logspace.EstimatorOperations (6.0s)
+✔ [8942/8963] Built OAI.Computability.Logspace.BoundedTours (5.3s)
+✔ [8943/8963] Built OAI.Computability.Logspace.QueryPrograms (13s)
+✔ [8944/8963] Built OAI.Computability.Logspace.CompressionPrograms (6.5s)
+✔ [8945/8963] Built OAI.Computability.Logspace.SparseRows (4.7s)
+✔ [8946/8963] Built OAI.Computability.Logspace.HierarchicalEstimator (16s)
+✔ [8947/8963] Built OAI.Computability.Logspace.EstimatorInterfaces (7.9s)
+✔ [8948/8963] Built OAI.Computability.Logspace.ProbabilityDecision (4.2s)
+✔ [8949/8963] Built OAI.Computability.Logspace.QueryCombinators (4.0s)
+✔ [8950/8963] Built OAI.Computability.Logspace.FiniteFieldPrograms (6.1s)
+✔ [8951/8963] Built OAI.Computability.Logspace.EstimatorInstructions (7.1s)
+✔ [8952/8963] Built OAI.Computability.Logspace.EstimatorMachine (10s)
+✔ [8953/8963] Built OAI.Computability.Logspace.IterationSchedule (6.9s)
+✔ [8954/8963] Built OAI.Computability.Logspace.EstimatorParameters (4.5s)
+✔ [8955/8963] Built OAI.Computability.Logspace.RowEvaluation (8.0s)
+✔ [8956/8963] Built OAI.Computability.Logspace.ConfigurationEvaluation (5.8s)
+✔ [8957/8963] Built OAI.Computability.Logspace.CompressionEvaluation (7.1s)
+✔ [8958/8963] Built OAI.Computability.Logspace.TransitionEvaluation (17s)
+✔ [8959/8963] Built OAI.Computability.Logspace.HierarchyEvaluation (19s)
+✔ [8960/8963] Built OAI.Computability.Logspace.TerminalEvaluation (14s)
+✔ [8961/8963] Built OAI.Computability.Logspace.DiagonalEvaluation (36s)
+✔ [8962/8963] Built OAI.Computability.Logspace.UniformEstimator (5.8s)
+✔ [8963/8963] Built OAI.Computability.Logspace.Equality (3.3s)
+Build completed successfully (8963 jobs).
