@@ -1,0 +1,191 @@
+{
+  "date": "2026-10-09",
+  "source_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "scope": "Bounded phase2 investigation of promise-specific certificates and circuit sharing.",
+  "outcome": "No general promise-sensitive DAG shrinkage lemma or P-vs-NP separation obtained. Counting bridge formalized; elementary narrow-sharing transfer and counterexamples recorded.",
+  "formal_results": {
+    "PromiseCounting": "finite Boolean subcube and certificate theorem; not circuit-size minimization",
+    "ZeroGateControl": "actual 47-gate finite classifier and no proper YES certificate at m=3",
+    "AtlasWitness": "explicit finite two-slot grammar and witness checks, not an arbitrary-DAG encoding theorem"
+  },
+  "manual_results": [
+    "Sharing upper bound L<=1+S*2^R; transfer only in explicit small-R resource regime.",
+    "Generic optimal-gate quadratic shrinkage, even with p*sqrt(S) term, refuted by parity.",
+    "Correct near-linear zero-threshold and sqrt(logN)-threshold exact MCSP classifiers can require full YES certificates.",
+    "Constructive truth-table patching bound s0+m+t*m+3 for t>=1.",
+    "Tiny fixed-basis GapMCSP[1,2] outer binary-gate lower bound>=7 from eight essential-input witnesses."
+  ],
+  "manual_scope": "Elementary deductions/negative controls, not claimed novel. Fixed-beta OPS hypothesis remains unproved. The varying-beta example is not a counterexample to it.",
+  "checks": {
+    "final_exit_code": 0,
+    "python_tests": 48,
+    "DAG_descriptions": 12354,
+    "explicit_tree_semantic_comparisons": 20738,
+    "atlas_exact_replay": true,
+    "phase1_files_unchanged": 42,
+    "original_tracked_files_unchanged": true,
+    "formal_axiom_queries": 47
+  },
+  "resource_history": {
+    "initial_limit": "Lean -M4096",
+    "initial_result": "kernel excessive memory consumption on ZeroGateControl.classifier_semantics; rejected run retained",
+    "successful_limit": "Lean -M16384 for ZeroGateControl; -M4096 for AtlasWitness",
+    "elapsed_wall": "2:13.87",
+    "max_rss_kib": 15272276,
+    "final_errors": []
+  },
+  "final_axiom_dependencies": {
+    "ZeroGateControl.network_well_formed": [],
+    "ZeroGateControl.gate_count_47": [],
+    "ZeroGateControl.gate_breakdown": [
+      "propext"
+    ],
+    "ZeroGateControl.zero_gate_tables_exact": [
+      "propext"
+    ],
+    "ZeroGateControl.classifier_semantics": [
+      "propext"
+    ],
+    "ZeroGateControl.classifier_mcsp_zero": [
+      "propext"
+    ],
+    "ZeroGateControl.flip_no_wrap": [
+      "propext"
+    ],
+    "ZeroGateControl.flip_bit_rule": [
+      "propext"
+    ],
+    "ZeroGateControl.accepted_set_isolated": [
+      "propext"
+    ],
+    "ZeroGateControl.one_bit_neighbors_rejected": [
+      "propext"
+    ],
+    "ZeroGateControl.proper_mask_has_unfixed": [
+      "propext"
+    ],
+    "ZeroGateControl.flip_preserves_fixed": [
+      "propext"
+    ],
+    "ZeroGateControl.no_proper_yes_certificate": [
+      "propext"
+    ],
+    "AtlasWitness.first_gate_choice_count": [],
+    "AtlasWitness.second_gate_choice_count": [],
+    "AtlasWitness.padded_output_count": [],
+    "AtlasWitness.paddedValues_length": [],
+    "AtlasWitness.low_length": [],
+    "AtlasWitness.low_distinct": [],
+    "AtlasWitness.low_bitmap_exact": [],
+    "AtlasWitness.every_padded_output_in_low": [],
+    "AtlasWitness.low_witness_codes_valid": [],
+    "AtlasWitness.low_witnesses_exact": [],
+    "AtlasWitness.zero_no_witness_count": [],
+    "AtlasWitness.all_small_zero_masks_have_recorded_NO_completion": [],
+    "AtlasWitness.mask127_fixed_count": [],
+    "AtlasWitness.mask127_completions": [],
+    "AtlasWitness.mask127_is_low_compatible": [],
+    "AtlasWitness.all_eight_coordinates": [],
+    "AtlasWitness.all_eight_promise_edges_valid": [],
+    "AtlasWitness.atlas_finite_certificate": [],
+    "PromiseCounting.mem_subcube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.subcubeEquiv": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.card_subcube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.compatible_of_common_point": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.subcube_inter_eq": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.free_after_union": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.card_subcube_inter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.card_subcube_inter_lower": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.accepted_subcube_card_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.accepted_inter_card_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.outside_low_completion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.rejected_completion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.certificate_count_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.no_certificate_of_card_lt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.flipAt_mem_subcube": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "PromiseCounting.isolated_yes_certificate_full": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "artifact_hashes": {
+    "README.md": "efef63e491d9593176e258bc92ea1a5dba7ce05dcc9efe4d0aacc4361a959add",
+    "experiments/certificate_controls.py": "47d1fdaeedd6c740c7fa3e1921429fe2e85336bf1cc97e6ac7f61fb14a369eb5",
+    "experiments/promise_atlas.py": "3ae9a251d094dff21d05d00286dfc6ada7adc395d86b7762990138bada9a16da",
+    "experiments/sharing_probe.py": "b687aae102fabf535284d94bc9cbbd356dce7661d800d6f5c6718c55a9d4d6ef",
+    "experiments/test_certificate_controls.py": "a07142cd7a3b14bc5efa2726e5f775cf09c079e90a604568cfbbb15ff7d089c6",
+    "experiments/test_promise_atlas.py": "f914d62c05e43d1ccf68e4a361c8c742ddc57c24e63c1362c4535fb178a9fa3e",
+    "experiments/test_sharing_probe.py": "97f80a8567c57d6420a65d8dfb07e1bf9fa4bdc67840540af513c7c4f201d71b",
+    "validation/AtlasWitness.lean": "21a65a012caa9d5df9ab66ec14a1a189dcc9a4111ac009ac2cb8fa69daf35c2f",
+    "validation/PromiseCounting.lean": "56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4",
+    "validation/ZeroGateControl.lean": "6fe78ca382c947678f7a50c38f00923aed394b19ac709d0729a71b5d96baa9f5",
+    "validation/check.sh": "074980dbd63f7eb3f5ba01d34b0a7101f88e5ffd187a54b2f659493ffab464e3"
+  },
+  "not_established": [
+    "General fixed-beta GapMCSP circuit lower bound",
+    "A new sharing-sensitive shrinkage theorem",
+    "P=NP or P!=NP",
+    "Novelty or optimality of the elementary derived bounds"
+  ]
+}

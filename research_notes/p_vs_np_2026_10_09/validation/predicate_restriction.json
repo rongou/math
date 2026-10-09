@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "check_kind": "repository restriction-lemma corollary, Lean kernel check at trust level zero",
+  "checked_at_utc": "2026-10-09T19:10:46.038065+00:00",
+  "bounded_follow_on": {
+    "approximate_start_utc": "2026-10-09T19:05:20+00:00",
+    "elapsed_seconds_to_final_check": 326.038065,
+    "partial": false
+  },
+  "paths": {
+    "source": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean",
+    "report": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/predicate_restriction.json",
+    "log": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/predicate_restriction.log",
+    "helper_source": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean",
+    "helper_olean": "/tmp/predicate-restriction-helper.i_riufpp/LocalPredicateCNF.olean",
+    "snapshot": "/tmp/family112-build-validation.xWSfhA/project/lean",
+    "restriction_olean": "/tmp/family112-build-validation.xWSfhA/project/lean/.lake/build/lib/lean/OAI/Computability/DepthThree/Restriction.olean"
+  },
+  "source_sha256": "0fbc535e72c301b5ab80ce86d2d093c43f631c38094146420b7d09faea87c341",
+  "source_lines": 119,
+  "helper_source_sha256": "f613ee0a2d86530d95e1332c5d93fdf5d2be8d6f20ff7f98053606d6f965d517",
+  "helper_source_unchanged": true,
+  "helper_olean_sha256": "be9c0e2b34f2262567ff3e075a3cfb3e99b662ed7b8aedc9f494e31cccdfcf84",
+  "toolchain": {
+    "repository_pin": "leanprover/lean4:v4.34.1",
+    "version_output": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "git_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "fallback_used": false
+  },
+  "check": {
+    "command": [
+      "env",
+      "LEAN_PATH=/tmp/predicate-restriction-helper.i_riufpp",
+      "lake",
+      "env",
+      "lean",
+      "--root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation",
+      "--trust=0",
+      "--error=warning",
+      "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean"
+    ],
+    "cwd": "/tmp/family112-build-validation.xWSfhA/project/lean",
+    "reproduce": "cd /tmp/family112-build-validation.xWSfhA/project/lean && env LEAN_PATH=/tmp/predicate-restriction-helper.i_riufpp lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean",
+    "helper_compile_command": [
+      "lake",
+      "env",
+      "lean",
+      "--root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation",
+      "-o",
+      "/tmp/predicate-restriction-helper.i_riufpp/LocalPredicateCNF.olean",
+      "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean"
+    ],
+    "trust_level": 0,
+    "lean_warnings_as_errors": true,
+    "exit_code": 0,
+    "elapsed_seconds": 6.028283,
+    "stdout": "'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_eval' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_width_le' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_eval' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_width' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_length_le' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.conjunction_eq_true' depends on axioms: [propext, Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_eval' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_width' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'OAI.DepthThreeLowerBound.PredicateRestriction.predicate_restriction_bound' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+    "stderr": "warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes\nwarning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes\nwarning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes\nwarning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes\nwarning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes\nwarning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes\nwarning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes\nwarning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes\nwarning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes\nwarning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes\nwarning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes\n",
+    "lake_warnings": "Existing dirty-package warnings from lake env are preserved; no Lean declaration warnings/errors in final output.",
+    "theorem_count": 9,
+    "all_theorems_axiom_audited": true,
+    "new_theorem_olean_emitted": false
+  },
+  "imports": [
+    "LocalPredicateCNF",
+    "OAI.Computability.DepthThree.Restriction"
+  ],
+  "repository_definition_identity_checks": {
+    "OAI/Computability/DepthThree/Model.lean": {
+      "snapshot_sha256": "fad164c05abdada63efb6b3c5b310a2b141568e0727dd9bcaf0df94ccaa4ce07",
+      "repository_sha256": "fad164c05abdada63efb6b3c5b310a2b141568e0727dd9bcaf0df94ccaa4ce07",
+      "identical": true
+    },
+    "OAI/Computability/DepthThree/Core.lean": {
+      "snapshot_sha256": "f890618a13d63eb3d877d3f1cb82dd9f95e9bcddaf7fcf6c694a309ed5c9c71c",
+      "repository_sha256": "f890618a13d63eb3d877d3f1cb82dd9f95e9bcddaf7fcf6c694a309ed5c9c71c",
+      "identical": true
+    },
+    "OAI/Computability/DepthThree/Restriction.lean": {
+      "snapshot_sha256": "d2325932dc29ba796f336b0d34d676ae352883da37572c3eafeac8a87e217bc8",
+      "repository_sha256": "d2325932dc29ba796f336b0d34d676ae352883da37572c3eafeac8a87e217bc8",
+      "identical": true
+    }
+  },
+  "applied_repository_theorem": {
+    "name": "OAI.DepthThreeLowerBound.cnf_restriction_bound",
+    "source": "/tmp/family112-build-validation.xWSfhA/project/lean/OAI/Computability/DepthThree/Restriction.lean",
+    "statement": "theorem cnf_restriction_bound (H : CNF V) (b k : ℕ) (hb : 1 ≤ b)\n    (hH : H.WidthAtMost k) (p : ℝ) (hp0 : 0 < p) (hp1 : p < 1)\n    (hθ : restrictionTheta k b p < 1) :\n    ∃ W : Restriction V → ℝ,\n      (∀ σ, 0 ≤ W σ) ∧\n      restrictionAvg p W ≤ 1 / (1 - restrictionTheta k b p) ∧\n      ∀ (σ : Restriction V) (G : Cube (Live σ) → ℝ),\n        |finiteAvg (fun x => G x * indicator (H.eval (fill σ x)))| ≤ W σ * corr b G",
+    "olean_sha256": "b05f01708346c21180a6892e7b6ef98c43b701de5b1fc9c2b005baf199c32ddc"
+  },
+  "definitions": {
+    "ScopedPredicate": {
+      "arity": "Nat",
+      "inputs": "Fin arity → V",
+      "Q": "(Fin arity → Bool) → Bool"
+    },
+    "ScopedPredicate.eval": "P.Q (x ∘ P.inputs)",
+    "ScopedPredicate.rejectedClause": "Finset.univ.image (fun i => (P.inputs i, !(a i))) : Clause V",
+    "ScopedPredicate.compile": "(LocalPredicateCNF.truthTableCNF P.arity P.Q).map P.rejectedClause : CNF V",
+    "conjunction": "Ps.all (fun P => P.eval x)",
+    "compileConjunction": "Ps.flatMap ScopedPredicate.compile"
+  },
+  "theorems": [
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_eval",
+      "statement": "theorem rejectedClause_eval (P : ScopedPredicate V) (a : Fin P.arity → Bool)\n    (x : Cube V) :\n    (P.rejectedClause a).eval x = true ↔\n      ∃ i : Fin P.arity, x (P.inputs i) ≠ a i",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_width_le",
+      "statement": "theorem rejectedClause_width_le (P : ScopedPredicate V) (a : Fin P.arity → Bool) :\n    (P.rejectedClause a).width ≤ P.arity",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_eval",
+      "statement": "theorem compile_eval (P : ScopedPredicate V) (x : Cube V) :\n    P.compile.eval x = P.eval x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_width",
+      "statement": "theorem compile_width (P : ScopedPredicate V) : P.compile.WidthAtMost P.arity",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_length_le",
+      "statement": "theorem compile_length_le (P : ScopedPredicate V) : P.compile.length ≤ 2 ^ P.arity",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.conjunction_eq_true",
+      "statement": "theorem conjunction_eq_true (Ps : List (ScopedPredicate V)) (x : Cube V) :\n    conjunction Ps x = true ↔ ∀ P ∈ Ps, P.Q (x ∘ P.inputs) = true",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_eval",
+      "statement": "theorem compileConjunction_eval (Ps : List (ScopedPredicate V)) (x : Cube V) :\n    (compileConjunction Ps).eval x = conjunction Ps x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_width",
+      "statement": "theorem compileConjunction_width (Ps : List (ScopedPredicate V)) (k : Nat)\n    (hPs : ∀ P ∈ Ps, P.arity ≤ k) : (compileConjunction Ps).WidthAtMost k",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "OAI.DepthThreeLowerBound.PredicateRestriction.predicate_restriction_bound",
+      "statement": "theorem predicate_restriction_bound [Fintype V]\n    (Ps : List (ScopedPredicate V)) (b k : Nat) (hb : 1 ≤ b)\n    (hPs : ∀ P ∈ Ps, P.arity ≤ k) (p : ℝ) (hp0 : 0 < p) (hp1 : p < 1)\n    (hθ : restrictionTheta k b p < 1) :\n    ∃ W : Restriction V → ℝ,\n      (∀ σ, 0 ≤ W σ) ∧\n      restrictionAvg p W ≤ 1 / (1 - restrictionTheta k b p) ∧\n      ∀ (σ : Restriction V) (G : Cube (Live σ) → ℝ),\n        |finiteAvg (fun x => G x * indicator (conjunction Ps (fill σ x)))| ≤\n          W σ * corr b G",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "main_theorem": "OAI.DepthThreeLowerBound.PredicateRestriction.predicate_restriction_bound",
+  "axiom_dependency_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "forbidden_source_constructs_found": [],
+  "custom_axioms_declared": false,
+  "scope": {
+    "proved": [
+      "actual repository Clause/CNF semantic translation",
+      "clause width at most predicate arity without input injectivity",
+      "at most 2^arity clauses per predicate",
+      "finite-list conjunction compilation correctness",
+      "compiled conjunction WidthAtMost k under per-predicate arity <= k",
+      "exact existing restrictionTheta/expectation/all-G corollary"
+    ],
+    "required_assumptions": [
+      "V : Type u with Fintype V (for the final restriction theorem only)",
+      "Ps : List (ScopedPredicate V)",
+      "b k : Nat",
+      "1 <= b",
+      "forall P in Ps, P.arity <= k",
+      "p : Real",
+      "0 < p",
+      "p < 1",
+      "restrictionTheta k b p < 1"
+    ],
+    "not_required": [
+      "injective input maps",
+      "positive local arity",
+      "nonconstant predicates",
+      "nonempty predicate list",
+      "normalized translated clauses",
+      "bounds on G beyond G : Cube (Live sigma) -> Real"
+    ],
+    "exact_weight_quantifier_order": "exists W, (forall sigma, W sigma >= 0) and expected bound and forall sigma G, correlation bound; one W works for every sigma and G.",
+    "limits": [
+      "The bound is inherited from the compiled repository theorem, not a new proof of its internal restriction argument.",
+      "Truth-table expansion can be exponential; no polynomial-size or running-time efficiency claim.",
+      "The conjunction may have repeated input variables and tautological clauses; no assertion that compiled clauses are normalized.",
+      "No parity certificate, circuit lower bound, or P versus NP result is proved here.",
+      "The full repository/comparator check was reported by the parent and was not rerun by this worker."
+    ],
+    "full_build_or_comparator_rerun": false,
+    "project_source_edits": false,
+    "completed_core_proof_edits": false
+  },
+  "owned_writes": [
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean",
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/predicate_restriction.json",
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/predicate_restriction.log",
+    "/tmp/predicate-restriction-helper.i_riufpp/LocalPredicateCNF.olean"
+  ],
+  "subagents_spawned": false
+}

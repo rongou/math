@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-09",
+  "source_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "outcome": "Completed bounded first investigation; no P versus NP resolution or new complexity-class separation.",
+  "new_mathematical_claims": "Elementary predicate-to-CNF transfer and corollary; elementary bottom-oracle simulation; exact counterexample to a specified naive composition extension; counting-based distribution mismatch. No novelty claim.",
+  "original_tracked_files_changed": false,
+  "artifact_directory": "research_notes/p_vs_np_2026_10_09",
+  "validation": {
+    "family112_configured_comparator": "pass; default Lean kernel, three permitted axioms; supplied nanoda setting disabled",
+    "local_predicate_construction": "pass; 11 standalone declarations",
+    "predicate_restriction_corollary": "pass; 9 declarations using actual OAI definitions and source lemma",
+    "parity_finite_certificate": "pass; 19 declarations, empty axiom dependencies; analytic real-valued interpretation given in README",
+    "coordinator_reproduction": "pass; integration_checks.log; proof source hashes agree with verification reports",
+    "final_python_regression_tests": 33,
+    "post_review_fix_check": "pass; post_review_checks.log"
+  },
+  "finite_experiments": {
+    "formula_instances": 3951,
+    "formula_cutoff_restriction_cases": 602754,
+    "pointwise_expansions": 1940682,
+    "expected_coefficient_comparisons": 38306,
+    "eligible_geometric_comparisons": 11535,
+    "original_lemma_failures": {},
+    "bounds": "exhaustive canonical clause multisets of size <=2 for dimensions <=4; chosen and seeded cases <=6; not all CNFs",
+    "predicate_compilation": {
+      "max_arity": 3,
+      "predicates_exhaustively_checked": 278,
+      "assignment_equivalences": 2122,
+      "empty_scope_true_cases": 1,
+      "empty_scope_false_cases": 1
+    },
+    "circuit_compilation": {
+      "seed": 112,
+      "circuits_checked": 306,
+      "variables": 4,
+      "assignment_equivalences": 4896,
+      "worst_compiled_size_over_bound": "1",
+      "bound": "compiled_gate_count <= original_gate_count * 2**max_distinct_raw_arity",
+      "arity_convention": "distinct raw variables; repeated input wires normalized first",
+      "model": "OR-AND-shared-bottom-predicates; bottom predicates read raw inputs"
+    }
+  },
+  "counterexample": {
+    "status": "REFUTED: naive maximum-gate-fan-in generalization",
+    "not_refuted": "Original width-k CNF restriction lemma",
+    "function": "even parity of six raw input bits",
+    "variables": 6,
+    "gate_basis": [
+      "AND",
+      "OR",
+      "NOT"
+    ],
+    "gate_count": 21,
+    "maximum_gate_fanin": 2,
+    "circuit_depth": 10,
+    "circuit_assignments_checked": 64,
+    "restrictions_checked": 729,
+    "b": 1,
+    "p": "1/4",
+    "incorrectly_substituted_k": 2,
+    "theta": "4/9",
+    "proposed_expected_mass_bound": "9/5",
+    "certified_expected_minimum_mass": "15625/8192",
+    "strict_violation": "4397/40960",
+    "reason": "Small gate fan-in does not bound a composed gate output raw-input scope."
+  },
+  "not_established": [
+    "P != NP or P = NP",
+    "Any unrestricted circuit lower bound for the required GapMCSP promise",
+    "Applicability of a full internal-oracle locality barrier to the entire family112 method",
+    "Formalization of the external magnification theorem or the full real-valued parity argument"
+  ],
+  "code_proof_and_report_sha256": {
+    "README.md": "427bbe34c6019caaa75d3c8b1433441511ffa01d55e6458a2fb72167cddb8974",
+    "experiments/locality_probe.py": "39f2ad48534447e92d878dbb9fbed0aae326d19dd71d7e27df18563bbc623d41",
+    "experiments/restriction_check.py": "2f7bd6dca5b13d77a61e218f7e1b8395871a3d4a4a491350189c0920af160ad4",
+    "experiments/test_locality_probe.py": "f7b9996191b2e1dc19c613ab69525dbcb48b9f5d8d5c883a0a3827076ca2aa57",
+    "experiments/test_restriction_check.py": "f412bfe939d3d64378b9c88ea99ebe576a397c8197e409888eca95e1bb9e08e2",
+    "validation/LocalPredicateCNF.lean": "f613ee0a2d86530d95e1332c5d93fdf5d2be8d6f20ff7f98053606d6f965d517",
+    "validation/ParityCertificate.lean": "d5ed0f1b677d323977c3506d525b4fa025e396b1366e39fbf65dd213901c4e9c",
+    "validation/PredicateRestriction.lean": "0fbc535e72c301b5ab80ce86d2d093c43f631c38094146420b7d09faea87c341",
+    "validation/check.sh": "ed552cee6406d38a0f4cd9795a4bf4fe2cbd2237bf3ac162717b05a10acb695a"
+  }
+}

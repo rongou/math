@@ -1,0 +1,57 @@
+START_UTC: 2026-10-09T19:02:40.355342+00:00
+CWD: /tmp/family112-build-validation.xWSfhA/project/lean
+TIMEOUT_SECONDS: 240
+SHELL: bash --noprofile --norc -c
+COMMAND:
+export GIT_TERMINAL_PROMPT=0; lake env comparator ComparatorChallenges/DepthThree.json
+
+OUTPUT (stdout and stderr merged):
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+Building ComparatorChallenges.DepthThree
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+⚠ [8924/8924] Replayed ComparatorChallenges.DepthThree
+warning: ComparatorChallenges/DepthThree.lean:133:8: declaration uses `sorry`
+Build completed successfully (8924 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, OAI.DepthThreeLowerBound.exists_polynomial_time_language_depth_three_lower_bound, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from ComparatorChallenges.DepthThree
+Building OAI.Computability.DepthThree.Main
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+Build completed successfully (9098 jobs).
+Exporting #[Quot, Quot.mk, Quot.lift, Quot.ind, OAI.DepthThreeLowerBound.exists_polynomial_time_language_depth_three_lower_bound, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, Nat, String, String.mk, Char, optParam, autoParam, semiOutParam, outParam] from OAI.Computability.DepthThree.Main
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+
+END_UTC: 2026-10-09T19:03:41.630601+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 61.275

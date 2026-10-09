@@ -1,0 +1,82 @@
+START_UTC: 2026-10-09T18:56:48.514497+00:00
+CWD: /tmp/family112-build-validation.xWSfhA
+TIMEOUT_SECONDS: 40
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -u
+run() { printf "\n$"; printf " %q" "$@"; printf "\n"; "$@"; status=$?; printf "SUBCOMMAND_EXIT_STATUS=%s\n" "$status"; }
+cat > /tmp/family112-build-validation.xWSfhA/StdSmoke.lean <<'LEAN'
+import Std
+example (n : Nat) : n + 0 = n := by simp
+#print axioms Nat.add_zero
+LEAN
+run pwd
+run elan toolchain list
+run elan show
+run lean --version
+run lake --version
+run lean StdSmoke.lean
+run lean +leanprover/lean4:v4.34.1 --version
+run lean +leanprover/lean4:v4.34.1 StdSmoke.lean
+run lean +leanprover/lean4:v4.35.0-rc4 --version
+run lean +leanprover/lean4:v4.35.0-rc4 StdSmoke.lean
+
+
+OUTPUT (stdout and stderr merged):
+
+$ pwd
+/tmp/family112-build-validation.xWSfhA
+SUBCOMMAND_EXIT_STATUS=0
+
+$ elan toolchain list
+leanprover/lean4:v4.34.1
+leanprover/lean4:v4.35.0-rc4
+SUBCOMMAND_EXIT_STATUS=0
+
+$ elan show
+installed toolchains
+--------------------
+
+leanprover/lean4:v4.34.1 (default)
+leanprover/lean4:v4.35.0-rc4
+
+active toolchain
+----------------
+
+leanprover/lean4:v4.34.1 (default)
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lean --version
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lake --version
+Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lean StdSmoke.lean
+'Nat.add_zero' does not depend on any axioms
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lean +leanprover/lean4:v4.34.1 --version
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lean +leanprover/lean4:v4.34.1 StdSmoke.lean
+'Nat.add_zero' does not depend on any axioms
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lean +leanprover/lean4:v4.35.0-rc4 --version
+Lean (version 4.35.0-rc4, x86_64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ lean +leanprover/lean4:v4.35.0-rc4 StdSmoke.lean
+'Nat.add_zero' does not depend on any axioms
+SUBCOMMAND_EXIT_STATUS=0
+
+END_UTC: 2026-10-09T18:56:49.380125+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 0.866

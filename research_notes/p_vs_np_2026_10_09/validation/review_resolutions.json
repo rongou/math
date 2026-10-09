@@ -1,0 +1,28 @@
+{
+  "scope": "Coordinator dispositions of the independent review; no claim of human refereeing.",
+  "I01": {
+    "status": "fixed_and_regression_tested",
+    "change": "normalize_scope() first expresses each LocalGate over distinct raw variables; max_arity counts that raw scope.",
+    "regression": "LocalGate((0,0,0),1<<7) now compiles to three total gates, q=1; additional exhaustive repeated-coordinate predicate tests pass.",
+    "evidence": "validation/post_review_checks.log"
+  },
+  "I02": {
+    "status": "wording_narrowed",
+    "change": "README now states that the language in P cannot itself have superpolynomial unrestricted-circuit complexity, without excluding auxiliary roles or weak lower bounds."
+  },
+  "source_endpoint": {
+    "status": "corrected_to_formal_definition",
+    "change": "GapMCSP NO means Size(T)>s2 per OPS Definition2.4; s1<Size(T)<=s2 is unpromised. The introduction uses informal >= wording. Counting bound uses <= upper threshold.",
+    "evidence": "sources/magnification_audit.json"
+  },
+  "output_scope_label": {
+    "status": "clarified",
+    "change": "locality_results parity output explicitly names the naive maximum-internal-gate-fan-in substitution."
+  },
+  "retest": {
+    "unit_tests": 33,
+    "all_passed": true,
+    "locality_experiment_regenerated": true,
+    "mathematical_counterexample_unchanged": "15625/8192 > 9/5"
+  }
+}

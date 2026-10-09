@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "check_kind": "standalone Lean kernel check at trust level zero",
+  "checked_at_utc": "2026-10-09T19:03:29.538056+00:00",
+  "paths": {
+    "source": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean",
+    "report": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/local_predicate_lean.json",
+    "log": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/local_predicate_lean.log"
+  },
+  "source_sha256": "f613ee0a2d86530d95e1332c5d93fdf5d2be8d6f20ff7f98053606d6f965d517",
+  "source_lines": 149,
+  "toolchain": {
+    "repository_pin": "leanprover/lean4:v4.34.1",
+    "used": "leanprover/lean4:v4.34.1",
+    "version_output": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "git_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "executable": "/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "matches_repository_pin": true,
+    "fallback_used": false,
+    "project_toolchain_files_modified": false
+  },
+  "check": {
+    "command": [
+      "/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "--root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation",
+      "--trust=0",
+      "--error=warning",
+      "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean"
+    ],
+    "reproduce_from_tmp": "cd /tmp && env -u LEAN_PATH -u LEAN_SRC_PATH /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean",
+    "cwd": "/tmp",
+    "unset_environment_variables": [
+      "LEAN_PATH",
+      "LEAN_SRC_PATH"
+    ],
+    "trust_level": 0,
+    "warnings_as_errors": true,
+    "exit_code": 0,
+    "elapsed_seconds": 0.293176,
+    "stdout": "'LocalPredicateCNF.predicate_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]\n'LocalPredicateCNF.conjunction_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]\n'LocalPredicateCNF.disjunction_of_conjunctions_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]\n'LocalPredicateCNF.assignments_complete' depends on axioms: [propext, Quot.sound]\n'LocalPredicateCNF.assignments_length' depends on axioms: [propext]\n'LocalPredicateCNF.mem_truthTableCNF' depends on axioms: [propext, Quot.sound]\n'LocalPredicateCNF.truthTableCNF_correct' depends on axioms: [propext, Quot.sound]\n'LocalPredicateCNF.truthTableCNF_length_le' depends on axioms: [propext]\n'LocalPredicateCNF.truthTableCNF_true' depends on axioms: [propext]\n'LocalPredicateCNF.truthTableCNF_false' depends on axioms: [propext]\n'LocalPredicateCNF.truthTableCNF_zero' depends on axioms: [propext]\n",
+    "stderr": "",
+    "source_emits_print_axioms_for_every_theorem": true,
+    "olean_emitted": false
+  },
+  "imports": [
+    "Std"
+  ],
+  "mathlib_used": false,
+  "forbidden_source_constructs_found": [],
+  "custom_axioms_declared": false,
+  "axiom_dependency_union": [
+    "Quot.sound",
+    "propext"
+  ],
+  "theorems": [
+    {
+      "name": "LocalPredicateCNF.predicate_iff_rejected_clauses",
+      "statement": "theorem predicate_iff_rejected_clauses (k : Nat)\n    (Q : (Fin k → Bool) → Bool) (x : Fin k → Bool) :\n    Q x = true ↔\n      ∀ a : Fin k → Bool, Q a = false → ∃ i : Fin k, x i ≠ a i",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.conjunction_iff_rejected_clauses",
+      "statement": "theorem conjunction_iff_rejected_clauses {J : Type u}\n    (k : J → Nat)\n    (Q : (j : J) → (Fin (k j) → Bool) → Bool)\n    (x : (j : J) → Fin (k j) → Bool) :\n    (∀ j : J, Q j (x j) = true) ↔\n      (∀ (j : J) (a : Fin (k j) → Bool),\n        Q j a = false → ∃ i : Fin (k j), x j i ≠ a i)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.disjunction_of_conjunctions_iff_rejected_clauses",
+      "statement": "theorem disjunction_of_conjunctions_iff_rejected_clauses\n    {T : Type u} {J : T → Type v}\n    (k : (t : T) → J t → Nat)\n    (Q : (t : T) → (j : J t) → (Fin (k t j) → Bool) → Bool)\n    (x : (t : T) → (j : J t) → Fin (k t j) → Bool) :\n    (∃ t : T, ∀ j : J t, Q t j (x t j) = true) ↔\n      (∃ t : T, ∀ (j : J t) (a : Fin (k t j) → Bool),\n        Q t j a = false → ∃ i : Fin (k t j), x t j i ≠ a i)",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.assignments_complete",
+      "statement": "theorem assignments_complete : ∀ (k : Nat) (a : Fin k → Bool),\n    a ∈ assignments k",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.assignments_length",
+      "statement": "theorem assignments_length (k : Nat) : (assignments k).length = 2 ^ k",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.mem_truthTableCNF",
+      "statement": "theorem mem_truthTableCNF (k : Nat) (Q : (Fin k → Bool) → Bool)\n    (a : Fin k → Bool) : a ∈ truthTableCNF k Q ↔ Q a = false",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.truthTableCNF_correct",
+      "statement": "theorem truthTableCNF_correct (k : Nat)\n    (Q : (Fin k → Bool) → Bool) (x : Fin k → Bool) :\n    Q x = true ↔\n      ∀ a : Fin k → Bool, a ∈ truthTableCNF k Q → ∃ i : Fin k, x i ≠ a i",
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.truthTableCNF_length_le",
+      "statement": "theorem truthTableCNF_length_le (k : Nat) (Q : (Fin k → Bool) → Bool) :\n    (truthTableCNF k Q).length ≤ 2 ^ k",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.truthTableCNF_true",
+      "statement": "theorem truthTableCNF_true (k : Nat) : truthTableCNF k (fun _ => true) = []",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.truthTableCNF_false",
+      "statement": "theorem truthTableCNF_false (k : Nat) :\n    truthTableCNF k (fun _ => false) = assignments k",
+      "axioms": [
+        "propext"
+      ]
+    },
+    {
+      "name": "LocalPredicateCNF.truthTableCNF_zero",
+      "statement": "theorem truthTableCNF_zero (Q : (Fin 0 → Bool) → Bool) :\n    truthTableCNF 0 Q =\n      if Q (fun i : Fin 0 => Fin.elim0 i) then [] else [fun i : Fin 0 => Fin.elim0 i]",
+      "axioms": [
+        "propext"
+      ]
+    }
+  ],
+  "construction": {
+    "assignments": "Recursively enumerate Fin k -> Bool with a false first coordinate, then true; the k=0 list has the unique empty assignment.",
+    "truthTableCNF": "Filter assignments k by fun a => !(Q a); each list element a encodes the clause exists i : Fin k, x i != a i, where != here means propositional inequality.",
+    "clause_representation": "A Fin k -> Bool rejected pattern, not a list of literal syntax; its k coordinates encode the k literals.",
+    "proved_enumeration_length": "(assignments k).length = 2 ^ k",
+    "proved_clause_count_bound": "(truthTableCNF k Q).length <= 2 ^ k",
+    "width": "Each clause is indexed by Fin k, with one mismatch literal per coordinate.",
+    "edge_cases": [
+      "k=0",
+      "constant true",
+      "constant false"
+    ],
+    "edge_case_theorems": [
+      "LocalPredicateCNF.truthTableCNF_zero",
+      "LocalPredicateCNF.truthTableCNF_true",
+      "LocalPredicateCNF.truthTableCNF_false"
+    ]
+  },
+  "scope": {
+    "checked": [
+      "generic local predicate/CNF equivalence",
+      "dependent-arity conjunction lifting",
+      "dependent-arity disjunction-of-conjunctions lifting",
+      "truth-table CNF list correctness",
+      "clause count at most 2^k",
+      "zero arity and constant-predicate constructions"
+    ],
+    "family112_checked": false,
+    "full_repository_build_run": false,
+    "project_files_modified": false,
+    "limitations": [
+      "The count 2^k is exponential in k; no polynomial-size or polynomial-time transfer is claimed.",
+      "Disjunction-of-conjunctions lifting preserves an outer existential; it does not flatten that expression into one CNF.",
+      "Clauses are encoded as rejected bit patterns with quantified semantics; there is no DIMACS serializer or separate Boolean evaluator.",
+      "No P versus NP, circuit lower bound, or family112 theorem is checked.",
+      "The reported standard Lean dependencies propext and Quot.sound are not new axioms declared by this file."
+    ]
+  },
+  "only_owned_files_written": [
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean",
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/local_predicate_lean.json",
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/local_predicate_lean.log"
+  ],
+  "subagents_spawned": false
+}

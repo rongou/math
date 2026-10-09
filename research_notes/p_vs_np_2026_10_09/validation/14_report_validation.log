@@ -1,0 +1,66 @@
+START_UTC: 2026-10-09T19:06:48.489025+00:00
+CWD: /home/rou/src/math
+TIMEOUT_SECONDS: 40
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -e
+printf "Validate the saved report, log hashes, outcomes, and tracked-file preservation\n"
+python3 - <<'PY'
+import hashlib,json,pathlib,subprocess
+root=pathlib.Path("/home/rou/src/math")
+p=root/"research_notes/p_vs_np_2026_10_09/validation/build_validation.json"
+r=json.loads(p.read_text())
+assert r["status"]=="PASS" and r["verification_occurred"]
+assert r["source_commit"]=="fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+assert r["checks"]["targeted_compilation"]["exit_status"]==0
+assert r["checks"]["configured_comparator"]["exit_status"]==0
+assert r["checks"]["configured_comparator"]["lean_default_kernel_accepts_solution"]
+assert not r["checks"]["configured_comparator"]["nanoda_run"]
+assert set(r["checks"]["elaborated_theorem_axioms"]["actual_axioms"])=={"propext","Classical.choice","Quot.sound"}
+assert all(v==0 for v in r["checks"]["static_source_scan"]["local_hit_counts"].values())
+assert r["integrity"]["local_olean_count"]==175
+assert r["dependencies"]["all_actual_revisions_match_lock"]
+for command in r["reproduction"]["executed_commands"]:
+    log=root/command["log"]
+    assert hashlib.sha256(log.read_bytes()).hexdigest()==command["log_sha256"],log
+for f in r["target"]["source_fingerprints"]:
+    assert hashlib.sha256((root/f["path"]).read_bytes()).hexdigest()==f["sha256"],f["path"]
+for f in r["files_written"]:
+    assert f.startswith("research_notes/p_vs_np_2026_10_09/validation/")
+    assert (root/f).is_file(),f
+assert subprocess.run(["git","diff","--quiet","HEAD","--"],cwd=root).returncode==0
+print("PASS: report parses; recorded checks pass; all recorded log hashes match; protected sources unchanged; git diff against HEAD is empty.")
+print("report_sha256",hashlib.sha256(p.read_bytes()).hexdigest())
+print("report_bytes",p.stat().st_size)
+print("artifacts:")
+for f in r["files_written"]: print(f)
+PY
+
+
+OUTPUT (stdout and stderr merged):
+Validate the saved report, log hashes, outcomes, and tracked-file preservation
+PASS: report parses; recorded checks pass; all recorded log hashes match; protected sources unchanged; git diff against HEAD is empty.
+report_sha256 8035f3bf5f4bee2dda369ec59a13b44c16bf634930d53655f643f9d8da2a406b
+report_bytes 319825
+artifacts:
+research_notes/p_vs_np_2026_10_09/validation/build_validation.json
+research_notes/p_vs_np_2026_10_09/validation/00_source_and_environment.log
+research_notes/p_vs_np_2026_10_09/validation/01_toolchain_and_comparator_versions.log
+research_notes/p_vs_np_2026_10_09/validation/02_pin_inventory_and_isolated_snapshot.log
+research_notes/p_vs_np_2026_10_09/validation/03_standalone_toolchain_smoke.log
+research_notes/p_vs_np_2026_10_09/validation/04_targeted_lake_build.log
+research_notes/p_vs_np_2026_10_09/validation/05_transitive_import_and_static_scan.log
+research_notes/p_vs_np_2026_10_09/validation/06_mathlib_pin_and_build_progress.log
+research_notes/p_vs_np_2026_10_09/validation/07_resolved_dependency_inventory.log
+research_notes/p_vs_np_2026_10_09/validation/08_exact_pin_mathlib_cache.log
+research_notes/p_vs_np_2026_10_09/validation/09_targeted_build_with_pinned_cache.log
+research_notes/p_vs_np_2026_10_09/validation/10_external_source_boundary.log
+research_notes/p_vs_np_2026_10_09/validation/11_configured_comparator.log
+research_notes/p_vs_np_2026_10_09/validation/12_theorem_axioms.log
+research_notes/p_vs_np_2026_10_09/validation/13_final_integrity_and_driver.log
+research_notes/p_vs_np_2026_10_09/validation/14_report_validation.log
+
+END_UTC: 2026-10-09T19:06:48.603360+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 0.114

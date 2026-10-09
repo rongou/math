@@ -1,0 +1,484 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "magnification_audit",
+  "as_of_date": "2026-10-09",
+  "repository": "/home/rou/src/math",
+  "scope": "Bounded audit of the exact OPS Theorem 1.4 target and relevant CHOPRS locality statements, plus elementary family112 scope derivations. Not a literature survey or full proof audit.",
+  "workflow": {
+    "subagents_spawned": false,
+    "only_durable_file_written": "research_notes/p_vs_np_2026_10_09/sources/magnification_audit.json",
+    "full_downloads_in_repo": false,
+    "full_extract_cache": "/tmp/p_vs_np_2026_10_09_magnification",
+    "cache_is_ephemeral": true
+  },
+  "sources": [
+    {
+      "id": "OPS2021",
+      "title": "Hardness Magnification Near State-of-the-Art Lower Bounds",
+      "authors": [
+        "Igor C. Oliveira",
+        "Ján Pich",
+        "Rahul Santhanam"
+      ],
+      "venue": "Theory of Computing 17(11), 1–38 (2021)",
+      "published_date": "2021-11-30",
+      "url": "https://theoryofcomputing.org/articles/v017a011/v017a011.pdf",
+      "record_url": "https://theoryofcomputing.org/articles/v017a011/",
+      "doi_url": "https://doi.org/10.4086/toc.2021.v017a011",
+      "version": "Final published article; revised 2021-02-27",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "extract": {
+        "cache_path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt",
+        "durable_repository_copy": false,
+        "pdf_sha256": "81b1ff4ede5180dc88f99c8a4856cfde623f6fefb5b99ef9f5526899bf43ab4a",
+        "text_sha256": "039418d33a236e1e58779dc8c4a358746c8b89a027a14079586f9843e10080e1",
+        "extraction": "pdftotext -layout; form-feed page breaks retained",
+        "pdf_pages": 38
+      }
+    },
+    {
+      "id": "CHOPRS2022",
+      "title": "Beyond Natural Proofs: Hardness Magnification and Locality",
+      "authors": [
+        "Lijie Chen",
+        "Shuichi Hirahara",
+        "Igor Carboni Oliveira",
+        "Ján Pich",
+        "Ninad Rajgopal",
+        "Rahul Santhanam"
+      ],
+      "venue": "Journal of the ACM 69(4), Article 25, 25:1–25:49 (2022)",
+      "published_date": "2022-08-23",
+      "url": "https://dl.acm.org/doi/10.1145/3538391",
+      "doi_url": "https://doi.org/10.1145/3538391",
+      "record_url": "https://dspace.mit.edu/entities/publication/d8c9477b-f810-42e8-adcf-ea59627dc3fc",
+      "retrieved_pdf_url": "https://dspace.mit.edu/server/api/core/bitstreams/0ce27b40-495a-498a-a950-8378ecf6e8bc/content",
+      "version": "Final published version deposited at MIT; one repository cover sheet precedes 49 journal pages",
+      "access_note": "ACM returned HTTP 403; MIT public content endpoint successfully supplied the final published PDF. Download/legacy routes returned HTTP 405.",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "extract": {
+        "cache_path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt",
+        "durable_repository_copy": false,
+        "pdf_sha256": "962b6bdb6f5515980a105c83c5ac4596353e2db8d1d294a20e0dd473de20c3d9",
+        "text_sha256": "d8f8ba19ef4c1e108e1dc7faa87afa88a6bbe1f5c623280c1f119c28ab748ade",
+        "extraction": "pdftotext -layout; form-feed page breaks retained",
+        "pdf_pages": 50
+      }
+    },
+    {
+      "id": "CHOPRS2019v1",
+      "title": "Beyond Natural Proofs: Hardness Magnification and Locality",
+      "authors": [
+        "Lijie Chen",
+        "Shuichi Hirahara",
+        "Igor C. Oliveira",
+        "Jan Pich",
+        "Ninad Rajgopal",
+        "Rahul Santhanam"
+      ],
+      "version": "arXiv:1911.08297v1",
+      "published_date": "2019-11-19",
+      "url": "https://arxiv.org/pdf/1911.08297v1",
+      "record_url": "https://arxiv.org/abs/1911.08297",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "extract": {
+        "cache_path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_arxiv_v1.txt",
+        "durable_repository_copy": false,
+        "pdf_sha256": "e3851494208edda63dee2fb09083ef14972f22ddb761881fe507d1eaae36aa8b",
+        "text_sha256": "4c39caab9efc678e61082656527f130e20bd40006a1ac9c50b8b6ccd0834f533",
+        "extraction": "pdftotext -layout; form-feed page breaks retained",
+        "pdf_pages": 52
+      }
+    },
+    {
+      "id": "OPS_ECCC_RECORD",
+      "title": "ECCC TR18-158: Hardness magnification near state-of-the-art lower bounds",
+      "url": "https://eccc.weizmann.ac.il/report/2018/158/",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "role": "Version-history check only; the 2021 journal article controls this audit."
+    },
+    {
+      "id": "CHOPRS_ECCC_RECORD",
+      "title": "ECCC TR19-168: Beyond Natural Proofs: Hardness Magnification and Locality",
+      "url": "https://eccc.weizmann.ac.il/report/2019/168/",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "role": "Version-history check only; the 2022 journal article controls locality numbering."
+    },
+    {
+      "id": "CHOPRS_WRAP_RECORD",
+      "title": "Beyond natural proofs: hardness magnification and locality — Warwick Research Archive Portal",
+      "url": "https://wrap.warwick.ac.uk/id/eprint/170343/",
+      "accepted_manuscript_url": "https://wrap.warwick.ac.uk/id/eprint/170343/2/WRAP-Beyond-natural-proofs-hardness-magnification-locality-22.pdf",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "role": "Independent institutional confirmation of JACM publication metadata; not substituted for the final PDF."
+    }
+  ],
+  "repository_inputs": [
+    {
+      "id": "F112_SCOPE",
+      "title": "Beyond the square-root exponent for depth-three circuits",
+      "path": "lean/docs/112.md",
+      "lines": [
+        7,
+        9
+      ],
+      "sha256_at_read": "d1ce736cf05a87fab1354a91bd22b8ae11233d6c4f37c417c6c8ca41d6f4dda7",
+      "inspection_scope": "Statement/interface inspection only; no validation of the full proof or Lean dependency audit."
+    },
+    {
+      "id": "F112_INTRO",
+      "title": "Beyond the Square-Root Exponent for Depth-Three Boolean Circuits — Introduction",
+      "path": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/00_introduction.tex",
+      "lines": [
+        1,
+        144
+      ],
+      "sha256_at_read": "32ffc6d43224c538771e6ce6d011d4030d7a095b6baaa0aaca052d58dfbeb713",
+      "inspection_scope": "Statement/interface inspection only; no validation of the full proof or Lean dependency audit."
+    },
+    {
+      "id": "F112_RESTRICTION",
+      "title": "A restriction bound independent of clause count — lemma statement",
+      "path": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex",
+      "lines": [
+        14,
+        34
+      ],
+      "sha256_at_read": "b0c71091e2b4bd3d81413cf80484d84ec5cfd93a61469308e85c4eee762eeacc",
+      "inspection_scope": "Statement/interface inspection only; no validation of the full proof or Lean dependency audit."
+    },
+    {
+      "id": "F112_TRANSFER",
+      "title": "The depth-three circuit lower bound — correlation transfer and counting interfaces",
+      "path": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/05_lower_bound.tex",
+      "lines": [
+        48,
+        140
+      ],
+      "sha256_at_read": "e35bfa901670110dc390ce052e9cbecd26a4bef436b733b0ff76903a421b3af4",
+      "inspection_scope": "Statement/interface inspection only; no validation of the full proof or Lean dependency audit."
+    }
+  ],
+  "version_check": {
+    "references": [
+      {
+        "source_id": "OPS2021",
+        "locator": "Journal record and final article"
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "MIT final published version and journal imprint"
+      },
+      {
+        "source_id": "CHOPRS2019v1",
+        "locator": "arXiv submission history"
+      },
+      {
+        "source_id": "OPS_ECCC_RECORD",
+        "locator": "Revision history"
+      },
+      {
+        "source_id": "CHOPRS_ECCC_RECORD",
+        "locator": "Report record"
+      },
+      {
+        "source_id": "CHOPRS_WRAP_RECORD",
+        "locator": "Publication metadata"
+      }
+    ],
+    "observations": "arXiv lists only v1 (2019-11-19); JACM is the later version inspected here. The relevant numbering changes from arXiv to JACM are 43->44, 46->47, 49->50, 50->51, 52->53, 59->60, 63->64.",
+    "bounded_currentness": "Checked primary publication/version records and targeted correction searches on 2026-10-09. No superseding correction to these audited statements was identified. This is not an exhaustive negative claim about all literature through that date."
+  },
+  "exact_magnification_target": {
+    "status": "Published conditional implication verified; its general-circuit lower-bound antecedent is an open obligation in this investigation, not an established result.",
+    "references": [
+      {
+        "source_id": "OPS2021",
+        "locator": "Theorem 1.4, p. 6; notation, p. 4; Definition 2.4, p. 11; proof, pp. 17–18"
+      }
+    ],
+    "variables": {
+      "n": "arity of the function described by a truth table",
+      "N": "2^n, the number of input bits to the Gap-MCSP separator"
+    },
+    "statement_recast": "There exists a fixed universal c >= 1 such that [exists epsilon > 0, exists beta_0 > 0, for every fixed beta with 0 < beta < beta_0: Gap-MCSP[2^(beta*n)/(c*n), 2^(beta*n)] notin Circuit[N^(1+epsilon)]] implies NP notsubseteq P/poly.",
+    "c": {
+      "theorem_statement": "Existential universal constant, independent of n, beta, epsilon.",
+      "explicit_proof_parameter": 10,
+      "qualification": "Section 4.1 proves the implication with denominator 10n in its fixed-basis conventions; basis changes require keeping constants consistent."
+    },
+    "models": {
+      "outer_separator": "Nonuniform deterministic Boolean DAG circuits; fan-in at most two; unrestricted depth and fan-out; size counts gates, not formula leaves or unbounded-fan-in wires.",
+      "basis": "OPS allows any fixed gate basis and says the result is insensitive to this fixed choice. Fix the standard complete AND_2, OR_2, NOT basis for this audit; CHOPRS §2.1 explicitly uses it.",
+      "inner_Size": "Minimum gate count for the n-variable function encoded by the N-bit table, with a fixed compatible circuit basis.",
+      "not_the_model": "Not depth-three circuits, not CNFs, not almost-formulas, and not Formula-XOR."
+    },
+    "promise": {
+      "YES": "Size(T) <= s1(n)",
+      "NO": "Size(T) > s2(n)",
+      "unpromised": "s1(n) < Size(T) <= s2(n); separator output is unrestricted here.",
+      "bounds": "s1(n)=2^(beta*n)/(c*n)=N^beta/(c*log_2 N); s2(n)=2^(beta*n)=N^beta.",
+      "rounding": "Definition 2.4 uses integer-valued thresholds. For a concrete implementation use floors of the displayed real thresholds; integer comparisons then retain exactly the displayed <= and > semantics. The theorem display suppresses rounding.",
+      "endpoint_warning": "The abstract/introduction informally say >= at the high endpoint; the formal Definition 2.4 uses >. Use the formal definition. CHOPRS Definition 6 agrees: NO means no circuit of size at most t computes the function."
+    },
+    "length_quantifiers": {
+      "order": "Fix c, then one epsilon > 0 and beta_0 > 0; each fixed beta in (0,beta_0) defines a promise family over unbounded n. epsilon must not shrink with beta or n.",
+      "asymptotic_semantics": "Nonmembership rules out a family of separators on all sufficiently large truth-table lengths. It does not demand an almost-everywhere per-length lower bound. Infinitely many hard lengths for each beta suffice; witnessing lengths need not be uniform across beta.",
+      "explicit_sufficient_obligation": "exists epsilon>0, beta_0>0: forall fixed 0<beta<beta_0, forall n0, exists n>=n0, forall N-input circuits C with size(C)<=N^(1+epsilon), exists promised T with C(T) wrong.",
+      "constant_factor_convention": "The paper writes exact size <= bounds. If Circuit is instead defined with O(size), the explicit sufficient obligation still yields the required nonmembership after replacing epsilon by epsilon/2; the exponent slack absorbs any fixed multiplicative factor and finitely many lengths.",
+      "not_sufficient": "One tested length, one convenient fixed beta, or only beta(n)->0 does not establish the displayed quantified antecedent."
+    },
+    "proof_check": {
+      "conditional_anti_checker": "Under NP subseteq P/poly, Lemma 4.1 gives a constant k and, for sufficiently small fixed beta, size <=2^(n+k*beta*n) anti-checker circuits producing 2^(10*beta*n) n-bit strings.",
+      "parameter_choice": "Section 4.1 takes beta=epsilon/(100*l*k), with l the hypothetical polynomial circuit exponent for Succinct-MCSP; smaller beta can accommodate an arbitrarily prescribed beta_0.",
+      "consequence": "The NP-not-P/poly conclusion implies P != NP. Neither the anti-checker construction under its assumption nor the magnification implication supplies the antecedent unconditionally."
+    }
+  },
+  "locality_audit": {
+    "directly_relevant_general_circuit_result": {
+      "status": "Unconditional oracle-circuit upper bound, not an ordinary-circuit upper bound and not a universal impossibility theorem for proof techniques.",
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Definition 11, p. 25:13; Definition 63 and Proposition 64, pp. 25:46–25:47; OPS row [43]"
+        },
+        {
+          "source_id": "CHOPRS2019v1",
+          "locator": "Definition 62 and Proposition 63, pp. 51–52"
+        },
+        {
+          "source_id": "OPS2021",
+          "locator": "Kernelization remark, p. 7, and §4"
+        }
+      ],
+      "notation": "[r,ell,a]-C: at most r oracle gates; each has at most ell incoming wires; at most a oracle gates on any input-output path; there exists one oracle language O that makes the circuit family correct. Source calls r by q; that q is a count, not the bottom arity q used below.",
+      "source_profile": "For constructive s(n)<=2^n/poly(n): Gap-MCSP in [N*poly(s),poly(s),poly(s)]-Circuit[N*poly(s)].",
+      "gap_identification": "Proposition 64 abbreviates Gap-MCSP without restating its endpoints. For the audited OPS construction use s=2^(beta*n), lower endpoint s/(10n), upper endpoint s; do not mistake this for approximate MCSP or gap-free MCSP.",
+      "fixed_beta_profile": "Number of gates and oracle gates N^(1+O(beta)); oracle arity and permitted adaptivity N^O(beta), with polynomial factors absorbed for fixed beta>0. The source does not specify numerical polynomial exponents.",
+      "topology": "Oracles may read computed wires and be composed adaptively. Neither raw-input support <=ell, bottom-only placement, nor depth three is asserted.",
+      "barrier_logic": "A lower-bound argument that remained valid for these same oracle circuits, with matching parameters and the same target promise, would contradict their unconditional existence. Applying this logic to family112 requires an additional closure/transfer proof; raw-bottom robustness alone is insufficient."
+    },
+    "restricted_results_and_limits": [
+      {
+        "references": [
+          {
+            "source_id": "CHOPRS2022",
+            "locator": "Proposition 44, p. 25:29; Theorem 2(B1O,B3O), p. 25:8"
+          },
+          {
+            "source_id": "CHOPRS2019v1",
+            "locator": "Proposition 43, p. 29; Theorem 2, p. 9"
+          }
+        ],
+        "model": "Formula-O-XOR, with oracle gates immediately above arbitrary-arity parity leaves.",
+        "upper": "MCSP[2^(n^(1/3)),2^(n^(2/3))] in Formula-O-XOR[N^1.01], for every fixed eta>0 with oracle arity <=N^eta.",
+        "lower": "InnerProduct_M has no such formulas of size M^(2-3*delta), with at most M^(2-3*delta) oracles of arity M^delta, for each delta>0.",
+        "limit": "An oracle input may already be a parity of all raw variables. This is not raw-bottom locality or the arbitrary-circuit fixed-beta target."
+      },
+      {
+        "references": [
+          {
+            "source_id": "CHOPRS2022",
+            "locator": "Theorem 47, pp. 25:31–25:32; principal-formula definition immediately before it"
+          },
+          {
+            "source_id": "CHOPRS2019v1",
+            "locator": "Theorem 46, pp. 32–33"
+          }
+        ],
+        "model": "Almost-formulas: bounded number of gates with fan-out >1; oracles at bottoms of principal formulas.",
+        "upper": "MCSP[2^(sqrt(n))/(2n),2^(sqrt(n))] has 2^O(sqrt(n))-almost-formulas of size 2^(n+O(sqrt(n))) and oracle arity 2^O(sqrt(n)).",
+        "lower": "For 0<delta<1, PARITY_M notin M^delta-almost-Formula[M^(2-9*delta)] even with arbitrary oracles of arity <M^delta in those positions.",
+        "limit": "Principal-formula inputs can be earlier shared-gate outputs, not just raw variables. The threshold exponent sqrt(n) corresponds to beta(n)=1/sqrt(n), not fixed beta. The introduction uses denominator 10n; the actual Theorem 47 display uses 2n."
+      },
+      {
+        "references": [
+          {
+            "source_id": "CHOPRS2022",
+            "locator": "Proposition 51, pp. 25:34–25:35"
+          },
+          {
+            "source_id": "CHOPRS2019v1",
+            "locator": "Proposition 50, pp. 35–36"
+          }
+        ],
+        "model": "Constant-depth AC0 with oracle gates, not unrestricted-depth circuits.",
+        "upper": "For k=(log v)^C, (v-k)-Clique on M=Theta(v^2) bits has depth-d oracle circuits of size M^(1+epsilon_d), epsilon_d->0, for sufficiently large fixed d, with one oracle of arity O((log v)^(4C)).",
+        "lower": "PARITY_M notin (AC0)^O[poly(M)] when total incoming wires to all oracle gates <=M/(log M)^omega(1).",
+        "limit": "Specific random-restriction/interactive-compression scope; the topology, total-wire budget, and target differ from Proposition 64. It does not prohibit all random-restriction arguments."
+      },
+      {
+        "references": [
+          {
+            "source_id": "CHOPRS2022",
+            "locator": "Theorem 53 and Remark 54, p. 25:36"
+          },
+          {
+            "source_id": "CHOPRS2019v1",
+            "locator": "Theorem 52 and Remark 53, p. 37"
+          }
+        ],
+        "model": "Depth-d AC0 with arbitrary oracles; max oracle fan-in O_i on level i.",
+        "lower": "There exists c: for fixed d and product_i O_i <=N/(log N)^omega(1), MCSP[n^c,n^(2c)] notin AC0_d[O_1,...,O_d][poly(N)].",
+        "limit": "A pseudorandom-restriction result with a levelwise product bound, not a theorem about unbounded depth. Its oracle budget is expressly incomparable with Proposition 51. The small polynomial-in-n gap is not the fixed-beta target."
+      },
+      {
+        "references": [
+          {
+            "source_id": "CHOPRS2022",
+            "locator": "Theorem 60 and SIZE_t definition, p. 25:39; Corollary 62, p. 25:40"
+          },
+          {
+            "source_id": "CHOPRS2019v1",
+            "locator": "Theorem 59 and following antichecker corollary, pp. 40–41"
+          }
+        ],
+        "model": "Oracle De Morgan formulas with weighted size SIZE_3 and adaptivity o(log N/log log N).",
+        "lower": "There exists c: for every epsilon>0 and alpha>2, MCSP[n^c,2^((epsilon/alpha)*n)] has no such formula with SIZE_3<=N^(2-epsilon).",
+        "weighted_size": "An oracle of arity r contributes r^2 times the sum of the weighted sizes of its input subformulas; ordinary AND/OR sums its two child sizes.",
+        "target_overlap_derived": "For any fixed beta<epsilon/2, choose alpha=epsilon/beta. Eventually n^c<=N^beta/(10n). Hence a separator for the OPS promise would also separate this theorem’s smaller YES promise with the same NO endpoint: the restricted-formula lower bound transfers. It still says nothing sufficient about arbitrary DAG circuits.",
+        "important_distinction": "Corollary 62 refutes OPS’s separate §4.3 Antichecker Hypothesis. It does not refute the conditional Anti-Checker Lemma 4.1 or Theorem 1.4."
+      }
+    ],
+    "nonlocalizable_example": {
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "§1.3, p. 25:10, especially footnote 13; Theorem 50, p. 25:34"
+        },
+        {
+          "source_id": "CHOPRS2019v1",
+          "locator": "§1.3, p. 10, especially footnote 11; Theorem 49, p. 35"
+        }
+      ],
+      "statement": "There is L in E with L notin GapAND_O(N)-Formula[N^(3-epsilon)] for every constant epsilon>0, but L in O_{N^o(1)}-Formula[N^2].",
+      "scope_lesson": "The paper explicitly supplies a non-localizable lower bound whose proof uses a random restriction. Localizability depends on the particular model, oracle placement, quantities, arities, and adaptivity—not the label random restrictions."
+    }
+  },
+  "raw_bottom_robustness": {
+    "status": "Elementary derivations checked here. Applying them to family112 is conditional on the repository’s stated lemma/main result; their full proofs were not audited.",
+    "references": [
+      {
+        "source_id": "F112_SCOPE",
+        "locator": "line 9"
+      },
+      {
+        "source_id": "F112_INTRO",
+        "locator": "lines 13–35, 75–97, 126–144"
+      },
+      {
+        "source_id": "F112_RESTRICTION",
+        "locator": "lines 14–34"
+      }
+    ],
+    "notation": "M is the raw input length for family112; q is raw bottom-predicate arity. This is separate from the target’s n=log_2 N.",
+    "predicate_CNF_identity": {
+      "formula": "Q(x_I) = AND_{a in {0,1}^I : Q(a)=0} OR_{i in I} (x_i if a_i=0 else NOT x_i).",
+      "bound": "If |I|<=q, at most 2^q clauses, each of width <=q. Empty conjunction/empty clause handles constants.",
+      "conjunction_closure": "Conjoining any finite number of such raw-input predicates produces a width-q CNF, regardless of predicate count or overlap."
+    },
+    "restriction_lemma_closure": {
+      "formula": "theta(q,b,p)=sum_{j=b+1}^q binom(q,j)*(2p/(1-p))^j <1 implies E W <=1/(1-theta).",
+      "reason": "Apply the stated clause-count-independent lemma to the expanded CNF. The exponential clause count does not change theta. The outer random restriction is still on independent raw coordinates.",
+      "not_asserted": "A small number of incoming computed wires to an internal gate is not a bound on raw-coordinate support."
+    },
+    "three_layer_compilation": {
+      "model": "OR of ANDs of arbitrary raw-input predicates Q_j of arity <=q; sharing allowed.",
+      "count": "With B bottom predicates, A middle AND gates, and one output OR, S=B+A+1. Flatten each predicate’s CNF into its consuming ANDs and share each generated clause among those consumers. S_ordinary <=B*2^q+A+1<=S*2^q.",
+      "consequence": "For any fixed a,b>0, S<=2^(a*sqrt(M)) and q<=b*sqrt(M) would give S_3(F_M)<=2^((a+b)*sqrt(M)), contradicting family112’s stated eventual lower bound. Thus the same family excludes this raw-bottom oracle class, with these fixed constants, at all sufficiently large M.",
+      "slightly_more_general_budget": "It suffices that log_2(S(M))+q(M)=O(sqrt(M))."
+    },
+    "relation_to_actual_locality": {
+      "covered": "Arbitrarily many nonuniform bottom predicates (up to S), overlapping raw scopes, and shared bottom gates. No sublinear total-oracle-wire assumption is needed for this particular topology.",
+      "not_covered": "Arbitrary-depth ordinary computation; an oracle above parity preprocessing; oracles at bottoms of principal formulas reading previous shared values; nested/adaptive oracle calls.",
+      "numeric_overlap": "If M=N, N^(K*beta)<=sqrt(N) for beta<=1/(2K), so sufficiently small fixed-beta oracle arity can fit the numerical q budget. The unresolved mismatch is topology/raw support/target, not merely the phrase small fan-in.",
+      "composition_condition": "If each of ell oracle inputs depends on at most t raw coordinates, the composed predicate can depend on up to ell*t coordinates. One must bound the actual union of supports, retain the OR–AND–bottom topology, and check log_2 S+q=O(sqrt(M)); wire fan-in alone does none of this.",
+      "barrier_verdict": "Certified raw-bottom robustness is a partial locality statement. It neither establishes a full locality barrier for the OPS arbitrary-circuit target nor shows that family112 evades that barrier."
+    }
+  },
+  "naive_internal_fanin_counterexample": {
+    "status": "Elementary scope counterexample supplied by parent; exact arithmetic and signed-subcube norm argument independently checked here. Parent’s script was not inspected.",
+    "object": "The {0,1}-valued parity function on six raw bits, implemented by a fan-in-two circuit.",
+    "parameters": {
+      "syntactic_gate_fanin": 2,
+      "b": 1,
+      "p": "1/4"
+    },
+    "derivation": "Width-1 CNF indicators are subcubes. On r>=1 live variables, parity’s indicator has minimum signed-subcube coefficient mass 2^(r-1): expansion into accepting points attains it, and inner product with the parity sign lower-bounds it, since only singleton subcubes correlate. If r=0 the restricted indicator is 0 or 1, equiprobably.",
+    "exact_expectation": "E mass = (1/2)*E[2^r] = (1/2)*(1+p)^6 = 15625/8192, with r~Binomial(6,p).",
+    "invalid_extrapolation": "Plugging gate fan-in k=2 into the width-k CNF lemma gives theta=(2p/(1-p))^2=4/9 and 1/(1-theta)=9/5.",
+    "comparison": "15625/8192 > 9/5; difference 4397/40960.",
+    "conclusion": "The naive extension from raw CNF width to maximum internal gate fan-in is false. Parity6 is not a width-2 CNF, so this is not a counterexample to family112’s stated CNF restriction lemma.",
+    "references": [
+      {
+        "source_id": "F112_RESTRICTION",
+        "locator": "theta and conclusion, lines 14–34"
+      }
+    ]
+  },
+  "uniform_promise_imbalance": {
+    "status": "Elementary derived observation, not a theorem attributed to OPS/CHOPRS. Parent’s counting argument independently checked.",
+    "references": [
+      {
+        "source_id": "OPS2021",
+        "locator": "Circuit convention, p. 4; Definition 2.4, p. 11"
+      },
+      {
+        "source_id": "F112_INTRO",
+        "locator": "uniform correlation and constant-true test, lines 75–83, 126–133"
+      }
+    ],
+    "count": "For m inputs and <=s fan-in-two Boolean gates, number of computed functions <=(m+s+2)*[16*(m+s+2)^2]^s. Pad to s gates, order them topologically, choose each two-input truth function and predecessors, then choose the output; overcounting only helps.",
+    "regime": "N=2^m, s=floor(N^beta), with fixed 0<beta<1.",
+    "low_and_gap_fraction": "Pr_{T uniform in {0,1}^N}[Size(T)<=s] <=2^(-N+O(N^beta*log N))=o(1). The threshold here is the UPPER gap endpoint, so it includes both YES and every unpromised table.",
+    "orientation": "Let g(T)=+1 for YES and -1 for NO, and choose either sign on unpromised inputs. Then {T:g(T)=+1} is contained in {T:Size(T)<=s}.",
+    "correlation_obstruction": "For delta_N=2^(-N+O(N^beta*log N)), E g=-1+2Pr[g=+1], so |E g|>=1-2*delta_N=1-o(1). Since the true CNF is allowed, corr_b(g)>=|E g| for every permitted b.",
+    "conclusion": "The original small-uniform-correlation, balanced-sign approach cannot be applied directly to any total completion of this Gap-MCSP promise on its N truth-table bits. A different distribution, promise-preserving reduction, or suitably justified slice would be necessary.",
+    "limit": "This does not exclude nonuniform/promise-supported distributions or special slices, and it is unrelated to correlation of the n-variable function whose truth table is the MCSP input."
+  },
+  "missing_bridge": {
+    "status": "Missing mathematical bridge; no such construction is claimed or established by this audit.",
+    "references": [
+      {
+        "source_id": "OPS2021",
+        "locator": "Theorem 1.4 and Definition 2.4"
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Proposition 64; §1.3 and §5.1.6"
+      },
+      {
+        "source_id": "F112_INTRO",
+        "locator": "lines 75–83, 135–144"
+      },
+      {
+        "source_id": "F112_TRANSFER",
+        "locator": "lines 48–86, 90–140"
+      }
+    ],
+    "precise_sufficient_reduction_contract": [
+      "Fix one epsilon>0 and a beta_0>0. For every fixed 0<beta<beta_0 and all sufficiently large target lengths N=2^n, start with an arbitrary size-N^(1+epsilon) Boolean circuit that separates the exact OPS YES/NO sets.",
+      "Produce an exact circuit for family112’s fixed F_M at lengths M=M_beta(n)->infinity, in OR–AND–raw-bottom-predicate form, with log_2 S+q=O(sqrt(M)); constants may depend on beta but not n.",
+      "Prove correctness on every raw F_M input. In a many-one reduction R, require F_M(x)=1 => R(x) in YES and F_M(x)=0 => R(x) in NO; merely landing in the gap is insufficient.",
+      "Account for the complete reduction, circuit composition, sharing, all gate counts, oracle placement and effective raw supports. A polynomial-time reduction by itself supplies none of the required depth-three size guarantees."
+    ],
+    "why_this_would_suffice": "The bottom-local compilation would contradict the eventual family112 bound, ruling out the candidate separator. Repeating with one common epsilon and every small fixed beta would establish the magnification antecedent.",
+    "direct_correlation_alternative": "Instead, one would need a promise-sensitive correlation/distribution argument together with a quantitative decomposition or structural theorem for every size-N^(1+epsilon) arbitrary-depth separator. The supplied lemma concerns width-k CNF tests and the exact OR-of-CNFs counting step; it supplies neither ingredient. The imbalance observation rules out the naive unchanged uniform version.",
+    "locality_test_for_any_proposed_bridge": "Substitute Proposition 64’s actual oracle implementation for the candidate solver. If the claimed transformation also produces the same small raw-bottom circuits after that substitution, the transformation is impossible by bottom robustness. If oracle composition breaks its hypotheses, no full locality-barrier conclusion follows; those broken hypotheses are precisely where new reasoning must act.",
+    "not_a_generic_depth_reduction": "Family112 is stated to lie in P and therefore has polynomial-size unrestricted circuits. Its 2^omega(sqrt(M)) depth-three lower bound cannot itself become the same lower bound for arbitrary circuits."
+  },
+  "validation": {
+    "JSON_parse": "passed by immediate parse of serialized document",
+    "primary_PDFs_read": 3,
+    "all_predicates_of_arity_0_through_3_CNF_identity_checked": 278,
+    "parity6_expectation": "exact Fraction arithmetic passed",
+    "family112_full_proof_or_Lean_build": "not performed; outside assigned scope"
+  },
+  "bottom_line": "The conditional NP-not-P/poly implication is verified. Raw-bottom oracle robustness and uniform-promise imbalance are valid elementary scope observations. Neither supplies the fixed-beta arbitrary-circuit lower bound or establishes a full locality barrier for family112."
+}

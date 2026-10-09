@@ -1,0 +1,174 @@
+START_UTC: 2026-10-09T19:05:03.736692+00:00
+CWD: /home/rou/src/math
+TIMEOUT_SECONDS: 60
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -e
+printf "Logged-command driver source\n"; cat /tmp/family112-build-validation.xWSfhA/run.py
+printf "\nFinal integrity checker source\n"; cat /tmp/family112-build-validation.xWSfhA/final_integrity.py
+printf "\nFinal integrity checker output\n"; python3 /tmp/family112-build-validation.xWSfhA/final_integrity.py
+printf "\nMathlib cache-location implementation and environment\n"
+printenv MATHLIB_CACHE_DIR XDG_CACHE_HOME || true
+rg -n "MATHLIB_CACHE_DIR|XDG_CACHE_HOME|cacheDir|mathlib" /tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/mathlib/Cache/IO.lean | head -35
+
+
+OUTPUT (stdout and stderr merged):
+Logged-command driver source
+import datetime, json, os, pathlib, signal, subprocess, sys, time
+scratch = pathlib.Path(__file__).resolve().parent
+root = pathlib.Path('/home/rou/src/math')
+out = root / 'research_notes/p_vs_np_2026_10_09/validation'
+label, cwd, limit, command = sys.argv[1:]
+log = out / (label + '.log')
+if log.exists():
+    raise SystemExit(f'Refusing to overwrite existing log: {log}')
+start = datetime.datetime.now(datetime.timezone.utc).isoformat()
+t0 = time.monotonic()
+with log.open('x') as f:
+    f.write(f'START_UTC: {start}\nCWD: {cwd}\nTIMEOUT_SECONDS: {limit}\nSHELL: bash --noprofile --norc -c\nCOMMAND:\n{command}\n\nOUTPUT (stdout and stderr merged):\n')
+    f.flush()
+    p = subprocess.Popen(['bash', '--noprofile', '--norc', '-c', command], cwd=cwd, stdout=f, stderr=subprocess.STDOUT, start_new_session=True)
+    timed_out = False
+    try:
+        code = p.wait(timeout=float(limit))
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        os.killpg(p.pid, signal.SIGTERM)
+        try:
+            code = p.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            os.killpg(p.pid, signal.SIGKILL)
+            code = p.wait()
+    elapsed = time.monotonic() - t0
+    end = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    f.write(f'\nEND_UTC: {end}\nEXIT_STATUS: {code}\nTIMED_OUT: {str(timed_out).lower()}\nELAPSED_SECONDS: {elapsed:.3f}\n')
+record = dict(label=label, cwd=cwd, shell='bash --noprofile --norc -c', command=command, timeout_seconds=float(limit), start_utc=start, end_utc=end, exit_status=code, timed_out=timed_out, elapsed_seconds=round(elapsed,3), log=str(log.relative_to(root)))
+with (scratch / 'commands.jsonl').open('a') as f:
+    f.write(json.dumps(record) + '\n')
+print(log.read_text(), end='')
+sys.exit(124 if timed_out else code if code >= 0 else 128 - code)
+
+Final integrity checker source
+import hashlib, json, pathlib, re, subprocess
+ROOT=pathlib.Path('/home/rou/src/math')
+SCRATCH=pathlib.Path('/tmp/family112-build-validation.xWSfhA')
+LEAN=SCRATCH/'project/lean'
+OUT=ROOT/'research_notes/p_vs_np_2026_10_09/validation'
+COMMIT='fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb'
+scan=json.loads((SCRATCH/'static_scan.json').read_text())
+fingerprints=json.loads((SCRATCH/'baseline_fingerprints.json').read_text())
+for row in fingerprints:
+ p=ROOT/row['path']
+ row['final_sha256']=hashlib.sha256(p.read_bytes()).hexdigest()
+ row['unchanged']=row['final_sha256']==row['sha256']
+ snapshot=SCRATCH/'project'/row['path']
+ row['snapshot_final_sha256']=hashlib.sha256(snapshot.read_bytes()).hexdigest()
+ row['snapshot_unchanged']=row['snapshot_final_sha256']==row['sha256']
+ print(json.dumps(row))
+local=[]
+for mod in scan['modules']:
+ source_rel=mod['path'].removeprefix('lean/')
+ original=ROOT/mod['path']
+ snapshot=LEAN/source_rel
+ olean=LEAN/'.lake/build/lib/lean'/(mod['module'].replace('.','/')+'.olean')
+ local.append(dict(module=mod['module'], original_matches_baseline=hashlib.sha256(original.read_bytes()).hexdigest()==mod['sha256'], snapshot_matches_baseline=hashlib.sha256(snapshot.read_bytes()).hexdigest()==mod['sha256'], olean_exists=olean.is_file()))
+config=json.loads((ROOT/'lean/ComparatorChallenges/DepthThree.json').read_text())
+axiom_log=(OUT/'12_theorem_axioms.log').read_text()
+axioms={}
+for name,raw in re.findall(r"'([^']+)' depends on axioms: \[([^\]]*)\]",axiom_log,re.S):
+ axioms[name]=[a.strip() for a in raw.split(',')]
+for target in config['theorem_names']:
+ assert target in axioms
+ assert set(axioms[target])<=set(config['permitted_axioms'])
+print('ACTUAL_AXIOMS',json.dumps(axioms))
+artifacts=[]
+for module in (config['solution_module'], config['challenge_module']):
+ p=LEAN/'.lake/build/lib/lean'/(module.replace('.','/')+'.olean')
+ artifacts.append(dict(module=module,path=str(p),exists=p.is_file(),sha256=hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None,bytes=p.stat().st_size if p.is_file() else None))
+print('COMPILED_TARGETS',json.dumps(artifacts))
+final_dependencies=[]
+for old in json.loads((SCRATCH/'resolved_dependencies.json').read_text()):
+ p=pathlib.Path(old['checkout_path'])
+ rev=subprocess.check_output(['git','-C',str(p),'rev-parse','HEAD'],text=True).strip()
+ status=subprocess.check_output(['git','-C',str(p),'status','--porcelain'],text=True).strip()
+ final_dependencies.append(dict(name=old['name'],rev=rev,revision_matches_lock=rev==old['rev'],worktree_status_unchanged=status==old['worktree_status']))
+head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+diff=subprocess.run(['git','diff','--exit-code','HEAD','--'],cwd=ROOT,capture_output=True,text=True)
+status=subprocess.run(['git','status','--short'],cwd=ROOT,capture_output=True,text=True)
+print('FINAL_GIT_HEAD',head)
+print('FINAL_GIT_DIFF_EXIT_STATUS',diff.returncode)
+print('FINAL_GIT_DIFF_OUTPUT',diff.stdout,diff.stderr)
+print('FINAL_GIT_STATUS',status.stdout)
+result=dict(
+ source_commit=COMMIT, final_head=head, head_matches_requested_commit=head==COMMIT,
+ original_tracked_diff_exit_status=diff.returncode, original_tracked_diff=diff.stdout,
+ original_git_status=status.stdout, original_lake_cache_created=(ROOT/'lean/.lake').exists(),
+ fingerprints=fingerprints,
+ local_source_modules_checked=len(local), local_source_integrity=local,
+ all_local_source_bytes_unchanged=all(r['original_matches_baseline'] and r['snapshot_matches_baseline'] for r in local),
+ local_olean_count=sum(r['olean_exists'] for r in local),
+ actual_axioms=axioms, target_compiled_artifacts=artifacts,
+ final_dependency_integrity=final_dependencies,
+ all_dependency_revisions_still_match=all(r['revision_matches_lock'] for r in final_dependencies),
+ dependency_worktrees_unchanged_after_snapshot_inventory=all(r['worktree_status_unchanged'] for r in final_dependencies),
+)
+(SCRATCH/'final_integrity.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n')
+print('INTEGRITY_SUMMARY',json.dumps({k:v for k,v in result.items() if k not in ('fingerprints','local_source_integrity','final_dependency_integrity','actual_axioms','target_compiled_artifacts')}))
+assert result['head_matches_requested_commit']
+assert diff.returncode==0
+assert all(r['unchanged'] and r['snapshot_unchanged'] for r in fingerprints)
+assert result['all_local_source_bytes_unchanged']
+assert result['local_olean_count']==scan['local_closure_module_count']
+assert result['all_dependency_revisions_still_match']
+assert result['dependency_worktrees_unchanged_after_snapshot_inventory']
+
+Final integrity checker output
+{"path": "lean/ComparatorChallenges/README.md", "sha256": "2ed835b3c59709be6feffe0dec54fc9783fb26aa22d35517475a82ef5199c555", "bytes": 1060, "matches_source_commit": true, "final_sha256": "2ed835b3c59709be6feffe0dec54fc9783fb26aa22d35517475a82ef5199c555", "unchanged": true, "snapshot_final_sha256": "2ed835b3c59709be6feffe0dec54fc9783fb26aa22d35517475a82ef5199c555", "snapshot_unchanged": true}
+{"path": "lean/ComparatorChallenges/DepthThree.json", "sha256": "0b9ecec5cb9b079bf8f6b301604938a9b74758f6abeff6dd985e160c89f578b3", "bytes": 368, "matches_source_commit": true, "final_sha256": "0b9ecec5cb9b079bf8f6b301604938a9b74758f6abeff6dd985e160c89f578b3", "unchanged": true, "snapshot_final_sha256": "0b9ecec5cb9b079bf8f6b301604938a9b74758f6abeff6dd985e160c89f578b3", "snapshot_unchanged": true}
+{"path": "lean/ComparatorChallenges/DepthThree.lean", "sha256": "c12686c38119eb50c375790ebc28e0c806821714985431e59f18ae87649872a4", "bytes": 4453, "matches_source_commit": true, "final_sha256": "c12686c38119eb50c375790ebc28e0c806821714985431e59f18ae87649872a4", "unchanged": true, "snapshot_final_sha256": "c12686c38119eb50c375790ebc28e0c806821714985431e59f18ae87649872a4", "snapshot_unchanged": true}
+{"path": "lean/OAI/Computability/DepthThree/Main.lean", "sha256": "18fdab27f1f3df8f99389b1d6ac0ce3aac2644d5fd1ea585ee536a87bebbdd3a", "bytes": 805, "matches_source_commit": true, "final_sha256": "18fdab27f1f3df8f99389b1d6ac0ce3aac2644d5fd1ea585ee536a87bebbdd3a", "unchanged": true, "snapshot_final_sha256": "18fdab27f1f3df8f99389b1d6ac0ce3aac2644d5fd1ea585ee536a87bebbdd3a", "snapshot_unchanged": true}
+{"path": "lean/lean-toolchain", "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b", "bytes": 25, "matches_source_commit": true, "final_sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b", "unchanged": true, "snapshot_final_sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b", "snapshot_unchanged": true}
+{"path": "lean/lakefile.lean", "sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74", "bytes": 15457, "matches_source_commit": true, "final_sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74", "unchanged": true, "snapshot_final_sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74", "snapshot_unchanged": true}
+{"path": "lean/lake-manifest.json", "sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794", "bytes": 14622, "matches_source_commit": true, "final_sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794", "unchanged": true, "snapshot_final_sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794", "snapshot_unchanged": true}
+ACTUAL_AXIOMS {"OAI.DepthThreeLowerBound.exists_polynomial_time_language_depth_three_lower_bound": ["propext", "Classical.choice", "Quot.sound"], "OAI.DepthThreeLowerBound.language_polynomial_time": ["propext", "Classical.choice", "Quot.sound"], "OAI.DepthThreeLowerBound.language_depth_three_gate_lower_bound": ["propext", "Classical.choice", "Quot.sound"]}
+COMPILED_TARGETS [{"module": "OAI.Computability.DepthThree.Main", "path": "/tmp/family112-build-validation.xWSfhA/project/lean/.lake/build/lib/lean/OAI/Computability/DepthThree/Main.olean", "exists": true, "sha256": "f26d5bbd978fa82b1cf341c83ce5ee63b0ef5d04833719ec73bb97b5f18e2b7b", "bytes": 27080}, {"module": "ComparatorChallenges.DepthThree", "path": "/tmp/family112-build-validation.xWSfhA/project/lean/.lake/build/lib/lean/ComparatorChallenges/DepthThree.olean", "exists": true, "sha256": "dafd2078670e3fd99c65845b5b020a2527e8ef6f23dfbcc91c835cb0b1937079", "bytes": 373448}]
+FINAL_GIT_HEAD fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb
+FINAL_GIT_DIFF_EXIT_STATUS 0
+FINAL_GIT_DIFF_OUTPUT  
+FINAL_GIT_STATUS ?? .idea/
+?? reports/
+?? research_notes/
+
+INTEGRITY_SUMMARY {"source_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb", "final_head": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb", "head_matches_requested_commit": true, "original_tracked_diff_exit_status": 0, "original_tracked_diff": "", "original_git_status": "?? .idea/\n?? reports/\n?? research_notes/\n", "original_lake_cache_created": false, "local_source_modules_checked": 175, "all_local_source_bytes_unchanged": true, "local_olean_count": 175, "all_dependency_revisions_still_match": true, "dependency_worktrees_unchanged_after_snapshot_inventory": true}
+
+Mathlib cache-location implementation and environment
+25:/-- Determine if the package `mod` is part of the mathlib cache.
+57:  match ← IO.getEnv "MATHLIB_CACHE_DIR" with
+60:    match ← IO.getEnv "XDG_CACHE_HOME" with
+61:    | some path => return path / "mathlib"
+69:      | some path => return path / ".cache" / "mathlib"
+77:(`~/.cache/mathlib`), so every checkout, worktree, and CI job on a machine pools its
+161:  that no such options are set in any mathlib dependency)
+164:  /-- source directory for mathlib files -/
+165:  mathlibDepPath : FilePath
+179:private def CacheM.mathlibDepPath (sp : SearchPath) : IO FilePath := do
+180:  let mathlibSourceFile ← Lean.findLean sp `Mathlib
+181:  let some mathlibSource ← pure mathlibSourceFile.parent
+183:  return mathlibSource
+192:  let mathlibSource ← CacheM.mathlibDepPath sp
+194:    mathlibDepPath := mathlibSource,
+209:Usually it is either `.` or something like `./.lake/packages/mathlib/`
+324:  If a dependency is added to mathlib which uses such a custom layout, `mkBuildPaths`
+387:            (if let some c := comment then #["-c", s!"git=mathlib4@{c}"] else #[]) ++ args
+444:    The hash to compare comes from the ltar file header, not the mathlib cache hash.
+446:def needsDecompression (mod : Name) (mathlibHash : UInt64) : CacheM Bool := do
+448:  let ltarPath := CACHEDIR / mathlibHash.asLTar
+467:    for mathlib dependency files that need path redirection. -/
+470:  let mathlibDepPath := (← read).mathlibDepPath.toString
+476:      config.push <| .mkObj [("file", pathStr), ("base", mathlibDepPath)]
+534:/-- Prints the LTAR file and embedded comments (in particular, the mathlib commit that built the
+
+END_UTC: 2026-10-09T19:05:04.201328+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 0.465

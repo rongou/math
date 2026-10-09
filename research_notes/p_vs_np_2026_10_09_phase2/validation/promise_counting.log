@@ -1,0 +1,161 @@
+FINITE BOOLEAN PROMISE/CERTIFICATE COUNTING
+PHASE1: read-only; this file imports only Mathlib.
+STAGE: initial complete proof check
+UTC: 2026-10-09T19:44:45.649105+00:00
+CWD: /tmp/family112-build-validation.xWSfhA/project/lean
+COMMAND: lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean
+INHERITED LEAN_PATH and LEAN_SRC_PATH: unset before lake env
+SOURCE_SHA256: ac837eb8052e648fbafc04776c2fba15ae4cd2745cd40999416d44224c7ac41e
+STDOUT:
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:33:15: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:39:17: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:39:6: error: `simp` made no progress
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:41:17: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:41:6: error: `simp` made no progress
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:45:15: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:45:4: error: `simp` made no progress
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:71:18: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:72:18: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:76:18: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:80:20: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:81:20: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean:177:21: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+'PromiseCounting.mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcubeEquiv' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.compatible_of_common_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcube_inter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.free_after_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter_lower' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_subcube_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_inter_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.outside_low_completion' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.rejected_completion' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.certificate_count_bound' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.no_certificate_of_card_lt' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PromiseCounting.flipAt_mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.isolated_yes_certificate_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 1
+ELAPSED_SECONDS: 6.338
+
+STAGE: equivalence inverses and current conditional lemmas
+UTC: 2026-10-09T19:45:22.941187+00:00
+COMMAND: lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean
+SOURCE_SHA256: 56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4
+STDOUT:
+'PromiseCounting.mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcubeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.compatible_of_common_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcube_inter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.free_after_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_subcube_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_inter_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.outside_low_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.rejected_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.certificate_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.no_certificate_of_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.flipAt_mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.isolated_yes_certificate_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 0
+ELAPSED_SECONDS: 6.378
+
+STAGE: FINAL AUTHORITATIVE SOURCE CHECK
+START_UTC: 2026-10-09T19:47:02.289866+00:00
+END_UTC: 2026-10-09T19:47:08.523871+00:00
+CWD: /tmp/family112-build-validation.xWSfhA/project/lean
+COMMAND: lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean
+INHERITED LEAN_PATH and LEAN_SRC_PATH: unset before lake env
+SOURCE_SHA256: 56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4
+SOURCE_LINES: 206
+STDOUT:
+'PromiseCounting.mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcubeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.compatible_of_common_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.subcube_inter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.free_after_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.card_subcube_inter_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_subcube_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.accepted_inter_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.outside_low_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.rejected_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.certificate_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.no_certificate_of_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.flipAt_mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PromiseCounting.isolated_yes_certificate_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STDERR (Lake package-state warnings):
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 0
+ELAPSED_SECONDS: 6.233986
+VERSION_COMMAND: lake env lean --version
+VERSION_STDOUT:
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+VERSION_STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+THEOREMS: 15
+AUDITED_CONSTANTS: 16
+FORBIDDEN_SOURCE_CONSTRUCTS: []
+MISSING_AXIOM_AUDITS: []
+NONSTANDARD_AXIOM_DEPENDENCIES: []
+FINAL_STATUS: PASS
+Earlier rejected elaboration diagnostics are retained for provenance, not counted as proofs.
+SCOPE: finite Boolean subcube/certificate counting and abstract isolated-YES lemma only.
+No circuit size, concrete MCSP family, description-count asymptotics, or resource-to-certificate theorem is formalized.
+PHASE1 and original project sources were not edited.

@@ -1,0 +1,1004 @@
+{
+  "schema_version": 1,
+  "family": "family112",
+  "audit_date_local": "2026-10-09",
+  "timezone": "America/Los_Angeles",
+  "working_directory": "/home/rou/src/math",
+  "audit_kind": "bounded static semantic source audit",
+  "status": "completed_static_review_not_kernel_validation",
+  "scope": {
+    "manuscript": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex",
+    "supporting_manuscript_definitions": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/01_preliminaries.tex",
+    "primary_lean_entrypoint": "lean/OAI/Computability/DepthThree/Restriction.lean",
+    "focus": [
+      "Restriction*.lean",
+      "ReversePath*.lean",
+      "Model.lean",
+      "Core.lean",
+      "Circuit.lean"
+    ],
+    "method": "Read the manuscript and the 26-module local restriction import closure, trace named theorem applications and definitions, inspect adjacent model/circuit/normalization sources, and run read-only lexical/import scans.",
+    "not_performed": [
+      "Lean/Lake build",
+      "Lean elaboration",
+      "kernel proof checking",
+      "#print axioms",
+      "external dependency download or audit",
+      "subagent spawning",
+      "review of other workers' artifacts",
+      "endorsement of the entire family112 proof or later complexity claims"
+    ],
+    "write_policy": "Only this new JSON artifact is created, using exclusive creation; no pre-existing source or other-worker file is modified."
+  },
+  "summary": {
+    "exact_requested_declarations_found": true,
+    "confirmed_semantic_defects": [],
+    "additional_public_mathematical_premises_found": [],
+    "circular_conclusion_assumptions_found_in_inspected_chain": [],
+    "local_trust_scan_hits": 0,
+    "assessment": "The proof-bearing source declarations state both requested inequalities with the same explicit G-independent witness. The inspected definitions, parameter ranges, counts, mixtures, and reverse encoding agree with the manuscript at the static-source level. No confirmed substantive mismatch was found. Source agreement is not proof of successful elaboration, a clean transitive axiom closure, or correctness of every proof in family112.",
+    "open_validation_boundaries": [
+      "C01",
+      "C02"
+    ]
+  },
+  "classification_legend": {
+    "verified_syntactic_facts": "Directly observed source text, declarations, explicit proof applications, or lexical/import scan results; not a claim that the text elaborates.",
+    "static_assessment": "The auditor's source-supported comparison with the prose; no independent formal certification.",
+    "concerns": "Unverified validation boundaries or possible risks; no allegation of a confirmed defect unless expressly stated.",
+    "unverified_reasoning": "Manual mathematical or representation reasoning not executed or checked in Lean."
+  },
+  "exact_declarations": [
+    {
+      "fully_qualified_name": "OAI.DepthThreeLowerBound.cnf_restriction_bound",
+      "source_ref": "lean/OAI/Computability/DepthThree/Restriction.lean:59-69",
+      "exact_source_header": "theorem cnf_restriction_bound (H : CNF V) (b k : ℕ) (hb : 1 ≤ b)\n    (hH : H.WidthAtMost k) (p : ℝ) (hp0 : 0 < p) (hp1 : p < 1)\n    (hθ : restrictionTheta k b p < 1) :\n    ∃ W : Restriction V → ℝ,\n      (∀ σ, 0 ≤ W σ) ∧\n      restrictionAvg p W ≤ 1 / (1 - restrictionTheta k b p) ∧\n      ∀ (σ : Restriction V) (G : Cube (Live σ) → ℝ),\n        |finiteAvg (fun x => G x * indicator (H.eval (fill σ x)))| ≤ W σ * corr b G := by",
+      "meaning": "Joint existence of one nonnegative W with E W <= 1/(1-theta) and the correlation bound for every restriction and every real-valued G.",
+      "source_level_assumptions": [
+        "{V : Type uDepth1} [Fintype V] from Restriction.lean:15",
+        "H : CNF V; b k : Nat; hb : 1 <= b",
+        "hH : H.WidthAtMost k",
+        "p : Real; hp0 : 0 < p; hp1 : p < 1",
+        "hθ : restrictionTheta k b p < 1"
+      ],
+      "direct_proof_dependencies": [
+        "cnfRestrictionCost",
+        "cnfRestrictionCost_nonneg",
+        "restrictionAvg_cnfRestrictionCost_le",
+        "cnf_restricted_correlation_le_cost"
+      ],
+      "verification": "Header and proof body inspected as text; not elaborated or kernel-checked in this audit."
+    },
+    {
+      "fully_qualified_name": "OAI.DepthThreeLowerBound.restrictionAvg_cnfRestrictionCost_le",
+      "source_ref": "lean/OAI/Computability/DepthThree/Restriction.lean:46-57",
+      "exact_source_header": "theorem restrictionAvg_cnfRestrictionCost_le (H : CNF V) (b k : ℕ)\n    (hH : H.WidthAtMost k) (p : ℝ) (hp0 : 0 < p) (hp1 : p < 1)\n    (hθ : restrictionTheta k b p < 1) :\n    restrictionAvg p (cnfRestrictionCost H b) ≤ 1 / (1 - restrictionTheta k b p) := by",
+      "meaning": "Exact public declaration of E W <= 1/(1-theta) for the explicit common witness.",
+      "source_level_assumptions": [
+        "{V : Type uDepth1} [Fintype V]",
+        "H : CNF V; b k : Nat; H.WidthAtMost k",
+        "p : Real; 0 < p; p < 1; restrictionTheta k b p < 1"
+      ],
+      "direct_proof_dependencies": [
+        "CNF.normalize_normalized",
+        "CNF.normalize_widthAtMost",
+        "cnfIndexFamily_normalized",
+        "cnfIndexFamily_width",
+        "restrictionTheta_eq_reverseTheta",
+        "restrictionAvg_restrictionCost_le"
+      ],
+      "verification": "Header and proof body inspected as text; not elaborated or kernel-checked in this audit."
+    },
+    {
+      "fully_qualified_name": "OAI.DepthThreeLowerBound.cnf_restricted_correlation_le_cost",
+      "source_ref": "lean/OAI/Computability/DepthThree/Restriction.lean:37-44",
+      "exact_source_header": "theorem cnf_restricted_correlation_le_cost (H : CNF V) (b : ℕ) (hb : 1 ≤ b)\n    (σ : Restriction V) (G : Cube (Live σ) → ℝ) :\n    |finiteAvg (fun x => G x * indicator (H.eval (fill σ x)))| ≤\n      cnfRestrictionCost H b σ * corr b G := by",
+      "meaning": "Exact public declaration of |E G H_restricted| <= W * corr_b(G), with G any real-valued function on the live cube.",
+      "source_level_assumptions": [
+        "{V : Type uDepth1} [Fintype V]",
+        "H : CNF V; b : Nat; 1 <= b",
+        "sigma : Restriction V; G : Cube (Live sigma) -> Real"
+      ],
+      "direct_proof_dependencies": [
+        "cnfIndexFamily_normalized",
+        "CNF.normalize_normalized",
+        "restricted_correlation_le_cost",
+        "indexedCNF_cnfIndexFamily_eval",
+        "CNF.eval_normalize"
+      ],
+      "verification": "Header and proof body inspected as text; not elaborated or kernel-checked in this audit."
+    },
+    {
+      "fully_qualified_name": "OAI.DepthThreeLowerBound.cnfRestrictionCost_nonneg",
+      "source_ref": "lean/OAI/Computability/DepthThree/Restriction.lean:33-35",
+      "exact_source_header": "theorem cnfRestrictionCost_nonneg (H : CNF V) (b : ℕ) (σ : Restriction V) :\n    0 ≤ cnfRestrictionCost H b σ :=",
+      "meaning": "Nonnegativity of the explicit witness for every restriction.",
+      "source_level_assumptions": [
+        "{V : Type uDepth1} [Fintype V]",
+        "H : CNF V; b : Nat; sigma : Restriction V"
+      ],
+      "direct_proof_dependencies": [
+        "restrictionCost_nonneg"
+      ],
+      "verification": "Header and proof body inspected as text; not elaborated or kernel-checked in this audit."
+    },
+    {
+      "fully_qualified_name": "OAI.DepthThreeLowerBound.restrictionAvg_restrictionCost_le",
+      "source_ref": "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean:163-175",
+      "exact_source_header": "theorem restrictionAvg_restrictionCost_le (C : I → Clause V) (p : ℝ)\n    (hp0 : 0 < p) (hp1 : p < 1) (b k : ℕ)\n    (hn : ∀ i, (C i).Normalized) (hwidth : ∀ i, (C i).scope.card ≤ k)\n    (hθ : reverseTheta (2 * p / (1 - p)) b k < 1) :\n    restrictionAvg p (fun σ => restrictionCost C b σ) ≤\n      (1 - reverseTheta (2 * p / (1 - p)) b k)⁻¹ := by",
+      "meaning": "Underlying indexed-family expected-cost estimate, with the same geometric reciprocal.",
+      "source_level_assumptions": [
+        "{V : Type uDepth1} {I : Type uDepth2} [Fintype V] [Fintype I]",
+        "C : I -> Clause V; b k : Nat; 0 < p < 1",
+        "Every C i is Normalized and its scope cardinality is <= k",
+        "reverseTheta (2*p/(1-p)) b k < 1"
+      ],
+      "direct_proof_dependencies": [
+        "restrictionAvg_restrictionCost_le_sum",
+        "reverseTheta_nonneg",
+        "geom_sum_Ico_le_of_lt_one"
+      ],
+      "verification": "Header and proof body inspected as text; not elaborated or kernel-checked in this audit."
+    },
+    {
+      "fully_qualified_name": "OAI.DepthThreeLowerBound.restricted_correlation_le_cost",
+      "source_ref": "lean/OAI/Computability/DepthThree/RestrictionCostCorrelation.lean:155-210",
+      "exact_source_header": "theorem restricted_correlation_le_cost (C : I → Clause V)\n    (b : ℕ) (hb : 1 ≤ b) (hn : ∀ i, (C i).Normalized)\n    (σ : Restriction V) (G : Cube (Live σ) → ℝ) :\n    |finiteAvg (fun x => G x * indicator ((indexedCNF C).eval (fill σ x)))| ≤\n      restrictionCost C b σ * corr b G := by",
+      "meaning": "Underlying indexed-family correlation estimate.",
+      "source_level_assumptions": [
+        "{V : Type uDepth1} {I : Type uDepth2} [Fintype V] [Fintype I]",
+        "C : I -> Clause V; b : Nat; 1 <= b; every C i is Normalized",
+        "sigma : Restriction V; G : Cube (Live sigma) -> Real"
+      ],
+      "direct_proof_dependencies": [
+        "indexedCNF_restriction_expansion",
+        "easyBaseCNF_widthAtMost",
+        "abs_corr_le",
+        "abs_corr_pathLayer_le",
+        "initial_and_live_path_cost_le",
+        "corr_nonneg"
+      ],
+      "verification": "Header and proof body inspected as text; not elaborated or kernel-checked in this audit."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "category": "target_contract_and_extra_premises",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "The public restriction theorem states both requested inequalities together.",
+      "verified_syntactic_facts": [
+        "cnf_restriction_bound has an existential W outside both the expectation conclusion and the universal quantification over restrictions and real-valued G.",
+        "The only source-level mathematical hypotheses are b >= 1, width(H) <= k, 0 < p < 1, and theta < 1; k is a natural number and V is any finite type.",
+        "The expectation-only helper does not require b >= 1. The correlation-only helper requires b >= 1 but neither p, k, nor a width bound on H.",
+        "The theorem does not take an expansion, expected-cost estimate, correlation estimate, clause-count bound, compatibility of all paths, or a special class of G as an input premise."
+      ],
+      "static_assessment": "These source contracts match manuscript Lemma restriction. A finite coordinate type generalizes [d]; it is not a strengthening of the mathematical premises. This is not a compilation result.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:14-33",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:15",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:37-69"
+      ]
+    },
+    {
+      "id": "F02",
+      "category": "witness_and_quantifier_order",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "The witness is an explicit finite path cost, not a repackaged desired bound.",
+      "verified_syntactic_facts": [
+        "cnfRestrictionCost H b sigma is restrictionCost (cnfIndexFamily H.normalize) b sigma.",
+        "restrictionCost sums pathCost over range(card(V)/(b+1)+1); pathCost sums compatible path weights and assigns zero to incompatible paths.",
+        "pathWeight is the product of reciprocals of pathCoveredCount at nonempty prefixes, evaluated at pathCenter; pathCost_zero states that the empty layer equals 1.",
+        "The witness definition has parameters H, b, sigma, but no G, p, k, or proof of the target inequalities. The public theorem explicitly supplies this witness.",
+        "pathCenter chooses a satisfying live assignment when compatibility holds; support and constancy on the relevant cylinder are separately established in source."
+      ],
+      "static_assessment": "This is the W_j/omega construction in the manuscript, with fixed b suppressed in the prose notation W(H,T,rho). Classical choice is confined to a representative of the compatible cylinder; the source invariance lemmas address dependence on its arbitrary free coordinates.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:147-153",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:197-211",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:30-35",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:67-69",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:18-43",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:45-92",
+        "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean:17-50"
+      ]
+    },
+    {
+      "id": "F03",
+      "category": "formula_definitions_and_vacuity",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "CNF, width, and normalization are substantive Boolean definitions.",
+      "verified_syntactic_facts": [
+        "Cube V is V -> Bool, and a literal (v,b) evaluates by equality of x(v) with b.",
+        "Clause V is a finset of literals with OR semantics. CNF V is a list of clauses with AND semantics.",
+        "A clause scope is its literal-variable image; width is the cardinality of that scope. WidthAtMost quantifies this bound over the clauses in the list.",
+        "Clause.Normalized forbids a variable occurring with both polarities. It is not defined as True or as a desired correlation/expectation conclusion.",
+        "indicator maps false/true to 0/1, whereas sign is a separate -1/+1 definition. The target theorems use indicator, not sign.",
+        "The empty clause evaluates false and the empty CNF evaluates true, exactly as recorded by separate source theorems."
+      ],
+      "static_assessment": "No weakened Boolean semantics or vacuous width predicate was found in the inspected definitions. The universal width predicate is intentionally vacuous for the empty CNF, which the prose explicitly permits.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/01_preliminaries.tex:6-17",
+        "lean/OAI/Computability/DepthThree/Model.lean:9-16",
+        "lean/OAI/Computability/DepthThree/Core.lean:9-10",
+        "lean/OAI/Computability/DepthThree/Core.lean:34-60",
+        "lean/OAI/Computability/DepthThree/Core.lean:105-119",
+        "lean/OAI/Computability/DepthThree/Core.lean:150-165"
+      ]
+    },
+    {
+      "id": "F04",
+      "category": "correlation_definition",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "corr is the maximum over genuine width-b CNF indicators, with no clause-count cap.",
+      "verified_syntactic_facts": [
+        "narrowTests filters all Boolean truth tables by existence of a CNF H with H.WidthAtMost b and H.eval equal to the truth table.",
+        "corr is Finset.sup' of absolute finiteAvg(G * indicator J) over this nonempty finite set.",
+        "Both constant truth tables are explicitly shown to belong to narrowTests; corr_attained provides a CNF attaining the maximum.",
+        "The CNF representation is a finite list of unrestricted length, and G has type Cube V -> Real without further restrictions."
+      ],
+      "static_assessment": "Taking a maximum over representable truth tables instead of syntactic formulas removes duplicate representations without changing the intended test functions. The test class is neither empty nor broadened to arbitrary predicates by definition.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/01_preliminaries.tex:19-29",
+        "lean/OAI/Computability/DepthThree/RestrictionCorrelation.lean:18-62",
+        "lean/OAI/Computability/DepthThree/RestrictionCorrelation.lean:71-86",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:37-40"
+      ]
+    },
+    {
+      "id": "F05",
+      "category": "restriction_and_probability_definitions",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "The sampling and evaluation definitions match the two-stage random restriction.",
+      "verified_syntactic_facts": [
+        "Restriction V is V -> Option Bool; none denotes a live coordinate and some b fixes it. fill uses the live assignment exactly at none coordinates.",
+        "finiteAvg is inverse cardinality times the finite sum, not an unnormalized sum.",
+        "restrictionCoordinateWeight assigns p to none and (1-p)/2 to each fixed bit. restrictionWeight multiplies the coordinate weights; restrictionAvg sums weighted values over every restriction.",
+        "Nonnegativity on 0 <= p <= 1 and total mass 1 have explicit source proofs.",
+        "restrictCNF_eval identifies the restricted formula evaluation with H.eval(fill sigma z). The public theorem uses the latter expression.",
+        "restrictionAvg_fill_coupling, restrictionAvg_fill_reweight, and restrictionAvg_mask_sampler derive the coupling to a uniform full assignment and a Bernoulli live set."
+      ],
+      "static_assessment": "No factor of 2, missing normalization, live/fixed reversal, or hidden independence premise was found. The coupling is proved from the weights, rather than assumed as an extra hypothesis.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/01_preliminaries.tex:31-46",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:214-233",
+        "lean/OAI/Computability/DepthThree/FiniteProbability.lean:19-34",
+        "lean/OAI/Computability/DepthThree/FiniteProbability.lean:135-171",
+        "lean/OAI/Computability/DepthThree/RestrictionClause.lean:140-156",
+        "lean/OAI/Computability/DepthThree/RestrictionProbability.lean:16-28",
+        "lean/OAI/Computability/DepthThree/RestrictionProbability.lean:110-112",
+        "lean/OAI/Computability/DepthThree/RestrictionProbability.lean:138-170",
+        "lean/OAI/Computability/DepthThree/RestrictionProbability.lean:208-231"
+      ]
+    },
+    {
+      "id": "F06",
+      "category": "normalization_multiplicity_and_constants",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "Internal normalization assumptions are discharged, and repeated clause objects are preserved.",
+      "verified_syntactic_facts": [
+        "The indexed correlation and expected-cost theorems require normalized clauses, but the public wrappers prove that property for H.normalize.",
+        "CNF.normalize is a list filter retaining normalized clauses; eval_normalize and normalize_widthAtMost have proof bodies.",
+        "cnfIndexFamily indexes the resulting list by Fin H.length and H.get. It does not deduplicate equal clauses.",
+        "Counts and path choices use clause indices. indexedCNF maps the list of all indices to clauses, rather than turning the clauses themselves into a finset.",
+        "Reduced clause objects have type Option Clause: none evaluates true and some empty-clause evaluates false. The indexed marker sample is selected before residualCNF removes none entries.",
+        "pathMarkerBad_card explicitly links the bad reduced-clause count to intermediateCount on original indices."
+      ],
+      "static_assessment": "No extra public normalization premise or loss of multiplicity was found. Explicit true gate constants are not part of Core.Clause; RawClause.normalize supplies the circuit-to-literal-clause conversion, and true reduced clauses retain their index until after sampling.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:37-42",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:154-179",
+        "lean/OAI/Computability/DepthThree/RestrictionNormalization.lean:14-23",
+        "lean/OAI/Computability/DepthThree/RestrictionNormalization.lean:85-114",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:41-57",
+        "lean/OAI/Computability/DepthThree/RestrictionEasyBase.lean:16-26",
+        "lean/OAI/Computability/DepthThree/RestrictionEasyBase.lean:127-152",
+        "lean/OAI/Computability/DepthThree/RestrictionClause.lean:57-66",
+        "lean/OAI/Computability/DepthThree/RestrictionClause.lean:116-132",
+        "lean/OAI/Computability/DepthThree/RestrictionMarkerCNF.lean:34-45",
+        "lean/OAI/Computability/DepthThree/RestrictionPathMixture.lean:91-120",
+        "lean/OAI/Computability/DepthThree/CircuitNormalization.lean:14-20",
+        "lean/OAI/Computability/DepthThree/CircuitNormalization.lean:50-82"
+      ]
+    },
+    {
+      "id": "F07",
+      "category": "path_definitions_and_denominators",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "Hardness, finite path growth, and denominator positivity are derived rather than postulated.",
+      "verified_syntactic_facts": [
+        "residual(scope,T,U,i) is scope(i) intersect (T minus U); hardIndices tests b < residual.card and does not depend on the assignment.",
+        "paths starts from the singleton empty path and appends every currently hard index. revealed is the union of selected live scopes.",
+        "nodup_of_mem_paths, mul_le_revealed_card, and paths_horizon_eq_empty establish distinct selected indices and the live-set length horizon.",
+        "easyCount counts violated indices with residual width <= b; coveredCount counts violated indices with empty residual scope.",
+        "length_le_coveredCount_of_support, coveredCount_le_easyCount, and pathDenominator_pos_of_support prove the positive-denominator claims on numerator support.",
+        "pathCoveredCount_pos supplies positive marker counts for compatible actual paths. No positivity assumption is added to the public restriction theorem."
+      ],
+      "static_assessment": "The definitions match a_U, c_U, and the indexed paths in the prose. Real division/inverse are totalized outside support, but zero-numerator cases are explicitly handled and support positivity is established before cancellations.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:46-91",
+        "lean/OAI/Computability/DepthThree/RestrictionPaths.lean:18-22",
+        "lean/OAI/Computability/DepthThree/RestrictionPaths.lean:86-103",
+        "lean/OAI/Computability/DepthThree/RestrictionPaths.lean:176-224",
+        "lean/OAI/Computability/DepthThree/RestrictionExpansion.lean:24-53",
+        "lean/OAI/Computability/DepthThree/RestrictionExpansion.lean:103-167",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:104-122",
+        "lean/OAI/Computability/DepthThree/RestrictionPathProducts.lean:55-67"
+      ]
+    },
+    {
+      "id": "F08",
+      "category": "correlation_proof_chain_and_circularity",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "The correlation proof builds the finite expansion and mixtures, not an assumed decomposition.",
+      "verified_syntactic_facts": [
+        "finite_violation_expansion splits the easy-count/total-count zero cases and otherwise invokes the residual identity and finite alternating telescoping with the empty path horizon.",
+        "The q != 0 and easyCount = 0 hypotheses of residual helper lemmas are discharged in those branches; they are not premises of finite_violation_expansion or the public theorem.",
+        "easyBaseCNF_widthAtMost and easyBaseCNF_eval_indicator connect K to the initially easy clauses.",
+        "marker_mixture_ratio is derived using permutation_first_ratio. marker_product_mixture_ratio derives the independent product formula via finiteAvg_pi_prod.",
+        "pathMixture_scaled_average derives the path-term identity using positive pathCoveredCount; pathMixtureCNF_widthAtMost uses b >= 1 for cylinder unit clauses.",
+        "restricted_correlation_le_cost applies indexedCNF_restriction_expansion, the path-layer estimates, and triangle inequalities to the same restrictionCost witness."
+      ],
+      "static_assessment": "The source follows the manuscript proof route. No input assumption equivalent to the desired correlation bound or signed expansion was identified. The reduced clauses live on the ambient Live sigma type, but are formed by keeping only T minus U_final; the cylinder supplies the prescribed U_final bits.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:93-131",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:168-211",
+        "lean/OAI/Computability/DepthThree/RestrictionExpansion.lean:192-267",
+        "lean/OAI/Computability/DepthThree/RestrictionExpansion.lean:269-330",
+        "lean/OAI/Computability/DepthThree/RestrictionEasyBase.lean:59-125",
+        "lean/OAI/Computability/DepthThree/MarkerPermutation.lean:108-152",
+        "lean/OAI/Computability/DepthThree/MarkerMixture.lean:114-133",
+        "lean/OAI/Computability/DepthThree/MarkerMixture.lean:147-161",
+        "lean/OAI/Computability/DepthThree/RestrictionPathMixture.lean:24-44",
+        "lean/OAI/Computability/DepthThree/RestrictionPathMixture.lean:122-172",
+        "lean/OAI/Computability/DepthThree/RestrictionCostCorrelation.lean:124-210"
+      ]
+    },
+    {
+      "id": "F09",
+      "category": "expectation_proof_chain_and_reverse_counting",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "The reverse-counting estimate uses the intended eligible-index normalization and explicit encoding.",
+      "verified_syntactic_facts": [
+        "reverseEligible is exactly the violated indices with scope disjoint from R; reverseBlocks consists of subsets of a clause scope with cardinality > b.",
+        "reverseChoiceWeight is alpha^|D| divided by the number of eligible indices, not multiplied by the total clause count.",
+        "reverseTotal has base value 1 and the stated averaged recurrence, with an explicit zero branch when no eligible index exists.",
+        "reverseBlockMass_eq_theta and reverseBlockMass_le_theta derive the one-clause binomial mass estimate; reverseTotal_le_theta_pow proves the iterated estimate by induction.",
+        "encodePathPair_injective reconstructs both T and the indexed path. reverseEncode_mem and encode_supported_mem place actual supported paths into reverse traces.",
+        "coveredCount_eq_reverseEligible identifies the denominators, and reverseEncode_weight establishes the Bernoulli/cylinder weight conversion.",
+        "weighted_supported_paths_le uses the injection, nonnegative overcounting, reverseTotal_le_theta_pow, and sum_bernoulliWeight.",
+        "restrictionAvg_pathCost_reweight is proved through the cylinder probability and fill coupling; restrictionAvg_pathCost_le then instantiates the reverse estimate with actual clause scopes and violations."
+      ],
+      "static_assessment": "No assumption of independent compatibility/counts, no assumed injectivity, and no hidden N-bound was found on this source chain. The arbitrary Boolean violation argument in the combinatorial reverse lemma is a generalization; the expected-cost theorem instantiates it as actual CNF clause violations.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:214-251",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:268-337",
+        "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean:21-49",
+        "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean:70-86",
+        "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean:106-187",
+        "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean:247-285",
+        "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean:34-53",
+        "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean:173-202",
+        "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean:224-245",
+        "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean:296-318",
+        "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean:321-418",
+        "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean:52-145"
+      ]
+    },
+    {
+      "id": "F10",
+      "category": "theta_and_geometric_bound",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "Theta and the final geometric estimate have the manuscript parameters and range.",
+      "verified_syntactic_facts": [
+        "restrictionTheta k b p sums choose(k,l) * (2*p/(1-p))^l over the inclusive interval b+1 through k.",
+        "restrictionTheta_eq_reverseTheta converts that interval to the filtered reverseTheta range; the factor 2 and the strict b < l cutoff are unchanged.",
+        "restrictionAvg_restrictionCost_le_sum sums the layer estimates from j=0 through floor(card(V)/(b+1)).",
+        "restrictionAvg_restrictionCost_le obtains nonnegativity of alpha/theta from 0 < p < 1 and applies geom_sum_Ico_le_of_lt_one with theta < 1.",
+        "The public expectation wrapper rewrites inverse(1-theta) as 1/(1-theta), rather than replacing theta by a different parameter or an unexplained constant."
+      ],
+      "static_assessment": "No off-by-one or parameter mismatch was found. The expected-cost helper is slightly more general in permitting b=0; the joint theorem still requires b>=1 as in the manuscript.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:19-33",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:197-204",
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:332-341",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:17-28",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:46-69",
+        "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean:147-175"
+      ]
+    },
+    {
+      "id": "F11",
+      "category": "empty_cases_and_vacuity",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "Empty cases are explicit; no empty-domain premise makes the main contracts vacuous.",
+      "verified_syntactic_facts": [
+        "The public declarations assume Fintype V, not IsEmpty V, Nonempty V, satisfiability of H, or a nonempty clause family.",
+        "The empty path is compatible, its weight is 1, and pathCost at layer zero is 1.",
+        "narrowTests contains true and false even when a CNF has no clauses or a false clause.",
+        "finiteAvg_const requires Nonempty of its averaging domain; the relevant target domains are Boolean cubes and permutation samples, not the potentially empty clause-index type itself.",
+        "The reverse recurrence handles empty eligible sets by zero rather than requiring them to be nonempty globally."
+      ],
+      "static_assessment": "No vacuity mechanism was observed. Boolean cubes admit a constant assignment and permutation types admit identity, including when their underlying coordinate/index type is empty. This domain-inhabitation observation is a manual semantic check, not an executed Lean test.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:339-341",
+        "lean/OAI/Computability/DepthThree/Model.lean:9",
+        "lean/OAI/Computability/DepthThree/FiniteProbability.lean:33-34",
+        "lean/OAI/Computability/DepthThree/FiniteProbability.lean:92-96",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:15",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:59-69",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:36-43",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:87-92",
+        "lean/OAI/Computability/DepthThree/RestrictionCorrelation.lean:31-48",
+        "lean/OAI/Computability/DepthThree/RestrictionPathMixture.lean:122-125",
+        "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean:178-187"
+      ]
+    },
+    {
+      "id": "F12",
+      "category": "model_and_circuit_boundary",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "The neighboring circuit model does not substitute a vacuous computation predicate.",
+      "verified_syntactic_facts": [
+        "Circuit3 has finite bottom/middle gate counts and finite index sets of connections. RawClause is a list of literal-or-Boolean-constant inputs.",
+        "RawClause.eval is OR, middleEval is AND over its selected bottom gates, and Circuit3.eval is OR over its selected middle gates.",
+        "Circuit3.Computes is pointwise equality for every Boolean input, not True.",
+        "Circuit substitution has source evaluation-preservation proofs, and CircuitNormalization.eval_middleCNF links a middle gate to an ordinary CNF.",
+        "Neither Circuit3.Computes nor a circuit lower-bound predicate is a premise of the restriction theorem. Circuit.lean is not in the Restriction.lean local import closure; it was reviewed as an adjacent requested model file."
+      ],
+      "static_assessment": "The inspected model definitions provide conventional OR-AND-OR and CNF semantics. This finding does not audit the later circuit lower bound, language, algorithm, or complexity-theoretic consequences.",
+      "source_refs": [
+        "lean/OAI/Computability/DepthThree/Model.lean:20-59",
+        "lean/OAI/Computability/DepthThree/Circuit.lean:13-30",
+        "lean/OAI/Computability/DepthThree/Circuit.lean:59-68",
+        "lean/OAI/Computability/DepthThree/Circuit.lean:83-110",
+        "lean/OAI/Computability/DepthThree/CircuitNormalization.lean:88-99",
+        "lean/OAI/Computability/DepthThree/CircuitNormalization.lean:112-136",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:59-69"
+      ]
+    },
+    {
+      "id": "F13",
+      "category": "circularity_and_trust_boundary",
+      "classification": "verified_syntactic_facts_with_static_assessment",
+      "severity": "informational",
+      "title": "No local shortcut markers or circular source-import route were found; kernel trust remains unverified.",
+      "verified_syntactic_facts": [
+        "The recursively followed OAI import closure of Restriction.lean consists of 26 available local modules and has no source-import cycle.",
+        "The two top-level bound wrappers invoke lower-level proof declarations; W, corr, counts, paths, and theta are defined without the target inequalities as input data.",
+        "A lexical scan of all 179 DepthThree Lean files (25007 lines at this snapshot) found zero occurrences of the recorded axiom/placeholder/unsafe/native/custom-elaboration/notation-override markers.",
+        "The inspected sources do use noncomputable sections, Classical.choose, ordinary decide, and proof tactics. Those occurrences are not themselves custom axioms or an observed native-proof bypass.",
+        "The package sets autoImplicit to false. A separate unsafe occurrence at lakefile.lean:269 evaluates Dependency configuration declarations inside a run_cmd block; it is not a body of a restriction theorem or an import of the target source modules."
+      ],
+      "static_assessment": "No concrete circular conclusion-assumption, local custom axiom, sorry/admit, or unsafe proof path was identified. Import acyclicity and lexical scans are not a transitive axiom audit, and noncomputable/classical proof code is not a guarantee of elaboration or correctness.",
+      "source_refs": [
+        "lean/OAI/Computability/DepthThree/Restriction.lean:1-3",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:30-69",
+        "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean:1-3",
+        "lean/OAI/Computability/DepthThree/RestrictionCostCorrelation.lean:1-4",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:18-34",
+        "lean/OAI/Computability/DepthThree/Model.lean:1",
+        "lean/lakefile.lean:5-8",
+        "lean/lakefile.lean:262-277"
+      ]
+    }
+  ],
+  "concerns": [
+    {
+      "id": "C01",
+      "classification": "unverified_validation_boundary_not_a_confirmed_defect",
+      "severity": "validation_limit",
+      "title": "Proof-bearing source is not evidence that this checkout elaborates.",
+      "details": "No Lean executable, Lake command, build, generated theorem-signature query, or proof-term/kernel check was run, per the requested division of work. The headers and bodies cited here may still contain elaboration failures or version-sensitive tactic issues. This report does not assert that any target theorem has successfully compiled.",
+      "source_refs": [
+        "lean/OAI/Computability/DepthThree/Restriction.lean:37-69",
+        "lean/lean-toolchain:1"
+      ],
+      "follow_up": "The build owner should check these exact source declarations against the pinned toolchain and associate successful output with the source hashes in this report."
+    },
+    {
+      "id": "C02",
+      "classification": "unverified_validation_boundary_not_a_confirmed_defect",
+      "severity": "validation_limit",
+      "title": "The transitive external axiom/dependency closure was not established.",
+      "details": "Model.lean imports the broad Mathlib module; the local closure also imports Mathlib tactics and lemmas. The manifest pins mathlib, but the configured lean/.lake/packages/mathlib checkout was absent when inspected. No packages were fetched, no external source/binary closure was audited, and no #print axioms result was obtained. The local zero-hit scan must not be reported as proof that the compiled declarations depend only on standard foundational axioms.",
+      "source_refs": [
+        "lean/OAI/Computability/DepthThree/Model.lean:1",
+        "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean:3",
+        "lean/lakefile.lean:85-86",
+        "lean/lake-manifest.json:1-13",
+        "lean/lakefile.lean:262-277"
+      ],
+      "follow_up": "In the build owner's environment, inspect #print axioms for cnf_restriction_bound and both separate public inequalities, investigate every nonstandard axiom (including any sorry/native reduction axiom), and verify that loaded artifacts correspond to the pinned dependencies and audited sources. Nothing in this audit demonstrates that such an axiom is actually present."
+    }
+  ],
+  "unverified_reasoning": [
+    {
+      "id": "R01",
+      "classification": "manual_source_derived_reasoning_not_executed_in_Lean",
+      "claim": "The parameter assumptions admit a genuinely hard-path case, not only the easy regime.",
+      "reasoning": "Take two Boolean coordinates, one clause consisting of the two positive literals, b=1, k=2, and p=1/10. The displayed theta is (2/9)^2=4/81<1. At the all-live restriction the single clause is hard and can be violated by setting both bits false, so a compatible nonempty path exists. This is a hand check illustrating nonvacuity; it was not used as a proof or test of the general theorem.",
+      "source_refs": [
+        "lean/OAI/Computability/DepthThree/Restriction.lean:17-18",
+        "lean/OAI/Computability/DepthThree/RestrictionPaths.lean:86-103",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:18-19",
+        "lean/OAI/Computability/DepthThree/Model.lean:16"
+      ]
+    },
+    {
+      "id": "R02",
+      "classification": "manual_source_derived_reasoning_not_executed_in_Lean",
+      "claim": "The manuscript corner case k<=b is consistent with the definitions even without a separate named corner-case theorem in the inspected target files.",
+      "reasoning": "Under H.WidthAtMost k and k<=b, a residual scope cannot be larger than its original scope, so no initial hard index exists. Only the empty path contributes, giving W=1; the interval b+1 through k is empty and theta=0. This consequence was reasoned from the definitions, not kernel-verified here.",
+      "source_refs": [
+        "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex:339-341",
+        "lean/OAI/Computability/DepthThree/Restriction.lean:17-18",
+        "lean/OAI/Computability/DepthThree/RestrictionPaths.lean:21-22",
+        "lean/OAI/Computability/DepthThree/RestrictionPaths.lean:86-103",
+        "lean/OAI/Computability/DepthThree/RestrictionPathData.lean:64-92",
+        "lean/OAI/Computability/DepthThree/RestrictionNormalization.lean:98-101"
+      ]
+    }
+  ],
+  "source_snapshot": {
+    "git_head": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+    "reviewed_source_diff_from_head_at_write": [],
+    "toolchain_from_file": "leanprover/lean4:v4.34.1",
+    "mathlib_manifest_revision": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "configured_mathlib_checkout_present_when_inspected": false,
+    "source_inventory": [
+      {
+        "path": "lean/OAI/Computability/DepthThree/Circuit.lean",
+        "line_count": 116,
+        "sha256": "d30faf30b152cdfd5befd6d32b997cb1b4577f59376b6b39df1e33c51a61efb6",
+        "review_role": "additional requested semantics or context; source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/CircuitNormalization.lean",
+        "line_count": 142,
+        "sha256": "b7788a30500f98a2b7fcbdfe3bc06d5e632deb3f9ed63cdbdb2de4d4d84ba2e6",
+        "review_role": "additional requested semantics or context; source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/Core.lean",
+        "line_count": 170,
+        "sha256": "f890618a13d63eb3d877d3f1cb82dd9f95e9bcddaf7fcf6c694a309ed5c9c71c",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/CylinderProbability.lean",
+        "line_count": 56,
+        "sha256": "c54d4fc18cc3510ebcb3baed2e806f1d4fa2aaa41b66972662534c5a6ddccfa4",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/FiniteProbability.lean",
+        "line_count": 211,
+        "sha256": "18a4c0688c6c4054275edf2c6f5529ab7869d12316d85a75964e29df2d3e1d74",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/MarkerMixture.lean",
+        "line_count": 167,
+        "sha256": "77108730a393c87588ecce7cd00a9e7921230227d288e624d4ddc11ad17ef4c6",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/MarkerPermutation.lean",
+        "line_count": 158,
+        "sha256": "5de43017d57c1f809f8314895f25ef164e6f779912c6bb598ea4055b57709084",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/Model.lean",
+        "line_count": 135,
+        "sha256": "fad164c05abdada63efb6b3c5b310a2b141568e0727dd9bcaf0df94ccaa4ce07",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/Restriction.lean",
+        "line_count": 85,
+        "sha256": "d2325932dc29ba796f336b0d34d676ae352883da37572c3eafeac8a87e217bc8",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionClause.lean",
+        "line_count": 174,
+        "sha256": "8ec0a314eecf64f87e833156b361328f51f7c63aa18ada08339e99748f30448d",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionCorrelation.lean",
+        "line_count": 168,
+        "sha256": "e8c02357d0480ae638ea1e9528daf4060d016db71791f0fc5bfaf03fb4c80232",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionCostCorrelation.lean",
+        "line_count": 216,
+        "sha256": "16168339a83f8a880086fa264250e5cf764350e63320afd69f5e30778bf9aea1",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionCountSplit.lean",
+        "line_count": 87,
+        "sha256": "91e160737bc64196b6cf18e4e058025739607f8d286fbf66f8f5963c6f6a9e79",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionCylinders.lean",
+        "line_count": 179,
+        "sha256": "6b5cfb57f3439292e22e8b3f57c579c4df4449841b3bf10dd5248b2925d33a1c",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionEasyBase.lean",
+        "line_count": 158,
+        "sha256": "942ca535038730783366e321f1c5b7be60979aad9e3c7bea53ef7626cc47bfe1",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionExpansion.lean",
+        "line_count": 336,
+        "sha256": "a2fb55a88635881ae6a6ff7a3a716b73d86ecd4fcb0dbc880f44fbec375070a6",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean",
+        "line_count": 181,
+        "sha256": "157a80a4ee7edad3dda4538f2d2b26453604cf3490f0594a01743b1593c64fb5",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionKeepClause.lean",
+        "line_count": 122,
+        "sha256": "de4e65e0850710dec5d1e3c0b2f4611ecae0b21b28c35aeeb0d755d9a2a1e601",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionMarkerCNF.lean",
+        "line_count": 197,
+        "sha256": "f0d0ecd87657c41a4fb22393158e03e47f0899e350f69c7e9bce7f1b17a55e43",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionNormalization.lean",
+        "line_count": 120,
+        "sha256": "6e396fe2a94810144085bdf29f7068a698b21f85b3174e38b9a1204270eb1166",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionPathData.lean",
+        "line_count": 192,
+        "sha256": "59fa61db4165f81da7f961fb4a57633fc9ec4fe0d01a5c7626c0693982b41b9c",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionPathMixture.lean",
+        "line_count": 178,
+        "sha256": "0e2eae7b8e21de03773019679d6f716489b042dedc063c3296a71edefe218914",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionPathProducts.lean",
+        "line_count": 73,
+        "sha256": "9659c19b12f592a4e6ac3e5ceda9d47e298723d6d91c39828d8607e72ac30571",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionPaths.lean",
+        "line_count": 250,
+        "sha256": "1d3391557030499ebae657e212f6f573808906b0099017ee7ed53b0079ae19fb",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionProbability.lean",
+        "line_count": 237,
+        "sha256": "f564c5d39dd83f1687bf0cb221ed96d9dfacb13ed5221dd641903c6235118f0c",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/RestrictionTails.lean",
+        "line_count": 176,
+        "sha256": "22a1919dc3bab2c380a7ce2ba1df0f0b5422e45163e7344cbaad8ed90910a95a",
+        "review_role": "adjacent Restriction source read; not on target proof import path"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean",
+        "line_count": 424,
+        "sha256": "e4384a0912600697ae0f8fa99475dbd1ade6459f8f739f46531ae6b07eef8f0b",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean",
+        "line_count": 291,
+        "sha256": "d76e3e485372cd075d3ce6fd37c5f2bd102a52471432f0a2dd75b229dc17d432",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/OAI/Computability/DepthThree/ReversePathWeights.lean",
+        "line_count": 69,
+        "sha256": "fd0507b79925c0a824524646521a9630bbb7ef47f830be462fd186ea3f785a98",
+        "review_role": "local restriction import closure; full source read"
+      },
+      {
+        "path": "lean/docs/112.md",
+        "line_count": 15,
+        "sha256": "d1ce736cf05a87fab1354a91bd22b8ae11233d6c4f37c417c6c8ca41d6f4dda7",
+        "review_role": "additional requested semantics or context; source read"
+      },
+      {
+        "path": "lean/lake-manifest.json",
+        "line_count": 426,
+        "sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+        "review_role": "selected configuration/pin lines and lexical scan only"
+      },
+      {
+        "path": "lean/lakefile.lean",
+        "line_count": 335,
+        "sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74",
+        "review_role": "selected configuration/pin lines and lexical scan only"
+      },
+      {
+        "path": "lean/lean-toolchain",
+        "line_count": 1,
+        "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+        "review_role": "additional requested semantics or context; source read"
+      },
+      {
+        "path": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/01_preliminaries.tex",
+        "line_count": 46,
+        "sha256": "ba4873ff7849a4a45704d8290824bd8cc5406b8d88cb474a3cc64062c5a824ee",
+        "review_role": "additional requested semantics or context; source read"
+      },
+      {
+        "path": "preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/build/latex/sections/02_restriction.tex",
+        "line_count": 342,
+        "sha256": "b0c71091e2b4bd3d81413cf80484d84ec5cfd93a61469308e85c4eee762eeacc",
+        "review_role": "additional requested semantics or context; source read"
+      }
+    ]
+  },
+  "static_scans": {
+    "lexical": {
+      "scope": "lean/OAI/Computability/DepthThree/**/*.lean",
+      "file_count": 179,
+      "line_count": 25007,
+      "regex": "\\b(?:axiom|axioms|sorry|admit|sorryAx|mkSorry|mkSyntheticSorry|unsafe|native_decide|ofReduceBool|ofReduceNat|implemented_by|extern|trustCompiler|run_tac|run_meta|run_cmd|elab_rules|macro_rules|addDecl|addAndCompile|evalConstCheck|set_option|initialize|builtin_initialize|macro|elab|syntax|notation|infix|infixl|infixr|opaque)\\b|\\bLean\\.ofReduce\\w*\\b",
+      "hits": [],
+      "scope_digest_sha256": "5b68f572e8a7e7fc19cd510c99de6e0d5919880d114921a07c4e4a202ef6c6eb",
+      "scope_digest_recipe": "SHA256 of UTF-8, newline-joined, sorted relative-path + NUL + file-SHA256 entries for all files in the lexical scope.",
+      "limit": "A source-token search is not Lean parsing or theorem dependency/axiom extraction. The wider 179-file scan is not a semantic audit of all 179 files."
+    },
+    "local_import_closure": {
+      "root_module": "OAI.Computability.DepthThree.Restriction",
+      "module_count": 26,
+      "cycles": [],
+      "missing_local_modules": [],
+      "edges": [
+        {
+          "module": "OAI.Computability.DepthThree.Core",
+          "local_imports": [
+            "OAI.Computability.DepthThree.Model"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.CylinderProbability",
+          "local_imports": [
+            "OAI.Computability.DepthThree.FiniteProbability"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.FiniteProbability",
+          "local_imports": [
+            "OAI.Computability.DepthThree.Core"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.MarkerMixture",
+          "local_imports": [
+            "OAI.Computability.DepthThree.MarkerPermutation",
+            "OAI.Computability.DepthThree.FiniteProbability",
+            "OAI.Computability.DepthThree.Core"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.MarkerPermutation",
+          "local_imports": []
+        },
+        {
+          "module": "OAI.Computability.DepthThree.Model",
+          "local_imports": []
+        },
+        {
+          "module": "OAI.Computability.DepthThree.Restriction",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionCostCorrelation",
+            "OAI.Computability.DepthThree.RestrictionExpectedCost"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionClause",
+          "local_imports": [
+            "OAI.Computability.DepthThree.FiniteProbability",
+            "OAI.Computability.DepthThree.RestrictionNormalization"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionCorrelation",
+          "local_imports": [
+            "OAI.Computability.DepthThree.Core",
+            "OAI.Computability.DepthThree.FiniteProbability"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionCostCorrelation",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionPathProducts",
+            "OAI.Computability.DepthThree.RestrictionPathMixture",
+            "OAI.Computability.DepthThree.RestrictionEasyBase",
+            "OAI.Computability.DepthThree.RestrictionCorrelation"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionCountSplit",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionExpansion"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionCylinders",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionClause",
+            "OAI.Computability.DepthThree.RestrictionExpansion"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionEasyBase",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionPathData",
+            "OAI.Computability.DepthThree.RestrictionMarkerCNF"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionExpansion",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionPaths"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionExpectedCost",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionPathData",
+            "OAI.Computability.DepthThree.ReversePathEncoding"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionKeepClause",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionClause"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionMarkerCNF",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionCylinders",
+            "OAI.Computability.DepthThree.MarkerMixture"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionNormalization",
+          "local_imports": [
+            "OAI.Computability.DepthThree.Core"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionPathData",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionCylinders",
+            "OAI.Computability.DepthThree.RestrictionKeepClause",
+            "OAI.Computability.DepthThree.RestrictionProbability",
+            "OAI.Computability.DepthThree.CylinderProbability"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionPathMixture",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionPathData",
+            "OAI.Computability.DepthThree.RestrictionCountSplit",
+            "OAI.Computability.DepthThree.RestrictionMarkerCNF"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionPathProducts",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionExpansion"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionPaths",
+          "local_imports": []
+        },
+        {
+          "module": "OAI.Computability.DepthThree.RestrictionProbability",
+          "local_imports": [
+            "OAI.Computability.DepthThree.FiniteProbability",
+            "OAI.Computability.DepthThree.ReversePathWeights"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.ReversePathEncoding",
+          "local_imports": [
+            "OAI.Computability.DepthThree.RestrictionExpansion",
+            "OAI.Computability.DepthThree.ReversePathRecurrence",
+            "OAI.Computability.DepthThree.ReversePathWeights"
+          ]
+        },
+        {
+          "module": "OAI.Computability.DepthThree.ReversePathRecurrence",
+          "local_imports": []
+        },
+        {
+          "module": "OAI.Computability.DepthThree.ReversePathWeights",
+          "local_imports": []
+        }
+      ],
+      "external_imports_not_recursively_audited": [
+        "Mathlib",
+        "Mathlib.Algebra.BigOperators.Field",
+        "Mathlib.Algebra.BigOperators.Fin",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Powerset",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+        "Mathlib.Algebra.BigOperators.GroupWithZero.Finset",
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.Field.GeomSum",
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Data.Bool.Basic",
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Finset.Lattice.Fold",
+        "Mathlib.Data.Finset.Lattice.Lemmas",
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Data.Finset.Union",
+        "Mathlib.Data.Fintype.Basic",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Data.Fintype.Option",
+        "Mathlib.Data.Fintype.Perm",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.List.Basic",
+        "Mathlib.Data.List.Induction",
+        "Mathlib.Data.List.Nodup",
+        "Mathlib.Tactic.Convert",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Tactic.SplitIfs",
+        "Mathlib.Tactic.Tauto"
+      ],
+      "limit": "Source import graph only; no loaded environment, compiled dependencies, or proof-term graph was queried."
+    },
+    "configuration_occurrence_outside_proof_modules": {
+      "source_ref": "lean/lakefile.lean:262-277",
+      "exact_line": "unsafe env.evalConstCheck Dependency options ``Dependency name",
+      "classification": "tooling_level_unsafe_not_an_observed_restriction_proof_shortcut",
+      "note": "Inspected as configuration source only and not executed."
+    }
+  }
+}

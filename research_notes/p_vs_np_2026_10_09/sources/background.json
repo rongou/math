@@ -1,0 +1,11 @@
+{
+  "id": "S3",
+  "title": "The P versus NP Problem",
+  "author": "Stephen Cook",
+  "publisher": "Clay Mathematics Institute",
+  "url": "https://www.claymath.org/wp-content/uploads/2022/06/pvsnp.pdf",
+  "accessed_date": "2026-10-09",
+  "primary": true,
+  "scope": "Background: P, NP, SAT completeness, and circuit lower bounds. No claim of a current new result.",
+  "repository_revision": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

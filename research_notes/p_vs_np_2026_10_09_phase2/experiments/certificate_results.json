@@ -1,0 +1,83 @@
+{
+  "zero_gate_promise": {
+    "claim": "Exact MCSP[0,0] has O(N log N) classifiers but full N-bit YES certificates.",
+    "model": "AND2/OR2/NOT; gates counted, constants/input wires free, NOT not free",
+    "NO_endpoint": "inner circuit size > 0",
+    "scope": "Negative control ONLY; constant thresholds are not the fixed-beta OPS regime.",
+    "general_reason": "Distinct accepted tables have Hamming distance >=N/2>=2, so every unfixed coordinate has a rejected one-bit neighbor.",
+    "rows": [
+      {
+        "m": 2,
+        "truth_table_length": 4,
+        "YES_count": 4,
+        "gate_count": 19,
+        "formula_literal_leaves": 16,
+        "minimum_pairwise_hamming_distance": 2,
+        "exact_accepting_certificate_size": 4,
+        "local_neighbor_and_acceptance_checks": 20,
+        "exhaustive_outer_truth_table_checks": 16,
+        "all_proper_certificate_masks_checked": 60
+      },
+      {
+        "m": 3,
+        "truth_table_length": 8,
+        "YES_count": 5,
+        "gate_count": 47,
+        "formula_literal_leaves": 40,
+        "minimum_pairwise_hamming_distance": 4,
+        "exact_accepting_certificate_size": 8,
+        "local_neighbor_and_acceptance_checks": 45,
+        "exhaustive_outer_truth_table_checks": 256,
+        "all_proper_certificate_masks_checked": 1275
+      },
+      {
+        "m": 4,
+        "truth_table_length": 16,
+        "YES_count": 6,
+        "gate_count": 111,
+        "formula_literal_leaves": 96,
+        "minimum_pairwise_hamming_distance": 8,
+        "exact_accepting_certificate_size": 16,
+        "local_neighbor_and_acceptance_checks": 102,
+        "exhaustive_outer_truth_table_checks": 0,
+        "all_proper_certificate_masks_checked": 0
+      },
+      {
+        "m": 5,
+        "truth_table_length": 32,
+        "YES_count": 7,
+        "gate_count": 255,
+        "formula_literal_leaves": 224,
+        "minimum_pairwise_hamming_distance": 16,
+        "exact_accepting_certificate_size": 32,
+        "local_neighbor_and_acceptance_checks": 231,
+        "exhaustive_outer_truth_table_checks": 0,
+        "all_proper_certificate_masks_checked": 0
+      },
+      {
+        "m": 6,
+        "truth_table_length": 64,
+        "YES_count": 8,
+        "gate_count": 575,
+        "formula_literal_leaves": 512,
+        "minimum_pairwise_hamming_distance": 32,
+        "exact_accepting_certificate_size": 64,
+        "local_neighbor_and_acceptance_checks": 520,
+        "exhaustive_outer_truth_table_checks": 0,
+        "all_proper_certificate_masks_checked": 0
+      }
+    ]
+  },
+  "truth_table_patching": {
+    "seed": 11202,
+    "random_inner_circuits": 120,
+    "assignment_checks": 1302,
+    "maximum_added_gates": 33,
+    "full_patch_subcube_completions": 16,
+    "upper_bound_for_t_positive": "Size(patched) <= Size(base) + m + t*m + 3",
+    "zero_patch_cost": "0 additional gates",
+    "scope": "Explicit AND/OR/NOT construction; no assertion of minimum size.",
+    "mathematical_consequence": "If base size s0 and s0+m+r*m+3 <= s1, every completion of any r selected table coordinates is YES, so every correct separator accepts that subcube."
+  },
+  "claim": "Finite constructive checks and negative controls, not a P-versus-NP separation."
+}

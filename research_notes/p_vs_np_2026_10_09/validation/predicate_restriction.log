@@ -1,0 +1,218 @@
+PREDICATE RESTRICTION VALIDATION
+STARTED_UTC: 2026-10-09T19:07:34.017998+00:00
+SNAPSHOT_CWD: /tmp/family112-build-validation.xWSfhA/project/lean
+HELPER_SCRATCH: /tmp/predicate-restriction-helper.i_riufpp
+HELPER_SOURCE_SHA256: f613ee0a2d86530d95e1332c5d93fdf5d2be8d6f20ff7f98053606d6f965d517
+Only new PredicateRestriction source/report/log and scratch helper object are owned.
+
+STAGE: helper compile
+UTC: 2026-10-09T19:07:35.744100+00:00
+COMMAND: lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation -o /tmp/predicate-restriction-helper.i_riufpp/LocalPredicateCNF.olean /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean
+STDOUT:
+'LocalPredicateCNF.predicate_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.conjunction_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.disjunction_of_conjunctions_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.assignments_complete' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.assignments_length' depends on axioms: [propext]
+'LocalPredicateCNF.mem_truthTableCNF' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_correct' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_length_le' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_true' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_false' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_zero' depends on axioms: [propext]
+
+STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 0
+ELAPSED_SECONDS: 1.726
+
+STAGE: initial corollary check
+UTC: 2026-10-09T19:07:41.779216+00:00
+COMMAND: lake env bash -c 'export LEAN_PATH="$1:$LEAN_PATH"; shift; exec lean "$@"' _ /tmp/predicate-restriction-helper.i_riufpp --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean
+STDOUT:
+/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean:52:2: error: Type mismatch: After simplification, term
+  Iff.symm (LocalPredicateCNF.truthTableCNF_correct P.arity P.Q (x ∘ P.inputs))
+ has type
+  Iff (∀ a ∈ LocalPredicateCNF.truthTableCNF P.arity P.Q, ∃ i, (x ∘ P.inputs) i ≠ a i) (P.Q (x ∘ P.inputs) = true)
+but is expected to have type
+  Iff (∀ j ∈ LocalPredicateCNF.truthTableCNF P.arity P.Q, ∃ i, x (P.inputs i) ≠ j i) (P.Q (x ∘ P.inputs) = true)
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_width_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_eval' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_length_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.conjunction_eq_true' depends on axioms: [propext, Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_eval' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.predicate_restriction_bound' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+
+STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 1
+ELAPSED_SECONDS: 6.035
+
+STAGE: corrected composition reduction; full trust-zero corollary check
+UTC: 2026-10-09T19:08:22.533170+00:00
+SOURCE_SHA256: 0fbc535e72c301b5ab80ce86d2d093c43f631c38094146420b7d09faea87c341
+COMMAND: lake env bash -c 'export LEAN_PATH="$1:$LEAN_PATH"; shift; exec lean "$@"' _ /tmp/predicate-restriction-helper.i_riufpp --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean
+STDOUT:
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_width_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_length_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.conjunction_eq_true' depends on axioms: [propext, Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.predicate_restriction_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 0
+ELAPSED_SECONDS: 5.863
+
+STAGE: FINAL AUTHORITATIVE CHECK; direct snapshot lake env lean
+START_UTC: 2026-10-09T19:10:40.009759+00:00
+END_UTC: 2026-10-09T19:10:46.038065+00:00
+CWD: /tmp/family112-build-validation.xWSfhA/project/lean
+COMMAND: env LEAN_PATH=/tmp/predicate-restriction-helper.i_riufpp lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/PredicateRestriction.lean
+SOURCE_SHA256: 0fbc535e72c301b5ab80ce86d2d093c43f631c38094146420b7d09faea87c341
+SOURCE_LINES: 119
+HELPER_SOURCE_SHA256_UNCHANGED: f613ee0a2d86530d95e1332c5d93fdf5d2be8d6f20ff7f98053606d6f965d517
+HELPER_OBJECT: /tmp/predicate-restriction-helper.i_riufpp/LocalPredicateCNF.olean
+HELPER_OBJECT_SHA256: be9c0e2b34f2262567ff3e075a3cfb3e99b662ed7b8aedc9f494e31cccdfcf84
+RESTRICTION_OBJECT_SHA256: b05f01708346c21180a6892e7b6ef98c43b701de5b1fc9c2b005baf199c32ddc
+STDOUT:
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.rejectedClause_width_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.ScopedPredicate.compile_length_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.conjunction_eq_true' depends on axioms: [propext, Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_eval' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.compileConjunction_width' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.DepthThreeLowerBound.PredicateRestriction.predicate_restriction_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STDERR (Lake package-state warnings):
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+EXIT_CODE: 0
+ELAPSED_SECONDS: 6.028283
+VERSION_COMMAND: lake env lean --version
+VERSION_STDOUT:
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+VERSION_STDERR:
+warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes
+warning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes
+warning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes
+warning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes
+warning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes
+warning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes
+warning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes
+warning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes
+warning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes
+warning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes
+warning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes
+
+FORBIDDEN_SOURCE_CONSTRUCTS: []
+MISSING_AXIOM_AUDITS: []
+NONSTANDARD_AXIOM_DEPENDENCIES: []
+SNAPSHOT_SOURCE_COMPARISONS: {"OAI/Computability/DepthThree/Core.lean": {"identical": true, "repository_sha256": "f890618a13d63eb3d877d3f1cb82dd9f95e9bcddaf7fcf6c694a309ed5c9c71c", "snapshot_sha256": "f890618a13d63eb3d877d3f1cb82dd9f95e9bcddaf7fcf6c694a309ed5c9c71c"}, "OAI/Computability/DepthThree/Model.lean": {"identical": true, "repository_sha256": "fad164c05abdada63efb6b3c5b310a2b141568e0727dd9bcaf0df94ccaa4ce07", "snapshot_sha256": "fad164c05abdada63efb6b3c5b310a2b141568e0727dd9bcaf0df94ccaa4ce07"}, "OAI/Computability/DepthThree/Restriction.lean": {"identical": true, "repository_sha256": "d2325932dc29ba796f336b0d34d676ae352883da37572c3eafeac8a87e217bc8", "snapshot_sha256": "d2325932dc29ba796f336b0d34d676ae352883da37572c3eafeac8a87e217bc8"}}
+FINAL_STATUS: PASS
+Earlier failed elaboration output is retained for provenance and is not an accepted proof.
+This check proves the corollary using the repository restriction theorem; it does not rerun the full comparator.

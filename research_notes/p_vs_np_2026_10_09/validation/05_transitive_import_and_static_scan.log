@@ -1,0 +1,3441 @@
+START_UTC: 2026-10-09T18:58:06.765032+00:00
+CWD: /home/rou/src/math
+TIMEOUT_SECONDS: 90
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -e; printf "Static scanner source for reproduction\n"; cat /tmp/family112-build-validation.xWSfhA/static_scan.py; printf "\nStatic scan JSON output\n"; python3 /tmp/family112-build-validation.xWSfhA/static_scan.py
+
+OUTPUT (stdout and stderr merged):
+Static scanner source for reproduction
+#!/usr/bin/env python3
+"""Conservative lexical/import scan, not a Lean parser or kernel verification."""
+import collections, hashlib, json, pathlib, re
+ROOT = pathlib.Path('/home/rou/src/math')
+SCRATCH = pathlib.Path('/tmp/family112-build-validation.xWSfhA')
+LEAN = SCRATCH / 'project/lean'
+COMMIT = 'fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb'
+SOLUTION = 'OAI.Computability.DepthThree.Main'
+CHALLENGE = 'ComparatorChallenges.DepthThree'
+
+def mask_noncode(text):
+    """Mask nested /- -/ comments, -- comments, strings; preserve offsets/newlines.
+    Lean escaped identifiers are retained. Character literals are not removed:
+    this intentionally errs toward false-positive token hits rather than silence.
+    """
+    result = list(text)
+    i = 0
+    def mask(a, b):
+        for k in range(a, b):
+            if result[k] != '\n':
+                result[k] = ' '
+    while i < len(text):
+        if text.startswith('/-', i):
+            start, level = i, 1
+            i += 2
+            while i < len(text) and level:
+                if text.startswith('/-', i): level, i = level + 1, i + 2
+                elif text.startswith('-/', i): level, i = level - 1, i + 2
+                else: i += 1
+            mask(start, i)
+        elif text.startswith('--', i):
+            start = i
+            i = text.find('\n', i)
+            if i < 0: i = len(text)
+            mask(start, i)
+        elif text[i] == '"':
+            start = i
+            i += 1
+            while i < len(text):
+                if text[i] == '\\': i += 2
+                elif text[i] == '"': i += 1; break
+                else: i += 1
+            i = min(i, len(text))
+            mask(start, i)
+        else: i += 1
+    return ''.join(result)
+
+IMPORT = re.compile(r'^\s*(?:(?:public|private|meta)\s+)*import\s+([^\n]+)', re.M)
+NAME = re.compile(r'[\w\u00ab\u00bb.]+')
+PATTERNS = {
+    'proof_placeholder': r'(?<![\w\'])\b(?:sorry|admit|sorryAx)\b(?![\w\'])',
+    'axiom_declaration': r'(?<![\w\'])\baxiom\b(?![\w\'])',
+    'native_or_reduction_trust': r'(?<![\w\'])\b(?:native_decide|native_decide\w*|ofReduceBool|ofReduceNat|ofReduceEq|trustCompiler)\b',
+    'unsafe_or_external_implementation': r'(?<![\w\'])\b(?:unsafe|implemented_by|extern)\b',
+    'metaprogramming_command': r'(?<![\w\'])\b(?:run_tac|run_elab|run_cmd|initialize|builtin_initialize|elab|macro|macro_rules|elab_rules)\b',
+    'trust_related_option': r'\b(?:debug\.)?(?:skipKernelTC|trustLevel|kernel\.trustLean)\b',
+}
+
+def inspect(module):
+    path = LEAN / (module.replace('.', '/') + '.lean')
+    raw = path.read_text()
+    code = mask_noncode(raw)
+    imports = []
+    for match in IMPORT.finditer(code):
+        for name in NAME.findall(match.group(1)):
+            imports.append(name)
+    hits = []
+    for category, pattern in PATTERNS.items():
+        for match in re.finditer(pattern, code):
+            line = code.count('\n', 0, match.start()) + 1
+            hits.append(dict(category=category, token=match.group(), line=line, source=raw.splitlines()[line-1].strip()))
+    opts = [dict(line=code.count('\n',0,m.start())+1, source=raw.splitlines()[code.count('\n',0,m.start())].strip())
+            for m in re.finditer(r'^\s*set_option\s+[^\n]+', code, re.M)]
+    pathrel = 'lean/' + str(path.relative_to(LEAN))
+    current = ROOT / pathrel
+    return dict(module=module, path=pathrel, sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                bytes=path.stat().st_size, lines=len(raw.splitlines()), imports=imports,
+                worktree_matches_archived_commit=current.exists() and current.read_bytes()==path.read_bytes(),
+                hits=sorted(hits, key=lambda r: (r['line'],r['category'])), options=opts)
+
+nodes, external, missing_local, cycles = {}, collections.defaultdict(set), set(), []
+active = []
+def walk(module):
+    if module in active:
+        cycles.append(active[active.index(module):]+[module]); return
+    if module in nodes: return
+    path = LEAN / (module.replace('.', '/') + '.lean')
+    if not path.is_file():
+        if module.startswith(('OAI.', 'ComparatorChallenges.')): missing_local.add(module)
+        return
+    active.append(module)
+    nodes[module] = inspect(module)
+    for child in nodes[module]['imports']:
+        childpath = LEAN / (child.replace('.', '/') + '.lean')
+        if childpath.is_file(): walk(child)
+        else:
+            external[child].add(module)
+            if child.startswith(('OAI.', 'ComparatorChallenges.')): missing_local.add(child)
+    active.pop()
+walk(SOLUTION)
+challenge = inspect(CHALLENGE)
+counts = collections.Counter(hit['category'] for node in nodes.values() for hit in node['hits'])
+# Raw-token scan additionally records hits obscured by comments or string masking.
+raw_proof_tokens = []
+for module, node in nodes.items():
+    raw = (LEAN / node['path'].removeprefix('lean/')).read_text()
+    for m in re.finditer(PATTERNS['proof_placeholder']+'|'+PATTERNS['axiom_declaration'],raw):
+        line=raw.count('\n',0,m.start())+1
+        raw_proof_tokens.append(dict(module=module,line=line,token=m.group(),source=raw.splitlines()[line-1].strip()))
+
+def statement(module):
+    code = mask_noncode((LEAN / (module.replace('.', '/') + '.lean')).read_text())
+    name = 'exists_polynomial_time_language_depth_three_lower_bound'
+    m = re.search(r'\btheorem\s+' + name + r'\s*:(.*?)\s*:=', code, re.S)
+    if not m: return None
+    return re.sub(r'\s+', ' ', m.group(1)).strip()
+result = dict(
+    source_commit=COMMIT,
+    method='Lexical direct-import DFS in archived repository sources; nested comments and strings masked. Not a Lean parser, elaborator, declaration-dependency analyzer, axiom checker, or proof of absence of metaprogrammatic introduction of axioms.',
+    solution_module=SOLUTION,
+    local_closure_module_count=len(nodes),
+    local_closure_bytes=sum(n['bytes'] for n in nodes.values()),
+    local_closure_lines=sum(n['lines'] for n in nodes.values()),
+    all_local_sources_match_worktree=all(n['worktree_matches_archived_commit'] for n in nodes.values()),
+    modules_outside_depththree=[m for m in sorted(nodes) if not m.startswith('OAI.Computability.DepthThree.')],
+    cycle_paths=cycles,
+    missing_repository_modules=sorted(missing_local),
+    external_import_boundary=[dict(module=m,imported_by=sorted(ps)) for m,ps in sorted(external.items())],
+    external_boundary_module_count=len(external),
+    local_hit_counts={k:counts.get(k,0) for k in PATTERNS},
+    pattern_regexes=PATTERNS,
+    raw_proof_or_axiom_tokens=raw_proof_tokens,
+    solution_closure_includes_challenge_templates=any(m.startswith('ComparatorChallenges.') for m in nodes),
+    modules=[nodes[m] for m in sorted(nodes)],
+    challenge_template=challenge,
+    target_statement_whitespace_normalized_equal=statement(SOLUTION)==statement(CHALLENGE),
+    target_statement_whitespace_normalized=statement(SOLUTION),
+    statement_comparison_limitation='Text-only statement comparison, not comparator execution or comparison of elaborated constants/definitions.',
+    permitted_axioms=json.loads((LEAN/'ComparatorChallenges/DepthThree.json').read_text())['permitted_axioms'],
+    theorem_axiom_dependency_verification_performed=False,
+)
+(SCRATCH/'static_scan.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n')
+print(json.dumps(result,indent=2,ensure_ascii=False))
+
+Static scan JSON output
+{
+  "source_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "method": "Lexical direct-import DFS in archived repository sources; nested comments and strings masked. Not a Lean parser, elaborator, declaration-dependency analyzer, axiom checker, or proof of absence of metaprogrammatic introduction of axioms.",
+  "solution_module": "OAI.Computability.DepthThree.Main",
+  "local_closure_module_count": 175,
+  "local_closure_bytes": 1026594,
+  "local_closure_lines": 24309,
+  "all_local_sources_match_worktree": true,
+  "modules_outside_depththree": [],
+  "cycle_paths": [],
+  "missing_repository_modules": [],
+  "external_import_boundary": [
+    {
+      "module": "Lean.Elab.Tactic.Omega",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FinalParameterBounds",
+        "OAI.Computability.DepthThree.Hash",
+        "OAI.Computability.DepthThree.LanguageBitArithmetic",
+        "OAI.Computability.DepthThree.LanguageParameters",
+        "OAI.Computability.DepthThree.LanguageSlice",
+        "OAI.Computability.DepthThree.Sunflower",
+        "OAI.Computability.DepthThree.TapeArithmetic",
+        "OAI.Computability.DepthThree.TapeForLoop",
+        "OAI.Computability.DepthThree.TapeInitialization",
+        "OAI.Computability.DepthThree.TapeProductLength",
+        "OAI.Computability.DepthThree.TapeUnaryCompare",
+        "OAI.Computability.DepthThree.TapeUnaryCompareScan",
+        "OAI.Computability.DepthThree.TupleCounting"
+      ]
+    },
+    {
+      "module": "Mathlib",
+      "imported_by": [
+        "OAI.Computability.DepthThree.Model"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Field",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.ReversePathRecurrence"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Fin",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageBitConvolution",
+        "OAI.Computability.DepthThree.RestrictionPathProducts",
+        "OAI.Computability.DepthThree.ReversePathEncoding",
+        "OAI.Computability.DepthThree.SparseStreams"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.Hash",
+        "OAI.Computability.DepthThree.RestrictionPaths"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+      "imported_by": [
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.SparsePrefix"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Group.Finset.Powerset",
+      "imported_by": [
+        "OAI.Computability.DepthThree.ReversePathRecurrence"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+      "imported_by": [
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.ReversePathEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Group.List.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.GroupWithZero.Finset",
+      "imported_by": [
+        "OAI.Computability.DepthThree.CylinderProbability",
+        "OAI.Computability.DepthThree.RestrictionMarkerCNF"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Intervals",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "OAI.Computability.DepthThree.SparseThresholds"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.BigOperators.Ring.Finset",
+      "imported_by": [
+        "OAI.Computability.DepthThree.EntropyBits",
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.ReversePathWeights",
+        "OAI.Computability.DepthThree.SparsePrefix",
+        "OAI.Computability.DepthThree.TapePower"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Field.ZMod",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraBits"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Group.Hom.Defs",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraFiniteFibers"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Group.Nat.Even",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageParameters"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Order.Archimedean.Real.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FinalParameterBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+      "imported_by": [
+        "OAI.Computability.DepthThree.Entropy",
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.RestrictionCorrelation",
+        "OAI.Computability.DepthThree.ReversePathRecurrence",
+        "OAI.Computability.DepthThree.SparseCounting",
+        "OAI.Computability.DepthThree.SparsePrefix",
+        "OAI.Computability.DepthThree.TapeParameterCost",
+        "OAI.Computability.DepthThree.TupleCounting"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.MomentBounds",
+        "OAI.Computability.DepthThree.ReversePathEncoding",
+        "OAI.Computability.DepthThree.SparseLeafCount"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Order.Field.GeomSum",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionExpectedCost"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Order.Floor.Semiring",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FinalParameterBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Polynomial.Div",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraPolynomial",
+        "OAI.Computability.DepthThree.Language",
+        "OAI.Computability.DepthThree.LanguageBitArithmetic"
+      ]
+    },
+    {
+      "module": "Mathlib.Algebra.Polynomial.Monic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraPolynomial"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.Complex.ExponentialBounds",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionTails"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.Real.Sqrt",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.SpecialFunctions.Log.NegMulLog",
+      "imported_by": [
+        "OAI.Computability.DepthThree.EntropyThreshold"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+      "imported_by": [
+        "OAI.Computability.DepthThree.UniformSparseBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "OAI.Computability.DepthThree.Entropy",
+        "OAI.Computability.DepthThree.LanguageParameterBounds",
+        "OAI.Computability.DepthThree.RestrictionTails"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.SpecificLimits.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.EntropyThreshold"
+      ]
+    },
+    {
+      "module": "Mathlib.Analysis.SpecificLimits.Normed",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Basic.Real.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.EntropyBits",
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.ReversePathRecurrence",
+        "OAI.Computability.DepthThree.ReversePathWeights"
+      ]
+    },
+    {
+      "module": "Mathlib.Combinatorics.Pigeonhole",
+      "imported_by": [
+        "OAI.Computability.DepthThree.Sunflower"
+      ]
+    },
+    {
+      "module": "Mathlib.Computability.TuringMachine.Tape",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeWord"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Bool.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.MarkerMixture"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fin.Tuple.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.SparseTestCodes"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Finset.Card",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionPaths",
+        "OAI.Computability.DepthThree.SparseFiniteFamily"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Finset.Lattice.Fold",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionCorrelation"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Finset.Lattice.Lemmas",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionPaths"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Finset.Max",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FiniteProbabilityBounds",
+        "OAI.Computability.DepthThree.HashTriangular",
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.SparseFiniteFamily",
+        "OAI.Computability.DepthThree.Sunflower"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Finset.Powerset",
+      "imported_by": [
+        "OAI.Computability.DepthThree.Sunflower"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Finset.Union",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionPaths"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionPaths"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.BigOperators",
+      "imported_by": [
+        "OAI.Computability.DepthThree.EntropyBits",
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.Hash",
+        "OAI.Computability.DepthThree.HashAffine",
+        "OAI.Computability.DepthThree.HashFibers",
+        "OAI.Computability.DepthThree.SparseStreams",
+        "OAI.Computability.DepthThree.SparseTestCodes",
+        "OAI.Computability.DepthThree.TupleCounting"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Card",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraFiniteFibers"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.EquivFin",
+      "imported_by": [
+        "OAI.Computability.DepthThree.HashTriangular",
+        "OAI.Computability.DepthThree.SparsePartition",
+        "OAI.Computability.DepthThree.SparseTestCodes",
+        "OAI.Computability.DepthThree.TupleCounting"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Option",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.SparseTestCodes"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Perm",
+      "imported_by": [
+        "OAI.Computability.DepthThree.MarkerPermutation"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Pi",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeEncoding",
+        "OAI.Computability.DepthThree.TupleCounting"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Prod",
+      "imported_by": [
+        "OAI.Computability.DepthThree.SparseCounting",
+        "OAI.Computability.DepthThree.TapeEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Sigma",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeDivideFive",
+        "OAI.Computability.DepthThree.TapeInputGuard"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Fintype.Sum",
+      "imported_by": [
+        "OAI.Computability.DepthThree.MarkerMixture",
+        "OAI.Computability.DepthThree.SparseStreams",
+        "OAI.Computability.DepthThree.TapeEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionClause",
+        "OAI.Computability.DepthThree.RestrictionNormalization"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.Count",
+      "imported_by": [
+        "OAI.Computability.DepthThree.SparseStreams"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.FinRange",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.GetD",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageBitConvolutionUpdates",
+        "OAI.Computability.DepthThree.LanguageInputBlockLists",
+        "OAI.Computability.DepthThree.LanguageParser",
+        "OAI.Computability.DepthThree.SparseStreams"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.Induction",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.TapeInputBlockLoop",
+        "OAI.Computability.DepthThree.TapeRewind"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.Nodup",
+      "imported_by": [
+        "OAI.Computability.DepthThree.RestrictionPaths"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.OfFn",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageBitConvolution",
+        "OAI.Computability.DepthThree.LanguageInputBlockLists",
+        "OAI.Computability.DepthThree.LanguageSlice"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.List.Range",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageBitHashUpdates"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Nat.Choose.Bounds",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FinalParameterBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Nat.Factorial.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.Sunflower"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Nat.Find",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageParameters",
+        "OAI.Computability.DepthThree.SparseTree"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Nat.Init",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeForLoop"
+      ]
+    },
+    {
+      "module": "Mathlib.Data.Set.Function",
+      "imported_by": [
+        "OAI.Computability.DepthThree.HashAffine"
+      ]
+    },
+    {
+      "module": "Mathlib.FieldTheory.Finite.GaloisField",
+      "imported_by": [
+        "OAI.Computability.DepthThree.IrreduciblePolynomial"
+      ]
+    },
+    {
+      "module": "Mathlib.LinearAlgebra.Lagrange",
+      "imported_by": [
+        "OAI.Computability.DepthThree.InterpolationEvaluation"
+      ]
+    },
+    {
+      "module": "Mathlib.Logic.Equiv.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.HashFibers"
+      ]
+    },
+    {
+      "module": "Mathlib.Logic.Equiv.Defs",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraBits"
+      ]
+    },
+    {
+      "module": "Mathlib.Logic.Function.Basic",
+      "imported_by": [
+        "OAI.Computability.DepthThree.SparseTestCodes",
+        "OAI.Computability.DepthThree.TupleCounting"
+      ]
+    },
+    {
+      "module": "Mathlib.Order.Interval.Finset.Nat",
+      "imported_by": [
+        "OAI.Computability.DepthThree.SparsePrefix"
+      ]
+    },
+    {
+      "module": "Mathlib.RingTheory.AdjoinRoot",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AlgebraQuotient"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.Convert",
+      "imported_by": [
+        "OAI.Computability.DepthThree.CircuitQuantitative",
+        "OAI.Computability.DepthThree.MarkerMixture"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.DeriveFintype",
+      "imported_by": [
+        "OAI.Computability.DepthThree.LanguageInputBlockLists",
+        "OAI.Computability.DepthThree.MultiTapeMachine",
+        "OAI.Computability.DepthThree.TapeEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.FieldSimp",
+      "imported_by": [
+        "OAI.Computability.DepthThree.FinalParameterBounds",
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.RestrictionMarkerCNF",
+        "OAI.Computability.DepthThree.SparsePartition",
+        "OAI.Computability.DepthThree.SparseTailBounds",
+        "OAI.Computability.DepthThree.UniformSparseBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.FinCases",
+      "imported_by": [
+        "OAI.Computability.DepthThree.TapeParameters"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.Linarith",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "OAI.Computability.DepthThree.CircuitDensity",
+        "OAI.Computability.DepthThree.CircuitLowerBound",
+        "OAI.Computability.DepthThree.CorrelationTransfer",
+        "OAI.Computability.DepthThree.Entropy",
+        "OAI.Computability.DepthThree.FiniteProbabilityBounds",
+        "OAI.Computability.DepthThree.HardSliceSelection",
+        "OAI.Computability.DepthThree.LanguageParameterBounds",
+        "OAI.Computability.DepthThree.MomentBounds",
+        "OAI.Computability.DepthThree.Restriction",
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.RestrictionTails",
+        "OAI.Computability.DepthThree.SparsePrefix",
+        "OAI.Computability.DepthThree.TapeDecodeBlock",
+        "OAI.Computability.DepthThree.TapeInputGuard",
+        "OAI.Computability.DepthThree.TapeInputPrepare",
+        "OAI.Computability.DepthThree.TapeRemainderOuter",
+        "OAI.Computability.DepthThree.UniformSparseBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.NormNum",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "OAI.Computability.DepthThree.CylinderProbability",
+        "OAI.Computability.DepthThree.Entropy",
+        "OAI.Computability.DepthThree.HashProbability",
+        "OAI.Computability.DepthThree.LanguageParameterBounds",
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.MomentBounds",
+        "OAI.Computability.DepthThree.RestrictionTails",
+        "OAI.Computability.DepthThree.UniformSparseBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.Positivity",
+      "imported_by": [
+        "OAI.Computability.DepthThree.HardSliceProbability",
+        "OAI.Computability.DepthThree.HashProbability",
+        "OAI.Computability.DepthThree.MarkerMixture",
+        "OAI.Computability.DepthThree.MomentBounds",
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.SparseTailBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.Push",
+      "imported_by": [
+        "OAI.Computability.DepthThree.HashAffine"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.Ring",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "OAI.Computability.DepthThree.CircuitDeletion",
+        "OAI.Computability.DepthThree.Entropy",
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.LanguageBitEvaluator",
+        "OAI.Computability.DepthThree.LanguageParameterBounds",
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.RestrictionMarkerCNF",
+        "OAI.Computability.DepthThree.RestrictionTails",
+        "OAI.Computability.DepthThree.ReversePathRecurrence",
+        "OAI.Computability.DepthThree.ReversePathWeights",
+        "OAI.Computability.DepthThree.Sunflower",
+        "OAI.Computability.DepthThree.TapeInputBlockLoop",
+        "OAI.Computability.DepthThree.TapeInputGuardLength",
+        "OAI.Computability.DepthThree.TapePower",
+        "OAI.Computability.DepthThree.UniformSparseBounds"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.SplitIfs",
+      "imported_by": [
+        "OAI.Computability.DepthThree.ReversePathRecurrence",
+        "OAI.Computability.DepthThree.SparseTestCodes"
+      ]
+    },
+    {
+      "module": "Mathlib.Tactic.Tauto",
+      "imported_by": [
+        "OAI.Computability.DepthThree.ReversePathEncoding"
+      ]
+    },
+    {
+      "module": "Mathlib.Topology.Algebra.InfiniteSum.Order",
+      "imported_by": [
+        "OAI.Computability.DepthThree.AsymptoticBounds"
+      ]
+    }
+  ],
+  "external_boundary_module_count": 82,
+  "local_hit_counts": {
+    "proof_placeholder": 0,
+    "axiom_declaration": 0,
+    "native_or_reduction_trust": 0,
+    "unsafe_or_external_implementation": 0,
+    "metaprogramming_command": 0,
+    "trust_related_option": 0
+  },
+  "pattern_regexes": {
+    "proof_placeholder": "(?<![\\w\\'])\\b(?:sorry|admit|sorryAx)\\b(?![\\w\\'])",
+    "axiom_declaration": "(?<![\\w\\'])\\baxiom\\b(?![\\w\\'])",
+    "native_or_reduction_trust": "(?<![\\w\\'])\\b(?:native_decide|native_decide\\w*|ofReduceBool|ofReduceNat|ofReduceEq|trustCompiler)\\b",
+    "unsafe_or_external_implementation": "(?<![\\w\\'])\\b(?:unsafe|implemented_by|extern)\\b",
+    "metaprogramming_command": "(?<![\\w\\'])\\b(?:run_tac|run_elab|run_cmd|initialize|builtin_initialize|elab|macro|macro_rules|elab_rules)\\b",
+    "trust_related_option": "\\b(?:debug\\.)?(?:skipKernelTC|trustLevel|kernel\\.trustLean)\\b"
+  },
+  "raw_proof_or_axiom_tokens": [],
+  "solution_closure_includes_challenge_templates": false,
+  "modules": [
+    {
+      "module": "OAI.Computability.DepthThree.AlgebraBits",
+      "path": "lean/OAI/Computability/DepthThree/AlgebraBits.lean",
+      "sha256": "c2ed376ac3fa6a9eb73f6a9aa15d352926df6d8696da376560fcf1fa21dc3fb9",
+      "bytes": 2527,
+      "lines": 83,
+      "imports": [
+        "Mathlib.Algebra.Field.ZMod",
+        "Mathlib.Logic.Equiv.Defs"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.AlgebraFiniteFibers",
+      "path": "lean/OAI/Computability/DepthThree/AlgebraFiniteFibers.lean",
+      "sha256": "ccda5a90705b9157c85ad402821c20dcbf7cfcff1eb4ec263bb54bd67631529d",
+      "bytes": 3771,
+      "lines": 98,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "Mathlib.Algebra.Group.Hom.Defs",
+        "Mathlib.Data.Fintype.Card"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.AlgebraLanguage",
+      "path": "lean/OAI/Computability/DepthThree/AlgebraLanguage.lean",
+      "sha256": "3f0996c4967331c304a4b572c7780500bbb8cbeac2d589ebfcfd51f010bfc4ee",
+      "bytes": 3839,
+      "lines": 99,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraQuotient",
+        "OAI.Computability.DepthThree.Language"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.AlgebraPolynomial",
+      "path": "lean/OAI/Computability/DepthThree/AlgebraPolynomial.lean",
+      "sha256": "b52649f46ca632785e0df45f9fd65a908ecae9780234128b367e800810f40b4b",
+      "bytes": 5387,
+      "lines": 137,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraBits",
+        "Mathlib.Algebra.Polynomial.Monic",
+        "Mathlib.Algebra.Polynomial.Div"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.AlgebraQuotient",
+      "path": "lean/OAI/Computability/DepthThree/AlgebraQuotient.lean",
+      "sha256": "ba0685b39c59bc3f8cea8640e392e9bee5066160e5d724953fd6be9150e6eb1b",
+      "bytes": 8806,
+      "lines": 213,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraPolynomial",
+        "Mathlib.RingTheory.AdjoinRoot"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.AsymptoticBounds",
+      "path": "lean/OAI/Computability/DepthThree/AsymptoticBounds.lean",
+      "sha256": "6d7b9a2dcc14a73d39d74f33ed03fadc64bfd8a0c915318690d5267154bcfee0",
+      "bytes": 6753,
+      "lines": 146,
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Intervals",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.Real.Sqrt",
+        "Mathlib.Topology.Algebra.InfiniteSum.Order",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Circuit",
+      "path": "lean/OAI/Computability/DepthThree/Circuit.lean",
+      "sha256": "d30faf30b152cdfd5befd6d32b997cb1b4577f59376b6b39df1e33c51a61efb6",
+      "bytes": 3801,
+      "lines": 116,
+      "imports": [
+        "OAI.Computability.DepthThree.Core"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CircuitDeletion",
+      "path": "lean/OAI/Computability/DepthThree/CircuitDeletion.lean",
+      "sha256": "96d198f16097c9543e30481d6616b3bb0b3a3cfff53a98fe5b1a7fa4b5e2b2cb",
+      "bytes": 6028,
+      "lines": 156,
+      "imports": [
+        "OAI.Computability.DepthThree.CylinderProbability",
+        "OAI.Computability.DepthThree.RestrictionNormalization",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CircuitDensity",
+      "path": "lean/OAI/Computability/DepthThree/CircuitDensity.lean",
+      "sha256": "92ff4ab1ba3ff3a8fe0f7cb45ea19f08b3bcdda6effdc93efee08db49b2219c5",
+      "bytes": 1397,
+      "lines": 44,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CircuitLowerBound",
+      "path": "lean/OAI/Computability/DepthThree/CircuitLowerBound.lean",
+      "sha256": "42cd84b9bb7c98c33e2c60fff4a9fa003c8b905fb2591ddfd4aef07e63ed95a9",
+      "bytes": 4543,
+      "lines": 112,
+      "imports": [
+        "OAI.Computability.DepthThree.CircuitNormalization",
+        "OAI.Computability.DepthThree.CircuitDeletion",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CircuitNormalization",
+      "path": "lean/OAI/Computability/DepthThree/CircuitNormalization.lean",
+      "sha256": "b7788a30500f98a2b7fcbdfe3bc06d5e632deb3f9ed63cdbdb2de4d4d84ba2e6",
+      "bytes": 4789,
+      "lines": 142,
+      "imports": [
+        "OAI.Computability.DepthThree.Circuit",
+        "OAI.Computability.DepthThree.RestrictionNormalization"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CircuitQuantitative",
+      "path": "lean/OAI/Computability/DepthThree/CircuitQuantitative.lean",
+      "sha256": "b743d54d04bac3f7ea6b290225c099ce096287cc1c77a709998dc448d4ab4212",
+      "bytes": 2563,
+      "lines": 57,
+      "imports": [
+        "OAI.Computability.DepthThree.CircuitLowerBound",
+        "OAI.Computability.DepthThree.CircuitDensity",
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "Mathlib.Tactic.Convert"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Core",
+      "path": "lean/OAI/Computability/DepthThree/Core.lean",
+      "sha256": "f890618a13d63eb3d877d3f1cb82dd9f95e9bcddaf7fcf6c694a309ed5c9c71c",
+      "bytes": 4906,
+      "lines": 170,
+      "imports": [
+        "OAI.Computability.DepthThree.Model"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CorrelationTransfer",
+      "path": "lean/OAI/Computability/DepthThree/CorrelationTransfer.lean",
+      "sha256": "df3f9f1e9928088e6b674d953839507a2ef3cf25b1d28204d1a7be7fa7b94996",
+      "bytes": 4961,
+      "lines": 119,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionProbability",
+        "OAI.Computability.DepthThree.RestrictionCorrelation",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.CylinderProbability",
+      "path": "lean/OAI/Computability/DepthThree/CylinderProbability.lean",
+      "sha256": "c54d4fc18cc3510ebcb3baed2e806f1d4fa2aaa41b66972662534c5a6ddccfa4",
+      "bytes": 1860,
+      "lines": 56,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "Mathlib.Algebra.BigOperators.GroupWithZero.Finset",
+        "Mathlib.Tactic.NormNum"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Entropy",
+      "path": "lean/OAI/Computability/DepthThree/Entropy.lean",
+      "sha256": "a3c98bb404a91e0f4569cabae4b0c617dc4241b8271a20138d43f97a443285b1",
+      "bytes": 5353,
+      "lines": 141,
+      "imports": [
+        "OAI.Computability.DepthThree.EntropyBits",
+        "OAI.Computability.DepthThree.EntropyThreshold",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.EntropyBits",
+      "path": "lean/OAI/Computability/DepthThree/EntropyBits.lean",
+      "sha256": "0ae81ebe5bd385dc6f0cb8e1e3261980bce70183ed180a63e5d01de685f43592",
+      "bytes": 778,
+      "lines": 25,
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Basic.Real.Basic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.EntropyThreshold",
+      "path": "lean/OAI/Computability/DepthThree/EntropyThreshold.lean",
+      "sha256": "cf2cfaf7b4e3ea771f4d3a55dae5d79c470c8c1de0d89bf2ee17a36dcd4f2a8a",
+      "bytes": 2152,
+      "lines": 56,
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Log.NegMulLog",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.FinalParameterBounds",
+      "path": "lean/OAI/Computability/DepthThree/FinalParameterBounds.lean",
+      "sha256": "6c4c2ef6e8c1d4239636775c27085a6f61c154c6566c353811262e97563684bc",
+      "bytes": 6203,
+      "lines": 147,
+      "imports": [
+        "OAI.Computability.DepthThree.AsymptoticBounds",
+        "OAI.Computability.DepthThree.ReversePathRecurrence",
+        "Mathlib.Algebra.Order.Floor.Semiring",
+        "Mathlib.Data.Nat.Choose.Bounds",
+        "Mathlib.Algebra.Order.Archimedean.Real.Basic",
+        "Mathlib.Tactic.FieldSimp",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.FiniteProbability",
+      "path": "lean/OAI/Computability/DepthThree/FiniteProbability.lean",
+      "sha256": "18a4c0688c6c4054275edf2c6f5529ab7869d12316d85a75964e29df2d3e1d74",
+      "bytes": 8017,
+      "lines": 211,
+      "imports": [
+        "OAI.Computability.DepthThree.Core",
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Data.Fintype.Option",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.FiniteProbabilityBounds",
+      "path": "lean/OAI/Computability/DepthThree/FiniteProbabilityBounds.lean",
+      "sha256": "77a31db61377e1310752b7fa8490046acae6c18e709a8bb44c74b9f5fca8dbb7",
+      "bytes": 3952,
+      "lines": 113,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSlice",
+      "path": "lean/OAI/Computability/DepthThree/HardSlice.lean",
+      "sha256": "976ba8637ed880b292c84efe0985691af934faf48c2f802572666a8469fd2482",
+      "bytes": 1849,
+      "lines": 44,
+      "imports": [
+        "OAI.Computability.DepthThree.HardSliceEventual",
+        "OAI.Computability.DepthThree.WideCorrelation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSliceEventual",
+      "path": "lean/OAI/Computability/DepthThree/HardSliceEventual.lean",
+      "sha256": "7913049a72cd0239bfc1b285002c95a09f6ab173faea90e3509cfccc23b4cca2",
+      "bytes": 4012,
+      "lines": 89,
+      "imports": [
+        "OAI.Computability.DepthThree.HardSliceExistence",
+        "OAI.Computability.DepthThree.HardSliceParameters",
+        "OAI.Computability.DepthThree.FinalParameterBounds",
+        "OAI.Computability.DepthThree.IrreducibleEncoding",
+        "OAI.Computability.DepthThree.LanguageSlice"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSliceExistence",
+      "path": "lean/OAI/Computability/DepthThree/HardSliceExistence.lean",
+      "sha256": "48d224c418e6ae9b814db21c2aa707e834c8f893d83d43341ae911160812467e",
+      "bytes": 4425,
+      "lines": 90,
+      "imports": [
+        "OAI.Computability.DepthThree.HardSliceProbability",
+        "OAI.Computability.DepthThree.HardSliceSelection"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSliceMoment",
+      "path": "lean/OAI/Computability/DepthThree/HardSliceMoment.lean",
+      "sha256": "cf335ae48500df6b5d362ec857dcb4216ffc8e93af97961206f11a0e5814df02",
+      "bytes": 5438,
+      "lines": 115,
+      "imports": [
+        "OAI.Computability.DepthThree.MomentBounds",
+        "OAI.Computability.DepthThree.FiniteProbabilityBounds",
+        "OAI.Computability.DepthThree.SparseTestCodes",
+        "OAI.Computability.DepthThree.InterpolationSigns"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSliceParameters",
+      "path": "lean/OAI/Computability/DepthThree/HardSliceParameters.lean",
+      "sha256": "95112d3e173bf48e6a0ff9d17c466bec21bedfdb3fd2bcaf5e98f5a65e62bfa5",
+      "bytes": 6898,
+      "lines": 144,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageParameterBounds",
+        "OAI.Computability.DepthThree.SparseTailBounds",
+        "OAI.Computability.DepthThree.HardSliceMoment",
+        "OAI.Computability.DepthThree.HardSliceProbability"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSliceProbability",
+      "path": "lean/OAI/Computability/DepthThree/HardSliceProbability.lean",
+      "sha256": "b108ceaf910efab63c44e97bc3a663de0ab4ced810eeac89f1a2ad3845cc294b",
+      "bytes": 7456,
+      "lines": 159,
+      "imports": [
+        "OAI.Computability.DepthThree.HardSliceMoment",
+        "OAI.Computability.DepthThree.SparseCorrelation",
+        "OAI.Computability.DepthThree.HashProbability",
+        "OAI.Computability.DepthThree.AlgebraQuotient",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HardSliceSelection",
+      "path": "lean/OAI/Computability/DepthThree/HardSliceSelection.lean",
+      "sha256": "4108195e0c1d7186c8524acff353ff68008bf3a3c632b212266154bf621e89e2",
+      "bytes": 5004,
+      "lines": 121,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbabilityBounds",
+        "OAI.Computability.DepthThree.RestrictionTails",
+        "OAI.Computability.DepthThree.RestrictionCorrelation",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Hash",
+      "path": "lean/OAI/Computability/DepthThree/Hash.lean",
+      "sha256": "10c5920044bb1f44ec36e6337a8e6b4edf0cbab8ef4cf8165a10a034a9812319",
+      "bytes": 3031,
+      "lines": 89,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraBits",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HashAffine",
+      "path": "lean/OAI/Computability/DepthThree/HashAffine.lean",
+      "sha256": "322ccfd255731d485ffb51cde0f9ef5ce2aa4d40b4bf2a81dad928d5391b1761",
+      "bytes": 9535,
+      "lines": 266,
+      "imports": [
+        "OAI.Computability.DepthThree.HashFibers",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Data.Set.Function",
+        "Mathlib.Tactic.Push"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HashBool",
+      "path": "lean/OAI/Computability/DepthThree/HashBool.lean",
+      "sha256": "8ee4a9d1bc26c79eb4c9810e6b5c2d3599a9ad0f535f4c81062f97f04d5fa630",
+      "bytes": 5131,
+      "lines": 123,
+      "imports": [
+        "OAI.Computability.DepthThree.HashAffine"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HashFibers",
+      "path": "lean/OAI/Computability/DepthThree/HashFibers.lean",
+      "sha256": "2e99ddf1b6b9e7a1616c7d8ceab3487e1d28cebacefaf5e3a9c8fc495c292a51",
+      "bytes": 2593,
+      "lines": 73,
+      "imports": [
+        "OAI.Computability.DepthThree.HashTriangular",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Logic.Equiv.Basic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HashProbability",
+      "path": "lean/OAI/Computability/DepthThree/HashProbability.lean",
+      "sha256": "2d225195633269a3c5b589c461c1703a12ceaa9ce93129fdaa5ca3c3a6ae8378",
+      "bytes": 8096,
+      "lines": 201,
+      "imports": [
+        "OAI.Computability.DepthThree.HashBool",
+        "OAI.Computability.DepthThree.FiniteProbabilityBounds",
+        "OAI.Computability.DepthThree.RestrictionProbability",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.HashTriangular",
+      "path": "lean/OAI/Computability/DepthThree/HashTriangular.lean",
+      "sha256": "f6befab7c9ac6ac18e7a1e4bd60c2435b4db17ada6898b2d0d5806f4618f5811",
+      "bytes": 5760,
+      "lines": 144,
+      "imports": [
+        "OAI.Computability.DepthThree.Hash",
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Data.Fintype.EquivFin"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.InterpolationEvaluation",
+      "path": "lean/OAI/Computability/DepthThree/InterpolationEvaluation.lean",
+      "sha256": "f8f61574b15964b29842d172daba28e52175a95347f01ba12b5945e7d2ee9ed2",
+      "bytes": 3604,
+      "lines": 99,
+      "imports": [
+        "Mathlib.LinearAlgebra.Lagrange",
+        "OAI.Computability.DepthThree.AlgebraFiniteFibers"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.InterpolationQuotient",
+      "path": "lean/OAI/Computability/DepthThree/InterpolationQuotient.lean",
+      "sha256": "f7c6ff63d2b3ff4a52b19c084b6d2e12cf49f296ad81a6243d2170d5ccda1bab",
+      "bytes": 3733,
+      "lines": 93,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraQuotient",
+        "OAI.Computability.DepthThree.InterpolationSigns"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.InterpolationSigns",
+      "path": "lean/OAI/Computability/DepthThree/InterpolationSigns.lean",
+      "sha256": "63cf61f44f7988cafa9454df7ae9230fe98772490babe298a0cd586ec72e5a80",
+      "bytes": 5993,
+      "lines": 164,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraBits",
+        "OAI.Computability.DepthThree.InterpolationEvaluation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.IrreducibleEncoding",
+      "path": "lean/OAI/Computability/DepthThree/IrreducibleEncoding.lean",
+      "sha256": "e177e15cfb1f7ecc59903dd0461eee83d72bbb112fc148d10905fcd918e1c0c4",
+      "bytes": 1394,
+      "lines": 39,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraPolynomial",
+        "OAI.Computability.DepthThree.IrreduciblePolynomial"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.IrreduciblePolynomial",
+      "path": "lean/OAI/Computability/DepthThree/IrreduciblePolynomial.lean",
+      "sha256": "51dd823ae055e2e4920eac878b211806b0175c306d44cb864a9e18e5007728c2",
+      "bytes": 1092,
+      "lines": 29,
+      "imports": [
+        "Mathlib.FieldTheory.Finite.GaloisField"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Language",
+      "path": "lean/OAI/Computability/DepthThree/Language.lean",
+      "sha256": "6758d4b8e91a3c0d2df713430dc2b61046e5885ed5880095e8df7bd9d188cc5e",
+      "bytes": 2585,
+      "lines": 81,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageParser",
+        "OAI.Computability.DepthThree.AlgebraPolynomial",
+        "OAI.Computability.DepthThree.Hash",
+        "Mathlib.Algebra.Polynomial.Div"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitArithmetic",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitArithmetic.lean",
+      "sha256": "08eed50d883752998ad610007be6064fbd4402e6a3846d50f2a8646cb8da5c3f",
+      "bytes": 5112,
+      "lines": 137,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitConvolution",
+        "Mathlib.Algebra.Polynomial.Div",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitConvolution",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitConvolution.lean",
+      "sha256": "c41ec9861767694bd68dd9c77f255735a8a62fb14bf2b3ceeabaad99e5d158a7",
+      "bytes": 3451,
+      "lines": 98,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitWord",
+        "Mathlib.Algebra.BigOperators.Fin",
+        "Mathlib.Data.List.OfFn"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitConvolutionUpdates",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitConvolutionUpdates.lean",
+      "sha256": "a24c065231123f456b9401ff8badae54a939e49b56c770364f8a578eddfdff7b",
+      "bytes": 6386,
+      "lines": 158,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitLoopInvariants",
+        "Mathlib.Data.List.GetD"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitEvaluator",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitEvaluator.lean",
+      "sha256": "40012740b221a957630ee3eaf8a78f9149dd94ef73342696d9a448dd99295301",
+      "bytes": 5154,
+      "lines": 138,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitArithmetic",
+        "OAI.Computability.DepthThree.Language",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitHashUpdates",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitHashUpdates.lean",
+      "sha256": "8fa53097863a07fc24c352323951b0a22c62834633e10d83d2dcdfc1f92f69ad",
+      "bytes": 10809,
+      "lines": 252,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitConvolutionUpdates",
+        "Mathlib.Data.List.Range"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitHornerLoop",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitHornerLoop.lean",
+      "sha256": "4c6fdf5b56b248ba044ef6d1da217774354d5ca80766b5fc5185bac5b8bfab1e",
+      "bytes": 3653,
+      "lines": 94,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitLoopInvariants"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitLoopInvariants",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitLoopInvariants.lean",
+      "sha256": "fe7a00ed35f8669e8d80bf68b6b814b8a5e0707d78c633871233e8490c69414d",
+      "bytes": 3375,
+      "lines": 96,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitEvaluator"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitReductionLoop",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitReductionLoop.lean",
+      "sha256": "8349d992bbd1162ca319c21e84185bfa760091c39ee1b1cdcf89f5c700bae656",
+      "bytes": 11368,
+      "lines": 241,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageBitConvolutionUpdates"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageBitWord",
+      "path": "lean/OAI/Computability/DepthThree/LanguageBitWord.lean",
+      "sha256": "83aab8db19ded7aa3c28a69ede8b5747cef5ce8854fc5ac177d98692edf12297",
+      "bytes": 5209,
+      "lines": 143,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraPolynomial"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageInputBlockLists",
+      "path": "lean/OAI/Computability/DepthThree/LanguageInputBlockLists.lean",
+      "sha256": "a30e66498a9b086c7c59bf2608b6379fa9b4597cb6056e04053e0b6061b05aee",
+      "bytes": 6645,
+      "lines": 153,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageParser",
+        "Mathlib.Data.List.OfFn",
+        "Mathlib.Data.List.GetD",
+        "Mathlib.Tactic.DeriveFintype"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageInputBlockWords",
+      "path": "lean/OAI/Computability/DepthThree/LanguageInputBlockWords.lean",
+      "sha256": "63173c443b87271ec68c0fb46715a5b5f2f660d7774020cc0dc1a4df83aa4252",
+      "bytes": 6905,
+      "lines": 152,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageInputBlockLists",
+        "OAI.Computability.DepthThree.LanguageBitHashUpdates",
+        "OAI.Computability.DepthThree.LanguageBitHornerLoop"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageLowerBound",
+      "path": "lean/OAI/Computability/DepthThree/LanguageLowerBound.lean",
+      "sha256": "609a914c181515d77e535ca486a5839d1253300ee27dad18d41edc5aa4a88ca1",
+      "bytes": 1327,
+      "lines": 33,
+      "imports": [
+        "OAI.Computability.DepthThree.HardSlice",
+        "OAI.Computability.DepthThree.CircuitQuantitative"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageParameterBounds",
+      "path": "lean/OAI/Computability/DepthThree/LanguageParameterBounds.lean",
+      "sha256": "6abc124d663e4f1a618a22886c566de60af56b6e85bd79ec58f6e0b8c01ffc65",
+      "bytes": 5438,
+      "lines": 136,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageParameters",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageParameters",
+      "path": "lean/OAI/Computability/DepthThree/LanguageParameters.lean",
+      "sha256": "6d4a2fb179e52d836e44b83934fd8393d6e296eea0685707674b983610fbc971",
+      "bytes": 8574,
+      "lines": 247,
+      "imports": [
+        "Mathlib.Data.Nat.Find",
+        "Mathlib.Algebra.Group.Nat.Even",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageParser",
+      "path": "lean/OAI/Computability/DepthThree/LanguageParser.lean",
+      "sha256": "04c1a3b715727fd9eae9fc5a3fd5b828d0a939f2251f7bece6ab904a367294ad",
+      "bytes": 3928,
+      "lines": 103,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageParameters",
+        "Mathlib.Data.List.GetD"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageSearchTests",
+      "path": "lean/OAI/Computability/DepthThree/LanguageSearchTests.lean",
+      "sha256": "128f74df29118123d58276d6df992db54f5955ac4ddd46bb995a6b665053c409",
+      "bytes": 1757,
+      "lines": 57,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageParameters"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.LanguageSlice",
+      "path": "lean/OAI/Computability/DepthThree/LanguageSlice.lean",
+      "sha256": "1cf9a25118385eb81fe2d34bec7aee6ce094c170fcdad190712b6340426c5937",
+      "bytes": 12450,
+      "lines": 262,
+      "imports": [
+        "OAI.Computability.DepthThree.AlgebraLanguage",
+        "OAI.Computability.DepthThree.Circuit",
+        "OAI.Computability.DepthThree.InterpolationQuotient",
+        "Mathlib.Data.List.OfFn",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.MachineBasic",
+      "path": "lean/OAI/Computability/DepthThree/MachineBasic.lean",
+      "sha256": "423851de28f8d5ef0c568690c68d9f27d5c67b61f9dbdea87071d97be08b83bd",
+      "bytes": 3844,
+      "lines": 98,
+      "imports": [
+        "OAI.Computability.DepthThree.Model"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.MachineLanguage",
+      "path": "lean/OAI/Computability/DepthThree/MachineLanguage.lean",
+      "sha256": "1dd00b0c2b9552177a82c2679b2dd9db947099ad79eedbe26dbedd1b72a0d969",
+      "bytes": 5449,
+      "lines": 131,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeDecodeParsed",
+        "OAI.Computability.DepthThree.TapeEvaluation",
+        "OAI.Computability.DepthThree.TapeBranch"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Main",
+      "path": "lean/OAI/Computability/DepthThree/Main.lean",
+      "sha256": "18fdab27f1f3df8f99389b1d6ac0ce3aac2644d5fd1ea585ee536a87bebbdd3a",
+      "bytes": 805,
+      "lines": 20,
+      "imports": [
+        "OAI.Computability.DepthThree.MachineLanguage",
+        "OAI.Computability.DepthThree.LanguageLowerBound"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.MarkerMixture",
+      "path": "lean/OAI/Computability/DepthThree/MarkerMixture.lean",
+      "sha256": "77108730a393c87588ecce7cd00a9e7921230227d288e624d4ddc11ad17ef4c6",
+      "bytes": 6202,
+      "lines": 167,
+      "imports": [
+        "OAI.Computability.DepthThree.MarkerPermutation",
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.Core",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Bool.Basic",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Convert"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.MarkerPermutation",
+      "path": "lean/OAI/Computability/DepthThree/MarkerPermutation.lean",
+      "sha256": "5de43017d57c1f809f8314895f25ef164e6f779912c6bb598ea4055b57709084",
+      "bytes": 5950,
+      "lines": 158,
+      "imports": [
+        "Mathlib.Data.Fintype.Perm",
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Model",
+      "path": "lean/OAI/Computability/DepthThree/Model.lean",
+      "sha256": "fad164c05abdada63efb6b3c5b310a2b141568e0727dd9bcaf0df94ccaa4ce07",
+      "bytes": 3975,
+      "lines": 135,
+      "imports": [
+        "Mathlib"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.MomentBounds",
+      "path": "lean/OAI/Computability/DepthThree/MomentBounds.lean",
+      "sha256": "e7d9d064d76c05a3de1e8a7dfebfd7b6d607433484ba0b6dedd419b6b23a2722",
+      "bytes": 7310,
+      "lines": 163,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.TupleCounting",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.MultiTapeMachine",
+      "path": "lean/OAI/Computability/DepthThree/MultiTapeMachine.lean",
+      "sha256": "afb6dcbe6a327b59dceba719de6dab0be5c37e9879d45d36f20becf8b7bf49aa",
+      "bytes": 3190,
+      "lines": 79,
+      "imports": [
+        "OAI.Computability.DepthThree.MachineBasic",
+        "Mathlib.Tactic.DeriveFintype"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Restriction",
+      "path": "lean/OAI/Computability/DepthThree/Restriction.lean",
+      "sha256": "d2325932dc29ba796f336b0d34d676ae352883da37572c3eafeac8a87e217bc8",
+      "bytes": 3680,
+      "lines": 85,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionCostCorrelation",
+        "OAI.Computability.DepthThree.RestrictionExpectedCost",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionClause",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionClause.lean",
+      "sha256": "8ec0a314eecf64f87e833156b361328f51f7c63aa18ada08339e99748f30448d",
+      "bytes": 6543,
+      "lines": 174,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.RestrictionNormalization",
+        "Mathlib.Data.List.Basic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionCorrelation",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionCorrelation.lean",
+      "sha256": "e8c02357d0480ae638ea1e9528daf4060d016db71791f0fc5bfaf03fb4c80232",
+      "bytes": 6617,
+      "lines": 168,
+      "imports": [
+        "OAI.Computability.DepthThree.Core",
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "Mathlib.Data.Finset.Lattice.Fold",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionCostCorrelation",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionCostCorrelation.lean",
+      "sha256": "16168339a83f8a880086fa264250e5cf764350e63320afd69f5e30778bf9aea1",
+      "bytes": 9651,
+      "lines": 216,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionPathProducts",
+        "OAI.Computability.DepthThree.RestrictionPathMixture",
+        "OAI.Computability.DepthThree.RestrictionEasyBase",
+        "OAI.Computability.DepthThree.RestrictionCorrelation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionCountSplit",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionCountSplit.lean",
+      "sha256": "91e160737bc64196b6cf18e4e058025739607f8d286fbf66f8f5963c6f6a9e79",
+      "bytes": 3415,
+      "lines": 87,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionExpansion"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionCylinders",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionCylinders.lean",
+      "sha256": "6b5cfb57f3439292e22e8b3f57c579c4df4449841b3bf10dd5248b2925d33a1c",
+      "bytes": 6432,
+      "lines": 179,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionClause",
+        "OAI.Computability.DepthThree.RestrictionExpansion"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionEasyBase",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionEasyBase.lean",
+      "sha256": "942ca535038730783366e321f1c5b7be60979aad9e3c7bea53ef7626cc47bfe1",
+      "bytes": 5415,
+      "lines": 158,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionPathData",
+        "OAI.Computability.DepthThree.RestrictionMarkerCNF"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionExpansion",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionExpansion.lean",
+      "sha256": "a2fb55a88635881ae6a6ff7a3a716b73d86ecd4fcb0dbc880f44fbec375070a6",
+      "bytes": 14703,
+      "lines": 336,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionPaths",
+        "Mathlib.Data.List.Induction",
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+        "Mathlib.Algebra.BigOperators.Field",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionExpectedCost",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionExpectedCost.lean",
+      "sha256": "157a80a4ee7edad3dda4538f2d2b26453604cf3490f0594a01743b1593c64fb5",
+      "bytes": 7906,
+      "lines": 181,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionPathData",
+        "OAI.Computability.DepthThree.ReversePathEncoding",
+        "Mathlib.Algebra.Order.Field.GeomSum"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionKeepClause",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionKeepClause.lean",
+      "sha256": "de4e65e0850710dec5d1e3c0b2f4611ecae0b21b28c35aeeb0d755d9a2a1e601",
+      "bytes": 4278,
+      "lines": 122,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionClause"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionMarkerCNF",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionMarkerCNF.lean",
+      "sha256": "f0d0ecd87657c41a4fb22393158e03e47f0899e350f69c7e9bce7f1b17a55e43",
+      "bytes": 7972,
+      "lines": 197,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionCylinders",
+        "OAI.Computability.DepthThree.MarkerMixture",
+        "Mathlib.Algebra.BigOperators.GroupWithZero.Finset",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionNormalization",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionNormalization.lean",
+      "sha256": "6e396fe2a94810144085bdf29f7068a698b21f85b3174e38b9a1204270eb1166",
+      "bytes": 3411,
+      "lines": 120,
+      "imports": [
+        "OAI.Computability.DepthThree.Core",
+        "Mathlib.Data.List.Basic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionPathData",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionPathData.lean",
+      "sha256": "59fa61db4165f81da7f961fb4a57633fc9ec4fe0d01a5c7626c0693982b41b9c",
+      "bytes": 7678,
+      "lines": 192,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionCylinders",
+        "OAI.Computability.DepthThree.RestrictionKeepClause",
+        "OAI.Computability.DepthThree.RestrictionProbability",
+        "OAI.Computability.DepthThree.CylinderProbability"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionPathMixture",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionPathMixture.lean",
+      "sha256": "0e2eae7b8e21de03773019679d6f716489b042dedc063c3296a71edefe218914",
+      "bytes": 8662,
+      "lines": 178,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionPathData",
+        "OAI.Computability.DepthThree.RestrictionCountSplit",
+        "OAI.Computability.DepthThree.RestrictionMarkerCNF"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionPathProducts",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionPathProducts.lean",
+      "sha256": "9659c19b12f592a4e6ac3e5ceda9d47e298723d6d91c39828d8607e72ac30571",
+      "bytes": 2632,
+      "lines": 73,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "Mathlib.Algebra.BigOperators.Fin"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionPaths",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionPaths.lean",
+      "sha256": "1d3391557030499ebae657e212f6f573808906b0099017ee7ed53b0079ae19fb",
+      "bytes": 9616,
+      "lines": 250,
+      "imports": [
+        "Mathlib.Data.Finset.Card",
+        "Mathlib.Data.Finset.Union",
+        "Mathlib.Data.Finset.Lattice.Lemmas",
+        "Mathlib.Data.Fintype.Basic",
+        "Mathlib.Data.List.Nodup",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Basic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionProbability",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionProbability.lean",
+      "sha256": "f564c5d39dd83f1687bf0cb221ed96d9dfacb13ed5221dd641903c6235118f0c",
+      "bytes": 9185,
+      "lines": 237,
+      "imports": [
+        "OAI.Computability.DepthThree.FiniteProbability",
+        "OAI.Computability.DepthThree.ReversePathWeights"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.RestrictionTails",
+      "path": "lean/OAI/Computability/DepthThree/RestrictionTails.lean",
+      "sha256": "22a1919dc3bab2c380a7ce2ba1df0f0b5422e45163e7344cbaad8ed90910a95a",
+      "bytes": 7904,
+      "lines": 176,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionProbability",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.Complex.ExponentialBounds",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.ReversePathEncoding",
+      "path": "lean/OAI/Computability/DepthThree/ReversePathEncoding.lean",
+      "sha256": "e4384a0912600697ae0f8fa99475dbd1ade6459f8f739f46531ae6b07eef8f0b",
+      "bytes": 18064,
+      "lines": 424,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionExpansion",
+        "OAI.Computability.DepthThree.ReversePathRecurrence",
+        "OAI.Computability.DepthThree.ReversePathWeights",
+        "Mathlib.Algebra.BigOperators.Fin",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Tactic.Tauto"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.ReversePathRecurrence",
+      "path": "lean/OAI/Computability/DepthThree/ReversePathRecurrence.lean",
+      "sha256": "d76e3e485372cd075d3ce6fd37c5f2bd102a52471432f0a2dd75b229dc17d432",
+      "bytes": 11402,
+      "lines": 291,
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Group.Finset.Powerset",
+        "Mathlib.Algebra.BigOperators.Field",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Tactic.Ring",
+        "Mathlib.Tactic.SplitIfs"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.ReversePathWeights",
+      "path": "lean/OAI/Computability/DepthThree/ReversePathWeights.lean",
+      "sha256": "fd0507b79925c0a824524646521a9630bbb7ef47f830be462fd186ea3f785a98",
+      "bytes": 2558,
+      "lines": 69,
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Basic.Real.Basic",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseBranch",
+      "path": "lean/OAI/Computability/DepthThree/SparseBranch.lean",
+      "sha256": "b77f3c815843e5a0a7980e804f5029cc50eee1ec57068ca893729b217a743315",
+      "bytes": 18811,
+      "lines": 489,
+      "imports": [
+        "OAI.Computability.DepthThree.SparseCounting",
+        "OAI.Computability.DepthThree.Sunflower"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseCorrelation",
+      "path": "lean/OAI/Computability/DepthThree/SparseCorrelation.lean",
+      "sha256": "a3ac7545a1e0128380602e155de8066f6449fe2822357b19ef7e225106227dbf",
+      "bytes": 3674,
+      "lines": 95,
+      "imports": [
+        "OAI.Computability.DepthThree.SparsePartition",
+        "OAI.Computability.DepthThree.RestrictionCorrelation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseCounting",
+      "path": "lean/OAI/Computability/DepthThree/SparseCounting.lean",
+      "sha256": "1fe27b498803d108becdc1283355d50a0d05fb1669c37eeb0a01b2e9b4241e34",
+      "bytes": 8554,
+      "lines": 222,
+      "imports": [
+        "OAI.Computability.DepthThree.Core",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Data.Fintype.Prod"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseFiniteFamily",
+      "path": "lean/OAI/Computability/DepthThree/SparseFiniteFamily.lean",
+      "sha256": "7c0f3663a3ec19f4f5832fda1d24785c6670338a0eeb4b82eb0bc2ef30f7ce29",
+      "bytes": 2404,
+      "lines": 69,
+      "imports": [
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Data.Finset.Card"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseLeafCNF",
+      "path": "lean/OAI/Computability/DepthThree/SparseLeafCNF.lean",
+      "sha256": "696071be45aad98b28b74cc2731063596e84bbb61ac19e7bd0ca1f0c602c6e4f",
+      "bytes": 4211,
+      "lines": 135,
+      "imports": [
+        "OAI.Computability.DepthThree.SparseNormalize",
+        "OAI.Computability.DepthThree.SparsePrefix"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseLeafCount",
+      "path": "lean/OAI/Computability/DepthThree/SparseLeafCount.lean",
+      "sha256": "b6a4f506695140b950db3d62f0acd8e3e2e8c48480b8ca8d3dfc874ade517ec3",
+      "bytes": 2907,
+      "lines": 70,
+      "imports": [
+        "OAI.Computability.DepthThree.SparseStreams",
+        "OAI.Computability.DepthThree.Entropy",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseNormalize",
+      "path": "lean/OAI/Computability/DepthThree/SparseNormalize.lean",
+      "sha256": "0593369d858d6b2eecb73cb4c033ef178815cb756e6a6f0c4879c004b4c64e41",
+      "bytes": 3684,
+      "lines": 107,
+      "imports": [
+        "OAI.Computability.DepthThree.Core",
+        "OAI.Computability.DepthThree.SparseFiniteFamily"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparsePartition",
+      "path": "lean/OAI/Computability/DepthThree/SparsePartition.lean",
+      "sha256": "2b4ee8962e44b9e85cc9ee9eb5dd92dfabed12d7e66cb1deabbfe3c0a284e839",
+      "bytes": 5444,
+      "lines": 141,
+      "imports": [
+        "OAI.Computability.DepthThree.SparseThresholds",
+        "OAI.Computability.DepthThree.SparseTree",
+        "OAI.Computability.DepthThree.SparseLeafCount",
+        "OAI.Computability.DepthThree.SparseLeafCNF",
+        "Mathlib.Data.Fintype.EquivFin",
+        "Mathlib.Tactic.FieldSimp"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparsePrefix",
+      "path": "lean/OAI/Computability/DepthThree/SparsePrefix.lean",
+      "sha256": "6ffe930768cb8354daf9e13991f2e98282b94479c20aba3cbda2d3066580e914",
+      "bytes": 16465,
+      "lines": 385,
+      "imports": [
+        "OAI.Computability.DepthThree.SparseBranch",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Order.Interval.Finset.Nat",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseStreams",
+      "path": "lean/OAI/Computability/DepthThree/SparseStreams.lean",
+      "sha256": "c266fe4d7a32fdce443dcc5b8410fa9794124dcdf7b695d37bb0a11d697a60e7",
+      "bytes": 6582,
+      "lines": 176,
+      "imports": [
+        "OAI.Computability.DepthThree.EntropyBits",
+        "Mathlib.Data.List.GetD",
+        "Mathlib.Data.List.Count",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Algebra.BigOperators.Fin"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseTailBounds",
+      "path": "lean/OAI/Computability/DepthThree/SparseTailBounds.lean",
+      "sha256": "79767e49f998a9130282e4f0bedb3c99a88c11557a7b7e00ab325ff0aa00efb1",
+      "bytes": 4794,
+      "lines": 112,
+      "imports": [
+        "OAI.Computability.DepthThree.SparseTestCodes",
+        "OAI.Computability.DepthThree.UniformSparseBounds",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Positivity"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseTestCodes",
+      "path": "lean/OAI/Computability/DepthThree/SparseTestCodes.lean",
+      "sha256": "9f186674c12299fd4a23ee1a5565dc924c457d7b02500fe8c822dbecf1e9e1f0",
+      "bytes": 5952,
+      "lines": 152,
+      "imports": [
+        "OAI.Computability.DepthThree.RestrictionNormalization",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Data.Fintype.EquivFin",
+        "Mathlib.Data.Fintype.Option",
+        "Mathlib.Data.Fin.Tuple.Basic",
+        "Mathlib.Logic.Function.Basic",
+        "Mathlib.Tactic.SplitIfs"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseThresholds",
+      "path": "lean/OAI/Computability/DepthThree/SparseThresholds.lean",
+      "sha256": "4f9e3d328ce66e8f0e9dda72af5ab25d9c840d5124fe58562d92322a894105a2",
+      "bytes": 5889,
+      "lines": 169,
+      "imports": [
+        "OAI.Computability.DepthThree.EntropyThreshold",
+        "OAI.Computability.DepthThree.SparsePrefix",
+        "Mathlib.Algebra.BigOperators.Intervals"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.SparseTree",
+      "path": "lean/OAI/Computability/DepthThree/SparseTree.lean",
+      "sha256": "052a4a85a0889ef6e9f3e04883b60f0261cf933aed1cf089b5b57b359a16568b",
+      "bytes": 12110,
+      "lines": 303,
+      "imports": [
+        "OAI.Computability.DepthThree.SparsePrefix",
+        "OAI.Computability.DepthThree.SparseStreams",
+        "Mathlib.Data.Nat.Find"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.Sunflower",
+      "path": "lean/OAI/Computability/DepthThree/Sunflower.lean",
+      "sha256": "870baed4a6d40c0fc525c039fb80885b99c9ebe9a019a9a43322e8c1b2e57d5b",
+      "bytes": 12245,
+      "lines": 272,
+      "imports": [
+        "Mathlib.Combinatorics.Pigeonhole",
+        "Mathlib.Data.Finset.Max",
+        "Mathlib.Data.Finset.Powerset",
+        "Mathlib.Data.Nat.Factorial.Basic",
+        "Mathlib.Tactic.Ring",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeArithmetic",
+      "path": "lean/OAI/Computability/DepthThree/TapeArithmetic.lean",
+      "sha256": "c3dbf62540ce00bf9f31a2a07aa146ba5ce6d536101f157f67e8e41daa09e02b",
+      "bytes": 3314,
+      "lines": 87,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeRouting",
+        "OAI.Computability.DepthThree.TapeUnary",
+        "OAI.Computability.DepthThree.TapeCopy",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeArray",
+      "path": "lean/OAI/Computability/DepthThree/TapeArray.lean",
+      "sha256": "060d1d627af2fb1ca40e6e2ebfd755b3ee239a4b0f5a777f94b27fd8ec7da2a9",
+      "bytes": 11100,
+      "lines": 205,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeCopy"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeBranch",
+      "path": "lean/OAI/Computability/DepthThree/TapeBranch.lean",
+      "sha256": "c37ca6048df26029fa9eefb61da6c3635606af8e93ed4d766446cfc79bb4907f",
+      "bytes": 3486,
+      "lines": 73,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeRouting"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeCancel",
+      "path": "lean/OAI/Computability/DepthThree/TapeCancel.lean",
+      "sha256": "544f39a15b31965f5c87edd9a0413c5d32bbad3e2441e1fcaa0444fb342b53da",
+      "bytes": 6005,
+      "lines": 132,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeCancelRow"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeCancelRow",
+      "path": "lean/OAI/Computability/DepthThree/TapeCancelRow.lean",
+      "sha256": "f56dcbeeafa6074e6ebefb92b077c4f6eaf79d0fce3db8aaf0171b3af29459dd",
+      "bytes": 5250,
+      "lines": 112,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeCancelStep",
+        "OAI.Computability.DepthThree.LanguageBitReductionLoop"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeCancelStep",
+      "path": "lean/OAI/Computability/DepthThree/TapeCancelStep.lean",
+      "sha256": "854df905a30faf1f44d820f578d8aa4b24a51d0c0e7f5344e20d5220260df10c",
+      "bytes": 3572,
+      "lines": 77,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeNaturalAccess"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeConvolutionPrepare",
+      "path": "lean/OAI/Computability/DepthThree/TapeConvolutionPrepare.lean",
+      "sha256": "4b1c029b7dbd729e178de00209ee5b8db9ad3627a010574447987b8732d92661",
+      "bytes": 4724,
+      "lines": 95,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeConvolutionRows"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeConvolutionRow",
+      "path": "lean/OAI/Computability/DepthThree/TapeConvolutionRow.lean",
+      "sha256": "0c716690bff038b4fc818dd027caba850b09ac76ad406064022774c3904e7731",
+      "bytes": 7069,
+      "lines": 144,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeConvolutionStep",
+        "OAI.Computability.DepthThree.TapeNaturalAccess"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeConvolutionRows",
+      "path": "lean/OAI/Computability/DepthThree/TapeConvolutionRows.lean",
+      "sha256": "be9784e556be8638633091a9c520a983e862f8f0d97bc25a2cb11caebf01ab88",
+      "bytes": 9726,
+      "lines": 197,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeConvolutionRow"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeConvolutionStep",
+      "path": "lean/OAI/Computability/DepthThree/TapeConvolutionStep.lean",
+      "sha256": "c352ad404227f202f0fd4f14b125fc46dab923e7d47882adbb77736f7c333994",
+      "bytes": 6314,
+      "lines": 125,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeConvolve",
+      "path": "lean/OAI/Computability/DepthThree/TapeConvolve.lean",
+      "sha256": "58db96d697efac7419a4a3d1a9c445d6c6e71496c89da55ef581c3506e8d7d74",
+      "bytes": 3577,
+      "lines": 80,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeConvolutionPrepare"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeCopy",
+      "path": "lean/OAI/Computability/DepthThree/TapeCopy.lean",
+      "sha256": "17e18cc2f7f76f95085553f42a86eab736efdb5a2686e5344f4aa7ac74e4c7dc",
+      "bytes": 10266,
+      "lines": 218,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiRoutines",
+        "OAI.Computability.DepthThree.TapeWordRewind"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeCopyAdd",
+      "path": "lean/OAI/Computability/DepthThree/TapeCopyAdd.lean",
+      "sha256": "58afebc1c231ae8a3272320eac3892f432a83f5aad49b97e3f07a126157a27ff",
+      "bytes": 1879,
+      "lines": 48,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeDecodeBlock",
+      "path": "lean/OAI/Computability/DepthThree/TapeDecodeBlock.lean",
+      "sha256": "bf9eea71034c3f9a71f18fcc19e918c26f1d8ee3a39a7549e805717d509f8ec1",
+      "bytes": 4515,
+      "lines": 87,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeInputPrepare",
+        "OAI.Computability.DepthThree.TapeInputBlocks",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeDecodeBlocks",
+      "path": "lean/OAI/Computability/DepthThree/TapeDecodeBlocks.lean",
+      "sha256": "22ace0e5235ef1ab509b9870d165bfe63a018e702778101696a717f243ae1f83",
+      "bytes": 10974,
+      "lines": 121,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeDecodeBlock"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeDecodeParsed",
+      "path": "lean/OAI/Computability/DepthThree/TapeDecodeParsed.lean",
+      "sha256": "a0ae85d8f34c8a66b6bca397cf409bcc899cf9bd14ccfdf509807187d3e62631",
+      "bytes": 2469,
+      "lines": 60,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeParse",
+        "OAI.Computability.DepthThree.TapeDecodeBlocks"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeDivideFive",
+      "path": "lean/OAI/Computability/DepthThree/TapeDivideFive.lean",
+      "sha256": "e3b5fb016370447ead0bcdc03149ec4b700542b29591990784261aecff3ce42c",
+      "bytes": 6156,
+      "lines": 142,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeArithmetic",
+        "Mathlib.Data.Fintype.Sigma"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeEncoding",
+      "path": "lean/OAI/Computability/DepthThree/TapeEncoding.lean",
+      "sha256": "eec5877f78e7d017c9826895338c26c7b038384fc6e594051946e4633a0adcb0",
+      "bytes": 6642,
+      "lines": 195,
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Group.List.Basic",
+        "Mathlib.Data.Fintype.Pi",
+        "Mathlib.Data.Fintype.Prod",
+        "Mathlib.Data.Fintype.Sum",
+        "Mathlib.Data.List.FinRange",
+        "Mathlib.Tactic.DeriveFintype"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeErase",
+      "path": "lean/OAI/Computability/DepthThree/TapeErase.lean",
+      "sha256": "721ee802e3f978bf428e12339f0914216598a0a001b7910c9fcf7fc0efa4210e",
+      "bytes": 8604,
+      "lines": 179,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeCopy"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeEvaluation",
+      "path": "lean/OAI/Computability/DepthThree/TapeEvaluation.lean",
+      "sha256": "da2efccc1188204e7e41b0b03eef0ea955dbc7f5bf36485df6adfb9c2a723936",
+      "bytes": 7842,
+      "lines": 160,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHashClean",
+        "OAI.Computability.DepthThree.TapeHorner",
+        "OAI.Computability.DepthThree.TapeOutput",
+        "OAI.Computability.DepthThree.LanguageInputBlockWords"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeFill",
+      "path": "lean/OAI/Computability/DepthThree/TapeFill.lean",
+      "sha256": "7cebf3b40b209cc626bbf62165e069ea229556d685e5995a60451a2fac8ea636",
+      "bytes": 4023,
+      "lines": 82,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeArithmetic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeForLoop",
+      "path": "lean/OAI/Computability/DepthThree/TapeForLoop.lean",
+      "sha256": "d43170a43e27387a155b73c9cafe3c54f1a6928c3ebdf7fce8524f761c591717",
+      "bytes": 6187,
+      "lines": 135,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeRouting",
+        "OAI.Computability.DepthThree.TapeUnary",
+        "OAI.Computability.DepthThree.TapeUnaryCompare",
+        "Mathlib.Data.Nat.Init",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHash",
+      "path": "lean/OAI/Computability/DepthThree/TapeHash.lean",
+      "sha256": "e593674a33bede35b222e4354ef3c0329a720bb43254c3a985dfb3a45144d974",
+      "bytes": 4174,
+      "lines": 100,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHashInitialize",
+        "OAI.Computability.DepthThree.TapeHashOuter"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHashClean",
+      "path": "lean/OAI/Computability/DepthThree/TapeHashClean.lean",
+      "sha256": "abe10bd6f6b37e4fcb97fba7c29ccb62fd319528930b5668c84100d07aafe486",
+      "bytes": 2727,
+      "lines": 66,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHash"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHashInitialize",
+      "path": "lean/OAI/Computability/DepthThree/TapeHashInitialize.lean",
+      "sha256": "e3b7087b7e5a9dc9633838f1ca53fd48fa529cb6046f3fa1d4bac1ec5a253330",
+      "bytes": 1889,
+      "lines": 47,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHashInner",
+      "path": "lean/OAI/Computability/DepthThree/TapeHashInner.lean",
+      "sha256": "3673d4468dbbb2e3b7185fc88f58972677a9f61bd22569c0b303120ef7488f39",
+      "bytes": 4312,
+      "lines": 94,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHashStep",
+        "OAI.Computability.DepthThree.TapeForLoop",
+        "OAI.Computability.DepthThree.LanguageBitHashUpdates"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHashOuter",
+      "path": "lean/OAI/Computability/DepthThree/TapeHashOuter.lean",
+      "sha256": "85685cfa3ebfd54545cfccc85eb62f4d986d14d29b3cd13465dc0d1a30189c75",
+      "bytes": 3985,
+      "lines": 92,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHashRow"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHashRow",
+      "path": "lean/OAI/Computability/DepthThree/TapeHashRow.lean",
+      "sha256": "286f7e9c0d28a21f9b7f36614a964074a131afb713b9d52281c37d998f205d47",
+      "bytes": 4000,
+      "lines": 93,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHashInner"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHashStep",
+      "path": "lean/OAI/Computability/DepthThree/TapeHashStep.lean",
+      "sha256": "94a8f0f8766b46c4c54bbf4557ebbff0640cf1eaa0cd46b69b6281823ade58de",
+      "bytes": 2263,
+      "lines": 52,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeNaturalAccess"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHorner",
+      "path": "lean/OAI/Computability/DepthThree/TapeHorner.lean",
+      "sha256": "80ebc437ea66c4ea95825b5acff5bfa63b15ad200ed4fba18c9add8b7c776591",
+      "bytes": 2712,
+      "lines": 62,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHornerPrepare"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHornerBody",
+      "path": "lean/OAI/Computability/DepthThree/TapeHornerBody.lean",
+      "sha256": "4be38fabd9acdcc301ddf8050e8c6d3adcd3fa516be0fd42ee1f7c73213f4c2b",
+      "bytes": 4461,
+      "lines": 96,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHornerExtract",
+        "OAI.Computability.DepthThree.TapeHornerMultiply",
+        "OAI.Computability.DepthThree.TapeXor",
+        "OAI.Computability.DepthThree.LanguageBitHornerLoop"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHornerExtract",
+      "path": "lean/OAI/Computability/DepthThree/TapeHornerExtract.lean",
+      "sha256": "e79a44bc17d173b390255c79dc3005522be07f1f115fdd107163babccb215f71",
+      "bytes": 2982,
+      "lines": 70,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeInputBlocks"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHornerLoop",
+      "path": "lean/OAI/Computability/DepthThree/TapeHornerLoop.lean",
+      "sha256": "421f76a819201a27b9cd4b809d8a5dfc506244001114c724d1ce1e2a067556d2",
+      "bytes": 6344,
+      "lines": 131,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHornerBody"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHornerMultiply",
+      "path": "lean/OAI/Computability/DepthThree/TapeHornerMultiply.lean",
+      "sha256": "9cf47e7455501d8c07c0391777019b3e9d161abccfb7949a778c68fe9f4a10f1",
+      "bytes": 4328,
+      "lines": 95,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeConvolve",
+        "OAI.Computability.DepthThree.TapeRemainder",
+        "OAI.Computability.DepthThree.TapeHornerTake",
+        "OAI.Computability.DepthThree.LanguageBitReductionLoop"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHornerPrepare",
+      "path": "lean/OAI/Computability/DepthThree/TapeHornerPrepare.lean",
+      "sha256": "a79059d532686dad58c9e2bd4f24f5b279ce385b1f2d1d18b524cbb709f33abd",
+      "bytes": 6276,
+      "lines": 129,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeHornerLoop",
+        "OAI.Computability.DepthThree.TapeMultiply"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeHornerTake",
+      "path": "lean/OAI/Computability/DepthThree/TapeHornerTake.lean",
+      "sha256": "1ccc460d490d5db8066b69b0618e6fddbfcab2c1bbd79546923f313af3b6f7ab",
+      "bytes": 4746,
+      "lines": 104,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeInputBlocks"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeInitialization",
+      "path": "lean/OAI/Computability/DepthThree/TapeInitialization.lean",
+      "sha256": "5230eaf0fab20679b243ef854a71164d383a7fa79e00f3bced36e30e9282f392",
+      "bytes": 13092,
+      "lines": 288,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiProgram",
+        "OAI.Computability.DepthThree.TapeWordRewind",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeInputBlockLoop",
+      "path": "lean/OAI/Computability/DepthThree/TapeInputBlockLoop.lean",
+      "sha256": "af733ff880349a8f062b17ba1f0c647662209c29e35584e21b69d558256d8b89",
+      "bytes": 8644,
+      "lines": 182,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeReadPush",
+        "Mathlib.Data.List.Induction",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeInputBlocks",
+      "path": "lean/OAI/Computability/DepthThree/TapeInputBlocks.lean",
+      "sha256": "c1cea79ed7eb8a95350b3932b51500deb16061e40a04bce2881edc2d1f7a10dc",
+      "bytes": 11837,
+      "lines": 236,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeInputBlockLoop",
+        "OAI.Computability.DepthThree.LanguageInputBlockLists"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeInputGuard",
+      "path": "lean/OAI/Computability/DepthThree/TapeInputGuard.lean",
+      "sha256": "c0357f091f65f273cc1b1b3471b44dda6612d5e57d6c768abd03f88a862ea859",
+      "bytes": 12006,
+      "lines": 251,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeInputGuardLength",
+        "OAI.Computability.DepthThree.TapeUnaryCompare",
+        "OAI.Computability.DepthThree.LanguageParser",
+        "Mathlib.Data.Fintype.Sigma",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeInputGuardLength",
+      "path": "lean/OAI/Computability/DepthThree/TapeInputGuardLength.lean",
+      "sha256": "c7569280c740ca0ffd7b4b02a36c3de791167577893cbc0b06fea668238e4816",
+      "bytes": 9432,
+      "lines": 187,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeCopyAdd",
+        "OAI.Computability.DepthThree.TapeMultiply",
+        "OAI.Computability.DepthThree.LanguageParameters",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeInputPrepare",
+      "path": "lean/OAI/Computability/DepthThree/TapeInputPrepare.lean",
+      "sha256": "ea16486b03f8979f820fc91068f91500216f46ab2f1dd3d680b45c0049d10574",
+      "bytes": 15168,
+      "lines": 311,
+      "imports": [
+        "OAI.Computability.DepthThree.LanguageInputBlockLists",
+        "OAI.Computability.DepthThree.TapeCopyAdd",
+        "OAI.Computability.DepthThree.TapeProductLength",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeMultiProgram",
+      "path": "lean/OAI/Computability/DepthThree/TapeMultiProgram.lean",
+      "sha256": "225b563a69b1508f415e9a9002539a6937f00665a203a4715a5661a37dfb8608",
+      "bytes": 3407,
+      "lines": 93,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeEncoding",
+        "OAI.Computability.DepthThree.TapeWord",
+        "OAI.Computability.DepthThree.MultiTapeMachine"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeMultiRoutines",
+      "path": "lean/OAI/Computability/DepthThree/TapeMultiRoutines.lean",
+      "sha256": "59eb5c4d95d2af463a33809be17caf63ec57ba87c77019e3f77a492749ad1b0c",
+      "bytes": 4767,
+      "lines": 117,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiProgram"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeMultiply",
+      "path": "lean/OAI/Computability/DepthThree/TapeMultiply.lean",
+      "sha256": "6a3b322a14bb8869b4db6ea034b8ce1e3d45e225f1fec1eb54a8912bd99019e6",
+      "bytes": 8489,
+      "lines": 178,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeArithmetic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeNaturalAccess",
+      "path": "lean/OAI/Computability/DepthThree/TapeNaturalAccess.lean",
+      "sha256": "196ce405804006fc82502badd1e06e1b1581f2b39a972ecdc6a0f22f0d69f0ca",
+      "bytes": 4039,
+      "lines": 87,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation",
+        "OAI.Computability.DepthThree.LanguageBitConvolutionUpdates"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeOutput",
+      "path": "lean/OAI/Computability/DepthThree/TapeOutput.lean",
+      "sha256": "fd724c52298b547172f2482ca7948f6dd9af7d358ad327c781ffa0f9ef966c94",
+      "bytes": 1521,
+      "lines": 47,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeParameterCost",
+      "path": "lean/OAI/Computability/DepthThree/TapeParameterCost.lean",
+      "sha256": "60f6dc06f6a5d4267109feaa5616500af329182aaa63276d084486c24759af7b",
+      "bytes": 5935,
+      "lines": 135,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeParameterSearch",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeParameterSearch",
+      "path": "lean/OAI/Computability/DepthThree/TapeParameterSearch.lean",
+      "sha256": "846117c3be20a544400a7e1c3e134293922a95a6d494109ad06ab140b4d7ee86",
+      "bytes": 5925,
+      "lines": 135,
+      "imports": [
+        "OAI.Computability.DepthThree.TapePowerSearch"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeParameters",
+      "path": "lean/OAI/Computability/DepthThree/TapeParameters.lean",
+      "sha256": "bdb4b1c828cd3437f97747c535fee20cc913ddb0e45b1b7bc1f1a49f8a4cc381",
+      "bytes": 11488,
+      "lines": 243,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeParameterSearch",
+        "OAI.Computability.DepthThree.TapeDivideFive",
+        "Mathlib.Tactic.FinCases"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeParametersBound",
+      "path": "lean/OAI/Computability/DepthThree/TapeParametersBound.lean",
+      "sha256": "3de41bff104f9346c7c87b78797bdbb7c2ef2a12c36c3658217a9eca51fae325",
+      "bytes": 1507,
+      "lines": 37,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeParameters",
+        "OAI.Computability.DepthThree.TapeParameterCost"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeParse",
+      "path": "lean/OAI/Computability/DepthThree/TapeParse.lean",
+      "sha256": "5d405a3e8ce2e96a58899893fee308ff4d7f61923cdd70cbbc150a4edfd5b82e",
+      "bytes": 5383,
+      "lines": 120,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeInitialization",
+        "OAI.Computability.DepthThree.TapeParametersBound",
+        "OAI.Computability.DepthThree.TapeInputGuard"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapePower",
+      "path": "lean/OAI/Computability/DepthThree/TapePower.lean",
+      "sha256": "f0c8de5ab34a5dffeceae0bce9fa800f7f6efdbe51c832fb20000a34d6bd98f4",
+      "bytes": 6395,
+      "lines": 153,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiply",
+        "Mathlib.Algebra.BigOperators.Ring.Finset",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapePowerCompare",
+      "path": "lean/OAI/Computability/DepthThree/TapePowerCompare.lean",
+      "sha256": "154075b17a57d16bbf5056c2c2cd0e46061164253528b49b6d0dc8dfd812095b",
+      "bytes": 8678,
+      "lines": 176,
+      "imports": [
+        "OAI.Computability.DepthThree.TapePower",
+        "OAI.Computability.DepthThree.TapeStoreRepresentation",
+        "OAI.Computability.DepthThree.TapeUnaryCompare"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapePowerSearch",
+      "path": "lean/OAI/Computability/DepthThree/TapePowerSearch.lean",
+      "sha256": "ad7c40e772197bc457268b1d8af474105dc3c6fa7d3c6c7027875b8603c2430c",
+      "bytes": 8296,
+      "lines": 174,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeSearchBody",
+        "OAI.Computability.DepthThree.LanguageSearchTests"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeProductLength",
+      "path": "lean/OAI/Computability/DepthThree/TapeProductLength.lean",
+      "sha256": "d93cf44a45e0d1e794b4495fc41b8ce73b79b3d2fd358a50d88d5aebdb3d9b93",
+      "bytes": 3921,
+      "lines": 97,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation",
+        "OAI.Computability.DepthThree.TapeMultiply",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeProductTerm",
+      "path": "lean/OAI/Computability/DepthThree/TapeProductTerm.lean",
+      "sha256": "b465560f1ff5ff984211b9df0ecf65b4cb46e35014568d283e2d4cfd3dec9871",
+      "bytes": 5740,
+      "lines": 127,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeArray",
+        "OAI.Computability.DepthThree.TapeArithmetic"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeReadPush",
+      "path": "lean/OAI/Computability/DepthThree/TapeReadPush.lean",
+      "sha256": "f53f6d6e782ee8cb4c1085af0de8b20da8a4a041010bfd39940fb5d132a18b97",
+      "bytes": 2731,
+      "lines": 59,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeRemainder",
+      "path": "lean/OAI/Computability/DepthThree/TapeRemainder.lean",
+      "sha256": "f195a9385384e55c9850c99a546a7f18e58d71cbfe41b88f8ed80015814c6222",
+      "bytes": 3075,
+      "lines": 78,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeRemainderOuter"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeRemainderOuter",
+      "path": "lean/OAI/Computability/DepthThree/TapeRemainderOuter.lean",
+      "sha256": "8236baba3eb32abb5dec42f10be4ac53ded9ef27f9ccf271c48594b74ccaefdc",
+      "bytes": 9347,
+      "lines": 203,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeRemainderSetup",
+        "OAI.Computability.DepthThree.TapeCancel",
+        "Mathlib.Tactic.Linarith"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeRemainderSetup",
+      "path": "lean/OAI/Computability/DepthThree/TapeRemainderSetup.lean",
+      "sha256": "1a0a54e52842d3174b52ab7c94d3f54ea9e77fa300e9c9300215b26176814947",
+      "bytes": 8911,
+      "lines": 188,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeCopyAdd"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeRewind",
+      "path": "lean/OAI/Computability/DepthThree/TapeRewind.lean",
+      "sha256": "136bc86bcc50a7f7ab0d1c2c262cbdc9a658c58c74c6e9667abbda21559486c6",
+      "bytes": 2998,
+      "lines": 76,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiRoutines",
+        "OAI.Computability.DepthThree.TapeWordRewind",
+        "Mathlib.Data.List.Induction"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeRouting",
+      "path": "lean/OAI/Computability/DepthThree/TapeRouting.lean",
+      "sha256": "80849aedb75f00ee818c2f55b097cc7bd86c773c76b0536fceeddd361537f4f9",
+      "bytes": 5775,
+      "lines": 115,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiRoutines"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeSearchBody",
+      "path": "lean/OAI/Computability/DepthThree/TapeSearchBody.lean",
+      "sha256": "1629060ad535251d23a16d53645b331de849bd034d0322f2738b9fed3e31680c",
+      "bytes": 4432,
+      "lines": 100,
+      "imports": [
+        "OAI.Computability.DepthThree.TapePowerCompare"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeStoreRepresentation",
+      "path": "lean/OAI/Computability/DepthThree/TapeStoreRepresentation.lean",
+      "sha256": "9a574999c080b65db25502d573b9d11cf152c380cfb0cfd815507d930647b292",
+      "bytes": 4940,
+      "lines": 110,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeErase",
+        "OAI.Computability.DepthThree.TapeFill",
+        "OAI.Computability.DepthThree.TapeProductTerm"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeUnary",
+      "path": "lean/OAI/Computability/DepthThree/TapeUnary.lean",
+      "sha256": "adaf23e8879ec7e3c5e9cd4d44a195722b52f972e5ef2f9fac46993eedb41ea2",
+      "bytes": 7099,
+      "lines": 161,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiRoutines"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeUnaryCompare",
+      "path": "lean/OAI/Computability/DepthThree/TapeUnaryCompare.lean",
+      "sha256": "3accfcc5de18954cdbeaf4980773c9a406445866439069aef1af3cd300393996",
+      "bytes": 6925,
+      "lines": 158,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeUnaryCompareScan",
+        "OAI.Computability.DepthThree.TapeRewind",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeUnaryCompareScan",
+      "path": "lean/OAI/Computability/DepthThree/TapeUnaryCompareScan.lean",
+      "sha256": "55d3cd776addb3f865a1ae7ffe1910c6b3766217e7e4b70bc86d7571e82f81a3",
+      "bytes": 9447,
+      "lines": 231,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeMultiRoutines",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeWord",
+      "path": "lean/OAI/Computability/DepthThree/TapeWord.lean",
+      "sha256": "7707b0ac27b0e132ec9b1995227ceed1ef41699568a04262f9f655e065bae831",
+      "bytes": 1117,
+      "lines": 39,
+      "imports": [
+        "Mathlib.Computability.TuringMachine.Tape"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeWordRewind",
+      "path": "lean/OAI/Computability/DepthThree/TapeWordRewind.lean",
+      "sha256": "36b1c74ebae90cd6ddfe8838674ce9269c36f508965f00956f99002df174b54e",
+      "bytes": 1596,
+      "lines": 47,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeWord"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TapeXor",
+      "path": "lean/OAI/Computability/DepthThree/TapeXor.lean",
+      "sha256": "5084b3b6a893b85a40ac94a67ab80f6a88971436b7b6905368d743ba5a393d3b",
+      "bytes": 11405,
+      "lines": 229,
+      "imports": [
+        "OAI.Computability.DepthThree.TapeStoreRepresentation",
+        "OAI.Computability.DepthThree.LanguageBitConvolution"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.TupleCounting",
+      "path": "lean/OAI/Computability/DepthThree/TupleCounting.lean",
+      "sha256": "dd03978e9f840ace21a97756980c418547c2d79b9ae4fdaf7e351398680b38ff",
+      "bytes": 3713,
+      "lines": 99,
+      "imports": [
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+        "Mathlib.Data.Fintype.BigOperators",
+        "Mathlib.Data.Fintype.EquivFin",
+        "Mathlib.Data.Fintype.Pi",
+        "Mathlib.Logic.Function.Basic",
+        "Lean.Elab.Tactic.Omega"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.UniformSparseBounds",
+      "path": "lean/OAI/Computability/DepthThree/UniformSparseBounds.lean",
+      "sha256": "25144da0bb11321801e060d1f5d1e6fbd6068e383285511a445ea898495318e8",
+      "bytes": 7242,
+      "lines": 146,
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Ring"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    },
+    {
+      "module": "OAI.Computability.DepthThree.WideCorrelation",
+      "path": "lean/OAI/Computability/DepthThree/WideCorrelation.lean",
+      "sha256": "6a0c8ccf0fe8b84b0fa1782a0dc75d72d1d7867c0555a4e69c049ee47c34304b",
+      "bytes": 1547,
+      "lines": 46,
+      "imports": [
+        "OAI.Computability.DepthThree.Restriction",
+        "OAI.Computability.DepthThree.CorrelationTransfer",
+        "OAI.Computability.DepthThree.HardSliceSelection"
+      ],
+      "worktree_matches_archived_commit": true,
+      "hits": [],
+      "options": []
+    }
+  ],
+  "challenge_template": {
+    "module": "ComparatorChallenges.DepthThree",
+    "path": "lean/ComparatorChallenges/DepthThree.lean",
+    "sha256": "c12686c38119eb50c375790ebc28e0c806821714985431e59f18ae87649872a4",
+    "bytes": 4453,
+    "lines": 144,
+    "imports": [
+      "Mathlib"
+    ],
+    "worktree_matches_archived_commit": true,
+    "hits": [
+      {
+        "category": "proof_placeholder",
+        "token": "sorry",
+        "line": 140,
+        "source": "sorry"
+      }
+    ],
+    "options": []
+  },
+  "target_statement_whitespace_normalized_equal": true,
+  "target_statement_whitespace_normalized": "∃ (L : List Bool → Bool) (M : FiniteMultiTapeMachine) (C a : ℕ), 0 < C ∧ 0 < a ∧ (∀ w : List Bool, MultiTapeHaltsIn M w (L w) (C * (w.length + 1) ^ a)) ∧ ∀ A : ℝ, 0 < A → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → ∀ D : Circuit3 (Fin n), D.Computes (fun x => L (List.ofFn x)) → (2 : ℝ) ^ (A * Real.sqrt (n : ℝ)) < (D.gateCount : ℝ)",
+  "statement_comparison_limitation": "Text-only statement comparison, not comparator execution or comparison of elaborated constants/definitions.",
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "theorem_axiom_dependency_verification_performed": false
+}
+
+END_UTC: 2026-10-09T18:58:07.179416+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 0.414

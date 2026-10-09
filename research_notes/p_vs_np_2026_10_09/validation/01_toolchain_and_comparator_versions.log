@@ -1,0 +1,107 @@
+START_UTC: 2026-10-09T18:55:57.917269+00:00
+CWD: /home/rou/src/math/lean
+TIMEOUT_SECONDS: 90
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -u
+run() { printf "\n$"; printf " %q" "$@"; printf "\n"; "$@"; status=$?; printf "SUBCOMMAND_EXIT_STATUS=%s\n" "$status"; }
+run elan --version
+run elan toolchain list
+run elan show
+run ls -ld /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1 /home/rou/.elan/toolchains/leanprover--lean4---v4.35.0-rc4
+run readlink -f /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1
+run timeout 20s lean --version
+run timeout 20s lake --version
+run timeout 10s comparator --version
+run timeout 10s comparator --help
+run timeout 10s landrun --version
+run timeout 10s lean4export --version
+run timeout 10s lean4export --help
+run file /usr/local/bin/comparator /usr/local/bin/lean4export /home/rou/go/bin/landrun /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean
+run sha256sum /usr/local/bin/comparator /usr/local/bin/lean4export /home/rou/go/bin/landrun /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lake
+
+
+OUTPUT (stdout and stderr merged):
+
+$ elan --version
+elan 4.2.4 (227caca13 2026-08-25)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ elan toolchain list
+leanprover/lean4:v4.34.1
+leanprover/lean4:v4.35.0-rc4
+SUBCOMMAND_EXIT_STATUS=0
+
+$ elan show
+installed toolchains
+--------------------
+
+leanprover/lean4:v4.34.1 (default)
+leanprover/lean4:v4.35.0-rc4
+
+active toolchain
+----------------
+
+leanprover/lean4:v4.34.1 (overridden by '/home/rou/src/math/lean/lean-toolchain')
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+SUBCOMMAND_EXIT_STATUS=0
+
+$ ls -ld /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1 /home/rou/.elan/toolchains/leanprover--lean4---v4.35.0-rc4
+drwxr-xr-x 7 rou rou 4096 Oct  7 16:52 /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1
+drwxr-xr-x 7 rou rou 4096 Oct  8 09:09 /home/rou/.elan/toolchains/leanprover--lean4---v4.35.0-rc4
+SUBCOMMAND_EXIT_STATUS=0
+
+$ readlink -f /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1
+/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1
+SUBCOMMAND_EXIT_STATUS=0
+
+$ timeout 20s lean --version
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ timeout 20s lake --version
+Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
+SUBCOMMAND_EXIT_STATUS=0
+
+$ timeout 10s comparator --version
+uncaught exception: no such file or directory (error code: 2)
+  file: --version
+SUBCOMMAND_EXIT_STATUS=1
+
+$ timeout 10s comparator --help
+uncaught exception: no such file or directory (error code: 2)
+  file: --help
+SUBCOMMAND_EXIT_STATUS=1
+
+$ timeout 10s landrun --version
+landrun version 0.1.18
+SUBCOMMAND_EXIT_STATUS=0
+
+$ timeout 10s lean4export --version
+{"meta":{"exporter":{"name":"lean4export","version":"3.1.0"},"format":{"version":"3.1.0"},"lean":{"githash":"5045d0056413266e57c625dcd7c365b10e377c52","version":"4.34.1"}}}
+SUBCOMMAND_EXIT_STATUS=0
+
+$ timeout 10s lean4export --help
+{"meta":{"exporter":{"name":"lean4export","version":"3.1.0"},"format":{"version":"3.1.0"},"lean":{"githash":"5045d0056413266e57c625dcd7c365b10e377c52","version":"4.34.1"}}}
+SUBCOMMAND_EXIT_STATUS=0
+
+$ file /usr/local/bin/comparator /usr/local/bin/lean4export /home/rou/go/bin/landrun /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean
+/usr/local/bin/comparator:                                       ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
+/usr/local/bin/lean4export:                                      ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
+/home/rou/go/bin/landrun:                                        ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0cc30c116b79e7b0b51636eaf3ab5d67458d883c, for GNU/Linux 3.2.0, with debug_info, not stripped
+/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, with debug_info, not stripped
+SUBCOMMAND_EXIT_STATUS=0
+
+$ sha256sum /usr/local/bin/comparator /usr/local/bin/lean4export /home/rou/go/bin/landrun /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lake
+afa65e57a1770f5961efe7681626a9a1cd99705262421658abd30b705f66e4a2  /usr/local/bin/comparator
+8c5d64ba68f4d3a68b3bcb7e1c5f188e35ae573b29470b8d4530a62324c9ddd1  /usr/local/bin/lean4export
+fadeca8b7e2d80fb13e6981d2dade34004520d2ffb620c685ae9553cd5d5bcdc  /home/rou/go/bin/landrun
+e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550  /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean
+6f53827dab18010d6c690d14c8401cacabc1db958edb3552a877ed4cf1dd995d  /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lake
+SUBCOMMAND_EXIT_STATUS=0
+
+END_UTC: 2026-10-09T18:55:58.732412+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 0.815

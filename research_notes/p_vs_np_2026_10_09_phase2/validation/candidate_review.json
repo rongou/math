@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "role": "Phase 2 independent adversarial mathematical review",
+  "owned_artifact": "research_notes/p_vs_np_2026_10_09_phase2/validation/candidate_review.json",
+  "scope": "Parent candidates A-D, the subsequently supplied exact MCSP[0,0] negative control E, and constructive truth-table patching F.",
+  "summary": {
+    "verdict": "Bounded candidate review completed. A-F retain the qualified conclusions recorded below. The stronger generic gate bound A*(p^2*S+p*sqrt(S))+B is also false by parity. The documented source formula estimate has the required De Morgan, coordinate-distribution, constant-size and pseudorandom-cutoff qualifications. The README is scoped appropriately; two minor root-choice/zero-completion prose clarifications are suggested.",
+    "confirmed_false_broadenings": [
+      "Counting distinct consumer nodes instead of parallel outgoing wire slots can invalidate A.",
+      "The internal path-product bound does not apply to reused raw-input leaves.",
+      "Unfolding arbitrary binary truth-function gates is not automatically a De Morgan formula of the same leaf size.",
+      "An absolute A*p^2*S+B bound for optimal restricted gate complexity, uniform in p and input length, is false.",
+      "Correctness and nearly-linear size, even with zero internal reuse, do not imply short acceptance certificates uniformly across all threshold regimes.",
+      "Adding a formula-style O(p*sqrt(S)) term does not make the universal quadratic gate-size restriction bound valid.",
+      "Correctness, nearly-linear outer size, and merely unbounded inner thresholds do not force short positive input certificates: exact MCSP[floor(sqrt(m)),floor(sqrt(m))] is a counterexample."
+    ],
+    "not_established": [
+      "A fixed-beta, unrestricted-DAG GapMCSP lower bound.",
+      "A promise-correct fixed-beta separator counterexample to a promise-specific shrinkage theorem.",
+      "Any new complexity separation, novelty claim, or quantitative distance to P versus NP.",
+      "The new unbounded-threshold control does not cover the fixed-positive-beta OPS regime; unbounded threshold growth alone is not sufficient to identify that regime."
+    ]
+  },
+  "A_unfolding": {
+    "status": "confirmed_with_explicit_conventions",
+    "statement": "Let I be the internal gates in the backwards-reachable subgraph of a finite single-output DAG. Count every operand slot as a wire. Set S=|I|, d(v)=number of outgoing reachable wires from v, P=product_{v in I} max(1,d(v)), and R=sum_{v in I} max(0,d(v)-1). For syntactic unfolding without simplification, U<=S*P<=S*2^R. With fan-in at most two, total variable/constant leaf occurrences L<=U+1.",
+    "proof": [
+      "For each fixed internal gate v, its occurrences in the unfolded tree are in bijection with edge-distinguished directed paths from v to the designated output. Reversing those paths gives the output-to-operand paths used in the probe. The output itself has one empty path.",
+      "Give each internal gate u a choice set of its outgoing reachable wires, or a singleton dummy choice when d(u)=0. Fix default choices. Encode a v-to-output path by selecting its outgoing wire at each visited internal gate and using defaults elsewhere. Acyclicity ensures no visited gate needs two choices. The encoding is injective: two different paths have a first differing wire at a shared prefix gate, so their choice assignments differ. Equivalently, following the choices from the fixed v reconstructs the path.",
+      "Thus w(v)<=P for internal v. Summing the exact occurrence counts gives U=sum_{v in I} w(v)<=S*P. For integer d>=1, d<=2^(d-1); for d=0, max(1,d)=1. Multiplying yields P<=2^R.",
+      "For an unfolded tree with unary and binary gates and variable/constant leaves, L=1+the number of binary gate occurrences. Hence L<=U+1. Unary NOT gates do not add leaves. This establishes the leaf bound without applying the internal path bound to raw sources."
+    ],
+    "edge_cases": [
+      "One output is essential to the stated convention. An output wire from an internal root to one dummy sink changes its fanout from 0 to 1, leaving P and R unchanged. Multiple designated outputs need an explicit output aggregation/convention; the proof does not silently sum multiple roots.",
+      "If the output is a raw input or a free constant, the reachable internal set is empty: S=R=U=0, the empty product is 1, and L=1.",
+      "Unused gates have occurrence count zero. Deleting them and counting only reachable consumers is correct. Keeping them in S and the product would merely give a looser upper bound, not a stronger conclusion.",
+      "Duplicate operands are distinct wires. Example: v=NOT(x), output=AND(v,v). Then S=2 and U=3. If fanout(v) were incorrectly counted as one distinct consumer, R=0 and the claimed U<=S would fail. Correct wire fanout is two.",
+      "The path bound is internal-only. In the one-gate circuit AND(x,x), P=1 while the raw input has two unfolded occurrences. The leaf bound still holds: L=2=U+1.",
+      "Free constants are source leaves, not uncharged internal gate occurrences. If a different convention charges zero-input constant gates, count them consistently in S/U/R; counting terminal leaves still gives L<=U+1."
+    ],
+    "source_alignment": "The current sharing probe explicitly adopts these conventions, including the De Morgan gate set, duplicate wire slots, reachable fanout, free constant leaves, and the root empty path.",
+    "source_refs": [
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:6-14",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:44-47",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:118-145",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:148-199"
+    ],
+    "scope_limit": "This is an upper bound on a particular syntactic unfolding, not an intrinsic formula-size lower bound. A large U can coexist with a tiny equivalent formula."
+  },
+  "B_formula_lower_bound_transfer": {
+    "status": "confirmed_in_the_stated_restricted_model_and_parameter_region",
+    "source_fact": "CHOPRS Theorem 60 supplies a universal inner-size exponent kappa and, for fixed delta>0 and alpha>2, a lower bound at formula exponent 2-delta for MCSP[n^kappa,2^((delta/alpha)n)]. Ordinary De Morgan formulas are the zero-oracle special case: their SIZE_3 is their leaf count and their oracle adaptivity is zero.",
+    "precise_parameters": [
+      "N=2^n is the OUTER truth-table length. Use the same inner AND/OR/NOT size convention and the same rounded upper threshold in both promises.",
+      "Fix epsilon>0 and gamma>=0 with epsilon+gamma<1. Choose a fixed delta with 0<delta<1-epsilon-gamma.",
+      "For every fixed 0<beta<delta/2, take alpha=delta/beta>2. Write lambda>0 for the fixed OPS denominator constant, distinct from kappa.",
+      "The solver DAG is over AND2/OR2/NOT, with S<=N^(1+epsilon) and R<=gamma*log2 N. A constant factor in the S bound is also absorbed by the strict exponent margin."
+    ],
+    "proof": [
+      "For every fixed beta>0, 2^(beta*n)/(lambda*n^(kappa+1)) tends to infinity. Thus n^kappa<=N^beta/(lambda*n) eventually, also after consistent integer rounding. Every CHOPRS YES instance is therefore an OPS YES instance. The upper threshold is exactly the same N^beta, so the NO set is the same: inner Size>upper, not Size>=upper. Any OPS-correct separator consequently separates the CHOPRS subpromise.",
+      "Unfold the outer De Morgan DAG by A, then push NOT gates to literals. This does not increase the leaf count. The resulting formula has L<=S*2^R+1<=N^(1+epsilon+gamma)+1.",
+      "Since epsilon+gamma+delta<1, the last quantity is <=N^(2-delta) for sufficiently large N. It contradicts the formula lower bound for the subpromise. No oracle adaptivity hypothesis is being assumed of the DAG: the resulting formula has no oracle gates."
+    ],
+    "quantifier_safe_conclusion": "There is no family of promise-correct separators satisfying both resource bounds at all sufficiently large lengths in this regime. This transfers the source nonmembership statement; this review does not strengthen its length quantifiers beyond that. For a particular fixed beta, choosing delta is possible when epsilon+gamma+2*beta<1.",
+    "basis_warning": {
+      "status": "required_convention_already_present_in_the_current_probe",
+      "reason": "A as a graph-counting lemma also works for other binary gate types, but B does not thereby become basis-independent. A primitive XOR gate with S=1,R=0 unfolds to two leaves; XOR of two distinct inputs cannot be represented by a De Morgan formula with at most two literal leaves. Replacing XOR gates by De Morgan circuits can create additional internal reuse. Do not invoke constant-factor circuit basis equivalence while leaving R unchanged.",
+      "repair": "State B for the AND/OR/NOT DAG convention explicitly, or separately prove and charge the S/R changes under a different-basis conversion."
+    },
+    "scope_limit": "Only the stated resource region is obtained by this conversion. This does not show unrestricted circuits obey the R bound, nor prove the unrestricted OPS magnification hypothesis.",
+    "source_refs": [
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt:670-673",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt:709-715",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt:2203-2228",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt:279-283",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt:515-527"
+    ],
+    "primary_web_citation": "citeturn0view0"
+  },
+  "C_quadratic_optimal_gate_shrinkage": {
+    "status": "universal_bound_refuted_by_a_complete_asymptotic_argument",
+    "quantifiers_refuted": "There do not exist finite absolute constants A,B, independent of p and N, such that every N-input bounded-fan-in circuit of size S satisfies E_rho SIZE_gate(f restricted by rho)<=A*p^2*S+B for every 0<p<1. SIZE_gate here is the minimum over all equivalent bounded-fan-in circuits in the declared basis, not a selected simplification algorithm.",
+    "proof": [
+      "Even parity on N>=1 inputs has an AND2/OR2/NOT circuit with 4(N-1)+1=4N-3 gates: compute each XOR by (a OR b) AND NOT(a AND b), then complement the final odd parity. Hence its optimal original gate size is also <=4N.",
+      "A single-output circuit with r essential inputs requires at least max(r-1,0) binary gates. In its reachable dependency multigraph, if b binary gates, u unary gates, and a source nodes are present, connectivity gives 2b+u>=b+u+a-1; hence b>=a-1>=r-1. Free constants or nonessential inputs cannot weaken the inequality. The zero-essential-input case uses the trivial nonnegative bound.",
+      "After a restriction with M live inputs, parity or its complement depends on every live input when M>=1; when M=0 it is constant. Therefore optimal restricted total gate size is at least (M-1)_+. Since M is Binomial(N,p), E[(M-1)_+]=Np-1+Pr[M=0]=Np-1+(1-p)^N.",
+      "Let a=max(A,0), b=max(B,0), choose an integer t>=2 with t>4a+b+1, and set N=t^2, p=1/t. The upper expression is <=4a+b, whereas the necessary expected gate size is at least t-1+(1-1/t)^(t^2)>4a+b. This proves failure for every proposed pair A,B. If N must be a power of two, use N=4^t,p=2^(-t) and choose 2^t>4a+b+1 instead."
+    ],
+    "fixed_p_variant": "Even a p independent of N can be chosen after the alleged universal A: p=1/(8(max(A,0)+1)) gives 4*max(A,0)*p<1/2; then Np-1 eventually exceeds 4*max(A,0)*p^2*N+max(B,0). This does not refute bounds whose coefficient is allowed to depend on a previously fixed p.",
+    "important_distinctions": [
+      "Np-1+(1-p)^N is a lower bound on expected optimal gate size, not an exact formula for that optimum. It can be very loose, already for one live complemented input.",
+      "A finite violation with coefficient one does not dispose of arbitrary A,B. In particular p=1/N keeps this necessary lower bound bounded, so that scaling alone cannot defeat an arbitrary additive constant B. The p=N^(-1/2) family above does.",
+      "The essential-input argument uses bounded fan-in. It cannot be used unchanged for unbounded-fan-in gates or arbitrary large-arity oracle primitives.",
+      "This is not a contradiction to De Morgan FORMULA-size shrinkage. The small DAG parity construction cannot be substituted as a small formula into a formula-size estimate.",
+      "Parity of the truth-table bits is not a fixed-beta GapMCSP-correct separator. For example, an m-input point function has a one-hot truth table and inner circuit size O(m), which is eventually below the OPS lower threshold for every fixed beta>0. Even outer parity rejects that YES table. Thus this control cannot refute a bound that specifically assumes correct separation of the OPS promise."
+    ],
+    "source_refs": [
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:6-14",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:410-429",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:537-558",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py:635-638"
+    ]
+  },
+  "D_certificate_counting_and_methodological_scope": {
+    "status": "elementary_bridge_confirmed_with_a_wording_qualification",
+    "bridge": "Let M_bound upper-bound the number of full N-bit tables with inner Size<=s2. A sound separator, or even a promise-relative positive certificate excluding every NO instance, cannot have an accepting subcube of dimension d with 2^d>M_bound. In particular a q-bit positive certificate after an r-live restriction implies 2^(r-q)<=M_bound, or r-q<=log2 M_bound.",
+    "proof": "Every completion of the certificate lies outside NO, hence has Size<=s2 under the strict NO endpoint. There are exactly 2^(r-q) completions. Counting those tables gives the inequality. No outer circuit-size parameter enters this argument, and completeness on the low-size YES set is not needed for this counting direction.",
+    "consequence": "With the explicit circuit-description count K(m,s), s=ceil(N^beta), fixed 0<beta<1, log2 K=O(N^beta log N). Globally every positive certificate must fix at least N-log2 K bits. This is a certificate bound, not a superlinear circuit lower bound: equality tests and the exact MCSP[0,0] classifier below have very long certificates and small circuits.",
+    "wording_issue": {
+      "severity": "scope_qualification",
+      "claim_to_avoid": "Every successful stronger argument MUST exploit correctness on ALL low-complexity tables.",
+      "reason": "Full promise correctness is the appropriate assumption for the proposed separator class, but it is not logically necessary that a proof use the entire YES set. B itself transfers a lower bound from the smaller n^kappa YES subpromise. A sufficiently useful structured subset, such as a patch-generated family, could suffice. No result here proves an all-YES necessity theorem.",
+      "suggested_replacement": "A proposed strengthening must state the correct fixed-beta promise and use some property absent from the negative controls; full YES completeness is available as a hypothesis, while a suitably rich low-complexity subfamily may already supply the needed property."
+    },
+    "scope_limit": "A counting certificate plus a syntactic transformation does not supply the missing theorem connecting small OUTER circuit size to sufficiently short positive certificates on sufficiently large promise-compatible restrictions.",
+    "source_refs": [
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt:521-527"
+    ]
+  },
+  "E_exact_zero_threshold_negative_control": {
+    "status": "confirmed_including_the_constants_and_restriction_claim",
+    "definition": "Inner basis AND2/OR2/NOT; constants and positive input wires cost zero, NOT costs one, and no complemented wire is free. For m>=2 and N=2^m, exact MCSP[0,0] has YES set A_m consisting of the all-zero table, all-one table, and m positive projection tables; NO is every other table.",
+    "proof": [
+      "A zero-gate single-output inner circuit can output only one input wire or a constant. Thus A_m is the complete YES class, of cardinality m+2. Negated projections are not zero-gate functions in this convention.",
+      "The two constants have Hamming distance N. A constant and a projection have distance N/2. Two distinct projections also have distance N/2, because their bits disagree on half of the m-input assignments. Thus the minimum distance is N/2>=2.",
+      "Fix a YES table a. Any proposed positive input certificate fixing fewer than N table coordinates leaves some coordinate j free. Flipping only bit j produces a NO table agreeing with the certificate. Hence every positive certificate at every YES point has size exactly N.",
+      "If a restriction is compatible with a YES point and leaves r table coordinates live, the same one-bit-flip argument works inside its live cube: every positive certificate at every surviving YES point has size exactly r. For r=0 this means the empty certificate. Restrictions with no surviving YES point are not covered by the compatibility premise.",
+      "An OR of the m+2 equality tests recognizes A_m exactly. Each term has N literal leaves, so the De Morgan formula has (m+2)N leaves. Share one NOT gate for each of the N outer inputs; use N-1 binary AND gates per term and m+1 binary OR gates to combine the terms. Total gates: N+(m+2)(N-1)+(m+1)=(m+3)N-1.",
+      "Since m=log2 N, this size is O(N log N) and is <=N^(1+epsilon) eventually for every fixed epsilon>0."
+    ],
+    "stronger_optional_observation": "The counterexample does not intrinsically require internal sharing. In the equality-test formula, use a separate NOT occurrence at every negative literal. There are N+mN/2 such literals (all N in the zero-table term, none in the one-table term, and N/2 in each projection term). Together with (m+2)N-1 binary gates this gives ((3m/2)+3)N-1 gates and R=0, still O(N log N). Thus even a zero-reuse promise-correct control at threshold zero can have full positive certificates.",
+    "scope_limits": [
+      "This refutes a certificate-shortening assertion uniform over ALL threshold regimes. It is not a counterexample to a lemma specifically for fixed positive beta and the growing OPS thresholds.",
+      "The threshold distinction is substantive: one-bit modifications of these simple inner functions have O(m)-gate circuits, so for fixed beta>0 they are eventually themselves OPS YES instances, rather than the forced NO neighbors used here.",
+      "If free negated input literals or complemented output wires were allowed at zero cost, the stated m+2 YES set would be wrong; the model must remain explicit.",
+      "The pointwise claim for compatible restrictions does not assert that a uniformly sampled restriction is compatible with a YES point with substantial probability. It is not by itself an expected-cost counterexample under the uniform whole-table distribution."
+    ],
+    "source_refs": [
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:4-7",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:90-109",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:112-164",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:267-273"
+    ],
+    "extension_unbounded_thresholds": {
+      "status": "sound_by_manual_support_and_counting_argument",
+      "title": "Unbounded inner thresholds still permit nearly-linear exact classifiers with full positive certificates",
+      "parameters": "Let m>=9, N=2^m, and s=floor(sqrt(m)). Use the same single-output AND2/OR2/NOT gate model, with free constants/input wires and charged NOT gates. Write Low_s for all m-input functions of optimal gate size at most s, and M=|Low_s|.",
+      "proof": [
+        "Every function in Low_s has a circuit with at most s internal gates. In its reachable dependency graph the connectivity bound gives at most s+1 raw input sources (indeed at most one plus its number of binary gates). Thus it depends on a set of at most s+1 raw variables.",
+        "For distinct f,g in Low_s, take their two support sets. Their union has size at most 2(s+1). At some assignment f and g differ; fixing only that union pattern forces the same disagreement for all assignments to the remaining raw variables. Therefore the Hamming distance of their N-bit tables is at least 2^(m-2(s+1)). For m>=9, m-2(s+1)>=m-2*sqrt(m)-2>=1, so this distance is at least two.",
+        "Consequently every one-bit neighbor of every Low_s table lies outside Low_s. Exact MCSP[s,s] has YES=Low_s and NO its complement, by the strict Size>s endpoint. A positive certificate omitting a table coordinate would also contain its rejected one-bit neighbor. Every positive certificate at every YES table therefore fixes all N coordinates. Under any compatible restriction leaving r coordinates live, the same argument forces all r coordinates; r=0 gives the empty certificate.",
+        "The description upper bound gives M<=K(m,s)=(m+s+2)*[16(m+s+2)^2]^s. Since s>=1, log2 K=O(s*log(m+s))=O(sqrt(m)*log m)=o(m). Hence M=N^o(1). Using all 16 binary truth functions only overcounts descriptions; Low_s itself is still defined in the fixed AND/OR/NOT basis.",
+        "OR together one equality test for each table in Low_s. There are NM literal leaves. Share one NOT gate for each outer input, use N-1 binary AND gates per equality term, and M-1 binary OR gates above the terms. The declared gate count is N+M(N-1)+(M-1)=N(M+1)-1, so it is at most N(M+1)=N^(1+o(1)). This is an actual correct classifier, not merely a certificate/counting consistency condition."
+      ],
+      "constructivity_note": "No circuit-minimization oracle is needed for existence: enumerate valid size-at-most-s AND/OR/NOT descriptions and OR their equality tests. Repeated tables are harmless; the description count is still bounded by K and gives the same N^(1+o(1)) upper bound. Enumerating all binary-basis functions as accepted tables instead would change the promise and is not intended.",
+      "optional_zero_reuse_variant": "The equality-test DNF is already a De Morgan formula with NM leaves. Giving each negative literal its own NOT gate produces an AND/OR/NOT DAG with R=0 and at most 2NM-1 gates, still N^(1+o(1)). Thus the strengthened control can also coexist with zero internal reuse.",
+      "scope": [
+        "The threshold s=floor(sqrt(log2 N)) tends to infinity. Thus the control refutes certificate shortening based only on correctness, nearly-linear size, and the mere fact that thresholds are unbounded—not just a threshold-zero formulation.",
+        "It remains far below the OPS fixed-positive-beta thresholds. For every fixed beta>0 and fixed denominator constant, s=o(N^beta/polylog(N)). No fixed-beta counterexample is established.",
+        "Concretely, AND of s+2 distinct inner inputs has optimal gate size exactly s+1: the AND chain attains it and essential-input connectivity gives the lower bound. The Low_s classifier rejects its table, although it is eventually an OPS YES instance for every fixed beta>0. Hence this classifier is not an OPS-correct separator.",
+        "The isolation proof needs 2(s+1)<m, and the nearly-linear construction needs log K(m,s)=o(m). Neither is claimed for arbitrary growing thresholds.",
+        "As in the threshold-zero case, the certificate claim is pointwise at YES tables and compatible restrictions; it is not an assertion about a substantial probability of compatibility under uniform whole-table restrictions."
+      ],
+      "novelty_and_verification": "Elementary manual extension only. No novelty, fixed-beta lower bound, experiment execution, or new formalization is claimed.",
+      "origin": "Final parent-supplied support/counting strengthening, reviewed against the circuit and certificate conventions already recorded in A, C, D, and E."
+    }
+  },
+  "F_constructive_truth_table_patching": {
+    "status": "confirmed_as_a_constructive_upper_bound_not_an_optimum_claim",
+    "assumptions": "A valid m-input inner AND2/OR2/NOT circuit of size s0, m>=1, constants/input wires free, and t distinct changed addresses in {0,1}^m. Repeated address descriptions are interpreted as the same selected address, not repeated toggles.",
+    "construction_and_cost": [
+      "For t>=1, form all m negated input wires once. For each selected address, conjoin its m matching literals using m-1 AND gates. The OR of the t address minterms uses t-1 OR gates and is exactly the indicator of the selected address set.",
+      "XOR that indicator with the base output using OR(base,patch), AND(base,patch), NOT of the latter, and a final AND: four gates. Each selected table entry is flipped and no other entry changes.",
+      "The added declared gate count is m+t(m-1)+(t-1)+4=m+t*m+3. For t=0 return the original circuit with no additional gates. Some declared gates can be unused or simplifiable; pruning can only improve the size upper bound."
+    ],
+    "accepting_subcube_consequence": "Choose any set J of r distinct truth-table coordinates, with 0<=r<=N. Every completion agreeing with the base outside J differs on some subset D of J. For nonempty D use the construction with |D|<=r; the empty subset is the base. Therefore s0+m+r*m+3<=s1 ensures that every completion lies in YES. Every correct separator accepts this entire r-dimensional subcube. The conclusion needs the available slack in s1; it is not asserted for every base whose optimal size merely equals s1.",
+    "certificate_interpretation": "This provides an explicit positive certificate of length N-r by fixing the outside coordinates, or a zero-bit certificate after restricting to this entire accepting subcube. It is not a proof of a small global acceptance certificate, and it supplies no dependence on the separator OUTER size S.",
+    "OPS_scale_comparison": "For a zero-size base and s1 approximately N^beta/(lambda*m), the sufficient construction yields r approximately N^beta/(lambda*m^2) for fixed 0<beta<1. With s=ceil(N^beta), the explicit K has log2 K=Theta(N^beta*m) for fixed beta. Hence these guaranteed cubes are far below the r-q>log2 K contradiction threshold even with q=0. The numerical ratio is of order m^3 for this pair of crude estimates, not a proven distance to a complexity separation or an optimal limitation on patching.",
+    "boundary_notes": [
+      "The m>=1 condition is necessary for the stated m-1 minterm gate count; the implementation rejects m=0.",
+      "The t=0 special case is correctly kept separate.",
+      "For r=0, the weaker sufficient condition s0<=s1 already guarantees the singleton is YES; the displayed slack condition is merely sufficient."
+    ],
+    "source_refs": [
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:167-191",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:194-235",
+      "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py:255-265"
+    ]
+  },
+  "verification_scope": {
+    "classification": "Manual mathematical arguments and targeted primary-source/model inspection; not a Lean certificate or a fresh exhaustive experiment run.",
+    "phase1": "Read-only: only existing source-audit metadata and cached primary texts were consulted; no Phase 1 artifact was modified.",
+    "phase2_code": "Only the model/counting portions of sharing_probe.py and the certificate_controls.py construction were read. Experiments and code changes are left to the parent/code worker.",
+    "agents_spawned": false,
+    "builds_run": false,
+    "experiment_programs_run": false,
+    "only_written_file": "research_notes/p_vs_np_2026_10_09_phase2/validation/candidate_review.json"
+  },
+  "primary_sources": [
+    {
+      "id": "CHOPRS2022",
+      "version": "Final published version deposited at MIT; one repository cover sheet precedes 49 journal pages",
+      "url": "https://dspace.mit.edu/server/api/core/bitstreams/0ce27b40-495a-498a-a950-8378ecf6e8bc/content",
+      "cache_path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt",
+      "verified_text_sha256": "d8f8ba19ef4c1e108e1dc7faa87afa88a6bbe1f5c623280c1f119c28ab748ade",
+      "pdf_sha256_from_existing_source_audit": "962b6bdb6f5515980a105c83c5ac4596353e2db8d1d294a20e0dd473de20c3d9",
+      "pdf_hash_independently_recomputed": false
+    },
+    {
+      "id": "OPS2021",
+      "version": "Final published article; revised 2021-02-27",
+      "url": "https://theoryofcomputing.org/articles/v017a011/v017a011.pdf",
+      "cache_path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt",
+      "verified_text_sha256": "039418d33a236e1e58779dc8c4a358746c8b89a027a14079586f9843e10080e1",
+      "pdf_sha256_from_existing_source_audit": "81b1ff4ede5180dc88f99c8a4856cfde623f6fefb5b99ef9f5526899bf43ab4a",
+      "pdf_hash_independently_recomputed": false
+    }
+  ],
+  "reviewed_phase2_inputs": [
+    {
+      "path": "research_notes/p_vs_np_2026_10_09_phase2/experiments/sharing_probe.py",
+      "sha256": "679084ad979ee3be771257c0f4bf5e718e7e89a839855ad57acd0e11b8adec33",
+      "review_extent": "model and unfolding definitions plus selected parity declarations"
+    },
+    {
+      "path": "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py",
+      "sha256": "47d1fdaeedd6c740c7fa3e1921429fe2e85336bf1cc97e6ac7f61fb14a369eb5",
+      "review_extent": "full 290-line construction source read; tests not executed"
+    }
+  ],
+  "G_formula_style_additive_gate_bound": {
+    "status": "confirmed_refutation_of_the_stronger_generic_gate_bound",
+    "claim_refuted": "There exist absolute finite constants A,B such that, for every bounded-fan-in circuit of size S and every 0<p<1, E SIZE_gate(f|rho)<=A*(p^2*S+p*sqrt(S))+B.",
+    "fixed_p_proof": [
+      "Assume A,B>=0; negative proposed constants only make the upper bound smaller. Use the parity family from C, with S<=4N and E SIZE_gate(f|rho)>=Np-1.",
+      "Choose p=1/(8(A+1)), fixed independently of N. Then 4A*p<1/2. The proposed quadratic term is at most 4A*p^2*N<(Np)/2.",
+      "The additive term is at most 2A*p*sqrt(N). Relative to Np its ratio is 2A/sqrt(N), which tends to zero. Choose N so sqrt(N)>8A and Np>4(B+1). Then A*(p^2*S+p*sqrt(S))+B<3Np/4+B<Np-1, contradicting the necessary gate-size lower bound.",
+      "The same domination works with separate fixed coefficients for p^2*S and p*sqrt(S). Coefficients allowed to depend on a previously fixed p are a different claim."
+    ],
+    "short_diagonal_proof": "Alternatively set N=t^2,p=1/t. Since S<=4N, p^2*S<=4 and p*sqrt(S)<=2, so the entire proposed upper bound is <=6A+B. The lower bound is >=t-1. Any integer t>=2 with t>6A+B+1 gives a contradiction. A power-of-two truth-table-length subsequence is N=4^t,p=2^(-t).",
+    "distribution_note": "The exact correction +(1-p)^N in C uses independent live coordinates. The asymptotic contradiction only needs E[M]=Np, because E[(M-1)_+]>=Np-1. Thus a p-regular correlated restriction distribution does not by itself rescue this particular size-only gate bound.",
+    "scope": "This removes the objection that C refutes only a quadratic expression missing the standard formula-style additive term. It still does not refute every additive/reuse-sensitive bound, an A depending on p, or a theorem specifically about correct fixed-beta GapMCSP separators.",
+    "source_refs": [
+      "research_notes/p_vs_np_2026_10_09_phase2/README.md:112-135",
+      "research_notes/p_vs_np_2026_10_09_phase2/sources/formula_sharing_audit.json:698-714"
+    ]
+  },
+  "source_formula_assumptions_follow_up": {
+    "status": "documented_assumptions_are_suitable_and_match_the_targeted_primary_text",
+    "source": "Tal, Shrinkage of de Morgan Formulae by Spectral Techniques, ECCC TR14-048 revision 1, Theorem 1.2 (printed p. 2).",
+    "checked_assumptions": [
+      "L(f) is minimum De Morgan formula LEAF-OCCURRENCE complexity, not distinct DAG gates and not the size of an unsimplified restricted syntax tree. The formula basis is binary AND/OR with literal leaves; raw variables may occur more than once.",
+      "R_p independently retains each distinct raw coordinate with probability p and otherwise fixes it to an unbiased bit. Multiple occurrences of one variable share that coordinate restriction. The meaningful probability range is 0<p<=1.",
+      "Theorem 1.2 gives a universal-constant upper bound C*(p^2*L(f)+p*sqrt(L(f))). Both terms are retained in the phase-two source audit.",
+      "Tal explicitly uses zero complexity for a constant restricted function: the degree-zero term is dropped in the proof of Claim 5.1. If a representation instead charges a constant leaf, add O(1). The source audit already records this convention difference.",
+      "For the pseudorandom MCSP application, a global Tal estimate is not simply assumed for arbitrary k-wise independence. The documented proof uses small raw-coordinate pieces plus formula decomposition, with the CHOPRS large-size/tiny cutoff. It also needs a succinct sampler to obtain a low-complexity YES completion."
+    ],
+    "README_formula_reconstruction": "The claims about simultaneous small residual support and many live coordinates agree with CHOPRS pp. 25:41 and 25:44. The succinct completion sets only the STILL-LIVE bits to zero; fixed bits retain the sampler values. A simultaneous event is obtained by the stated probability bounds, not an independence assumption between simplification and live count.",
+    "source_refs": [
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_tal2014.txt:51-68",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_tal2014.txt:116-123",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_tal2014.txt:237-242",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_tal2014.txt:637-645",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt:772-777",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt:2316-2328",
+      "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt:2472-2505",
+      "research_notes/p_vs_np_2026_10_09_phase2/sources/formula_sharing_audit.json:228-248",
+      "research_notes/p_vs_np_2026_10_09_phase2/README.md:70-78"
+    ],
+    "primary_source_provenance": {
+      "url": "https://eccc.weizmann.ac.il/report/2014/048/revision/1/download/",
+      "version": "FOCS 2014, pp. 551–560; ECCC TR14-048 revision 1 full version",
+      "cache_path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_tal2014.txt",
+      "verified_extract_sha256": "a10ddc1db9d1a07a59f2461e069181ecc00caea7684de1bd040f5e0c3a0081a0",
+      "pdf_sha256_from_parent_source_audit": "88373d85f6257c10277eca9863627ee7c5c80e237ed25e7c785710055a7b5033",
+      "pdf_hash_independently_recomputed": false
+    },
+    "limit": "These are targeted statement/convention checks, not independent formal verification of every Tal or CHOPRS proof."
+  },
+  "README_scope_review": {
+    "status": "overall_scope_is_sound_with_two_minor_prose_clarifications",
+    "readme_path": "research_notes/p_vs_np_2026_10_09_phase2/README.md",
+    "sha256_at_review": "03d9bb120545f8ebfe0625545dc8e1ca48b8bafa2b2f9602f0c4fef8f61032dc",
+    "confirmations": [
+      "The draft distinguishes inner gate size, outer solver size, formula leaf occurrences, and input acceptance certificates; it uses the strict NO endpoint and fixed positive beta.",
+      "The bounded-reuse conclusion remains restricted to the fixed De Morgan model and sufficient exponent range, rather than being advertised as an unrestricted-circuit lower bound.",
+      "The parity and MCSP[0,0] controls are explicitly separated from promise-correct growing-threshold separators.",
+      "Patching is presented as a nonoptimal constructive guarantee without an outer-size relation or a claim that a polylogarithmic improvement resolves P versus NP.",
+      "The small-atlas paragraph distinguishes a subcube containing no NO instance from an accepting subcube of every particular correct separator. The latter need not accept gap points.",
+      "No affirmative novelty, new magnification theorem, or complexity-class separation is claimed."
+    ],
+    "clarifications_for_parent": [
+      {
+        "id": "README_ROOT_CHOICE",
+        "severity": "minor_proof_wording",
+        "source_ref": "research_notes/p_vs_np_2026_10_09_phase2/README.md:88-94",
+        "issue": "The root has outgoing degree zero. Literally asking for one outgoing edge for EVERY internal gate gives no assignments at all, whereas the product uses max(1,d).",
+        "suggestion": "Say choose an outgoing wire at each positive-outdegree internal gate, and give the root one terminal/dummy choice. Then the path-extension argument is exactly valid."
+      },
+      {
+        "id": "README_ZERO_COMPLETION",
+        "severity": "minor_scope_wording",
+        "source_ref": "research_notes/p_vs_np_2026_10_09_phase2/README.md:74",
+        "issue": "Succinct all-zero completion can be misread as the globally all-zero truth table, which need not satisfy fixed coordinates assigned one.",
+        "suggestion": "Say the succinct completion obtained by assigning zero to all still-live coordinates. The preserved fixed bits can be nonzero."
+      }
+    ],
+    "parameter_note": "When restating the ordinary-formula baseline, retain 0<beta<delta/2 and fixed constants; the positive-beta context is already stated in the draft. Its final methodological must-use language should not be promoted into a necessity theorem about all possible lower-bound proofs.",
+    "not_rechecked": "No builds, experiment reruns, new exact minimization, or re-audit of all numerical promise-atlas claims were performed in this bounded scope pass."
+  },
+  "review_history": [
+    {
+      "date": "2026-10-09",
+      "event": "Before README scope review and formula-style additive-term strengthening",
+      "previous_artifact_sha256": "cb11f309e02f6470b4173d002143f94c55c31d8b522344532b8729ba29f1170b",
+      "previous_summary": {
+        "verdict": "A, C, E, and F have elementary proofs under the stated conventions. B follows in the specified De Morgan, small-reuse, fixed-beta regime with the explicit parameter conditions below. No fatal error was found in those mathematical claims. The only proposed wording objection is treating use of ALL low-complexity YES instances as a logically necessary feature of every successful argument.",
+        "confirmed_false_broadenings": [
+          "Counting distinct consumer nodes instead of parallel outgoing wire slots can invalidate A.",
+          "The internal path-product bound does not apply to reused raw-input leaves.",
+          "Unfolding arbitrary binary truth-function gates is not automatically a De Morgan formula of the same leaf size.",
+          "An absolute A*p^2*S+B bound for optimal restricted gate complexity, uniform in p and input length, is false.",
+          "Correctness and nearly-linear size, even with zero internal reuse, do not imply short acceptance certificates uniformly across all threshold regimes."
+        ],
+        "not_established": [
+          "A fixed-beta, unrestricted-DAG GapMCSP lower bound.",
+          "A promise-correct fixed-beta separator counterexample to a promise-specific shrinkage theorem.",
+          "Any new complexity separation, novelty claim, or quantitative distance to P versus NP."
+        ]
+      },
+      "history_policy": "Earlier A-F proofs and their source/input manifests are retained without alteration; G and the source/README follow-up sections supplement them."
+    }
+  ],
+  "completion_status": "bounded_review_complete",
+  "final_follow_up": {
+    "date": "2026-10-09",
+    "new_sections": [
+      "G_formula_style_additive_gate_bound",
+      "source_formula_assumptions_follow_up",
+      "README_scope_review"
+    ],
+    "inputs": [
+      {
+        "path": "research_notes/p_vs_np_2026_10_09_phase2/README.md",
+        "sha256": "03d9bb120545f8ebfe0625545dc8e1ca48b8bafa2b2f9602f0c4fef8f61032dc",
+        "lines": 198
+      },
+      {
+        "path": "research_notes/p_vs_np_2026_10_09_phase2/sources/formula_sharing_audit.json",
+        "sha256": "32f184bac742fe46f0e9e4ef8def5752e412aa9502fc8630b78f3eaa62b219a1",
+        "lines": 716
+      }
+    ],
+    "tests_or_builds_run": false,
+    "agents_spawned": false,
+    "only_modified_file": "research_notes/p_vs_np_2026_10_09_phase2/validation/candidate_review.json",
+    "README_edited": false,
+    "phase1_edited": false
+  },
+  "manual_addenda": [
+    {
+      "date": "2026-10-09",
+      "event": "Confirmed and recorded the unbounded-threshold extension of E",
+      "previous_artifact_sha256": "53ba9dd1cb8f74b005bf4b75eb113ee3359e0834812b3d492ce60e3c2bc34227",
+      "previous_proofs_and_inputs_preserved": true,
+      "new_code_or_formalization": false,
+      "only_modified_file": "research_notes/p_vs_np_2026_10_09_phase2/validation/candidate_review.json"
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "status": "kernel_checked_finite_grammar_and_witnesses",
+  "created_at": "2026-10-09T13:00:54.397403-07:00",
+  "paths": {
+    "lean": "research_notes/p_vs_np_2026_10_09_phase2/validation/AtlasWitness.lean",
+    "log": "research_notes/p_vs_np_2026_10_09_phase2/validation/atlas_witness.log",
+    "manifest": "research_notes/p_vs_np_2026_10_09_phase2/validation/atlas_witness.json",
+    "atlas": "research_notes/p_vs_np_2026_10_09_phase2/experiments/promise_results.json"
+  },
+  "scope": {
+    "formalized": "Finite 8-bit truth-table computations for the explicit two-slot grammar, Low witnesses, small zero masks, and eight promise edges.",
+    "certificate_function": "maximal separator 1_Low",
+    "fixed_solver_caveat": "A 1_Low accepting subcube may contain GAP tables rejected by a fixed solver. Its minimum certificate size is only a lower bound for that solver.",
+    "not_formalized": [
+      "normalization/encoding of arbitrary DAGs into the two-slot grammar",
+      "the general arbitrary-DAG essential-input/support lemma",
+      "the whole Python atlas, all relative-certificate counts, or outer synthesis",
+      "attainability of any outer gate bound or an exact outer minimum",
+      "asymptotic complexity claims"
+    ],
+    "padding_boundary": "Two slots may be unused. The explicit witnesses pad missing slots with NOT 0. Completeness in Lean is claimed only for the 55-by-78-by-7 grammar below, not an arbitrary-DAG encoding theorem."
+  },
+  "grammar": {
+    "initial_wire_truth_tables": [
+      0,
+      255,
+      170,
+      204,
+      240
+    ],
+    "truth_table_convention": "bit a is the output on x_i=(a//2^i)%2",
+    "basis": [
+      "NOT",
+      "AND2",
+      "OR2"
+    ],
+    "input_complement_free": false,
+    "gate_encoding": "For k available wires, codes below k are unary NOT; next k^2 are row-major ordered AND2 pairs; last k^2 are row-major ordered OR2 pairs.",
+    "first_gate_choices": 55,
+    "second_gate_choices": 78,
+    "output_wire_choices": 7,
+    "padded_output_circuits": 30030,
+    "repeated_fanins_and_reuse_of_previous_gate_allowed": true,
+    "forward_check": "Every output of each of the 55*78 gate-code pairs is in Low.",
+    "reverse_check": "40 explicit valid code triples evaluate in order to the complete Low list."
+  },
+  "checked_finite_data": {
+    "low_tables": [
+      0,
+      3,
+      5,
+      10,
+      12,
+      15,
+      17,
+      34,
+      48,
+      51,
+      63,
+      68,
+      80,
+      85,
+      95,
+      119,
+      128,
+      136,
+      160,
+      168,
+      170,
+      175,
+      187,
+      192,
+      200,
+      204,
+      207,
+      221,
+      224,
+      234,
+      236,
+      238,
+      240,
+      243,
+      245,
+      248,
+      250,
+      252,
+      254,
+      255
+    ],
+    "low_cardinality": 40,
+    "low_witness_codes": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        49,
+        5,
+        6
+      ],
+      [
+        44,
+        5,
+        6
+      ],
+      [
+        4,
+        23,
+        6
+      ],
+      [
+        4,
+        29,
+        6
+      ],
+      [
+        4,
+        0,
+        5
+      ],
+      [
+        43,
+        5,
+        6
+      ],
+      [
+        3,
+        23,
+        6
+      ],
+      [
+        3,
+        35,
+        6
+      ],
+      [
+        3,
+        0,
+        5
+      ],
+      [
+        24,
+        5,
+        6
+      ],
+      [
+        2,
+        29,
+        6
+      ],
+      [
+        2,
+        35,
+        6
+      ],
+      [
+        2,
+        0,
+        5
+      ],
+      [
+        19,
+        5,
+        6
+      ],
+      [
+        18,
+        5,
+        6
+      ],
+      [
+        18,
+        35,
+        6
+      ],
+      [
+        18,
+        0,
+        5
+      ],
+      [
+        19,
+        0,
+        5
+      ],
+      [
+        49,
+        23,
+        6
+      ],
+      [
+        0,
+        0,
+        2
+      ],
+      [
+        4,
+        59,
+        6
+      ],
+      [
+        3,
+        59,
+        6
+      ],
+      [
+        24,
+        0,
+        5
+      ],
+      [
+        44,
+        29,
+        6
+      ],
+      [
+        0,
+        0,
+        3
+      ],
+      [
+        4,
+        65,
+        6
+      ],
+      [
+        2,
+        65,
+        6
+      ],
+      [
+        43,
+        35,
+        6
+      ],
+      [
+        24,
+        59,
+        6
+      ],
+      [
+        19,
+        65,
+        6
+      ],
+      [
+        43,
+        0,
+        5
+      ],
+      [
+        0,
+        0,
+        4
+      ],
+      [
+        3,
+        71,
+        6
+      ],
+      [
+        2,
+        71,
+        6
+      ],
+      [
+        18,
+        71,
+        6
+      ],
+      [
+        44,
+        0,
+        5
+      ],
+      [
+        49,
+        0,
+        5
+      ],
+      [
+        43,
+        71,
+        6
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "all_256_zero_masks_inspected": true,
+    "masks_with_at_most_six_fixed_positions": 247,
+    "small_mask_obstruction": "Each of those 247 masks has an explicit in-range NO completion agreeing with zero on all fixed positions.",
+    "mask127_fixed_count": 7,
+    "mask127_completions": [
+      0,
+      128
+    ],
+    "mask127_completions_in_low": true,
+    "promise_edges_coordinate_yes_no": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        2,
+        0,
+        4
+      ],
+      [
+        3,
+        0,
+        8
+      ],
+      [
+        4,
+        0,
+        16
+      ],
+      [
+        5,
+        0,
+        32
+      ],
+      [
+        6,
+        0,
+        64
+      ],
+      [
+        7,
+        255,
+        127
+      ]
+    ],
+    "edge_yes_endpoint_witnesses": "All YES endpoints are the free constants 0 or 1; all NO endpoints are outside the explicitly checked Low.",
+    "atlas_data_cross_checked_against_lean_literals": true
+  },
+  "external_analytic_consequences": {
+    "certificate_based_total_gate_lower_bound": 6,
+    "edge_based_binary_gate_lower_bound": 7,
+    "edge_based_total_gate_lower_bound": 7,
+    "premise": "The parent separately proves that B binary gates with arbitrary unary gates have essential support at most B+1.",
+    "explanation": "Each checked promise edge forces its coordinate to be essential in every valid separator. These analytic consequences are not theorems asserted by this Lean file.",
+    "attainability": "Unknown; neither size 6 nor size 7 is claimed attainable.",
+    "separate_bounded_search": "Python exhausted at most 2 total outer gates; no larger synthesis was performed."
+  },
+  "validation": {
+    "lean_version": "4.34.1",
+    "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "command": [
+      "timeout",
+      "120s",
+      "lean",
+      "-t0",
+      "-j1",
+      "-M4096",
+      "--profile",
+      "research_notes/p_vs_np_2026_10_09_phase2/validation/AtlasWitness.lean"
+    ],
+    "exit_code": 0,
+    "trust_level": 0,
+    "debug_skipKernelTC": false,
+    "source_sha256": "21a65a012caa9d5df9ab66ec14a1a189dcc9a4111ac009ac2cb8fa69daf35c2f",
+    "atlas_json_sha256": "1cdd72dc0d18984ee2db9c261ec002b239e61cfdbe42e8b2e83d9761029dcfdf",
+    "python_source_sha256": "3ae9a251d094dff21d05d00286dfc6ada7adc395d86b7762990138bada9a16da",
+    "python_tests_sha256": "f914d62c05e43d1ccf68e4a361c8c742ddc57c24e63c1362c4535fb178a9fa3e",
+    "imports": [
+      "Std"
+    ],
+    "wall_seconds": 15.44,
+    "max_rss_kib": 1818400,
+    "theorem_count": 18,
+    "axiom_report": {
+      "AtlasWitness.first_gate_choice_count": [],
+      "AtlasWitness.second_gate_choice_count": [],
+      "AtlasWitness.padded_output_count": [],
+      "AtlasWitness.paddedValues_length": [],
+      "AtlasWitness.low_length": [],
+      "AtlasWitness.low_distinct": [],
+      "AtlasWitness.low_bitmap_exact": [],
+      "AtlasWitness.every_padded_output_in_low": [],
+      "AtlasWitness.low_witness_codes_valid": [],
+      "AtlasWitness.low_witnesses_exact": [],
+      "AtlasWitness.zero_no_witness_count": [],
+      "AtlasWitness.all_small_zero_masks_have_recorded_NO_completion": [],
+      "AtlasWitness.mask127_fixed_count": [],
+      "AtlasWitness.mask127_completions": [],
+      "AtlasWitness.mask127_is_low_compatible": [],
+      "AtlasWitness.all_eight_coordinates": [],
+      "AtlasWitness.all_eight_promise_edges_valid": [],
+      "AtlasWitness.atlas_finite_certificate": []
+    },
+    "forbidden_proof_construct_scan_passed": true,
+    "proof_methods": [
+      "kernel-checked decide",
+      "rfl",
+      "explicit conjunction proof terms"
+    ],
+    "python_unittest_count": 15,
+    "python_unittests_passed": true,
+    "python_complete_json_replay_passed": true
+  }
+}

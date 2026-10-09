@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "formula_sharing_audit",
+  "as_of_date": "2026-10-09",
+  "scope": "Phase-2 primary-source reconstruction of GapMCSP formula shrinkage/counting and sharing boundaries, focused on CHOPRS JACM2022 §5.2.2 Theorem 60, with §5.2.1 and almost-formulas as comparators.",
+  "workflow": {
+    "subagents_spawned": false,
+    "only_repository_file_written": "research_notes/p_vs_np_2026_10_09_phase2/sources/formula_sharing_audit.json",
+    "phase1_read_only": true,
+    "phase1_audit_sha256": "ee07a164127ad75a3f49f24548134a4a30b5a4f6f5c964dfc3eb00e6791bd24c",
+    "publication_extracts_in_repository": false,
+    "cache_directory": "/tmp/p_vs_np_2026_10_09_magnification"
+  },
+  "sources": [
+    {
+      "id": "CHOPRS2022",
+      "title": "Beyond Natural Proofs: Hardness Magnification and Locality",
+      "authors": [
+        "Lijie Chen",
+        "Shuichi Hirahara",
+        "Igor Carboni Oliveira",
+        "Ján Pich",
+        "Ninad Rajgopal",
+        "Rahul Santhanam"
+      ],
+      "venue": "Journal of the ACM 69(4), Article 25, 25:1–25:49 (2022)",
+      "url": "https://doi.org/10.1145/3538391",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "cached_extract": "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_jacm2022.txt",
+      "pdf_sha256": "962b6bdb6f5515980a105c83c5ac4596353e2db8d1d294a20e0dd473de20c3d9",
+      "extract_sha256": "d8f8ba19ef4c1e108e1dc7faa87afa88a6bbe1f5c623280c1f119c28ab748ade",
+      "pdf_pages": 50,
+      "published_date": "2022-08-23",
+      "retrieved_pdf_url": "https://dspace.mit.edu/server/api/core/bitstreams/0ce27b40-495a-498a-a950-8378ecf6e8bc/content",
+      "record_url": "https://dspace.mit.edu/entities/publication/d8c9477b-f810-42e8-adcf-ea59627dc3fc",
+      "version": "Final published version from MIT; PDF page j+1 is journal page 25:j because of the repository cover sheet."
+    },
+    {
+      "id": "CHOPRS2019v1",
+      "title": "Beyond Natural Proofs: Hardness Magnification and Locality",
+      "authors": [
+        "Lijie Chen",
+        "Shuichi Hirahara",
+        "Igor C. Oliveira",
+        "Jan Pich",
+        "Ninad Rajgopal",
+        "Rahul Santhanam"
+      ],
+      "venue": "arXiv:1911.08297v1 (2019)",
+      "url": "https://arxiv.org/pdf/1911.08297v1",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "cached_extract": "/tmp/p_vs_np_2026_10_09_magnification/magnification_choprs_arxiv_v1.txt",
+      "pdf_sha256": "e3851494208edda63dee2fb09083ef14972f22ddb761881fe507d1eaae36aa8b",
+      "extract_sha256": "4c39caab9efc678e61082656527f130e20bd40006a1ac9c50b8b6ccd0834f533",
+      "pdf_pages": 52,
+      "version": "Cross-check only; journal numbering controls this audit.",
+      "numbering_map": {
+        "JACM_Theorem_60": "arXiv_Theorem_59",
+        "JACM_Theorem_53": "arXiv_Theorem_52",
+        "JACM_Theorem_47": "arXiv_Theorem_46",
+        "JACM_Proposition_64": "arXiv_Proposition_63"
+      }
+    },
+    {
+      "id": "IMZ2019",
+      "title": "Pseudorandomness from Shrinkage",
+      "authors": [
+        "Russell Impagliazzo",
+        "Raghu Meka",
+        "David Zuckerman"
+      ],
+      "venue": "Journal of the ACM 66(2), Article 11, 11:1–11:16 (2019)",
+      "url": "https://doi.org/10.1145/3230630",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "cached_extract": "/tmp/p_vs_np_2026_10_09_magnification/magnification_imz2019.txt",
+      "pdf_sha256": "55319f57750426b70b301c31610b857f869aa6e187811f94898b406de04d8d4e",
+      "extract_sha256": "f6071f9f52b5afe954bf7703ee70191d66a061668bc2dac12feb9f5f3fe68f25",
+      "pdf_pages": 16,
+      "retrieved_pdf_url": "https://par.nsf.gov/servlets/purl/10337890",
+      "version": "Published PDF supplied by NSF Public Access Repository."
+    },
+    {
+      "id": "TAL2014",
+      "title": "Shrinkage of de Morgan Formulae by Spectral Techniques",
+      "authors": [
+        "Avishay Tal"
+      ],
+      "venue": "FOCS 2014, pp. 551–560; ECCC TR14-048 revision 1 full version",
+      "url": "https://eccc.weizmann.ac.il/report/2014/048/revision/1/download/",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "cached_extract": "/tmp/p_vs_np_2026_10_09_magnification/magnification_tal2014.txt",
+      "pdf_sha256": "88373d85f6257c10277eca9863627ee7c5c80e237ed25e7c785710055a7b5033",
+      "extract_sha256": "a10ddc1db9d1a07a59f2461e069181ecc00caea7684de1bd040f5e0c3a0081a0",
+      "pdf_pages": 18,
+      "doi_url": "https://doi.org/10.1109/FOCS.2014.65",
+      "record_url": "https://eccc.weizmann.ac.il/report/2014/048/",
+      "page_note": "Full-version printed page 2 is PDF page 3; printed page 10 is PDF page 11."
+    },
+    {
+      "id": "HS2017",
+      "title": "On the Average-Case Complexity of MCSP and Its Variants",
+      "authors": [
+        "Shuichi Hirahara",
+        "Rahul Santhanam"
+      ],
+      "venue": "LIPIcs 79, CCC 2017, Article 7, 7:1–7:20",
+      "url": "https://drops.dagstuhl.de/storage/00lipics/lipics-vol079-ccc2017/LIPIcs.CCC.2017.7/LIPIcs.CCC.2017.7.pdf",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "cached_extract": "/tmp/p_vs_np_2026_10_09_magnification/magnification_hs2017.txt",
+      "pdf_sha256": "0b4db7bbb1631c3c0b26b0c54e067675bcbd84a76cb4f1dcff8b1064974622eb",
+      "extract_sha256": "80e4e41754489ee1a6931635fa5cf2005df4664a12eae20cdeb6cef4b2bf71dc",
+      "pdf_pages": 20,
+      "doi_url": "https://doi.org/10.4230/LIPIcs.CCC.2017.7"
+    },
+    {
+      "id": "OPS2021",
+      "title": "Hardness Magnification Near State-of-the-Art Lower Bounds",
+      "authors": [
+        "Igor C. Oliveira",
+        "Ján Pich",
+        "Rahul Santhanam"
+      ],
+      "venue": "Theory of Computing 17(11), 1–38 (2021)",
+      "url": "https://theoryofcomputing.org/articles/v017a011/v017a011.pdf",
+      "primary": true,
+      "accessed_date": "2026-10-09",
+      "cached_extract": "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt",
+      "pdf_sha256": "81b1ff4ede5180dc88f99c8a4856cfde623f6fefb5b99ef9f5526899bf43ab4a",
+      "extract_sha256": "039418d33a236e1e58779dc8c4a358746c8b89a027a14079586f9843e10080e1",
+      "pdf_pages": 38,
+      "doi_url": "https://doi.org/10.4086/toc.2021.v017a011"
+    }
+  ],
+  "conventions": {
+    "references": [
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "§2.1, p. 25:12; §1.1(C), p. 25:4; §5.2.2, p. 25:39",
+        "cached_text_lines": [
+          670,
+          673
+        ]
+      },
+      {
+        "source_id": "OPS2021",
+        "locator": "Definition 2.4, p. 11"
+      }
+    ],
+    "lengths": {
+      "n": "arity of the function represented by the input truth table",
+      "N": "2^n; number of raw input bits of the separator",
+      "M": "generic raw input length when restating PARITY/almost-formula results"
+    },
+    "inner_complexity": "Size(T) counts gates in an n-input fixed-basis fan-in-two Boolean circuit computing the table T. It is NOT formula leaf complexity of T.",
+    "outer_formula_size": "A De Morgan formula is a tree of binary AND/OR gates with literals/constants at leaves. Size counts leaf occurrences; repeated occurrences of the SAME input variable are allowed.",
+    "outer_circuit_size": "Circuit and almost-Formula size count AND, OR, NOT gate nodes, with fan-in at most two and input nodes not charged as internal gates.",
+    "tree_conversion": "For a full binary AND/OR tree with L leaves, internal gate count is L-1 and total tree nodes are 2L-1. Unary negations can be pushed to leaves without increasing leaf occurrences. No analogous constant-factor conversion from DAG gate count to formula leaves is available without a sharing bound.",
+    "basis_warning": "The exponent-two shrinkage theorem is for De Morgan formulas, not formulas with arbitrary binary truth functions as primitive gates. IMZ §4.1 gives shrinkage exponent one for arbitrary-basis formulas. Constant-overhead CIRCUIT basis conversion can introduce sharing and is not a constant-overhead FORMULA conversion; sharing parameters must be recomputed after a chosen basis conversion.",
+    "promise": {
+      "YES": "Size(T)<=s1(n)",
+      "NO": "Size(T)>s2(n)",
+      "gap": "s1(n)<Size(T)<=s2(n), unconstrained",
+      "rounding": "Use integer thresholds, e.g. floors of the displayed real bounds. Strict NO means no circuit with <=floor(s2) gates."
+    },
+    "not_read_once": "Tree structure means no reuse of intermediate computed values. It does not mean that each raw variable occurs once. Input read multiplicity, shared computed-gate count, and oracle adaptivity are different parameters."
+  },
+  "theorem_60": {
+    "status": "Published unconditional lower bound for the stated oracle-FORMULA model; source statement and proof architecture audited, not independently proved here.",
+    "references": [
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Theorem 60, §5.2.2, p. 25:39; proof pp. 25:40–25:44",
+        "cached_text_lines": [
+          2225,
+          2505
+        ]
+      },
+      {
+        "source_id": "CHOPRS2019v1",
+        "locator": "Theorem 59, pp. 41–46"
+      }
+    ],
+    "statement": "There is a universal constant c such that for all constants epsilon>0 and alpha>2, MCSP[n^c,2^((epsilon/alpha)*n)] cannot be computed by oracle formulas F with SIZE_3(F)<=N^(2-epsilon) and oracle adaptivity o(log N/log log N).",
+    "nontrivial_regime": "The reconstruction below uses 0<epsilon<2; alpha>2 then gives 0<epsilon/alpha<1. The paper states all epsilon>0.",
+    "quantifiers": "c is independent of the fixed epsilon and alpha. The adaptivity condition is asymptotic in N. All quantitative comparisons involving little-o and unspecified constants are for sufficiently large truth-table lengths.",
+    "oracles": "Oracle functions are arbitrary; no efficient uniform algorithm for them is assumed. They can be internal and nested, but the enclosing computational structure is a formula tree.",
+    "weighted_size": {
+      "leaves": "A literal occurrence has weight 1; trivial constant conventions do not affect the asymptotic statement.",
+      "binary": "SIZE_t(F1 AND F2)=SIZE_t(F1)+SIZE_t(F2), likewise OR.",
+      "oracle": "SIZE_t(O(F1,...,Fr))=r^(t-1)*sum_i SIZE_t(Fi). Thus SIZE_3 multiplies the child sum by r^2; a pure r-input oracle with literal inputs has weight r^3.",
+      "meaning": "This is a stipulated substitution-cost measure, not unit-cost oracle gate count and not a claim that every r-input oracle actually has an r^3-leaf formula.",
+      "tree_dependence": "The recurrence charges every subformula occurrence; sharing is not free."
+    },
+    "adaptivity": "tau is the maximum number of oracle gates along a root-to-leaf path. Ordinary De Morgan formulas have tau=0. tau is NOT the number of reused gate nodes or a reuse-depth parameter of a DAG."
+  },
+  "ordinary_and_pseudorandom_shrinkage": {
+    "references": [
+      {
+        "source_id": "TAL2014",
+        "locator": "Theorem 1.2, printed p. 2; Claim 6.2, printed pp. 10–11",
+        "cached_text_lines": [
+          116,
+          129
+        ]
+      },
+      {
+        "source_id": "IMZ2019",
+        "locator": "Lemmas 4.1, 4.3 and Claim 4.4, pp. 11:10–11:11",
+        "cached_text_lines": [
+          485,
+          559
+        ]
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Case I and Case IV, pp. 25:41–25:43",
+        "cached_text_lines": [
+          2316,
+          2466
+        ]
+      }
+    ],
+    "ordinary_random_restriction": {
+      "distribution": "Each distinct raw input coordinate independently remains live with probability p; otherwise it receives an unbiased fixed bit.",
+      "inequality": "E[L(f restricted by rho)] <= C*(p^2*L(f)+p*sqrt(L(f))) for a universal C (Tal Theorem 1.2).",
+      "essential_additive_term": "p*sqrt(L) cannot be deleted uniformly, especially when L is small. The parity example in Tal §1 demonstrates both terms are necessary.",
+      "historical_precision": "Hastad’s older exponent-two theorem includes a logarithmic loss. Tal removes that loss; do not attribute the clean C*(p^2 L+p sqrt(L)) bound to the older theorem without qualification.",
+      "not_enough_for_MCSP": "A truly random restriction can leave a high-complexity pattern of fixed truth-table bits. Shrinkage alone does not produce the small-circuit YES completion required in the MCSP contradiction.",
+      "constant_node_convention": "When implementing simplified formulas with a charged constant leaf, add O(1) to the shrinkage bound (or use the convention that a collapsed constant has zero nonconstant leaf complexity). A vanishing p-dependent right side cannot pay for a mandatory constant node. This only changes the O(1) clean-piece bound and is absorbed by the O(k) cutoff."
+    },
+    "decomposition": {
+      "IMZ": "For a formula of leaf size S>=ell, there are at most 6S/ell pieces, each of size at most ell and with at most TWO special inputs representing child pieces. For any restriction, the residual formula size is bounded by the sum of the residual piece sizes, with these special inputs left unset.",
+      "special_input_cost": "IMZ Lemma 4.1: for h special variables H, L(g)<=sum_{a in {0,1}^H}(L(g|H=a)+h)<=2^h*(max_a L(g|H=a)+h). At h<=2 the sum incurs a factor at most 4 and an additive total at most 8.",
+      "Tal_strengthening": "Claim 6.2 gives m<=36S/ell formulas G_i on ORIGINAL raw variables, each of size <=ell, and a read-once outer formula H with H(G_1,...,G_m)=F. Read-once here concerns placeholders for the G_i, not the original raw variables.",
+      "tree_feature": "The additive bound counts a subformula once per occurrence in a read-once assembly. A decomposition of a shared DAG into similarly cheap pieces with only two boundary values is not supplied by these statements."
+    },
+    "k_wise_one_step": {
+      "parameters": "k=(log_2 N)^3; p=k^(-1/2). Rounding/dyadic choices are suppressed in the paper.",
+      "reason": "A piece involving <=k distinct raw coordinates sees precisely the truly random restriction distribution under a k-wise independent p-regular restriction. Pieces may overlap in raw variables; linearity of expectation, not independence between pieces, sums their expected costs.",
+      "quantitative_derivation": "For each clean piece with L<=k, Tal gives C*(L/k+sqrt(L/k))<=2C. At most 36S/k pieces give E residual leaf size <=72C*S/k through Tal Claim 6.2. Alternatively the IMZ two-special-input decomposition pays only constant overhead per piece.",
+      "source_cutoff": "CHOPRS Case I uses Phi=S for S>=100k and Phi=0 otherwise, with E Phi_next <=(c_Tal/k)*Phi. Once below the cutoff, the pure formula is tiny; it is not necessary to claim perpetual purely multiplicative shrinkage of actual leaf size below this scale.",
+      "shrinkage_exponent": "One round retains p=k^(-1/2) of coordinates but reduces large formula potential by O(1/k)=O(p^2). Constants accumulated over O(log N/log log N) rounds contribute only N^o(1).",
+      "optional_exact_rounding": "An elementary dyadic implementation can take k=2^(2*ceil((3/2)*log_2 n)), where n=log_2 N. Then n^3<=k<4n^3 and p=1/sqrt(k) is dyadic. This preserves the stated asymptotics; it is an audit-supplied normalization, not a literal parameter choice printed in the source."
+    },
+    "succinct_sampler": {
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Lemma 12, p. 25:14",
+          "cached_text_lines": [
+            772,
+            777
+          ]
+        }
+      ],
+      "seed_bound": "A k-wise independent q-regular restriction has seed length O(k*log N*log(1/q)); any coordinate is computable in time polynomial in this seed length.",
+      "here": "With q=k^(-1/2), one seed has O((log N)^4*log log N) bits. After t=O(log N/log log N) stages, the whole sequence still has poly(n) description and coordinate-evaluation circuit complexity.",
+      "uniformity_boundary": "The proof establishes existence of a good short-seed restriction. It need not efficiently find that seed or the minimum residual formula."
+    }
+  },
+  "theorem_60_proof_reconstruction": {
+    "references": [
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Proof of Theorem 60, pp. 25:40–25:44",
+        "cached_text_lines": [
+          2258,
+          2505
+        ]
+      }
+    ],
+    "notation": "Phi is the history-dependent potential. p_F below is a FAILURE bound, not the coordinate-survival probability. P denotes sum_i Phi_i in the Case IV recurrences.",
+    "maximal_subformula": "Entire subtree rooted at the formula root, at an oracle gate, or at a gate whose parent is an oracle gate.",
+    "tiny_and_blowup": {
+      "oracle_root": "Tiny means dependence on <=log N raw live variables.",
+      "ordinary_root": "Tiny means dependence on <=c_tiny*k raw live variables.",
+      "blowup": "After each restriction, replace an oracle-rooted subformula depending on <=b=20 variables by an ordinary constant-size formula; the paper writes B=2^b and later sets c_tiny=100B. If nested such subformulas occur, replace only the highest one.",
+      "precision_note": "Only an absolute constant-size replacement is used asymptotically. An explicit finite checker should fix its leaf-count convention and a verified universal replacement bound, rather than treating every numerical normalization in this proof sketch as an optimized exact construction."
+    },
+    "cases": [
+      {
+        "case": "I: pure formula",
+        "initial_and_update": "Phi=S if S>=100k; otherwise 0. Expected contraction c_Tal/k; p_F=0.",
+        "reference": {
+          "source_id": "CHOPRS2022",
+          "locator": "p. 25:41",
+          "cached_text_lines": [
+            2316,
+            2328
+          ]
+        }
+      },
+      {
+        "case": "II: pure oracle of arity T",
+        "initial_and_update": "Phi=T^2*k^3, divided by k after each round, then permanently 0 when it drops below 1; c_F=1.",
+        "tail": "At death at least log_k(T^2) rounds have elapsed, so each of its input coordinates survives with probability <=1/T. For T>log N, Pr[more than log N survive] <=binom(T,log N)*T^(-log N)<=(e/log N)^(log N)<=N^(-5).",
+        "failure": "p_F=N^(-5); k-wise independence suffices because log N<=k.",
+        "reference": {
+          "source_id": "CHOPRS2022",
+          "locator": "pp. 25:41–25:42",
+          "cached_text_lines": [
+            2330,
+            2356
+          ]
+        }
+      },
+      {
+        "case": "III: oracle top gate of arity T over subformulas",
+        "initial_and_update": "Initially Phi=max(sum_i Phi_i,1/k)*T^2*k^4. While the child sum is positive, use Phi=(sum_i Phi_i)*T^2*k^4. When the sum first becomes zero, reset Phi=T^2*k^3, divide by k on later rounds, and set to zero below 1.",
+        "support_and_errors": "Once all children are tiny, their union of raw supports has size O(T*k). Subsequent restrictions give the same type of tail bound. The paper sets c_F=max_i c_Fi and p_F=sum_i p_Fi+N^(-5).",
+        "status": "These are the paper’s potential-transition claims; this audit has not independently verified every transition/stopping-time calculation.",
+        "reference": {
+          "source_id": "CHOPRS2022",
+          "locator": "p. 25:42",
+          "cached_text_lines": [
+            2357,
+            2387
+          ]
+        }
+      },
+      {
+        "case": "IV: ordinary formula skeleton with oracle leaves",
+        "variables": "S is skeleton leaf size; A=N_active counts tiny oracle-leaf OCCURRENCES that have not been replaced; P=sum_i Phi_i for oracle subformulas.",
+        "potential": "Initially Phi=S+A*k^2+P*k^4. Once S<=100k, omit the S summand thereafter.",
+        "residual_skeleton_bound": "If S>=100k: E[S_next] <= c1*S/k+c2*k*(P+A).",
+        "tree_charging": "Decompose into at most 6S/k pieces of size <=k, with <=2 boundary inputs. At most P+A pieces can contain active oracle-leaf occurrences. Clean pieces have O(1) expected residual size; dirty pieces cost O(k), including constant-size oracle replacement.",
+        "active_oracle_bound": "E[A_next] <= A/k^2+P. A tiny active oracle has <=log N variables; Pr[it fails to blow up] <=binom(log N,b)*k^(-b/2)<=(log N)^(-10)<=k^(-2) for b=20.",
+        "child_bound": "E[P_next] <=(c_drop/k)*P.",
+        "full_additive_recurrence": "E[Phi_next] <= c1*S/k+c2*k*(P+A)+(A/k^2+P)*k^2+(c_drop/k)*P*k^4.",
+        "absorbed_recurrence": "E[Phi_next] <= S*c1/k+A*k^2*(c2+1/k)/k+P*k^4*(c_drop+c2/k^2+1/k)/k.",
+        "constant": "c_F=max(c1,c2+1/k,c_drop+c2/k^2+1/k). The k^2 and k^4 reserves pay for the additive terms; omitting them loses the stated argument.",
+        "zero_potential": "If Phi=0, the skeleton crossed <=100k and all remaining oracles were replaced. Its resulting leaf size is <=100B*k=O(k). Set p_F=sum_i p_Fi.",
+        "reference": {
+          "source_id": "CHOPRS2022",
+          "locator": "pp. 25:42–25:43",
+          "cached_text_lines": [
+            2388,
+            2466
+          ]
+        }
+      }
+    ],
+    "global_bookkeeping": {
+      "claims": "Each stage contracts expected Phi by c_F/k; Phi is either 0 or >=1. Except on a global failure event, Phi=0 implies tiny at every stage.",
+      "c_bound": "c_F <=max(c1,c2+1/k,c_Tal)+tau*(c2/k^2+1/k)=O(1).",
+      "failure_bound": "p_F<=N^(-5)*N^2=N^(-3); the earlier general property only requires p_F<=N^(-2).",
+      "initial_potential": "Phi_0<=SIZE_3(F)*k^O(tau)<=N^(2-epsilon+o(1)). The cubic oracle substitution measure and tau=o(log N/log log N) are essential to this comparison.",
+      "reference": {
+        "source_id": "CHOPRS2022",
+        "locator": "p. 25:44, first paragraph",
+        "cached_text_lines": [
+          2472,
+          2480
+        ]
+      }
+    },
+    "rounds_and_probabilities": {
+      "rounds": "For Phi_0>0 take t=ceil(log_(k/c_F)(Phi_0))+2. If Phi_0=0 the tiny case is already reached, with the stated exceptional-event qualification.",
+      "small_potential": "E Phi_t<1/10. Markov and the failure event give tiny with probability >=0.9-p_F>=0.8.",
+      "survival_calculation": "(k/c_F)^t<=Phi_0*k^3, hence k^t<=Phi_0*k^3*c_F^t<=N^(2-epsilon+o(1)). Thus p_end=k^(-t/2)>=N^(-1+epsilon/2-o(1)).",
+      "many_free_bits": "Final live-bit indicators are pairwise independent. For U=sum indicators and mu=N*p_end, Var(U)<=mu and Pr[U<mu/2]<=4/mu. For large N the paper uses probability >=1/2 of U>=N^(epsilon/2-o(1)).",
+      "joint_event": "Probability >=0.8+0.5-1=0.3 that the residual depends on O(log^3 N) coordinates and that U>=N^(epsilon/2-o(1)). Independence of these two events is NOT assumed.",
+      "reference": {
+        "source_id": "CHOPRS2022",
+        "locator": "p. 25:44, middle paragraphs",
+        "cached_text_lines": [
+          2481,
+          2497
+        ]
+      },
+      "fixed_round_count": "The global t is fixed from the initial formula/potential bound before the restriction sequence is sampled. Replacing it by an input/history-dependent stopping time would require a new justification of the final survival distribution and concentration."
+    },
+    "finish": {
+      "YES": "For a restriction in the joint event, fill all live bits with zero, giving table x*. The restriction sequence has locally computable coordinates, so Size(x*)<=poly(n)*t<=n^c for one universal c.",
+      "constant_subcube": "Let J be the <=O(log^3 N) remaining coordinates on which the residual formula depends. Hold them at zero; all 2^(U-|J|) extensions have the same separator output as x*, namely 1.",
+      "NO": "For s2=floor(N^(epsilon/alpha)), there are at most 2^O(s2*log(n+s2)) tables of circuit size <=s2. Since alpha>2, U-|J| is much greater than that logarithmic count. One extension therefore has Size>s2 while being accepted.",
+      "reference": {
+        "source_id": "CHOPRS2022",
+        "locator": "p. 25:44, final paragraph",
+        "cached_text_lines": [
+          2498,
+          2505
+        ]
+      }
+    }
+  },
+  "exact_completion_certificate_contract": {
+    "status": "Elementary exact recasting of the paper’s completion/counting step, not a new lower-bound technique.",
+    "references": [
+      {
+        "source_id": "HS2017",
+        "locator": "Lemma 29 and its proof, §4.2, p. 7:13",
+        "cached_text_lines": [
+          716,
+          738
+        ]
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "§5.2.1 proof of Theorem 53, p. 25:38",
+        "cached_text_lines": [
+          2169,
+          2179
+        ]
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "§5.2.2 proof of Theorem 60, p. 25:44",
+        "cached_text_lines": [
+          2498,
+          2505
+        ]
+      },
+      {
+        "source_id": "OPS2021",
+        "locator": "Definition 2.4, p. 11"
+      }
+    ],
+    "finite_count": "For n inputs and <=s fan-in-two Boolean gates over a fixed basis contained in B2, K(n,s)=(n+s+2)*[16*(n+s+2)^2]^s is an upper bound on the number of computed truth tables. Use the standard convention counting NOT gates; constants are available as two extra sources.",
+    "count_reason": "Pad/topologically order the gates, overcount each truth function and its two predecessors, and choose the output. The count concerns INNER n-input circuits, not N-input separators or formula leaves.",
+    "hypotheses": [
+      "rho is a restriction of the N truth-table bits with live set V, |V|=U.",
+      "The zero-filled completion x* of rho has Size(x*)<=s1.",
+      "J subseteq V is a certificate for the separator restricted by rho at the all-zero live assignment: fixing J to zero forces its output to C(x*)."
+    ],
+    "sufficient_strict_inequality": "U-|J| > log_2 K(n,s2). Equivalently, since U-|J| is integral, U-|J| >= floor(log_2 K(n,s2))+1.",
+    "conclusion": "A correct promise separator must accept x*. The certificate subcube has 2^(U-|J|)>K(n,s2) distinct tables, so one has Size>s2 and must instead be rejected. Contradiction.",
+    "certificate_lower_bound_form": "Every certificate J for a correct separator at this x* must satisfy |J|>=U-log_2 K(n,s2).",
+    "why_strict_matters": "Excluding ALL circuits with <=s2 gates gives Size>s2, exactly the formal NO promise. Merely asserting complexity >=s2 is insufficient at an integer endpoint.",
+    "quantitative_for_60": "log_2 K(n,s2)=O(N^(epsilon/alpha)*log N), whereas U-|J|=N^(epsilon/2-o(1))-O(log^3 N). The fixed exponent gap epsilon/2-epsilon/alpha>0 absorbs the counting logarithm.",
+    "not_enough": "U>s2 alone need not exceed the circuit count. The required comparison is against approximately s2*log(n+s2), after subtracting certificate coordinates.",
+    "not_tree_specific": "This finite argument works for any separator model. For a residual formula, all its support supplies J; for a decision tree, just the path followed on x* supplies J. A short certificate does not require the residual to have globally small support.",
+    "YES_succinctness_note": "The baseline x* is fixed BEFORE selecting its zero-valued certificate. Its small-circuit description consists of the restriction seeds/evaluator, not an encoding of the separator or its oracles. No circuit for a potentially complicated certificate set J needs to be included in the YES table generator.",
+    "HS_precedent": "HS Lemma 29 proves L(MCSP[s]|rho)>=|V|-O(s log s) when rho has circuit complexity <=s: vary ignored coordinates around the zero-filled YES input and compare their number with the number of size-s circuits. The certificate formulation is already implicit in CHOPRS’s decision-tree-path version."
+  },
+  "section_5_2_1_comparator": {
+    "references": [
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Theorem 53 and Lemmas 56–57, pp. 25:36–25:37; proof p. 25:38",
+        "cached_text_lines": [
+          1997,
+          2179
+        ]
+      }
+    ],
+    "scope": "Constant-depth AC0 DAG circuits with arbitrary oracles, with levelwise maximum oracle fan-ins O_i satisfying product_i O_i<=N/(log N)^omega(1). The target here is MCSP[n^c,n^(2c)], not the exponential upper gap of Theorem 60.",
+    "already_allows_sharing": "This proof counts gate nodes and union-bounds over gates. It is an explicit example where restrictions plus the same final counting argument tolerate DAG sharing; there is no blanket rule that sharing makes all random-restriction lower bounds impossible.",
+    "switching_bound": "Lemma 56, for width-w, M-clause CNF, dyadic p=2^(-q), and epsilon_0>0: Pr[DT(phi|rho)>s] <=2^(s+w+1)*(5*p*w)^s+epsilon_0*2^((s+1)*(2*w+log M)). Required independence is Theta(log(M*2^(w*(q+1))/epsilon_0)*log(M*2^(w*(q+1)))/q).",
+    "oracle_collapse": "Lemma 57: for arbitrary O of arity T applied to T depth-a decision trees, every a*(s+1)-wise independent p-regular restriction with p<=1/(T*a^2) gives Pr[DT(O(D_1,...,D_T)|rho)>s]<=[a*(s+1)/(2e^2)]^(-(s+1)).",
+    "parameters": "p=1/log^5 N; epsilon_0=2^(-(log N)^6); decision-tree depth and CNF width s=w=10log^2 N; M=2^s*N^(log N); independence k=log^O(1) N and k=omega(log^6 N).",
+    "gate_budget": "The proof actually assumes S<=N^(log N)/8 and contradicts it. Here N^(log N) is an exponent, NOT N*log N; visually checked in the published PDF.",
+    "rounds": "At level i, apply tau_i=ceil(log_(1/p) O_i)+1 fresh restrictions. At most 2d+log_(1/p)(product_i O_i)=log_(1/p) N-omega(1) rounds suffice.",
+    "probabilities": "Each type of gate fails with probability at most N^(-log N). Total failure <=2*S*N^(-log N)<=1/4. Pairwise independence gives >=1/2 probability that >=(N*p_end)/2=(log N)^omega(1) coordinates survive. Thus both occur with probability >=1/4.",
+    "certificate": "The output is a depth-s decision tree. On the zero-filled YES table, fix only the <=s coordinates of that path, not all variables appearing anywhere in the tree. The resulting free subcube has enough dimension to exceed log K(n,n^(2c)).",
+    "limit": "The level-by-level argument requires constant depth and the fan-in product budget. It supplies no unbounded-depth analogue at the OPS gate-size target."
+  },
+  "tree_structure_checkpoints": [
+    {
+      "inequality": "m<=6S/k with <=2 boundary inputs per piece; or Tal m<=36S/k with read-once assembly.",
+      "source": {
+        "source_id": "IMZ2019",
+        "locator": "Claim 4.4/Lemma 4.3, p. 11:11"
+      },
+      "tree_role": "S is leaf/occurrence size. A cheap small-boundary decomposition of a gate-counted DAG is not implied."
+    },
+    {
+      "inequality": "L(F|rho)<=sum_i L(G_i|rho_prime).",
+      "source": {
+        "source_id": "IMZ2019",
+        "locator": "Lemma 4.3, p. 11:11"
+      },
+      "tree_role": "Substitution is additive because each placeholder is used once. Repeated raw input labels are harmless; repeated uses of a computed subformula must be charged again."
+    },
+    {
+      "inequality": "#dirty pieces <=sum_i Phi_i+N_active; their residual cost <=O(k)*(sum_i Phi_i+N_active).",
+      "source": {
+        "source_id": "CHOPRS2022",
+        "locator": "Case IV, p. 25:43"
+      },
+      "tree_role": "The sum counts active oracle-leaf occurrences. A single shared oracle gate can feed many pieces, so replacing this by distinct gate count is unjustified."
+    },
+    {
+      "inequality": "Phi_0<=SIZE_3(F)*k^O(tau).",
+      "source": {
+        "source_id": "CHOPRS2022",
+        "locator": "p. 25:44"
+      },
+      "tree_role": "The recursive child sums and r^2 weights match the formula substitution cost. Recursing on a DAG without a sharing charge measures an unfolded/multiplicity-weighted object, not the original gate count."
+    },
+    {
+      "inequality": "E(sum_i Phi_i_next)=sum_i E(Phi_i_next).",
+      "source": {
+        "source_id": "CHOPRS2022",
+        "locator": "Cases III–IV, pp. 25:42–25:43"
+      },
+      "tree_role": "Linearity itself does NOT require disjoint variables or independent child potentials. The obstacle is structural charging, not a failure of linearity under correlations."
+    },
+    {
+      "inequality": "Small residual leaf size => small support; certificate + free-bit count => contradiction.",
+      "source": {
+        "source_id": "CHOPRS2022",
+        "locator": "p. 25:44, final paragraphs"
+      },
+      "tree_role": "The final counting is model-independent. Even a fan-in-two DAG with g reachable internal gates has at most g+1 distinct input sources, so genuinely small residual GATE count would also suffice. The missing part is proving the requisite collapse with gate-count/sharing costs."
+    }
+  ],
+  "sharing_metrics_and_elementary_transfers": {
+    "status": "Elementary graph bookkeeping / transfer criteria for comparison, not claimed as a new published frontier. These definitions are audit conventions unless explicitly identified with CHOPRS.",
+    "normalization": "Prune unreachable gates; use a single output and fan-in <=2 AND/OR/NOT gates. Orient wires from inputs toward output. Count parallel input-slot uses with multiplicity. Exclude raw-variable and constant sources from all computed-gate sharing parameters.",
+    "metrics": {
+      "g": "Number of internal gate nodes, regardless of how often their outputs are used.",
+      "r": "Number of internal gate nodes v with outgoing use count d_plus(v)>1. This is the CHOPRS almost-formula parameter gamma.",
+      "e": "Shared-edge surplus: sum over internal gates of max(d_plus(v)-1,0). It counts excess uses, not merely the nodes that are reused.",
+      "Delta": "Maximum outgoing use count of an internal gate, with Delta>=1 by convention.",
+      "h": "Maximum number of reused INTERNAL nodes along one directed path toward the output (reuse depth). This is an audit-defined parameter, not CHOPRS oracle adaptivity tau.",
+      "tau": "Number of oracle gates on a path in Theorem 60, independent of computed-gate reuse.",
+      "L_unfold": "Leaf-occurrence count obtained by syntactically unfolding the DAG into a tree. This need not be minimum formula size."
+    },
+    "relations": "h<=r<=e; if internal fan-out is bounded by Delta, e<=r*(Delta-1). No converse identifying these parameters holds. Input fan-out can be large even in the formula model because formulas may repeat variables.",
+    "unfolding": {
+      "exact_recurrence": "m(output)=1; for any other internal gate v, m(v)=sum over outgoing use-wires (v,w) of m(w). This counts its tree occurrences, equivalently directed paths from v to the output.",
+      "exact_tree_count": "The unfolded tree has sum_v m(v) internal gate occurrences. With unary NOTs and binary AND/ORs, L_unfold=1+sum over binary gates v of m(v).",
+      "surplus_bound": "m(v)<=product over all reused internal nodes u of d_plus(u)<=2^e. Consequently L_unfold<=1+g*2^e.",
+      "depth_bound": "Also m(v)<=Delta^h, so L_unfold<=1+g*Delta^h.",
+      "qualification": "These bounds concern syntactic unfolding. They may be loose because Boolean simplification can give much smaller formulas."
+    },
+    "r_only_case_analysis": {
+      "source_connection": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Theorem 30 proof, pp. 25:23–25:24; Theorem 47 proof, p. 25:32"
+        },
+        {
+          "source_id": "IMZ2019",
+          "locator": "Lemma 4.1, p. 11:10"
+        }
+      ],
+      "template": "Cut reused gate outputs into named boundary values. For a fixed assignment a to the r boundary bits, conjoin the principal-formula consistency tests and the output test. OR over all 2^r assignments a for an exact simulation.",
+      "safe_bound": "Bounding each of the r+1 principal formulas separately by O(g+1) gives an elementary formula-size upper bound O((r+1)*(g+1)*2^r). Tighter bookkeeping may improve constants/factors; no such improvement is claimed as novel here.",
+      "distinction": "This is Boolean case analysis, not the literal path-unfolding recurrence. One high-fan-out shared node can cause large syntactic duplication even when r=1; e or Delta, rather than r alone, controls that duplication."
+    },
+    "separating_examples": [
+      "One reused gate with R outgoing uses has r=h=1 but e=R-1 and Delta=R.",
+      "Many disjoint once-reused gates can have r=e large but h=1 and Delta=2.",
+      "A chain of fan-out-two reuse diamonds can have Delta=2 and h=r growing; syntactic path multiplicity can grow exponentially in h. This says nothing by itself about the minimum Boolean formula after simplification.",
+      "A tree of nested oracles can have r=e=h=0 but tau large. An ordinary shared DAG has tau=0 but can have large r,e,h."
+    ],
+    "bounded_reuse_transfer": {
+      "published_start": "The no-oracle specialization of Theorem 60 already forbids De Morgan formulas of leaf size N^(2-epsilon) for MCSP[n^c,N^(epsilon/alpha)].",
+      "elementary_consequence": "Any De Morgan DAG class whose proven formula conversion bound is <=N^(2-epsilon), with fixed epsilon>0, inherits that lower bound. Plugging 1+g*2^e, 1+g*Delta^h, or the r-only consistency expansion into this criterion is an elementary corollary, not a new shrinkage theorem for DAG gate size.",
+      "OPS_gap_translation": "For fixed beta>0, if a candidate separator for Gap-MCSP[N^beta/(10n),N^beta] converts to O(N^gamma) formula leaves with gamma+2*beta<2, choose epsilon with 2*beta<epsilon<2-gamma and alpha=epsilon/beta>2. Eventually n^c<=N^beta/(10n), so the separator also solves Theorem 60’s smaller YES promise and is impossible in that converted class.",
+      "budget_example": "If g<=N^(1+eta) and e<=lambda*log_2 N, then 1+g*2^e=O(N^(1+eta+lambda)). The elementary fixed-beta transfer applies when eta+lambda+2*beta<1. A bound h*log_2 Delta<=lambda*log_2 N gives the same criterion.",
+      "remaining_issue": "For unrestricted DAGs, these conversion factors can be much too large. Merely renaming a gate-counted potential as formula size cannot establish the required near-quadratic effective-size bound."
+    },
+    "raw_read_warning": "IMZ Lemma 4.7 uses read-t to bound how many times one raw variable appears among formula leaves. This does not bound reuse of an internal computed gate and is not CHOPRS gamma-almost-Formula."
+  },
+  "known_almost_formula_results": {
+    "references": [
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "§1.1(C), p. 25:4; Theorems 29–30, pp. 25:22–25:24; Theorem 47, pp. 25:31–25:32",
+        "cached_text_lines": [
+          1266,
+          1318
+        ]
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Theorem 47 proof",
+        "cached_text_lines": [
+          1754,
+          1813
+        ]
+      }
+    ],
+    "definition": "gamma-almost-Formula[S] has at most S AND/OR/NOT gate nodes and at most gamma such nodes of fan-out >1. gamma is a reused-node count, NOT a total excess-edge count or a reuse depth.",
+    "ordinary_lower": "Theorem 30: for delta<1, PARITY_M notin M^delta-almost-Formula[M^(2-9*delta)] (the small positive-delta range is the substantive one).",
+    "proof_mechanism": {
+      "cut_and_guess": "Fix values of the <=M^delta shared nodes and check consistency through their principal formulas. The paper obtains an ordinary formula of size M^(2-8*delta) agreeing with PARITY on 1/2+2^(-M^delta) of inputs, up to constant-factor bookkeeping.",
+      "safe_advantage": "For a consistency cell of probability p>=2^(-r), agreeing on that cell and choosing the better constant outside gives agreement >=1/2+p/2>=1/2+2^(-r-1). The printed unit constant in the paper’s advantage should not be treated as an exact finite bound from this elementary cell argument; Omega(2^(-r)) is enough for its exponent comparison.",
+      "approximation": "The proof cites a pointwise 2^(-t) approximation by a polynomial of degree O(t*sqrt(L)*log M/log log M). Hence formulas of size o((M/t)^2*(log log M/log M)^2) have parity agreement at most 1/2+2^(-t-O(1)). Take t=M^(2*delta).",
+      "why_not_just_unfolding": "This uses a small advantage, not a small exact formula after enumerating every gate-value pattern. The argument can tolerate polynomially many shared nodes, where naive exact case expansion would be enormous."
+    },
+    "oracle_extension": "Theorem 47(C3O) retains the PARITY lower bound with arbitrary oracles of arity <M^delta at bottoms of principal formulas computing shared nodes. After fixing shared values, the oracles become bottom leaves; substituting their degree-<=M^delta truth polynomials multiplies the approximation-degree bound by at most M^delta.",
+    "oracle_lower_quantitative": "The small-formula threshold becomes o((M/t)^2*(log log M/log M)^2*M^(-2*delta)); with L=M^(2-8*delta) and t=M^(2*delta), the required exponent slack remains.",
+    "MCSP_upper": "Theorem 47(C1O): MCSP[2^(sqrt(n))/(2n),2^(sqrt(n))] has 2^O(sqrt(n))-almost-formulas of size 2^(n+O(sqrt(n))), with oracle fan-in 2^O(sqrt(n)) at bottoms of principal formulas. Theorem 29 is the corresponding conditional magnification construction under NP subseteq NC1.",
+    "model_limit": "Principal-formula inputs can be earlier shared-gate outputs. The upper bound does not assert a formula tree of small SIZE_3 or the oracle-adaptivity bound from Theorem 60. It also uses a different gap from the fixed-beta OPS target.",
+    "parameter_limit": "The allowed reused-node budget 2^O(sqrt(n))=N^o(1) is not necessarily O(log N). It allows r=2^(c*sqrt(n)), for which a 2^r conversion bound is superpolynomial in N. Calling these almost-formulas does not make elementary unfolding cheap.",
+    "novelty_boundary": "These are already published substantive sharing results. A local bounded-reuse corollary must compare its function/promise, gate basis, node/edge/depth parameter, formula blow-up and oracle placement with them. PARITY lower bounds must not be reported as MCSP lower bounds."
+  },
+  "precision_and_verification_limits": {
+    "source_status": "The audit reconstructs statements, cited tools, recurrences and dependencies. It is not an independent verification of all proofs in CHOPRS, Tal, IMZ or HS.",
+    "finite_constants": "c, c_Tal, c1, c2, constants in k^O(tau), polynomial-time coordinate evaluation and asymptotic length thresholds are not made numerical by the source. A fully explicit finite certificate must supply those separately.",
+    "decomposition_count": "IMZ says AT MOST 6S/k pieces. The Case IV prose uses this bound informally; an audit should bound clean cost from above and dirty count by active occurrences, not assert a literal lower bound of 6S/k minus the active count.",
+    "cutoff": "Do not iterate E L_next<=C*p^2*L indefinitely without its large-size condition or a cutoff/additive term. Theorem 60’s tiny cutoff and weighted reserves address exactly this issue.",
+    "sampling_vs_uniform": "Only restrictions with short descriptions give the stated easy YES completion. A favorable truly random restriction is not automatically such a description.",
+    "endpoints": "The paper’s concluding prose says complexity at least the upper bound; the finite count excludes every circuit of size <=upper and gives the strict >upper NO condition required by Definition 2.4.",
+    "probability": "Small residual and many free bits are combined by a union bound, not asserted independent. The potential recurrences and their all-stage failure bookkeeping are reported as source claims.",
+    "formula_basis": "A basis change harmless for ordinary circuit size need not preserve formula size or any sharing parameter; all transfers here start after fixing the De Morgan gate model.",
+    "generic_DAG_extrapolation": "The naive universal exponent-two shrinkage inequality with original DAG gate count is not merely unsupported: the elementary parity construction in this audit disproves it. This does not resolve what target-specific or bounded-reuse alternatives are possible."
+  },
+  "novelty_assessment": [
+    {
+      "candidate": "Explicit circuit-count threshold for a free completion subcube",
+      "assessment": "Elementary refinement of HS Lemma 29 and the closing paragraphs of CHOPRS Theorems 53/60, not a new lower-bound method.",
+      "references": [
+        {
+          "source_id": "HS2017",
+          "locator": "Lemma 29, p. 7:13"
+        },
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "pp. 25:38 and 25:44"
+        }
+      ]
+    },
+    {
+      "candidate": "Replace global residual support by a certificate at the succinct YES completion",
+      "assessment": "Already present through the decision-tree path in CHOPRS §5.2.1; extension to any certificate is elementary.",
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Theorem 53 proof, p. 25:38"
+        }
+      ]
+    },
+    {
+      "candidate": "Transfer the ordinary formula lower bound through bounded-size unfolding or a shared-value case split",
+      "assessment": "Elementary composition with a known theorem. It is not by itself a new gate-size shrinkage theorem or evidence of surpassing a published frontier.",
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Theorems 30, 47 and 60"
+        },
+        {
+          "source_id": "IMZ2019",
+          "locator": "Lemma 4.1"
+        }
+      ]
+    },
+    {
+      "candidate": "Treat r shared nodes, e excess uses and h reuse depth as interchangeable",
+      "assessment": "Invalid without additional inequalities/normalization; the metrics permit different classes and conversion costs.",
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Almost-formula definition, p. 25:4"
+        }
+      ]
+    },
+    {
+      "candidate": "Control unrestricted DAGs using their original near-linear gate count without paying an unfolding factor",
+      "assessment": "Not supplied by the audited source. A new structural/collapse argument would be required for that investigation; this audit does not assert that no such result exists anywhere in the literature.",
+      "references": [
+        {
+          "source_id": "CHOPRS2022",
+          "locator": "Case IV and final potential bound, pp. 25:43–25:44; Proposition 64, pp. 25:46–25:47"
+        }
+      ]
+    }
+  ],
+  "bounded_currentness_check": {
+    "date": "2026-10-09",
+    "queries": [
+      "\"MCSP\" \"almost-formulas\"",
+      "\"MCSP\" \"sharing\" \"formula\"",
+      "\"almost-formula\" \"lower bound\" after:2022-08-23 before:2026-10-10",
+      "\"formula\" \"fan-out\" \"MCSP\" after:2022-08-23 before:2026-10-10",
+      "\"circuit\" \"sharing\" \"shrinkage\" after:2022-08-23 before:2026-10-10"
+    ],
+    "primary_domains": [
+      "arxiv.org",
+      "eccc.weizmann.ac.il",
+      "drops.dagstuhl.de",
+      "theoryofcomputing.org"
+    ],
+    "result": "The focused search recovered the CHOPRS results and adjacent work, but did not provide a primary-source basis to certify a current best-known frontier for these newly defined reuse metrics. No exhaustive absence, priority or novelty claim is made.",
+    "terminology": "Not supplied by the audited theorem is deliberately distinguished from currently unknown to the field."
+  },
+  "validation": {
+    "JSON_and_source_reference_integrity": "checked on serialization",
+    "phase1_checksum": "checked unchanged after write",
+    "full_paper_proof_verification": "not performed",
+    "visual_formula_checks": [
+      "JACM p. 25:24: approximation degree uses log M/log log M.",
+      "JACM p. 25:38: gate budget is N^(log N), and certificate is a single decision-tree path.",
+      "HS p. 7:11: section-4 formula-size convention and subpolynomial MCSP parameter."
+    ],
+    "elementary_algebra_checks": "Case IV coefficient collection checked with exact rational arithmetic; the fixed-beta conversion budget was sanity-checked. These are not checks of all source potential transitions."
+  },
+  "bottom_line": "The succinct-YES/free-completion count is already known and model-independent. The difficult quantitative input is collapse under succinct restrictions. Theorem 60 pays by formula occurrences and SIZE_3, not DAG gate nodes. Elementary bounded-reuse conversions inherit known lower bounds but do not by themselves reach the unrestricted-circuit magnification target.",
+  "generic_gate_count_shrinkage_counterexample": {
+    "status": "Elementary derived obstruction, not an audit of the paper’s proof and not a claim that all DAG-specific restriction arguments are impossible.",
+    "references": [
+      {
+        "source_id": "TAL2014",
+        "locator": "§1 parity discussion and Theorem 1.2, printed pp. 1–2"
+      },
+      {
+        "source_id": "CHOPRS2022",
+        "locator": "Case I, p. 25:41; circuit versus formula conventions, p. 25:12"
+      }
+    ],
+    "construction": "PARITY on N raw inputs has a fan-in-two AND/OR/NOT DAG with at most 4(N-1) gates: compose N-1 XORs, each implemented as (a OR b) AND NOT(a AND b). Intermediate values can be reused inside these gadgets.",
+    "residual_gate_lower_bound": "Under a p-regular restriction, the residual is parity or its complement on U live coordinates. Any fan-in-two single-output DAG depending on U distinct inputs has at least U-1 internal gates: its pruned graph needs at least g+U-1 wires but has at most 2g incoming wires. Hence E[minimum residual gate count]>=N*p-1.",
+    "contradiction_to_naive_substitution": "Replacing formula leaf size S by g=O(N) in the pure-formula Case I contraction would predict O(N/k) after p=k^(-1/2), whereas the residual needs at least N/sqrt(k)-1 gates on average. Their ratio grows with sqrt(k).",
+    "even_with_Tal_additive_term": "A universal gate-count analogue E[g(f|rho)]<=C*(p^2*g(f)+p*sqrt(g(f))+1) is also false: take p=N^(-1/4); the left side is at least N^(3/4)-1 while the right side is O(N^(1/2)).",
+    "boundary": "This rules out that PARTICULAR generic exponent-two gate-count shrinkage extrapolation. A reuse-sensitive potential, a target-specific property, a certificate-specific argument, or a different restriction distribution is a separate claim that must be established on its own."
+  }
+}

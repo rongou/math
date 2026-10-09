@@ -1,0 +1,73 @@
+STANDALONE LOCAL PREDICATE CNF VALIDATION
+Not a family112 check; no repository build is run.
+UTC: 2026-10-09T19:00:40.991739+00:00
+TOOLCHAIN: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+CWD: /tmp
+LEAN_PATH and LEAN_SRC_PATH: unset
+STAGE: primary identity and lifting
+SOURCE_SHA256: 0eb4059c05f414e830dd3dc5d2948a51b45ba6ff9987051d43eda939fd610f4c
+COMMAND: /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean
+STDOUT:
+'LocalPredicateCNF.predicate_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.conjunction_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.disjunction_of_conjunctions_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+
+STDERR:
+
+EXIT_STATUS: 0
+ELAPSED_SECONDS: 0.308
+
+STAGE: truth-table construction and edge cases
+UTC: 2026-10-09T19:01:42.400870+00:00
+SOURCE_SHA256: 5ff08258e78903547de8fba3b531af677c7358f1381f6f42a1d70df0323e47a3
+COMMAND: /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean
+STDOUT:
+'LocalPredicateCNF.predicate_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.conjunction_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.disjunction_of_conjunctions_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.assignments_complete' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.assignments_length' depends on axioms: [propext]
+'LocalPredicateCNF.mem_truthTableCNF' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_correct' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_length_le' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_true' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_false' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_zero' depends on axioms: [propext]
+
+STDERR:
+
+EXIT_STATUS: 0
+ELAPSED_SECONDS: 0.297
+
+STAGE: FINAL authoritative source check (constant filters proved by direct induction)
+START_UTC: 2026-10-09T19:03:29.244842+00:00
+END_UTC: 2026-10-09T19:03:29.538056+00:00
+TOOLCHAIN: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+GIT_COMMIT: 5045d0056413266e57c625dcd7c365b10e377c52
+CWD: /tmp
+LEAN_PATH and LEAN_SRC_PATH: unset
+SOURCE_SHA256: f613ee0a2d86530d95e1332c5d93fdf5d2be8d6f20ff7f98053606d6f965d517
+SOURCE_LINES: 149
+COMMAND: /home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09/validation/LocalPredicateCNF.lean
+STDOUT:
+'LocalPredicateCNF.predicate_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.conjunction_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.disjunction_of_conjunctions_iff_rejected_clauses' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.assignments_complete' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.assignments_length' depends on axioms: [propext]
+'LocalPredicateCNF.mem_truthTableCNF' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_correct' depends on axioms: [propext, Quot.sound]
+'LocalPredicateCNF.truthTableCNF_length_le' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_true' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_false' depends on axioms: [propext]
+'LocalPredicateCNF.truthTableCNF_zero' depends on axioms: [propext]
+
+STDERR:
+
+EXIT_STATUS: 0
+ELAPSED_SECONDS: 0.293176
+FORBIDDEN_SOURCE_CONSTRUCTS: []
+MISSING_THEOREM_AXIOM_AUDITS: []
+AXIOMS_BEYOND_PROPEXT_AND_QUOT_SOUND: []
+FINAL_STATUS: PASS
+SCOPE: standalone file only; not a family112 or full-repository check.

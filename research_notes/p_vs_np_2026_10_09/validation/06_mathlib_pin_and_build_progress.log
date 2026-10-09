@@ -1,0 +1,169 @@
+START_UTC: 2026-10-09T18:59:05.053056+00:00
+CWD: /home/rou/src/math
+TIMEOUT_SECONDS: 45
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -u
+printf "Pinned Mathlib checkout\n"
+git -C /tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/mathlib rev-parse HEAD
+git -C /tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/mathlib status --short
+cat /tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/mathlib/lean-toolchain
+printf "\nMathlib manifest\n"
+cat /tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/mathlib/lake-manifest.json
+printf "\nStatic repository-only closure summary\n"
+python3 - <<'PY'
+import json
+j=json.load(open("/tmp/family112-build-validation.xWSfhA/static_scan.json"))
+for k in ("local_closure_module_count","local_closure_lines","external_boundary_module_count","local_hit_counts","modules_outside_depththree","missing_repository_modules","solution_closure_includes_challenge_templates","target_statement_whitespace_normalized_equal"):
+ print(k, j[k])
+print("External boundary:", [x["module"] for x in j["external_import_boundary"]])
+PY
+printf "\nRunning build tail\n"
+tail -35 research_notes/p_vs_np_2026_10_09/validation/04_targeted_lake_build.log
+
+
+OUTPUT (stdout and stderr merged):
+Pinned Mathlib checkout
+d13f23b723b8a846827a245b89c10fc7d3f11612
+leanprover/lean4:v4.34.1
+
+Mathlib manifest
+{"version": "1.2.0",
+ "packagesDir": ".lake/packages",
+ "packages":
+ [{"url": "https://github.com/leanprover-community/plausible",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+   "name": "plausible",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/LeanSearchClient",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+   "name": "LeanSearchClient",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/import-graph",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "e928b72544873815af278d38681b31c0293588e3",
+   "name": "importGraph",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/ProofWidgets4",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+   "name": "proofwidgets",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.lean"},
+  {"url": "https://github.com/leanprover-community/aesop",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "355695d523e41d0554926416cba2a2b3544fbbc9",
+   "name": "aesop",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "master",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/quote4",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+   "name": "Qq",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "master",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover-community/batteries",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover-community",
+   "rev": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+   "name": "batteries",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "main",
+   "inherited": false,
+   "configFile": "lakefile.toml"},
+  {"url": "https://github.com/leanprover/lean4-cli",
+   "type": "git",
+   "subDir": null,
+   "scope": "leanprover",
+   "rev": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204",
+   "name": "Cli",
+   "manifestFile": "lake-manifest.json",
+   "inputRev": "v4.34.0",
+   "inherited": true,
+   "configFile": "lakefile.toml"}],
+ "name": "mathlib",
+ "lakeDir": ".lake",
+ "fixedToolchain": true}
+
+Static repository-only closure summary
+local_closure_module_count 175
+local_closure_lines 24309
+external_boundary_module_count 82
+local_hit_counts {'proof_placeholder': 0, 'axiom_declaration': 0, 'native_or_reduction_trust': 0, 'unsafe_or_external_implementation': 0, 'metaprogramming_command': 0, 'trust_related_option': 0}
+modules_outside_depththree []
+missing_repository_modules []
+solution_closure_includes_challenge_templates False
+target_statement_whitespace_normalized_equal True
+External boundary: ['Lean.Elab.Tactic.Omega', 'Mathlib', 'Mathlib.Algebra.BigOperators.Field', 'Mathlib.Algebra.BigOperators.Fin', 'Mathlib.Algebra.BigOperators.Group.Finset.Basic', 'Mathlib.Algebra.BigOperators.Group.Finset.Piecewise', 'Mathlib.Algebra.BigOperators.Group.Finset.Powerset', 'Mathlib.Algebra.BigOperators.Group.Finset.Sigma', 'Mathlib.Algebra.BigOperators.Group.List.Basic', 'Mathlib.Algebra.BigOperators.GroupWithZero.Finset', 'Mathlib.Algebra.BigOperators.Intervals', 'Mathlib.Algebra.BigOperators.Ring.Finset', 'Mathlib.Algebra.Field.ZMod', 'Mathlib.Algebra.Group.Hom.Defs', 'Mathlib.Algebra.Group.Nat.Even', 'Mathlib.Algebra.Order.Archimedean.Real.Basic', 'Mathlib.Algebra.Order.BigOperators.Group.Finset', 'Mathlib.Algebra.Order.BigOperators.Ring.Finset', 'Mathlib.Algebra.Order.Field.GeomSum', 'Mathlib.Algebra.Order.Floor.Semiring', 'Mathlib.Algebra.Polynomial.Div', 'Mathlib.Algebra.Polynomial.Monic', 'Mathlib.Analysis.Complex.ExponentialBounds', 'Mathlib.Analysis.Real.Sqrt', 'Mathlib.Analysis.SpecialFunctions.Log.NegMulLog', 'Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics', 'Mathlib.Analysis.SpecialFunctions.Pow.Real', 'Mathlib.Analysis.SpecificLimits.Basic', 'Mathlib.Analysis.SpecificLimits.Normed', 'Mathlib.Basic.Real.Basic', 'Mathlib.Combinatorics.Pigeonhole', 'Mathlib.Computability.TuringMachine.Tape', 'Mathlib.Data.Bool.Basic', 'Mathlib.Data.Fin.Tuple.Basic', 'Mathlib.Data.Finset.Card', 'Mathlib.Data.Finset.Lattice.Fold', 'Mathlib.Data.Finset.Lattice.Lemmas', 'Mathlib.Data.Finset.Max', 'Mathlib.Data.Finset.Powerset', 'Mathlib.Data.Finset.Union', 'Mathlib.Data.Fintype.Basic', 'Mathlib.Data.Fintype.BigOperators', 'Mathlib.Data.Fintype.Card', 'Mathlib.Data.Fintype.EquivFin', 'Mathlib.Data.Fintype.Option', 'Mathlib.Data.Fintype.Perm', 'Mathlib.Data.Fintype.Pi', 'Mathlib.Data.Fintype.Prod', 'Mathlib.Data.Fintype.Sigma', 'Mathlib.Data.Fintype.Sum', 'Mathlib.Data.List.Basic', 'Mathlib.Data.List.Count', 'Mathlib.Data.List.FinRange', 'Mathlib.Data.List.GetD', 'Mathlib.Data.List.Induction', 'Mathlib.Data.List.Nodup', 'Mathlib.Data.List.OfFn', 'Mathlib.Data.List.Range', 'Mathlib.Data.Nat.Choose.Bounds', 'Mathlib.Data.Nat.Factorial.Basic', 'Mathlib.Data.Nat.Find', 'Mathlib.Data.Nat.Init', 'Mathlib.Data.Set.Function', 'Mathlib.FieldTheory.Finite.GaloisField', 'Mathlib.LinearAlgebra.Lagrange', 'Mathlib.Logic.Equiv.Basic', 'Mathlib.Logic.Equiv.Defs', 'Mathlib.Logic.Function.Basic', 'Mathlib.Order.Interval.Finset.Nat', 'Mathlib.RingTheory.AdjoinRoot', 'Mathlib.Tactic.Convert', 'Mathlib.Tactic.DeriveFintype', 'Mathlib.Tactic.FieldSimp', 'Mathlib.Tactic.FinCases', 'Mathlib.Tactic.Linarith', 'Mathlib.Tactic.NormNum', 'Mathlib.Tactic.Positivity', 'Mathlib.Tactic.Push', 'Mathlib.Tactic.Ring', 'Mathlib.Tactic.SplitIfs', 'Mathlib.Tactic.Tauto', 'Mathlib.Topology.Algebra.InfiniteSum.Order']
+
+Running build tail
+✔ [424/6736] Built Mathlib.Tactic.DeprecateTo (1.6s)
+✔ [425/6736] Built Mathlib.Tactic.FunProp.ToBatteries (1.8s)
+✔ [426/6736] Built Batteries.Recycling.RBTree.WF (3.1s)
+✔ [427/6738] Built Mathlib.Data.Nat.Notation (999ms)
+✔ [428/6738] Built Mathlib.Data.Int.Notation (1.0s)
+✔ [429/6738] Built Mathlib.Tactic.OfNat (1.0s)
+✔ [430/6738] Built Mathlib.Basic.Nonempty (1.1s)
+✔ [431/6738] Built Mathlib.Tactic.SimpRw (1.3s)
+✔ [432/6738] Built Mathlib.Tactic.Core (1.4s)
+✔ [433/6738] Built Mathlib.Basic.IsEmpty.Defs (1.3s)
+✔ [434/6738] Built Mathlib.Tactic.Inhabit (1.2s)
+✔ [435/6738] Built Mathlib.Tactic.ApplyWith (1.3s)
+✔ [436/6738] Built Mathlib.Tactic.PPWithUniv (1.5s)
+✔ [437/6738] Built Mathlib.Util.AtLocation (1.4s)
+✔ [438/6738] Built Mathlib.Tactic.CasesM (1.5s)
+✔ [439/6738] Built Mathlib.Tactic.Check (1.5s)
+✔ [440/6738] Built Mathlib.Tactic.ErwQuestion (1.8s)
+✔ [441/6742] Built Mathlib.Data.String.Defs (979ms)
+✔ [442/6742] Built Mathlib.Lean.PrettyPrinter.Delaborator (1.3s)
+✔ [443/6742] Built Mathlib.Tactic.ExtendDoc (1.2s)
+✔ [444/6742] Built Mathlib.Tactic.DefEqTransformations (2.0s)
+✔ [445/6750] Built Mathlib.Tactic.Translate.Attributes (1.0s)
+✔ [446/6750] Built Mathlib.Lean.Meta (1.2s)
+✔ [447/6750] Built Mathlib.Lean.Name (1.1s)
+✔ [448/6750] Built Mathlib.Tactic.Simps.NotationClass (1.3s)
+✔ [449/6750] Built Mathlib.Basic.ExistsUnique (1.4s)
+✔ [450/6750] Built Mathlib.Tactic.Attr.Register (1.5s)
+✔ [451/6750] Built Mathlib.Tactic.Spread (1.4s)
+✔ [452/6750] Built Aesop.RuleTac.Basic (926ms)
+✔ [453/6750] Built Mathlib.Tactic.Use (1.6s)
+✔ [454/6750] Built Batteries.Data.String (952ms)
+✔ [455/6760] Built Mathlib.Tactic.Eqns (1.2s)
+✔ [456/6760] Built Mathlib.Tactic.Push.Attr (1.4s)
+✔ [457/6760] Built Mathlib.Tactic.Conv (1.9s)
+✔ [458/6760] Built Batteries.Data.BinomialHeap.Lemmas (974ms)
+
+END_UTC: 2026-10-09T18:59:05.524998+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 0.472

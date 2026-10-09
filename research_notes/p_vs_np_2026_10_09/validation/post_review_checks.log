@@ -1,0 +1,40 @@
+test_all_small_predicates (locality_probe.ProbeTests.test_all_small_predicates) ... ok
+test_constant_gates (locality_probe.ProbeTests.test_constant_gates) ... ok
+test_internal_fanin_counterexample (locality_probe.ProbeTests.test_internal_fanin_counterexample) ... ok
+test_parity_dual (locality_probe.ProbeTests.test_parity_dual) ... ok
+test_parity_expected_mass (locality_probe.ProbeTests.test_parity_expected_mass) ... ok
+test_repeated_scope_uses_distinct_raw_arity (locality_probe.ProbeTests.test_repeated_scope_uses_distinct_raw_arity) ... ok
+test_scope_normalization_preserves_predicates (locality_probe.ProbeTests.test_scope_normalization_preserves_predicates) ... ok
+test_shared_circuit_compilation (locality_probe.ProbeTests.test_shared_circuit_compilation) ... ok
+test_CLI_stdout_no_files_and_invalid_options (test_restriction_check.ExhaustiveAndExpectationTests.test_CLI_stdout_no_files_and_invalid_options) ... ok
+test_all_small_pair_multisets_and_both_cutoffs (test_restriction_check.ExhaustiveAndExpectationTests.test_all_small_pair_multisets_and_both_cutoffs) ... ok
+test_counterexample_records_are_bounded_and_exact (test_restriction_check.ExhaustiveAndExpectationTests.test_counterexample_records_are_bounded_and_exact) ... ok
+test_disjoint_pairs_exact_nontrivial_expectations (test_restriction_check.ExhaustiveAndExpectationTests.test_disjoint_pairs_exact_nontrivial_expectations) ... ok
+test_exhaustive_scope_and_formula_budgets (test_restriction_check.ExhaustiveAndExpectationTests.test_exhaustive_scope_and_formula_budgets) ... ok
+test_geometric_comparison_only_when_theta_less_than_one (test_restriction_check.ExhaustiveAndExpectationTests.test_geometric_comparison_only_when_theta_less_than_one) ... ok
+test_seeded_stream_and_results_are_reproducible (test_restriction_check.ExhaustiveAndExpectationTests.test_seeded_stream_and_results_are_reproducible) ... ok
+test_single_clause_exact_expectations (test_restriction_check.ExhaustiveAndExpectationTests.test_single_clause_exact_expectations) ... ok
+test_empty_true_false_and_empty_live_sets (test_restriction_check.LiteralAndRestrictionTests.test_empty_true_false_and_empty_live_sets) ... ok
+test_invalid_inputs_and_integer_b (test_restriction_check.LiteralAndRestrictionTests.test_invalid_inputs_and_integer_b) ... ok
+test_restricted_CNF_is_literal_substitution (test_restriction_check.LiteralAndRestrictionTests.test_restricted_CNF_is_literal_substitution) ... ok
+test_theta_exact_values (test_restriction_check.LiteralAndRestrictionTests.test_theta_exact_values) ... ok
+test_unique_patterns_indices_and_constants (test_restriction_check.LiteralAndRestrictionTests.test_unique_patterns_indices_and_constants) ... ok
+test_I_h_keeps_final_true_false_and_repeated_clauses (test_restriction_check.PathAndMixtureTests.test_I_h_keeps_final_true_false_and_repeated_clauses) ... ok
+test_clause_permutation_and_discarded_true_padding_invariance (test_restriction_check.PathAndMixtureTests.test_clause_permutation_and_discarded_true_padding_invariance) ... ok
+test_compatibility_with_fixed_assignment (test_restriction_check.PathAndMixtureTests.test_compatibility_with_fixed_assignment) ... ok
+test_false_clause_contributes_to_c_even_when_K_is_false (test_restriction_check.PathAndMixtureTests.test_false_clause_contributes_to_c_even_when_K_is_false) ... ok
+test_marker_mixture_against_literal_permutations (test_restriction_check.PathAndMixtureTests.test_marker_mixture_against_literal_permutations) ... ok
+test_overlapping_compatible_and_incompatible_paths (test_restriction_check.PathAndMixtureTests.test_overlapping_compatible_and_incompatible_paths) ... ok
+test_path_budget_prevents_explosion (test_restriction_check.PathAndMixtureTests.test_path_budget_prevents_explosion) ... ok
+test_repeated_clauses_do_not_lose_indexed_multiplicities (test_restriction_check.PathAndMixtureTests.test_repeated_clauses_do_not_lose_indexed_multiplicities) ... ok
+test_reverse_recurrence_keeps_false_clause_in_denominator (test_restriction_check.PathAndMixtureTests.test_reverse_recurrence_keeps_false_clause_in_denominator) ... ok
+test_three_steps_and_unequal_repetitions (test_restriction_check.PathAndMixtureTests.test_three_steps_and_unequal_repetitions) ... ok
+test_unselected_closed_clauses_are_counted_literally (test_restriction_check.PathAndMixtureTests.test_unselected_closed_clauses_are_counted_literally) ... ok
+test_d6_parity_primal_dual_and_exact_counterexample (test_restriction_check.SeparateNaiveExtensionTests.test_d6_parity_primal_dual_and_exact_counterexample) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.318s
+
+OK
+
+POST_REVIEW_EXIT_STATUS=0

@@ -1,0 +1,198 @@
+{
+  "arithmetic": "exact fractions.Fraction; no floating point optimization",
+  "predicate_compilation": {
+    "max_arity": 3,
+    "predicates_exhaustively_checked": 278,
+    "assignment_equivalences": 2122,
+    "empty_scope_true_cases": 1,
+    "empty_scope_false_cases": 1
+  },
+  "circuit_compilation": {
+    "seed": 112,
+    "circuits_checked": 306,
+    "variables": 4,
+    "assignment_equivalences": 4896,
+    "worst_compiled_size_over_bound": "1",
+    "bound": "compiled_gate_count <= original_gate_count * 2**max_distinct_raw_arity",
+    "arity_convention": "distinct raw variables; repeated input wires normalized first",
+    "model": "OR-AND-shared-bottom-predicates; bottom predicates read raw inputs"
+  },
+  "parity_obstruction": {
+    "max_dimension": 8,
+    "restriction_cases": 9840,
+    "subcubes_checked": 9841,
+    "expectation_identity": "E[minimal signed width-1 CNF mass] = (1+p)**d / 2, d>=1",
+    "rows": [
+      {
+        "d": 1,
+        "p": "1/8",
+        "expected_minimum_mass": "9/16",
+        "predicted_mass": "9/16"
+      },
+      {
+        "d": 1,
+        "p": "1/4",
+        "expected_minimum_mass": "5/8",
+        "predicted_mass": "5/8"
+      },
+      {
+        "d": 1,
+        "p": "1/2",
+        "expected_minimum_mass": "3/4",
+        "predicted_mass": "3/4"
+      },
+      {
+        "d": 2,
+        "p": "1/8",
+        "expected_minimum_mass": "81/128",
+        "predicted_mass": "81/128"
+      },
+      {
+        "d": 2,
+        "p": "1/4",
+        "expected_minimum_mass": "25/32",
+        "predicted_mass": "25/32"
+      },
+      {
+        "d": 2,
+        "p": "1/2",
+        "expected_minimum_mass": "9/8",
+        "predicted_mass": "9/8"
+      },
+      {
+        "d": 3,
+        "p": "1/8",
+        "expected_minimum_mass": "729/1024",
+        "predicted_mass": "729/1024"
+      },
+      {
+        "d": 3,
+        "p": "1/4",
+        "expected_minimum_mass": "125/128",
+        "predicted_mass": "125/128"
+      },
+      {
+        "d": 3,
+        "p": "1/2",
+        "expected_minimum_mass": "27/16",
+        "predicted_mass": "27/16"
+      },
+      {
+        "d": 4,
+        "p": "1/8",
+        "expected_minimum_mass": "6561/8192",
+        "predicted_mass": "6561/8192"
+      },
+      {
+        "d": 4,
+        "p": "1/4",
+        "expected_minimum_mass": "625/512",
+        "predicted_mass": "625/512"
+      },
+      {
+        "d": 4,
+        "p": "1/2",
+        "expected_minimum_mass": "81/32",
+        "predicted_mass": "81/32"
+      },
+      {
+        "d": 5,
+        "p": "1/8",
+        "expected_minimum_mass": "59049/65536",
+        "predicted_mass": "59049/65536"
+      },
+      {
+        "d": 5,
+        "p": "1/4",
+        "expected_minimum_mass": "3125/2048",
+        "predicted_mass": "3125/2048"
+      },
+      {
+        "d": 5,
+        "p": "1/2",
+        "expected_minimum_mass": "243/64",
+        "predicted_mass": "243/64"
+      },
+      {
+        "d": 6,
+        "p": "1/8",
+        "expected_minimum_mass": "531441/524288",
+        "predicted_mass": "531441/524288"
+      },
+      {
+        "d": 6,
+        "p": "1/4",
+        "expected_minimum_mass": "15625/8192",
+        "predicted_mass": "15625/8192"
+      },
+      {
+        "d": 6,
+        "p": "1/2",
+        "expected_minimum_mass": "729/128",
+        "predicted_mass": "729/128"
+      },
+      {
+        "d": 7,
+        "p": "1/8",
+        "expected_minimum_mass": "4782969/4194304",
+        "predicted_mass": "4782969/4194304"
+      },
+      {
+        "d": 7,
+        "p": "1/4",
+        "expected_minimum_mass": "78125/32768",
+        "predicted_mass": "78125/32768"
+      },
+      {
+        "d": 7,
+        "p": "1/2",
+        "expected_minimum_mass": "2187/256",
+        "predicted_mass": "2187/256"
+      },
+      {
+        "d": 8,
+        "p": "1/8",
+        "expected_minimum_mass": "43046721/33554432",
+        "predicted_mass": "43046721/33554432"
+      },
+      {
+        "d": 8,
+        "p": "1/4",
+        "expected_minimum_mass": "390625/131072",
+        "predicted_mass": "390625/131072"
+      },
+      {
+        "d": 8,
+        "p": "1/2",
+        "expected_minimum_mass": "6561/512",
+        "predicted_mass": "6561/512"
+      }
+    ],
+    "scope": "Obstructs the naive maximum-internal-gate-fan-in substitution, NOT the original lemma"
+  },
+  "internal_fanin_counterexample": {
+    "status": "REFUTED: naive maximum-gate-fan-in generalization",
+    "not_refuted": "Original width-k CNF restriction lemma",
+    "function": "even parity of six raw input bits",
+    "variables": 6,
+    "gate_basis": [
+      "AND",
+      "OR",
+      "NOT"
+    ],
+    "gate_count": 21,
+    "maximum_gate_fanin": 2,
+    "circuit_depth": 10,
+    "circuit_assignments_checked": 64,
+    "restrictions_checked": 729,
+    "b": 1,
+    "p": "1/4",
+    "incorrectly_substituted_k": 2,
+    "theta": "4/9",
+    "proposed_expected_mass_bound": "9/5",
+    "certified_expected_minimum_mass": "15625/8192",
+    "strict_violation": "4397/40960",
+    "reason": "Small gate fan-in does not bound a composed gate output raw-input scope."
+  },
+  "interpretation": "Finite validation of stated constructions and identities, not a P-vs-NP proof"
+}

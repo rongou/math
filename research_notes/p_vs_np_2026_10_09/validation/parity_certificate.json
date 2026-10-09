@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "status": "kernel_checked",
+  "title": "Finite parity certificate for a NAIVE gate-fanin generalization",
+  "scope": {
+    "formalized": "Finite Boolean/list semantics and exact integer arithmetic only.",
+    "not_a_counterexample_to_original_paper": true,
+    "not_a_Lean_proof_of_family112": true,
+    "analytic_multiplier_argument_formalized": false,
+    "real_valued_inequalities_formalized": false,
+    "external_interpretation": "The parent analytic argument uses max unnormalized subcube correlation 1 to deduce W(sigma) >= correlationValue(sigma), and hence E[W] >= weightedSum6 / 8^6. This real-valued implication is not a Lean theorem in this file."
+  },
+  "paths": {
+    "lean": "research_notes/p_vs_np_2026_10_09/validation/ParityCertificate.lean",
+    "json": "research_notes/p_vs_np_2026_10_09/validation/parity_certificate.json",
+    "log": "research_notes/p_vs_np_2026_10_09/validation/parity_certificate.log"
+  },
+  "parameters": {
+    "raw_bits_d": 6,
+    "H": "even parity",
+    "gate_fanin_k": 2,
+    "width_b": 1,
+    "live_probability_p": {
+      "numerator": 1,
+      "denominator": 4
+    },
+    "naive_prediction_input": {
+      "numerator": 9,
+      "denominator": 5
+    }
+  },
+  "semantics": {
+    "assignment_type": "List Bool",
+    "restriction_type": "List (Option Bool)",
+    "restriction_none": "live coordinate",
+    "restriction_some_false_or_true": "fixed coordinate",
+    "fill": "Consume live bits left to right; all correlation sums enumerate assignments (liveCount sigma).",
+    "G": "Int-valued: +1 on even parity, -1 on odd parity.",
+    "subcube_type": "Option (List (Option Bool))",
+    "subcube_outer_none": "identically false",
+    "subcube_outer_some": "conjunction of the fixed unit-literal requirements, with inner none unconstrained",
+    "subcube_enumeration": "false indicator followed by all 3^m coordinate restrictions",
+    "signed_sums": "unnormalized integer sums; natAbs takes the absolute value",
+    "correlationValue": "|sum_z G(z) * H(fill sigma z)|, interpreting Boolean H as 0/1",
+    "restriction_weight": "2^(liveCount sigma) * 3^(sigma.length - liveCount sigma)",
+    "weightedSum6": "sum over restrictions 6 of restrictionWeight sigma * correlationValue sigma"
+  },
+  "checked_results": {
+    "maxSubcubeSignedSum_dimensions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "maxSubcubeSignedSum_values": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "false_subcube_signed_sum": 0,
+    "false_subcube_dimensions": "all natural dimensions, by structural proof",
+    "weightedSum6": 500000,
+    "weighted_numerator_by_live_count_0_through_6": [
+      23328,
+      93312,
+      155520,
+      138240,
+      69120,
+      18432,
+      2048
+    ],
+    "restriction_weights_total": 262144,
+    "denominator_expression": "8^6",
+    "reduced_ratio": {
+      "numerator": 15625,
+      "denominator": 8192
+    },
+    "fraction_reduction_theorem": "500000 * 8192 = 15625 * 262144",
+    "strict_separation_theorem": "5 * 500000 > 9 * 8^6",
+    "H6fanin2_correct": "For all six Boolean raw bits, H agrees with an explicit binary-XOR circuit followed by unary NOT.",
+    "principal_theorem": "ParityCertificate.finite_certificate"
+  },
+  "validation": {
+    "lean_version": "4.34.1",
+    "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "working_directory": "/home/rou/src/math",
+    "command": [
+      "timeout",
+      "120s",
+      "lean",
+      "-t0",
+      "-j1",
+      "-M4096",
+      "--profile",
+      "research_notes/p_vs_np_2026_10_09/validation/ParityCertificate.lean"
+    ],
+    "finished_at": "2026-10-09T12:09:31-07:00",
+    "exit_code": 0,
+    "kernel_trust_level": 0,
+    "debug_skipKernelTC": false,
+    "imports": [
+      "Std"
+    ],
+    "source_sha256": "d5ed0f1b677d323977c3506d525b4fa025e396b1366e39fbf65dd213901c4e9c",
+    "wall_seconds": 23.63,
+    "max_rss_kib": 2510436,
+    "timeout_seconds": 120,
+    "memory_limit_mib": 4096,
+    "maxHeartbeats": 4000000,
+    "maxRecDepth": 100000,
+    "proof_methods": [
+      "decide with kernel checking",
+      "structural proof",
+      "equality transport"
+    ],
+    "all_theorems_have_empty_axiom_dependencies": true,
+    "theorem_count": 19,
+    "axiom_report": {
+      "ParityCertificate.maxSubcubeSignedSum_0": [],
+      "ParityCertificate.maxSubcubeSignedSum_1": [],
+      "ParityCertificate.maxSubcubeSignedSum_2": [],
+      "ParityCertificate.maxSubcubeSignedSum_3": [],
+      "ParityCertificate.maxSubcubeSignedSum_4": [],
+      "ParityCertificate.maxSubcubeSignedSum_5": [],
+      "ParityCertificate.maxSubcubeSignedSum_6": [],
+      "ParityCertificate.maxSubcubeSignedSum_zero_through_six": [],
+      "ParityCertificate.maxSubcubeSignedSum_of_le_six": [],
+      "ParityCertificate.falseSubcubeSignedSum_zero": [],
+      "ParityCertificate.weightedSum6_exact": [],
+      "ParityCertificate.restrictionWeights6_total": [],
+      "ParityCertificate.weightedProfile6_exact": [],
+      "ParityCertificate.denominator6_exact": [],
+      "ParityCertificate.fraction_reduction_cross_product": [],
+      "ParityCertificate.strict_separation": [],
+      "ParityCertificate.weighted_strict_separation": [],
+      "ParityCertificate.H6fanin2_correct": [],
+      "ParityCertificate.finite_certificate": []
+    },
+    "source_scan": {
+      "only_import_Std": true,
+      "forbidden_proof_constructs_absent": true,
+      "evaluation_only_commands_absent": true,
+      "every_declared_theorem_has_print_axioms": true
+    }
+  },
+  "artifact_relocation": "Coordinator moved only JSON/log into validation/ after checking; proof source and original check log unchanged."
+}

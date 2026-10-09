@@ -1,0 +1,80 @@
+Parity certificate: final full-source validation
+Scope: finite arithmetic/semantics for a NAIVE gate-fanin generalization, not the original paper.
+Repository: /home/rou/src/math
+Source: research_notes/p_vs_np_2026_10_09/validation/ParityCertificate.lean
+Started: 2026-10-09T12:09:08-07:00
+Toolchain: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Source SHA-256: d5ed0f1b677d323977c3506d525b4fa025e396b1366e39fbf65dd213901c4e9c  research_notes/p_vs_np_2026_10_09/validation/ParityCertificate.lean
+
+Command: timeout 120s lean -t0 -j1 -M4096 --profile research_notes/p_vs_np_2026_10_09/validation/ParityCertificate.lean
+Trust level 0; source explicitly sets debug.skipKernelTC=false.
+Proof method: kernel reduction via decide, structural proof terms, and equality transport.
+No evaluation-only evidence is substituted for a theorem.
+
+import took 192ms
+tactic execution of Lean.Parser.Tactic.decide took 190ms
+type checking took 186ms
+tactic execution of Lean.Parser.Tactic.decide took 1.18s
+type checking took 1.17s
+tactic execution of Lean.Parser.Tactic.decide took 7.61s
+type checking took 7.15s
+tactic execution of Lean.Parser.Tactic.decide took 946ms
+type checking took 932ms
+tactic execution of Lean.Parser.Tactic.decide took 118ms
+type checking took 153ms
+tactic execution of Lean.Parser.Tactic.decide took 1.28s
+type checking took 1.18s
+'ParityCertificate.maxSubcubeSignedSum_0' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_1' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_2' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_3' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_4' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_5' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_6' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_zero_through_six' does not depend on any axioms
+'ParityCertificate.maxSubcubeSignedSum_of_le_six' does not depend on any axioms
+'ParityCertificate.falseSubcubeSignedSum_zero' does not depend on any axioms
+'ParityCertificate.weightedSum6_exact' does not depend on any axioms
+'ParityCertificate.restrictionWeights6_total' does not depend on any axioms
+'ParityCertificate.weightedProfile6_exact' does not depend on any axioms
+'ParityCertificate.denominator6_exact' does not depend on any axioms
+'ParityCertificate.fraction_reduction_cross_product' does not depend on any axioms
+'ParityCertificate.strict_separation' does not depend on any axioms
+'ParityCertificate.weighted_strict_separation' does not depend on any axioms
+'ParityCertificate.H6fanin2_correct' does not depend on any axioms
+'ParityCertificate.finite_certificate' does not depend on any axioms
+cumulative profiling times:
+	attribute application 0.185ms
+	blocked (unaccounted) 23.3s
+	compilation (IR) 0.623ms
+	compilation (LCNF base) 9.9ms
+	compilation (LCNF impure) 3.07ms
+	compilation (LCNF mono) 4.5ms
+	elaboration 43.1ms
+	fix level params 0.165ms
+	import 192ms
+	initialization 20.6ms
+	instantiate metavars 0.206ms
+	interpretation 2.1ms
+	let-to-have transformation 0.139ms
+	linting 6.09ms
+	module linting 0.000992ms
+	parsing 4.41ms
+	process pre-definitions 13.3ms
+	share common exprs 0.842ms
+	tactic execution 11.4s
+	type checking 10.8s
+	typeclass inference 20.8ms
+
+wall_seconds=23.63 max_rss_kib=2510436 exit_status=0
+
+final_process_exit_code=0
+Finished: 2026-10-09T12:09:31-07:00
+
+Post-validation artifact audit:
+PASS: source SHA-256 unchanged from the checked run.
+PASS: import Std is the only import.
+PASS: all 19 declared theorems have matching empty axiom reports.
+PASS: forbidden proof-construct scan and evaluation-only command scan.
+PASS: JSON manifest written, parsed, and checked against this log.
+Manifest: research_notes/p_vs_np_2026_10_09/parity_certificate.json

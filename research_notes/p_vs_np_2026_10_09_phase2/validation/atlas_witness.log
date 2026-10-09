@@ -1,0 +1,71 @@
+Atlas finite witness: final kernel validation
+Started: 2026-10-09T12:58:04-07:00
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+21a65a012caa9d5df9ab66ec14a1a189dcc9a4111ac009ac2cb8fa69daf35c2f  research_notes/p_vs_np_2026_10_09_phase2/validation/AtlasWitness.lean
+Scope: exact two-slot grammar and finite data only; maximal separator 1_Low, not every fixed solver.
+Analytic arbitrary-DAG support bounds and attainability are not formalized here.
+Command: timeout 120s lean -t0 -j1 -M4096 --profile research_notes/p_vs_np_2026_10_09_phase2/validation/AtlasWitness.lean
+import took 197ms
+tactic execution of Lean.Parser.Tactic.decide took 5.78s
+type checking took 5.07s
+tactic execution of Lean.Parser.Tactic.decide took 955ms
+type checking took 990ms
+tactic execution of Lean.Parser.Tactic.decide took 193ms
+type checking took 135ms
+tactic execution of Lean.Parser.Tactic.decide took 192ms
+type checking took 125ms
+'AtlasWitness.first_gate_choice_count' does not depend on any axioms
+'AtlasWitness.second_gate_choice_count' does not depend on any axioms
+'AtlasWitness.padded_output_count' does not depend on any axioms
+'AtlasWitness.paddedValues_length' does not depend on any axioms
+'AtlasWitness.low_length' does not depend on any axioms
+'AtlasWitness.low_distinct' does not depend on any axioms
+'AtlasWitness.low_bitmap_exact' does not depend on any axioms
+'AtlasWitness.every_padded_output_in_low' does not depend on any axioms
+'AtlasWitness.low_witness_codes_valid' does not depend on any axioms
+'AtlasWitness.low_witnesses_exact' does not depend on any axioms
+'AtlasWitness.zero_no_witness_count' does not depend on any axioms
+'AtlasWitness.all_small_zero_masks_have_recorded_NO_completion' does not depend on any axioms
+'AtlasWitness.mask127_fixed_count' does not depend on any axioms
+'AtlasWitness.mask127_completions' does not depend on any axioms
+'AtlasWitness.mask127_is_low_compatible' does not depend on any axioms
+'AtlasWitness.all_eight_coordinates' does not depend on any axioms
+'AtlasWitness.all_eight_promise_edges_valid' does not depend on any axioms
+'AtlasWitness.atlas_finite_certificate' does not depend on any axioms
+cumulative profiling times:
+	attribute application 0.74ms
+	blocked (unaccounted) 15.1s
+	compilation (IR) 1.04ms
+	compilation (LCNF base) 13.9ms
+	compilation (LCNF impure) 6.84ms
+	compilation (LCNF mono) 10.5ms
+	congr simp thm 0.0475ms
+	elaboration 84.4ms
+	fix level params 0.18ms
+	import 197ms
+	initialization 20.8ms
+	instantiate metavars 0.363ms
+	interpretation 2.2ms
+	let-to-have transformation 0.854ms
+	linting 7.14ms
+	module linting 0.000941ms
+	parsing 5.95ms
+	process pre-definitions 7.48ms
+	share common exprs 1.16ms
+	simp 0.261ms
+	tactic execution 7.28s
+	type checking 6.46s
+	typeclass inference 33.9ms
+
+wall_seconds=15.44 max_rss_kib=1818400 exit_status=0
+
+final_process_exit_code=0
+Finished: 2026-10-09T12:58:20-07:00
+
+Post-check audit:
+PASS: all 18 theorem axiom reports are empty; only import Std; no prohibited proof constructs.
+PASS: checked source hash unchanged.
+PASS: Low list, 40 padded witnesses, 247 small-mask obstructions, and 8 edges match current atlas data.
+PASS: 15 Python tests and complete JSON replay.
+Atlas JSON SHA-256: 1cdd72dc0d18984ee2db9c261ec002b239e61cfdbe42e8b2e83d9761029dcfdf
+Manifest: research_notes/p_vs_np_2026_10_09_phase2/validation/atlas_witness.json

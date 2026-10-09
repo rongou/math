@@ -1,0 +1,352 @@
+{
+  "review": "short adversarial mathematical peer review",
+  "date": "2026-10-09",
+  "scope": [
+    "research_notes/p_vs_np_2026_10_09/README.md",
+    "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py"
+  ],
+  "verdict": "Follow-up confirmed: I01 and I02 are resolved, including the duplicate-scope regression. C04/C05 now use formal Definition 2.4: NO Size>s2 and positive support Size<=s2. Source locations are corrected to Theorem 1.4 p. 6 and Definition 2.4 p. 11. No outstanding issue remains within the requested follow-up scope; the counting and parity conclusions are unchanged.",
+  "issues": [
+    {
+      "id": "I01",
+      "severity": "low",
+      "classification": "confirmed_experiment_contract_mismatch_not_a_counterexample_to_the_theorem",
+      "title": "Repeated scope coordinates make the probe certify wire arity, not distinct raw-variable scope.",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:56-66",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:34-50",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:73-90",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:142-144",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:158-168"
+      ],
+      "issue": "The README parameter q counts raw input bits. LocalGate permits repeated coordinates, but max_arity counts tuple positions and as_clauses enumerates all assignments to those positions. The code comment acknowledges the wire-count convention, yet the README does not distinguish it when presenting these tests as checks of the raw-scope size bound.",
+      "reproduction": {
+        "gate": "LocalGate((0, 0, 0), 1 << 7)",
+        "circuit": "BottomLocalCircuit((gate,), ((0,),), (0,))",
+        "represented_function": "x_0",
+        "distinct_raw_scope_q": 1,
+        "probe_max_arity": 3,
+        "original_size_S": 3,
+        "actual_probe_compiled_size": 9,
+        "S_times_2_power_raw_q": 6,
+        "S_times_2_power_probe_arity": 24,
+        "original_and_compiled_truth_tables": [
+          false,
+          true
+        ],
+        "verification": "Reproduced by executing the reviewed functions in memory, with bytecode writing disabled."
+      },
+      "impact": "The repeated-coordinate case can violate S_compiled <= S*2^q when q is read as distinct raw-variable count, although the weaker wire-arity assertion passes. The mathematical existence proof remains valid: first express the predicate on distinct variables. This is not a sharing failure.",
+      "suggested_action": "Either require distinct scope coordinates, canonicalize repeated coordinates before expansion, or explicitly distinguish the probe wire-arity bound from the README raw-scope bound for repeated-coordinate inputs.",
+      "status": "resolved_on_follow_up",
+      "original_source_ref_basis": "Initial input hashes preserved in review_history[0] and method_and_limits.inputs; the original reproduction is not a claim about the repaired code.",
+      "resolution": {
+        "date": "2026-10-09",
+        "source_refs": [
+          "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:44-70",
+          "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:94-111",
+          "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:348-368"
+        ],
+        "verified_change": "normalize_scope enumerates assignments to distinct variables and reconstructs the original repeated-wire assignment before reading its truth table. as_clauses expands the normalized predicate, and max_arity uses len(raw_scope). This preserves evaluation while making the clause-count bound depend on distinct raw variables.",
+        "regression_result": {
+          "gate": "LocalGate((0,0,0),1<<7)",
+          "normalized_gate": "LocalGate((0,),0b10)",
+          "distinct_raw_arity": 1,
+          "compiled_gate_count": 3,
+          "S_times_2_power_q": 6,
+          "original_and_compiled_truth_tables": [
+            false,
+            true
+          ]
+        },
+        "exhaustive_regression": "All truth tables for scopes (0,0), (1,0,1), and (2,2,0): 528 tables, each compared on all eight assignments to three raw coordinates, checking normalized and CNF evaluations plus the 2^q clause bound.",
+        "verification": "Both new regression tests and all six pre-existing ProbeTests passed in this follow-up."
+      }
+    },
+    {
+      "id": "I02",
+      "severity": "wording_only",
+      "classification": "scope_clarification_not_a_demonstrated_false_theorem",
+      "title": "State explicitly which unrestricted-circuit target is impossible for a language in P.",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:128-130",
+        "research_notes/p_vs_np_2026_10_09/README.md:164-171"
+      ],
+      "issue": "The bullet saying a general-circuit separation cannot use this language in P as its target is correct if target means a superpolynomial unrestricted-circuit lower bound. Literally broader readings would also exclude weak unrestricted-circuit lower bounds or an auxiliary role in a reduction, which membership in P alone does not exclude.",
+      "suggested_action": "Replace the bullet with: This language in P cannot itself have superpolynomial unrestricted-circuit complexity. The current depth-three lower bound does not supply the stated GapMCSP magnification hypothesis.",
+      "status": "resolved_on_follow_up",
+      "original_source_ref_basis": "Initial input hashes preserved in review_history[0] and method_and_limits.inputs; the original reproduction is not a claim about the repaired code.",
+      "resolution": {
+        "date": "2026-10-09",
+        "source_refs": [
+          "research_notes/p_vs_np_2026_10_09/README.md:169"
+        ],
+        "verified_change": "The bullet now excludes only superpolynomial unrestricted-circuit complexity for this P language, and separately states that its depth-three lower bound does not supply the GapMCSP magnification hypothesis."
+      }
+    }
+  ],
+  "reasoned_confirmations": [
+    {
+      "id": "C01",
+      "topic": "Exact parity minimum cost and expectation",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:72-97",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:193-266"
+      ],
+      "reasoning": "For m>=1, every non-singleton subcube has zero parity-sign correlation, and each singleton has absolute correlation 2^-m. Taking G=chi_m forces W>=2^(m-1). Decomposing the restricted parity indicator into its accepted singletons gives the matching upper bound for every real G; thus no general LP-duality theorem is needed. For m=0 the minimum is the constant output, whose conditional mean is 1/2 when d>=1. Therefore E W_min = (1/2) E[2^M] = (1+p)^d/2 for M~Binomial(d,p). The m=0 correction is included, not lost. Pointwise optimal witnesses can be chosen simultaneously because there are finitely many restrictions.",
+      "qualification": "The formula requires d>=1, as the code and nearby prose state; for d=0 even parity is constant true and the minimum is 1."
+    },
+    {
+      "id": "C02",
+      "topic": "The six-bit gate-fan-in counterexample is exact and properly scoped",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:99-116",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:269-334"
+      ],
+      "reasoning": "Five binary XOR combinations, each expanded into OR, AND, NOT, AND, followed by one final NOT compute even parity using 21 ordinary gates. The balanced combination order has depth 10 and fan-in at most 2. At b=1,p=1/4,k=2, theta=4/9 and the proposed bound is 9/5; the exact necessary expected cost is 15625/8192, exceeding it by 4397/40960. Since this is a lower bound for every admissible all-G witness, choosing a different W cannot repair that proposed extension. This only refutes substituting maximum internal gate fan-in into the width parameter while retaining the same conclusion and bound.",
+      "finite_recheck": "Re-ran the 64-input circuit check and all 729 six-bit restrictions; all reported rational values and depth 10 agree. Also re-ran exact_parity_checks(8): 9840 restrictions across dimensions 1..8, with the expectation identity checked at p=1/8,1/4,1/2. These runs supplement the mathematical reasoning, not its all-dimension proof."
+    },
+    {
+      "id": "C03",
+      "topic": "S_compiled <= B*2^q+M+1 <= S*2^q preserves sharing",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:34-66",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:84-126"
+      ],
+      "reasoning": "For a bottom predicate expressed on r<=q distinct raw variables, enumerate at most 2^r rejected patterns. Allocate its clauses once globally and replace each positive occurrence in a middle AND by references to that same clause block. Flattening the conjunction adds no middle layer or middle gate. Fan-out or repeated positive uses add wires, not gates; the code ranges table implements this sharing. A true predicate contributes no clauses, and a false zero-arity predicate contributes one empty clause. Thus B*2^q+M+1 gates suffice, and 2^q>=1 gives the second inequality. This uses the intended unbounded-fan-in OR/AND model with free input negations, not a bounded-fan-in or wire-count simulation.",
+      "asymptotic_quantifiers": "For each fixed raw-arity budget q(n)<=C*sqrt(n) eventually, and every requested constant A, apply the source lower bound with A+C. The factor 2^q then still leaves a lower bound exceeding 2^(A*sqrt(n)) eventually. The argument does not cover arbitrary internal oracle placements or unrestricted q(n).",
+      "related_issue": "I01 is resolved: the repaired probe canonicalizes duplicate scope coordinates before expansion and counts distinct raw variables. The sharing-preserving existential compilation argument is unchanged."
+    },
+    {
+      "id": "C04",
+      "topic": "Sparse-positive GapMCSP counting and all-extension quantifiers",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:132-156",
+        "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt:521-527"
+      ],
+      "reasoning": "The description count remains a valid upper bound: pad to s gates, choose one of 16 binary functions and two labels per gate, and choose an output among m+s+2 labels; allowing invalid forward references only overcounts. Under formal Definition 2.4, every promise-respecting total extension rejects Size>s2, not Size>=s2. Its positive support is therefore contained in Size<=s2, including any accepted upper-endpoint instances. Taking s=ceil(N^beta) still upper-bounds that support by K(m,s), with the theorem thresholds understood as integer-valued. For each fixed 0<beta<1, log2 K=O(N^beta log N)=o(N), uniformly over every choice of gap labels. Hence positive density is at most 2^(-N+o(N)), and the accepted-positive sign satisfies |E g|>=1-2K/2^N=1-o(1); the constant-true CNF supplies the same correlation obstruction.",
+      "qualification": "The fixed-beta condition matters; the argument is not uniform over beta approaching 1 with N. Nor does it rule out nonuniform whole-table distributions, conditioning on slices, reductions, or methods not requiring small corr_b.",
+      "endpoint_correction": "Corrected from >= to > at the NO endpoint; positive support is <=s2 rather than <s2. Since the original counting bound already counted all circuits of size at most ceil(N^beta), neither the estimate nor its quantifiers change."
+    },
+    {
+      "id": "C05",
+      "topic": "Magnification threshold and quantifier order",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:118-130",
+        "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt:279-283",
+        "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt:521-527"
+      ],
+      "external_source": "S1",
+      "reasoning": "Corrected against the final publisher text: Theorem 1.4 (printed p. 6) requires a universal c and one epsilon>0 working for every sufficiently small fixed beta>0, with thresholds N^beta/(c log2 N), N^beta. Formal Definition 2.4 (printed p. 11) has YES Size<=s1 and NO Size>s2, leaving s1<Size<=s2 unpromised. Introductory >= wording does not control that endpoint. The correction changes neither the magnification quantifiers nor the counting conclusion.",
+      "correction_status": "Formal endpoint and printed-page attribution corrected; previous wording is preserved only in review_history."
+    },
+    {
+      "id": "C06",
+      "topic": "Locality and novelty scope",
+      "source_refs": [
+        "research_notes/p_vs_np_2026_10_09/README.md:5-5",
+        "research_notes/p_vs_np_2026_10_09/README.md:48-52",
+        "research_notes/p_vs_np_2026_10_09/README.md:64-70",
+        "research_notes/p_vs_np_2026_10_09/README.md:114-116",
+        "research_notes/p_vs_np_2026_10_09/README.md:158-171",
+        "research_notes/p_vs_np_2026_10_09/README.md:208-208",
+        "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:266"
+      ],
+      "reasoning": "The README consistently identifies the predicate transfer as a semantic truth-table expansion, restricts robustness to one bottom layer on raw inputs, and explicitly denies that this alone instantiates a full published locality barrier. It treats finite experiments as checks, not proofs of all-dimensional claims, and expressly makes no novelty or separation claim. No unsupported affirmative novelty or full-locality-barrier assertion was found.",
+      "optional_precision": "Resolved: the probe scope field now says naive maximum-internal-gate-fan-in substitution, explicitly excluding the original lemma."
+    }
+  ],
+  "external_sources_checked": {
+    "S1": {
+      "title": "Hardness Magnification Near State-of-the-Art Lower Bounds",
+      "authors": "Igor C. Oliveira, Jan Pich, Rahul Santhanam",
+      "publication": "Theory of Computing 17(11), 2021",
+      "location": "Theorem 1.4, printed page 6; formal Definition 2.4, printed page 11",
+      "publisher_pdf": "https://theoryofcomputing.org/articles/v017a011/v017a011.pdf",
+      "method": "Follow-up directly inspected the recorded publisher text, verified its SHA256 against sources/magnification_audit.json, and checked printed-page footers. Final PDF hash/version are copied with provenance from that source audit; the PDF was not locally available for independent rehashing.",
+      "version": "Final published article; revised 2021-02-27",
+      "endpoint_convention": "YES Size<=s1; NO Size>s2; gap s1<Size<=s2. Formal Definition 2.4 controls, rather than informal introductory >= wording.",
+      "publisher_pdf_sha256_reported": "81b1ff4ede5180dc88f99c8a4856cfde623f6fefb5b99ef9f5526899bf43ab4a",
+      "publisher_pdf_hash_provenance": {
+        "path": "research_notes/p_vs_np_2026_10_09/sources/magnification_audit.json",
+        "json_pointer": "/sources/0/extract/pdf_sha256",
+        "source_id": "OPS2021",
+        "independently_rehashed_in_follow_up": false
+      },
+      "publisher_text": {
+        "path": "/tmp/p_vs_np_2026_10_09_magnification/magnification_ops2021.txt",
+        "sha256": "039418d33a236e1e58779dc8c4a358746c8b89a027a14079586f9843e10080e1",
+        "hash_matches_source_audit": true,
+        "theorem_source_lines": "279-283",
+        "definition_source_lines": "521-527",
+        "printed_pages_verified_from_form_feed_segments_and_footers": [
+          6,
+          11
+        ]
+      }
+    }
+  },
+  "method_and_limits": {
+    "method": "Independent manual mathematical review, selected exact in-memory Python reruns, one concrete repeated-scope witness, and a primary-source check of the external magnification statement.",
+    "not_done": [
+      "Repeat of the Lean source audit",
+      "Lean or Lake builds",
+      "New formal theorem certification",
+      "Audit of temporarily absent worker outputs",
+      "Broad literature-priority search",
+      "Agent spawning",
+      "Original source edits"
+    ],
+    "writes": [
+      "validation/peer_review.json only"
+    ],
+    "inputs": [
+      {
+        "path": "research_notes/p_vs_np_2026_10_09/README.md",
+        "sha256": "525b05f57cdd77dcf9c278f8dc1459445e4cd60c64885b0b5ab5df8a703b5dbb",
+        "lines": 208
+      },
+      {
+        "path": "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py",
+        "sha256": "07e163045a249b1c705f51e86028c1d3ae6abbf08a9b9afe0fd03a6496ff2ef7",
+        "lines": 367
+      }
+    ]
+  },
+  "review_history": [
+    {
+      "date": "2026-10-09",
+      "record": "initial review before parent fixes and formal-endpoint correction",
+      "previous_peer_review_sha256": "c5aede5013a872a76bef3531b9381f0c657e9a6d2446508e70e855110b25bf04",
+      "input_snapshot": [
+        {
+          "path": "research_notes/p_vs_np_2026_10_09/README.md",
+          "sha256": "525b05f57cdd77dcf9c278f8dc1459445e4cd60c64885b0b5ab5df8a703b5dbb",
+          "lines": 208
+        },
+        {
+          "path": "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py",
+          "sha256": "07e163045a249b1c705f51e86028c1d3ae6abbf08a9b9afe0fd03a6496ff2ef7",
+          "lines": 367
+        }
+      ],
+      "verdict": "The parity calculation, specified gate-fan-in counterexample, sharing-preserving existential compilation bound, and fixed-beta sparse-positive counting argument are sound on review. No substantive error in these derivations was found. One concrete experiment/model parameter mismatch and one optional wording clarification are noted below.",
+      "superseded_confirmations": {
+        "C03": {
+          "id": "C03",
+          "topic": "S_compiled <= B*2^q+M+1 <= S*2^q preserves sharing",
+          "source_refs": [
+            "research_notes/p_vs_np_2026_10_09/README.md:34-66",
+            "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:63-105"
+          ],
+          "reasoning": "For a bottom predicate expressed on r<=q distinct raw variables, enumerate at most 2^r rejected patterns. Allocate its clauses once globally and replace each positive occurrence in a middle AND by references to that same clause block. Flattening the conjunction adds no middle layer or middle gate. Fan-out or repeated positive uses add wires, not gates; the code ranges table implements this sharing. A true predicate contributes no clauses, and a false zero-arity predicate contributes one empty clause. Thus B*2^q+M+1 gates suffice, and 2^q>=1 gives the second inequality. This uses the intended unbounded-fan-in OR/AND model with free input negations, not a bounded-fan-in or wire-count simulation.",
+          "asymptotic_quantifiers": "For each fixed raw-arity budget q(n)<=C*sqrt(n) eventually, and every requested constant A, apply the source lower bound with A+C. The factor 2^q then still leaves a lower bound exceeding 2^(A*sqrt(n)) eventually. The argument does not cover arbitrary internal oracle placements or unrestricted q(n).",
+          "related_issue": "I01 concerns the concrete probe representation with repeated coordinates, not this existential compilation proof."
+        },
+        "C04": {
+          "id": "C04",
+          "topic": "Sparse-positive GapMCSP counting and all-extension quantifiers",
+          "source_refs": [
+            "research_notes/p_vs_np_2026_10_09/README.md:132-156"
+          ],
+          "reasoning": "The description count is a valid upper bound: pad to s gates, choose one of 16 binary functions and two predecessor labels per gate, and choose an output among m+s+2 labels. Allowing forward references only overcounts; padding and an arbitrary output label cover shorter circuits. Every promise-respecting total extension, regardless of gap labels, rejects all functions of complexity >=N^beta, so its positive set is contained in the functions counted by K(m,ceil(N^beta)). For each fixed 0<beta<1, log2 K=O(N^beta log N)=o(N), giving positive density at most 2^(-N+o(N)), uniformly over all those extensions. Consequently the accepted-positive sign has |E g|>=1-2K/2^N=1-o(1), and the constant-true CNF supplies the correlation lower bound.",
+          "qualification": "The fixed-beta condition matters; the argument is not uniform over beta approaching 1 with N. Nor does it rule out nonuniform whole-table distributions, conditioning on slices, reductions, or methods not requiring small corr_b."
+        },
+        "C05": {
+          "id": "C05",
+          "topic": "Magnification threshold and quantifier order",
+          "source_refs": [
+            "research_notes/p_vs_np_2026_10_09/README.md:118-130"
+          ],
+          "external_source": "S1",
+          "reasoning": "Checked the publisher version of Theorem 1.4: a universal c, one epsilon>0, and every sufficiently small beta>0 are the stated order. Replacing the paper input-variable parameter by m=log2 N yields the README thresholds N^beta/(c log2 N) and N^beta. The promise direction is at-most the lower threshold versus at-least the upper threshold. Nonmembership is a lower bound against promise-solving circuit families, not merely hardness of one arbitrarily selected labeling of the gap. The README does not reverse these quantifiers or substitute a depth-three result for an unrestricted-circuit hypothesis. See the primary publisher PDF identified as S1 below."
+        },
+        "C06": {
+          "id": "C06",
+          "topic": "Locality and novelty scope",
+          "source_refs": [
+            "research_notes/p_vs_np_2026_10_09/README.md:5-5",
+            "research_notes/p_vs_np_2026_10_09/README.md:48-52",
+            "research_notes/p_vs_np_2026_10_09/README.md:64-70",
+            "research_notes/p_vs_np_2026_10_09/README.md:114-116",
+            "research_notes/p_vs_np_2026_10_09/README.md:158-171",
+            "research_notes/p_vs_np_2026_10_09/README.md:208-208"
+          ],
+          "reasoning": "The README consistently identifies the predicate transfer as a semantic truth-table expansion, restricts robustness to one bottom layer on raw inputs, and explicitly denies that this alone instantiates a full published locality barrier. It treats finite experiments as checks, not proofs of all-dimensional claims, and expressly makes no novelty or separation claim. No unsupported affirmative novelty or full-locality-barrier assertion was found.",
+          "optional_precision": "The probe output string at locality_probe.py:245 is less precise than the README. Prefer the explicit phrase naive maximum-internal-gate-fan-in substitution over an arity-independent oracle extension, so generated reports cannot be read as refuting the valid raw-input predicate transfer."
+        }
+      },
+      "original_source_refs_for_other_rebased_confirmations": {
+        "C01": [
+          "research_notes/p_vs_np_2026_10_09/README.md:72-97",
+          "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:172-245"
+        ],
+        "C02": [
+          "research_notes/p_vs_np_2026_10_09/README.md:99-116",
+          "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py:248-313"
+        ]
+      },
+      "superseded_S1_metadata": {
+        "title": "Hardness Magnification Near State-of-the-Art Lower Bounds",
+        "authors": "Igor C. Oliveira, Jan Pich, Rahul Santhanam",
+        "publication": "Theory of Computing 17(11), 2021",
+        "location": "Theorem 1.4, printed page 4",
+        "publisher_pdf": "https://www.theoryofcomputing.org/articles/v017a011/v017a011.pdf",
+        "method": "Publisher search result plus PDF retrieved and converted to text in memory; no downloaded file was written."
+      },
+      "note": "Original issue descriptions and reproductions remain below as historical findings, now carrying resolved status. The original method/input snapshot is preserved. Superseded >= endpoint and page-4 attribution are retained here only as review history, not as current claims."
+    }
+  ],
+  "review_version": 2,
+  "follow_up": {
+    "date": "2026-10-09",
+    "status": "requested_fixes_confirmed_and_endpoint_correction_applied",
+    "closed_issues": [
+      "I01",
+      "I02"
+    ],
+    "additional_note_resolved": "C06 optional probe scope wording",
+    "corrected_confirmations": [
+      "C04",
+      "C05"
+    ],
+    "independent_python_validation": {
+      "suite": "locality_probe.py::ProbeTests",
+      "tests_run": 8,
+      "passed": 8,
+      "failed": 0,
+      "bytecode_writing_disabled": true,
+      "included_regressions": [
+        "test_repeated_scope_uses_distinct_raw_arity",
+        "test_scope_normalization_preserves_predicates"
+      ]
+    },
+    "parent_reported_combined_suite": {
+      "tests_passed": 33,
+      "independently_reran_combined_suite": false,
+      "note": "Only the eight relevant ProbeTests were rerun independently; the broader 33-test result is parent-reported."
+    },
+    "current_inputs": [
+      {
+        "path": "research_notes/p_vs_np_2026_10_09/README.md",
+        "sha256": "427bbe34c6019caaa75d3c8b1433441511ffa01d55e6458a2fb72167cddb8974",
+        "lines": 239
+      },
+      {
+        "path": "research_notes/p_vs_np_2026_10_09/experiments/locality_probe.py",
+        "sha256": "39f2ad48534447e92d878dbb9fbed0aae326d19dd71d7e27df18563bbc623d41",
+        "lines": 410
+      }
+    ],
+    "source_audit_provenance": {
+      "path": "research_notes/p_vs_np_2026_10_09/sources/magnification_audit.json",
+      "sha256_at_follow_up": "ee07a164127ad75a3f49f24548134a4a30b5a4f6f5c964dfc3eb00e6791bd24c",
+      "source_id": "OPS2021"
+    },
+    "history_policy": "Initial issue descriptions, reproductions, input hashes and superseded endpoint/page wording are preserved. Current confirmation references were rebased to the repaired input snapshot.",
+    "scope_limit": "This follow-up checks the reported fixes, relevant regression tests, and OPS endpoint/page correction. It does not repeat the Lean audit or independently certify every newly added literature detail in README:162.",
+    "files_modified": [
+      "research_notes/p_vs_np_2026_10_09/validation/peer_review.json"
+    ]
+  }
+}

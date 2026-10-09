@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "check_kind": "finite Boolean subcube/certificate counting bridge and isolated-YES lemma",
+  "checked_at_utc": "2026-10-09T19:47:08.523871+00:00",
+  "paths": {
+    "source": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean",
+    "report": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/promise_counting.json",
+    "log": "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/promise_counting.log",
+    "build_environment": "/tmp/family112-build-validation.xWSfhA/project/lean"
+  },
+  "source_sha256": "56e5bedf5d9bf7e6d5be286476d679cf9fc75740543b4258f636843cd3528fe4",
+  "source_lines": 206,
+  "toolchain": {
+    "repository_pin": "leanprover/lean4:v4.34.1",
+    "version_output": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "git_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "fallback_used": false
+  },
+  "check": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "--root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation",
+      "--trust=0",
+      "--error=warning",
+      "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean"
+    ],
+    "cwd": "/tmp/family112-build-validation.xWSfhA/project/lean",
+    "reproduce": "cd /tmp/family112-build-validation.xWSfhA/project/lean && env -u LEAN_PATH -u LEAN_SRC_PATH lake env lean --root=/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation --trust=0 --error=warning /home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean",
+    "inherited_environment_unset": [
+      "LEAN_PATH",
+      "LEAN_SRC_PATH"
+    ],
+    "trust_level": 0,
+    "lean_warnings_as_errors": true,
+    "exit_code": 0,
+    "elapsed_seconds": 6.233986,
+    "stdout": "'PromiseCounting.mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.subcubeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.card_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.compatible_of_common_point' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.subcube_inter_eq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.free_after_union' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.card_subcube_inter' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.card_subcube_inter_lower' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.accepted_subcube_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.accepted_inter_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.outside_low_completion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.rejected_completion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.certificate_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.no_certificate_of_card_lt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.flipAt_mem_subcube' depends on axioms: [propext, Classical.choice, Quot.sound]\n'PromiseCounting.isolated_yes_certificate_full' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+    "stderr": "warning: belyi: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/belyi' has local changes\nwarning: formal-schemes: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/formal-schemes' has local changes\nwarning: elliptic-curves: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/elliptic-curves' has local changes\nwarning: tempered-fundamental-groups: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tempered-fundamental-groups' has local changes\nwarning: oka: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/oka' has local changes\nwarning: orbicurve-cores: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/orbicurve-cores' has local changes\nwarning: pi1: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/pi1' has local changes\nwarning: heights: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/heights' has local changes\nwarning: genl: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/genl' has local changes\nwarning: tate-curves-theta: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/tate-curves-theta' has local changes\nwarning: iut: repository '/tmp/family112-build-validation.xWSfhA/project/lean/.lake/packages/iut' has local changes\n",
+    "lake_warnings": "Pre-existing dirty-package warnings from lake env are preserved; the final Lean source check has no declaration errors or warnings.",
+    "theorem_count": 15,
+    "audited_constant_count": 16,
+    "all_theorems_and_equivalence_axiom_audited": true,
+    "olean_emitted": false
+  },
+  "imports": [
+    "Mathlib"
+  ],
+  "section_context": [
+    "universe u",
+    "V : Type u",
+    "Fintype V",
+    "noncomputable section",
+    "open scoped Classical"
+  ],
+  "representation": {
+    "universe": "V → Bool, with finite V",
+    "partial_assignment": "A Finset V of fixed coordinates and a total base assignment; only its values on that Finset matter.",
+    "subcube": "subcube F a = Finset.univ.filter (fun x => forall v in F, x v = a v)",
+    "compatibility": "Compatible F a C b := forall v, v in F -> v in C -> a v = b v",
+    "free_coordinate_count_r": "Fᶜ.card",
+    "new_fixed_coordinate_count": "(C \\ F).card",
+    "budget": "(C \\ F).card <= q; no bound on the already-fixed overlap is charged",
+    "cardinality_equivalence": {
+      "name": "PromiseCounting.subcubeEquiv",
+      "type": "{x : V → Bool // x ∈ subcube F a} ≃ (↥(Fᶜ) → Bool)",
+      "forward": "Restrict a completion to the complement of F.",
+      "inverse": "Use a on F and the supplied Boolean function off F.",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "certificate": {
+      "definition": "PromiseCounting.IsCertificate A F a q x C b",
+      "fields": [
+        "A x",
+        "x ∈ subcube F a",
+        "x ∈ subcube C b",
+        "(C \\ F).card ≤ q",
+        "forall y, y ∈ subcube F a -> y ∈ subcube C b -> A y"
+      ],
+      "consistency": "Derived from the common anchor x; not assumed silently.",
+      "forcing_semantics": "Every Boolean completion satisfying both partial assignments is accepted, not merely selected or promised completions."
+    }
+  },
+  "theorems": [
+    {
+      "name": "PromiseCounting.mem_subcube",
+      "statement": "@[simp] theorem mem_subcube {F : Finset V} {a x : V → Bool} :\n    x ∈ subcube F a ↔ ∀ v ∈ F, x v = a v",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.card_subcube",
+      "statement": "theorem card_subcube (F : Finset V) (a : V → Bool) :\n    (subcube F a).card = 2 ^ Fᶜ.card",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.compatible_of_common_point",
+      "statement": "theorem compatible_of_common_point (F : Finset V) (a : V → Bool)\n    (C : Finset V) (b x : V → Bool)\n    (hxF : x ∈ subcube F a) (hxC : x ∈ subcube C b) : Compatible F a C b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.subcube_inter_eq",
+      "statement": "theorem subcube_inter_eq (F : Finset V) (a : V → Bool) (C : Finset V) (b : V → Bool)\n    (hc : Compatible F a C b) :\n    subcube F a ∩ subcube C b =\n      subcube (F ∪ C) (fun v => if v ∈ F then a v else b v)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.free_after_union",
+      "statement": "theorem free_after_union (F C : Finset V) :\n    (F ∪ C)ᶜ.card = Fᶜ.card - (C \\ F).card",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.card_subcube_inter",
+      "statement": "theorem card_subcube_inter (F : Finset V) (a : V → Bool) (C : Finset V) (b : V → Bool)\n    (hc : Compatible F a C b) :\n    (subcube F a ∩ subcube C b).card = 2 ^ (Fᶜ.card - (C \\ F).card)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.card_subcube_inter_lower",
+      "statement": "theorem card_subcube_inter_lower (F : Finset V) (a : V → Bool)\n    (C : Finset V) (b : V → Bool) (hc : Compatible F a C b)\n    (q : Nat) (hq : (C \\ F).card ≤ q) :\n    2 ^ (Fᶜ.card - q) ≤ (subcube F a ∩ subcube C b).card",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.accepted_subcube_card_le",
+      "statement": "theorem accepted_subcube_card_le (A : (V → Bool) → Prop) (Low : Finset (V → Bool))\n    (hLow : ∀ x, A x → x ∈ Low) (F : Finset V) (a : V → Bool)\n    (haccept : ∀ x ∈ subcube F a, A x) : (subcube F a).card ≤ Low.card",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.accepted_inter_card_le",
+      "statement": "theorem accepted_inter_card_le (A : (V → Bool) → Prop) (Low : Finset (V → Bool))\n    (hLow : ∀ x, A x → x ∈ Low) (F : Finset V) (a : V → Bool)\n    (C : Finset V) (b : V → Bool)\n    (haccept : ∀ x, x ∈ subcube F a → x ∈ subcube C b → A x) :\n    (subcube F a ∩ subcube C b).card ≤ Low.card",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.outside_low_completion",
+      "statement": "theorem outside_low_completion (F : Finset V) (a : V → Bool)\n    (C : Finset V) (b : V → Bool) (hc : Compatible F a C b)\n    (q : Nat) (hq : (C \\ F).card ≤ q) (Low : Finset (V → Bool))\n    (hsmall : Low.card < 2 ^ (Fᶜ.card - q)) :\n    ∃ x : V → Bool, x ∈ subcube F a ∧ x ∈ subcube C b ∧ x ∉ Low",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.rejected_completion",
+      "statement": "theorem rejected_completion (A : (V → Bool) → Prop) (Low : Finset (V → Bool))\n    (hLow : ∀ x, A x → x ∈ Low) (F : Finset V) (a : V → Bool)\n    (C : Finset V) (b : V → Bool) (hc : Compatible F a C b)\n    (q : Nat) (hq : (C \\ F).card ≤ q) (hsmall : Low.card < 2 ^ (Fᶜ.card - q)) :\n    ∃ x : V → Bool, x ∈ subcube F a ∧ x ∈ subcube C b ∧ x ∉ Low ∧ ¬ A x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.certificate_count_bound",
+      "statement": "theorem certificate_count_bound (A : (V → Bool) → Prop) (Low : Finset (V → Bool))\n    (hLow : ∀ x, A x → x ∈ Low) (F : Finset V) (a : V → Bool)\n    (q : Nat) (x : V → Bool) (C : Finset V) (b : V → Bool)\n    (hcert : IsCertificate A F a q x C b) : 2 ^ (Fᶜ.card - q) ≤ Low.card",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.no_certificate_of_card_lt",
+      "statement": "theorem no_certificate_of_card_lt (A : (V → Bool) → Prop) (Low : Finset (V → Bool))\n    (hLow : ∀ x, A x → x ∈ Low) (F : Finset V) (a : V → Bool) (q : Nat)\n    (hsmall : Low.card < 2 ^ (Fᶜ.card - q)) :\n    ¬ ∃ (x : V → Bool) (C : Finset V) (b : V → Bool), IsCertificate A F a q x C b",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.flipAt_mem_subcube",
+      "statement": "theorem flipAt_mem_subcube (F : Finset V) (x : V → Bool) (i : V) (hi : i ∉ F) :\n    flipAt x i ∈ subcube F x",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "PromiseCounting.isolated_yes_certificate_full",
+      "statement": "theorem isolated_yes_certificate_full (C : (V → Bool) → Bool) (x : V → Bool)\n    (_hyes : C x = true) (hneighbors : ∀ i : V, C (flipAt x i) = false)\n    (F : Finset V) (hforces : ∀ y : V → Bool, (∀ i ∈ F, y i = x i) → C y = true) :\n    F = Finset.univ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "axiom_dependency_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "forbidden_source_constructs_found": [],
+  "custom_axioms_declared": false,
+  "counting_scope": {
+    "exact_cardinality": "(subcube F a).card = 2 ^ Fᶜ.card",
+    "exact_intersection_cardinality_under_compatibility": "(subcube F a ∩ subcube C b).card = 2 ^ (Fᶜ.card - (C \\ F).card)",
+    "lower_bound": "Compatible F a C b and (C \\ F).card <= q imply 2^(r-q) <= intersection.card, where r = Fᶜ.card.",
+    "only_low_soundness_assumption": "forall x, A x -> x ∈ Low",
+    "accepted_upper_bound": "An all-accepted subcube, or all-accepted intersection of two subcubes, has cardinality <= Low.card.",
+    "outside_low_witness": "If Low.card < 2^(r-q), compatibility and the new-coordinate budget produce a common completion outside Low without any hypothesis about A.",
+    "rejected_witness": "Adding A-subset-Low soundness yields the same completion with not A x.",
+    "certificate_obstruction": "Under A-subset-Low soundness and Low.card < 2^(r-q), no IsCertificate at any accepted common anchor exists.",
+    "no_hidden_low_equality": "The proof does not assume A x iff x ∈ Low or that every point of Low is accepted.",
+    "boundary_cases": [
+      "empty coordinate type",
+      "no fixed coordinates",
+      "all coordinates fixed",
+      "overlapping fixed sets",
+      "q greater than r (natural subtraction saturates at zero)"
+    ]
+  },
+  "isolated_yes_scope": {
+    "theorem": "PromiseCounting.isolated_yes_certificate_full",
+    "flip": "flipAt x i j = if j = i then !(x i) else x j",
+    "assumptions": [
+      "C : (V → Bool) → Bool",
+      "C x = true",
+      "forall i, C (flipAt x i) = false",
+      "forall y, (forall i in F, y i = x i) -> C y = true"
+    ],
+    "conclusion": "F = Finset.univ",
+    "yes_hypothesis_note": "The explicit C x = true hypothesis is retained for the intended setting; forcing already implies it by choosing y=x.",
+    "concrete_family_not_formalized": "No claims about MCSP[0,0], constants/projections, pairwise distances, or DNF classifier size are checked here."
+  },
+  "limitations": [
+    "Low is an abstract finite set with explicit one-way soundness from acceptance. Circuit size and a size-threshold definition of Low are not formalized.",
+    "The checked witness is outside Low and, under soundness, not accepted. Calling it a promised NO instance additionally requires the application to identify outside-Low inputs with its NO region.",
+    "No logarithmic/asymptotic description-count bound is proved.",
+    "No algorithmic resource bound implies short certificates in this file; that is a separate missing application step.",
+    "The isolated-YES theorem is abstract and does not certify the proposed concrete negative-control family.",
+    "No OAI imports, full comparator rerun, or P versus NP conclusion."
+  ],
+  "phase1_read_only_respected": true,
+  "original_project_source_edits": false,
+  "only_owned_files_written": [
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/PromiseCounting.lean",
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/promise_counting.json",
+    "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/promise_counting.log"
+  ],
+  "subagents_spawned": false
+}

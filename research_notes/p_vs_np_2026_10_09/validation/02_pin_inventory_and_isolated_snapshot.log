@@ -1,0 +1,172 @@
+START_UTC: 2026-10-09T18:56:27.012916+00:00
+CWD: /home/rou/src/math
+TIMEOUT_SECONDS: 90
+SHELL: bash --noprofile --norc -c
+COMMAND:
+set -eu
+printf "Lake command-line options (configuration not loaded)\n"
+(cd lean && lake --help)
+printf "\nTracked Lean tree size\n"; du -sh lean
+printf "\nPinned manifest and dependency availability\n"
+python3 - <<'PY'
+import hashlib, json, pathlib, subprocess
+root = pathlib.Path("/home/rou/src/math")
+scratch = pathlib.Path("/tmp/family112-build-validation.xWSfhA")
+commit = "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+paths = ["lean/ComparatorChallenges/README.md", "lean/ComparatorChallenges/DepthThree.json", "lean/ComparatorChallenges/DepthThree.lean", "lean/OAI/Computability/DepthThree/Main.lean", "lean/lean-toolchain", "lean/lakefile.lean", "lean/lake-manifest.json"]
+fingerprints = []
+for path in paths:
+    data = (root / path).read_bytes()
+    git_data = subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=root)
+    row = dict(path=path, sha256=hashlib.sha256(data).hexdigest(), bytes=len(data), matches_source_commit=data == git_data)
+    fingerprints.append(row)
+    print(json.dumps(row))
+    assert row["matches_source_commit"]
+(scratch / "baseline_fingerprints.json").write_text(json.dumps(fingerprints, indent=2) + "\n")
+manifest = json.loads((root / "lean/lake-manifest.json").read_text())
+print("manifest_version", manifest["version"], "fixedToolchain", manifest.get("fixedToolchain"), "packages", len(manifest["packages"]))
+for package in manifest["packages"]:
+    name = package["name"].strip("«»")
+    path = root / "lean/.lake/packages" / name
+    print(json.dumps(dict(name=package["name"], url=package["url"], rev=package["rev"], inputRev=package["inputRev"], inherited=package["inherited"], checkout_exists=path.exists())))
+PY
+printf "\nCreate exact isolated snapshot, without modifying original files\n"
+mkdir /tmp/family112-build-validation.xWSfhA/project
+git archive fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb lean | tar -x -C /tmp/family112-build-validation.xWSfhA/project
+printf "\nProtected-file snapshot equality\n"
+for f in lean/lean-toolchain lean/lakefile.lean lean/lake-manifest.json; do cmp "$f" "/tmp/family112-build-validation.xWSfhA/project/$f"; sha256sum "/tmp/family112-build-validation.xWSfhA/project/$f"; done
+
+
+OUTPUT (stdout and stderr merged):
+Lake command-line options (configuration not loaded)
+Lake version 5.0.0-src+5045d00 (Lean version 4.34.1)
+
+USAGE:
+  lake [OPTIONS] <COMMAND>
+
+COMMANDS:
+  new <name> <temp>     create a Lean package in a new directory
+  init <name> <temp>    create a Lean package in the current directory
+  build <targets>...    build targets
+  query <targets>...    build targets and output results
+  exe <exe> <args>...   build an exe and run it in Lake's environment
+  check-build           check if any default build targets are configured
+  test                  test the package using the configured test driver
+  check-test            check if there is a properly configured test driver
+  lint                  lint the package
+  check-lint            check if there is a properly configured lint driver
+  clean                 remove build outputs
+  shake                 minimize imports in source files
+  env <cmd> <args>...   execute a command in Lake's environment
+  lean <file>           elaborate a Lean file in Lake's context
+  update                update dependencies and save them to the manifest
+  pack                  pack build artifacts into an archive for distribution
+  unpack                unpack build artifacts from an distributed archive
+  upload <tag>          upload build artifacts to a GitHub release
+  cache                 manage the Lake cache
+  script                manage and run workspace scripts
+  scripts               shorthand for `lake script list`
+  run <script>          shorthand for `lake script run`
+  translate-config      change language of the package configuration
+  serve                 start the Lean language server
+
+BASIC OPTIONS:
+  --version             print version and exit
+  --help, -h            print help of the program or a command and exit
+  --dir, -d=file        use the package configuration in a specific directory
+  --file, -f=file       use a specific file for the package configuration
+  -K key[=value]        set the configuration file option named key
+  --old                 only rebuild modified modules (ignore transitive deps)
+  --rehash, -H          hash all files for traces (do not trust `.hash` files)
+  --update              update dependencies on load (e.g., before a build)
+  --packages=file       JSON file of package entries that override the manifest
+  --reconfigure, -R     elaborate configuration files instead of using OLeans
+  --keep-toolchain      do not update toolchain on workspace update
+  --allow-empty         accept bare builds with no default targets configured
+  --no-build            exit immediately if a build target is not up-to-date
+  --no-cache            build packages locally; do not download build caches
+  --try-cache           attempt to download build caches for supported packages
+  --json, -J            output JSON-formatted results (in `lake query`)
+  --text                output results as plain text (in `lake query`)
+
+OUTPUT OPTIONS:
+  --quiet, -q           hide informational logs and the progress indicator
+  --verbose, -v         show trace logs (command invocations) and built targets
+  --ansi, --no-ansi     toggle the use of ANSI escape codes to prettify output
+  --log-level=lv        minimum log level to output on success
+                        (levels: trace, info, warning, error)
+  --fail-level=lv       minimum log level to fail a build (default: error)
+  --iofail              fail build if any I/O or other info is logged
+                        (same as --fail-level=info)
+  --wfail               fail build if warnings are logged
+                        (same as --fail-level=warning)
+
+
+See `lake help <command>` for more information on a specific command.
+
+Tracked Lean tree size
+1.8G	lean
+
+Pinned manifest and dependency availability
+{"path": "lean/ComparatorChallenges/README.md", "sha256": "2ed835b3c59709be6feffe0dec54fc9783fb26aa22d35517475a82ef5199c555", "bytes": 1060, "matches_source_commit": true}
+{"path": "lean/ComparatorChallenges/DepthThree.json", "sha256": "0b9ecec5cb9b079bf8f6b301604938a9b74758f6abeff6dd985e160c89f578b3", "bytes": 368, "matches_source_commit": true}
+{"path": "lean/ComparatorChallenges/DepthThree.lean", "sha256": "c12686c38119eb50c375790ebc28e0c806821714985431e59f18ae87649872a4", "bytes": 4453, "matches_source_commit": true}
+{"path": "lean/OAI/Computability/DepthThree/Main.lean", "sha256": "18fdab27f1f3df8f99389b1d6ac0ce3aac2644d5fd1ea585ee536a87bebbdd3a", "bytes": 805, "matches_source_commit": true}
+{"path": "lean/lean-toolchain", "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b", "bytes": 25, "matches_source_commit": true}
+{"path": "lean/lakefile.lean", "sha256": "4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74", "bytes": 15457, "matches_source_commit": true}
+{"path": "lean/lake-manifest.json", "sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794", "bytes": 14622, "matches_source_commit": true}
+manifest_version 1.2.0 fixedToolchain True packages 42
+{"name": "mathlib", "url": "https://github.com/leanprover-community/mathlib4.git", "rev": "d13f23b723b8a846827a245b89c10fc7d3f11612", "inputRev": "d13f23b723b8a846827a245b89c10fc7d3f11612", "inherited": false, "checkout_exists": false}
+{"name": "checkdecls", "url": "https://github.com/PatrickMassot/checkdecls.git", "rev": "3d425859e73fcfbef85b9638c2a91708ef4a22d4", "inputRev": "3d425859e73fcfbef85b9638c2a91708ef4a22d4", "inherited": false, "checkout_exists": false}
+{"name": "\u00abdoc-gen4\u00bb", "url": "https://github.com/leanprover/doc-gen4.git", "rev": "953c8992d174b4e56955e01e101d46668c68f2bb", "inputRev": "953c8992d174b4e56955e01e101d46668c68f2bb", "inherited": false, "checkout_exists": false}
+{"name": "PrimeCert", "url": "https://github.com/b-mehta/PrimeCert.git", "rev": "0803c2f6bd289c09704c7d352bb8fcf770cbb9b2", "inputRev": "0803c2f6bd289c09704c7d352bb8fcf770cbb9b2", "inherited": false, "checkout_exists": false}
+{"name": "LeanArchitect", "url": "https://github.com/hanwenzhu/LeanArchitect.git", "rev": "468e8f58fb4ad6e6ad672a08da6d0d0531e95a97", "inputRev": "468e8f58fb4ad6e6ad672a08da6d0d0531e95a97", "inherited": false, "checkout_exists": false}
+{"name": "leancert", "url": "https://github.com/alerad/leancert.git", "rev": "7f91b6eb3567437f6cfac03ed279706603ee22f4", "inputRev": "7f91b6eb3567437f6cfac03ed279706603ee22f4", "inherited": false, "checkout_exists": false}
+{"name": "PrimeNumberTheoremAnd", "url": "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd.git", "rev": "c39a751132c88b6e8080b74c74023fd95b3d8be0", "inputRev": "c39a751132c88b6e8080b74c74023fd95b3d8be0", "inherited": false, "checkout_exists": false}
+{"name": "belyi", "url": "https://github.com/lana-agents/belyi.git", "rev": "9ce4d3f793d3bc831f2fc7214b7dbad90ea012d8", "inputRev": "9ce4d3f793d3bc831f2fc7214b7dbad90ea012d8", "inherited": false, "checkout_exists": false}
+{"name": "\u00abformal-schemes\u00bb", "url": "https://github.com/lana-agents/formal-schemes.git", "rev": "51aa935079537bf4dc580751a6e70727fb23ca93", "inputRev": "51aa935079537bf4dc580751a6e70727fb23ca93", "inherited": false, "checkout_exists": false}
+{"name": "\u00abelliptic-curves\u00bb", "url": "https://github.com/lana-agents/elliptic-curves.git", "rev": "bebec3fc9f2602e81c83e5236789572a541c85fb", "inputRev": "bebec3fc9f2602e81c83e5236789572a541c85fb", "inherited": false, "checkout_exists": false}
+{"name": "\u00abtempered-fundamental-groups\u00bb", "url": "https://github.com/lana-agents/tempered-fundamental-groups.git", "rev": "2006651f52b70ea2fe3388238c7d9db14d21748f", "inputRev": "2006651f52b70ea2fe3388238c7d9db14d21748f", "inherited": false, "checkout_exists": false}
+{"name": "oka", "url": "https://github.com/lana-agents/oka.git", "rev": "75dcdc3faadd10b986afb9283e89902bcdddecd4", "inputRev": "75dcdc3faadd10b986afb9283e89902bcdddecd4", "inherited": false, "checkout_exists": false}
+{"name": "\u00aborbicurve-cores\u00bb", "url": "https://github.com/lana-agents/orbicurve-cores.git", "rev": "61616dcd77fbe45c083a8ebfa7cc80728f86e841", "inputRev": "61616dcd77fbe45c083a8ebfa7cc80728f86e841", "inherited": false, "checkout_exists": false}
+{"name": "pi1", "url": "https://github.com/lana-agents/pi1.git", "rev": "ca7def953193f861a462aa0831eec8f0a31ff69f", "inputRev": "ca7def953193f861a462aa0831eec8f0a31ff69f", "inherited": false, "checkout_exists": false}
+{"name": "heights", "url": "https://github.com/lana-agents/heights.git", "rev": "721496ca4c158e511d25d8ccf6bfe8503eda73c1", "inputRev": "721496ca4c158e511d25d8ccf6bfe8503eda73c1", "inherited": false, "checkout_exists": false}
+{"name": "genl", "url": "https://github.com/lana-agents/genl.git", "rev": "ea2846c877d1e16d8f0b911a5fed07f5ee69eaaf", "inputRev": "ea2846c877d1e16d8f0b911a5fed07f5ee69eaaf", "inherited": false, "checkout_exists": false}
+{"name": "\u00abtate-curves-theta\u00bb", "url": "https://github.com/lana-agents/tate-curves-theta.git", "rev": "ca6c2279d3cea0690cdb01328e727118d5485d68", "inputRev": "ca6c2279d3cea0690cdb01328e727118d5485d68", "inherited": false, "checkout_exists": false}
+{"name": "iut", "url": "https://github.com/lana-agents/iut.git", "rev": "d9465c111ec4073709f67e9fccec7e3eb374a816", "inputRev": "d9465c111ec4073709f67e9fccec7e3eb374a816", "inherited": false, "checkout_exists": false}
+{"name": "gromov", "url": "https://github.com/Aaron1011/gromov.git", "rev": "8db79f13cf211b570e3116301d91379fbc01cf3e", "inputRev": "8db79f13cf211b570e3116301d91379fbc01cf3e", "inherited": false, "checkout_exists": false}
+{"name": "TauCeti", "url": "https://github.com/TauCetiProject/TauCeti.git", "rev": "3bed7e37f3c504a99e8c07e9f309540812a7aa90", "inputRev": "3bed7e37f3c504a99e8c07e9f309540812a7aa90", "inherited": false, "checkout_exists": false}
+{"name": "SphereEversion", "url": "https://github.com/leanprover-community/sphere-eversion.git", "rev": "9c53f91e2a281199163ecea04dc4976cb79e2076", "inputRev": "9c53f91e2a281199163ecea04dc4976cb79e2076", "inherited": false, "checkout_exists": false}
+{"name": "\u00abschoenflies-lean\u00bb", "url": "https://github.com/alonamaloh/schoenflies-lean", "rev": "05a43d29cde026618777db3d4e4316204ccca237", "inputRev": "05a43d29cde026618777db3d4e4316204ccca237", "inherited": false, "checkout_exists": false}
+{"name": "ClassFieldTheory", "url": "https://github.com/n-yamaguchi-0729/ClassFieldTheory.git", "rev": "2eb22d6485af45f29c5219de6c49f196a61c4f49", "inputRev": "2eb22d6485af45f29c5219de6c49f196a61c4f49", "inherited": false, "checkout_exists": false}
+{"name": "AINTLIB", "url": "https://github.com/CBirkbeck/AINTLIB.git", "rev": "160e446617a2168c34c95bbe7a76c4105b392434", "inputRev": "160e446617a2168c34c95bbe7a76c4105b392434", "inherited": false, "checkout_exists": false}
+{"name": "AbsorptionCutoff", "url": "https://github.com/BennyAvelin/AbsorptionCutoff.git", "rev": "41c45c6d72e979419e46224bb7b4be5cee31f2b5", "inputRev": "41c45c6d72e979419e46224bb7b4be5cee31f2b5", "inherited": false, "checkout_exists": false}
+{"name": "StrongPNT", "url": "https://github.com/math-inc/strongpnt.git", "rev": "2f5835c322314f55f1026ec2f139d704b7c45c69", "inputRev": "2f5835c322314f55f1026ec2f139d704b7c45c69", "inherited": false, "checkout_exists": false}
+{"name": "carleson", "url": "https://github.com/fpvandoorn/carleson.git", "rev": "306ae5b29300771aece1aa39f0a939183cc59486", "inputRev": "306ae5b29300771aece1aa39f0a939183cc59486", "inherited": false, "checkout_exists": false}
+{"name": "\u00abrellich-kondrachov\u00bb", "url": "https://github.com/abenenson/rellich-kondrachov.git", "rev": "70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23", "inputRev": "70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23", "inherited": false, "checkout_exists": false}
+{"name": "Zeta3Irrational", "url": "https://github.com/ahhwuhu/zeta_3_irrational.git", "rev": "e8785315a01c8fbcddaa0fc03b3c8b29a61bc1f1", "inputRev": "e8785315a01c8fbcddaa0fc03b3c8b29a61bc1f1", "inherited": false, "checkout_exists": false}
+{"name": "\u00abfixed-point-theorems\u00bb", "url": "https://github.com/harfe/fixed-point-theorems-lean4.git", "rev": "770940ddf9878cf61952ed53d910b92bca841838", "inputRev": "770940ddf9878cf61952ed53d910b92bca841838", "inherited": false, "checkout_exists": false}
+{"name": "plausible", "url": "https://github.com/leanprover-community/plausible", "rev": "118aa17ee84656b8bd727fef7c458ee8c833385c", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "LeanSearchClient", "url": "https://github.com/leanprover-community/LeanSearchClient", "rev": "ddf04cf3949fa556442341e87d47f9f6e6074707", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "importGraph", "url": "https://github.com/leanprover-community/import-graph", "rev": "e928b72544873815af278d38681b31c0293588e3", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "proofwidgets", "url": "https://github.com/leanprover-community/ProofWidgets4", "rev": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "aesop", "url": "https://github.com/leanprover-community/aesop", "rev": "355695d523e41d0554926416cba2a2b3544fbbc9", "inputRev": "master", "inherited": true, "checkout_exists": false}
+{"name": "Qq", "url": "https://github.com/leanprover-community/quote4", "rev": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259", "inputRev": "master", "inherited": true, "checkout_exists": false}
+{"name": "batteries", "url": "https://github.com/leanprover-community/batteries", "rev": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "leansqlite", "url": "https://github.com/leanprover/leansqlite", "rev": "f9cdb9eacb5c8b8ecc02ee9fd9e568d7d28c1416", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "Cli", "url": "https://github.com/leanprover/lean4-cli", "rev": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204", "inputRev": "v4.34.0", "inherited": true, "checkout_exists": false}
+{"name": "UnicodeBasic", "url": "https://github.com/fgdorais/lean4-unicode-basic", "rev": "0e569d08b6443ce0908d356884c765397253e2f0", "inputRev": "main", "inherited": true, "checkout_exists": false}
+{"name": "BibtexQuery", "url": "https://github.com/dupuisf/BibtexQuery", "rev": "4d8616fd4870d0a3453d845770833eac7951fe1c", "inputRev": "master", "inherited": true, "checkout_exists": false}
+{"name": "MD4Lean", "url": "https://github.com/acmepjz/md4lean", "rev": "31907cc18f48a95384f99cee5582c00fb39e0f67", "inputRev": "main", "inherited": true, "checkout_exists": false}
+
+Create exact isolated snapshot, without modifying original files
+
+Protected-file snapshot equality
+d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b  /tmp/family112-build-validation.xWSfhA/project/lean/lean-toolchain
+4cca977ebece444b6c999d99755c1ad3c93119bafc127ea761f7f703c7279e74  /tmp/family112-build-validation.xWSfhA/project/lean/lakefile.lean
+cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794  /tmp/family112-build-validation.xWSfhA/project/lean/lake-manifest.json
+
+END_UTC: 2026-10-09T18:56:31.384749+00:00
+EXIT_STATUS: 0
+TIMED_OUT: false
+ELAPSED_SECONDS: 4.372

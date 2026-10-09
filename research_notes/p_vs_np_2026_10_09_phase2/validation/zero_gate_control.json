@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "status": "PASS_WITH_STANDARD_PROPEXT",
+  "kernel_checked": true,
+  "all_requested_finite_properties_proved": true,
+  "strictly_axiom_free": false,
+  "source_commit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "date_local": "2026-10-09",
+  "task_start_observed_utc": "2026-10-09T19:49:33+00:00",
+  "completed_at_utc": "2026-10-09T19:59:36.505203+00:00",
+  "scope": "Finite MCSP[0,0] negative control at m=3 inner inputs and N=8 truth-table bits only.",
+  "model": {
+    "m": 3,
+    "truth_table_bits": 8,
+    "outer_tables": 256,
+    "inner_basis": [
+      "AND2",
+      "OR2",
+      "NOT"
+    ],
+    "cost": "Every gate counts, including NOT. Constants 0/1 and positive raw inputs are free.",
+    "zero_gate_realizations": "One of Fin 5 free output wires: three positive raw inputs, constant false, constant true.",
+    "bit_address_convention": "Bit a of the integer encoding is f(a); coordinate zero is the least-significant bit of the inner assignment.",
+    "accepted_tables": [
+      0,
+      255,
+      170,
+      204,
+      240
+    ],
+    "outer_network": {
+      "representation": "Explicit topologically ordered List Gate, not an accepting-set predicate.",
+      "primary_wires": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "constant_false_wire": 8,
+      "constant_true_wire": 9,
+      "gate_wires": [
+        10,
+        56
+      ],
+      "output_wire": 56,
+      "gate_count": 47,
+      "not_gates": 8,
+      "and2_gates": 35,
+      "or2_gates": 4,
+      "term_structure": "Five 8-literal equality terms, each with seven AND2 gates; eight shared input NOTs; four OR2s merge the terms.",
+      "interpreter": "Initialize input bits plus false/true; fold through gates, evaluating NOT/AND2/OR2 from already-stored indices and appending each result; return wire 56.",
+      "out_of_bounds_note": "The interpreter is total with false as an index fallback; network_well_formed proves that fallback cannot arise for the specified circuit.",
+      "matches_parent_gate_operations_and_indices_exactly": true
+    }
+  },
+  "source": {
+    "path": "research_notes/p_vs_np_2026_10_09_phase2/validation/ZeroGateControl.lean",
+    "sha256": "6fe78ca382c947678f7a50c38f00923aed394b19ac709d0729a71b5d96baa9f5",
+    "bytes": 8540,
+    "imports": [
+      "Std"
+    ],
+    "proof_method": "Constructive finite Decidable instances; of_decide_eq_true rfl checked by Lean kernel; propositional deductions for isolation and certificates.",
+    "max_rec_depth": 16384,
+    "max_heartbeats": 4000000
+  },
+  "parent": {
+    "path": "research_notes/p_vs_np_2026_10_09_phase2/experiments/certificate_controls.py",
+    "sha256_at_generation": "47d1fdaeedd6c740c7fa3e1921429fe2e85336bf1cc97e6ac7f61fb14a369eb5",
+    "sha256_at_final_comparison": "47d1fdaeedd6c740c7fa3e1921429fe2e85336bf1cc97e6ac7f61fb14a369eb5",
+    "network_sha256": "ea76d429b42640b5548de3ace10d6d7c0f922d251a144df591a0b9670f3b6641",
+    "validation": "Parsed every explicit Lean gate and compared with membership_classifier(3). Parent code was read with bytecode writing disabled, not edited."
+  },
+  "environment": {
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+    "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "lean_executable": "/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+    "lean_executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+    "imported_direct_oleans": [
+      "Init.olean",
+      "Std.olean"
+    ],
+    "lake_invoked": false,
+    "repo_rebuild": false,
+    "network_required": false
+  },
+  "final_check": {
+    "command": [
+      "/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "/home/rou/src/math/research_notes/p_vs_np_2026_10_09_phase2/validation/ZeroGateControl.lean"
+    ],
+    "cwd": "/home/rou/src/math",
+    "exit_status": 0,
+    "timed_out": false,
+    "timeout_seconds": 150,
+    "elapsed_seconds": 94.395,
+    "errors": [],
+    "warnings": [],
+    "theorem_axiom_queries": {
+      "ZeroGateControl.network_well_formed": [],
+      "ZeroGateControl.gate_count_47": [],
+      "ZeroGateControl.gate_breakdown": [
+        "propext"
+      ],
+      "ZeroGateControl.zero_gate_tables_exact": [
+        "propext"
+      ],
+      "ZeroGateControl.classifier_semantics": [
+        "propext"
+      ],
+      "ZeroGateControl.classifier_mcsp_zero": [
+        "propext"
+      ],
+      "ZeroGateControl.flip_no_wrap": [
+        "propext"
+      ],
+      "ZeroGateControl.flip_bit_rule": [
+        "propext"
+      ],
+      "ZeroGateControl.accepted_set_isolated": [
+        "propext"
+      ],
+      "ZeroGateControl.one_bit_neighbors_rejected": [
+        "propext"
+      ],
+      "ZeroGateControl.proper_mask_has_unfixed": [
+        "propext"
+      ],
+      "ZeroGateControl.flip_preserves_fixed": [
+        "propext"
+      ],
+      "ZeroGateControl.no_proper_yes_certificate": [
+        "propext"
+      ]
+    }
+  },
+  "proof_results": {
+    "well_formed_gate_indices": {
+      "theorem": "network_well_formed",
+      "result": "Every gate reads only previous wires; output wire is in range.",
+      "qualified_theorem": "ZeroGateControl.network_well_formed",
+      "line": 169,
+      "status": "kernel_checked",
+      "axioms": []
+    },
+    "47_gates": {
+      "theorem": "gate_count_47",
+      "result": "Explicit network list length is 47; this is a construction count, not a lower bound.",
+      "qualified_theorem": "ZeroGateControl.gate_count_47",
+      "line": 171,
+      "status": "kernel_checked",
+      "axioms": []
+    },
+    "gate_breakdown": {
+      "theorem": "gate_breakdown",
+      "result": "8 shared NOTs + 35 AND2s + 4 OR2s.",
+      "qualified_theorem": "ZeroGateControl.gate_breakdown",
+      "line": 173,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "zero_gate_inner_class": {
+      "theorem": "zero_gate_tables_exact",
+      "result": "For every x : Fin 256, selecting a free zero-gate inner wire realizes x iff x is 0,255,170,204,240.",
+      "qualified_theorem": "ZeroGateControl.zero_gate_tables_exact",
+      "line": 177,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "classifier_semantics": {
+      "theorem": "classifier_semantics",
+      "result": "For every x : Fin 256, the actual gate-list interpreter returns true iff x belongs to the specified five-element set.",
+      "qualified_theorem": "ZeroGateControl.classifier_semantics",
+      "line": 180,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "mcsp_zero_equivalence": {
+      "theorem": "classifier_mcsp_zero",
+      "result": "Actual network acceptance iff the table has a zero-gate inner realization in the stated free-wire model.",
+      "qualified_theorem": "ZeroGateControl.classifier_mcsp_zero",
+      "line": 183,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "one_bit_encoding": {
+      "theorem": "flip_no_wrap",
+      "result": "The bounded flip is exactly xor with 2^i, without modular wrap.",
+      "qualified_theorem": "ZeroGateControl.flip_no_wrap",
+      "line": 191,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "one_bit_semantics": {
+      "theorem": "flip_bit_rule",
+      "result": "Flipping i negates exactly bit i and preserves all other bits, for all 256 tables and all eight addresses.",
+      "qualified_theorem": "ZeroGateControl.flip_bit_rule",
+      "line": 194,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "isolated_accepting_set": {
+      "theorem": "accepted_set_isolated",
+      "result": "Every one-bit neighbor of each of the five YES tables is outside the YES set.",
+      "qualified_theorem": "ZeroGateControl.accepted_set_isolated",
+      "line": 197,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "actual_network_neighbor_rejection": {
+      "theorem": "one_bit_neighbors_rejected",
+      "result": "For any network-accepted table and each of eight addresses, the actual network rejects the one-bit neighbor.",
+      "qualified_theorem": "ZeroGateControl.one_bit_neighbors_rejected",
+      "line": 200,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "proper_masks_have_missing_bit": {
+      "theorem": "proper_mask_has_unfixed",
+      "result": "Every Fin 256 coordinate mask except 255 has an unfixed address.",
+      "qualified_theorem": "ZeroGateControl.proper_mask_has_unfixed",
+      "line": 214,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "witness_agrees_on_fixed_bits": {
+      "theorem": "flip_preserves_fixed",
+      "result": "Flipping an unfixed address preserves all bits required by the coordinate-fixing mask.",
+      "qualified_theorem": "ZeroGateControl.flip_preserves_fixed",
+      "line": 217,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    },
+    "no_proper_yes_certificate": {
+      "theorem": "no_proper_yes_certificate",
+      "result": "At each network-accepted table, no mask other than 255 is a YES certificate: a rejected neighbor agrees on all fixed coordinates.",
+      "qualified_theorem": "ZeroGateControl.no_proper_yes_certificate",
+      "line": 229,
+      "status": "kernel_checked",
+      "axioms": [
+        "propext"
+      ]
+    }
+  },
+  "coverage": {
+    "classifier_tables": 256,
+    "accepted_tables": 5,
+    "one_bit_neighbors_of_yes_tables": 40,
+    "proper_masks_per_yes_table": 255,
+    "yes_table_proper_mask_pairs_covered": 1275,
+    "note": "Coverage follows from universally quantified Lean theorems. The certificate result is proved through an unfixed-bit neighbor witness, not by assuming a certificate minimum."
+  },
+  "trust_audit": {
+    "no_user_axiom_declarations": true,
+    "no_native_decide": true,
+    "no_sorry_or_admit": true,
+    "no_unsafe": true,
+    "no_kernel_skip": true,
+    "final_source_forbidden_token_hits": {
+      "sorry_or_admit": [],
+      "explicit_axiom": [],
+      "native_evaluation": [],
+      "unsafe": [],
+      "skip_kernel": []
+    },
+    "observed_axiom_dependencies": [
+      "propext"
+    ],
+    "unexpected_or_proof_placeholder_axioms": [],
+    "limitation": "Not literally axiom-free: standard propext remains in ordinary Lean/Std definitions and matching/finite-decision proof dependencies. No new axioms are declared. No Classical.choice, Quot.sound, sorryAx, or native-reduction axiom occurs in any of the final queried theorems."
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "exit_status": 1,
+      "timed_out": false,
+      "elapsed_seconds": 4.973,
+      "reason": "Decidable synthesis did not unfold opaque specification definitions. This unsuccessful draft was not verified."
+    },
+    {
+      "attempt": 2,
+      "exit_status": 1,
+      "timed_out": false,
+      "elapsed_seconds": 92.286,
+      "reason": "The constructive existential decider used a dependent Exists pattern outside Prop. This unsuccessful draft was not verified."
+    },
+    {
+      "attempt": 3,
+      "exit_status": 0,
+      "timed_out": false,
+      "elapsed_seconds": 94.395,
+      "reason": "All definitions and 13 queried theorems accepted; no compiler errors or warnings."
+    }
+  ],
+  "limitations": [
+    "Finite zero-threshold MCSP[0,0] control only; not the growing-beta OPS target.",
+    "47 gates counts this actual outer construction. No general circuit-size minimality claim is proved.",
+    "The general-family O(N log N) argument remains manual and is not formalized here.",
+    "The inner zero-gate model is explicitly selection of a raw-input/constant free wire; no theory of nonzero inner circuit size is developed.",
+    "The final proof has the standard propext dependency; therefore the stronger reading of no axioms whatsoever is not achieved.",
+    "The log retains failed draft diagnostics (including error-generated sorryAx reports). Those drafts are not the final proof; final compilation exits zero and all final axiom queries exclude sorryAx."
+  ],
+  "preservation": {
+    "phase1_touched": false,
+    "phase1_build_report_sha256_unchanged": true,
+    "phase1_build_report_sha256": "8035f3bf5f4bee2dda369ec59a13b44c16bf634930d53655f643f9d8da2a406b",
+    "tracked_repository_diff_exit_status": 0,
+    "other_workers_files_edited": false,
+    "additional_agents_spawned": false,
+    "extra_result_artifacts_written": false
+  },
+  "reproduction": {
+    "command": "/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean research_notes/p_vs_np_2026_10_09_phase2/validation/ZeroGateControl.lean",
+    "cwd": "/home/rou/src/math",
+    "notes": "Only the installed pinned Lean distribution and Std are required. No Lake build, cache update, external dependency, or parent experiment execution is required to check the Lean proof."
+  },
+  "files_written": [
+    "research_notes/p_vs_np_2026_10_09_phase2/validation/ZeroGateControl.lean",
+    "research_notes/p_vs_np_2026_10_09_phase2/validation/zero_gate_control.json",
+    "research_notes/p_vs_np_2026_10_09_phase2/validation/zero_gate_control.log"
+  ],
+  "command_log": "research_notes/p_vs_np_2026_10_09_phase2/validation/zero_gate_control.log"
+}
