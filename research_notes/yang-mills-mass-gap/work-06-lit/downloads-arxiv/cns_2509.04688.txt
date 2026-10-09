@@ -1,0 +1,466 @@
+                                                  DYNAMICAL APPROACH TO AREA LAW FOR LATTICE YANG–MILLS
+
+
+                                                                            SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+                                                   Abstract. In this note, we prove Wilson’s area law in the ’t Hooft regime of parameters, which improves
+                                                   on a classical result of Osterwalder-Seiler from 1978, as well as on more recent work by the authors. The
+                                                   main point is to adapt the dynamical approach to lattice Yang–Mills set forth in [SZZ23] in order to verify
+                                                   the mass gap condition from [DF80], from which area law directly follows. Our results apply for gauge
+                                                   groups G P tUpN q, SUpN q, SOp2N qu, which all have nontrivial center (which is one of the key assumptions
+arXiv:2509.04688v2 [math.PR] 28 Sep 2025
+
+
+
+
+                                                   in [DF80]).
+
+
+
+
+                                                                                                 Contents
+                                             1. Introduction                                                                                                     1
+                                             2. σ-Model Mass Gap Implies Area Law                                                                                3
+                                             3. σ-Model Mass Gap                                                                                                 4
+                                             References                                                                                                          7
+
+
+
+
+                                                                                             1. Introduction
+                                              The recent works [SZZ23, SZZ24] laid out a stochastic analysis approach to the study of lattice Yang–
+                                           Mills theories. Therein, it was observed that in the ’t Hooft regime of parameters (to be introduced shortly),
+                                           the Bakry-Emery condition may be verified, from which results such as exponential decay of correlations,
+                                           the log-Sobolev and Poincaré inequalities, and uniqueness of the infinite volume limit all follow. However,
+                                           one question that was not addressed in [SZZ23] was whether Wilson’s area law would also follow from this
+                                           approach. Wilson’s area law is particularly important because it corresponds to quark confinement in the
+                                           physics literature, see e.g. Wilson’s original paper [Wil74] or Chatterjee’s recent survey [Cha19b].
+                                              In a recent work [CNS25], the authors managed via an entirely different approach to prove that area law
+                                           holds in a certain regime of parameters (but not in the entire ’t Hooft regime). This improved on a classical
+                                           result of Osterwalder-Seiler [OS78]. The main point of the present paper is to obtain further improvements
+                                           on [OS78, CNS25]. Towards this end, we observe that in fact, area law in the ’t Hooft regime follows quite
+                                           readily from the dynamical approach. The additional input that one needs is the mass gap condition of
+                                           [DF80]. We will discuss this condition in more detail in Section 2. For now, we just roughly say that the idea
+                                           is to split the lattice into a collection of height-1 slabs. Once boundary conditions on the top and bottom
+                                           of a slab are fixed, what remains is to assign matrices to the edges that cross the slab, and the conditional
+                                           law of these edges is given by a certain variable-environment σ-model. It is shown in [DF80] that if the
+                                           resulting σ-models on each of these slabs exhibit exponential decay of correlations, uniform in the boundary
+                                           conditions imposed at the top and bottom of the slabs, then area law follows.
+                                           Remark 1.1. There is also the recent work [Cha21], which shows that a different version of mass gap (see
+                                           Definition 2.3 therein) implies area law. In principle, it may be possible to also verify this assumption
+                                           starting from the Bakry-Emery condition, but we found it more direct to verify the condition of [DF80].
+                                              While [SZZ23] did not handle the case of G “ UpN q (it focused on G P tSUpN q, SOpN qu), we observe
+                                           that by a conditioning trick (essentially because UpN q “ Up1q ˆ SUpN q in a suitable sense), one may reduce
+                                           the UpN q case to the SUpN q case, and thus our area law result applies also to UpN q.
+                                              We now quickly introduce lattice Yang–Mills and then state the main result. Since we intend this to be
+                                           a short note, we will be quite brief; see e.g. [CPS23, CNS25, SZZ23] for more discussion of the model. Let
+                                                                                                       1
+2                                SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Λ “ ΛL be the discrete torus of side length L, which can be written as Zd modulo LZd , and recall the
+Yang-Mills measure with gauge group G P tSUpN q, UpN q, SOpNqu with ’t Hooft scaling,
+                                               1
+                                   dµYM pQq “ exppSYM pQqqdQ,                                   (1.1)
+                                               Z
+           ś
+with dQ “ ePE ` dQe the product Haar measure, and SYM the Yang-Mills action defined by:
+               Λ
+                                                    ÿ
+                                    SYM pQq :“ N β      ReTrpQp q.                              (1.2)
+                                                            `
+                                                         pPPΛ
+
+Here, PΛ` denotes the set of positively oriented plaquettes of Λ. Later on, we will also write EΛ` for the set of
+positively oriented edges of Λ. To emphasize the dependence on L and β, we sometimes refer to the measure
+as µYML,β .
+Remark 1.2. In the above definitions and throughout this paper, Λ “ ΛL is a torus, but this is not so
+essential. For example, none of the arguments in this paper would substantially change if Λ were instead a
+discrete cube of side length L (with free boundary conditions). One should think of L as arbitrarily large,
+and all our estimates will be uniform in L.
+    The main observables of interest for the model are the Wilson loop observables, which we define next.
+Definition 1.3 (Loop variables and observables). Let Q : EΛ` Ñ G be a lattice gauge configuration. For a
+loop ℓ “ e1 e2 . . . en , let Qℓ :“ Qe1 Qe2 ¨ ¨ ¨ Qen denote the corresponding loop variable. We define the Wilson
+loop observable Wℓ by
+                                               Wℓ pQq :“ trpQℓ q,
+where tr “ N1 Tr is the normalized trace.
+    Before stating the main results, we introduce a few β thresholds which appear in the theorem statements.
+Definition 1.4. We define the following thresholds:
+                                   ˚         ˚            1
+                                  βSUpN q “ βUpN q :“           ,
+                                                       8pd ´ 1q
+                                             ˚             1         1
+                                            βSOpN q :“            ´         .
+                                                       16pd ´ 1q 8N pd ´ 1q
+Remark 1.5. With the action SYM as defined in (1.2) (in particular with the N prefactor), the regime β ď β0
+for some constant β0 is known as the ‘t Hooft regime for lattice Yang–Mills theory. This is also the regime
+where one has a nontrivial large-N limit, as studied in [Cha19a, Jaf16, CJ16, BG18, BCS24, BCS25], where
+β0 is taken to be a small dimensional constant.
+                                                                                  ˚
+    The paper [SZZ23] also works in the ’t Hooft regime, with the β0 taken to be βG {2 for G P tSUpN q, SOpN qu,
+i.e. the threshold appearing in [SZZ23] is half the threshold in the current paper. We obtain an improved
+threshold because we apply Bakry-Emery theory to a spin system defined on vertices, while [SZZ23] applies
+Bakry-Emery theory directly to lattice Yang–Mills, which is a spin system defined on edges. The combina-
+torial factors which appear in the proofs turn out to be a bit better for spin systems defined on vertices,
+essentially because every edge contains two vertices, while every plaquette contains four edges (and two is
+less than four). We thank Hao Shen, Rongchan Zhu, and Xiangchan Zhu for pointing this out to us.
+    We now state the main result of the paper.
+Theorem 1.6 (Area law in the ’t Hooft regime). Let d ě 2, N ě 2, and G P tUpN q, SUpN q, SOp2pN ´ 1qqu.
+                 ˚
+Then for β ă βG    , there are constants C “ Cpβ, d, N q and c “ cpβ, d, N q such that for any rectangular loop
+ℓ in the lattice Λ, where the side lengths of ℓ are at most L{2, we have that
+                                        |xWℓ yΛ,β | ď C expp´c areapℓqq.
+Remark 1.7. The restriction to N ě 2 for SUpN q arises because SUp1q “ t1u leads to a trivial model for
+which the result does not hold. The same restriction for UpN q arises because our proof proceeds by reducing
+to the SUpN q case, as previously mentioned. The restriction to even matrix sizes in SOp2N q arises because
+in order to apply the result of [DF80], the group G must have a nontrivial center. This rules out the cases of
+G “ SOp2N `1q. For more discussion on the role of the center and its relation to area law, see [DF80, Cha21].
+                        DYNAMICAL APPROACH TO AREA LAW FOR LATTICE YANG–MILLS                                         3
+
+
+   Since we intend for this paper to be a short note, we will not try to give an exhaustive list of references.
+For some previous work on Wilson’s area law in various regimes, see [Orl05, Orl06, Orl07, Orl08, Orl20]. For
+a thorough review of the mathematical literature, see [Cha19b, Section 6]
+   We now briefly summarize the rest of the paper. In Section 2, we introduce the mass gap assumption of
+[DF80] which implies area law. In Section 3, we discuss how the Bakry-Emery condition implies the mass
+gap assumption of [DF80], and additionally we use a conditioning trick to reduce the case G “ UpN q to the
+case G “ SUpN q. This will give the proof of Theorem 1.6 for all cases of G.
+Remark 1.8. Some of our calculations are very similar to calculations given in [SZZ23]. In these cases, to avoid
+repeating the full arguments from [SZZ23], we have indicated the pages of [SZZ23] where the calculations
+occur and have noted the few specific modifications needed for our setting. Specifically, we will invoke the
+proofs of Lemma 3.3, Lemma 4.1, and Corollary 4.11 from [SZZ23] (roughly seven pages of calculations). In
+order to follow the proofs in the current paper, the reader should have a copy of those arguments on hand.
+We also make heavy use of results from [DF80], which we are able to cite more directly.
+Acknowledgements: We sincerely thank Martin Hairer, Peter Orland, Hao Shen, Rongchan Zhu, and
+Xiangchan Zhu for helpful discussions and comments. S.C. was partially supported by the NSF under Grant
+No. DMS-2303165. R.N. was supported by the NSF under Grant No. GRFP-2141064. S.S. was partially
+supported by the NSF under Grant No. DMS-2153742.
+
+                                  2. σ-Model Mass Gap Implies Area Law
+   In this section, we discuss [DF80, Theorems 1.2 and 1.3] using the notation of the present paper. The
+fundamental observation is that if we condition on all edges on the top and bottom horizontal boundaries of
+a given height-1 slab, then we obtain a σ-model with boundary conditions. In more detail, for some integer
+k P Z, we may condition on the value of Qe for all edges e lying in the “horizontal” planes tx “ px1 , . . . , xd q P
+Zd : xd “ ku and tx “ px1 , . . . , xd q : xd “ k ` 1u. We write Qe “ Ae for edges e in the former plane, and
+Qe “ Be for edges in the latter plane. Having fixed the “boundary conditions” Ae and Be , we may further
+identify the “vertical” edges going between the two horizontal planes by their base point, and as a result
+the joint law of pQe qe for the vertical edges e is given by the following nonlinear σ-model on vertices in
+Λd´1 “ pZd {LZd q ˆ tku.
+Definition 2.1. Let G Ď UpN q be a compact Lie group. Given boundary fields
+                                                                                        `
+                                A “ pAe qePE `            , B “ pBe qePE `     P UpN qEΛd´1 ,
+                                                   Λd´1                 Λd´1
+                                  d´1
+we define the action SA,B : GΛ          Ñ R by
+                                                             ÿ
+                               SA,B pQq :“ N β                        ReTrpQx Ae Q´1 ´1
+                                                                                  y Be q,
+                                                     e“px,yqPE `d´1
+                                                              Λ
+                                        d´1
+as well as the measure µA,B on GΛ             by
+                                             1
+                                        dµA,B pQq :“
+                                                 exppSA,B pQqqdQ,                                                 (2.1)
+                                            ZA,B
+           ś                                                   ´
+where dQ :“ vPΛd´1 dQv is the product Haar measure, and ZA,B :“ exppSA,B pQqqdQ.
+Remark 2.2. Here, we took the boundary fields A, B to be UpN q-valued, even though G Ď UpN q may not be
+all of UpN q. This will be convenient for later, when we apply the “conditioning trick” to extend our results
+from SUpN q to UpN q. In particular, this is not needed if one wishes to just consider SUpN q, SOp2N q.
+   We now state a combined version of [DF80, Theorems 1.2 and 1.3].
+Theorem 2.3 (Theorems 1.2 and 1.3 of [DF80]). Let N ě 1 and G Ď UpN q be a compact Lie group such
+that there exists z P Up1q with z ‰ 1, zI P G (here I is the N ˆ N identity matrix). Let d ě 2 and β ě 0.
+For i, j P rN s and x P Λd´1 , let fxi,j pQq “ pQx qij and gxi,j pQq “ pQ´1   x qij . Suppose that there exist constants
+C1 and C2 only depending on G, d, β (and in particular not on A, B) such that for any x, y P Λd´1 and
+i1 , j1 , i2 , j2 P rN s, we have that
+                                       ˇ        `               ˘ˇ
+                                       ˇCovA,B fxi1 j1 , gyi2 j2 ˇ ď C1 e´C2 dpx,yq ,
+4                                SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+where the covariance is with respect to the σ-model µA,B . Then the corresponding lattice Yang-Mills theory
+with the same G, β and with dimension d exhibits area law. I.e. there are constants C1 , C2 only depending
+on G, d, β such that for any rectangular loop ℓ in the lattice Λ, where the side lengths of ℓ are at most L{2,
+we have that
+                                      ˇ         ˇ
+                                      ˇxWℓ yΛ,β ˇ ď C1 expp´C2 areapℓqq.                                  (2.2)
+Proof. We sketch the argument, referring the reader to [DF80] for a more complete explanation. Let ℓR,T be
+a rectangular loop with side lengths R, T . First, we condition on all the values of Qe orthogonal to the length-
+T side of the rectangular loop. We refer to T as the “vertical side length”. Recalling that WℓR,T “ trpQℓR,T q,
+we then expand trpQℓR,T q as a sum of N |ℓR,T | terms which are products of |ℓR,T | matrix entries from matrices
+assigned to the edges along the loop. Since we conditioned all of the edges orthogonal to the vertical side
+of the rectangle, all the entries corresponding to “horizontal” edges on the length-R side are fixed, and the
+remaining product of entries only depends on the height-1 slab to which they belong. Thus the terms in
+xtrpQℓR,T qyΛ,β break down into products of T two point correlation functions of the form
+                                                   EA,B rfxi1 j1 gyi2 j2 s,
+where dpx, yq “ R. Now by assumption, there exists z P Up1q such that z ‰ 1, zI P G. One may show that
+(refer to [DF80, Theorem 1.3] for more details)
+                                            EA,B rfxi1 j1 s “ zEA,B rfxi1 j1 s.
+Thus since z ‰ 0, the above expectation is zero, and thus
+                                                                   `                 ˘
+                                   EA,B rfxi1 j1 gyi2 j2 s “ CovA,B fxi1 j1 , gyi2 j2 .
+By assumption, the right hand side is bounded (uniformly in A, B) by C1 e´C2 R . It thus follows that
+                               xtrpQℓR,T qyΛ,β ď C1 N |ℓR,T | expp´C2 areapℓR,T qq.                         (2.3)
+To prove (2.2), we recall that any lattice Yang–Mills theory with gauge group that has nontrivial center
+always (at least) exhibits the perimeter law (see e.g. [Cha21, Lemma 12.3]), i.e.
+                                        xtrpQℓR,T qyΛ,β ď C11 expp´C21 |ℓR,T |q.
+Thus if areapℓR,T q ě C|ℓR,T | for some appropriately chosen constant C, the perimeter prefactor N |ℓR,T | in
+(2.3) may be absorbed into the area decay and we obtain area law, otherwise if areapℓR,T q ă C|ℓR,T |, then
+the perimeter and area are comparable, and so the above perimeter law is enough to imply an area law
+bound.                                                                                                     □
+
+                                              3. σ-Model Mass Gap
+   In this section, we observe that the arguments of [SZZ23] can be used to verify the assumptions of Theorem
+2.3. We first discuss the cases G P tSUpN q, SOpN qu, before moving on to the case G “ UpN q. Recall that
+Λd´1 denotes a pd ´ 1q-dimensional slice of the d-dimensional lattice Λ “ ΛL .
+Notation 3.1 (Local observables). A local observable is a function f : GΛf Ñ R, where Λf Ď Zd´1 is a
+finite subset of vertices. In particular, whenever we specify a local observable f , we implicitly also specify
+the set Λf . Additionally, for any lattice Λ̃ Ď Zd´1 such that Λf Ď Λ̃, we have may extend f to a function
+f : GΛ̃ Ñ R. Given a local observable f , let
+                                                         ÿ
+                                            |||f |||8 :“   }∇x f }L8 .
+                                                           xPΛf
+
+  We now state the first main result of the section, which is that the assumptions of Theorem 2.3 hold for
+G P tSUpN q, SOpN qu.
+                                                                                          ˚
+Proposition 3.2 (Uniform Mass Gap for σ-Model). Let N ě 2. For G P tSUpN q, SOpN qu, β ă βG , and
+                                    `
+any choice of fields A, B P UpN qEΛd´1 , there are constants C1 , C2 only depending on G, d, β, such that for
+                                     d´1
+any local observables f, g P C 8 pGΛ q, we have that
+                   ˇ              ˇ
+                   ˇCovA,B pf, gqˇ ď C1 e´C2 dpΛf ,Λg q p|||f ||| |||g||| ` }f }L2 pµ q }g}L2 pµ q q.
+                                                                 8       8            A,B   A,B
+
+Here, the covariance is with respect to µA,B (recall Definition 2.1).
+                      DYNAMICAL APPROACH TO AREA LAW FOR LATTICE YANG–MILLS                                      5
+
+
+  Before proving Proposition 3.2, we make the trivial observation that Theorem 2.3 now follows for G P
+tSUpN q, SOpN qu.
+Proof of Theorem 1.6 for G P tSUpN q, SOpN qu. This now follows by combining Theorem 2.3 with Proposi-
+tion 3.2.                                                                                           □
+Proof of Proposition 3.2. For an introduction to the geometric preliminaries used in the proof, see [SZZ23,
+Section 2]. Similarly, as much of the argument is the exact same as in [SZZ23], we leave many of the details
+to the cited reference, although we will provide precise citations to the corresponding locations in [SZZ23].
+First, by exactly the same arguments as in the proof of [SZZ23, Lemma 4.1], we may show that for any
+                           `                       d´1                                             d´1
+boundary fields A, B P GEΛd´1 , any field Q P GΛ , and any tangent vector v “ XQ P TQ GΛ                 , we have
+the Hessian bound (recall Definition 2.1 for the definition of SA,B )
+                                      |HessSA,B pv, vq| ď 4pd ´ 1qN β|v|2 .                                  (3.1)
+In more detail, referring to the top of [SZZ23, Page 823] for the start of the proof of [SZZ23, Lemma 4.1], one
+sees that even with the additional boundary conditions A, B, one may perform the exact same computations
+as in [SZZ23, (4.3)-(4.4)] and the next three math displays thereafter. Then in the fourth math display
+after [SZZ23, (4.4)], one applies Cauchy-Schwarz, and the additional boundary conditions A, B disappear
+completely (due to the fact that A, B consist of unitary matrices). To be precise, one should replace EΛ`
+therein by our Λd´1 . From this, one obtains the intermediate estimate
+                 ˇ              ˇ          ÿ     ÿ                     ÿ      1`                 ˘
+                 ˇHessS pv, vqˇ ď N β
+                        A,B
+                                                      |Xx |2 ` N β               |Xx |2 ` |Xx1 |2 ,
+                                            d´1   `                       d´1
+                                                                              2
+                                       xPΛ     ePE d´1             x‰yPΛ
+                                                  Λ                  x„y
+                                                 eQx
+
+where here e Q x denotes that the edge e contains the vertex x, and x „ y denotes that px, yq is an (oriented)
+edge of Λd´1 . The first term on the right hand side corresponds to the term estimated in fifth math display
+after [SZZ23, (4.4)], while the second term corresponds to the term estimated in the sixth math display after
+[SZZ23, (4.4)]. To further estimate the above, we use that each vertex of Λd´1 is contained in 2pd ´ 1q edges
+of Λd´1 , from which we obtain
+                      ˇ              ˇ                ÿ                  ÿ          ÿ
+                      ˇHessS pv, vqˇ ď 2pd ´ 1qN β
+                             A,B
+                                                           |Xx |2 ` N β      |Xx |2    1
+                                                     xPΛd´1               xPΛd´1     eQx
+                                                       2
+                                      ď 4pd ´ 1qN β|v| ,
+where here |v| is the norm of the tangent vector v, which has the more explicit form
+                                                     ÿ
+                                            |v|2 “       |Xx |2 .
+                                                     xPΛd´1
+
+This shows the Hessian bound (3.1). From this, it follows that the Bakry-Emery condition holds:
+                                RicGΛd´1 pv, vq ´ HessSA,B pv, vq ě KSA,B |v|2 ,                             (3.2)
+where KSA,B is almost exactly the same as KS in [SZZ23, Assumption 1.1], i.e.
+                                     #
+                                       N `2
+                                            ´ 1 ´ 4N βpd ´ 1q, G “ SOpN q,
+                            KSA,B “ N4`2
+                                        2 ´ 1 ´ 4N βpd ´ 1q, G “ SUpN q.
+
+The argument establishing (3.2) is almost exactly the same as in the proof of [SZZ23, Theorem 4.2]. The only
+difference is that our 4N βpd ´ 1q is 8N βpd ´ 1q in [SZZ23, Assumption 1.1], which is due to the fact that the
+Hessian bound proven in [SZZ23, Lemma 4.1] involves a prefactor 8 (whereas we have a prefactor 4 in 3.1).
+                                                                                       ˚
+Similar to the remark right after [SZZ23, Assumption 1.1], the assumption that β ă βG    (recall Definition 1.4)
+is equivalent to KSA,B ą 0. Then as in [SZZ23, Corollary 4.4 and Remark 4.6], the Bakry-Emery condition
+(3.2) implies that for any local observable f ,
+                                                   ˘1{2
+                                                        ď e´KSA,B t }f }L2 pµA,B q ,
+                                   `
+                                     VarA,B pPt f q                                                        (3.3)
+where Pt is a semigroup with generator L given by
+                                      ÿ              ÿ
+                            LF pQq “      ∆x F pQq `   x∇x SA,B pQq, ∇x F y.                                 (3.4)
+                                        xPVΛ             xPVΛ
+6                                     SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+The remainder of the argument exactly follows the proof of [SZZ23, Corollary 4.11], thus we only sketch the
+ideas here. First, by the invariance of µA,B with respect to the semigroup Pt (see e.g. [SZZ23, Lemma 3.3]),
+we may write                                 `                    ˘
+                         CovA,B pf, gq “ EA,B Pt pf gq ´ Pt f Pt g ` CovA,B pPt f, Pt gq.                    (3.5)
+Take t „ dpΛf , Λg q. The latter term may be directly estimated by (3.3) (see e.g. [SZZ23, (4.27)]). To
+estimate the former term, first note that when t “ 0, Pt pf gq ´ Pt f Pt g “ 0. Next, since f, g are local
+observables with supports separated at distance dpΛf , Λg q, and since Pt is a semigroup whose generator
+has a “local” structure (which is reflected in the fact that the action SA,B is defined by only looking at
+neighboring spins), one expects that for t not too large, we still have that Pt pf gq ´ Pt f Pt g is approximately
+zero. More quantitatively, we expect that if t „ cdpΛd´1
+                                                       f  , Λd´1
+                                                              g   q for some sufficiently small constant c, then
+                                    |Pt pf gq ´ Pt f Pt g| ď Ce´cdpΛf ,Λg q |||f |||L8 |||g|||L8 .
+This is indeed shown in the proof of [SZZ23, Corollary 4.11]1; see the argument appearing after [SZZ23,
+(4.27)], which remains completely unchanged for us. Combining the estimates for the two terms in (3.5), the
+covariance bound now follows.                                                                            □
+   Having proven Theorem 1.6 in the cases G P tSUpN q, SOpN qu, we now turn to the case G “ UpN q.
+Because UpN q does not have uniformly positive Ricci curvature, one cannot directly verify the Bakry-Emery
+condition in this case. Instead, we proceed by using the fact that UpN q “ Up1q ˆ SUpN q, in the sense that
+the product of Haar-distributed Up1q and SUpN q matrices is a Haar-distributed UpN q matrix. Thus, we
+may condition on the Up1q part, leaving the SUpN q part, which we already know how to handle. Besides
+this conditioning trick, we also need to introduce a few more definitions before stating the main proposition
+for the UpN q case.
+                                                            d´1                                                          d´1
+Definition 3.3. For any function f : UpN qΛ                        Ñ C and some field pzx qxPΛd´1 P Up1qΛ                      , we define
+                                           d´1
+fz pQ̃q “ f pz Q̃q as a function on SUpN qΛ .
+                                                                  d´1
+Definition 3.4. We say that a function f : UpN qΛ                       Ñ C is linear if
+                                                                                     d´1
+                                       f peiθ Qq “ eiθ f pQq, Q P UpN qΛ                   , θ P R,
+                                                                                                             d´1
+where eiθ Q :“ peiθ Qx qxPΛd´1 . This is a slight abuse of terminology, because UpN qΛ                             is not a vector space.
+Remark 3.5. We remark that the function function fxi1 j1 appearing in Theorem 2.3 is linear, as it is defined
+as the pi1 , j1 q matrix entry of the matrix Qx at the vertex x.
+    We now state and prove the following corollary of Proposition 3.2.
+Corollary 3.6 (Uniform mass gap for σ-Model, UpNq Case). Let N ě 2 and G “ UpN q. There are
+                                                                                   ˚
+constants C1 , C2 only depending on G, d, β such that the following holds for β ă βUpN q . For any choice of
+                    `                                                          d´1
+fields A, B P GEΛd´1 and any local observables f, g P C 8 pGΛ q such that f is linear, we have that
+                ˇ             ˇ                            `                                        ˘
+                ˇCovA,B pf, gqˇ ď C1 e´C2 dpΛf ,Λg q sup     |||fz |||8 |||gz |||8 ` }fz }L8 }gz }L8 ,
+                                                             zPUp1qΛd´1
+
+where the covariance is with respect to µA,B .
+Proof. Taking two independent random variables z, Q̃ such that Q̃ „ HaarpSUpN qq, and z „ HaarpUp1qq,
+we have that z Q̃ „ HaarpUpN qq. This allows us to split Haar integration over UpN q into a product of Haar
+integration over Up1q and Haar integration over SUpN q. In particular, for any observable f , we have that
+            ˆ ź                                ˆ ź           ˆ ź
+                                 `         ˘                                           `          ˘
+                    dQv f pQq exp SA,B pQq “             dzv          dQ̃v f pz Q̃q exp SÃ,B pQ̃q ,
+                 vPΛd´1                                           vPΛd´1          vPΛd´1
+                                                            ˆ      ź                   ˆ
+                                                        “                  dzv ZÃ,B        fz pQ̃qdµÃ,B pQ̃q,                      (3.6)
+                                                                  vPΛd´1
+
+    1From [SZZ23, Remark 4.12], the constant c that one obtains decays with N , but this is not necessarily optimal, as mentioned
+in the cited remark.
+                          DYNAMICAL APPROACH TO AREA LAW FOR LATTICE YANG–MILLS                                              7
+
+
+where Ãe “ zx zy´1 Ae , and SÃ,B , µÃ,B , ZÃ,B are as in Definition 2.1 (with the G therein taken to be SUpN q).
+Applying this identity with f ” 1, we also have the normalizing constant identity
+                                      ˆ ź                               ˆ ź
+                           ZA,B “                dQv exppSA,B pQqq “              dzv ZÃ,B .                  (3.7)
+                                              vPΛd´1                                 vPΛd´1
+
+We will shortly use the following result: for fixed z “ pzv qvPΛd´1 , applying the SUpN q uniform mass gap
+result (Proposition 3.2) (and further bounding the L2 pµÃ,B q norm by the L8 norm), we have that
+                     ˇ                   ˇ       ´C2 dpΛf ,Λg q
+                                                                `                                        ˘
+                     ˇCov
+                          Ã,B pfz , gz q ď C1 e                  |||fz |||8 |||gz |||8 ` }fz }L8 }gz }L8 . (3.8)
+                                         ˇ
+                                                                                                       d´1
+Next, since N ě 2, we may take k P rN ´1s such that ei2πk{N ‰ 1. Given Q̃ P SUpN qΛ , let Q̃1 “ ei2πk{N Q.
+The action SA,B (recall Definition 2.1) remains invariant under this multiplication, i.e. SÃ,B pQ̃q “ SÃ,B pQ̃1 q.
+Additionally, Haar measure on SUpN q remains invariant under this multiplication. Then since f is linear by
+assumption, it follows that
+                    ˆ                     ˆ                               ˆ
+                                                 1                 i2πk{N
+                      fz pQ̃qdµÃ,B pQ̃q “ fz pQ̃ qdµÃ,B pQ̃q “ e          fz pQ̃qdµÃ,B pQ̃q,
+
+and since ei2πk{N ‰ 1, it follows that the above is zero. Combining this with (3.6), (3.8), and (3.7), we
+obtain
+                    ˇ      ˆ ź                                   ˇ
+  ˇ             ˇ ˇ                                              ˇ
+  ˇCovA,B pf, gqˇ “ ˇZ ´1           dzv ZÃ,B CovÃ,B pfz , gz qˇˇ
+                    ˇ A,B
+                             vPΛd´1
+                    ˆ       ˆ ź                ˙
+                                                                       `                                        ˘
+                  ď ZA,B´1
+                                     dzv ZÃ,B C1 e´C2 dpΛf ,Λg q  sup   |||fz |||8 |||gz |||8 ` }fz }L8 }gz }L8 ,
+                                    vPΛd´1                                     zPUp1qΛd´1
+                             ´C2 dpΛf ,Λg q
+                                                       `                                          ˘
+                    “ C1 e                      sup        |||fz |||8 |||gz |||8 ` }fz }L8 }gz }L8 ,
+                                          zPUp1qΛd´1
+
+as desired.                                                                                                                 □
+
+Proof of Theorem 1.6 for G “ UpN q. This now follows by combining Theorem 2.3 and Corollary 3.6, where
+we use the fact that fxi1 j1 is linear (recall Remark 3.5).                                         □
+
+                                                            References
+[BCS24] Jacopo Borga, Sky Cao, and Jasper Shogren-Knaak. Surface sums for lattice Yang-Mills in the large-N limit. arXiv
+         e-prints, page arXiv:2411.11676, November 2024.
+[BCS25] Jacopo Borga, Sky Cao, and Jasper Shogren-Knaak. Surface sums in two-dimensional large-N lattice Yang–Mills:
+         Cancellations and explicit computation for general loops. arXiv e-prints, page arXiv:2508.13827, August 2025.
+[BG18] Riddhipratim Basu and Shirshendu Ganguly. SOpN q lattice gauge theory, planar and beyond. Commun. Pure Appl.
+         Math., 71(10):2016–2064, 2018.
+[Cha19a] Sourav Chatterjee. Rigorous solution of strongly coupled SO(N ) lattice gauge theory in the large N limit. Commu-
+         nications in Mathematical Physics, 366(1):203–268, 2019.
+[Cha19b] Sourav Chatterjee. Yang-Mills for probabilists. In Probability and Analysis in Interacting Physical Systems, pages
+         1–16. Springer, Cham: Springer, 2019.
+[Cha21] Sourav Chatterjee. A probabilistic mechanism for quark confinement. Communications in Mathematical Physics,
+         385(2):1007–1039, 2021.
+[CJ16]   Sourav Chatterjee and Jafar Jafarov. The 1{N expansion for SO(N ) lattice gauge theory at strong coupling. arXiv
+         preprint arXiv:1604.04777, 2016.
+[CNS25] Sky Cao, Ron Nissim, and Scott Sheffield. Expanded regimes of area law for lattice Yang-Mills theories. arXiv e-prints,
+         page arXiv:2505.16585, May 2025.
+[CPS23] Sky Cao, Minjae Park, and Scott Sheffield. Random surfaces and lattice Yang-Mills. arXiv e-prints, page
+         arXiv:2307.06790, July 2023. To appear in Comm. Amer. Math. Soc.
+[DF80]   B Durhuus and J Fröhlich. A connection between ν-dimensional yang-mills theory and (ν- 1)-dimensional, non-linear
+         σ-models. Communications in Mathematical Physics, 75(2):103–151, 1980.
+[Jaf16]  Jafar Jafarov. Wilson loop expectations in SU(N ) lattice gauge theory. arXiv preprint arXiv:1610.03821, 2016.
+[Orl05] Peter Orland. p2 ` 1q-dimensional lattice qcd. Phys. Rev. D, 71:054503, Mar 2005.
+[Orl06] Peter Orland. Integrable models and confinement in p2 ` 1q-dimensional weakly-coupled yang-mills theory. Phys. Rev.
+         D, 74:085001, Oct 2006.
+[Orl07] Peter Orland. String tensions and representations in anisotropic (2`1)-dimensional weakly-coupled yang-mills theory.
+         Phys. Rev. D, 75:025001, Jan 2007.
+8                                    SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+[Orl08]   Peter Orland. Composite strings in (2 ` 1)-dimensional anisotropic weakly coupled yang-mills theory. Phys. Rev. D,
+          77:025035, Jan 2008.
+[Orl20]   Peter Orland. Confinement for all couplings in a Z2 lattice gauge theory. J. Phys. A, 53(13):13LT01, 2020.
+[OS78]    K Osterwalder and E Seiler. Gauge field theories on a lattice. Annals of Physics, 110(2):440–471, 1978.
+[SZZ23]   Hao Shen, Rongchan Zhu, and Xiangchan Zhu. A stochastic analysis approach to lattice Yang-Mills at strong coupling.
+          Comm. Math. Phys., 400(2):805–851, 2023.
+[SZZ24]   Hao Shen, Rongchan Zhu, and Xiangchan Zhu. Langevin dynamics of lattice Yang-Mills-Higgs and applications. arXiv
+          e-prints, page arXiv:2401.13299, January 2024.
+[Wil74]   Kenneth G Wilson. Confinement of quarks. Physical review D, 10(8):2445, 1974.
+
+    Department of Mathematics, Massachusetts Institute of Technology, Cambridge, MA 02139
+    Email address: skycao@mit.edu
+
+    Email address: rnissim@mit.edu
+
+    Email address: sheffield@math.mit.edu
+

@@ -1,0 +1,484 @@
+The renormalization group according to Balaban
+
+                         J. Dimock
+                       SUNY at Buffalo
+
+
+                         May 27, 2013
+
+
+
+
+        J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Outline:
+  I Overview
+
+  I Results by Balaban
+
+  I Exposition of the method for φ4              (some new features)
+                                  3
+  I Technical remarks
+
+
+
+
+               J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Overview
+
+
+                           d
+    I T−N =       L−N Z/LM Z
+       M
+      = toroidal lattice with spacing L−N , linear dimension LM .
+    I fields ϕ : T−N → R
+                  M
+    I Euclidean action A(ϕ)
+                                          R             Q
+    I partition function ZM,N =               exp − A(ϕ)    x dϕ(x)
+    I correlation functions                Q
+        −1
+            R
+      ZM,N    ϕ(x1 ) . . . ϕ(xn ) exp − A(ϕ)   x dφ(x)
+    I UV problem - bounds uniform in N.
+      IR problem - bounds uniform in M
+
+
+
+
+                  J. Dimock SUNY at Buffalo    The renormalization group according to Balaban
+Balaban projects
+
+
+
+
+    1. Scalar electrodynamics in d=2,3 (UV problem, 5 papers,
+       1982-83)
+    2. Yang-Mills in d=3,4 (UV problem, 11 papers, 1984-89)
+    3. Linear σ-model in d ≥ 3 (IR problem, 8 papers, 1995-99)
+
+   (Also with J. Imbrie, A. Jaffe: partial results on abelian Higgs
+   model in d=2,3 (UV and IR, 1988) )
+
+
+
+
+                 J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+1. Scalar electrodynamics in d=2,3
+  I ϕ : T−N → C         A : bonds in T−N
+                                      M →R
+         RM         −Nd
+                        P
+           x ··· = L
+  I with
+                         x ...
+                      Z 
+               1                                                                             
+     A(ϕ, A) =              |∂A ϕ|2 + m2 |ϕ|2 + λ|φ|4 + |∂A|2 + µ2 |A|2
+               2
+    Note: massive photons
+  I Results (after renormalization):
+       I   bounds on effective densities for RG flow uniform in N
+       I   stability bound:
+                                           ZM,N                  
+                exp − cVol(T−N
+                            M    ≤                   ≤ exp cVol(T−N
+                                                                 M )
+                                            ZM,N (0)
+           with constants independent of N, M.
+
+
+
+                J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+2. Yang-Mills in d=3,4
+  I U: bonds in T−N → semi-simple compact Lie group G
+                 M
+                                      
+  I A(U) = 12
+                   R                                               Q
+           g           p tr   1 − U(∂p)             U(∂p) =            b∈∂p U(b)
+  I Results (after renormalization):
+       I   bounds on effective densities for RG flow
+       I   upper stability bound
+  I Caveat: paper on coupling constant flow in second order
+    perturbation theory missing
+
+
+
+
+                J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+3. Linear σ-model in d ≥ 3
+  I ϕ : T0 → Rn             n≥2
+         M
+                                          
+  I A(φ) = β       |∂ϕ|2 + λ(|ϕ|2 − 1)2
+  I Results : For β large, 1 ≤ λ ≤ ∞ and uniformly in M:
+      1. bounds on effective densities for RG flow
+      2. spontanenous magnetization
+      3. massless decay of correlations (Goldstone bosons)
+(Last part with M. O’Carroll)
+
+
+
+
+              J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+ϕ43 model - the UV problem
+                           3
+    I T−N =       L−N Z/LM Z                           ϕ : T−N
+       M                                                    M :→ R
+
+                A(ϕ) = S(ϕ) + V (ϕ)
+                      1         1
+               S(ϕ) = k∂ϕk2 + µ̄ kϕk2
+                      2         2               Z
+                             −N     1         1
+               V (ϕ) = εVol(TM ) + µ kϕk2 + λ ϕ4
+                                    2         4
+    I Scale to Φ : T0
+                    M+N :→ R (Now IR problem)
+               A0 (Φ) = S0 (Φ) + V0 (Φ)
+                       1           1
+              S0 (Φ) = k∂Φk2 + µ̄0 kΦk2
+                       2           2             Z
+                                      1       1
+             V (Φ) = ε0 Vol(TM+N ) + µ0 kΦk2 + λ0 Φ4
+                              0
+                                      2       4
+      with tiny coupling constants:
+              ε0 = L−3N ε               µ0 = L−2N µ               λ0 = L−N λ
+                  J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+RG transformation: define densities ρk (Φk ) on Φk : T0M+N−k → R
+by ρ0 = exp(−A0 (Φ)) and
+                    Z
+                 −1
+                                a                    
+ ρk+1 (Φk+1 ) = Nk+1 exp − 2 kΦk+1,L − QΦk k2 ρk (Φk )dΦk
+                                L
+where
+  I For y ∈ T1
+             M+N−k
+                                               X
+                    (QΦk )(y ) = L−3                       Φk (x)
+                                          x:|x−y |<L/2
+
+  I Φk+1,L (x) = L−1/2 Φk+1 (x/L)
+
+  I Nk+1 is chosen so
+                Z                                Z
+                    ρk+1 (Φk+1 )dΦk+1 =               ρk (Φk )dΦk
+
+    Can calculate partition function from any ρk .
+
+             J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+First step:
+  I
+                        Z       a                                  
+      ρ1 (Φ1 ) = N1−1       exp − 2 kΦ1,L −QΦ0 k2 −S0 (Φ0 )−V0 (Φ0 ) dΦ0
+                                 L
+  I First two terms in exponential have minimum at
+
+                                a       −1
+              Φ0 = a − ∆ + µ̄0 + 2 Q T Q     Q T Φ1,L ≡ ϕ1,L
+                                L
+      where ϕ1 : T−1
+                  M+N−1 → R. (ϕ1 is Φ1 smeared on finer lattice.)
+
+
+
+
+  I Expand around minimizer Φ0 = φ1,L + Z . Integrate over Z .
+
+
+
+
+                J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+I                               Z                      
+         Z1 exp(−S1 (Φ1 ))          exp − V0 (φ1,L + Z ) dµC1 (Z )
+
+    where measure is Gaussian with covariance
+                                     a       −1
+                 C1 = − ∆ + µ̄0 + 2 Q T Q
+                                      L
+I cluster expansion, perturbation theory?
+
+I Problem: need small coupling constants, small fields
+
+
+
+
+             J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Remedy: Insert under integral sign:
+                   X
+               1=      ζ(Ωc , Φ0 , Φ1 )χ(Ω, Φ0 , Φ1 )
+                        Ω
+
+where Ω is union of cubes (not necessarily connected) and
+  I χ(Ω, Φ0 , Φ1 ) enforces that in every cube in Ω we have
+
+
+                            |Φ1,L − QΦ0 | ≤ |log λ0 |p
+
+                                 |∂Φ0 | ≤ |log λ0 |p
+                                          −1/4
+                             |Φ0 | ≤ λ0          |log λ0 |p
+  I ζ(Ωc , Φ0 , Φ1 ) enforces that in every cube in Ωc there is at
+    least one point where one of these inequalities is violated.
+
+
+
+              J. Dimock SUNY at Buffalo    The renormalization group according to Balaban
+                 X
+    ρ1 (Φ1 ) =
+                 Ω
+Z                   a                                              
+  dΦ0,Ωc ζ(Ωc ) exp − 2 kΦ1,L −QΦ0 k2Ωc −S0 (Ωc , Φ0 )−V0 (Ωc , Φ0 )
+                      L
+Z                  a                                           
+  dΦ0,Ω χ(Ω) exp − 2 kΦ1,L −QΦ0 k2Ω −S0 (Ω, Φ0 )−V0 (Ω, Φ0 )
+                     L
+
+Large field integral :
+    I Get factor exp(−|log λ0 |p ) = O(λn ) for every cube in Ωc .
+                                          0
+    I Hence overall exp(−|log λ0 |p |Ωc |).
+
+    I Sufficient to control sum over Ω.
+
+
+
+
+                 J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Small field integral: block averaging supplies a mass for cluster
+expansion. Get
+                                             X                  
+    ZΩ exp − S1 (Ω, Φ1 ) − V1 (Ω, ϕ1,Ω ) +        E1 (X , ϕ1,Ω )
+                                                        X ⊂Ω
+                                                                    Z
+                                 1          1
+          V1 (Ω, ϕ) = ε1 Vol(Ω) + µ1 kφk2Ω + λ1                           φ4
+                                 2          4                         Ω
+where
+ 1. X is connected union of cubes = ”polymer”
+ 2. E1 (X , ϕ) depends on ϕ only in X .
+ 3. E1 (X , ϕ) = O(e −κ|X | ).
+ 4. E1 (X , ϕ) has local parts removed.
+
+
+
+
+               J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Repeat first step. After k steps have lattice T−k
+                                               M+N−k with larger
+coupling constant
+                          λk = Lk λ0 = L−(N−k) λ
+At each step new small field region Ωk defined by λk .
+
+Ω = (Ω1 , · · · Ωk )        Ω 1 ⊃ Ω2 ⊃ · · · Ωk               Ωj = L−(k−j) cubes
+active fields
+Φk,Ω = (Φ0,Ωc1 , Φ1,δΩ1 , . . . , Φk−1,δΩk−1 , Φk,Ωk )               δΩj = Ωj −Ωj+1
+
+                                 2 , . . . , Q k ))
+smeared fields: (Qk,Ω = (QδΩ1 , QδΩ2          Ωk
+                  h                   i−1
+                                T          T
+         ϕk,Ω = ak − ∆ + µ̄k + QΩ aQΩ     QΩ Φk,Ω + . . .
+                                                      Ω1
+and interaction
+                                                                          Z
+                                   1               1
+    Vk (Ωk , ϕk,Ω ) = εk Vol(Ωk ) + µk kϕk,Ω k2Ωk + λk                           ϕ4k,Ω
+                                   2               4                        Ωk
+                J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+After k steps
+
+                 X         k−1
+                           YZ                                            
+ρk (Φk ) =                          dΦj,Ωcj+1 exp − aj kΦj+1,L − QΦj k2Ωc
+                                                                                          j+1
+             Ω=(Ω1 ,···Ωk ) j=0
+
+    k−1
+    Y                                                   X                            
+          exp − S̃j (δΩj ) − Ṽj (δΩj ) +                               B̃j,Ωj (X )
+    j=0                                         X ⊂Ωcj+1 ,X ∩δΩj 6=∅
+                                X           X           
+  ZΩ exp − Sk (Ωk ) − Vk (Ωk ) +   Ek (X ) +   Bk,Ω (X )
+                                             X ⊂Ωk                 X #Ωk
+
+                   × various characteristic functions
+
+
+
+
+                 J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+In Vk (Ωk , φ) = εk Vol(Ωk ) + 12 µk kφk2Ωk + 41 λk Ωk φ4 find
+                                                    R
+
+RG flow:
+                    εk+1 = L3 εk + ε∗k (λk , µk , Ek )
+                    µk+1 = L2 µk + µ∗k (λk , µk , Ek )
+                    λk+1 = L λk
+                   Ek+1 = L(Ek ) + Ek∗ (λk , µk , Ek )
+
+kLk < 1 if we use norm
+                               h                               i
+             kEk kk = sup              sup         |Ek (X , φ)| e κ|X |
+                           X                 −1
+                                   |φ|,|∂φ|≤λk 4
+
+
+
+
+               J. Dimock SUNY at Buffalo     The renormalization group according to Balaban
+Theorem: (Non-perturbative renormalization) Let λ be sufficiently
+small. Then there exists a unique (bounded) solution for
+0 ≤ k ≤ N with εN = 0, µN = 0 and E0 = 0.
+
+proof: Existence equivalent to existence of a fixed point of certain
+operator on space of sequences {µk , Ek }.
+
+Show operator is contraction.
+
+Fixed point theorem.
+
+
+
+
+              J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+After N steps we return to T−N
+                             M with λN = λ.
+Last integral needs no block averaging
+                              Z
+                     ZM,N = ρN (ΦN ) dΦN
+
+Final cluster expansion. Combine all terms that yield a fixed ΩN .
+                          X                X              
+         ZM,N = ZM,N (0)    ρ0 (ΩcN ) exp         EN0 (X )
+                              ΩN                     X ∩ΩN 6=∅
+
+ρ0 (ΩcN ) factors over connected components. After resummation
+                                      X              
+                 ZM,N = ZM,N (0) exp         EN00 (X )
+                                             X ⊂T−N
+                                                 M
+
+
+with kEN00 kN = O(λ1/4 )
+
+
+              J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Theorem (stability bound): For renormalized ϕ43 :
+                                    ZM,N                    
+      exp − cVol(T−N
+                  M  )  ≤                     ≤ exp cVol(T−N
+                                                          M  )
+                                     ZM,N (0)
+
+with constants independent of N, M.
+
+
+
+History
+  I Glimm, Jaffe (1973) - upper bound
+    Feldman-Osterwalder (1975) - M → ∞ limit
+  I Balaban (1983) - upper and lower bound
+
+  I Brydges, Dimock, Hurd (1995) - new proof upper
+
+  I Present work (2011)
+
+
+
+
+              J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+How much perturbation theory?
+  I Glimm, Jaffe (1973) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . High order
+
+  I Balaban (1983)          . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Medium order
+  I Brydges, Dimock, Hurd (1995)                    . . . . . . . . . . . . . . . . Second order
+  I Present work (2011) . . . . . . . . . . . . . . . . . . . . . . . . . . . Zeroth order
+
+
+
+
+                  J. Dimock SUNY at Buffalo      The renormalization group according to Balaban
+Remarks:
+  I Actual proof more complicated
+
+  I Method should work for correlation functions, N → ∞ limit,
+    M → ∞ limit.
+  I Method should work for QED3 as well
+
+
+References:
+ 1. The renormalization group according to Balaban.
+    I. Small fields. ArXiv 1108.1335.
+ 2. The renormalization group according to Balaban.
+    II. Large fields. ArXiv 1212.5562
+ 3. The renormalization group according to Balaban.
+    III. Convergence . ArXiv 1304.0705
+
+
+
+
+              J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Technical remarks
+
+   Locality and smoothness of fields?
+
+   Fields after k steps field on T−k
+                                  M+N−k
+
+                           T
+              ϕk,Ω = Gk,Ω QΩ aΩ Φk,Ω + Gk,Ω ∆Ω1 ,Ωc1 Φ0,Ω1
+   where
+                  h            k
+                               X                         i−1
+            Gk,Ω = − ∆ + µ̄k +   [QjT aj L2(k−j) Qj ]δΩj
+                                                                                  Ω1
+                                             j=1
+
+
+   Effective mass L(k−j) in δΩj (soft boundary conditions).
+
+   Gk,Ω (x, y ) has exponential decay, bounds on derivatives order < 2.
+
+
+                 J. Dimock SUNY at Buffalo         The renormalization group according to Balaban
+Strictly localized fields?
+
+Systematically replace Ω by
+
+                 Ω0 = minimal Ω around final Ωk
+
+
+                 φk,Ω0 − φk,Ω = O(λnk )                   in Ωk
+
+
+
+Then φk,Ω0 is strictly localized near Ωk , still smooth
+
+
+
+
+               J. Dimock SUNY at Buffalo   The renormalization group according to Balaban
+Localize within Ωk ?
+Random walk expansion:
+                                          X
+                   Gk,Ω (x, y ) =               Gk,Ω,ω (x, y )
+                                      ω:x→y
+
+where
+                          ω = (0 , 1 , . . . n )
+is a sequence of (multiscale, overlapping) blocks and
+                                          n
+                                          Y
+                           Gk,Ω,ω =             Kk,Ω,j
+                                          j=0
+
+Use in cluster expansion for for fields and fluctuation covariance
+
+
+
+
+              J. Dimock SUNY at Buffalo     The renormalization group according to Balaban
+

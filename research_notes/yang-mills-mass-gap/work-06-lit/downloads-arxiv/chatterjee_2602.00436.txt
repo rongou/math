@@ -1,0 +1,684 @@
+                                              A short proof of confinement in three-dimensional lattice
+                                                                     gauge theories with a central U(1)
+                                                                                        Sourav Chatterjee∗
+
+                                                                                       Stanford University
+arXiv:2602.00436v2 [math-ph] 8 Jun 2026
+
+
+
+
+                                                                                           June 10, 2026
+
+
+
+                                                               Dedicated to Len Gross on the occasion of his 95 th birthday.
+
+                                                                                              Abstract
+                                                        Pure lattice gauge theories in three dimensions are widely expected to confine. A
+                                                    rigorous proof of confinement for three-dimensional U(1) lattice gauge theory with
+                                                    Villain action was given by Göpfert and Mack. Beyond the abelian case, rigorous
+                                                    confinement results are comparatively scarce; one general mechanism applies when the
+                                                    gauge group has a central copy of U(1). Indeed, combining a comparison inequality of
+                                                    Fröhlich with earlier work of Glimm and Jaffe yields confinement with a logarithmically
+                                                    growing quark–antiquark potential for this class of theories.
+                                                        The purpose of this note is to give a short, self-contained proof of this classical
+                                                    result for three-dimensional Wilson lattice gauge theory: when G ⊆ U(n) contains the
+                                                    full circle of scalar matrices {zI : |z| = 1}, rectangular Wilson loops obey an explicit
+                                                    upper bound of the form |⟨Wℓ ⟩| ≤ n exp{−c(1 + nβ)−1 T log(R + 1)}.
+
+                                                    Key words and phrases. Lattice gauge theory, quark confinement, area law.
+                                                    2020 Mathematics Subject Classification. 70S15, 81T13, 81T25, 82B20.
+
+
+
+                                          1        Lattice gauge theories and Wilson loops
+                                          Let G be a compact Lie subgroup of U(n) for some n. Fix a finite set Λ ⊆ Zd . A (free-
+                                          boundary) lattice gauge configuration on Λ assigns to each oriented nearest-neighbor edge
+                                          (x, y) with x, y ∈ Λ an element U (x, y) ∈ G, subject to the constraint U (y, x) = U (x, y)−1 .
+                                          Let G(Λ) denote the space of such configurations.
+                                               A unit square in Λ bounded by four edges is called a plaquette; write P (Λ) for the set of
+                                          plaquettes. For p ∈ P (Λ) with vertices x1 , x2 , x3 , x4 listed in counterclockwise order (with
+                                          x1 the lexicographically smallest vertex and x2 the second-smallest), define the plaquette
+                                          holonomy
+                                                                  Up := U (x1 , x2 ) U (x2 , x3 ) U (x3 , x4 ) U (x4 , x1 ).
+                                              ∗
+                                                  Department of Statistics, Stanford University, USA. Email: souravc@stanford.edu.
+
+
+                                                                                                   1
+The Wilson action of U is defined as
+                                               X
+                                 SΛ (U ) :=             Re(Tr(I − Up )),
+                                              p∈P (Λ)
+
+
+where I is the identity matrix of order n. Let σΛ be the product Haar measure on G(Λ),
+normalized to be a probability measure. Given β > 0, let µΛ,β be the probability measure
+on G(Λ) defined as
+                                          1
+                             dµΛ,β (U ) := e−βSΛ (U ) dσΛ (U ) ,
+                                          Z
+where Z is the normalizing constant. This probability measure is called the Wilsonian
+lattice gauge theory on Λ for the gauge group G, with inverse coupling strength β, and free
+boundary condition.
+    A Wilson loop ℓ is a sequence of points in x0 , x1 , . . . , xk in Zd , not necessarily distinct,
+such that for each 0 ≤ j ≤ k − 1, xj+1 is a neighbor of xj , and x0 is a neighbor of xk . In
+other words, ℓ is a closed loop in Zd . Suppose that a Wilson loop ℓ = (x0 , x1 , . . . , xk ) is
+contained in Λ. The Wilson loop observable for ℓ is defined as
+
+                 Wℓ (U ) := Tr(U (x0 , x1 )U (x1 , x2 ) · · · U (xk−1 , xk )U (xk , x0 )).
+
+
+2    Quark confinement
+A central qualitative prediction of lattice gauge theory is confinement [8]: the energy
+required to separate a static quark–antiquark pair should diverge with the separation. In
+the lattice formulation this is often expressed through bounds on rectangular Wilson loops.
+We say that the theory confines if there exists a function V : (0, ∞) → R with V (R) → ∞
+as R → ∞ such that for every rectangular loop ℓ in Zd with side lengths R ≤ T ,
+
+                                         |⟨Wℓ ⟩| ≤ Ce−V (R)T ,
+
+where C is a constant independent of R and T (and the volume is taken large enough
+so that ℓ is contained in Λ). A theory that does not satisfy such a bound is called
+deconfining. A particularly important case is Wilson’s area law, where V (R) grows linearly
+in R; equivalently, |⟨Wℓ ⟩| decays at least like exp{−c area(ℓ)} for some c > 0. By contrast,
+deconfining theories typically exhibit a perimeter law, with ⟨Wℓ ⟩ decaying on the scale
+of C1 e−C2 (R+T ) .
+
+
+3    Confinement in 3D lattice gauge theories
+This note concerns three-dimensional Wilson lattice gauge theory with a compact gauge
+group G ⊆ U(n) whose center contains a full copy of U(1), namely
+
+                                    {zI : z ∈ C, |z| = 1} ⊆ G.
+
+
+                                                    2
+This class includes U(n) itself and many related compact groups. Our goal here is expository:
+we give an elementary, self-contained argument implying confinement in the sense that the
+effective potential V (R) diverges with the separation R. The resulting bound is logarithmic
+in R (and therefore weaker than the expected linear behavior in d = 3), but the proof is
+short and stays entirely within the lattice framework. Our main result is the following.
+
+Theorem 3.1. Let G be a compact Lie subgroup of U(n) for some n. Assume that zI ∈ G
+for all z ∈ C with |z| = 1, where I denotes the n × n identity matrix. Let Λ be a finite
+subset of Z3 and β be a positive real number. Consider the lattice gauge theory on Λ with
+this G and β, under free boundary condition. For any rectangular loop ℓ contained in Λ
+with side lengths R ≤ T , we have
+
+                                                   −1 T log(R+1)
+                              |⟨Wℓ ⟩| ≤ ne−C(1+nβ)                 ,
+
+where C is a positive universal constant.
+
+History. Using an inequality of Messager, Miracle-Sole, and Pfister [7], Fröhlich [1]
+proved that U(n) lattice gauge theory confines whenever the corresponding U(1) theory
+does. Earlier, Glimm and Jaffe [2] established confinement for three-dimensional U(1) gauge
+theory with a logarithmically growing potential, using ideas originating in the McBryan–
+Spencer approach to the Mermin–Wagner theorem [4]. Combining these results yields
+Theorem 3.1; indeed it appears as Corollary 2 in [1]. The purpose of the present note is to
+provide a single, streamlined proof in this setting, with all estimates carried out directly on
+the lattice, and without appealing to several separate arguments across multiple papers.
+
+Idea of the proof. The proof of Theorem 3.1 adapts the Mermin–Wagner “complex
+rotation” mechanism for the two-dimensional XY model [5, 6]. The central U(1) allows us
+to introduce auxiliary U(1) edge variables and to decompose the Wilson loop into a U(1)
+phase factor and a bounded G-matrix factor; we then condition on the latter. A convenient
+geometric choice of conditioning yields an essentially two-dimensional structure and a
+factorization over T slices. This reduces the problem to bounding a two-point function in a
+weighted XY-type model in two dimensions, for which we obtain a power-law bound by a
+short argument.
+
+On the stronger area law. For U(1) gauge theory in d = 3, confinement is known to
+be substantially stronger: Göpfert and Mack [3] proved positivity of the string tension
+for all couplings in a Villain-type formulation, i.e., an area law and at least linear growth
+of the quark–antiquark potential. It is natural to ask whether an appropriate version of
+Fröhlich’s comparison inequality could be combined with such inputs to yield an area law for
+three-dimensional U(n) gauge theory with Wilson action. We do not pursue this here, since
+doing so carefully would require additional technology and a careful comparison between
+formulations and limits.
+
+
+                                              3
+4    Proof
+The proof requires the following ‘anti-concentration’ lemma about a certain class of proba-
+bility measures on U(1).
+
+Lemma 4.1. Take any w ∈ C and let µ be the probability measure on U(1) that has density
+proportional to exp{Re(zw)} with respect to the Haar measure on U(1). Then
+                       ZZ
+                            |z1 − z2 |2 dµ(z1 )dµ(z2 ) ≥ C min{1, |w|−1 },
+
+where C is a positive universal constant.
+
+Proof. By Taylor expansion, we have that for any x ∈ R,
+
+                                                          x2
+                                      |eix − 1 − ix| ≤       .                            (4.1)
+                                                          2
+
+Thus, for any z ∈ U(1) and x ∈ R,
+
+                              |z − zeix | ≥ |izx| − |z(1 − eix + ix)|
+                                                  1
+                                          ≥ |x| − x2 .
+                                                  2
+
+Choosing
+                                   ϵ := min{1, |w|−1/2 } ≤ 1,
+
+we get that for any z ∈ U(1),
+
+                                                     1    ϵ
+                                   |z − ze±iϵ | ≥ ϵ − ϵ2 ≥ .                              (4.2)
+                                                     2    2
+
+Define ρ : U(1) → [0, ∞) as
+                                     ρ(z) := exp{Re(zw)},
+
+and let                                     Z
+                                     Z :=          ρ(z)dσ0 (z),
+                                            U(1)
+
+where σ0 is the normalized Haar measure on U(1). Then note that µ has density f = Z −1 ρ
+with respect to σ0 . Define ρ+ (z) := ρ(zeiϵ ) and ρ− (z) := ρ(ze−iϵ ). Let f + and f − be the
+probability densities proportional to ρ+ and ρ− , respectively. By the invariance of Haar
+measure, the respective normalizing constants are both equal to Z. Let µ+ and µ− denote
+the respective probability measures. Then note that for any measurable set A ⊆ U(1), the
+invariance of Haar measure implies that
+                                     Z
+                          ±        1
+                        µ (A) =         ρ(ze±iϵ )dσ0 (z)
+                                   Z A
+                                     Z
+                                   1
+                                =           ρ(z ′ )dσ0 (z ′ ) = µ(Ae±iϵ ).                (4.3)
+                                   Z Ae±iϵ
+
+
+                                                   4
+Next, note that for any z ∈ U(1),
+                                                              
+                     p
+                       +    −
+                                         1        iϵ       −iϵ
+                      ρ (z)ρ (z) = exp     Re(wze + wze )
+                                         2
+                                                                   
+                                              1         iϵ    −iϵ
+                                 = ρ(z) exp     Re(wz(e + e − 2))
+                                              2
+                                                                 
+                                                1    iϵ    −iϵ
+                                 ≥ ρ(z) exp − |w||e + e − 2| .
+                                                2
+
+But, by the inequality (4.1),
+
+                     |eiϵ + e−iϵ − 2| ≤ |eiϵ − 1 − iϵ| + |e−iϵ − 1 + iϵ| ≤ ϵ2 .
+
+Thus, we get
+                                                 1     2
+                           ρ+ (z)ρ− (z) ≥ ρ(z)e− 2 |w|ϵ ≥ ρ(z)e−1/2 ,
+                          p
+
+
+where the last inequality holds because ϵ ≤ |w|−1/2 . By the Cauchy–Schwarz inequality,
+this gives for any measurable set A ⊆ U(1),
+                                       Z                    Z               1/2
+                                                                  −
+                   p                           +
+                    µ+ (A)µ− (A) =            f (z)dσ0 (z)       f (z)dσ0 (z)
+                                          A              A
+                                      Z p
+                                    ≥     f + (z)f − (z)dσ0 (z)
+                                       AZ
+                                      1   p
+                                    =        ρ+ (z)ρ− (z)dσ0 (z)
+                                      Z A
+                                        Z
+                                      1
+                                    ≥     ρ(z)e−1/2 dσ0 (z) = µ(A)e−1/2 .
+                                      Z A
+
+Take any z ∈ U(1) and let A := {z ′ ∈ U(1) : |z − z ′ | < 14 ϵ}. The above inequality shows that
+at least one µ+ (A) and µ− (A) is ≥ µ(A)e−1/2 . First, suppose that µ+ (A) ≥ µ(A)e−1/2 .
+Then by equation (4.3),
+
+                  µ(A ∩ Aeiϵ ) ≥ µ(A) + µ(Aeiϵ ) − 1
+                                = µ(A) + µ+ (A) − 1 ≥ µ(A)(1 + e−1/2 ) − 1.
+
+We claim that A ∩ Aeiϵ is empty. To see this, notice that if z ′ ∈ A ∩ Aeiϵ , then |z ′ − z| < 41 ϵ
+and |z ′ e−iϵ − z| < 14 ϵ. Thus, |z ′ − z ′ e−iϵ | < 12 ϵ. But this contradicts the inequality (4.2).
+So, A ∩ Aeiϵ must be empty. Thus, the above inequality implies that
+
+                                                       1
+                                        µ(A) ≤               .
+                                                   1 + e−1/2
+
+The same argument shows that this inequality also holds if µ− (A) ≥ µ(A)e−1/2 . This leads
+
+
+
+
+                                                   5
+to the conclusion that for any z ∈ U(1),
+                 Z                                                    
+                           ′ 2     ′   1 2       ′                ′   1
+                     |z − z | dµ(z ) ≥ ϵ µ z ∈ U(1) : |z − z | ≥ ϵ
+                                       16                             4
+                                                          
+                                       1 2            1
+                                     ≥ ϵ 1−
+                                       16        1 + e−1/2
+                                           e−1/2
+                                     =                min{1, |w|−1 }.
+                                       16(1 + e−1/2 )
+
+Integrating over z completes the proof.
+
+   Lemma 4.1 yields the following corollary.
+
+Corollary 4.2. Let ξ be a U(1)-valued random variable following the probability density f
+defined in Lemma 4.1. Then
+
+                                 |E(ξ)| ≤ 1 − C min{1, |w|−1 },
+
+where C is a positive universal constant.
+
+Proof. Let ξ1 , ξ2 be i.i.d. copies of ξ. Then
+
+                                  |ξ1 − ξ2 |2 = 2 − 2 Re(ξ1 ξ 2 ).
+
+This gives
+
+                     E(|ξ1 − ξ2 |2 ) = 2 − 2 Re(E(ξ1 )E(ξ 2 )) = 2 − 2|E(ξ)|2 .
+
+Rearranging and applying Lemma 4.1, we get
+
+                                  1
+                     |E(ξ)|2 = 1 − E(|ξ1 − ξ2 |2 ) ≤ 1 − C min{1, |w|−1 },
+                                  2
+
+where C is a positive universal constant. Without loss, C ≤ 1. Taking square-root on both
+                                   √
+sides and applying the inequality 1 − a ≤ 1 − 12 a (which holds for a ∈ [0, 1]) completes
+the proof.
+
+   We will now use Corollary 4.2 to prove the following generalization of the classical
+Mermin–Wagner theorem [5, 6]. In the following, ‘positively oriented edge’ means a directed
+nearest-neighbor edge (x, y) in Z2 where x is less than y in the lexicographic order.
+
+Lemma 4.3. Let Λ be a finite subset of Z2 and let E be the set positively oriented
+nearest-neighbor edges with both endpoints in Λ. Suppose that we are given a collection of
+complex numbers (we )e∈E . Consider the probability measure γ on U(1)Λ that has density
+       P
+∝ exp( e=(x,y)∈E Re(we ξx ξ y )) with respect to the product of normalized Haar measures on
+U(1)Λ , at ξ ∈ U(1)Λ . Let ϕ be a random configuration drawn from γ. Then for any x ∈ Λ
+
+
+
+
+                                                 6
+and R > 0 such that y := x + (R, 0) ∈ Λ, we have
+
+                                                                    −1 log(R+1)
+                                          |E(ϕx ϕy )| ≤ e−CL                        ,
+
+where C is a positive universal constant and L := 1 + maxe∈E |we |.
+
+Proof. Fix x and R. First, we note that there is no loss of generality in assuming that
+Λ = x + {−N, . . . , N }2 for some sufficiently large N . To see this, note that the original
+system can be ‘expanded’ to a system of this form by defining we = 0 for the new edges.
+This just couples the old system with a collection of independent uniformly distributed
+ϕx ’s. Proving the required bound for the new system proves it for the old system.
+     For each 0 ≤ k ≤ N , let yk = x + (k, 0) and let Lk be the set of vertices in Λ that are at
+ ∞
+ℓ distance equal to k from x. Define a map τ : U(1)Λ → U(1)Λ as follows. For ξ ∈ U(1)Λ ,
+let τ (ξ)x := ξx , and for each 1 ≤ k ≤ N , let τ (ξ)yk := ξyk ξ yk−1 . Next, for each 1 ≤ k ≤ N
+and y ∈ Lk \ {yk }, let τ (ξ)y := ξy ξ yk .
+     Note that each e ∈ E is either an edge connecting two neighboring vertices in some Lk ,
+or connecting a vertex in some Lk with a neighboring vertex in Lk−1 . For each 1 ≤ k ≤ N ,
+let Ek denote the set of edges of the first kind, and let Fk denote the set of edges of the
+second kind, except the edge (yk−1 , yk ). Further decompose Fk as Fk1 ∪ Fk2 , where Fk1 is
+the set of all (y, y ′ ) ∈ Fk with y ∈ Lk−1 and y ′ ∈ Lk , and Fk2 is the set of all (y, y ′ ) ∈ Fk
+with y ∈ Lk and y ′ ∈ Lk−1 .
+    Take any ξ ∈ U(1)Λ and let χ := τ (ξ). Then by the above observation,
+
+                       X                            N
+                                                    X                                   N
+                                                                                        X       X
+         f (ξ) :=                  we ξ y ξ y ′ =         w(yk−1 ,yk ) ξyk−1 ξ yk +                         we ξ y ξ y ′
+                    e=(y,y ′ )∈E                    k=1                                 k=1 e=(y,y ′ )∈Ek
+                                                          N
+                                                          X        X
+                                                     +                        we ξ y ξ y ′ .
+                                                          k=1 e=(y,y ′ )∈Fk
+
+
+Take any 2 ≤ k ≤ N . Note that for (y, y ′ ) ∈ Fk1 ,
+
+                              ξy ξ y′ = ξy ξ yk−1 ξ y′ ξyk ξ yk ξyk−1 = χy χy′ χyk .
+
+Similarly, for any (y, y ′ ) ∈ Fk2 ,
+
+                              ξy ξ y′ = ξy ξ yk ξ y′ ξyk−1 ξ yk−1 ξyk = χy χy′ χyk .
+
+When k = 1 and (y, y ′ ) ∈ Fk1 , we have y = x = y0 and y ′ ∈ L1 , which gives
+
+                                         ξy ξ y′ = ξy0 ξ y1 ξ y′ ξy1 = χy1 χy′ .
+
+Similarly, if k = 1 and (y, y ′ ) ∈ Fk2 , then y ′ = x = y0 and y ∈ L1 , which gives
+
+                                          ξy ξ y′ = ξy ξ y1 ξy1 ξ y0 = χy χy1 .
+
+
+                                                               7
+Next, take any 1 ≤ k ≤ N and note that for (y, y ′ ) ∈ Ek with y, y ′ ̸= yk ,
+
+                                           ξy ξ y′ = ξy ξ yk ξ y′ ξyk = χy χy′ .
+
+On the other hand, if (y, y ′ ) ∈ Ek and y = yk , then
+
+                                                ξy ξ y′ = ξ y′ ξyk = χy′ ,
+
+and if (y, y ′ ) ∈ Ek and y ′ = yk , then
+
+                                                ξy ξ y′ = ξy ξ yk = χy .
+
+Combining the above observations, we get
+
+                    N
+                    X                            N
+                                                 X          X
+          f (ξ) =         w(yk−1 ,yk ) χyk +                             we χy χy ′
+                    k=1                            k=1 e=(y,y ′ )∈Ek ,
+                                                         y,y ′ ̸=yk
+                          N
+                          X                                        N
+                                                                   X
+                     +           w(yk ,yk +(0,1)) χyk +(0,1) +            w(yk −(0,1),yk ) χyk −(0,1)
+                          k=1                                      k=1
+                          N 
+                          X           X                                   N 
+                                                                           X            X                    
+                     +                             we χy χy′ χyk +                                  we χy χy′ χyk
+                          k=2     e=(y,y ′ )∈Fk1                           k=2    e=(y,y ′ )∈Fk2
+                                 X                                X
+                     +                     we χy′ χy1 +                      we χy χy1 =: g(χ).
+                          e=(y,y ′ )∈F11                    e=(y,y ′ )∈F12
+
+
+Let ϕ be a random configuration with density proportional to eRe(f ) , and let ψ := τ (ϕ).
+We claim that ψ has density proportional to eRe(g) . To see this, let us first show that for
+any bounded measurable F : U(1)Λ → C,
+                             Z                Y                    Z             Y
+                                  F (τ (ξ))          dσ0 (ξy ) =         F (ξ)         dσ0 (ξy ),                   (4.4)
+                                              y∈Λ                                y∈Λ
+
+
+where σ0 denotes the normalized Haar measure on U(1). To prove this claim, we first
+integrate over ξy for all y ∈ Λ \ {y0 , . . . , yN }. Take any y ∈ Lk \ {yk }. In the integrand, ξy
+appears only through τ (ξ)y = ξy ξ yk . By the invariance of Haar measure, we can replace this
+simply by ξy . Next, we successively integrate over ξyN , ξyN −1 , . . . , ξy0 , in this order. Note
+that ξyN appears in the integrand only through τ (ξ)yN = ξyN ξ yN −1 . Again, by the invariance
+of Haar measure, we can replace this by ξyN . After this replacement, the integrand now
+depends on ξyN −1 only through τ (ξ)yN −1 = ξyN −1 ξ yN −2 . Thus, we can replace this term by
+ξyN −1 , and so on. This proves the claim (4.4).
+    Let us now prove that ψ has density proportional to eRe(g) . Let F be as above. Then
+
+
+
+
+                                                              8
+by equation (4.4) and the definition of g,
+              Z                             Y                      Z                                Y
+                  F (τ (ξ))eRe(f (ξ))             dσ0 (ξy ) =          F (τ (ξ))eRe(g(τ (ξ)))             dσ0 (ξy )
+                                            y∈Λ                                                     y∈Λ
+                                                                   Z                      Y
+                                                            =          F (ξ)eRe(g(ξ))             dσ0 (ξy ).
+                                                                                          y∈Λ
+
+
+Since this holds also for F ≡ 1, we get
+
+                                         F (τ (ξ))eRe(f (ξ)) y∈Λ dσ0 (ξy )
+                                                  R         Q
+                            E(F (ψ)) =     R
+                                              eRe(f (ξ)) y∈Λ dσ0 (ξy )
+                                                        Q
+
+                                         F (ξ)eRe(g(ξ)) y∈Λ dσ0 (ξy )
+                                       R                Q
+                                     = R Re(g(ξ)) Q                    .
+                                            e           y∈Λ dσ0 (ξy )
+
+
+This proves that ψ has density proportional to eRe(g) .
+    Let E′ denote conditional expectation given {ψ(y) : y ∈
+                                                          / {y1 , . . . , yN }}. From the form of
+g, we see that under this conditioning, the random variables ψy1 , . . . , ψyN are independent,
+with ψyk having conditional density proportional to exp(Re(uk χ)) at χ ∈ U(1), where
+                                                      X                                X
+                  uk := w(yk−1 ,yk ) +                          we ψ y ψ y ′ +                     we ψ y ψy′
+                                               e=(y,y ′ )∈Fk1                     e=(y,y ′ )∈Fk2
+
+
+if 2 ≤ k ≤ N , and
+                                                      X                              X
+                       u1 := w(y0 ,y1 ) +                           we ψ y ′ +                    we ψ y .
+                                                  e=(y,y ′ )∈F11                 e=(y,y ′ )∈F12
+
+
+Note that |uk | ≤ CLk, where C is a universal constant and L = 1 + maxe∈E |we |. Thus, by
+Corollary 4.2,
+
+                                 |E′ (ψyk )| ≤ 1 − C0 min{1, (C1 Lk)−1 }
+
+for some positive universal constants C0 and C1 . Thus, for any 1 ≤ R ≤ N ,
+
+                                R
+                                Y                       R
+                                                        Y
+      |E′ (ψy1 · · · ψyR )| =         |E′ (ψyk )| ≤          (1 − C0 min{1, (C1 Lk)−1 })
+                                k=1                     k=1
+                                 R                                              R                  
+                                          −C0 min{1,(C1 Lk)−1 }
+                                Y                                                X
+                                                                                                 −1
+                          ≤           e                                = exp −C0   min{1, (C1 Lk) } .
+                                k=1                                                      k=1
+
+Now, note that since L ≥ 1, we have
+
+                  min{1, (C1 Lk)−1 } ≥ min{(Lk)−1 , (C1 Lk)−1 } = C2 (Lk)−1 ,
+
+
+
+
+                                                                9
+where C2 := min{1, C1−1 }. Thus, we get
+
+                                             R                           
+             ′                          C0 C2 X 1           C0 C2
+           |E (ψy1 · · · ψyR )| ≤ exp −             ≤ exp −       log(R + 1) .
+                                         L      k            L
+                                                k=1
+
+Thus, the unconditional expected value |E(ψy1 · · · ψyR )| is also bounded above by the same
+quantity. But ψy1 · · · ψyR = ϕx ϕyR . This completes the proof.
+
+   We are now ready to prove Theorem 3.1.
+
+Proof of Theorem 3.1. First, we construct an ‘expanded’ model that is equivalent to our
+lattice gauge theory on Λ in a certain sense. In the expanded model, configurations consist
+of maps from E(Λ) into G × U(1). Let (U, ξ) be such a configuration. For a negatively
+oriented edge (x, y), we let U (y, x) := U (x, y)−1 and ξ(y, x) := ξ(x, y)−1 . For a plaquette
+p with successive oriented edges e1 , e2 , e3 , e4 , we define Up as before and analogously let
+ξp := ξ(e1 )ξ(e2 )ξ(e3 )ξ(e4 ). Finally, we consider the probability measure
+                                              Y
+                   1      X
+        dν(U, ξ) = exp −β   Re(Tr(I − ξp Up ))    dσ(U (e))dσ0 (ξ(e)),
+                  Ze             p∈P (Λ)                        e∈E(Λ)
+
+
+where σ and σ0 are the normalized Haar measures on G and U(1), respectively, and Z        e is
+the normalizing constant.
+    We claim that Z  e = Z, where Z is the normalizing constant of our original lattice gauge
+theory on Λ. To see this, recall that zI ∈ G for all z ∈ C with |z| = 1. Take any ξ. Since
+|ξ(e)| = 1 for all e, and
+
+                     ξp Up = ξ(e1 )U (e1 )ξ(e2 )U (e2 )ξ(e3 )U (e3 )ξ(e4 )U (e4 )
+
+for a plaquette p with successive oriented edges e1 , e2 , e3 , e4 , the invariance of σ implies
+that
+                   Z           X                        Y
+              Z = exp −β
+               e                     Re(Tr(I − ξp Up ))               dσ(U (e))
+                                  p∈P (Λ)                       e∈E(Λ)
+                     Z         X                 Y
+                 =       exp −β   Re(Tr(I − Up ))    dσ(U (e)) = Z.
+                                  p∈P (Λ)                     e∈E(Λ)
+
+
+Since this holds for any ξ and σ0 is a probability measure, we can now integrate over ξ and
+conclude that Ze = Z.
+   Next, for any (U, ξ), let ξU ∈ GE(Λ) denote the configuration (ξU )(e) := ξ(e)U (e).
+Then the same argument as above implies that for any bounded measurable function
+
+
+
+
+                                                 10
+f : GE(Λ) → C,
+                 Z                 X                    Y
+                     f (ξU ) exp −β   Re(Tr(I − ξp Up ))    dσ(U (e))
+                                          p∈P (Λ)                           e∈E(Λ)
+                     Z                      X                        Y
+                 =       f (U ) exp −β                Re(Tr(I − Up ))    dσ(U (e)).
+                                            p∈P (Λ)                        e∈E(Λ)
+
+
+Combining, we get that
+                                Z                            Z
+                                     f (ξU )dν(U, ξ) =           f (U )dµ(U ),               (4.5)
+
+where µ is the probability measure for the original lattice gauge theory.
+    Henceforth, we will let (U, ξ) denote a random configuration drawn from ν, and V be a
+random configuration drawn from µ. Let ℓ be the rectangular loop with vertices (0, 0, 0),
+(R, 0, 0), (0, T, 0) and (R, T, 0). Let e1 , . . . , ek be the successive oriented edges of ℓ (with
+some arbitrary e1 ), and define
+
+                                        Wℓ := Tr(V (e1 ) · · · V (ek )),
+                                        Qℓ := Tr(U (e1 ) · · · U (ek )),
+                                        χℓ := ξ(e1 ) · · · ξ(ek ).
+
+Then by equation (4.5),
+
+                     E(Wℓ ) = E[Tr(ξ(e1 )U (e1 ) · · · ξ(ek )U (ek ))] = E(χℓ Qℓ ).
+
+Let E′ denote conditional expectation given U . Then by the above equation,
+
+                                          E(Wℓ ) = E(E′ (χℓ )Qℓ ),
+
+which implies that
+                            |E(Wℓ )| ≤ E(|E′ (χℓ )Qℓ |) ≤ nE(|E′ (χℓ )|).
+
+Thus, it suffices to show that
+
+                                                                 −1 T log(R+1)
+                                    |E′ (χℓ )| ≤ e−C(1+nβ)                                   (4.6)
+
+for some positive universal constants C.
+     Let E ′ ⊆ E(Λ) denote the set of edges of the form (x, x + e2 ), where e2 = (0, 1, 0). Let
+E ′′ := E(Λ) \ E ′ , and let E′′ denote conditional expectation given U and (ξ(e))e∈E ′′ . We
+will prove that
+
+                                                                 −1 T log(R+1)
+                                 |E′′ (χℓ )| ≤ e−C(1+nβ)                                     (4.7)
+
+for some positive universal constant C. Clearly, this implies the bound (4.6) and completes
+
+
+                                                        11
+the proof.
+     For 0 ≤ j < T , let pj be the edge (je2 , (j + 1)e2 ) and let qj be the edge (Re1 +
+je2 , Re1 + (j + 1)e2 ). Also, let Ej ⊆ E(Λ) be the set of edges of the form (x, x + e2 ) where
+the second coordinate of x is j. Repeating the observation that we have already made
+several times earlier, note that conditional on U and (ξ(e))e∈E ′′ , the collections (ξ(e))e∈Ej ,
+j = 0, 1, . . . , T − 1 are independent. Consequently,
+
+                                                  −1
+                                                 TY
+                               E′′ (χℓ ) = χ′ℓ         E′′ (ξ(pj )ξ(qj )),
+                                                 j=0
+
+
+where χ′ℓ is the product of ξ(e) over all e in the lower boundary of ℓ and ξ(e) over all e in
+the upper boundary of ℓ. In particular,
+
+                                                −1
+                                               TY
+                               |E′′ (χℓ )| =         |E′′ (ξ(pj )ξ(qj ))|.                 (4.8)
+                                               j=0
+
+
+Now, it is easy to see that conditional on U and (ξ(e))e∈E ′′ , the collection (ξ(e))e∈Ej is a
+2D spin system, with U(1)-valued spins, and conditional density of the form considered in
+Lemma 4.3. The corresponding w’s are uniformly bounded by C0 nβ, where C0 is a positive
+universal constant. Thus, for any j,
+
+                                                                 −1 log(R+1)
+                           |E′′ (ξ(pj )ξ(qj ))| ≤ e−C1 (1+nβ)                  ,
+
+where, again, C1 is a positive universal constant. By equation (4.8), this proves the
+claim (4.7) and therefore, completes the proof of the theorem.
+
+
+
+Acknowledgments. I thank Christophe Garban for helpful conversations.
+
+Funding information. This work was supported by NSF grant DMS-2450608 and the
+Simons Collaboration grant on ‘Probabilistic Paths to QFT’.
+
+Author contribution. Sourav Chatterjee is the sole author of this manuscript.
+
+Conflict of Interest. None.
+
+
+References
+[1] J. Fröhlich. Confinement in Zn lattice gauge theories implies confinement in SU(n)
+    lattice Higgs theories. Physics Letters B, 83(2):195–198, 1979.
+
+[2] J. Glimm and A. Jaffe. Quark trapping for lattice U(1) gauge fields. Physics Letters B,
+    66(1):67–69, 1977.
+
+[3] M. Göpfert and G. Mack. Proof of confinement of static quarks in 3-dimensional
+
+
+                                                     12
+   U (1) lattice gauge theory for all values of the coupling constant. Communications in
+   Mathematical Physics, 82:545–606, 1982.
+
+[4] O. A. McBryan and T. Spencer. On the decay of correlations in SO(n)-symmetric
+    ferromagnets. Communications in Mathematical Physics, 53:299–302, 1977.
+
+[5] N. D. Mermin. Absence of ordering in certain classical systems. Journal of Mathematical
+    Physics, 8(5):1061–1064, 1967.
+
+[6] N. D. Mermin and H. Wagner. Absence of ferromagnetism or antiferromagnetism in
+    one-or two-dimensional isotropic Heisenberg models. Physical Review Letters, 17(22):
+    1133, 1966.
+
+[7] A. Messager, S. Miracle-Sole, and C. Pfister. Correlation Inequalities and Uniqueness of
+    the Equilibrium State for the Plane Rotator Ferromagnetic Model. Commun. Math.
+    Phys, 58:19–29, 1978.
+
+[8] K. G. Wilson. Confinement of quarks. Physical Review D, 10(8):2445, 1974.
+
+
+
+
+                                            13
+

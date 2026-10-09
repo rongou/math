@@ -1,0 +1,174 @@
+# Scratch notes for dossier 08 (alternative routes)
+Started 2026-10-09. Verified-citation log + raw notes. Not a deliverable.
+
+## Repo context checked
+- Family 270 (BFSS): The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026 (Thm 1.1 \label{thm:main}: dim Ker H_N = 1, all N>=2);
+  Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026 (Thm main: infinitely many positive eigenvalues, SU(2)).
+  Neither Lean-formalized (check lean/formalization.yaml).
+- Family 282: scale => local conformal symmetry in 4D operational QFT (conditional).
+- Family 215: O(3) continuum limit etc.
+
+## Verified citations (fill as I go)
+- CCHS 2D: Chandra–Chevyrev–Hairer–Shen, "Langevin dynamic for the 2D Yang–Mills measure", Publ. Math. IHES 136 (2022) 1–147, arXiv:2006.04987. VERIFIED (web).
+- CCHS 3D: "Stochastic quantisation of Yang–Mills–Higgs in 3D", Invent. Math. 237 (2024) 541–696, arXiv:2201.03487. VERIFIED. Local-in-time, gauge covariant in law, Markov process on orbit space "up to potential finite time blow-up"; bundles trivial; T^3.
+- Chevyrev survey: "Stochastic quantisation of Yang–Mills", J. Math. Phys. 63, 091101 (2022), arXiv:2202.13359. VERIFIED.
+- Chevyrev–Shen: "Invariant measure and universality of the 2D YM Langevin dynamic", CPAM (2026) e70043, arXiv:2302.12160. VERIFIED. YM measure on T^2 invariant; universality Wilson/Villain/Manton; Bourgain method; rough Uhlenbeck compactness.
+- Chevyrev–Shen: "Uniqueness of gauge covariant renormalisation of stochastic 3D YMH", ARMA 250 (2026) art. 11, arXiv:2503.03060. VERIFIED. Thm 1.6 uniqueness of mass renorm. Notes 3D lattice-dynamics scaling limit still open.
+- SZZ: Shen–Zhu–Zhu, "A stochastic analysis approach to lattice YM at strong coupling", CMP 400 (2023) 805–851, arXiv:2204.12737. VERIFIED. |beta|<1/(16(d-1)) SU(N) with 't Hooft scaling beta N. LSI/Poincare, unique inf-vol, mass gap, large N factorization.
+- SZZ YMH: "Langevin dynamics of lattice YMH and applications", CMP 407, 27 (2026), arXiv:2401.13299. VERIFIED.
+- Douglas, "The Yang–Mills Millennium problem", Nat Rev Phys 8, 86–97 (2026), doi 10.1038/s42254-025-00909-2. VERIFIED (bibliographic). Paywalled.
+- Bauerschmidt–Bodineau CPAM 74 (2021) 2064–2113 LSI continuum sine-Gordon beta<6pi, arXiv:1907.12308. VERIFIED.
+- Bauerschmidt–Dagallier LSI phi^4_2, phi^4_3 CPAM 77 (2024) 2579–2612. VERIFIED (via search).
+- BBD survey: "Stochastic dynamics and the Polchinski equation: an introduction", Probab. Surveys 21 (2024) 200–290. VERIFIED.
+- Bauerschmidt–Hofstetter, "Maximum and coupling of the sine-Gordon field", Ann. Probab. 50(2) (2022) 455–508, arXiv:2009.09664. VERIFIED.
+- Barashkov–Gubinelli, "A variational method for Phi^4_3", Duke 169 (2020) 3339–3415, arXiv:1805.10814. VERIFIED. (Task's phrase "variational and Polchinski-flow" OK; no 'Malliavin' title.)
+- Cao–Chatterjee: "A state space for 3D Euclidean YM theories", CMP 405 (2024) art. 3, arXiv:2111.12813 (conditional on GFF-like short-distance assumption). VERIFIED.
+- Cao–Chatterjee: "The YM heat flow with random distributional initial data", CPDE 48 (2023) 209–251, arXiv:2111.10652. VERIFIED.
+- Chatterjee "YM for probabilists" arXiv:1803.01950 (2019 Springer volume). VERIFIED.
+- Chatterjee "A probabilistic mechanism for quark confinement" CMP 385 (2021) 1007–1039. VERIFIED.
+- Chatterjee "A scaling limit of SU(2) lattice YMH theory" arXiv:2401.10507, Prob. Math. Phys. 7(2) (2026). VERIFIED. g = O(eps^{50d}); Gaussian (massive) limit.
+- "Gaussian limits of lattice Higgs models with complete symmetry breaking" arXiv:2603.24555 (Mar 2026). authors TBD.
+- "Dynamical approach to area law for lattice YM" arXiv:2509.04688. authors TBD.
+- "U(N) lattice YM in the 't Hooft regime" arXiv:2510.22788. authors TBD.
+- "LSI for sinh-Gordon" arXiv:2609.28091 (Sept 2026). authors TBD.
+- Talks: Hairer, Clay, Oct 2025 "Yang–Mills and the mass gap"; Chatterjee, Harvard CMSA 15 Oct 2025.
+- Bringmann–Cao, "A para-controlled approach to the stochastic YM equation in 2D", Mem. AMS 319 (2026) no. 1624, arXiv:2305.07197. VERIFIED. LOCAL WP + gauge covariance via paracontrolled.
+- Bringmann–Cao, "Global well-posedness of the stochastic Abelian-Higgs equations in 2D", arXiv:2403.16878. VERIFIED (abelian only).
+- Chevyrev–Shen 2302.12160 is in CPAM 79(8) (2026) 1973–2102 per one search (also e70043). Global existence on gauge orbits *for initial data drawn from the YM measure* (Bourgain); not for arbitrary initial data -- general-data global WP for non-abelian 2D SYM still open (per summaries; verify).
+- Chevyrev–Qu–Shen, "Scaling limit of the 3D abelian YM Langevin dynamics", arXiv:2608.27828 (Aug/Sep 2026). VERIFIED. U(1) lattice 3D, DeTurck gauge, weak coupling scaling, converges in prob (locally in time) to 1-form SHE. Universality Villain/Manton/Wilson.
+- Duch, "Flow equation approach to singular stochastic PDEs", arXiv:2109.11380 (Prob Math Phys); "Renormalization of singular elliptic SPDEs using flow equation" arXiv:2201.05031; lecture notes arXiv:2511.07120.
+- Duch–Gubinelli–Rinaldi, "Parabolic stochastic quantisation of the fractional Phi^4_3 model in the full subcritical regime", arXiv:2303.18112 (v4 Nov 2025). Subcritical only; arbitrarily close to criticality.
+- Duch, "Construction of Gross–Neveu model using Polchinski flow equation", arXiv:2403.18562 (v2 Oct 2024). VERIFIED: 2D massive GN, infinite volume, scaling critical + AF; fermions bounded => "does not extend to models including bosons".
+- Abdelghani–Bauerschmidt–Bodineau–Dagallier, "LSI for the sinh-Gordon model", arXiv:2609.28091 (Sep/Oct 2026). VERIFIED. Massless sinh-Gordon in inf. vol. on R^2: OS axioms + exponential decay ("actually massive").
+- Cao–Nissim–Sheffield, "Expanded regimes of area law for lattice YM theories", arXiv:2505.16585. VERIFIED. U(N) all beta <= beta0(d) and all N via master loop equation.
+- Cao–Nissim–Sheffield, "Dynamical approach to area law for lattice YM", arXiv:2509.04688 (to appear PAMS). VERIFIED. SZZ + Durhuus–Fröhlich 1980 mass gap condition => area law, 't Hooft regime, U(N),SU(N),SO(2N).
+- Nissim, "U(N) lattice YM in the 't Hooft regime", arXiv:2510.22788. VERIFIED. mass gap, unique inf vol for U(N).
+- Rajasekaran–Yakir–Zhou, "Gaussian limits of lattice Higgs models with complete symmetry breaking", arXiv:2603.24555. VERIFIED.
+- Lemoine, "Two-dimensional YM theory via integrable probability", arXiv:2508.16162, Bull AMS (accepted). VERIFIED.
+- Chatterjee, "Rigorous solution of strongly coupled SO(N) LGT in the large N limit", CMP 366(1) (2019) 203–268, arXiv:1502.07719. VERIFIED.
+- Chatterjee–Jafarov, "The 1/N expansion for SO(N) LGT at strong coupling", arXiv:1604.04777. VERIFIED (via search).
+- Jafarov, "Wilson loop expectations in SU(N) LGT", arXiv:1610.03821. VERIFIED. SU(N) 2beta <-> SO(N) beta at large N.
+- Basu–Ganguly, "SO(N) LGT, planar and beyond", CPAM 71 (2018) 2016–2064, arXiv:1608.04379. VERIFIED. Counterexample: area law lower bound fails in general.
+- Park–Pfeffer–Sheffield–Yu, "Wilson loop expectations as sums over surfaces on the plane", arXiv:2305.02306, Prob. Math. Phys. 7(1) (2026). VERIFIED.
+- Cao–Park–Sheffield, "Random surfaces and lattice YM", arXiv:2307.06790 (to appear Comm. AMS). VERIFIED. Any N>=1, beta>0, d>=2 as sums over embedded planar maps.
+- Borga–Cao–Shogren-Knaak, "Surface sums for lattice YM in the large-N limit", arXiv:2411.11676. VERIFIED (via search).
+- arXiv:2508.13827 "Surface sums in 2D large-N lattice YM: cancellations..." (Aug 2025) authors TBD.
+- Shen–Smith–Zhu, "A new derivation of the finite N master loop equation for lattice YM", EJP 29 (2024) paper 29, arXiv:2202.00880. VERIFIED.
+- Shen–Smith–Zhu, "Makeenko–Migdal equations for 2D YM: from lattice to continuum", arXiv:2412.15422. VERIFIED.
+- Shen–Smith–Zhu, "MM equations for lattice YMH", arXiv:2512.00570 (Adv. Nonlinear Stud. 2026). VERIFIED (via search).
+- Abdelghani–Nissim, geometric derivation of master loop equation, arXiv:2309.07399.
+- Adhikari–Cao, "Correlation decay for finite lattice gauge theories at weak coupling", Ann. Probab. 53(1) (2025) 140–174, arXiv:2202.10375. VERIFIED (4D, finite groups, weak coupling).
+- Chatterjee, "A short proof of confinement in 3D lattice gauge theories with a central U(1)", arXiv:2602.00436 (Jan 2026). VERIFIED (title via pith). Log growth potential.
+- Kopper–Müller, "Renormalization proof for spontaneously broken YM theory with flow equations", CMP 209 (2000) 477–516 (arXiv version hep-th/9902114 WITHDRAWN: gap in Lemma 2); corrected: "Renormalization of spontaneously broken SU(2) YM theory with flow equations", Rev. Math. Phys. 21 (2009) 781–820, arXiv:0902.2486. VERIFIED.
+- Efremov–Guida–Kopper, "Renormalization of SU(2) YM theory with flow equations", J. Math. Phys. 58 (2017) 093503, arXiv:1704.06799. VERIFIED. Perturbative renormalizability, massless, Slavnov–Taylor restored.
+- Müller, "Perturbative renormalization by flow equations", Rev. Math. Phys. 15 (2003) 491–558. VERIFIED.
+- Keller–Kopper–Salmhofer HPA 65 (1992?) 32–52; Keller–Kopper CMP 161 (1994) 515–532 massless phi^4_4. VERIFIED (via search).
+- Fröb–Holland, "All-order existence of and recursion relations for the OPE in YM theory", arXiv:1603.08012. VERIFIED. Fröb–Holland–Hollands, "All-order bounds for correlation functions of gauge-invariant operators in YM theory", JMP 57 (2016) 122301, arXiv:1511.09425.
+- Lüscher, "Properties and uses of the Wilson flow in lattice QCD", JHEP 08 (2010) 071 (erratum JHEP 03 (2014) 092), arXiv:1006.4518. VERIFIED.
+- Lüscher–Weisz, "Perturbative analysis of the gradient flow in non-abelian gauge theories", JHEP 02 (2011) 051, arXiv:1101.0963. VERIFIED. All-order finiteness at t>0 (no extra renorm) -- PERTURBATIVE.
+- Narayanan–Neuberger, "Infinite N phase transitions in continuum Wilson loop operators", JHEP 03 (2006) 064, hep-th/0601210. VERIFIED. Smeared Wilson loops; numerical finite continuum limit.
+- Charalambous–Gross, "The YM heat semigroup on three-manifolds with boundary", CMP 317 (2013) 727–785. VERIFIED. "Neumann domination for the YM heat equation", JMP 56 (2015) 073505. VERIFIED. Gauge-invariantly regularized Wilson loops converge as t->infty.
+- Gross, "The YM heat equation with finite action in three dimensions", Mem. AMS 275 (2022) no. 1349, arXiv:1606.04151; initial data H^{1/2} (critical). VERIFIED. "Stability..." arXiv:1711.00114.
+- Sengupta, "Gauge theory on compact surfaces", Mem. AMS 126 (1997) no. 600. VERIFIED. Gross–King–Sengupta, Ann. Phys. 194 (1989) 65–112. VERIFIED. Driver CMP 123 (1989) 575–616.
+- Karabali–Kim–Nair, "Planar YM theory: Hamiltonian, regulators and mass gap", Nucl. Phys. B 524 (1998) 661–694, hep-th/9705087. VERIFIED. String tension: PLB 434 (1998) 103–109, hep-th/9804132. KNY corrections NPB 824 (2010). Bringoltz–Teper PLB 645 (2007): within 3%; ~1% at N=inf (6 sigma) -> not exact.
+- Nair, "Towards a proof of mass gap in 3d YM theory", arXiv:2608.10133 (Aug 2026), 11 pp outline; hep-th only. VERIFIED.
+- Faria da Veiga–O'Carroll arXiv:2509.03513 (charge conj, Elitzur, no mass gap proof). VERIFIED.
+- Faizal–Shabir "Reflection-positive construction of a 4D SU(N) YM theory with mass gap and confinement", Fortschr. Phys. 74(4) (2026) e70097, arXiv:2606.19362. CLAIMS solution; not accepted; automated critique flags gaps in multiscale step. Treat as unverified claim (probably wrong).
+- Lüscher, "Some analytic results concerning the mass spectrum of YM gauge theories on a torus", NPB 219 (1983) 233–261. VERIFIED. Lüscher–Münster NPB 232 (1984) 445. van Baal–Koller Ann. Phys. 174 (1987) 299–371. Koller–van Baal NPB 273 (1986) 387 "A rigorous nonperturbative result for the glueball mass and electric flux energy in a finite volume". Koller–van Baal NPB 302 (1988) 1–64.
+- Chatterjee arXiv:2602.00436: v2 June 2026, Adv. Nonlin. Stud. (Gross volume). 3D Wilson action, G subset U(n) containing all scalars; |<W>| <= n exp(-c(1+n beta)^{-1} T log(R+1)). Classical result (Fröhlich comparison + Glimm–Jaffe; Göpfert–Mack for Villain U(1)).
+- Douglas 2004 Clay status report: "no breakthroughs"; state of art Balaban, Magnen–Rivasseau–Sénéor.
+
+## Jaffe–Witten (official problem description; text extracted to scratch-08/dl_jw/jaffe-witten.txt)
+- Sec 3: Gårding–Wightman axioms; Haag–Kastler "related scheme"; OS reconstruction; "refinements of the axiom sets ... OPE or local stress-energy tensor".
+- Sec 4 (The Problem): local quantum field operators in correspondence with gauge-invariant local polynomials in F (Tr F_ij F_kl(x)); short-distance agreement with AF and perturbative renormalization incl. stress tensor and OPE; mass gap: H has no spectrum in (0,Delta). "Existence includes establishing axiomatic properties at least as strong as those cited in [45, 35]" ([45]=Streater–Wightman, [35]=OS 1973/1975).
+- Sec 5: clustering; "existence of a uniform gap for finite-volume approximations may play a fundamental role in the proof of existence of the infinite-volume limit"; natural extensions incl. isolated one-particle state, confinement, other AF gauge theories, arbitrary 4-manifold.
+- Sec 6: "Some results are known for YM on T^4 ... ample indication that known methods could be extended to construct YM theory on T^4." "no present ideas point the direction to establish the existence of a mass gap that is uniform in the volume. Nor do present methods suggest how to obtain the existence of the infinite volume limit T^4 -> R^4."
+- 6.1: exact solution unlikely "though there might some day be an asymptotic solution in a large N limit"; CQFT: correlation inequalities (scalar/abelian only), symmetries, convergent expansions; "perturbation series ... divergent; even Borel and other resummation methods have limited applicability."
+- 6.4: BFS 2D abelian Higgs "the only complete example of an interacting gauge theory satisfying the axioms"; mass gap [4] = Balaban–Brydges–Imbrie–Jaffe (unit lattice). "Extending all these conclusions to a non-abelian Higgs model, even in two dimensions, would represent a qualitative advance."
+- 6.5: RP holds for Wilson approx (OS–Seiler 1978); "Establishing a quantum mechanical Hilbert space is part of the solution"; Balaban 3D & 4D; continuum regularization (MRS [29], Rivasseau [39]); "New ideas are needed to prove the existence of a mass gap that is uniform in the volume".
+- 6.6: duality transformation; Feynman 2+1 [11]; Singer curvature [44]; Simon flat directions bound states [43]; 1/N string: "no effective approach to the gauge theory without fermions".
+- Footnote 2: "We specifically exclude weak-existence (compactness) as the solution to the existence part ... unless one also uses other techniques to establish properties of the limit (such as the existence of a mass gap and the axioms)."
+- Magnen–Rivasseau–Sénéor, "Construction of YM4 with an infrared cutoff", CMP 155 (1993) 325–383. VERIFIED. Fixed IR cutoff, no UV cutoff; regularized axial gauge; detailed outline, not all details; Slavnov identities.
+- Brydges–Fröhlich–Seiler I: Ann. Phys. 121 (1979) 227–284; II: CMP 71 (1980) 159–205; III: CMP 79 (1981) 353–399 (2D abelian Higgs, no cutoffs, OS axioms). VERIFIED.
+- Balaban (Higgs)_{2,3} in finite volume: CMP 85 (1982) 603–626(636); 86 (1982) 555–594; 88 (1983) 411–445. VERIFIED.
+- Balaban–Brydges–Imbrie–Jaffe, "The mass gap for Higgs models on a unit lattice", Ann. Phys. 158 (1984) 281–319 (from JW ref [4]).
+- Balaban–Imbrie–Jaffe CMP 97 (1985); CMP 114 (1988) (abelian Higgs effective action, cluster properties). VERIFIED (via search).
+- Dimock: UV stability QED d=3 (AHP 2021?); "Structural stability of RG flow in GN model" (Dimock–Yuan AHP 25 (2024) 5113–5186); "Correlation functions for the GN model" arXiv:2406.16799.
+- Chevyrev, "Norm inflation for a non-linear heat equation with Gaussian initial conditions", SPDE: Anal. Comp. 12 (2024) 1745–1768, arXiv:2205.14350. VERIFIED. No Banach space of distributions carries 3D GFF + continuous extension of DeTurck–YM heat flow.
+- Kazakov–Zheng, "Bootstrap for lattice YM theory", PRD 107 (2023) L051501, arXiv:2203.11360. VERIFIED. SU(inf) D=2,3,4 rigorous upper/lower bounds on plaquette (given loop eqs + positivity). Finite N SU(2): JHEP 03 (2025) 099. Anderson–Kruczenski NPB 921 (2017) 702.
+- 't Hooft, "Rigorous construction of planar diagram field theories in 4D Euclidean space", CMP 88 (1983) 1–25. VERIFIED: AF planar theories with ALL masses nonvanishing and small coupling -> convergent. (Note: requires massive particles => does NOT cover massless planar YM.)
+- Rivasseau, "Construction and Borel summability of planar 4D Euclidean field theory", CMP 95 (1984) 445–486. VERIFIED. Planar phi^4_4 wrong-sign (AF side).
+- Kopper–Magnen–Rivasseau, "Mass generation in the large N Gross–Neveu model", CMP 169 (1995) 121–180. VERIFIED: UV cutoff, large finite N.
+- Kopper, "Mass generation in the large N nonlinear sigma model", CMP 202 (1999) 89–126, math-ph/9902020. VERIFIED: suitable UV cutoff, large finite N.
+- arXiv:2601.19630 "Mass generation for the 2D O(N) linear sigma model in the large N limit" (Jan 2026) authors TBD.
+- FMRS, "A renormalizable field theory: the massive GN model in 2D", CMP 103 (1986) 67–103. VERIFIED: OS axioms; Borel sum of renormalized series.
+- Gawedzki–Kupiainen, "GN model through convergent perturbation expansions", CMP 102 (1985) 1–30. VERIFIED.
+- Aizenman–Duminil-Copin, "Marginal triviality of the scaling limits of critical 4D Ising and phi^4_4 models", Ann. Math. 194 (2021) 163–235, arXiv:1912.07973. VERIFIED.
+- Bauerschmidt–Brydges–Slade, "Introduction to a renormalisation group method", LNM 2242 (2019), arXiv:1907.05474. VERIFIED. 4D hierarchical |phi|^4; log corrections (BBS CMP 337 (2015) 817–877 WSAW; JSP 157 (2014) 692–742 n-component).
+- Gubinelli–Meyer, "The FBSDE approach to sine-Gordon up to 6pi", arXiv:2401.13648 (Ann. Probab. 2026 per ORA). VERIFIED. OS axioms only for small couplings.
+- Meyer, arXiv:2607.20632 (Jul 2026): FBSDE sine-Gordon beta^2 < (6/7) 8pi finite volume; perturbative full subcritical. VERIFIED (via search). Open: large-field problem, global-in-time FBSDE.
+- Hairer, "A theory of regularity structures", Invent. Math. 198 (2014) 269–504, arXiv:1303.5113. VERIFIED. Subcriticality = superrenormalizability (Remark 1.1).
+- Caravenna–Sun–Zygouras, "The critical 2d stochastic heat flow", Invent. Math. 233 (2023) 325–460, arXiv:2109.03766. VERIFIED. First singular SPDE solution in the critical dimension (critical disorder). Not a GMC (Ann. Probab. 51(6) 2023). CIME notes arXiv:2412.10311.
+- Barashkov–Gunaratnam, "The Markov property for phi^4_3 on the cylinder", arXiv:2506.21466. VERIFIED. Segal axioms on 3D tori/cylinders; phi^4_3 Hamiltonian on 2D tori; discrete spectrum.
+- Gubinelli–Hofmanová, "Global solutions to elliptic and parabolic Phi^4 models in Euclidean space", CMP 368 (2019) 1201–1266. VERIFIED. "A PDE construction of the Euclidean Phi^4_3 QFT", CMP (2021), arXiv:1810.01700: OS minus rotation invariance + clustering, all couplings.
+- Duch–Dybalski–Jahandideh, "Stochastic quantization of 2D P(Phi) QFT", AHP (2024), arXiv:2311.04137. VERIFIED (via search).
+- Duch–Hairer–Yi–Zhao, "Ergodicity of infinite volume Phi^4_3 at high temperature", arXiv:2508.07776. VERIFIED (via search).
+- Chandra–Feltes–Weber, "A priori bounds for 2-d generalised PAM", arXiv:2402.05544 (CPAM Jan 2026). VERIFIED (via search).
+- Chandra–Moinat–Weber, "A priori bounds for the Phi^4 equation in the full sub-critical regime", ARMA (2023). VERIFIED (via search). Intro: 3D YM short-time only; dependence on noise.
+- Moinat–Weber, "Space-time localisation for the dynamic Phi^4_3 model", CPAM 2020. VERIFIED.
+- Sevostyanov, "A tree-free approach to 3D YM Langevin dynamic. Analytic estimates and the existence of a model for a regularity structure", arXiv:2605.14616 (May/Jun 2026). VERIFIED. Model (not solution) estimates; Otto multi-index.
+- Chevyrev–Gubinelli, "Large field problem in coercive singular PDEs", arXiv:2510.20716 (Oct/Dec 2025). VERIFIED. A priori bounds for subcritical coercive; local->global coercivity via scaling. No YM in abstract.
+- Bringmann–Cao, "Global well-posedness of the dynamical sine-Gordon model up to 6pi", arXiv:2410.15493, Ann. Probab. 54(3) (2026). VERIFIED.
+- Hairer–Shen, "The dynamical sine-Gordon model", CMP 341 (2016) 933–989. Chandra–Hairer–Shen arXiv:1808.02594 (full subcritical beta^2<8pi). VERIFIED.
+- CCHS 3D: "we do not even know how to show the weaker statement that the Markov process survives for all times" (quoted via search summary of the 3D paper/review). Treat as paraphrase; global existence open.
+- Balaban 4D: CMP 109 (1987) 249–301 (I); 116 (1988) 1–22 (II); "Convergent renormalization expansions for LGT" CMP 119 (1988) 243–285; "Large field renormalization I" CMP 122 (1989) 175–202; "II" CMP 122 (1989) 355–392. 3D: CMP 102 (1985) 255–275. VERIFIED (via search).
+- Dimock, "The RG according to Balaban" I (RMP 25 (2013) 1330010, arXiv:1108.1335), II (JMP 54 (2013) 092301, arXiv:1212.5562), III (AHP 15 (2014) 2133–2175, arXiv:1304.0705) -- phi^4_3. VERIFIED.
+- Schaefer–Sommer–Virotta, "Critical slowing down and error analysis in lattice QCD simulations", NPB 845 (2011) 93–119, arXiv:1009.5228. VERIFIED. tau_exp(Q^2) ~ a^{-5} quenched HMC.
+- Waldron, "Long-time existence for YM flow", Invent. Math. 217 (2019) 1069–1147, arXiv:1610.03424. VERIFIED. No finite-time singularities 4D YM flow on closed 4-manifolds. Infinite-time bubbling on R^4 (Ann. PDE 2026).
+- Suzuki, "Energy-momentum tensor from the YM gradient flow", PTEP 2013 083B03 (erratum PTEP 2015 079201), arXiv:1304.0533. VERIFIED. Small flow-time expansion -> renormalized EMT (perturbative coefficients).
+- Del Debbio–Patella–Rago JHEP 1311 (2013) 212; Harlander–Kluth–Lange two-loop EMT; Iritani et al PTEP 2019 023B02.
+- Orland, "Integrable models and confinement in (2+1)-dim weakly-coupled YM theory", PRD 74 (2006) 085001, hep-th/0607013. VERIFIED. Anisotropic e' -> 0 limit: coupled PCMs; string tension; caveat non-isotropic.
+- Cortés Cubero arXiv:1405.7639 (PRD 90 (2014) 065002) SU(N) generalization.
+- Ünsal–Yaffe, "Center-stabilized YM theory: confinement and large N volume independence", PRD 78 (2008) 065035, arXiv:0803.0344. VERIFIED. Deformed YM on R^3 x S^1 small L: mass gap + linear confinement (semiclassical, physics-level).
+- Beneke, "Renormalons", Phys. Rept. 317 (1999) 1–142, hep-ph/9807443. VERIFIED. 't Hooft Erice 1977 "Can we make sense out of QCD?" (Subnucl. Ser. 15 (1979) 943). VERIFIED. Parisi PLB 76 (1978) 65; Phys Rept 49 (1979) 215. Lautrup PLB 69 (1977) 109. Lipatov JETP 45 (1977) 216. Bauer–Bali–Pineda PRL 108 (2012) 242002 (numerical evidence for renormalons). Marino–Miravitllas–Reis JHEP 2022 new renormalons.
+
+## My analysis bits
+- Lambda = mu exp(-1/(2 b0 g^2)) (b0 g^2)^{-b1/(2 b0^2)} (1+O(g^2)), b0 = 11N/(48 pi^2) => exp(-24 pi^2/(11 N g^2)); instanton factor exp(-8pi^2/g^2) = (Lambda/mu)^{11N/3}.
+- SU(2)+1 fundamental Higgs (no fermions): 16pi^2 beta_lambda = 24 lambda^2 - 9 g^2 lambda + (9/8) g^4; b = 43/6; x = lambda/g^2 flows with 24x^2 + (16/3)x + 9/8 > 0 (discriminant < 0) => no TAF trajectory => Higgs quartic not AF => 4D YMH continuum believed trivial in scalar sector. (Coefficients from SM with g'=0, standard; confidence medium-high.)
+- Lucini–Teper–Wenger, "Properties of the deconfining phase transition in SU(N) gauge theories", JHEP 02 (2005) 033, hep-lat/0502003. VERIFIED (as cited by PRD 108 (2023) 114511). Wilson action bulk transition: crossover small N, first order N>=5; lattice artifact, no continuum counterpart.
+- Koller–van Baal NPB 273 (1986) 387–412: "rigorous nonperturbative result" -> physics-level (semiclassical tunneling), not a math theorem. VERIFIED.
+- Mondal, "A geometric approach to the YM mass gap", JHEP 12 (2023) 191, arXiv:2301.06996. VERIFIED. Heuristic; ASSUMES existence of quantum YM.
+- Moncrief–Marini–Maitra, "Orbit space curvature as a source of mass in quantum gauge theory", Ann. Math. Sci. Appl. 4(2) (2019) 313–366, arXiv:1809.06318. VERIFIED.
+- Singer, "The geometry of the orbit space for nonabelian gauge theories", Phys. Scripta 24 (1981) 817–820 (JW ref [44]).
+- Kogut–Susskind, "Hamiltonian formulation of Wilson's lattice gauge theories", PRD 11 (1975) 395. VERIFIED (link).
+- Yarotsky, "Ground states in relatively bounded quantum perturbations of classical lattice systems", CMP 261 (2006). VERIFIED (via search).
+- Del Vecchio–Fröhlich–Pizzo–Rossi, "Lie–Schwinger block-diagonalization and gapped quantum chains with unbounded interactions", CMP 381 (2021), arXiv:1908.07450. VERIFIED (via search).
+- Bauerschmidt–Bodineau, "Spectral gap critical exponent for Glauber dynamics of hierarchical spin models", CMP 373 (2020) 1167–1206, arXiv:1809.02075. VERIFIED. Hierarchical 4D |phi|^4: spectral gap decays polynomially (log corrections).
+- Abdelghani–Bauerschmidt–Hofstetter–Zeitouni, "Mass gap for the hierarchical sinh-Gordon model", arXiv:2609.17461 (Sep 2026). VERIFIED. Massless hierarchical sinh-Gordon: inf-vol limit, uniform LSI, mass gap, 0<b^2<1.
+- Göpfert–Mack, "Proof of confinement of static quarks in 3D U(1) LGT for all values of the coupling constant", CMP 82 (1982) 545–606. VERIFIED. Continuum limit with m_D fixed: free massive scalar. Gross L., "Convergence of U(1)_3 LGT to its continuum limit", CMP 92 (1983) 137–162. VERIFIED. Guth / Fröhlich–Spencer deconfining transition d>=4 U(1).
+- Buchholz–Fredenhagen, "A C*-algebraic approach to interacting QFTs", CMP 377 (2020) 947–969, arXiv:1902.06062. VERIFIED. Scalar fields any dim; gauge theories open (outlook).
+- Chatterjee "probabilistic mechanism for quark confinement": unbroken center symmetry => confinement; nontrivial center + exp decay under arbitrary b.c. => unbroken center symmetry. (Abstract VERIFIED.)
+- Durhuus–Fröhlich, "A connection between nu-dim YM theory and (nu-1)-dim nonlinear sigma-models", CMP 75 (1980) 103–151. VERIFIED.
+- Sonoda–Suzuki, "Derivation of a gradient flow from the exact RG", PTEP 2019 033B05, arXiv:1901.05169. VERIFIED. Carosso–Hasenfratz–Neil PRL 121 (2018) 201601, arXiv:1806.01385. VERIFIED. Makino–Morikawa–Suzuki PTEP 2018 053B02; Abe–Fukuma PTEP 2018 083B02.
+- Cheng–Eichten–Li, "Higgs phenomena in asymptotically free gauge theories", PRD 9 (1974) 2259. VERIFIED. SU(N)/O(N) with vector/adjoint scalars: S-matrix and AF cannot coexist (for those reps).
+- Shen–Zhu–Zhu, "Large N limit and 1/N expansion of invariant observables in O(N) linear sigma-model via SPDE", PTRF 191 (2025) 853–932, arXiv:2306.05166. Shen–Smith–Zhu–Zhu Ann. Probab. 50(1) (2022) 131–202.
+- Delgadino–Smith, "Mass generation for the 2D O(N) linear sigma model in the large N limit", arXiv:2601.19630 (Jan 2026). VERIFIED. On R^2, no coupling restrictions, exp decay as N->inf; mass exp small in inverse temperature.
+- Haldane gap repo paper (family 268): The-periodic-spin-one-Haldane-gap-September-24-2026, Thm 1.1 (build/introduction.tex), Prop "prop:bootstrap" (build/bootstrap.tex:124): purity-doubling bootstrap: two finite seeds (thermal purity S(n0,b0), spatial transfer purity T(2n0,b0)) => uniform gap log(1/r)/b0 for all even L >= n0. Computer-assisted finite certificates. NOT Lean formalized? (family 268 has no lean doc). 
+- Costello, "Renormalization and Effective Field Theory", AMS Surveys 170 (2011). VERIFIED. Cohomological perturbative renormalizability of YM (BV). Elliott–Williams–Yoo, "Asymptotic freedom in the BV formalism", J. Geom. Phys. 123 (2018) 246–283, arXiv:1702.05973. VERIFIED.
+- Jaffe–Ritter, "QFT on curved backgrounds I", CMP 270 (2007) 545–572, hep-th/0609003. VERIFIED. RP needs isometric time reflection. II: arXiv:0704.0052.
+- Neeb–Ólafsson, "Reflection positivity on spheres", Anal. Math. Phys. (2019?) arXiv:1907.09383. VERIFIED.
+- Figari–Høegh-Krohn–Nappi, CMP 44 (1975) 265–278 (P(phi)_2 on de Sitter via S^2). VERIFIED. Barata–Jäkel–Mund Mem. AMS 281 no. 1389 (2023) P(phi)_2 on dS.
+- Strocchi: CMP 56 (1977) 57–78; PRD 17 (1978) 2010–2021; locality+positivity incompatible for local covariant gauge (1967–70 series). VERIFIED (via search).
+- Buchholz–Fredenhagen, "Locality and the structure of particle states", CMP 84 (1982) 1–54. Buchholz "The physical state space of QED", CMP 85 (1982) 49–71. VERIFIED (links).
+- Buchholz–Ciolli–Ruzzi–Vasselli, "The universal C*-algebra of the electromagnetic field", LMP 106 (2016) 269, arXiv:1506.06603; II arXiv:1610.03302; III arXiv:2111.01538. VERIFIED.
+- Gross–Witten, "Possible third-order phase transition in the large-N lattice gauge theory", PRD 21 (1980) 446–453. VERIFIED. Wadia PLB 93B (1980) 403.
+- Bhanot–Heller–Neuberger, "The quenched Eguchi-Kawai model", PLB 113 (1982) 47–50. VERIFIED. EK: center symmetry breaks at weak coupling d>2. Twisted EK González-Arroyo–Okawa PLB 120 (1983) 174; TEK symmetry breaking at large N intermediate coupling.
+- Morinelli–Morsella–Stottmeister–Tanimoto "Scaling limits of lattice quantum fields by wavelets" CMP 2021 arXiv:2010.11121; PRL 127 (2021) 230601 arXiv:2002.01442 (free fields only). VERIFIED.
+- Brothier–Stottmeister "Operator-algebraic construction of gauge theories and Jones' actions of Thompson's groups" CMP 376 (2020) 841–891 arXiv:1901.04940; "Canonical quantization of 1+1-dim YM: an operator-algebraic approach" arXiv:1907.05549. VERIFIED.
+- Ebel–Kennedy–Rychkov, "Tensor renormalization group meets computer assistance", arXiv:2506.03247. VERIFIED. Kennedy–Rychkov AHP 25 (2024) 773–841 low-T; Ebel 3D TRG high-T AHP 26.
+- Simon, "Some quantum operators with discrete spectrum but classically continuous spectrum", Ann. Phys. 146 (1983) 209–220. VERIFIED. x^2y^2 discrete spectrum.
+- de Wit–Lüscher–Nicolai, "The supermembrane is unstable", NPB 320 (1989) 135–159. VERIFIED. SUSY matrix models: continuous spectrum from 0, no gap.
+- Dimock, "Canonical quantization of YM on a circle", RMP 8 (1996) 85–102. VERIFIED. Driver–Hall, "YM theory and the Segal–Bargmann transform", CMP 201 (1999) 249–290, hep-th/9808193. VERIFIED. Physical Hilbert space L^2(K), H = -Delta_K/2.
+- Witten, "Supersymmetric YM theory on a four-manifold", JMP 35 (1994) 5101–5135, hep-th/9403195. VERIFIED. Uses N=1 mass gap + gaugino condensation as physical input.
+- DESY–Münster N=1 SYM SU(3) lattice: JHEP 03 (2018) 113 (arXiv:1801.08062); PRL 122 (2019) 221601 (arXiv:1902.11127). VERIFIED. Wilson fermions need 1 fine tuning (gluino mass); chiral (GW) fermions avoid it.
+- Kaplan–Katz–Ünsal, "Supersymmetry on a spatial lattice", JHEP 05 (2003) 037, hep-lat/0206019. Catterall JHEP 06 (2005) 027; Catterall–Kaplan–Ünsal Phys. Rept. 484 (2009) 71; Catterall–Schaich–Damgaard–DeGrand–Giedt PRD 90 (2014) 065013. VERIFIED. N=4 lattice: one exact Q; <= 1 fine tuning (perturbatively).

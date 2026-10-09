@@ -1,0 +1,1580 @@
+                                                                                                                                        DESY 19-188
+
+
+
+                                                Asymptotic behavior of cutoff effects in Yang-Mills theory
+                                                             and in Wilson’s lattice QCD
+
+
+                                                                      Nikolai Husungb , Peter Marquardc , Rainer Sommerb,a
+
+                                                   a
+                                                       Institut für Physik, Humboldt-Universität zu Berlin, Newtonstr. 15, 12489 Berlin, Germany
+                                           b
+                                               John von Neumann Institute for Computing (NIC), DESY, Platanenallee 6, D-15738 Zeuthen, Germany
+                                                                 c
+                                                                     Theory group, DESY, Platanenallee 6, D-15738 Zeuthen, Germany
+arXiv:1912.08498v1 [hep-lat] 18 Dec 2019
+
+
+
+
+                                                                                             Abstract
+                                           Discretization effects of lattice QCD are described by Symanzik’s effective theory when
+                                           the lattice spacing, a, is small. Asymptotic freedom predicts that the leading asymptotic
+                                                                                       h          iγ̂1
+                                           behavior is ∼ anmin [ḡ 2 (a−1 )]γ̂1 ∼ anmin − log(aΛ)
+                                                                                            1
+                                                                                                       . For spectral quantities, nmin = d is
+                                           given in terms of the (lowest) canonical dimension, d + 4, of the operators in the local
+                                           effective Lagrangian and γ̂1 is proportional to the leading eigenvalue of their one-loop
+                                           anomalous dimension matrix γ (0) . We determine γ (0) for Yang-Mills theory (nmin = 2) and
+                                           discuss consequences in general and for perturbatively improved short distance observables.
+                                           With the help of results from the literature, we also discuss the nmin = 1 case of Wilson
+                                           fermions with perturbative O(a) improvement and the discretization effects specific to the
+                                           flavor currents. In all cases known so far, the discretization effects are found to disappear
+                                           faster than the naive ∼ anmin and the log-corrections are a rather weak modification – in
+                                           contrast to the two-dimensional O(3) sigma model.
+
+
+
+
+                                           Keywords: Lattice QCD, Scaling, Effective theory
+Contents
+
+1 Introduction                                                                                   2
+  Scope . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      3
+
+2 Symanzik effective theory and logarithmic corrections to an behavior                           4
+
+3 One-loop computation of the anomalous dimension matrix                                         8
+
+4 Matching to lattice actions                                                                  12
+
+5 Examples for the asymptotic behavior                                                         13
+  5.1 Generic form for spectral quantities . . . . . . . . . . . . . . . . . . . . . . .       13
+  5.2 Short distance observables . . . . . . . . . . . . . . . . . . . . . . . . . . . .       14
+      Improved observables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       15
+
+6 Schrödinger functional                                                                       16
+
+7 Wilson-QCD                                                                                   20
+
+8 Summary                                                                                      21
+
+1   Introduction
+
+Lattice regularizations provide a definition of quantum field theories beyond perturba-
+tion theory. Evaluating the associated path integral by Monte Carlo also constitutes a
+non-perturbative calculational method to derive predictions from the theory. One of the
+systematic effects that have to be taken into account is the dependence of results on the
+lattice spacing a (we assume a hyper-cubic lattice throughout) or in other words the size
+of discretization errors,
+                                 ∆P (a) = P(a) − P(0) ,                             (1.1)
+associated with a dimensionless observable P of the theory. As a start, one may consider
+the classical field theory. One then has smooth fields, and the lattice-Lagrangian can
+simply be Taylor expanded. It is the continuum one up to terms suppressed by powers
+of a.
+      One may therefore think that also in the full, quantized, theory the small-a behavior
+of the discretization errors is ∆P (a) = p1 anmin + p2 anmin +1 + . . . with the integer nmin given
+by the first non-zero power in the classical Taylor expansion of the Lagrangian. However,
+the divergences of quantum field theories spoil this behavior.
+      Still, precise statements can be made about the small-a expansion, based on Symanzik’s
+effective theory (SymEFT) [1–4], see also [5, p. 39ff.]. It describes the small-a behavior
+by an effective field theory with a local Lagrangian
+
+                       Leff (x) = L + aδL (1) (x) + a2 δL (2) (x) + . . . .                  (1.2)
+
+The effective theory can be thought of as a continuum effective theory, regularized e.g. by
+dimensional regularization. The first term is the continuum Lagrangian L of the funda-
+mental field theory and δL (d) (x) are local Lagrangians of higher mass dimension. The
+
+                                                2
+leading term in eq. (1.1) is then given by the one1 with the lowest mass dimension in
+eq. (1.2), i.e. δL (1) (x), unless it vanishes. The corrections δL (d) (x) can be written as a
+linear combination of basis operators Bi (x) with the appropriate canonical mass dimen-
+sions. Renormalization of the effective theory introduces anomalous dimensions for the
+operators Bi . It may therefore modify the small-a expansion to ∆P (a) = p1 anmin +η + . . .
+with, in general, non-integer η. The (leading) anomalous dimension η is in general a non-
+perturbative quantity, but it may sometimes be estimated by perturbation theory in the
+-expansion, see [6].
+     We now turn to asymptotically free theories such as QCD. There, small a means weak
+coupling at the scale of the lattice cutoff and the anomalous dimension can 1) be computed
+in perturbation theory and 2) it leads to a modification of an by logs [1, 2, 7, 8],
+                               ∆P (a) = p1 [− log(aΛ)]−γ̂ anmin + . . .                            (1.3)
+and not by fractional powers. The intrinsic scale of the theory, Λ, is a renormalization
+group invariant and the exponent γ̂ is proportional to a one-loop anomalous dimension.
+Since the work of [9], continuum extrapolations are routinely performed in order to obtain
+quantitative numbers for continuum field theory observables. They have been carried out
+with just powers2 of a, thus implicitly assuming that γ̂ is small. Of course this can not
+really be taken for granted until γ̂ is known from a computation. We here start to fill this
+gap.
+     Note that the logarithmic corrections in eq. (1.3) can be very relevant. An explicit
+example is provided by the seminal work of Balog, Niedermayer and Weisz [7,8]. It concerns
+the 2-d O(3) sigma model where the leading term is γ̂ = −3 and the logarithmic corrections
+change the naive a2 behavior to a shape which numerically looks like a in a broad range
+of aΛ [7, 8]. This numerical behavior led to quite some concern [10] and the computation
+of the logarithmic corrections by Balog, Niedermayer and Weisz were essential to confirm
+that the SymEFT description holds and put continuum extrapolations on a solid ground.
+In lattice QCD, knowledge of the leading power of the logarithms (and partially awareness
+of the issue) are still missing; in particular it is important to have a confirmation that γ̂ is
+small as is usually assumed. Let us cite Peter Weisz [5]:
+The program should be carried out for lattice actions used for large scale simulations of
+QCD, when technically possible, in order to check if potentially large logarithmic corrections
+to lattice artifacts predicted by perturbative analysis appear.
+Ten years later, as a first step, we do carry out the program in the pure Yang-Mills (YM)
+theory as well as in Wilson’s lattice QCD without non-perturbative O(a) improvement.
+The latter case is rather simple and basically given by results in the literature. We will
+therefore discuss only the YM theory in detail and just mention the difference and results
+in Wilson’s QCD in section 7.
+
+Scope
+In addition to the discretization effects due to the terms δL (d) in the effective Lagrangian,
+correlation functions of local fields Φ(x) also get a-effects from corrections to the fields
+  1
+    We will be more precise below.
+  2
+    Sometimes an additional power of ḡ 2 (a−1 ) ∼ [− log(aΛ)]−1 has been used when a tree-level improved
+action is used. Here ḡ 2 is the running coupling in some scheme.
+
+
+                                                   3
+Φ(x) represented in the SymEFT [11, 12]. Apart from mostly restricting ourselves to the
+YM theory, we also do not discuss these additional discretization effects. They are absent
+in quantities which are independent of details of the local fields. We call those spectral
+quantities, since the spectrum of the Hamiltonian is the important application. In the YM
+theory, correlation functions themselves have so far not played a relevant role, apart from
+one notable exception. The exception is the new sector of Gradient flow observables [13,14].
+We leave its treatment to future work.
+
+2       Symanzik effective theory and logarithmic corrections to an behavior
+
+We consider YM theory in 4 dimensions defined by the action
+                          3
+                   2     X
+          Slat =               p(x, µ, ν) ,
+                   g02 x,µ>ν=0
+                                                                                               (2.1)
+                   p(x, µ, ν) = Re tr (1 − U (x, µ)U (x + aµ̂, ν)U −1 (x + aν̂)U −1 (x, ν))
+
+in terms of the link variables U (x, µ) ∈ SU(N), connecting x + aµ̂ and x. We assume a
+lattice with periodic boundary conditions in space and infinite (or arbitrarily large) time
+extent.3
+     As an example of a simple observable, P, take a ratio of glue-ball masses, which may
+be defined as (∂µlat f (x) = [f (x + aµ̂) − f (x)]/a and x = (x0 , x))
+                                                                         !
+                                                              X
+                P = mhi /mhj , mhi = − lim ∂0lat log a3            Ci (x) ,            (2.2)
+                                              x0 →∞
+                                                                 x
+
+in terms of a two-point function
+
+                                Ci (x − y) = h Φi (x)Φi (y) icon
+                                                             lat                               (2.3)
+
+The gauge invariant fields Φi (x) are formed out of small (with a maximal extent rw
+with rw /a fixed) spatial Wilson loops, combined in such a way as to have a definite
+transformation under the lattice cubic group. A very simple example is the scalar field
+Φ1 (x) = ZF 2 k,l∈{1,2,3} p(x, k, l). For simplicity we assume in the following that the
+                P
+
+renormalization factors, such as ZF 2 are determined such that they do not introduce any
+cutoff effects. In perturbation theory minimal (lattice) subtraction has this property. Ex-
+pectation values are defined by the lattice path integral
+                                     Z Y
+                                   1
+                     hF (U )ilat =         dU (x, µ)e−Slat (U ) F (U ) ,               (2.4)
+                                   Z   x,µ
+
+where Z normalizes such that h1ilat = 1, F (U ) stands for a function of any number of link
+variables U (x, µ) and dU (x, µ) is the invariant Haar measure. The label “con” stands for
+connected correlation functions, namely the subtraction of [h Φi (x) ilat ]2 in eq. (2.3).
+     Note that while Ci (x) depend on the details of the definition of Φi (x), the masses mhi
+only depend on the quantum numbers of the field Φ(x). Masses or more generally energies
+are spectral quantities.
+    3
+    In practice, finite lattices are of course needed for the Monte Carlo evaluation. The appropriate
+modifications of equations such as eq. (2.2) are standard.
+
+
+                                                  4
+     SymEFT gives the small-a expansion of correlation functions such as Ci (x) in the form
+of a continuum effective field theory. The central statement is
+
+                     C(x) = C cont (x) + anmin δC(x) + O(anmin +1 )                       (2.5)
+
+and the expansion on the r.h.s. can be obtained from the effective continuum field theory
+with effective Lagrangian eq. (1.2) supplemented by correction terms which are due to
+correction terms of the fields [11, 12]
+
+                       Φeff (x) = Φ(x) + aδΦ(1) (x) + a2 δΦ(2) (x) + . . . .              (2.6)
+
+Let us mention right away that nmin = 2 in the considered YM theory.
+    For precise statements we need to specify
+
+  1. the rules of the EFT, i.e. how precisely are δC(x) defined in terms of δL (d) (x), δΦ(d) (x),
+
+
+  2. which local operators contribute to δL (d) (x), δΦ(d) (x),
+
+  3. how are the parameters of the EFT determined, in other words how are the coeffi-
+     cients of those operators contributing to δL (d) (x), δΦ(d) (x) determined.
+
+We discuss these items in turn.
+1. The correction terms R δL
+                              (d) (x) etc. have canonical mass dimension 4 + d. A path
+                           4
+integral with weight e− d xLeff (x) is thus not renormalizable. Path integral expectation
+values are defined by expanding in the parameter a before integrating over the fields. For
+our example, eq. (2.5), we then have as a definition of δC(x)
+
+                      δC(x) = δC L (x) + δC Φ (x) ,                                       (2.7)
+                                Z
+                    L
+                  δC (x − y) = − d4 z h Φ(x)Φ(y) δL (2) (z) icon
+                                                             cont                         (2.8)
+
+                  δC Φ (x − y) = h δΦ(x)Φ(y) icon                 con
+                                              cont + h Φ(x)δΦ(y) icont                    (2.9)
+
+           cont is given by the standard continuum connected correlation function with
+where h X icon
+continuum Lagrangian
+                        1 X
+       Lcont (A) = −            tr (Fµν (A)Fµν (A)) ,    Fµν (A) = [Dµ (A), Dν (A)] ,    (2.10)
+                       2g02 µ,ν
+
+written in terms of the covariant derivative
+
+                                    Dµ (A) = ∂µ + Aµ .                                   (2.11)
+
+We have already anticipated that 2. leads to the vanishing of δL (1) , δΦ(1) and used a
+shorthand δΦ = δΦ(2) .
+2. The correction Lagrangians δL (d) are linear combinations
+                                        X
+                           δL (d) (x) =     ωi (g02 ) Oi (x)                      (2.12)
+                                              i
+
+of local operators Oi (x) which comply with the symmetries of the underlying lattice theory
+and have a mass dimension 4 + d. Gauge invariance is one of the symmetries (gauge fixing
+
+                                                  5
+is needed only in section 3 where we report on the perturbative computation). One may
+further drop all combinations of fields which vanish by the continuum equation of motion,
+[Dµ , Fµν (x)] = 0, (such as O = tr ([Dµ , Fµν ] [Dρ Fρν ])) [12] as well as all operators which
+can be written as total derivatives of the form O  / = ∂µ Kµ . After doing that, we have a so
+called “on-shell” basis. For YM it consists of two operators, which we may choose as
+             1 X                                               1 X
+      O1 =             tr ([Dµ , Fνρ ] [Dµ , Fνρ ]) ,   O2 =           tr ([Dµ , Fµν ] [Dµ , Fµν ]) ,   (2.13)
+             g02 µ,ν,ρ                                         g02 µ,ν
+
+already known from Refs. [15, 16]4 . Note that O2 breaks the O(4) rotational invariance
+of the continuum Lagrangian eq. (2.10) down to 90◦ rotations around the lattice axes.
+Dropping it, one has the general effective Lagrangian of a low energy theory with just
+gauge fields and O(4) invariance. This is a (tiny) sector of the Lagrangian considered for
+beyond the standard model phenomenology in Ref. [17]. The operator, g13 tr (Fµν Fνρ Fρµ ),
+                                                                         0
+considered there is seen to be on-shell equivalent to
+             2 X
+      O1 =             ( tr ([Dµ , Fµν ][Dρ , Fρν ]) − tr (Fµν Fνρ Fρµ )) + (total divergences)         (2.14)
+             g02 µ,ν,ρ
+
+using integration by parts and the Bianchi identity. Gauge invariant dimension five oper-
+ators do not exist and thus YM theory has nmin = 2. The corrections to the continuum
+fields Φi will not be needed.
+     Now we consider the a expansion of our observable,
+
+                             P = P cont + a2 [δP L + δP Φ ] + O(a3 ) .                                  (2.15)
+
+Inserting the spectral representations into the ratios CiL /Cicont which appear as one ex-
+pands the r.h.s. of eq. (2.2) in a, one sees5
+                         1
+                 δP L = − [hi|δL (2) (0)|ii − hj|δL (2) (0)|ji] ,            δP Φ = 0 .                 (2.16)
+                         2
+The states |ii with hi|ii = 2L3 are the ground states of the Hamiltonian of the finite volume
+theory with spatial volume L3 in the zero momentum sector of the Hilbert space with the
+quantum numbers of Φi . The vanishing of δP Φ was to be expected as the energy of a
+physical state should not depend on the interpolating field used to create it, including its
+renormalization. Since physical quantities which do depend on δΦ have so far not been in
+the focus of lattice computations, and also because each field appearing in the correlation
+functions has to be considered separately, we will ignore the contribution of δΦ from now
+on. We concentrate on spectral quantities.
+3. The coefficients ωi are needed, in particular their dependence on the parameters of the
+theory. Eq. (2.16) makes it clear that actually we first have to renormalize the operators
+Oi and then determine their coefficients by matching, which will be discussed in section 4.
+Renormalization introduces a dependence on the renormalization scale µ (and scheme). By
+renormalization group improvement we turn it into a dependence on the lattice spacing,
+  4
+     That reference discusses the construction of a lattice improved action such that the a2 terms in the
+SymEFT are absent. The basis of operators is the same.
+   5
+     For intermediate steps in the derivation, see [18], sect. 9.4.1. In quantum mechanics the relation given
+is the Feynman-Hellmann theorem.
+
+
+                                                        6
+which we are seeking. In the 2-d O(N) sigma model, all this has been done to next-to-
+leading order in the coupling [7] . Here we are content with the leading order since it
+predicts the asymptotic behavior of ∆P .
+     Before proceeding it is convenient to switch to a basis of operators, with elements
+Bi = j vij Oj which do not mix at one-loop order, i.e.
+     P
+
+                                                    (1)
+                           BiR (µ) = [1 + g 2 Zi          + O(g 4 )] Bi ,             (2.17)
+
+where BiR (µ) denote the renormalized operators in some scheme at renormalization scale µ.
+One may think of the MS scheme.
+     In general, we then have ∆P = i c̄i MR   P,i , where at leading order in the coupling
+                                      P
+       (n) 2n               (n)       (n)
+ωj = ωj g0 +O(g02n+2 ) , ωj = i c̄i vij and MR      P,i are matrix elements of the operators
+                                  P
+
+Bi in the continuum field theory. The renormalized matrix elements are denoted
+
+                              MR               R
+                               P,i (µ) = hψP |Bi (µ)|ψP i ,                           (2.18)
+
+with some physical state |ψP i, analogous to |ψΦ i. We have suppressed the spacetime
+argument of Bi .
+    The coefficients c̄i depend on the renormalization scheme adopted for BiR as well as
+on µ and a. We may thus write (dropping higher powers of a without notice)
+                                      X
+                         ∆P (a) = −a2    c̄i (ḡ(µ), aµ) MR
+                                                          P,i (µ) ,               (2.19)
+                                            i
+
+where the dependence of c̄i on µ cancels the one of MR   P,i (µ).
+     In order to systematically learn about the behavior for small a we use renormalization
+group improvement, namely we set µ = 1/a, and introduce the renormalization group
+invariant matrix elements
+                            X
+                   MRGI
+                      P,i =     ϕij (ḡ(µ)) MR
+                                             P,j (µ) = hψP |Bi
+                                                              RGI
+                                                                  |ψP i .            (2.20)
+                              j
+
+The matrix valued function (Pexp denotes path ordering: terms with smallest x appear to
+the left)
+                                                ( Z           "             #)
+                                                        ḡ
+                               (0)
+                             2 −γ /2b0                          γ(x) γ (0)
+                                                                                 (2.21)
+                       
+             ϕ(ḡ) = 2b0 ḡ                Pexp −          dx        −         ,
+                                                      0         β(x)   b0 x
+                              −γ (0) /2b0
+                   = 2b0 ḡ 2              × [1 + O(ḡ 2 )]                      (2.22)
+                       
+
+involves the anomalous dimension matrix γ defined by
+                           d         X
+                         µ BiR (µ) =     γij (ḡ(µ)) BjR (µ) .                        (2.23)
+                          dµ
+                                                j
+
+It has the expansion
+
+                            γ(ḡ) = −ḡ 2 [γ (0) + γ (1) ḡ 2 + . . .] ,              (2.24)
+
+where by our choice of basis γ (0) is diagonal,
+                                   1 (0)
+                                      γ = diag(γ̂1 , γ̂2 ) .                          (2.25)
+                                  2b0
+
+                                                    7
+Our convention for the β-function is β(ḡ(µ)) = µ dµ
+                                                   d
+                                                     ḡ(µ) with expansion β(ḡ) = −ḡ 3 (b0 +
+b1 ḡ 2 + . . .).
+        Asymptotic freedom means that perturbation theory is applicable at small a. The
+asymptotic behavior of eq. (2.19) can thus be inferred from (renormalized) perturbation
+theory. The O(g 2 ) term in eq. (2.22) is then subdominant and further we may expand
+                                                          (0)              (1)
+                            c̄i (ḡ(a−1 ), 1) = c̄i + c̄i ḡ 2 (a−1 ) + . . . .                                   (2.26)
+
+Putting everything together and concentrating on the leading term we arrive at
+                         X (0)                  γ̂
+         ∆P (a) = −a2        c̄i  2b0 ḡ 2 (a−1 ) i MRGI          2 −1        4
+                                                     P,i [1 + O(ḡ (a )] + O(a ) .                                (2.27)
+                                  i
+
+Ordering γ̂1 < γ̂2 , the leading asymptotics is
+                                                                                                  γ̂1
+                                                       −1
+                                                                    γ̂1                     1
+                                      2            2                             2
+                                                                                                                  (2.28)
+                                          
+                      ∆P (a) ∼ a              2b0 ḡ (a         )          ∼a                           ,
+                                                                                         − log(aΛ)
+         (0)
+                                    P,1 vanish. Generically, there is no reason for the
+unless c̄1 or the matrix element MRGI
+latter to do so. A positive/negative γ̂1 leads to an accelerated/decelerated asymptotic
+convergence as compared to naive a2 behavior.
+
+3   One-loop computation of the anomalous dimension matrix
+
+We now turn to the anomalous dimension matrix γ (0) . Although the renormalization of
+composite pure gauge theory operators has been discussed extensively [17, 19], a new com-
+putation is necessary because of the rotation symmetry violating operator O2 , eq. (2.13),
+which is not found in the literature. We thus employed dimensional regularization and
+computed the renormalization matrix,
+                                  !               !     !
+                              O1          Z11 0      O1
+                                      =                    ,                         (3.1)
+                              O2 R        Z21 Z22    O2
+
+to one-loop order. Here Z12 vanishes because dimensional regularization preserves rota-
+tional symmetry and thus (O1 )R can not have a rotational non-invariant piece Z12 O2 .
+     The Z-matrix is obtained from a perturbative computation of a sufficient number of
+expectation values
+                                                 O
+                                                Cik = hOi Okprobe i                                                (3.2)
+
+of the operators Oi together with suitable multi-local, renormalized, operators Okprobe . We
+may choose Okprobe including their kinematics to simplify the computation. Unfortunately,
+just choosing them to be composed of local gauge invariant operators, e.g. tr Fµν Fµν , one
+quickly discovers that one-loop computations are insufficient, since the tree-level correlation
+functions vanish.
+     As one option, we thus relaxed on manifest gauge invariance of Cik and consider gauge
+dependent Green’s functions with
+
+    O1probe = Ãa (p1 ) · η1 Ãb (p2 ) · η2 ,          O2probe = Ãa (p1 ) · η1 Ãb (p2 ) · η2 Ãc (p3 ) · η3 ,    (3.3)
+
+                                                                      8
+                                                                                        q
+                                          q
+                                                                  p1                        p3
+                         p1                       p2
+                                                                           p2
+
+                         (a) Two-point function.                (b) Three-point function.
+
+Figure 1: Schematic representation of the needed two-point and three-point functions with
+insertion of an operator Oi . The "blob" represents all possible connected tree-level and
+one-loop graphs with given number of external legs.
+
+
+in terms of the momentum space fields Ãµ (p) = d4 x e−ipx Aµ (x). We have
+                                                      R                             P
+                                                                                      i pi =
+−q as indicated in figure 1 and choose [(pi )0 ]2 = −(pi )2 , pi · ηi = 0 for all i with the
+Euclidean scalar product p · η =      µ pµ ηµ . In principle mixing of Oi with gauge-non-
+                                    P
+
+invariant operators then has to be taken into account [20, 21]. However, those do not
+contribute to the on-shell Green’s functions selected by our choice of kinematics. Since we
+want to restrict ourselves to the two and three gluon Oprobe from above, we need to have
+a non-zero momentum q of the operators Oi . Otherwise the Green’s functions vanish by
+kinematics. The price to pay is that Oi mix with the “total divergence operators”,
+               1 X                                                     1 X
+        /1 =
+        O                ∂µ tr (Fρν [Dµ , Fρν ]) ,          /2 =
+                                                            O                  ∂µ tr (Fµν [Dµ , Fµν ]) ,   (3.4)
+               g02 µ,ν,ρ                                               g02 µ,ν
+
+as                                        !                            !        !
+                                      O                 Z AOO/              O
+                                                  =                                 ,                      (3.5)
+                                      /
+                                      O       R
+                                                        0       Z O/        /
+                                                                            O
+with a block-triangular structure.
+     As a second option, we considered the background field method [22–25]. It consists of
+introducing a smooth classical background field, Bµ (x). The gauge field,
+
+                                          Aµ = Bµ + g0 Qµ ,                                                (3.6)
+
+is split into the background field and the quantum fluctuations Qµ . Note that the back-
+ground field is not required to satisfy the equation of motion. In addition to the Lagrangian
+
+                                 Lbf (B, q) = Lcont (B + g0 Q) ,                                           (3.7)
+
+one chooses the background field gauge with gauge-fixing term
+                                   X
+                  Lgf (B, Q) = −λ0     tr ([Dµ (B), Qµ ][Dν (B), Qν ]                                      (3.8)
+                                              µ,ν
+
+instead of the standard −λ0 tr ((∂µ Aµ )(∂ν Aν )) and adds a Faddeev Popov term [26].
+     In this case, we can form
+
+             O1probe = B̃µa (p1 ) B̃νb (p2 ) ,        O2probe = B̃µa (p1 ) B̃νb (p2 ) B̃ρc (p3 ) ,         (3.9)
+
+                                                            9
+just in terms of the background field, and obtain gauge invariant Cik by construction. We
+can remain with Euclidean momenta and do not need a nonzero momentum to flow into
+the operator Oi . Thus the mixing with total divergence operators does not contribute any
+more. The downside is that here the equations of motion do not hold. Therefore, we have
+to consider the mixing structure
+                                  !                !     !
+                                O          Z AOE      O
+                                       =                   ,                        (3.10)
+                                 E R       0 ZE        E
+
+with the extra operator
+                                 1 X
+                            E=             tr ([Dµ , Fµν ] [Dρ , Fρν ]) .            (3.11)
+                                 g02 µ,ν,ρ
+
+     Since we are just interested in the renormalization matrix Z, it suffices to consider
+only OR , the first block row of the above equations. Those define the renormalized (Cik
+                                                                                      O) ,
+                                                                                         R
+replacing O with OR . We write the resulting equations as
+                                        2
+                                        X                 X
+                              O                    O
+                            (Cik )R =         Zij Cjk +            red
+                                                              Ail Clk  ,             (3.12)
+                                        j=1               l
+
+where Clk
+        red is formed of the needed redundant operators which mix into O. Without
+
+background field, it is the set of O.
+                                   / With background field there is just the operator E.
+Expanding
+
+                            g2                          g2
+          Zij   = δij + Z̄ij R + O(0 , gR
+                                         4
+                                           ) , A = Ā R + O(0 , gR  4
+                                                                       ),            (3.13)
+                                                        
+                                  2
+           O
+          Cik        O (0)
+                = (Cik ) + Cik O gR + O(0 , g 4 ) , C red = (C red )(0) + O(gR
+                                                                              2
+                                                                                ),   (3.14)
+                                               R
+                                  
+and requiring the finiteness of (Cik
+                                   O ) , the desired Z̄ (as well as Ā) are obtained as the
+                                      R                ij
+solution of the linear system of equations (each i = 1, 2 and all k yield an equation),
+                      2
+                      X                       X
+                                   O (0)
+                            Z̄ij (Cjk ) +                 red (0)
+                                                   Āil (Clk       O.
+                                                             ) = −Cik                (3.15)
+                      j=1                      l
+
+     There is one subtlety in applying the above. The equations assume that the observ-
+ables Cjk
+        O are infrared finite. With the chosen on-shell kinematics in the first case, this
+
+is, however, not true and the 1/ terms contain in principle a mix of ultraviolet and in-
+frared divergences. Therefore we use the by now common following trick, called infrared
+rearrangement [27–29]. For each loop integral, we rewrite the denominators in the form
+
+                               1           1     2kp + p2 − Ω
+                                     =        −                  ,                   (3.16)
+                            (k + p)2   k 2 + Ω (k 2 + Ω)(k + p)2
+where k is the loop momentum and Ω is an arbitrary positive constant. The second term
+on the r.h.s. is one power less ultraviolet divergent and the first one has no source of
+infrared divergence. We can usually restrict ourselves to the first one since we are just
+interested in the ultraviolet divergences which determine the renormalization. If necessary,
+
+                                                   10
+one can apply the transformation repeatedly. While for many integrals this trick is not
+necessary, we
+             carry it−nout in all cases, since all integrals are then brought to the standard
+form dD k k 2 + Ω         kµ1 . . . kµl up to the finite and infrared divergent parts which we
+      R
+
+just drop. Note that the Z-factors are independent of Ω. We have used this throughout
+as a check on our results.
+     The computation was carried out with the help of computer algebra packages. Feyn-
+man graphs were generated by QGRAF [30, 31], formally treating the operator insertions
+with the help of additional non-propagating scalar fields, ϕi (x), called “anchor”, through
+additional terms i ϕi (x)Oi (x) in the Lagrangian. The Feynman rules were generated
+                  P
+
+using FORM [32], which we also used for tricks such as eq. (3.16), to reduce the Feynman
+graphs to standard one-loop integrals, and to isolate the 1/ poles.
+     The computed two-point and three-point functions with operator insertions are shown
+schematically in figure 1. We checked explicitly that the results for both cases, non-zero q
+vs. background field, agree. They read
+                                                               
+                                           CA       7/3      0
+                                 Z̄ =                              .                      (3.17)
+                                          (4π)2 −7/15 21/5
+
+The element Z̄11 agrees with the value found in the literature [33]. For completeness we
+also report the mixing terms (CA = N for gauge group SU(N))
+                                                                            !
+                                                                  23     3
+                                                                     −
+                                           
+                       C A     −6        0                 C A
+            ĀOO/ =                            , ĀOE =            6
+                                                                   7
+                                                                       2λR
+                                                                              ,   (3.18)
+                      (4π)2 −21/20 −9/5                   (4π)2 15   − 2λ1R
+                                           2
+                E          CA    5     3    gR
+              Z   = 1+             −            .                                 (3.19)
+                          (4π)2 4 4λR        
+
+We read off that the choice of basis,
+                                                         1
+                                   B 1 = O1 ,     B 2 = − O1 + O2 ,                                     (3.20)
+                                                         4
+renormalizes without mixing at one-loop order,
+
+                             g2                                       7 1                  21 1
+              BiR = [1 + Z̄iB R ] Bi + O(gR
+                                          4
+                                            ),               Z̄1B =           ,   Z̄2B =            .   (3.21)
+                                                                     3 (4π)2               5 (4π)2
+
+The anomalous dimensions of eq. (2.25) are6
+
+                           γ̂1 = 7/11 ≈ 0.636 ,         γ̂2 = 63/55 ≈ 1.145 ,                           (3.22)
+
+independent of the number of colors.
+  6
+      At one-loop order we have γi = 2b0 γ̂i = Z̄iB .
+
+
+
+
+                                                        11
+Figure 2:  Graphical representations [5] of the loop geometries contributing to common
+lattice gauge actions.
+
+
+4   Matching to lattice actions
+
+The final ingredient needed to predict the form of the cutoff effects are the coefficients
+of the higher dimensional operators in the effective Lagrangian, step “3.” in section 2.
+At leading order of perturbation theory considered here, we just need the lowest order
+               (0)
+coefficients c̄i of the functions c̄i , eq. (2.26). At tree-level, no divergences occur in the
+path integral. One may therefore perform a naive classical expansion of the lattice action in
+a, setting U (x, µ) = eaAµ (x) with a smooth continuum gauge field Aµ . This expansion has
+been carried out by Lüscher and Weisz [16] for a set of gauge actions, in particular for those
+consisting of the lattice loops depicted in figure 2. For each of these loops one sums over all
+lattice points corresponding to the lower left corners in the graph and over all orientations
+on the lattice, e.g. for the plaquette term (0) one sums over µ > ν, for the rectangle (1)
+over µ 6= ν etc. There are 6,12,16,48 orientations for the loops (0),(1),(2),(3). Apart from
+the overall pre-factor 2/g02 , we denote their coefficients at g0 → 0 as ei , i = 0, 1, 2, 3 (in
+Ref. [16] they are denoted ci (0)). With
+
+                                 e0 + 8e1 + 8e2 + 16e3 = 1 ,                                (4.1)
+
+the leading term in the a-expansion,
+                                                          2
+                             Z     (                                                )
+                                                          X
+                    class
+                   Slat      =     d x Lcont (x) + a
+                                    4                 2
+                                                                ωi Oi (x) + . . .       ,   (4.2)
+                                                          i=1
+
+has the conventional normalization. The ellipses summarize terms that vanish upon the
+use of the equation of motion and higher orders in a. From Table 2 of [16] we find
+
+
+                       (0)      (0) 1 (0)    1     1 1    1
+                      c̄1    = ω1 + ω2 =       + e1 + e2 − e3 ,                             (4.3)
+                                    4       48 4     3    4
+                       (0)      (0)  1
+                      c̄2    = ω2 =    + e1 − e3 .                                          (4.4)
+                                    12
+
+
+                                               12
+                                                                      (0)       (0)
+                     action                 e1         e2   e3       c̄1       c̄2
+               Wilson, eq. (2.1)            0          0    0          1
+                                                                      48
+                                                                                1
+                                                                                12
+              Symanzik improved              1
+                                          − 12         0    0         0         0
+                 Iwasaki [34]            −0.331        0    0      −0.0619   −0.2477
+                DBW2 [35, 36]            −1.4088       0    0      −0.3314   −1.3255
+
+Table 1:   Commonly used gauge actions and their coefficients of the operators B1 , B2 in
+the SymEFT. The row “Symanzik improved” applies to all actions with leading order in g02
+coefficients as specified there.
+
+
+      The standard Wilson plaquette action, eq. (2.1), has e0 = 1, e1 = e2 = e3 = 0 and
+                                                                                (0)
+both B1 and B2 contribute to the order a2 . Symanzik improved actions have c̄i = 0 by
+design. Other actions such as the Iwasaki action and the “DBW2” action lead to quite
+large coefficients. We show a summary in table 1. All considered lattice actions just have
+the plaquette and the rectangle terms. This turns out to lead to vanishing coefficients
+e2 , e3 and in the classical a2 expansion only O1 contributes in the Oi basis [16]. As
+discussed before we have to go to the basis Bi with diagonal renormalization at one-loop.
+                                                                  (0)    (0)
+The relevant coefficients for the asymptotics are then related, c̄2 = 4c̄1 .
+
+5     Examples for the asymptotic behavior
+
+For convenience we combine here the main results of the previous two sections and discuss
+some interesting sample applications.
+
+5.1    Generic form for spectral quantities
+The cases considered in table 1 are probably the most relevant for the Yang-Mills theory.
+                         (0)      (0)
+Since they all satisfy c̄2 = 4c̄1 , we have the form
+                                n                  γ̂                             o
+                             (0)                                    2 −1 γ̂2
+        ∆P (a) = −a2 c̄1            2b0 ḡ 2 (a−1 ) 1 MRGI                    MRGI
+                                                                          
+                                                       P,1 + 4 2b0 ḡ (a )     P,2   ×
+                    × [1 + O(ḡ 2 (a−1 )] for Wilson, Iwasaki, DBW2 actions.                (5.1)
+                                                                                      (0)
+The entire computed leading behavior only depends on the coefficient c̄1 . While we
+cannot predict the relative contribution of the two powers γ̂1 , γ̂2 because they depend on
+the non-perturbative matrix elements MRGI , their mixture is the same for any of the three
+different actions. The only action dependence is in the coefficient of the rectangle term
+(geometry (1) of figure 2) and thus the leading cutoff effects have a relative size
+
+                   Wilson : Iwasaki : DBW2 ≈ 1 : (−3) : (−16) .                             (5.2)
+                                                             (0)      (0)
+     For a Symanzik improved action, the property c̄2 = c̄1 = 0 and additionally for a
+                           (1)   (1)
+one-loop improved action c̄2 = c̄1 = 0 means
+                               X (n)             n                 γ̂
+              ∆P (a) = −a2         c̄i ḡ 2 (a−1 )     2b0 ḡ 2 (a−1 ) i MRGI
+                                                                          P,i ×  (5.3)
+                                    i
+                              ×[1 + O(ḡ 2 (a−1 )] ,                                        (5.4)
+
+                                                 13
+Figure 3: Illustration of discretization errors, ∆P (a), eq. (5.3) compared to naive a2 behav-
+ior. We use α(5/r0 ) = ḡ 2 (5/r0 )/4π = 0.25, where r0 ≈ 0.5 fm [37] and set matrix elements
+                                   (i)
+to one in units of r0 and set c1 = 1. On the right, we drop the overall naive power of
+a2 /r02 and normalize at a/r0 = 1/5 such that the shape is clearly visible.
+
+
+where n = 1 for a tree-level improved action and n = 2 for a one-loop improved action and
+n = 0 without perturbative improvement. We illustrate the a-behavior in figure 3. One
+notices that over a typical range of a from a = 0.1 fm to a = 0.04 fm, one has 20, 40, 60%
+(for n = 0, 1, 2) faster than a2 reductions of ∆P (a) as compared to the naive a2 .
+     We remind the reader, that gradient flow observables are excluded and that we have
+restricted ourselves to energy levels.
+
+5.2    Short distance observables
+Let us now consider the special case of a dimensionless short distance observable depending
+on a single physical length scale r. A simple example is PF = C4πF r2 F (r) , with F (r) the
+force between static quarks assumed here to be defined in terms of a discrete derivative
+of the potential which is correct up to order a4 errors.7 In particular, we are interested
+in the region of small r, which has two consequences. The ratio a/r which determines
+the discretization errors is not as small as in the large distance region. The discussion
+of discretization errors is thus particularly important. Second, not only the continuum
+P(Λr, 0) can be expanded in perturbation theory, but also the quantity at finite a/r - both
+in lattice theory and in SymEFT. We want to summarize what one can learn from this.
+     The perturbative expansion in the lattice theory is expected to be of the form [1, 38]
+
+                 ∆P (Λr, a/r) = P(Λr, a/r) − P(Λr, 0)
+                                                                     2
+                                   = P(Λr, 0) [δ0 (a/r) + δ1 (a/r) ḡlat (r−1 ) + . . .]                  (5.5)
+                                                        l
+                                                     a2 X
+                                        δl (a/r) =              plk log(a/r)k + O((a/r)4 ) .              (5.6)
+                                                     r2
+                                                          k=0
+
+On the other hand in SymEFT with renormalization group improvement, dropping the
+  7
+    Otherwise, if O(a2 ) errors are associated with the definition of the lattice derivative, these can be taken
+into account explicitly.
+
+
+
+                                                      14
+    2 (a−1 )) corrections, we have
+O(ḡlat
+
+                              a2 X (0)                     γ̂
+              ∆P (Λr, a/r) = − 2    c̄i         2
+                                          2b0 ḡlat (a−1 ) i [r2 MRGI
+                                                                   P,i (r)]                     (5.7)
+                              r
+                                  i
+
+                              a2          X (0)  ḡ 2 (a−1 ) γ̂i
+                           = − 2 P(Λr, 0)     c̄i       lat
+                                                         2      −1
+                                                                    Ki (r) ,                    (5.8)
+                              r                       ḡlat (r )
+                                           i
+                                              r 2 MR
+                                                   P,i (r; µ)
+                                  Ki (r) =                           ,    µ = r−1 ,
+                                                 P(Λr, 0)
+
+where the second argument µ in MR is the renormalization scale of the operator BiR .
+    For comparison to the fixed order perturbation theory form eq. (5.5) we expand (re-
+              (0)
+member γ̂i = γi /(2b0 ))
+                    2 −1 γ̂i
+                    ḡlat (a )                 (0)
+                      2 (r −1 )
+                                                      2
+                                  = 1 + γi log(a/r) ḡlat (r−1 ) + O(ḡlat
+                                                                       4
+                                                                           ),                   (5.9)
+                    ḡlat
+                                         (0)              (1)
+                          Ki (r) = [Ki                2
+                                               + Ki ḡlat (r−1 ) + O(ḡlat
+                                                                       4
+                                                                           )] ,                (5.10)
+
+and find
+                         X (0) (0)
+             p00 = −      c̄i Ki ,                                                             (5.11)
+                          i
+                        X (0) (1) X (1) (0)                                    X (0) (0) (0)
+             p10    = −  c̄i Ki −  c̄i Ki                           p11 = −     c̄i Ki γi .    (5.12)
+                          i               i                                     i
+
+    This demonstrates the standard use of EFT in the perturbative domain. The EFT
+description and computation is more efficient since first of all it provides renormalization
+group improvement (l.h.s. of eq. (5.9)) and second even the computation of coefficients
+                                                                                         (1)
+plk may be simplified. Apart from the one-loop matching coefficients of the action, c̄i ,
+which can be computed by matching any convenient set of observables, only continuum
+perturbation theory quantities appear on the r.h.s. of eq. (5.11), eq. (5.12).
+
+Improved observables
+For short distance observables it is rather common to attempt a reduction of lattice spacing
+effects at the level of the expectation values instead of at the level of the action. For the
+static potential or PF , we refer the reader to [37, 39]. Examples with higher orders in
+perturbation theory and with a combination of improvement of action and observable are
+found for example in [40–43].
+     To illustrate what is gained by considering SymEFT, it is sufficient to define a tree-
+level improved short distance observable,
+
+                                  P(Λr, a/r)        P(Λr, a/r)
+           P impr (Λr, a/r) =                  =            (0) (0)
+                                                                    + O(a4 /r4 ) .             (5.13)
+                                  1 + δ0 (a/r)        2 P
+                                                 1 − a2   c̄ K  r        i i    i
+
+By construction, cutoff effects in fixed order perturbation theory are then suppressed by
+one power of ḡlat
+               2 (all orders in a/r) and therefore also the coefficient p
+                                                                          00 of a /r vanishes
+                                                                                 2 2
+
+irrespective of the action. However, this neither means that the leading term (i = 1) in
+
+                                                     15
+eq. (5.7) vanishes nor that the sum of the two O(a2 ) terms does. The sum of the two terms
+vanishes only for a = r, which is not at all where the a2 expansion is applicable. In fact,
+inserting the denominator in eq. (5.13) into eq. (5.7) one obtains
+                                                  (                   )
+                                  a2          X  ḡ 2 (a−1 ) γ̂i       (0) (0)
+           ∆P impr (Λr, a/r) = − 2 P(Λr, 0)             lat
+                                                         2 (r −1 ) − 1 Ki c̄i .      (5.14)
+                                  r                   ḡlat
+                                                i
+
+The effect of tree level improvement is the subtraction of the 1 in the curly bracket. For
+intermediate a/r, this will reduce the magnitude (and change the sign) of each term in the
+sum over i. However, asymptotically, for very small a/r, the tree level improvement leads
+to an increase of the a2 effects. This behavior is tied to the sign of the γ̂i . For negative γ̂i ,
+we would always have a reduction of the magnitude of the terms.
+                          (0) (0)
+     Usually the terms Ki c̄i are known individually and one can divide out the complete
+leading order term,
+                                                              P
+                        P RG−impr =                        2 (a−1 ) γ̂i
+                                                                                        ,          (5.15)
+                                                a2   P h ḡlat     i
+                                                                              (0) (0)
+                                           1−   r2        i     2 (r −1 )
+                                                              ḡlat
+                                                                            Ki c̄i
+
+and have a renormalisation group and tree level improved observable. It then has leading
+                                                             h 2 −1 iγ̂1
+                                                 2
+                                                    2 (r −1 ) ḡlat (a )
+corrections which are truly of order ∆P /P ∼ ar2 ḡlat                     as the name tree level
+                                                                 2 (r −1 )
+                                                               ḡlat
+improvement suggests.
+     We return to PF . In this special case, the O(4) invariant operator O1 = B1 does not
+                              (0)
+contribute at tree level, K1 = 0. Specializing to the Wilson plaquette action and the
+                                        (0)                (0)
+force along a lattice axes, we have c̄2 = 1/12 and K2 = −9. If one chooses a different
+                                                                           (0)
+direction on the lattice, e.g. a body-diagonal, the matrix element K2 is smaller, but the
+finite difference defining the force on the lattice has a larger discretization length. The
+various terms are illustrated in figure 4. The dotted line is the fixed order perturbation
+theory for ∆PF /PF and the full curve the remainder, eq. (5.14). The dashed line shows a
+rough linear approximation to the latter at larger a. It extrapolates to a small value of
+−0.6% at a = 0. We may think of this as an example for the relative error one makes
+by approximating the cutoff effects of the tree-level improved observable linear in a2 .8
+Interpreting PF as a running coupling as explained for example in [44], this intercept
+represents a systematic (relative) uncertainty on the coupling. It translates into an about
+1.5% error in the Λ-parameter of the theory, which is not entirely irrelevant given today’s
+precision of results for it. Needless to say that the full logarithmic term eq. (5.14) is better
+eliminated by use of eq. (5.15).
+
+6        Schrödinger functional
+
+Short distance observables of particular interest can be defined in the Schrödinger func-
+tional [45]. Fixed order perturbation theory has been used extensively to study discretiza-
+tion errors in this environment. Here we consider their renormalization group improvement
+through SymEFT. We just consider the pure gauge theory and the Schrödinger functional
+     8
+   Usually the tree-level improved force is defined through an improved distance [37] rI . At the level of
+ 2
+a terms this is equivalent to eq. (5.13).
+
+
+
+                                                     16
+Figure 4: Leading order discretization errors, ∆PF (a)/PF of the static force, see the text.
+                                                      (0)          (0) (0)
+                   2 (1/r)/(4π) = 0.2, and K
+We use α(1/r) = ḡlat                            1 = 0, K2 c̄2 = −3/4, corresponding to
+the Wilson plaquette action and the force along a lattice axes. The dotted line represents
+fixed order perturbation theory, the full line the remainder (on top of fixed order) predicted
+by SymEFT, and the dashed line shows a rough approximation, linear in a2 , to that latter.
+
+
+with an abelian background field, where - as we will see - we do not have to deal with
+operator mixing.
+     In the lattice regularization, the Schrödinger functional can be defined by the path
+integral with the action,
+                                               3
+                             2       X       X X
+                SF
+               Slattice =                                   p(x, µ, ν)                      (6.1)
+                             g02
+                                   0≤x0 ≤T −a x µ>ν=0
+                                                    X
+                             +a (ct (g0 ) − 1) a3         [Obl (0, x) + Obl (T − a, x)] ,   (6.2)
+                                                      x
+
+with
+                                                      3
+                                             2 1 X
+                            Obl (x0 , x) =          p(x, k, 0) .                            (6.3)
+                                             g02 a4
+                                                    k=1
+
+Space-time is a cylinder in the sense that we have periodic boundary conditions in space
+with period L and Dirichlet boundary conditions on the time-slices x0 = 0 and x0 = T ,
+                                                                             0
+                 U (x, k)|x0 =0 = eaCk (L,η) ,   U (x, k)|x0 =T = eaCk (L,η) .              (6.4)
+
+For details we refer to [45], but we note that the dimensionless LCk (L, η) is just a function
+of the dimensionless parameter η (and a here irrelevant second parameter ν) and that the
+field strength Fkl vanishes at the two boundaries.
+     Under these conditions, which have been imposed for all numerical applications so far,
+the SymEFT for the Yang-Mills Schrödinger functional is given by the formal continuum
+
+                                                 17
+action
+                     Z         Z T                                                
+           SF
+          Seff   =        3
+                         d x           dx0 Lcont (x) + a ωb [Ob (0, x) + Ob (T, x)] + O(a2 )             (6.5)
+                                   0
+
+with
+                                             1
+                                  Ob (x) = − 2 tr (F0k (x)F0k (x)) .                                     (6.6)
+                                            g0
+
+The presence of the boundary terms in eq. (6.5) is the reason for including the correspond-
+                                                                                (i)
+ing extra term proportional to ct in the lattice formulation: the coefficients ct in
+                                                   (0)   (1)
+                                  ct (g0 ) = ct + ct g02 + O(g04 ) ,                                     (6.7)
+
+can be chosen such that ωb vanishes and there are no linear terms in a in the lattice
+Schrödinger functional at the corresponding order in perturbation theory [45].
+    A prominent observable in the Schrödinger functional is the running coupling
+
+                                             1 0                 ∂S
+                          ḡ −2 (L−1 ) =       hS i , with S 0 =        .                                (6.8)
+                                             k                   ∂η η=0
+
+with k such that ḡ 2 = g02 + O(g04 ). We want to discuss its a-effects as an example. The
+definition of the a-effects requires to first renormalize. We here do this by lattice minimal
+subtraction,
+           2
+         ḡlat (µ) = Zg (ḡlat , aµ)g02 ,                                         2
+                                               Zg (ḡlat , aµ) = 1 − 2b0 log(aµ)ḡlat (µ) + O(g 4 ) .    (6.9)
+
+We can then define the function
+                                                 1 a
+                                            2
+                                        K(ḡlat ( ), ) = ḡ −2 ,                                        (6.10)
+                                                 L L
+which relates the renormalized couplings of the two schemes. It has a continuum limit and
+discretization errors
+                                           a              a
+                                   2
+                              ∆K(ḡlat ,             2
+                                             ) = K(ḡlat           2
+                                                         , ) − K(ḡlat , 0) .                           (6.11)
+                                           L              L
+They have the expansion
+               2 , a)
+         ∆K(ḡlat       a                      a 2 1
+              2
+                     L
+                       = [p00 + (p10 + p11 log( ))ḡlat ( ) + O(g 4 )] + O((a/L)2 ) ,                   (6.12)
+          K(ḡlat , 0)  L                      L         L
+
+where analogously to before SymEFT predicts
+                                                         (0)
+                                              p11 = γb p00 .                                            (6.13)
+
+An explicit one-loop computation showed that [46]
+                                             (0)
+                          p00 = 2 (ct − 1) ,                                                            (6.14)
+                                              (1)                   (0)
+                          p10 =         2 × (ct + 0.0890(2)) , for ct = 1 .                             (6.15)
+
+
+                                                         18
+       (0)       (1)
+Thus ct = 1, ct = −0.0890(2) leads to the absence of linear a-effects at one-loop. For
+                                                                            (0)
+this reason the perturbative computations have been carried out with ct = 1 and from
+                                                                    (0)
+the published one-loop computation we do not have access to γb .
+                                                               (0)
+     As done in section 3, the standard way to compute γb is to compute the one-loop
+renormalization of Ob . Here we extract it indirectly from the results of the two-loop
+computation of [47, 48]. In contrast to section 3 the computation thus relies entirely on
+the lattice regularization. Consider eq. (6.1) with a lattice spacing a → af and then replace
+
+                                           ct (g0 ) − 1 → ζ .                                       (6.16)
+
+In this way ζ acts as a source for the lattice regularized operator Ob . The continuum
+function K(ḡlat
+             2 , 0) is given by
+
+                                  2
+                                      , 0) = lim hS 0 iaf ζ=0                     (6.17)
+                                                        
+                              K(ḡlat
+                                                      af →0
+
+and the first order correction in a by
+                                                                 
+                           a                         1 ∂ 0 R
+                      2
+                 ∆K(ḡlat , )=a          lim               hS iaf       + O((a/L)2 ) .              (6.18)
+                               L         af →0       af ∂ζ          ζ=0
+
+The right hand side of eq. (6.18) is the SymEFT prediction written as the continuum limit
+of the lattice regularized theory (with spacing af to distinguish it from a). Renormalization
+is indicated by the superscript R. In addition to eq. (6.9) it affects the boundary operator
+Ob ,
+                                                                        (0)
+        Oblat = Zb (ḡlat , af µ)Ob ,                                              2
+                                             Zb (ḡlat , af µ) = 1 − γb log(af µ)ḡlat (µ) + . . . . (6.19)
+                                   (0)
+We are now ready to extract γb from the two-loop expansion,
+
+                       ḡ −2 = g0−2 [1 + k1 g02 + k2 g04 + O(g06 )]                                 (6.20)
+                                         (1) 2af
+                          k1 = −ma1 + ct         ,                                                  (6.21)
+                                              L
+                                         (1)          (1)           (2)
+                          k2 = −ma2 − ct mb2 − (ct )2 mc2 − ct md2 ,                                (6.22)
+                         (0)
+derived in [47, 48] for ct = 1. We use the asymptotic expansion of the coefficients mki in
+powers of aLf and log( aLf ) given in Ref. [47, 48]. But first we note that with hS 0 i = k/ḡ 2 we
+have
+               R                                           
+  1 ∂ 0                      1                      ∂ 0
+         hS iaf        =        Zb (ḡlat , af µ)      hS iaf                               (6.23)
+ af ∂ζ           ζ=0         af                     ∂ζ         ζ=0
+                                          k 2    1    af
+                       = Zb (ḡlat , af µ) 2 [ − mb2 ( ) g02 + O(g04 )]
+                                          g0 L af     L
+                                                                                            
+                             k        2    2 (0)                2       1 b af 2
+                       =   2 (µ) L − L (γb + 2b0 ) log(af µ)ḡlat (µ) − a m2 ( L ) ḡlat (µ)
+                         ḡlat                                           f
+                                2
+                           +O(ḡlat )
+                                                               (1)
+since the computation [47,48] corresponds to ζ = ct g02 +O(g04 ). Finally, requiring finiteness
+of eq. (6.23) after inserting
+                       1 b                       1 b
+                         m (af /L) =              [r + sb2 log(L/af ) + O(af /L)] ,                 (6.24)
+                       af 2                      L 2
+
+                                                         19
+                                                                   (0)
+with [48] r2b = 0.1683(8) , sb2 = 0.2785(4) we obtain γb = sb2 /2 − 2b0 and
+
+                                           γ̂b = 0.000(2) .                            (6.25)
+
+Note that this is the anomalous dimension of a boundary operator. Assuming that γ̂b = 0,
+exactly, Eq. (6.18) can now be written in the form (see also eq. (5.14))
+                                       a 2 −1 nI +1 (nI +1)
+                        ∆K =             [ḡ (a )] 2 c̄b    [1 + O(g 2 )] ,            (6.26)
+                                       L
+        (n +1)       (n +1)
+where c̄b I      = −ct I      is the leading coefficient in
+                              (n +1)
+                      c̄b = c̄b I      [ḡ 2 (a−1 )]nI +1 + O([ḡ 2 (a−1 )]nI +2 ) ,   (6.27)
+
+namely we are considering a theory where ct is chosen to achieve O(a) improvement in per-
+turbation theory, up to and including the terms g02nI . The O(ḡ 2 ( L1 )) term in the SymEFT
+matrix element is given by r2b ḡ 2 /2, but it comes together with the two-loop anomalous
+dimension of the boundary operator and the next order correction in eq. (6.27). Since
+these are presently unknown, we only show the leading order in g 2 in eq. (6.26).
+     In order to compute the non-perturbative running of the coupling, one considers the
+step scaling function,
+                                     a
+                              Σ(u,     ) = ḡ 2 (1/(2L)) ḡ2 (1/L)=u ,                 (6.28)
+                                     L
+where the choice of intermediate renormalization scheme (we chose “lat”) disappears. Its
+leading discretization errors are (see also [43], App. A)
+                               a          a
+                      ∆Σ(u,      ) = Σ(u, ) − Σ(u, 0)                                  (6.29)
+                               L          L
+                                      a (n +1)
+                                   = u c̄b I [ḡ 2 (a−1 )]nI +1 [1 + O(u)]             (6.30)
+                                      L
+Since we have seen that the one-loop anomalous dimension of Ob vanishes, this is equivalent
+to the form used by the ALPHA collaboration recently [43, 49].
+
+7   Wilson-QCD
+
+Let us now briefly discuss the case of the original Wilson action for QCD including the
+Wilson term in the fermion action [50]. While this action is hardly used any more in the
+original form it is still of interest because there are results in the literature. More impor-
+tantly, some large scale computations use the O(a)-improved version with an approximate
+coefficient of the clover improvement term. One can gain information on the scaling of
+δP L , eq. (2.16), in that case.
+     The Wilson quark action breaks chiral symmetry and thus allows for the dimension
+five Sheikholeslami-Wohlert term [51]
+
+                                         1
+                        δL (1) (x) = −ωsw ψ(x)[γµ , γν ]Fµν (x)ψ(x)                      (7.1)
+                                         8
+in the SymEFT, eq. (1.2). In principle there are additional terms proportional to quark
+masses, but these “only” affect quark-mass dependences [12] and are absent when one
+
+                                                      20
+takes the continuum limit along a physical scaling trajectory defined by, for example, fixed
+ratios of Nf pseudo-scalar masses in the Nf -flavour theory. We here neglect those O(amq )
+effects; we set the quark masses to zero. There are no operators which violate rotational
+symmetry. Therefore, there is no mixing at O(a) at all. The prediction for the asymptotic
+a dependence can then immediately be written down,
+                                                                                γ̂ sw
+                                    sw RGI
+                              2 −1 γ̂                   2 −1               1
+   ∆P (a) = −a c̄(0)                                                                    . (7.2)
+                     
+                  sw   2b0 ḡ  (a )    M    × [1 + O(ḡ  (a  ))] ∼ a
+                                                                       − log(aΛ)
+                                                          (0)                     (0)
+For the standard Wilson action, we have c̄sw = c̄sw + O(g 2 ) with c̄sw = −1. As in
+eq. (6.30), there are additional powers of ḡ 2 (a−1 ) when the theory is perturbatively O(a)
+improved [12, 51–53]. We find [54] (CA = N, CF = (N2 − 1)/(2N)),
+                                             15CF − 6CA
+                                   γ̂ sw =                                                (7.3)
+                                             11CA − 2Nf
+for the anomalous dimension. It is rather small. For N = 3 this is in agreement with [33].
+     For the considered case of Wilson fermions, one may also easily discuss the relevant
+contributions from corrections to the vector and axial vector, non-singlet, flavor currents.
+In SymEFT, they are represented by [12]
+                                                              r,s
+                      Vµr,s (x) = ψ r (x)γµ ψs (x) + a ωV ∂ν Tµν  (x) ,                   (7.4)
+                      Ar,s
+                       µ (x)    = ψ r (x)γµ γ5 ψs (x) + a ωA ∂µ P   r,s
+                                                                          (x) .           (7.5)
+Matrix elements of interest of the corresponding lattice currents are, e.g., leptonic decay
+constants and semi-leptonic form factors. Using the anomalous dimensions of the non-
+singlet pseudo scalar density and the tensor current [55, 56], their lattice artifacts receive
+contributions
+                 2 −1
+                                     T RGI (1)
+                              2 −1 γ̂                                             3CF
+  ∆V                                    MT [c̄V + O(ḡ 2 (a−1 )] , γ̂ T =
+                        
+    P (a) = a ḡ (a ) 2b0 ḡ (a )                                                          ,
+                                                                             11CA − 2Nf
+                                     P RGI (1)                                          (7.6)
+                 2 −1         2 −1 γ̂
+  ∆A                                    MP [c̄A + O(ḡ 2 (a−1 )] , γ̂ P = −3 γ̂ T .
+                        
+    P (a) = a ḡ (a ) 2b0 ḡ (a )
+                                                r,s
+where MRGI
+         T    is the RGI matrix element of ∂ν Tµν   of the considered transition and MRGI
+                                                                                      P
+the RGI matrix element of ∂µ P . There is an extra factor ḡ 2 , as compared to previous
+expressions, since the O(a) term in the classical expansion of the currents vanishes. The
+ (1)
+ωV/A factors are the one-loop matching coefficients between SymEFT and the considered
+                                                                                           (1)
+lattice theory. An extended list of references with results for improvement coefficients cV/A
+for various actions is given in Table 1 of [57]. The case of unimproved lattice currents, e.g.
+  r,s                                                        (1)     (1)
+Vµ,latt (x) = ψ r (x)γµ ψs (x), can be obtained by setting c̄V/A = −cV/A in eq. (7.6). These
+coefficients are rather small.
+
+8   Summary
+
+We have investigated the form of the leading discretization errors in lattice gauge theory
+in a few specific cases. The starting point is the leading contribution to the Symanzik
+effective Lagrangian in the form
+                                 X (n )
+        Leff (x) = L (x) + anmin   c̄i i g 2ni Bi (x) + . . . , nmin ≥ 1 , ni ≥ 0 ,   (8.1)
+                                  i
+
+
+                                                21
+where the ellipsis denotes higher powers in g 2 for each term i as well as higher powers
+in a. The basis operators are chosen such that they do not mix at one-loop order and
+                                         (0)     (0)    (0)                           (0)
+have one-loop anomalous dimensions γi g 2 , γ1 ≤ γ2 ≤ . . .. Once nmin , ci , ni , γi are
+known, the leading correction to the continuum limit of spectral quantities is
+                            n               γ̂ (n )
+  ∆P (a) = anmin ḡ 2 (a−1 ) 1 2b0 ḡ 2 (a−1 ) 1 c̄1 1 MRGI            2 −1 ∆γ̂ 2 −1
+                    
+                                                         P,1 [1 + O([ḡ (a )]  , ḡ (a ))]
+                  +O(anmin +1 ) ,                                                            (8.2)
+            (0)
+with γ̂i = γi /(2b0 ) , ∆γ̂ = γ̂2 − γ̂1 . The only unknown is the a-independent renormal-
+ization group invariant matrix element MRGI   P,1 of the operator B1 . The most important
+ingredient in the formula is the leading γ̂1 . In almost all considered cases, we find that
+γ̂1 ≥ 0 in stark contrast to the case of the 2d O(3) model [7]. This is good news, as the
+leading corrections accelerate the approach to the continuum    limit compared to the naive
+                                                      2 −1 n+γ̂
+classical argumentation which neglects the overall ḡ (a )        1
+                                                                    factor.
+     Let us briefly summarize the results for the individual cases considered.
+
+   • Yang-Mills theory.
+     Discretization effects of order a2 are due to two operators. Their anomalous dimen-
+     sions, γ̂i , computed in section 3, are of order one, see eq. (3.22). In eqs. (8.1- 8.2),
+     the original Wilson action, tree-level and one-loop Symanzik improved actions have
+     ni = 0, 1, 2 respectively.
+
+   • Yang-Mills theory with a boundary: Schrödinger functional.
+     As discussed in section 6 there are linear in a discretization errors due to one boundary
+     operator. Using the literature on perturbation theory for the Schrödinger functional,
+     we extracted its anomalous dimension and found that it vanishes within uncertainties,
+     γ̂b = 0.000(2). This means that the fixed order perturbation theory analysis of
+     discretization errors carried out by the ALPHA collaboration [49] receives no log-
+     corrections at leading order.
+
+   • Wilson O(a) effects due to the fermion action.
+     Here our analysis concerns O(a) effects which come from an action with perturbative
+     improvement, i.e. an improvement coefficient csw determined at n-loop perturbation
+     theory. The Pauli term, found to be the only contributing operator by Sheikholeslami
+     and Wohlert, has n1 = n + 1 in eq. (8.2). Its anomalous dimension, γ̂1 = γ̂ sw =
+     15CF −6CA
+      11CA −2Nf , could be taken from the literature [33]. It is rather small. Interestingly, as
+     one approaches the conformal window [58] by increasing Nf , the anomalous dimension
+     γ̂ sw grows.
+
+   • Wilson O(a) effects due to the flavor currents.
+      Weak decay (and other) matrix elements receive additional discretization errors from
+      correction terms in the effective weak Hamiltonian. We just considered the flavor
+      currents with perturbative O(a) improvement in section 7. For the axial current,
+     the (derivative of the) pseudo-scalar field governs the correction term. Its γ̂P is
+      negative, but relatively small in magnitude. Since the coefficient of the correction
+     operator      starts
+                    n
+                           at orderg 2 in perturbation theory, the total logarithmic modification,
+                                        γ̂
+       ḡ 2 (a−1 )      2b0 ḡ 2 (a−1 ) P , again accelerates convergence due to n ≥ 1 and n +
+                     
+
+
+
+                                               22
+      γ̂P > 0. For the vector current the O(a) correction involves the tensor current with
+      γ̂T which is positive and rather small. This leads to an even better a-dependence.
+      Note that this analysis holds also for a non-perturbatively improved action but only
+      perturbatively improved currents.
+
+     Short distance observables P(rΛ) with rΛ  1 are special. Their matrix elements
+ P,i (rΛ) are computable in renormalized perturbation theory in terms of the coupling at
+MRGI
+scale µ = 1/r and one can make parameter free predictions for the leading corrections. As
+discussed in section 5.2 the usual tree-level improved observables do not always lead to a
+reduction of the asymptotic cutoff effects, but this is easy to rectify such that cutoff-effects
+are suppressed by one power of ḡ 2 (r−1 ) at short distances.
+        As a broad conclusion, our results are very positive because the so-far known log-
+arithmic corrections are relatively weak. This lends support to some of the continuum
+extrapolations performed in the literature. For example, the BMW collaboration has
+performed continuum extrapolations of data obtained with tree-level coefficient, csw = 1
+of the Sheikholeslami-Wohlert term [59]. In principle, the asymptotic behavior is then
+  (1)                            γ̂ sw
+c̄sw ḡ 2 (a−1 ) 2b0 ḡ 2 (a−1 )        . In one of their continuum extrapolations they used this form
+                
+
+but with γ̂ sw → 0, which we now see is a rather good approximation. Of course, the diffi-
+cult question in such extrapolations is whether one is in the region where the asymptotics
+dominates. For this reason they also used alternative extrapolation functions.
+        Despite the small     values of      γ̂ that we found, with tree-level or one-loop Symanzik
+                                            n                 γ̂
+improved action, the ḡ 2 (a−1 )               2b0 ḡ 2 (a−1 ) 1 effects are non-negligible when MC results
+are precise, see the right part of figure 3. In any case, when the leading behavior is known,
+it should be incorporated into the fit function. Still, we emphasize that the asymptoti-
+cally leading behavior can be predicted, not the region where exactly this dominates over
+formally suppressed terms.
+        Of course the most interesting application of SymEFT is lattice QCD with nmin = 2 in
+eq. (1.3). In that case the basis of contributing operators is considerably larger. Work on
+determining their anomalous dimensions is in progress [54]. Also Gradient flow observables
+are of high interest. Their discretization errors are surprisingly large [60–62]. Now that it is
+known that standard pure gauge theory operators are not the source of this behavior, since
+they have positive γ̂i , a natural suspicion is that there is an unusually large and negative
+anomalous dimension γ̂ of the additional dimension six operator at t → 0, present in the
+5-d formulation of the Gradient Flow, see [61] for more details. We also plan to investigate
+this issue.
+        Acknowledgements. We thank Hubert Simma and Kay Schönwald for many dis-
+cussions.
+
+
+References
+
+ [1] K. Symanzik, Cutoff dependence in lattice φ44 theory, NATO Sci. Ser. B 59 (1980)
+     313.
+
+ [2] K. Symanzik, Some Topics in Quantum Field Theory, in Mathematical Problems in
+     Theoretical Physics. Proceedings, 6th International Conference on Mathematical
+     Physics, West Berlin, Germany, August 11-20, 1981, pp. 47–58, 1981.
+
+                                                    23
+ [3] K. Symanzik, Continuum Limit and Improved Action in Lattice Theories. 1.
+     Principles and phi**4 Theory, Nucl. Phys. B226 (1983) 187.
+
+ [4] K. Symanzik, Continuum Limit and Improved Action in Lattice Theories. 2. O(N)
+     Nonlinear Sigma Model in Perturbation Theory, Nucl. Phys. B226 (1983) 205.
+
+ [5] P. Weisz, Renormalization and lattice artifacts, in Modern perspectives in lattice
+     QCD: Quantum field theory and high performance computing. Proceedings,
+     International School, 93rd Session, Les Houches, France, August 3-28, 2009,
+     pp. 93–160, 2010, 1004.3462.
+
+ [6] J. Zinn-Justin, Quantum field theory and critical phenomena, Int. Ser. Monogr.
+     Phys. 113 (2002) , Chapter 27.
+
+ [7] J. Balog, F. Niedermayer and P. Weisz, Logarithmic corrections to O(a2 ) lattice
+     artifacts, Phys. Lett. B676 (2009) 188 [0901.4033].
+
+ [8] J. Balog, F. Niedermayer and P. Weisz, The Puzzle of apparent linear lattice artifacts
+     in the 2d non-linear sigma-model and ’s solution, Nucl. Phys. B824 (2010) 563
+     [0905.1730].
+
+ [9] M. Lüscher, P. Weisz and U. Wolff, A Numerical method to compute the running
+     coupling in asymptotically free theories, Nucl. Phys. B359 (1991) 221.
+
+[10] F. Knechtli, B. Leder and U. Wolff, Cutoff effects in O(N) nonlinear sigma models,
+     Nucl. Phys. B726 (2005) 421 [hep-lat/0506010].
+
+[11] G. Heatlie, G. Martinelli, C. Pittori, G. C. Rossi and C. T. Sachrajda, The
+     improvement of hadronic matrix elements in lattice QCD, Nucl. Phys. B352 (1991)
+     266.
+
+[12] M. Lüscher, S. Sint, R. Sommer and P. Weisz, Chiral symmetry and O(a)
+     improvement in lattice QCD, Nucl. Phys. B478 (1996) 365 [hep-lat/9605038].
+
+[13] R. Narayanan and H. Neuberger, Infinite N phase transitions in continuum Wilson
+     loop operators, JHEP 0603 (2006) 064.
+
+[14] M. Lüscher, Properties and uses of the Wilson flow in lattice QCD, JHEP 1008
+     (2010) 071.
+
+[15] P. Weisz, Continuum Limit Improved Lattice Action for Pure Yang-Mills Theory. 1.,
+     Nucl. Phys. B212 (1983) 1.
+
+[16] M. Lüscher and P. Weisz, On-shell improved lattice gauge theories, Comm. Math.
+     Phys. 97 (1985) 59.
+
+[17] R. Alonso, E. E. Jenkins, A. V. Manohar and M. Trott, Renormalization Group
+     Evolution of the Standard Model Dimension Six Operators III: Gauge Coupling
+     Dependence and Phenomenology, JHEP 04 (2014) 159 [1312.2014].
+
+
+
+
+                                            24
+[18] R. Sommer, Introduction to Non-perturbative Heavy Quark Effective Theory, in
+     Modern perspectives in lattice QCD: Quantum field theory and high performance
+     computing. Proceedings, International School, 93rd Session, Les Houches, France,
+     August 3-28, 2009, pp. 517–590, 2010, 1008.0710.
+
+[19] J. A. Gracey, Classification and one loop renormalization of dimension-six and
+     dimension-eight operators in quantum gluodynamics, Nucl. Phys. B634 (2002) 192
+     [hep-ph/0204266].
+
+[20] S. D. Joglekar and B. W. Lee, General Theory of Renormalization of Gauge
+     Invariant Operators, Annals Phys. 97 (1976) 160.
+
+[21] J. C. Collins and R. J. Scalise, The Renormalization of composite operators in
+     Yang-Mills theories using general covariant gauge, Phys. Rev. D50 (1994) 4117
+     [hep-ph/9403231].
+
+[22] B. S. DeWitt, Quantum Theory of Gravity. 2. The Manifestly Covariant Theory,
+     Phys. Rev. 162 (1967) 1195.
+
+[23] H. Kluberg-Stern and J. B. Zuber, Renormalization of Nonabelian Gauge Theories
+     in a Background Field Gauge. 1. Green Functions, Phys. Rev. D12 (1975) 482.
+
+[24] L. F. Abbott, The Background Field Method Beyond One Loop, Nucl. Phys. B185
+     (1981) 189.
+
+[25] M. Lüscher and P. Weisz, Background field technique and renormalization in lattice
+     gauge theory, Nucl. Phys. B452 (1995) 213 [hep-lat/9504006].
+
+[26] L. Faddeev and V. Popov, Feynman diagrams for the Yang-Mills field, Physics
+     Letters B 25 (1967) 29 .
+
+[27] M. Misiak and M. Münz, Two loop mixing of dimension five flavor changing
+     operators, Phys. Lett. B344 (1995) 308 [hep-ph/9409454].
+
+[28] K. G. Chetyrkin, M. Misiak and M. Münz, Beta functions and anomalous
+     dimensions up to three loops, Nucl. Phys. B518 (1998) 473 [hep-ph/9711266].
+
+[29] T. Luthe, A. Maier, P. Marquard and Y. Schröder, Complete renormalization of
+     QCD at five loops, JHEP 03 (2017) 020 [1701.07068].
+
+[30] P. Nogueira, Automatic feynman graph generation, Journal of Computational
+     Physics 105 (1993) 279 .
+
+[31] P. Nogueira, Abusing qgraf, Nucl. Instrum. Meth. A559 (2006) 220.
+
+[32] J. A. M. Vermaseren, New features of FORM, math-ph/0010025.
+
+[33] S. Narison and R. Tarrach, Higher dimensional renormalization group invariant
+     vacuum condensates in quantum chromodynamics, Physics Letters B 125 (1983) 217.
+
+[34] Y. Iwasaki, Renormalization Group Analysis of Lattice Theories and Improved
+     Lattice Action. II. Four-dimensional non-Abelian SU(N) gauge model, 1111.7054.
+
+                                           25
+[35] QCD-TARO collaboration, P. de Forcrand et al., Search for effective lattice action
+     of pure QCD, Nucl. Phys. Proc. Suppl. 53 (1997) 938 [hep-lat/9608094].
+
+[36] T. Takaishi, Heavy quark potential and effective actions on blocked configurations,
+     Phys. Rev. D54 (1996) 1050.
+
+[37] R. Sommer, A New way to set the energy scale in lattice gauge theories and its
+     applications to the static force and alpha-s in SU(2) Yang-Mills theory, Nucl. Phys.
+     B411 (1994) 839 [hep-lat/9310022].
+
+[38] K. Symanzik, Concerning the continuum limit in some lattice theories, J. Phys.
+     Colloq. 43 (1982) 254.
+
+[39] S. Necco and R. Sommer, The N(f ) = 0 heavy quark potential from short to
+     intermediate distances, Nucl. Phys. B622 (2002) 328 [hep-lat/0108008].
+
+[40] Alpha collaboration, G. de Divitiis, R. Frezzotti, M. Guagnelli, M. Lüscher,
+     R. Petronzio, R. Sommer et al., Universality and the approach to the continuum limit
+     in lattice gauge theory, Nucl. Phys. B437 (1995) 447 [hep-lat/9411017].
+
+[41] ALPHA collaboration, A. Bode, P. Weisz and U. Wolff, Two loop computation of
+     the Schrödinger functional in lattice QCD, Nucl. Phys. B576 (2000) 517
+     [hep-lat/9911018].
+
+[42] ETM collaboration, C. Alexandrou, M. Constantinou and H. Panagopoulos,
+     Renormalization functions for Nf=2 and Nf=4 twisted mass fermions, Phys. Rev.
+     D95 (2017) 034505 [1509.00213].
+
+[43] ALPHA collaboration, M. Dalla Brida, P. Fritzsch, T. Korzec, A. Ramos, S. Sint
+     and R. Sommer, A non-perturbative exploration of the high energy regime in Nf = 3
+     QCD, Eur. Phys. J. C78 (2018) 372 [1803.10230].
+
+[44] S. Necco and R. Sommer, Testing perturbation theory on the N(f ) = 0 static quark
+     potential, Phys. Lett. B523 (2001) 135 [hep-ph/0109093].
+
+[45] M. Lüscher, R. Narayanan, P. Weisz and U. Wolff, The Schrödinger Functional: A
+     Renormalizable Probe for Non-Abelian Gauge Theories, Nucl. Phys. B384 (1992)
+     168 [hep-lat/9207009].
+
+[46] M. Lüscher, R. Sommer, P. Weisz and U. Wolff, A Precise determination of the
+     running coupling in the SU(3) Yang-Mills theory, Nucl. Phys. B413 (1994) 481
+     [hep-lat/9309005].
+
+[47] Alpha collaboration, A. Bode, U. Wolff and P. Weisz, Two loop computation of the
+     Schrodinger functional in pure SU(3) lattice gauge theory, Nucl. Phys. B540 (1999)
+     491 [hep-lat/9809175].
+
+[48] A. Bode, “PhD thesis, Humboldt University, August 1998,
+     http://dochost.rz.hu-berlin.de/dissertationen/physik/ (in German).”.
+
+
+
+
+                                            26
+[49] ALPHA collaboration, M. Bruno, M. Dalla Brida, P. Fritzsch, T. Korzec, A. Ramos,
+     S. Schaefer et al., QCD Coupling from a Nonperturbative Determination of the
+     Three-Flavor Λ Parameter, Phys. Rev. Lett. 119 (2017) 102001 [1706.03821].
+
+[50] K. G. Wilson, Confinement of quarks, Phys. Rev. D 10 (1974) 2445.
+
+[51] B. Sheikholeslami and R. Wohlert, Improved Continuum Limit Lattice Action for
+     QCD with Wilson Fermions, Nucl. Phys. B259 (1985) 572.
+
+[52] R. Wohlert, Improved continuum limit lattice action for quarks, DESY-87-069
+     (1987).
+
+[53] S. Aoki and Y. Kuramashi, Determination of the improvement coefficient c(SW) up
+     to one loop order with the conventional perturbation theory, Phys. Rev. D68 (2003)
+     094019 [hep-lat/0306015].
+
+[54] N. Husung, P. Marquard and R. Sommer, in preparation.
+
+[55] S. A. Larin, The Renormalization of the axial anomaly in dimensional regularization,
+     Phys. Lett. B303 (1993) 113 [hep-ph/9302240].
+
+[56] D. J. Broadhurst and A. G. Grozin, Matching QCD and HQET heavy - light currents
+     at two loops and beyond, Phys. Rev. D52 (1995) 4082 [hep-ph/9410240].
+
+[57] R. Sommer, Non-perturbative QCD: Renormalization, O(a)-improvement and
+     matching to Heavy Quark Effective Theory, in Workshop on Perspectives in Lattice
+     QCD Nara, Japan, October 31-November 11, 2005, 2006, hep-lat/0611020.
+
+[58] D. Nogradi and A. Patella, Strong dynamics, composite Higgs and the conformal
+     window, Int. J. Mod. Phys. A31 (2016) 1643003 [1607.07638].
+
+[59] S. Durr, Z. Fodor, C. Hoelbling, S. D. Katz, S. Krieg, T. Kurth et al., Lattice QCD
+     at the physical point: light quark masses, Phys. Lett. B701 (2011) 265 [1011.2403].
+
+[60] R. Sommer, Scale setting in lattice QCD, PoS LATTICE2013 (2014) 015
+     [1401.3270].
+
+[61] S. Sint and A. Ramos, On O(a2 ) effects in gradient flow observables, PoS
+     LATTICE2014 (2015) 329 [1411.6706].
+
+[62] ALPHA collaboration, M. Dalla Brida, P. Fritzsch, T. Korzec, A. Ramos, S. Sint
+     and R. Sommer, Slow running of the Gradient Flow coupling from 200 MeV to 4
+     GeV in Nf = 3 QCD, Phys. Rev. D95 (2017) 014507 [1607.06423].
+
+
+
+
+                                           27
+

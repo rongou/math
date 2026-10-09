@@ -1,0 +1,1772 @@
+                                                                                                                                                          UK/05-09
+                                                                                                                                                     BIHEP-TH-05-15
+                                                     Glueball Spectrum and Matrix Elements on Anisotropic Lattices
+                                                   Y. Chena,b , A. Alexandrua , S.J. Donga , T. Drapera , I. Horvátha , F.X. Leec,d , K.F. Liua ,
+                                                 N. Mathura,d , C. Morningstare , M. Peardonf , S. Tamhankara , B.L. Youngg , and J.B. Zhangh
+                                                         a
+                                                           Department of Physics & Astronomy, University of Kentucky, Lexington, KY 40506, USA
+                                                     b
+                                                         Institute of High Energy Physics, Chinese Academy of Sciences, Beijing 100039, P.R. China
+                                                                               c
+                                                                                 Center for Nuclear Studies, Department of Physics,
+                                                                           George Washington University, Washington, DC 20052 USA
+                                                                   d
+                                                                     Jefferson Lab, 12000 Jefferson Avenue, Newport News, VA 23606, USA
+                                                               e
+                                                                 Department of Physics, Carnegie Mellon University, Pittsburgh, PA 15213, USA
+                                                                       f
+                                                                         School of Mathematics, Trinity College, Dublin, Dublin 2, Ireland
+                                                           g
+                                                             Department of Physics and Astronomy, Iowa State University, Ames, Iowa 50011, USA
+                                                          h
+                                                            CSSM and Department of Physics, University of Adelaide, Adelaide, SA 5005, Australia
+
+                                                      The glueball-to-vacuum matrix elements of local gluonic operators in scalar, tensor, and pseu-
+arXiv:hep-lat/0510074v1 13 Oct 2005
+
+
+
+
+                                                   doscalar channels are investigated numerically on several anisotropic lattices with the spatial lattice
+                                                   spacing ranging from 0.1fm - 0.2fm. These matrix elements are needed to predict the glueball
+                                                   branching ratios in J/ψ radiative decays which will help identify the glueball states in experiments.
+                                                   Two types of improved local gluonic operators are constructed for a self-consistent check and the
+                                                   finite volume effects are studied. We find that lattice spacing dependence of our results is very weak
+                                                   and the continuum limits are reliably extrapolated, as a result of improvement of the lattice gauge
+                                                   action and local operators. We also give updated glueball masses with various quantum numbers.
+
+                                                   PACS numbers: 12.38.Gc, 14.20.Gk, 11.15.Ha
+
+
+                                                          I.   INTRODUCTION                             ulation. This prohibits the lattice size being too large.
+                                                                                                        On the other hand, because of the large masses of glue-
+                                                                                                        balls, the lattice spacing (at least in the temporal di-
+                                         Glueballs, predicted by QCD, are so exotic from the
+                                                                                                        rection) has to be small enough so that reliable signals
+                                      point of view of naive quark model that their existence
+                                                                                                        can be measured before they are undermined by statisti-
+                                      will be a direct support of QCD. However, experimen-
+                                                                                                        cal fluctuations. This dilemma is circumvented by using
+                                      tal efforts in searching for glueballs are confronted with
+                                                                                                        anisotropic lattices, which are spatially coarse and tem-
+                                      the difficulty of identifying glueballs unambiguously, even
+                                                                                                        porally fine. The potentially large lattice artifacts owing
+                                      though there are several candidate glueball resonances,
+                                                                                                        to the spatially coarse lattice can be suppressed by the
+                                      such as f0 (1370), f0 (1500), f0 (1710), and fJ (2220), etc..
+                                                                                                        implementation of improved lattice gauge actions. These
+                                      The key problem is that there is little knowledge of the
+                                                                                                        techniques has been verified to be efficient in the calcu-
+                                      nature of glueballs and confined QCD vacuum, which
+                                                                                                        lations of glueball spectrum [4], and are adopted as the
+                                      requires reliable nonperturbative methods to be imple-
+                                                                                                        basic formalism of this work.
+                                      mented. The numerical study of lattice QCD, which
+                                      starts from the first principles, has been playing an im-            The glueball matrix elements computed in this work
+                                      portant role in this hot field in the last twenty years,          are of the form h0|g 2 TrGµν Gρσ (x)|Gi, where |Gi refers to
+                                      and extensive numerical studies have been carried out to          the glueball state with specific quantum number J P C =
+                                      calculate the glueball spectrum [1, 2, 3, 4]. These stud-         0++ , 2++ , or 0−+ , Gµν (x) is the gauge field strength, and
+                                      ies give the result that the masses of the lowest-lying           g the gauge coupling. The lattice version of the gluonic
+                                      glueballs range from 1 GeV to 3 GeV, and suggest that             operators g 2 TrGµν Gρσ (x) are constructed by the small-
+                                      the J/ψ radiative decays be an ideal hunting ground for           est Wilson loops on the lattice. To reduce lattice arti-
+                                      glueballs. However, apart from the mass spectrum, more            facts, the lattice version of each local gluonic operator is
+                                      characteristics are desired in order to determine glue-           improved by eliminating the O(a2s ) (as here is the spatial
+                                      balls in the final states of J/ψ radiative decays, one of         lattice spacing), while the glueball states |Gi are obtained
+                                      which is the partial widths of J/ψ decaying into glue-            by smeared gluonic operators. In order to get a reliable
+                                      balls. The first step to estimate these partial widths is         continuum extrapolation, five independent calculations
+                                      to calculate the vacuum-to-glueball transition matrix el-         are carried out on lattices with spatial lattice spacings
+                                      ements(TME) of local gluonic operators, which are non-            ranging from 0.09 fm to 0.22 fm. As by-products, we
+                                      perturbative quantities and can be investigated by the            also calculate the masses of the lowest-lying stationary
+                                      numerical calculation of lattice gauge theory.                    states in all of the symmetry channels allowed on a cubic
+                                         The techniques of lattice calculations in the glue-            lattice at each lattice spacing. To study the systematic
+                                      ball sector have been substantially improved in the past          error from finite volume, two extra independent studies
+                                      decade. It is known that very large statistics are nec-           are performed at β = 2.4 with the same input parame-
+                                      essary in order for the correlation functions of gluonic          ters but different lattice size. Note that the local oper-
+                                      operators to be measured precisely by Monte-Carlo sim-            ators mentioned above are all bare operators, they need
+                                                                                                                          2
+
+to be renormalized to give the physical matrix elements.       where θE and θB are the traceless, symmetric chromo-
+In this work, the renormalization constants of the scalar      electric and magnetic tensors,
+and tensor gluonic operators at the largest lattice spacing
+                                                                               E             1
+are extracted by the calculations of gluonic three-point                      θij = TrEi Ej − δij TrE2
+functions on a much larger statistical sample (100,000                                       3
+measurements). The pseudoscalar operator renormaliza-                                        1
+                                                                              θij = TrBi Bj − δij TrB2 .
+                                                                               B
+                                                                                                                         (4)
+tion is determined through the calculation of the topolog-                                   3
+ical susceptibility. Finally, we give the nonperturbatively    The scalar operators TrB2 (x) and TrE2 (x), the pseu-
+calculated and phenomenologically significant matrix el-       doscalar TrE(x) · B(x), and the tensors θE , θB , are all
+ements.                                                        irreducible representations of the three-dimensional rota-
+   This paper is organized as follows. In Section II, we       tion group SO(3).
+give a detailed description of the construction of lattice        Denoting the normalized scalar, pseudoscalar, and the
+local gluonic operators. Two types of lattice realization      tensor glueball states as |Si, |P i, and |Tij i, respec-
+in each channel are defined, including the improvement         tively, the non-zero glueball-to-vacuum matrix elements
+schemes. The details of the computation, including the         for their annihilation at rest by these operators are
+generation of the gauge configurations, the construction                                         Z
+of the smeared glueball correlators, the extraction of glue-
+                                                                   (2π)3 δ 3 (0)f(S,B) = g 2 h0| d3 xTrB2 (x)|Si
+ball masses from the correlation functions, and the deter-
+                                                                                                 Z
+mination of the lattice spacing, are described in Sec. III.
+In Sec. IV, we estimate the finite volume errors and some          (2π)3 δ 3 (0)f(S,E) = g 2 h0| d3 xTrE2 (x)|Si
+other systematical errors. The removal of lattice artifacts                                      Z
+due to the finite lattice spacing, including the extrapola-        (2π)3 δ 3 (0)f(T,B) = g 2 h0| d3 xTrθij
+                                                                                                         B
+                                                                                                           (x)|Tij i
+tions to the continuum limit, is described in Sec. V. The                                        Z
+calculation of three point function and the calculation of         (2π)3 δ 3 (0)f(T,E) = g 2 h0| d3 xTrθij
+                                                                                                         E
+                                                                                                           (x)|Tij i
+renormalization constants are described in Sec. VI. Sec.                                         Z
+VII gives the conclusion and some discussion.
+                                                                    (2π)3 δ 3 (0)f(P S) = g 2 h0| d3 xTrE(x) · B(x)|P i,(5)
+
+                                                               where no implicit summation is applied. It is straightfor-
+    II.     LOCAL GLUONIC OPERATORS AND
+                                                               ward to reproduce the matrix elements of the scalar S(x)
+                MATRIX ELEMENTS
+                                                               and pseudoscalar operator P (x) by these quantities, but
+                                                               for the Lorentz tensor Θµν , the situation is more com-
+   In the continuum theory, the lowest-dimensional gauge       plicated. First of all, any hadron state |hi is an eigen-
+invariant gluonic operators are of the form g 2 T rGµν Gρσ ,   state of Θ0µ , so that the matrix elements h0|ΘP
+                                                                                                              0µ (x)|hi are
+of which the most commonly studied ones are the scalar         zero. Together with the traceless property ( Θµµ = 0),
+S(x) (QCD trace anomaly), the pseudoscalar P (x) (topo-                                               P       µ
+logical charge density), and the tensor Θµν (x) (energy-       the above condition implies that h0| Θii (x)|hi is zero.
+                                                                                                         i
+momentum density). They all have dimension four and            Therefore, there are only five linearly independent no-
+are all positive under charge conjugation. The explicit        zero matrix elements of Θµν , which can be decomposed
+forms of them are                                              into the color-magnetic part and the color-electric part,
+          S(x) = g 2 TrGµν (x)Gµν (x),                                                         B
+                                                                       h0|Θij (x)|Tij i = 2h0|θij        E
+                                                                                                  (x) − θij (x)|Tij i.   (6)
+                    2
+     P (x) = g ǫµνρσ TrGµν (x)Gρσ (x),
+                                                               Due to the rotational invariance, the five polarizations
+                                      1                        give the same matrix element of the tensor.
+    Θµν (x) = 2g 2 Tr(Gµα (x)Gαν (x) − δµν G2 (x)). (1)
+                                      4                           The Lorentz invariance is broken on the spacetime lat-
+                                                               tice. The zero-momentum stationary glueball state on
+ If we introduce the chromo-electric and chromo-               the lattice must be an irreducible representation (irrep)
+magnetic fields,                                               of the lattice symmetry group, i.e. the 24-element octa-
+                                                               hedral point group O. The irreps of group O are classi-
+                                    1
+              Ei = Gi0    and Bi = − ǫijk Gjk ,         (2)    fied as A1 , A2 , E, T1 and T2 , which are the counterparts
+                                    2                          of angular momentum J for the SO(3) rotational group
+                                                               and have dimensions 1, 1, 2, 3, and 3, respectively. To-
+the Lorentz scalar S(x) and pseudoscalar P (x) can be
+                                                               gether with parity P and charge conjugate C transforma-
+expressed explicitly by these operators,
+                                                               tions,
+                                                                  N theN full symmetry group of simple cubic lattice is
+                                                               O P         C and the total quantum number of the lattice
+               S(x) = 2g 2 Tr(B(x)2 + E(x)2 ),
+                                                               glueball state is RP C , where R stands for A1 , A2 , E, T1
+               P (x) = 8g 2 Tr(E(x) · B(x)),                   or T2 , and P C can be ++,+−,−+, or −−. As men-
+              Θij (x) = 2g 2 Tr(θij
+                                 B         E
+                                    (x) − θij (x)),     (3)    tioned above, we are interested in the matrix elements
+                                                                                                                                      3
+
+of the scalar, pseudoscalar, and tensor operators, which                  (E,E)           g 2 a4s X 1
+                                                                         O2       (t) =             √ Tr[2E32 − E12 − E22 ](xi , t)
+correspond to the irreps RP C through the following rela-                                  L3 x 2 3
+tion: 0++ ↔ A++                           ↔ E ++ ⊕T2++.
+                                                                                                 i
+                1 ,0
+                     −+
+                        ↔ A−+1 , and 2
+                                       ++
+
+The zero-momentum operators are obtained by summing                                                                             (10)
+up all the local operators on the same time-slice in each
+                                                                       where the coefficients guarantee that the five components
+channel. The dimensionless lattice operators are given
+                                                                       are normalized. Thus we have seven different matrix el-
+below explicitly.
+                                                                       ements to be calculated on the lattice,
+   The magnetic and electric scalar (labeled (S, B) and
+(S, E) respectively) belong to the A++    representation                  T (S, B) = h0|O(S,B) |A++
+                                                                                                 1 i
+                                       1
+and are defined as
+                                                                          T (S, E) = h0|O(S,E) |A++
+                                                                                                 1 i
+                                    g 2 a4s X                                         1
+           O(S,B) (t) =                        TrB2 (xi , t),            T (E, B) = h0|O1
+                                                                                           (E,B)     (E,B)
+                                                                                                  + O2     |E ++ i
+                                     L3 x                                             2
+                                             i
+                                                                                      1
+                                    g 2 a4s X                            T (E, E) = h0|O1
+                                                                                           (E,E)     (E,E)
+                                                                                                  + O2     |E ++ i
+           O(S,E) (t) =                       TrE2 (xi , t),     (7)                  2
+                                     L3 x                                             1    (T ,B)     (T ,B)     (T ,B)
+                                                                                                             + O3 2 |T2++ i
+                                            i
+                                                                         T (T2 , B) = h0|O1 2     + O2 2
+                                                                                      3
+while the pseudoscalar (labeled (P )) belongs to the A−+
+                                                      1                               1    (T ,E)     (T ,E)     (T ,E)
+representation and is defined as                                         T (T2 , E) = h0|O1 2     + O2 2     + O3 2 |T2++ i
+                                                                                      3
+                          g 2 a4s X                                        T (P S) = h0|O(P S) |A−+
+                                                                                                 1 i                     (11)
+        O(P S) (t) =                TrE(xi , t) · B(xi , t).     (8)
+                           L3 x                                           However, in the practical lattice study, the operators
+                                      i
+
+                                                                       OR (t) ( with R representing the labels mentioned above)
+   In the above questions, L3 is the dimensionless spatial             are not constructed directly by Bi or Ei , but by the
+volume of the lattice and as the spatial lattice spacing.              proper combinations of different Wilson loops. The first
+For the spin-two irrep of SO(3), the five polarizations                definition is based on the linearly combination of a set of
+are split across the E and T2 irreps of O and so the                   basic Wilson loops with the requirement that the small-
+tensor operators must be decomposed into their E and T2                a expansion of each combination give the correct contin-
+irreducible contents. The four resulting lattice operators             uum form shown respectively in Eq. (7)-(11). We call the
+are labeled (E, B), (E, E), (T2 , B), and (T2 , E), and are            local operators through this definition Type-I operators.
+given in terms of their continuum counterparts as                      The second construction is that the lattice version of Bi
+                                                                       and Ei are defined first by Wilson loops and are used
+               (T ,B)               g 2 a4s X                          to compose the local operators according to Eq. (7)-(11).
+          O1 2          (t) =                 TrB2 B3 (xi , t)
+                                     L3 x                              The local operators through this construction is denoted
+                                            i
+                                                                       Type-II.
+           (T ,B)            g 2 a4s X
+          O2 2 (t)         =           TrB3 B1 (xi , t)                   The following details the constructions of Type-I and
+                              L3 x                                     Type-II local operators on the anisotropic lattice with
+                                            i
+
+                     g 2 a4s X                                         the spatial lattice spacing as and the temporal lattice
+           (T ,B)
+          O3 2 (t) =           TrB1 B2 (xi , t)                        spacing at . With the tadpole improvement [5], the tree-
+                      L3 x
+                                            i                          level Symanzik’s improvement scheme is implemented to
+           (T ,E)    g 2 a4s X                                         reduce the lattice artifact in defining the local opera-
+          O1 2 (t) =           TrE2 E3 (xi , t)                        tors. Since the aspect ratio of the anisotropic lattice,
+                      L3 x
+                                            i                          ξ = as /at , is always set to be much larger than 1, the
+           (T ,E)    g 2 a4s X                                         leading discretization errors in the local operators are at
+          O2 2 (t) =           TrE3 E1 (xi , t)
+                      L3 x                                             O(a2t , a4s , αs a2s ) in this work.
+                                            i
+
+           (T ,E)    g 2 a4s X
+          O3 2 (t) =           TrE1 E2 (xi , t)                  (9)
+                      L3 x                                                                 A. Type-I Operator
+                                            i
+
+
+                                                                          The Type-I operators are constructed from a set of ba-
+  (E,B)           g 2 a4s X 1                                          sic Wilson loops as illustrated in Fig. 1 and Table I, which
+ O1     (t)     =             Tr[B12 − B22 ](xi , t)
+                   L3 x 2                                              are chosen by the requirement that the first terms of the
+                                i
+                                                                       small-a expansion of these loops give the desired contin-
+  (E,B)           g 2 a4s X 1                                          uum operator forms discussed above. We take following
+ O2     (t)     =           √ Tr[2B32 − B12 − B22 ](xi , t)
+                   L3 x 2 3                                            steps in the construction. First, this set of Wilson loops
+                                i
+                                                                       are acted on by the 24 symmetry operations of the cubic
+   (E,E)          g 2 a4s X 1                                          point group O (as listed in the Table II), resulting in 24
+  O1     (t)    =             Tr[E12 − E22 ](xi , t)
+                   L3 x 2                                              copies with different orientations for each type of Wilson
+                                i
+                                                                                                                                                          4
+
+                                      Y                   T                       T
+              Y
+                              X                   X                       X
+                                                                                              TABLE II: The 24 symmetric operations of the cubic point
+          X                                                                                   group O are represented by the coordinate transformation.
+
+     Z
+                                      Y
+                                              Z                       Z
+                                                                                      T
+                                                                                              Index       Operation        Index       Operation
+              Y                                                   Y
+          X                       X                       X                   X                  1 (x, y, z) → (x, y, z)     13 (x, y, z) → (−z, y, x)
+                          Z                                                                      2 (x, y, z) → (−z, −y, −x) 14 (x, y, z) → (−x, −y, z)
+                                                                                                 3 (x, y, z) → (z, x, y)     15 (x, y, z) → (−y, x, z)
+                                                                                                 4 (x, y, z) → (−y, −x, −z) 16 (x, y, z) → (−z, −x, y)
+                                                                  Z
+                      Z
+                              Y
+                                              Z
+                                                      Y               Y
+                                                                                                 5 (x, y, z) → (y, z, x)     17 (x, y, z) → (−x, z, y)
+                                                                                                 6 (x, y, z) → (−x, −z, −y) 18 (x, y, z) → (−y, −z, x)
+    Z
+                  T                       T                       T                       Y     7 (x, y, z) → (z, y, −x)     19 (x, y, z) → (−x, y, −z)
+          X
+                                      X
+                                                              X               X                  8 (x, y, z) → (x, −y, −z)   20 (x, y, z) → (z, −y, x)
+                                                                                                 9 (x, y, z) → (y, x, −z)    21 (x, y, z) → (−z, x, −y)
+                                                                                                10 (x, y, z) → (z, −x, −y)   22 (x, y, z) → (y, −x, z)
+FIG. 1: Wilson loops used in making the Type-I gluonic                                          11 (x, y, z) → (x, z, −y)    23 (x, y, z) → (−y, z, −x)
+operators.                                                                                      12 (x, y, z) → (y, −z, −x)   24 (x, y, z) → (x, −z, y)
+
+
+
+TABLE I: The Wilson loops used in the construction of the                                     tion. Operators must be defined for a chosen value of t.
+Type-I gluonic operators. They are illustrated by the ordered                                 The simplest way to enforce this definition is to ensure
+paths in the table, where X,Y ,Z, and T are directions and the
+                                                                                              the operators on time-slice t are eigenstates of the time
+minus sign indicates the path going in the negative direction of
+that axis. (ls ,lt ) give the numbers of the spatial and temporal
+                                                                                              reversal operators, T about that time slice. The eigen-
+links involved in the Wilson loop. These numbers also give                                    value of this reversal must be the same as the parity of
+the powers of the tadpole parameter.                                                          the field operator to ensure the correct dimension-four
+                                                                                              operator is reproduced. The chromo-electric scalar and
+Index    Name         Prototype path      No. of Links                                        tensor operators transform positively under T , while the
+   i                       Ci,1              (ls ,lt )                                        pseudoscalar transforms negatively. The combination co-
+   1  S-Plaquette      [X,Y,-X,-Y]            (4,0)
+                                                                                              efficients of the time-reversed loops are the products of
+   2  S-Rectangle   [X,X,Y,-X,-X,-Y]          (6,0)
+   3 T-Plaquette       [X,T,-X,-T]            (2,2)                                           coefficients of original loops and the time reversal eigen-
+   4 T-Rectangle    [X,X,T,-X,-X,-T]          (4,2)                                           values of the time-reversed operator.
+   5    S-Chair      [X,Y,-X,Z,-Y,-Z]         (6,0)                                              It should be noted that the combination coefficients are
+   6  S-Butterfly [X,Y,-X,-Y,Z,-Y,-Z,Y]       (8,0)                                           independent of the shape of loops and each irreducible
+   7   S-Sunbed   [X,X,Y,-X,-X,Z,-Y,-Z]       (8,0)                                           representation corresponds to a specific set of combina-
+   8    T-Chair      [X,T,-X,Z,-T,-Z]         (4,2)                                                                            (R)
+                                                                                              tion coefficients, denoted by αr , r = 1, 2, . . . , 24.
+   9   T-Sunbed   [X,X,T,-X,-X,Z,-T,-Z]       (6,2)                                              For clarity, we give the explicit formula of the thirteen
+  10     Knot     [X,T,-X,-T,Z,-Y,-Z,Y]       (6,2)
+                                                                                              zero-momentum gluonic operators as follows:
+  11   LS-Knot [X,T,-X,-T,Z,Z,-Y,-Z,-Z,Y]     (8,2)
+  12   LT-Knot [X,X,T,-X,-X,-T,Z,-Y,-Z,Y]     (8,2)                                                            X            5
+                                                                                                O(S,B) (t) =          (         ReTr[1 − UC1,r (x, t)]
+                                                                                                                r,x
+                                                                                                                          12u4s
+                                                                                                                1
+loops. Next, they are linearly combined to realize the ir-                                                 −        ReTr[1 − UC2,r (x, t)])
+reps of the group O. The coefficients for each irreps, say,                                                  24u6s
+A1 , E, and T2 , are listed in Table III. To reduce the lat-                                                     X       1
+                                                                                                O(S,E) (t) = ξ 2     (           ReTr[1 − UC3,r (x, t)]
+tice artifact due to the finite lattice spacing, the tree level                                                  r,x
+                                                                                                                       12u2s u2t
+Symanzik’s improvement is used, which means that dif-
+                                                                                                             1
+ferently shaped Wilson loops are combined to construct                                                     −        ReTr[1 − UC4,r (x, t)])
+one operator so that the lattice artifacts are pushed to                                                 192u4s u2t
+higher order of lattice spacing. Tadpole improvement is                                        (T ,B)
+                                                                                                         X       +         5
+                                                                                              Oi E (t) =     {αE
+                                                                                                               r (1, i)(     4
+                                                                                                                               ReTrUC1,r (x, t)
+also implemented to improve the reliability of the lattice                                               r,x
+                                                                                                                         12u s
+spacing expansion at the tree level [5].
+                                                                                                            1
+   Apart from the rotational symmetry, the constructed                                                     −    ReTrUC2,r (x, t))
+operators should have also definite parity and charge                                                    96u6s
+                                                                                                                     √
+conjugation properties. The symmetric/antisymmetric                                                        E+         3
+combination of a Wilson loop and its parity-transformed                                                + αr (2, i)        ReTrUC2,r (x, t)}
+                                                                                                                    96u6s
+counterparts gives the positive/negative parity. The                                                         X +              1
+                                                                                               (T ,E)
+C = + operators can be realized by taking the real part                                       Oi E (t) = ξ 2     αE
+                                                                                                                  r (1, i)(          ReTrUC3,r (x, t)
+                                                                                                                            6u2s u2t
+of a Wilson loop.                                                                                            r,x
+   Any operator that includes the chromo-electric field                                                          1
+                                                                                                           −             ReTrUC4,r (x, t))
+will involve loops with finite extent in the time direc-                                                       96u4s u2t
+                                                                                                                              5
+
+
+            TABLE III: Combinational coefficients used in Eq. (12) to construct the irreps of the cubic point group.
+                            +                 +               +          +          T+             T+             T+
+r∈O           αA
+               r
+                 1
+                         αE
+                          r (1, 1)         αE
+                                            r (1, 2)       αE
+                                                            r (2, 1)   αE
+                                                                        r (2, 2)   αr 2 (2, 1)   αr 2 (2, 2)    αr 2 (2, 3)
+  1            1            -1               − √13           − √13        1             0             1              0
+  2            1            -1               − √13            √1
+                                                                3
+                                                                          -1            0             1              0
+ 3             1             1               − √13           − √13        -1            0             0              1
+ 4             1             1               − √13            √1
+                                                                3
+                                                                          1             0             0              1
+  5            1             0                 √2             √2          0             1             0              0
+                                                 3              3
+  6            1             0                 √2             √2          0             1             0              0
+                                                 3              3
+  7            1            -1                − √13           √1
+                                                                3
+                                                                          -1            0            -1              0
+ 8             1            -1                − √13          − √13        1             0            -1              0
+  9            1             1                − √13           √1
+                                                                3
+                                                                          1             0             0             -1
+ 10            1             1                − √13          − √13        -1            0             0             -1
+ 11            1             0                 √2            − √23        0            -1             0              0
+                                                 3
+ 12            1             0                 √2             √2          0            -1             0              0
+                                                 3              3
+ 13            1            -1                − √13           √1
+                                                                3
+                                                                          -1            0            -1              0
+ 14            1            -1                − √13          − √13        1             0            -1              0
+ 15            1             1                − √13           √1
+                                                                3
+                                                                          1             0             0             -1
+ 16            1             1                − √13          − √13        -1            0             0             -1
+ 17            1             0                 √2            − √23        0            -1             0              0
+                                                 3
+ 18            1             0                 √2             √2          0            -1             0              0
+                                                 3              3
+ 19            1            -1                − √13          − √13        1             0             1              0
+ 20            1            -1                − √13           √1
+                                                                3
+                                                                          -1            0             1              0
+ 21            1             1                − √13          − √13        -1            0             0              1
+ 22            1             1                − √13           √1
+                                                                3
+                                                                          1             0             0              1
+ 23            1             0                 √2             √2          0             1             0              0
+                                                 3              3
+ 24            1             0                 √2            − √23        0             1             0              0
+                                                 3
+
+
+
+
+ (TT2 ,B)            X    T+              11
+Oi          (t) =        αr 2 (2, i)(−         ReTrUC5,r (x, t)       th rotation on the i-th prototype loop in Table I. The
+            r,x
+                                         96u6s                        tadpole parameters us and ut here come from the renor-
+                1                            1                        malization   of spatial and temporal gauge links, respec-
+          +         ReTrU  C     (x, t) +         ReTrU C     (x, t)) tively: U j (x) → Uj (x)/us and Ut (x) → Ut (x)/ut . The
+            96u8s            6,r
+                                            48u8s         7,r
+                                                                      determination of us and ut is described in Section III.
+ (T ,E)
+                X T+                  5
+Oi T2 (t) = ξ 2      αr 2 (2, i)(           ReTrUC8,r (x, t)                            B. Type-II Operators
+                                  96u  4 u2
+                 r,x                   s t
+
+                      1                                        Generally speaking, there can be many ways to define
+                −           ReTrUC9,r (x, t))
+                  96u6s u2t                                 the lattice local operators as long as these definitions give
+                    X A−         6                          the same continuum limit, and some may have smaller
+     O(P S) (t) = ξ     αr 1 (     6 u2
+                                        ReTrUC10,r (x, t)   lattice artifacts at finite lattice spacing compared to oth-
+                               96u s t
+                    r,x                                     ers. This motivates us to design another type of lattice
+                    1                                       gluonic operators, called Type-II operators in this work,
+             −             ReTrUC11,r (x, t)
+                 96u8s u2t                                  apart from the construction described above. Both types
+                     1                                      of operators are used for a self-consistent check.
+             −         8   2 ReTrUC12,r (x, t)),        (12) According to the non-Abelian Stokes theorem [12], a
+                 192us ut
+                                                                                         a×b
+                                                            rectangle Wilson loop Pµν        (x) of size a × b, with a, b
+where UCi,r (x, t) is the loop generated by operating r-    small, can be expanded as
+
+
+
+                                  
+              a×b                           1                       1
+             Pµν  (x)     = 1 + ab Fµν (x) + (aDµ + bDν )Fµν (x) + (2a2 Dµ2 + 3abDµ Dν + 2b2 Dν2 )Fµν (x)
+                                            2                      12
+                                                                            
+                             1 3 3       2  2         2    2     3 3
+                          +    (a Dµ + 2a bDµ Dν + 2ab Dµ Dν + b Dν )Fµν (x)
+                            24
+                                                                                                                                      6
+                                                                                                                     
+                                             1 2        1                            1
+                               + (ab)2         Fµν (x) + Fµν (x)(aDµ + bDν )Fµν (x) + Fµν (x)(a2 Dµ2 + b2 Dν2 )Fµν (x)
+                                             2          2                            24
+                                   1
+                               +     (ab)3 Fµν
+                                            3
+                                               + O((ab)4 ).                                                                         (13)
+                                   6
+
+
+
+For simplicity, the factor ig is absorbed into the quantity               plicitly derived as
+Fµν and will be reconsidered when comparing with the
+continuum form. This expression can be simplified by                                            1
+                                                                            Re Cµν (x) = 1 + (ab)2 Fµν   2
+                                                                                                           (x)
+the clover-type combination which is defined as                                                 2
+                                                                                            1
+ (a,b)               1                                                                 +      (ab)2 (a2 + b2 )Fµν (x)(Dµ2 + Dν2 )Fµν
+Cµν    (x) =           [                                                                   48
+                     8                                                                 + O((ab)4 ),
+               a×b        a×b        a×b         a×b
+                                                        
+              Pµν  (x) + Pν−µ (x) + P−µ−ν (x) + P−νµ (x)
+                                                                           Im Cµν (x) = abFµν (x)
+               b×a        b×a        b×a         b×a
+        +     Pµν  (x) + Pν−µ (x) + P−µ−ν (x) + P−νµ (x)                                    1
+                                                                                       +      ab(a2 + b2 )(Dµ2 + Dν2 )Fµν (x)
+            ]                                        (14)                                  12
+                                                                                           1
+where                                                                                  + (ab)3 (Fµν )3 + . . . .                  (16)
+                                                                                           6
+                                                                             Using Im Cµν (x) with different a and b as the ele-
+                                     †            †
+  P±µ±ν (x) = U±µ (x)U±ν (x ± aµ)U±µ    (x ± bν)U±ν (x).                  mentary components, the local operators Fµν Fρσ can
+                                                      (15)                be defined through the lattice version of the gauge field
+The small ab expansion of P±µ±ν (x) is similar to Eq. (13)                strength tensor
+by replacing a and b with ±a and ±b, respectively. This
+clover-type combination is illustrated in Fig. 2.                                      1       1,1           1,2
+                                                                                                                    
+                                                                             F̂µν (x) =   5Im Cµν  (x) − Im Cµν  (x)
+                                                                                       3                               
+                                                       j                                2            1 4          3   6
+                 j                                                                   = a Fµν (x) − a (Fµν (x)) + O(a ) ,
+                                                                                                     6
+                                                                                                                          (17)
+
+                                                                          which is improved up to O(a4 ) by the combination of
+                           i                                        i     the clover-leaf diagram in Fig. 2(a) and the wind-mill
+                                                                          diagram in Fig. 2(b). Thus the fourth-dimensional gauge
+                                                                          operator Fµν Fρσ can be derived from F̂µν (x)F̂ρσ (x),
+
+                                                                            F̂µν (x)F̂ρσ (x) = a4 Fµν (x)Fρσ (x)
+            (1,1)
+        (a) C                                    (b)
+                                                            (1,2)
+                                                           C ij                                1                          
+            ij                                                                               − a8 Fµν Fµν 2         2
+                                                                                                             (x) + Fρσ (x) Fρσ (x)
+                                                                                               6
+FIG. 2: The clover-shape combinations of spatial plaque-                                     + ....                             (18)
+tte and rectangle, which are used to derive the gauge field
+strength Fµν on the lattice. Here i and j are the indices of                In order to check the effectiveness of the improvement
+the spatial direction.                                                    scheme of lattice local operators, we have also derived
+                                                                          another lattice definition of Fµν Fρσ (x), which is through
+  As a result, the tree-level expansion of Cµν (x) is ex-                 the direct combination of Im Cµν (x), say,
+
+
+
+
+       dρσ (x) = 1 7Im C 1,1 (x) · Im C 1,1 (x) − Im C 1,1 (x) · Im C 1,2 (x) − Im C 1,2 (x) · Im C 1,1 (x)
+  Fµν (x)F                 µν          ρσ              µν            ρσ             µν             ρσ
+                 3
+                                     1                                          1
+               = a4 Fµ ν(x)Fρσ (x) − a8 Fµν Fµν   2
+                                                    (x) + Fρσ2
+                                                                (x) Fρσ (x) − a8 (Dµ2 + Dν2 )Fµν (Dρ2 + Dσ2 )Fρσ + . . .
+                                     6                                          36
+                                                                                                                     (19)
+
+
+
+One can find that, at tree level, the lowest order difference             between these two definitions, denoted by ∆, is
+                                                                                    1 8 2
+                                                                            ∆=−        a (Dµ + Dν2 )Fµν (Dρ2 + Dσ2 )Fρσ + . . . .   (20)
+                                                                                    36
+                                                                                                                                     7
+
+   In the practical calculation, based on these two ap-               us = (h1/3T rPss′ i)1/4 , and ut is set to 1. Theoreti-
+proaches, we construct two version of operators in T2++               cally, the bare anisotropy ξ should be finely tuned to
+irreps. In Section IV, we find the different definitions re-          give the correct physical anisotropy ξphys = as /at , but in
+sult in about 3–4% discrepancy for the measured matrix                our practical case ξ is always taken as the same as ξphys
+elements.                                                             because the discrepancy is shown to be within 1 − 2 per-
+   The discussion above are based on the classical (or tree           cents when the improved action in Eq. (21) is used [4].
+level) series expansion of Wilson loops. For this to be re-           For each coupling constant β and ξ, us is determined
+liable, the tadpole improvement should be applied, which              self-consistently in the Monte Carlo updating.
+means the tadpole parameter should be included in the                   The gauge configurations were generated by using
+above expressions. Specifically, a n-link spatial Wilson              Cabibbo-Marinari(CM) pseudo-heatbath and the SU(2)
+loop Cµν (x) should be divided by a tadpole factor 1/uns.             subgroup micro-canonical over-relaxation (OR) methods.
+From the data analysis to be shown in Sec. II that the                Three compound sweeps were performed between mea-
+tadpole improvement alleviates most of the dependence                 surements, where a compound sweep is made up of one
+on finite lattice spacing. The improvement scheme of the
+local operators corresponding to Ei Ej is a little differ-            TABLE IV: The input parameters for the calculation. Values
+ent from that of Bi Bj . Since at ≪ as , all the tempo-               for the coupling β, anisotropy ξ, the tadpole parameter u4s , the
+ral Wilson loops included in the improvement have only                single-link smearing parameter λs , the double-link smearing
+one lattice spacing extension in the time direction. In               parameter λf , lattice size, and the number of measurements
+                                                                      are listed.
+other words, for the temporal loops, we do not include
+the windmill diagrams which involve two lattice spacing                β    ξ    u4s     λs    λf     L3 × T     Nconf (nbins × nmb )
+in the time direction. Thus the combination coefficients              2.4   5   0.409    0.1   0.5    83 × 40              999 × 100
+in the above expression are modified accordingly. We                                                 123 × 64              100 × 100
+omit the explicit expression here.                                                                   163 × 80              100 × 100
+                                                                      2.6   5   0.438    0.1   0.5   123 × 64               86 × 100
+                                                                      2.7   5   0.451    0.1   0.5   123 × 64              100 × 100
+                 III. Numerical Details                               3.0   3   0.500    0.4   0.5   163 × 48              100 × 100
+                                                                      3.2   3   0.521    0.4   0.5   243 × 72               79 × 100
+
+  Since the implementation of the tadpole improved
+gauge action on anisotropic lattices was verified to be
+very successful and efficient in the determination of the
+                                                                      CM updating sweep followed by 5 OR sweeps. The mea-
+glueball spectrum [4], we use the same techniques to
+                                                                      surements of nmb configurations are averaged in each bin,
+calculate the glueball matrix elements. We adopt the
+                                                                      and nbin bins are obtained. Table IV lists the relevant
+anisotropic gauge action used by Morningstar and Pear-
+                                                                      input parameters for lattices with 5 different β. For the
+don in [4]
+                                                                      case of β = 2.4, there are three lattice volumes to study
+                                                                      the finite volume effects. In order to calculate the ma-
+           5 Ωsp 4 ξΩtp      1 Ωsr    1 ξΩstr
+ S = β{          +         −        −           },                    trix element such as h0|O|Gi, it is desirable to have the
+                         2
+           3 ξu4s 3 u2s ut   12 ξu6s 12 u4s u2t                       glueball state |Gi determined as precisely as possible. In
+                                                (21)                  this work, the glueball states |Gi with quantum number
+where β = 6/g 2 , g is the QCD coupling constant, ξ is                R = AP   C    PC
+                                                                              1 , A2 , E
+                                                                                          PC
+                                                                                             , T1P C , and T2P C are generated by
+the aspect ratio for anisotropy, us and ut are the tadpole            smeared gluonic operators OSR , which are constructed by
+improvement parameters of spatial and temporal gauge                  exploiting link-smearing and variational techniques in a
+links, respectively, and ΩC ’s are the sums of various Wil-           sequence of three steps outlined below. First, for each
+son loops over the total lattice (the explicit expression             generated gauge configuration, we perform six smear-
+can be found in Ref. [4].) In practice, us is defined by              ing/fuzzing schemes to the spatial links, which are vari-
+the expectation value of the spatial plaquette, namely,               ous combinations of the single-link procedure
+
+
+
+                                                 X
+               Ujs (x) = PSU(3) {Uj (x) + λs             Uk (x)Uj (x + k̂)Uk† (x + ĵ)},
+                                               ±(k6=j)
+                                                              X
+               Ujf (x)   = PSU(3) {Uj (x)Uj (x + ĵ) + λf             Uk (x)Uj (x + k̂)Uj (x + ĵ + k̂)Uk (x + 2ĵ)},             (22)
+                                                            ±(k6=j)
+
+
+
+
+where PSU(3) denotes the projection into SU (3) and                   is realized by the Jacobi method [8] in this work.
+                                                                                                                             8
+
+
+                                                               TABLE V: The lattice spacings determined by r0−1 = 410(20)
+                                                               MeV at different β.
+                                                                β                r0 /as              as /r0           as (fm)
+                                                               2.4              2.17(1)             0.461(2)          0.222(1)
+                                                               2.6              2.74(2)             0.365(2)          0.176(1)
+                                                               2.7              3.09(2)             0.326(2)          0.156(1)
+                                                               3.0              4.05(4)             0.247(2)          0.119(1)
+                                                               3.2              4.76(5)             0.210(2)          0.101(1)
+
+
+                                                                                            (R)
+                                                               and the eigenvector v0 , corresponding to the lowest
+                                                                                                                  (R)
+                                                               effective mass m̃0 (tD ), yields the coefficients v0α for the
+                                                                           (R)
+FIG. 3: Wilson loops used in making the smeared glueball       operator OS (t) which, under ordinary circumstances,
+operators.                                                     best overlaps with the lowest-lying glueball G0 in the
+                                                               channel of interest. The operators most overlapping with
+                                                               the excited states can also be constructed accordingly.
+The six schemes are given explicitly as s2λs , s4λs , s6λs ,      After the smeared operators are determined, the glue-
+    N 2           N 4         N 6
+fλf     sλs , fλf   sλs , fλf    sλs , where s/f denotes       ball masses and the matrix elements we are concerned
+smearing/fuzzing procedure defined in Eq. (22). λs and         with can be extracted by fitting two two-point functions,
+λf are tunable parameters for smearing and fuzzing and         namely, the smeared-smeared correlation function,
+take the optimal value λs = 0.1 ( 0.4 at ξ = 3) and                             X
+λf = 0.5. Secondly, for each smearing/fuzzing scheme,               CSS (t) =       h0|OS (t + τ )OS (τ )|0i
+we use ten Wilson loops illustrated in Fig. 3, which are                            τ
+the same as used in [4], as prototypes to construct the op-                         X       1
+         (R)                                                                   =                h0|OS |nihn|OS |0ie−mn t
+erator φα (t) which is a linear combination of different                            n
+                                                                                          2Mn V
+oriented spatial loops, invariant under spatial transfor-                             1
+mation, and transforms according to the irreps R. There                        ∼          |hG|OS |0i|2 e−MG t (t → ∞), (27)
+                                                                                    2mG V
+are four independent constructions for each R (except
+for A−+
+      2    ) for each smearing/fuzzing scheme, thus the        and the smeared-local one
+             (R)
+operator OS (t) is a linear combination of 24 operators,                  X
+  (R)     P (R) (R)                          (R)                CSL (t) =    h0|OS (t + τ )OL (τ )|0i
+OS =          vα φα (t). The coefficients vα are deter-                         τ
+         α                                                                     X
+                                                 (R)                                  1
+mined by a variational method so that           OS projects               =               h0|OS |nihn|OL |0ie−mn t
+mostly to a specific glueball states |Gi.                                       n
+                                                                                    2Mn V
+  What we obtain from the MC simulation are the 24×24                            1
+correlation matrix                                                        ∼          hG|OS |0ih0|OL |Gie−MG t (t → ∞).
+                                                                               2MG V
+                     X                  (R)                                                                        (28)
+          C̃αβ (t) =   h0|φ̄(R)
+                            α (t + τ )φ̄β (τ )|0i,     (23)
+                      τ                                        CSS (t) and CSL (t) can be fitted simultaneously with
+                                                               three parameters, i.e., h0|OS |Gi, h0|OL |Gi, and the
+where the vacuum subtraction
+                                                               ground state glueball mass MG . h0|OL |Gi is the glue-
+             φ̄(R)      (R)         (R)                        ball matrix element we would like to obtain. Of course,
+               α (t) = φα (t) − h0|φα (t)|0i           (24)
+                                                               before the physical results can be derived, a proper renor-
+is only applied to the A++ channel which has a vacuum          malization scheme should be performed.
+                        1
+expectation value. The coefficients are determined in the        In the following, we describe the calculation details
+data analysis stage by minimizing the effective mass           step by step.
+                             P (R) (R)
+                              vα vβ C̃αβ (tD )
+                        1    αβ                                      A. Setting the Scale Using the Static Potential
+         m̃(tD ) = −      ln P (R) (R)        ,        (25)
+                       tD       vα v C̃αβ (0)
+                                       β
+                              αβ                                  The five lattice spacings as are determined by calcu-
+                                                               lating the heavy quark static potential. This part of the
+where the time separation for optimization is fixed to         calculation is independent of the production runs. The
+tD = 1. This is equivalent to solving the generalized          static-quark potential V (r) can be extracted from the
+eigenvalue equation                                            averages of Wilson loops W (r, t),
+             C̃(tD )v(R) = e−tD m̃(tD ) C̃(0)v(R) .    (26)                   W (r, t) = Z(r) exp(−tV (r)) + . . .         (29)
+                                                                                                                           9
+
+which can be measured precisely on the lattice. For
+                                                               TABLE VI: The fitted ground state masses in the twenty
+each β, 200 configurations are generated, each of which
+                                                               RP C channels at β = 2.4 and ξ = 5 on three different lattices
+is separated by 30 compound sweeps so that the auto-           L3 × T = 163 × 80, 123 × 64, and 83 × 40.
+correlation effects are reduced. Secondly, these config-
+uration are fixed to temporal gauge so that the Wilson                         L = 16             L = 12              L=8
+loops can be calculated more easily. Different smearing        A++
+                                                                1             0.308(3)           0.308(2)          0.312(2)
+schemes are applied to Wilson loops with different size to     A+−
+                                                                1            1.082(14)          1.051(13)          1.079(10)
+increase the overlapping with the ground states. Finally,      A−+
+                                                                1            0.604(11)           0.618(4)           0.618(3)
+the static potential is fitted by the model                    A−−
+                                                                1             1.03(3)           1.075(16)            1.01(3)
+
+                                      ec                       A++
+                                                                2             0.825(8)          0.818(8)           0.820(5)
+                  V (r) = V0 + σr +      ,             (30)
+                                      r                        A+−
+                                                                2             0.805(6)           0.804(8)          0.808(5)
+                                                               A−+
+                                                                2            1.047(10)          1.067(12)          1.053(12)
+with three parameters V0 , σ, and ec in the correlated fit      −−
+                                                               A2            0.993(11)          0.976(10)          0.994(27)
+method. The lattice spacing as is determined by
+                       s                                       E ++           0.542(3)          0.536(2)           0.541(2)
+                  as          σa2s                             E +−          0.919(17)          0.957(8)           0.960(6)
+                     =               ,               (31)      E −+           0.699(4)          0.698(4)           0.695(3)
+                  r0       1.65 + ec
+                                                               E −−           0.879(5)          0.891(7)           0.882(5)
+according to the relation r2 dV (r)/dr]r=r0 = 1.65, where
+                                                               T1++           0.826(5)          0.832(4)           0.834(3)
+r0 is hadronic scale parameter [6]. The lattice spacings
+                                                               T1+−          0.657(6)           0.661(5)           0.663(4)
+for different β are listed in Table V.
+                                                               T1−+          0.932(5)           0.940(5)           0.936(4)
+                                                               T1−−          0.865(12)          0.884(5)           0.893(4)
+           B. The Glueball Mass Spectrum                       T2++           0.542(3)           0.536(3)          0.538(2)
+                                                               T2+−           0.807(4)          0.808(11)          0.799(8)
+  Glueball masses can be obtained by fitting the two-          T2−+           0.697(5)           0.700(4)          0.700(2)
+point functions CSS (t) directly. It is taken as a testi-      T2−−           0.903(4)           0.893(6)          0.896(3)
+mony of the effectiveness of the improvement and smear-
+ing scheme [4]. Even though we are interested in the
+glueball matrix elements of the four channels A++
+                                                1 , A1 ,
+                                                        −+
+  ++        ++                                                    The calculated glueball mass spectra are listed in Ta-
+E , and T2 in this work, glueball masses of all the 20
+channels RP C are calculated as a by-product.                  ble VI, where one can find at a glance that the finite vol-
+  After the implementation of variational-optimization         ume effects are very small and in most case the changes
+in each channel, we can obtain a specific operator which       are within errors and consistent with zero statistically.
+overlaps most with the a specific state and has little con-    More precisely, we use the following scheme to illustrate
+taminations from other states with the same J P C , so that    the finite volume effect (FVE) quantitatively. Let M̄ de-
+we can use a single mass term                                  note the average value of the glueball masses from the
+                                                             three lattice volumes, M (L) denotes the glueball mass
+           CSS (t) = Z e−Mt + e−M(T −t) ,              (32)    measured on lattice L3 × T . The fractional change of
+                                                               the glueball mass is defined by δG (L) = 1 − M (L)/M̄ .
+to fit the two-point function in a time range                  The results for these fractional changes are shown in
+tmin , . . . , tmax , which can be determined by observing     Fig. 4. Each point in the figure shows the fractional
+the effective mass plateau. As a convention in this work,      change δG (L) of the glueball mass, the error bars come
+we use MG to represent the mass of a glueball state in         from the statistical errors of M (L), the solid lines indi-
+the physical units and M to represent the dimensionless        cate δG = 0, the dotted lines above and below the solid
+mass parameter in the data processing with the relation        lines indicate δG = 0.02 and δG = −0.02, respectively.
+M = MG at . Generally speaking, for most channels in           All changes are statistically consistent with zero, sug-
+each of the five β cases, the overlap of the specific oper-    gesting that systematic errors in these results from finite
+ators on the ground states are all larger than 90%.            volume are no larger than the statistical errors for these
+   Before performing the continuum extrapolation, we           physical volumes. Since the physical volumes of the other
+check the finite volume effects of glueball masses. Three      β values are not smaller than the 83 × 40 at β = 2.4, we
+independent calculations at β = 2.4, ξ = 5 were carried        shall neglect the FVE for the higher β results.
+out on a 83 × 40 lattice, a 123 × 64, and a 163 × 80 lat-         The fitted glueball masses at different coupling con-
+tice. These lattices have spatial volumes of (1.76 fm)3 ,      stant β are listed in Table VII, where the statistical er-
+(2.64 fm)3 , and (3.52 fm)3 , respectively, with the lattice   rors are also quoted. The dimensionless products of r0
+spacing as ∼ 0.22 fm from r0−1 = 410(20) MeV. For these        and the glueball masses MG are shown as functions of
+three runs, all the input parameters are the same except       (as /r0 )2 . To remove discretization errors from our esti-
+the different lattice volume.                                  mates, the results for each level in these figures must be
+                                                                                                                                            10
+
+                                                                                    12
+                                                                                                                       A1++
+                                                                                                                         ++
+                                                                                                                        E
+                                                                                                                       T2++
+                                                                                                                       A2++
+     T2                                                                                                                T1++
+                                                                                    10
+
+
+     T1
+                                                                                    8
+
+
+
+
+                                                                            MG r0
+      E
+                                                                                    6
+
+     A2
+
+                                                                                    4
+     A1
+
+
+                                                                                    2
+                                                                                         0   0.05   0.1    0.15       0.2      0.25   0.3
+           16 12 8       16 12 8       16 12 8      16 12 8
+                                                                                                                  2
+              ++            +-            -+            --                                                (as/r0)
+
+
+FIG. 4: Finite-volume effects of glueball masses at β = 2.4,        FIG. 5: Masses of P C = ++ glueballs in terms of r0 against
+ξ = 5. Each point shows the fractional change δG (L) = 1 −          the lattice spacing square (as /r0 )2 . The calculated values are
+M (L)/M̄ of the glueball mass, where M (L) is the glueball          plotted in points, and the curves are the best fits.
+mass measured on the lattice L3 × T with L = 8, 12, and 16,
+and M̄ is the average values over those from different lattices.
+The errorbars come from the statistical errors of M (L). The                        12
+                                                                                                                        A1-+
+                                                                                                                          -+
+lattice labels L are shown along the horizontal axis, and the                                                            E
+                                                                                                                        T2-+
+labels along the vertical axis are the irreps of lattice symmetry                   11
+                                                                                                                        T1-+
+group. The solid lines indicates δG = 0, and the dotted lines
+above the solid lines indicates δG = 0.02, and the dotted line                      10
+lines below the solid lines indicate δG = −0.02.
+                                                                                    9
+                                                                            MG r0
+
+
+
+
+extrapolated to the continuum limit as /r0 → 0. From                                8
+perturbation theory, the leading discretization errors are
+expected to be O(a2t , a4s , αs a2s ). As discussed in Ref. [4],                    7
+the O(a2t , αs a2s ) errors could be negligible compared to
+the O(a4s ) errors for most calculated glueball masses ex-                          6
+cept for A++1   glueball, so the fit model for these glueball
+masses is chosen to be                                                              5
+
+                                         a4
+               MG (as )r0 = MG (0)r0 + c4 4s .               (33)                   4
+                                                                                         0   0.05   0.1    0.15       0.2      0.25   0.3
+                                         r0
+                                                                                                                  2
+                                                                                                          (as/r0)
+The masses versus (as /r0 )2 , as well as the fitted curves
+are shown in Fig. 5, 6, 7, and 8. One can find from                 FIG. 6: Masses of P C = −+ glueballs in terms of r0 against
+the figures that the data obey this function very well.             the lattice spacing square (as /r0 )2 . The calculated values are
+However, for A++ 1  glueball mass, the O(a2s ) error seems          plotted in points, and the curves are the best fits.
+still very large. So we keep the linear term of a2s in the
+fit model, namely,
+                                    a2      a4                      with β = 2.4, 2.6, 2.7, 3.0 and 3.2. For comparison, we
+          MG (as )r0 = MG (0)r0 + c2 2s + c4 4s .            (34)   have listed the results from the previous work [4].
+                                    r0      r0
+Already there has been some discussion on the possible
+reason for this large discretization error in scalar channel;
+                                                                                    C. The Glueball Matrix Elements
+one can refer to Ref. [4] for details.
+  We list several continuum extrapolated glueball masses
+in Table VIII. We note that the earlier work [4] was                  As described above, we use the correlated minimal-
+carried out with β = 1.7, 1.9, 2.2, 2, 4, 2.5 and 3.0. In the       χ2 method to fit the smeared-smeared and smeared-local
+present work, we concentrate on finer lattice spacings              two-point functions, namely, CSS (t) and CSL (t), simul-
+                                                                                                                                                 11
+
+                14
+                                                    A1+-                           TABLE VII: The fitted ground state masses M in the twenty
+                                                      +-
+                                                     E
+                                                    T2+-                           RP C channels at five different β’s. The errors quoted here are
+                13
+                                                    A2+-                           all statistical errors from correlated minimal-χ2 method.
+                                                    T1+-
+                12                                                                 RP C   β = 2.4     β = 2.6     β = 2.7     β = 3.0     β = 3.2
+                                                                                   A++
+                                                                                    1     0.312(2)    0.264(2)    0.247(2)    0.325(3)    0.279(5)
+                11                                                                 A+−
+                                                                                    1     1.079(10)   0.851(17)   0.741(11)   0.961(10)   0.822(13)
+                                                                                    −+
+                                                                                   A1     0.618(3)    0.470(4)    0.410(3)    0.515(6)    0.439(4)
+        MG r0
+
+
+
+
+                10                                                                 A−−
+                                                                                    1     1.01(3)     0.897(20)   0.815(5)    1.036(12)   0.879(19)
+
+                 9                                                                 A++
+                                                                                    2     0.820(5)    0.665(4)    0.593(6)    0.779(17)   0.683(17)
+                                                                                   A+−
+                                                                                    2     0.808(5)    0.644(7)    0.560(5)    0.721(11)   0.616(8)
+                 8                                                                 A−+
+                                                                                    2     1.053(12)   0.850(7)    0.745(26)   1.02(4)     0.868(18)
+                                                                                   A−−
+                                                                                    2     0.994(27)   0.748(5)    0.672(9)    0.827(21)   0.721(9)
+                 7
+                                                                                   E ++   0.541(2)    0.418(2)    0.374(3)    0.475(5)    0.414(4)
+                 6                                                                 E +−   0.960(6)    0.745(7)    0.663(13)   0.843(13)   0.734(16)
+                     0   0.05   0.1    0.15       0.2          0.25   0.3          E −+   0.695(3)    0.543(4)    0.486(3)    0.627(3)    0.514(3)
+                                              2                                    E −−   0.882(5)    0.695(6)    0.623(10)   0.797(29)   0.682(13)
+                                      (as/r0)
+
+                                                                                   T1++   0.834(3)    0.645(5)    0.561(3)    0.736(8)    0.628(4)
+FIG. 7: Masses of P C = +− glueballs in terms of r0 against
+                                                                                   T1+−   0.663(4)    0.526(6)    0.459(6)    0.596(9)    0.510(5)
+the lattice spacing square (as /r0 )2 . The calculated values are
+                                                                                   T1−+   0.936(4)    0.737(7)    0.664(9)    0.844(11)   0.714(6)
+plotted in points, and the curves are the best fits.
+                                                                                   T1−−   0.893(4)    0.685(5)    0.610(7)    0.776(8)    0.650(9)
+
+                14
+                                                         E
+                                                          --                       T2++   0.538(2)    0.419(2)    0.375(4)    0.476(8)    0.413(5)
+                                                        T2--                       T2+−   0.799(8)    0.631(4)    0.568(7)    0.720(7)    0.617(4)
+                                                        A2--
+                13
+                                                        T1--                       T2−+   0.700(2)    0.540(3)    0.479(4)    0.604(10)   0.510(3)
+                                                                                   T2−−   0.896(3)    0.705(5)    0.642(5)    0.805(23)   0.680(10)
+                12
+
+
+                11
+                                                                                   10, where the smeared-local correlation functions are
+        MG r0
+
+
+
+
+                10                                                                 plotted on the negative-time side of the t axis. In each
+                                                                                   channel, the effective mass plateau for CSS are flatter
+                 9                                                                 than that of CSL . Nevertheless, both of them can be
+                                                                                   fitted by the same mass parameter consistently. For all
+                 8                                                                 the five β’s, the fit parameters X,Y , effective masses
+                                                                                   M , as well as the fit windows, are listed in Table IX,
+                 7                                                                 X, XI, XII, and XIII. In these tables, the first group
+                                                                                   of data is for Type-I operators, the second group for
+                 6                                                                 Type-II operators, and the last two row of data for the
+                     0   0.05   0.1    0.15       0.2          0.25   0.3
+                                                                                   second definition (Eq. (19)) of Type-II operators in T2
+                                              2
+                                      (as/r0)                                      irreps. We give a brief interpretation of the meaning
+                                                                                   of the value of X parameter here. During the practical
+FIG. 8: Masses of P C = −− glueballs in terms of r0 against                        performance of the variational method discussed in Sec.
+the lattice spacing square (as /r0 )2 . The calculated values are                  III, the eigenvectors v(R) in Eq. (26) are normalized as
+plotted in points, and the curves are the best fits.                                    T
+                                                                                   v(R) C̃(0)v(R) = 1, so that the parameter X indicates
+                                                                                   the relative overlap of the smeared operator to the
+taneously using the fit functions                                                  specific stationary state (the ground state here). In
+                                                                                 these tables, all the X parameters are very close to
+         CSS (t) = X 2 e−Mt + e−M(T −t)                                            1 which implies that the smeared operators couple
+                                                                                 almost completely to the ground state and there is little
+         CSL (t) = XY e−Mt + e−M(T −t) ,                                    (35)   contamination from excited states. The χ2 ’s per degree
+                                                                                   of freedom of the data fitting are all acceptable and also
+                              √
+where X √     = h0|OS (0)|Gi/ 2MG V and Y          =                               listed in the tables.
+h0|OL (0)|Gi/ 2MG V .   Here V is the spatial lat-                                    From the measured matrix elements of the two defini-
+tice volume in physical units, say, V = L3 a3s , and                               tions of the Type-II local operators in tensor channel (T2
+MG = M a−1  t . As an example, we show the effective                               irreps), we can get an estimate of the O(a4s ) lattice arti-
+mass plot at β = 2.4 (L = 8 lattice) in Figs. 9, and                               facts. Recalling the discussion in Sec. II, after restoring
+                                                                                                                               12
+
+
+TABLE VIII: Continuum-limit glueball masses MG . The cor-                    1
+                                                                                                              (S,B)
+responding results in Reference [4] are also quoted for com-                                                  (S,E)
+parison.                                                                                                      (E,B)
+                                                                            0.8                               (T,B)
+RP C       Possible J P C     r0 MG (this work)        r0 MG [4]                                               (PS)
+A++
+  1            0++                4.16(11)             4.21(11)
+E ++           2++                 5.82(5)               5.85(2)
+  ++                                                                        0.6
+T2             2++                 5.83(4)               5.85(2)
+
+
+
+
+                                                                      Mat
+A++
+  2            3++                 9.00(8)               8.99(4)
+T1++           3++                 8.87(8)               8.99(4)
+A−+            0−+                 6.25(6)               6.33(7)            0.4
+  1
+T1+−           1+−                 7.27(4)               7.18(3)
+E −+           2−+                 7.49(7)               7.55(3)
+T2−+           2−+                7.34(11)               7.55(3)            0.2
+T2+−           3+−                 8.80(3)               8.66(4)
+A+−
+  2            3+−                 8.78(5)               8.66(3)
+T1−−           1−−                 9.34(4)               9.50(4)             0
+E −−           2−−                 9.71(3)               9.59(4)                  -8   -6   -4   -2   0   2    4      6   8
+T2−−           2−−                 9.83(8)               9.59(4)                                      t
+A−−
+  2            3−−                10.25(4)             10.06(21)
+E +−           2+−                10.32(7)              10.10(7)
+                                                                   FIG. 10: The effective mass plateaus of the smeared-smeared
+A+−
+  1            0+−                11.66(7)             11.57(12)   and smeared-local correlation functions at β = 2.4, ξ = 5 on
+                                                                   the lattice 83 ×40. The smeared-local correlation functions are
+                                                                   plotted on the negative-time side of the t axis. The Type-II
+          1                                                        local operators are used.
+                                           (S,B)
+                                           (S,E)
+                                           (E,B)
+         0.8                               (T,B)
+                                            (PS)                   in the continuum limit. This is the case from the figure.
+                                                                   Even though the relative difference is less than 3–4%,
+                                                                   the deviation of the ratio from 1 is detectable on coarse
+         0.6
+                                                                   lattice with larger lattice spacing and decreases when ap-
+   Mat
+
+
+
+
+                                                                   proaching to the continuum limit. On the finest lattice
+                                                                   we are using, the difference is consistent with zero within
+         0.4
+                                                                   the error. This result shows that, as far as the Type-
+                                                                   II operators are concerned, after the implementation of
+                                                                   Symanzik’s improvement scheme along with the tadpole
+         0.2
+                                                                   improvement, the measured matrix elements of the two
+                                                                   versions of lattice local operator have a few percent dif-
+                                                                   ferences at finite as , but approaches the same continuum
+          0
+               -8   -6   -4   -2   0   2    4      6    8          limit as as goes to zero.
+                                                                      Here comes the discussion of the FVE of the matrix
+                                   t
+                                                                   elements. By analogy with the FVE analysis of glueball
+                                                                   masses, the glueball matrix elements are also calculated
+FIG. 9: The effective mass plateaus of the smeared-smeared
+                                                                   at β = 2.4 and ξ = 5 on a 83 × 40 lattice, a 123 × 64, and
+and smeared-local correlation functions at β = 2.4, ξ = 5 on
+the lattice 83 × 40. The smeared-local correlation functions       a 163 × 80 lattice. For these three runs, all the input pa-
+are plotted on the negative-time side of the t axis. The Type-I    rameters are the same except the different lattice volume.
+local operators are used.                                          The extracted matrix elements are listed in Table XIV,
+                                                                   XV, and XVI, respectively for Type-I and Type-II opera-
+                                                                   tors. As illustrated in the tables, the finite volume effects
+the fact ig to Fµν , the difference of the two definition of       of matrix elements are very small and in most case the
+the operators (T2 , B) is                                          changes are consistent with zero statistically. We also de-
+                                                                   fine the relative deviation δG (L) = 1 − fG (L)/f¯G to show
+          1 8 2 2
+  ∆=       a g (Dµ + Dν2 )Fµν (Dρ2 + Dσ2 )Fρσ + . . . ,     (36)   the FVE quantitatively, where f¯G is the mean value of the
+         36 s                                                      matrix elements of glueball G averaged over the three lat-
+with the indices µ, ν, ρ, and σ varying accordingly. The           tice volumes, fG (L) denote the matrix element of glueball
+ratio of the matrix elements of the two definitions of op-         G measured on lattice L3 × T . The results of δG (L) are
+erator (T2 , B) is plotted in Fig. 11 with respect to the          shown in Fig. 12. In the figure, each point shows δG (L)
+lattice spacing. It is known that this difference comes            of the matrix element of a glueball G, and the error bars
+totally from the lattice discretization and will disappear         come from the statistical errors of fG (L). The solid lines
+                                                                                                                               13
+
+
+TABLE IX: The matrix elements extracted at β = 2.4 (on lattice 83 × 40). The smeared-smeared(SS) and smeared-local(SL)
+correlators are fitted simultaneously in the time window t(SS) and t(SL). The fitted masses M , X, and Y parameters are listed.
+The first group of data is for Type-I operators, the second group for Type-II operators, and the last two row of data for the
+second definition (Eq. (19)) of Type-II operators in T2 irreps.
+    R              t(SS)            t(SL)                M                Y ( × 10−2 )                X                 χ2 /d.o.f
+ (S, B)            1–4              1–3               0.311(2)               21.3(1)               0.994(3)               0.92
+ (S, E)            1–4              1–4               0.311(2)               21.1(2)               0.994(3)               0.69
+  (P S)            1–5              2–4               0.617(4)              5.24(11)               0.985(4)               1.59
+(E, B)             1–7              1–5               0.541(2)              2.64(3)                0.995(2)               0.64
+(E, E)             1–7              1–4               0.541(2)               1.52(9)               0.995(2)               0.64
+(T2 , B)           2–7              1–4               0.539(3)             1.84(12)                0.989(2)               0.57
+(T2 , E)           2–7              1–3               0.539(3)               0.85(5)               0.990(2)               0.52
+ (S, B)            1–9              1–7               0.311(2)              11.54(6)               0.993(3)               1.12
+ (S, E)            1–9              1–7               0.311(2)             16.38(13)               0.995(3)               0.75
+  (P S)            2–7              1–6               0.617(4)              5.33(11)               0.985(4)               1.36
+(E, B)             1–7              1–6               0.541(2)              2.50(2)                0.995(2)               0.89
+(E, E)             1–7              1–3               0.542(2)               1.35(4)               0.995(2)               0.87
+(T2 , B)           2–7              1–5               0.541(2)               2.24(1)               0.990(3)               1.34
+(T2 , E)           2–7              2–4               0.542(2)               0.73(4)               0.989(2)               0.45
+(T2 , B)           2–7              2–5               0.543(2)               2.37(1)               0.990(2)               1.06
+(T2 , E)           2–7              1–4               0.542(2)               0.73(4)               0.989(2)               0.46
+
+
+
+                                    TABLE X: The same as in Table IX, but for β = 2.6
+    R              t(SS)            t(SL)                M                Y ( × 10−2 )                X                 χ2 /d.o.f
+ (S, B)            1–9              1–7               0.264(2)               6.48(5)               0.994(3)               0.92
+ (S, E)            1–9              1–7               0.264(2)              6.37(11)               0.994(3)               0.69
+  (P S)            2–7              1–5               0.470(4)               2.14(3)               0.985(4)               1.59
+(E, B)             1–7              1–6               0.424(2)             0.716(10)               0.995(2)               0.64
+(E, E)             1–7              1–3               0.423(2)               0.39(4)               0.995(2)               0.64
+(T2 , B)           2–7              1–5               0.421(1)              0.562(7)               0.989(2)               0.57
+(T2 , E)           2–7              1–4               0.421(2)               0.23(2)               0.990(2)               0.52
+ (S, B)            1–9              1–7               0.265(2)               4.01(3)               0.993(3)               1.12
+ (S, E)            1–9              1–7               0.263(2)               5.06(3)               0.995(3)               0.75
+  (P S)            2–7              1–6               0.470(5)               2.16(3)               0.985(4)               1.36
+(E, B)             1–7              1–6               0.424(2)             0.706(13)               0.995(2)               0.89
+(E, E)             1–7              1–3               0.424(2)               0.40(3)               0.995(2)               0.87
+(T2 , B)           2–7              1–5               0.423(2)              0.698(5)               0.990(3)               1.34
+(T2 , E)           2–7              2–4               0.421(2)               0.22(2)               0.989(2)               0.45
+(T2 , B)           2–7              2–5               0.422(2)             0.719(10)               0.990(2)               1.06
+(T2 , E)           2–7              1–4               0.421(2)               0.22(2)               0.989(2)               0.46
+
+
+
+indicates δG = 0, the dotted lines above and below the           spacings as listed in Table V for each β, the lattice ma-
+solid lines indicate δG = ±0.02. The largest effects from        trix
+                                                                 √ elements h0|OL |Gi can be obtained by h0|OL |Gi =
+the finite volume appear to occur in the TYPE I opera-              2MG V Y . As a result, the matrix elements in units of
+tor of (E, B). All deviations are statistically consistent       r0−3 are listed in Table XVII and illustrated by Figure 13.
+with zero, suggesting that systematic errors in these re-           It is clear that the continuum limits can be extrapo-
+sults from finite volume are no larger than the statistical      lated neither by the function with a single a2s term nor
+errors. Since the physical volumes of the other β values         with a single a4s term. We fit them with the form
+are not smaller than the 83 × 40 at β = 2.4, we shall
+                                                                                                        a2      a4
+neglect the finite volume effects for the higher β results.                   T (as )r03 = T (0)r03 + c2 2s + c4 4s ,        (37)
+  Based on the discussions above, in the following contin-                                              r0      r0
+uum extrapolation of matrix elements, we use the results         where T is the final non-renormalized continuum limit
+calculated on the lattice 83 × 40 at β = 2.4. As for the         results of the glueball matrix elements.
+Type-II operators, we take the results with the lattice             Note that these matrix elements are all calculated by
+operators defined by F̂µν (x)F̂ρσ (x)                            bare lattice operators. Before the renormalization of the
+  Using the fitted M and Y parameters listed in Ta-              local operators is performed, we cannot draw any con-
+ble IX-XIII, as well as the physical values of the lattice       clusions of physical interest at present stage. However,
+                                                                                            14
+
+
+                   TABLE XI: The same as in Table IX, but for β = 2.7
+    R      t(SS)    t(SL)              M               Y ( × 10−2 )          X       χ2 /d.o.f
+ (S, B)    2–9      1–7             0.247(2)              5.03(4)         0.990(3)     0.92
+ (S, E)    2–9      1–7             0.246(2)             4.88(13)         0.991(3)     0.50
+  (P S)    1–7      2–6             0.431(3)              1.88(5)         0.991(2)     1.07
+(E, B)     3–8      1–4             0.376(3)            0.575(10)         0.982(4)     0.75
+(E, E)     3–8      1–3             0.376(4)              0.27(3)         0.981(4)     0.39
+(T2 , B)   4–8      2–6             0.379(5)            0.423(10)         0.977(7)     1.14
+(T2 , E)   4–8      1–4             0.378(6)              0.20(2)         0.975(8)     1.39
+ (S, B)    2–9      3–7             0.246(2)              3.21(4)         0.990(3)     0.86
+ (S, E)    2–9      3–7             0.247(2)             3.80(10)         0.990(3)     0.58
+  (P S)    2–7      1–6             0.431(2)              1.90(5)         0.991(2)     1.08
+(E, B)     3–8      2–5             0.376(3)            0.592(10)         0.981(4)     0.60
+(E, E)     3–8      2–5             0.376(3)              0.27(2)         0.982(4)     0.22
+(T2 , B)   4–8      2–6             0.386(5)            0.546(10)         0.988(8)     1.79
+(T2 , E)   4–8      1–3             0.378(5)              0.19(2)         0.975(8)     1.28
+(T2 , B)   4–8      3–6             0.386(5)             0.565(9)         0.987(8)     1.82
+(T2 , E)   4–8      2–3             0.378(5)              0.19(2)         0.975(8)     1.29
+
+
+
+                   TABLE XII: The same as in Table IX, but for β = 3.0
+    R      t(SS)    t(SL)              M               Y ( × 10−2 )          X       χ2 /d.o.f
+ (S, B)    2–9      1–4             0.324(3)              1.56(3)         0.985(3)     0.99
+ (S, E)    2–9      1–4             0.326(4)              1.50(4)         0.985(3)     0.82
+  (P S)    2–5      1–4             0.542(6)            0.706(15)         0.981(6)     2.00
+(E, B)     3–7      1–4             0.480(6)            0.176(7)          0.967(8)     0.22
+(E, E)     3–7      1–3             0.480(6)            0.107(14)         0.967(8)     0.25
+(T2 , B)   3–8      1–3             0.487(5)             0.137(5)         0.969(7)     1.28
+(T2 , E)   3–8      1–3             0.485(6)             0.060(9)         0.967(7)     0.94
+ (S, B)    2–9      2–7             0.326(4)              1.07(2)         0.984(3)     0.68
+ (S, E)    2–9      1–8             0.324(3)              1.09(3)         0.986(3)     0.49
+  (P S)    2–5      1–4             0.541(6)            0.715(15)         0.981(5)     1.84
+(E, B)     3–7      1–4             0.477(6)            0.179(5)          0.964(8)     0.72
+(E, E)     3–7      1–3             0.480(6)             0.086(5)         0.967(8)     0.22
+(T2 , B)   3–8      1–4             0.490(5)             0.172(4)         0.971(7)     1.55
+(T2 , E)   3–8      1–3             0.485(6)             0.053(6)         0.968(8)     1.17
+(T2 , B)   3–8      1–4             0.489(5)             0.179(4)         0.971(7)     1.46
+(T2 , E)   3–8      1–3             0.485(6)             0.053(6)         0.968(8)     1.17
+
+
+
+                   TABLE XIII: The same as in Table IX, but for β = 3.2
+    R      t(SS)    t(SL)              M               Y ( × 10−2 )          X       χ2 /d.o.f
+ (S, B)    4–7      1–6             0.279(6)            0.518(11)         0.966(9)     1.74
+ (S, E)    4–7      1–4             0.278(5)            0.534(26)         0.965(9)     0.18
+  (P S)    3–9      3–6             0.439(8)            0.294(15)         0.932(9)     0.38
+(E, B)     3–7      1–4             0.417(4)            0.062(4)          0.967(3)     2.77
+(E, E)     3–7      1–3             0.415(4)            0.048(8)          0.965(3)     1.49
+(T2 , B)   3–9      1–4             0.414(3)           0.0548(13)         0.959(4)     0.67
+(T2 , E)   3–9      1–3             0.415(3)            0.033(5)          0.960(5)     0.67
+ (S, B)    4–7      1–8             0.282(5)             0.391(7)         0.968(7)     1.98
+ (S, E)    4–7      1–6             0.280(5)            0.376(11)         0.967(8)     0.31
+  (P S)    3–9      3–6             0.439(8)            0.299(15)         0.932(9)     0.40
+(E, B)     3–7      1–3             0.415(4)           0.0693(23)         0.966(4)     3.29
+(E, E)     3–7      1–3             0.416(4)            0.037(4)          0.965(4)     3.05
+(T2 , B)   3–9      1–7             0.416(4)            0.068(2)          0.961(6)     0.96
+(T2 , E)   3–9      1–3             0.415(3)            0.028(3)          0.960(4)     0.56
+(T2 , B)   3-9      2-5             0.415(4)            0.068(3)          0.960(5)     0.74
+(T2 , B)   3-9      1-3             0.415(3)            0.028(3)          0.960(4)     0.54
+                                                                                                                                 15
+
+
+TABLE XIV: The finite volume effects of matrix elements at                   1.2
+β = 2.4 and ξ = 5 on three different lattices L3 ×T = 163 ×80,
+                                                                           1.15
+123 × 64, and 83 × 40. The fitted Y parameters are listed in
+normal numbers. For clarity, the Y parameters for lattice                    1.1
+L = 12 and L = 8 √  are re-scaled to L = 16 due to the relation
+Y = h0|OL (0)|Gi/ 2MG V and illustrated by bold numbers.                   1.05
+
+
+
+
+                                                                   Ratio
+This table lists the Y parameters of Type-I operators.                        1
+                 L = 16            L = 12            L=8                   0.95
+ (S, B)         7.53(5)           7.50(5)            7.52(5)                 0.9
+                7.53(5)           11.54(7)          21.27(15)              0.85
+ (S, E)        7.38(12)          7.51(11)            7.47(8)                 0.8
+               7.38(12)          11.56(17)          21.12(23)                      0    0.05      0.1    0.15       0.2   0.25    0.3
+
+(E, B)         0.956(12)         0.993(8)          0.936(11)                                                    2
+                                                                                                        (as/r0)
+                0.956(12)         1.53(12)           2.64(3)
+                                                                  FIG. 11: The data points represent the ratios of the matrix
+(E, E)          0.56(5)           0.52(4)           0.54(3)       elements of the two definitions of operator (T2 , B) at different
+                0.56(5)           0.81(6)           1.52(9)       lattice spacings. The straight line is plotted to show how far
+                                                                  the ratios deviate from 1.
+(T2 , B)       0.633(8)          0.649(8)           0.651(4)
+               0.633(8)          1.000(12)          1.841(11)
+
+(T2 , E)        0.29(2)           0.27(3)           0.30(2)       TABLE XVI: The same as Table XIV, but for the second
+                0.29(2)           0.42(4)           0.85(6)       definition of Type-II operators O(T2 , B) and O(T2 , E).
+                                                                                        L = 16           L = 12            L=8
+ (P S)          1.85(4)           1.88(4)           1.85(4)
+                1.85(4)           2.89(6)           5.24(11)      (T2 , B)             0.825(6)         0.835(8)          0.837(4)
+                                                                                       0.825(6)         1.285(12)         2.367(12)
+
+                                                                  (T2 , E)             0.26(2)           0.26(2)          0.26(2)
+                                                                                       0.26(2)           0.40(3)          0.73(4)
+
+
+TABLE XV: The same as Table XIV, but for Type-II oper-
+ators.                                                            we can give some comments on the different behaviors
+                 L = 16             L = 12            L=8         of the matrix elements of the Type-I and Type-II oper-
+                                                                  ators from the continuum extrapolation. Based on our
+ (S, B)         0.410(3)           0.408(3)         0.408(2)      experience from the calculation of glueball masses, the
+                 4.10(3)            6.29(4)         11.54(6)      continuum SO(3) symmetry is approximately restored
+                                                                  for all the lattice spacings we use in this work, since the
+ (S, E)          5.73(6)           5.82(4)          0.579(4)      calculated glueball masses in T2++ and E ++ channel are
+                 5.73(6)           8.97(6)           16.4(1)      coincident. The left panel of Fig. 13 is the plot of the ma-
+(E, B)         0.885(11)           0.895(9)         0.883(7)
+                                                                  trix elements of the Type-I operators, where one can find
+                0.885(11)          1.378(14)         2.50(2)      that the calculated glueball matrix elements of T2 and
+                                                                  E irreps do not show this symmetry restoration. This is
+(E, E)           47(2)             0.47(2)           0.48(2)      probably due to the definition of the Type-I operator in-
+                 0.47(2)           0.72(3)           1.35(4)      troduced in Sec. II. The Type-I operators with different
+                                                                  quantum number are defined by the real part of different
+(T2 , B)        0.783(5)           0.792(4)         0.790(4)      Wilson loops composed of different numbers of spatial
+                0.783(5)           1.220(6)          2.24(1)      gauge links, such that the overall tadpole improvement
+                                                                  factors (different powers of the tadpole parameter us ) are
+(T2 , E)         0.25(2)           0.26(2)           0.26(2)      different for T2 and E representation. The conjectured
+                 0.25(2)           0.40(3)           0.73(4)
+                                                                  power counting of the tadpole parameter us for Wilson
+ (P S)           1.87(4)           1.90(4)           1.89(4)      loops is a naive approximation and may bring additional
+                 1.87(4)           2.92(6)           5.33(11)     deviation to the local operators. We have carried out
+                                                                  the test that the naive tadpole parameters are replaced
+                                                                  by the vacuum expectation value (VEV) of the corre-
+                                                                  sponding Wilson loops. As we expected, the two matrix
+                                                                                                                                          16
+
+
+                      TYPE-I            TYPE-II(1)       TYPE-II(2)       TABLE XVII: Final results of matrix elements of lattice glu-
+                                                                          onic operators. The data in table are in the unit of r0−3 with
+          (PS)
+                                                                          r0−1 = 0.410(20) MeV.
+
+         (T,E)
+                                                                                        β = 2.4 β = 2.6 β = 2.7 β = 3.0 β = 3.2
+                                                                                        (L = 8) (L = 12) (L = 12) (L = 16) (L = 24)
+         (T,B)
+
+                                                                            T (S, B)I   87(2)     90(2)    94(3)     92(3)      85(4)
+         (E,E)                                                              T (S, E)I   86(2)     89(4)    91(6)     90(6)      88(7)
+
+         (E,B)
+                                                                            T (E, B)I 14.2(3) 12.5(5)      13.2(7)   12.6(8)    12.8(10)
+                                                                            T (E, E)I 8.2(6) 6.8(10)       6.2(9)    7.9(12)    9.6(22)
+         (S,E)
+                                                                           T (T2 , B)I 9.9(3)     9.8(4)   9.7(5)    9.8(7)     11.0(6)
+                                                                           T (T2 , E)I 4.5(4)     4.1(6)   4.6(8)    4.3(7)     6.7(14)
+         (S,B)
+
+                                                                            T (P S)I    30(1)     40(2)    46(3)     52(3)      61(5)
+
+                 16    12      8   16      12        8   16   12      8
+                                                                           T (S, B)II 47(1)       56(1)    60(2)     63(2)      64(3)
+                                                                           T (S, E)II 67(2)       70(2)    71(4)     65(4)      62(4)
+FIG. 12: Finite-volume effects on the results of the β = 2.4,
+ξ = 5 calculation. Each point shows the fractional change                  T (E, B)II 13.4(4) 12.3(4)      13.6(5)   12.8(8)    13.8(9)
+δG (L) = 1 − fG (L)/f¯G in the matrix element of a glueball                T (E, E)II 7.3(3) 7.0(7)        6.2(6)    6.2(6)     7.4(10)
+G, where fG (L) is the matrix element of G measured on the
+lattice L3 × T with L = 8, 12, and 16, and f¯G is the average              T (T2 , B)II 12.7(3) 12.6(5)    13.0(7)   12.8(7)    13.6(9)
+values over those from different lattices. The errorbars come              T (T2 , E)II 3.9(3) 3.8(5)      4.4(5)    3.8(6)     5.6(10)
+from the statistical errors of fG (L). The lattice labels L are
+shown along the horizontal axis, and the labels of different                T (P S)II   31(1)     40(2)    47(2)     53(3)      62(5)
+local operators are specified along the vertical axis. The solid
+lines indicates δG = 0, and the dotted lines above the solid
+lines indicates δG = 0.02, and the dotted line lines below
+the solid lines indicate δG = −0.02. The FVE of different                                 pr03 = 8T (P S),
+definitions of local operators are also shown in the figure.
+                                                                                         tE r03 = 2|T (E, B) − T (E, E)|,
+                                                                                        tT2 r03 = 2|T (T2 , B) − T (T2 , E)|.           (39)
+elements tend to coincide better. In contrast with the
+Type-I operators, all the Type-II operators are defined                      Fig. 14 and Table XVIII illustrate the behaviors of
+by the improved lattice version of the gauge strength                     these matrix elements with respect to the lattice spac-
+tensor, F̂µν , and thus have the same correction factor                   ings. We only show the data reproduced from the Type-
+coming from the tadpole improvement. The right panel                      II operators, which can be only renormalized in this work
+of Fig. 13 shows the behaviors of the matrix elements of                  (see Section V). The continuum limits of tT2 and tE are
+the Type-II operators. It is clearly seen that the approxi-               consistent within error bars. The deviation of the central
+mate SO(3) symmetry restoration takes place for T2 and                    values comes mainly from the discrepancy of T (E, E) and
+E representation.                                                         T (T2 , E).
+   The matrix elements of phenomenological interest, de-
+noted s, p and t, are defined as
+                                Z                                         V. The Non-Perturbative Renormalization of Local
+              (2π) δ(0)s = h0| d3 xS(x)|Gi,
+                  3
+                                                                                        Gluonic Operators
+                                Z
+             (2π)3 δ(0)p = h0| d3 xP (x)|Gi,                                The lattice local gluonic operator O and its continuum
+                                Z                                         counterpart Ocont is related by the renormalization con-
+         (2π) δ(0)tǫµν = h0| d3 xΘµν (x)|Gi,
+               3
+                                                       (38)               stant ZO (a),
+
+where ǫµν = ǫνµ , ǫµµ = 0, ǫµν ǫµν = 1, and S(x), P (x),                                        Ocont = a−4 ZO (a)O.                    (40)
+Θµν (x) are defined in Eq. (1) and Eq. (3). Recalling
+that (2π)3 δ(0) is replaced by L3 a3s on finite lattices, and             The key question is to choose a proper normalization con-
+combining Eq. (7-11), s, p, and t can be reproduced by                    dition, so that the renormalization constant can be de-
+the calculated matrix elements listed in Table XVII as                    termined. In this work, we choose the energy-momentum
+                                                                          tensor in the glueball state as the normalization condi-
+                 sr03 = 2(T (S, B) + T (S, E)),                           tion.
+                                                                                                                                                                 17
+
+                         100                                                                100
+                                                              (S,B)                                                                 (S,B)
+                                                              (S,E)                                                                 (S,E)
+                                                              (E,B)                                                                 (E,B)
+                                                              (E,E)                                                                 (E,E)
+                         80                                   (T,B)                         80                                      (T,B)
+                                                              (T,E)                                                                 (T,E)
+                                                               (PS)                                                                  (PS)
+
+
+                         60                                                                 60
+                 T r03
+
+
+
+
+                                                                                    T r03
+                         40                                                                 40
+
+
+
+
+                         20                                                                 20
+
+
+
+
+                          0                                                                  0
+                               0   0.05   0.1    0.15   0.2   0.25    0.3    0.35                 0   0.05   0.1   0.15   0.2       0.25    0.3   0.35
+                                                        2                                                                     2
+                                                  (as/r0)                                                           (as/r0)
+
+
+FIG. 13: Glueball matrix elements(ME) in terms of r03 against the lattice spacing square (as /r0 )2 . The calculated values of
+ME’s are plotted in points, with different colors corresponding to different channels. The curves are best fits to the calculated
+results by the model T (as )r03 = T (0)r03 + c2 (as /r0 )2 + c4 (as /r0 )4 . The left panel illustrates the result of Type-I operators, while
+the right panel is for Type-II operators.
+
+
+TABLE XVIII: The non-renormalized matrix elements s, p, and t in units of r0−3 are reproduced from the lattice results of
+type-II operators at different lattice spacings. The errors quoted here are purely statistical. The continuum limits are also
+listed for each channel.
+                   β = 2.4                       β = 2.6                 β = 2.7                       β = 3.0                       β = 3.2             Continuum
+ sr03              228(5)                         252(5)                 262(9)                        256(9)                        252(10)               227(7)
+ pr03              248(8)                        320(16)                 376(16)                       424(24)                       496(40)               589(43)
+tE r03             12.2(5)                       10.6(8)                 14.8(8)                      13.2(1.0)                     12.8(1.4)             13.6(4.1)
+tT2 r03           17.6(0.8)                     17.6(0.8)               17.2(0.9)                     18.0(1.0)                     16.0(1.4)             15.8(1.9)
+
+
+
+  The energy-momentum tensor for the pure gauge the-                                  ator of the theory
+ory                                                                                                                       Z
+                         1                                                                                         H=             d3 xT00 (x, 0),              (44)
+          T̄µν = T̄νµ = − δµν TrF 2 + 2TrFµα Fνα                            (41)
+                         2
+satisfies ∂µ T̄µν = 0 and does not need an overall renor-                             which is finite and scale independent. In the rest frame
+malization in the continuum. More specifically, T̄00 =                                of a glueball, the matrix element of the Hamiltonian H
+T r(E2 − B2 )). At the classical level, T̄µν is trace-                                in the glueball state is just the glueball’s rest mass,
+less. When quantum corrections are included, the renor-                                                          R
+malized energy-momentum tensor, Tµν , takes a non-                                             hG(MG , p = 0)| d3 xT00 (x, 0)|G(MG , p = 0)i
+                                                                                        MG =                                                    .
+vanishing trace part, T̂µν , which comes from the anoma-                                                             hG|Gi
+lous breaking of scale invariance and is called the QCD                                                                                       (45)
+trace anomaly,                                                                        If the glueball states |G(E, p)i are normalized as
+
+            1 β(g)            11                                                          hG(Ep , p)|G(Ep , p′ )i = 2Ep (2π)3 δ 3 (p − p′ ),     (46)
+   T̂µν = −        δµν F 2 =       δµν T r(g 2 B2 + g 2 E2 ),
+            4 2g             32π 2                                                                                R
+                                                            (42)                      we have hG(MG , p = 0)| d3 xT00 (x, 0)|G(MG , p = 0)i =
+                                                                                         2
+where β(g) = −β0 g 3 /(4π)2 is the β function of QCD to                               2MG  (2π)3 δ 3 (0) ≡ 2p0 p0 (2π)3 δ 3 (0), which implies that
+the lowest order of the coupling constant g with β0 =                                         Z
+11 in the pure gauge case. Thus, Tµν can be written                                    hG(p)| d3 xTµν (x, 0)|G(p)i = 2pµ pν (2π)3 δ 3 (0). (47)
+explicitly as the sum of the traceless and trace parts,
+                  Tµν = T̄µν + T̂µν .             (43)                                Combining Eq. (45) and (47), we get the normalization
+  On the other hand, Tµν defines the Hamiltonian oper-                                conditions in the glueball’s rest frame,
+                                                                                                                             18
+
+
+                                        Z
+                                                                          1 2
+                               hG(p)|  d3 xT̄µν (x, 0)|G(p)i = 2(pµ pν − MG     δµν )(2π)3 δ 3 (0),
+                                                                          4
+                                     Z
+                                                               1 2
+                               hG(p)| d3 xT̂µν (x, 0)|G(p)i = MG     δµν (2π)3 δ 3 (0).
+                                                               2
+                                                                                                                           (48)
+
+
+
+  According to the definitions in Eq. 9 and Eq. 10, the            than 10 [10], and our smallest lattice gives the value
+E and T2 operators are related to T̄ij by                          z = 0.31 × 5 × 8 = 12.4 which meets this requirement.
+                                                                   Secondly, in our lattice calculations of the mass spectrum
+            (E,E)      (E,B)
+          O1        − O1       ∝ T̄11 − T̄22 ,                     and matrix elements, the coincidence of E ++ channel and
+           (E,E)     (E,B)                                         T2++ channel implies that this rotational restoration is ac-
+          O2     − O2          ∝ 2T̄33 − T̄11 − T̄22 ,             tually realized. Based on the discussion above, we choose
+          (T ,E)    (T ,B)
+         Oi 2    − Oi 2        ∝ ǫijk T̄jk ,              (49)     the component T̄00 to do the renormalization of the ten-
+                                                                   sor operator in this work. In the practical study, we
+whose matrix elements in a zero-momentum glueball                  calculate the matrix elements hG|O± |Gilat , where O± is
+state vanish, thus we cannot renormalize E ++ and T2++             the operator g 2 T r(E2 ± B2 ) and |Gi = |A++1 i, |E
+                                                                                                                        ++
+                                                                                                                           i, or
+                                                                     ++
+operators directly by the normalization condition in               |T2 i. As we have addressed before, O− is proportional
+Eq. 48 in the glueball rest frame. A possible way around           to T̄00 , and O+ is proportional to the trace anomaly T̂00 .
+this difficulty is to assume the almost restoration of             Thus, the renormalization constants of the scalar and
+Lorentz invariance at the lattice spacings we use in this          tensor operators can be extracted from these matrix ele-
+work, so the overall renormalization constant of the lat-          ments.
+tice version of T̄µν can be determined by one of its com-
+ponents. In fact, this is justified to some extent by two
+facts. First, it is argued that the rotational invariance can        The matrix elements hG|O± |Gilat can be obtained by
+be restored if the scale parameter z = mA++ L is larger            calculating the three-point function
+                                                 1
+
+
+
+
+                                                            X       1
+          C3 (t1 , t2 ) = h0|Os (−t1 )O± (0)Os (t2 )|0i =                  h0|OS (−t1 )|nihn|O± (0)|mihm|OS (t2 )|0i
+                                                            m,n
+                                                                4En Em V 2
+                           X       1
+                      =                  2
+                                           h0|OS (0)|nihn|O± (0)|mihm|OS (0)|0ie−En t1 e−Em t2
+                           m,n
+                               4En E m V
+                              1
+                      →              h0|Os (0)|Gi|2 hG|O± (0)|Gie−MG (t1 +t2 ) (t1 , t2 → ∞)                               (50)
+                           (2MG V )2
+
+
+
+where OS (t) is the smeared zero-momentum operator                 simultaneously with the fitting model
+which generates the ground state |Gi from the vacuum,
+and MG the ground state mass. Using the asymptotic                                 CSS (t) = X 2 e−Mt
+form of the two-point function                                                    C3 (t, t0 ) = X 2 W e−M(t+t0 ) ,         (53)
+                 1                                                 where t0 = 1. W is related to the matrix element
+  CSS (t) ∼          |h0|OS (0)|Gi|2 e−MG t (t → ∞) (51)
+               2MG V                                               hG|O± (0)|Gi by
+and dividing the three-point function by proper two-point                           hG|O± (0)|Gi = 2MG V W.                (54)
+function, one gets
+                                                                   From Eq. (40), Eq. (48) and the fitted matrix elements
+ C3 (t1 , t2 )     1                                               hG|O± |Gilat , the renormalization constants for scalar
+               ≈       hG|O± (0)|Gie−MG t2 (t1 , t2 → ∞).
+  CSS (t1 )      2MG V                                             and tensor gluonic operators can be derived as
+                                                       (52)
+In the practical data processing, by analogy with the ex-                        1        11    2
+                                                                                       =        2 a4 hG|O+ |Gilat ,
+traction of the matrix element, we fit C2 (t) and C3 (t, t0 )                 ZS (as )   32π 2 MG  s
+                                                                                                                                                19
+
+                                                                                       1.6
+TABLE XIX: The matrix elements of operator O± (Type-II)                                                                  p(as)/p(0)
+in glueball states are listed. S represents the scalar glueball                                                  χL1/2(as)/χ1/2(0)
+state, while T (E) and T (T2 ) denotes the tensor glueballs in                         1.4
+                                                                                                                              ratio
+E and T2 irreps, respectively. The renormalization constants
+extracted from these matrix elements are given also.                                   1.2
+
+ |Gi              hG|O+ |Gilat       ZS          hG|O− |Gilat           ZT
+   S                     32(9)    1.1(3)                13(5)        0.7(3)              1
+T (E)                 102(16)     1.0(2)              51(15)       0.53(15)
+T (T2 )               101(16)     1.0(2)              53(15)       0.51(15)            0.8
+
+
+                                                                                       0.6
+                     1        1  2
+                           = 2    2 a4 hG|O− |Gilat ,                  (55)
+                  ZT (as )   g 3MG   s
+                                                                                       0.4
+where the coupling constant g 2 comes from the relation
+T̄00 = (1/g 2 )O− .                                                                    0.2
+   Unfortunately, the gluonic three-point function is far                                    0    0.05     0.1         0.15       0.2   0.25
+more noisy than the gluonic two-point function in Monte                                                      (as/r0)
+                                                                                                                     2
+Carlo calculation. In this work, the renormalization of
+gluonic operators is performed only at β = 2.4 on the                                                                  1/2
+                                                                              FIG. 15: The as -dependences of χL (as ) and p(as ) are plot-
+lattice 83 × 40 with ξ = 5. As many as 100,000 measure-                                                1/2
+                                                                              ted. For comparison, χL (as ) and p(as ) are rescaled by their
+ments are carried out, the signals of three point functions                                                            1/2
+                                                                              continuum-extrapolated values, say, χL (0) and p(0), respec-
+are still weak with large fluctuation. In the practical                                                                             1/2
+                                                                              tively. One can find that the as -dependences of χL (as ) and
+computation, the matrix elements of Type-I and Type-                             3
+                                                                              pr0 (as ) are very similar and their ratios are fairly constant.
+II operators of O(S,B) and O(S,E) are all calculated. It
+is found that the three-point functions involving Type-I
+operators are so noisy that the matrix elements cannot                        topological susceptibility, χ1/4 = 180 MeV, as the nor-
+be extracted reliably. The three-point functions involv-                      malization condition. The quantity χ is defined by
+ing Type-II operators behave better, from which we ob-                                              Z
+tain the renormalization constants. The matrix elements
+                                                                                               χ = d4 xhq(x)q(0)i,               (56)
+hG|O± |Gilat and the resultant renormalization constants
+at β = 2.4 are listed in Table XIX.
+                                                                              where the topological charge density q(x) is proportional
+                  70
+                                                                              to the pseudoscalar operator P (x) (defined in Eq. (1)
+                                                                                           1
+                                                      s/10                    as q(x) = 32π  2 P (x). The lattice version of χ, denoted
+                                                      p/10
+                                                         tE                   by χL , is defined by the lattice pseudoscalar operator
+                  60                                    tT
+                                                          2                   O(P S)(x) as
+                                                                                                 ξ          X
+                  50
+                                                                                  χL =                          hO(P S) (x)O(P S) (y)i,        (57)
+                                                                                         (32π 2 )2 L3 T a4s x,y
+                  40
+                                                                              where L and T are the lattice sizes in spatial and tem-
+          T r03
+
+
+
+
+                                                                              poral directions, respectively.
+                  30
+                                                                                 We have calculated χL (as ) for all the five β, at each
+                                                                              β 20000 measurements are carried out. In Table XX are
+                  20                                                                                 1/4
+                                                                              listed the results of χL (as ) in units of MeV for differ-
+                                                                              ent β, as well as the non-renormalized continuum value
+                  10                                                            1/4
+                                                                              χL (0) after the continuum extrapolation as → 0. It is
+                                                                                                             1/4
+                                                                              obvious that the value of χL (as ) increases along with
+                   0
+                       0   0.05    0.1         0.15       0.2   0.25          the decreasing of lattice spacing. For comparison, the
+                                           2
+                                                                              non-renormalized matrix elements pr03 (as ) at different β’s
+                                     (as/r0)
+                                                                              are also listed in Table XX. In Fig. 15 are plotted the
+                                                                                                   1/2
+FIG. 14: The non-renormalized matrix elements s, p and t                      as -dependences of χL (as ) and pr03 (as ) (rescaled by their
+from type-II operators are plotted versus lattice spacing. The                continuum-extrapolated values, respectively), as well as
+continuum extrapolations are also carried out.                                their ratios, where one can find that the as -dependences
+                                                                                   1/2
+                                                                              of χL (as ) and pr03 (as ) are very similar and their ratios
+  As for the renormalization of the pseudoscalar opera-                       are fairly constant. Using χ1/4 = 180 MeV, the renor-
+tor, we tentatively use the phenomenological value of the                     malization constant ZP of pseudoscalar operator in the
+                                                                                                                              20
+
+
+TABLE XX: The non-renormalized topological susceptibility χL (as ) calculated at different lattice spacing are listed in physical
+                                      1/2
+units. Also listed are the ratios of χL (as ) and the non-renormalized matrix elements of pseudoscalar p(as ) after rescaled by
+                                         1/2
+their continuum extrapolation values χL (0) and p(0).
+       β                     2.4                2.6              2.7                3.0               3.2            continuum
+ 1/4
+χL (as )(MeV)              242(4)             277(5)           299(5)             323(6)            351(8)            391(15)
+    p(as )r03              248(8)            320(16)          376(16)            424(24)           496(40)            589(43)
+         1/2
+  p(as )χ    (0)
+   1/2
+         L
+                           1.10(7)           1.08(9)             1.09(8)         1.06(10)          1.05(11)           1.00(13)
+  χ    (as )p(0)
+   L
+
+
+
+
+continuum limit can be extracted as                                  theorem [14] lead to an estimate that relates the scalar
+                                                                     glueball matrix element to the gluon condensate,
+                           χ1/2                                                                          r
+                   ZP =              ≈ 0.21(2)           (58)
+                           1/2
+                          χL (0)                                                            ++         2    G0
+                                                                                     h0|S|0 i = 16π            MG ,        (59)
+                                                                                                            2b
+                                                                     where G0 = h0| απs Gaµν Gaµν |0i is the gluon condensate,
+            VI. RESULTS AND DISCUSSION                               b = (11/3)Nc −(2/3)Nf and MG the scalar glueball mass.
+                                                                     Taking Nf = 0, G0 = 0.012 GeV4 , and MG ≈ 1.7 GeV,
+   After the continuum extrapolation and the renormal-               this matrix element is estimated to be ∼ 6.3 GeV, which
+ization of the local operators, we can discuss the physical          is about two and a half times smaller than our lattice
+implication of our lattice results.                                  result. This discrepancy might be attributable to the
+   As we addressed above, we have tried to extract the               fact that the quenched lattice calculation gives a gluon
+renormalization constants for scalar and tensor operator             condensate which is about 0.14 ± 0.02GeV4 [15]. This is
+only at β = 2.4. In fact, the signals of the three-point             larger by an order of magnitude than that used in QCD
+functions of type-I operator are very poor, so the renor-            sum rule. If the relation Eq. (59) still holds in the pure
+malization constants ZS and ZT are obtained only for                 gauge theory, using the quenched gluon condensate, the
+Type-II operators. We are lucky with this situation be-              estimated scalar matrix element is estimate to be (21 ±
+cause all the Type-II operators are made up of the lattice           1)GeV3 which is in good agreement with our quenched
+version of the gauge field strength, F̂µν , thus they all have       lattice calculation.
+the same normalization constant, say, the same tadpole-                 For the pseudoscalar, with the renormalization con-
+improvement factor. Therefore, for Type-II operator, the             stant ZP = 0.21(2) determined in last section, the lattice
+ZT extracted from T̄00 can be applied to other compo-                calculation gives the result h0|P |0−+ i ≈ 8.6 ± 1.3 GeV3 .
+nents involved in the glueball matrix elements calculated            It has been proposed that there is an approximate chi-
+in this work.                                                        ral symmetry between the scalar and pseudoscalar glue-
+   Considering Eq. (3) and (6), the non-renormalized ma-             balls [16]. A sum rule is derived from an effective action
+trix elements of the S(x), P (x), and Θ(x) in the con-               which relates the topological susceptibility χ in the pure
+tinuum can be obtained by the lattice results, and are               gauge case to the gluon condensate G0 ,
+shown in Table XVIII. We notice that, although the                                                    r
+(S, B) and (S, E) matrix elements have sizeable as de-                                                  G0
+                                                                                             χ = η −2       ,              (60)
+pendence for the Type-II operator, as seen in Fig. 13,                                                   2b
+the total scalar matrix element, which is the sum of the             where η ≈ 0.7. Using our lattice results, the degree
+two, is much flatter in (as /r0 )2 . This is also the case for       of chiral symmetry η can be obtained from the ra-
+the tensor matrix element. With the observation that                 tio of the pseudoscalar to scalar matrix elements [16],
+the non-renormalized matrix elements of the scalar and               ηL = h0|P |0−+ i/(2h0|S|0++ i) ≈ 0.3, which is also more
+the tensor depend on the lattice spacing (as /r0 )2 very             than two times smaller than the result of QCD sum rule.
+mildly, we speculate that there is not a large lattice spac-         These facts hint that there may be a substantial quench-
+ing dependence in the renormalization constant, and will             ing effect in the matrix element of the scalar.
+use ZS and ZT computed at β = 2.4 as an approxima-                      We can also estimate the glueball contribution to the
+tion of the renormalization constants in the continuum               topological susceptibility by the lattice matrix element
+limit. We shall check this in the future when computer               and glueball mass,
+resources are available for high statistics calculation at                                        2
+larger β.                                                                              h0|P |0−+ i
+                                                                         χglueball =                  ≈ (103 MeV)4 ∼ 0.11χ,
+   Taking the average of the renormalization constant ZS                               32π 2 M0−+
+from Table XIX, we get a continuum extrapolated value                                                                      (61)
+for the matrix element h0|S|0++ i = 15.6 ± 3.2 GeV3 .                which implies that the pseudoscalar glueball gives an ap-
+Based on the scaling properties of QCD and trace                     preciable 11% contribution to the topological susceptibil-
+anomaly, both the QCD sum rule [13] and the soft meson               ity.
+                                                                                                                                           21
+
+                                                                   ball spectrum is summarized in Tab. XXI and Fig. 16.
+TABLE XXI: The final glueball spectrum in physical units.
+In column 2, the first error is the statistical uncertainty com-     After the non-perturbative renormalization of the local
+ing from the continuum extrapolation, the second one is the        gluonic operators, we finally get the matrix elements of
+1% uncertainty resulting from the approximate anisotropy.          scalar(s), pseudoscalar(p), and tensor operator (t) with
+In column 3, the first error comes from the combined uncer-
+tainty of r0 MG , the second from the uncertainty of r0−1 =                                                                 5
+                                                                              12                       +-
+410(20) MeV                                                                                            0
+JPC                     r0 MG                     MG (MeV)                                             +-
+                                                                                                       2          --
+                                                                                                                 3--
+                                                                              10
+0++                  4.16(11)(4)                 1710(50)(80)                                                    2--        4
+                                                                                   ++                            1
+2++                   5.83(5)(6)                2390(30)(120)                      3                   +-
+                                                                                                       3
+0−+                   6.25(6)(6)                2560(35)(120)                 8
+
+
+
+
+                                                                                                                                MG (GeV)
+                                                                                             -+
+1+−                   7.27(4)(7)                2980(30)(140)                                2         +-
+                                                                                                       1                    3
+
+
+
+
+                                                                     r0 M G
+2−+                   7.42(7)(7)                3040(40)(150)                                -+
+                                                                                             0
+3+−                   8.79(3)(9)                3600(40)(170)                 6    ++
+                                                                                   2
+3++                   8.94(6)(9)                3670(50)(180)                                                               2
+1−−                   9.34(4)(9)                3830(40)(190)                      ++
+                                                                                   0
+                                                                              4
+2−−                  9.77(4)(10)                4010(45)(200)
+3−−                 10.25(4))(10)               4200(45)(200)
+                                                                                                                            1
+2+−                 10.32(7)(10)                4230(50)(200)                 2
+0+−                 11.66(7)(12)                4780(60)(230)
+
+                                                                              0                                             0
+                                                                                        ++        -+        +-         --
+   In the tensor channel, the glueball matrix element is
+extrapolated to 1.0±0.2 GeV3 in the continuum, which is            FIG. 16: The mass spectrum of glueballs in the pure SU (3)
+the average of results of E and T2 channels. In the calcu-         gauge theory. The masses are given both in terms of r0
+lation, it is found that in the lattice spacing range we use,      (r0−1 = 410 MeV) and in GeV. The height of each colored
+the glueball mass and matrix elements are approximately            box indicates the statistical uncertainty of the mass.
+independent of the lattice spacing, this implies that the
+lattice artifacts might be neglected here. If the renor-
+malization constant ZT ≈ 0.52(15) of the tensor operator           the results
+does not change much in the range of lattice spacing and
+applies to all the β values in this work, the renormalized                              s = 15.6 ± 3.2 (GeV)3
+matrix element of tensor operator is 0.52 ± 0.19 GeV3 ,
+which is in agreement with the prediction 0.35 GeV3 from                                p = 8.6 ± 1.3 (GeV)3
+the tensor dominance model [17] and QCD sum rule [18]                                   t = 0.52 ± 0.19 (GeV)3 ,                    (62)
+for the tensor mass around 2.2 GeV.
+                                                                   where the errors of s and t come mainly from the errors
+                                                                   of the renormalization constants ZS and ZT . The more
+                      VII. Conclusion                              precise calculation of ZS and ZT will be carried out in
+                                                                   later work.
+   The glueball mass spectrum and glueball-to-vacuum
+matrix elements are calculated on anisotropic lattices in
+this work. The calculations are carried out at five lattice
+spacings as ’s which range from 0.22 fm to 0.10 fm. Due                                   Acknowledgments
+to the implementation of the improved gauge action and
+improved gluonic local operators, the lattice artifacts are           This work is supported in part by U.S. Department
+highly reduced. The finite volume effects are carefully            of Energy under grants DE-FG05-84ER40154 and DE-
+studied with the result that they can be neglected on the          FG02-95ER40907. The computing resources at NERSC
+lattices we used in this work.                                     (operated by DOE under DE-AC03-76SF00098) and SC-
+   As to the glueball spectrum, we have carried out cal-           CAS (Deepcomp 6800) are also acknowledged. Y. Chen
+culations similar to the previous work [4] on much larger          is partly supported by NSFC (No.10075051, 10235040)
+and finer lattices, so that the liability of the continuum         and CAS (KJCX2-SW-N02). C. Morningstar is also sup-
+limit extrapolation is reinforced. Our results of the glue-        ported by NSF under grant PHY-0354982.
+
+
+
+
+ [1] B. Berg and A. Billoire, Nucl. Phys. B221, 109 (1983).         [2] G. Bali, et al. (UKQCD Collaboration), Phys. Lett. B
+                                                                                                                             22
+
+     309, 378 (1993).                                           [11] S.J. Dong, et al., Nucl. Phys. Proc. Suppl. 63, 254 (1998).
+ [3] C. Michael and M. Teper, Nucl. Phys. B314, 347 (1989).     [12] Yu.A. Simonov, Phys. Atom. Nucl. 50, 213, (1989).
+ [4] C. Morningstar and M. Peardon, Phys. Rev. D56, 3043        [13] V.A. Novikov, M.A. Shifman, A.I. Vainshtein, and Za-
+     (1997); Phys. Rev. D60, 034509 (1999).                          kharov, Nucl. Phys. B165, 67 (1980).
+ [5] G.P. Lepage and P.B. Mackenzie, Phys. Rev. D48, 2250       [14] J. Ellis and J. Lanik, Phys. Lett. 150B, 289 (1985).
+     (1993).                                                    [15] A.Di. Giacomo, H.G. Dosch, V.I. Shevchenko, Yu.A. Si-
+ [6] R. Sommer, Nucl. Phys. B411, 839 (1994).                        monov, Phys. Rept. 372, 319 (2002), hep-lat/0007223.
+ [7] K.F. Liu, B.A. Li, and K. Ishikawa, Phys. Rev. D40,        [16] J.M. Cornwall and A. Soni, Phys. Rev. D29 1424 (1984).
+     3648 (1989).                                               [17] K. Ishikawa, I. Tanaka, K.F. Liu, and B.A. Li, Phys. Rev.
+ [8] Y. Liang, K.F. Liu, B.A. Li, S.J. Dong, and K. Ishikawa,        D37, 3216 (1988).
+     Phys. Lett. B307, 375 (1993).                              [18] S. Narison, Z. Phys. C26, 209 (1984).
+ [9] X. Ji, Phys. Rev. Lett. 74, 1071 (1995).
+[10] M. Lüscher, Phys. Lett. 118B, 387 (1982).
+

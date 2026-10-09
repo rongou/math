@@ -1,0 +1,372 @@
+16 001 Milne’s rationality conjecture and algebraic specialization.
+32 002 The full BSD formula from low Selmer corank.
+66 003 The quasi-Riemann hypothesis.
+100 004 Hilbert’s tenth problem over ℚ.
+125 005 Irrationality of Catalan’s constant.
+141 006 Goldfeld’s conjecture: densities and mean analytic rank.
+166 007 Ordinary two-point correlations and the corrected Elliott conjecture.
+182 008 The Deligne–Drinfeld conjecture.
+198 009 Function-field reconstruction from Milnor K-theory and Galois data.
+232 010 Unrestricted pro-modularity at the prime two.
+266 011 Prime-factor statistics of $`p-1`$.
+300 012 Independent largest prime factors of consecutive integers.
+316 013 Ostmann’s inverse Goldbach conjecture.
+332 014 Restricted geometric Langlands, global Arthur enhancements, and generic Ramanujan.
+411 015 Torus-packet equidistribution in prime, quartic, and sextic degrees.
+445 016 Zilber–Pink in abelian varieties and the Siegel threefold.
+488 017 The irrationality exponent of <i>π</i> is 2.
+504 018 The Margulis–Platonov conjecture over global fields.
+529 019 The local <i>p</i>-adic section conjecture and global consequences.
+554 020 Squarefree quartics and power-free polynomial values.
+570 021 A quadratic bound for Jacobsthal’s function.
+586 022 The weak inhomogeneous Duffin–Schaeffer conjecture.
+602 023 Patterson's first moment for cubic Gauss sums.
+618 024 An asymptotic formula for the number of totients.
+634 025 Short Egyptian fractions.
+650 026 Positive lower density of large prime gaps.
+666 027 Potential integral density on curve character varieties.
+682 028 Uniformly bounded components of Gaussian-prime graphs.
+698 029 Primitive roots for every admissible integer base.
+723 030 Modularity of elliptic curves over imaginary quadratic fields.
+739 031 Uchida’s conjecture for open homomorphisms of Galois groups.
+755 032 The rational Hodge conjecture for CM abelian varieties.
+807 033 Iitaka subadditivity, variation, and logarithmic additivity.
+859 034 Log abundance for compact Kähler spaces under logarithmic Iitaka subadditivity.
+992 035 Log-canonical threefold abundance in numerical dimension one.
+1017 036 Numerical semiampleness and generalized minimal models.
+1060 037 The ordinary-double-point volume gap.
+1085 038 Fujita’s freeness conjecture.
+1101 039 Nagata’s conjecture and maximal Seshadri constants.
+1144 040 Bloch’s conjecture for complex surfaces.
+1160 041 Hyperkähler SYZ and projective-space bases.
+1185 042 Oka classification for minimal compact complex surfaces: Kodaira dimension zero and class VII.
+1201 043 <i>P</i> = <i>W</i> for fixed-determinant SL<sub><i>n</i></sub> moduli spaces.
+1217 044 The equivariant cohomological Hikita conjecture.
+1233 046 Shafarevich counterexamples in dimension two and with large fundamental group.
+1258 047 Zariski cancellation and affine fibrations over the complex numbers.
+1274 048 A characteristic-zero counterexample to Lipman–Zariski.
+1290 049 A stable-coordinate counterexample in four variables.
+1315 050 A counterexample to Griffiths’ positivity conjecture.
+1331 051 Kobayashi’s canonical-ampleness conjecture.
+1347 052 Tangent splittings and product decompositions.
+1372 053 A counterexample to Pixton completeness in Chow.
+1388 054 Irrational cubic fourfolds with Hodge-theoretic and categorical K3 associations.
+1404 055 Gepner symmetry and large-volume stability on threefolds.
+1429 056 Termination of projective and Kähler fourfold minimal model programs.
+1481 057 Fundamental groups of special complex varieties and root orbifolds.
+1515 058 Semialgebraic universal covers and bounded domains.
+1540 059 Counterexamples to Zariski’s multiplicity conjecture.
+1565 060 The Global Spherical Shell conjecture.
+1581 062 Projective contact classification and the LeBrun–Salamon conjecture.
+1597 063 The generalized Mukai conjecture.
+1613 064 Topological triviality of <i>μ</i>-constant surface singularities.
+1629 065 Virasoro constraints for complete intersections and projective-bundle towers.
+1654 066 Bounded klt complements for Fano contractions.
+1679 067 The Campana–Peternell conjecture in dimension six.
+1695 068 Anticanonical nonvanishing in every dimension.
+1765 069 Global quantum geometric Langlands at irrational level.
+1781 071 Koebe’s circle-domain conjecture.
+1806 072 Brennan's conjecture and the integral-means spectrum.
+1831 073 The Falconer distance conjecture.
+1847 074 Kakeya in three and four dimensions.
+1872 075 The $`L\log L`$ Fourier-convergence conjecture.
+1888 076 Real ultraflat Littlewood polynomials and unbounded binary merit factors.
+1922 077 Fourier restriction for positively curved surfaces.
+1947 078 The three-dimensional Bochner–Riesz conjecture.
+1963 079 Local smoothing in three dimensions.
+1979 080 The exact Sobolev endpoint for Schrödinger convergence.
+2004 081 Riesz transforms and rectifiability in higher codimension.
+2020 082 Annular variation and dyadic absolute bounds for the triangular Hilbert transform.
+2054 083 Hilbert transforms along Lipschitz directions.
+2070 084 The geometric case of the Erdős similarity conjecture.
+2095 085 Endpoint Sobolev regularity of centered disk averages.
+2111 086 An <i>L</i><sup>3</sup> bound for the trilinear Hilbert transform.
+2127 087 The Mahler conjectures, functional inequalities and polar-product symplectic width.
+2161 088 Sharp projection-body inequalities and a counterexample to simplex maximization.
+2186 089 Bounded-distortion <i>L</i><sub>1</sub> embeddings of planar and bounded-treewidth graphs.
+2211 090 Triangular-lattice optimality, long-range Riesz and Coulomb energies, and spherical logarithmic energy.
+2254 091 Logarithmic and <i>L</i><sub><i>p</i></sub> Brunn–Minkowski inequalities and the B-conjecture.
+2270 092 The optimal order of convex-body covering density.
+2295 093 Dimension-free logarithmic Sobolev inequality for subgaussian log-concave measures.
+2311 094 Subpolynomial dimension reduction in <i>L</i><sub><i>p</i></sub>.
+2327 095 Hyperbolicity cones without semidefinite lifts.
+2361 096 The Gaussian propeller conjecture in every dimension.
+2377 097 The Euclidean Steinitz–Bergström bound.
+2393 098 Compact counterexamples to bi-Lipschitz dimension reduction.
+2409 099 The sharp exponential scale of edit-distance distortion.
+2443 100 Cylinder coverings below the half-area bound.
+2486 101 The sharp simplex conjecture for isotropic constants.
+2502 102 The Unique Games Conjecture and optimal approximation thresholds.
+2554 103 Exact derandomization of logarithmic space: $`\mathsf L=\mathsf{RL}=\mathsf{BPL}`$.
+2570 104 Quasipolynomial algorithms for mean-payoff, stochastic and parity games.
+2613 105 Perfect completeness for 2-to-1 games.
+2629 106 Hardness of coloring three-colorable graphs.
+2645 107 Matrix multiplication with exponent at most 9/4.
+2679 108 A cubic permanent–determinant lower bound.
+2695 109 Integer multiplication below $`n\log n`$.
+2711 110 Optimal-order randomized <i>k</i>-server on arbitrary metrics.
+2736 111 One-sample matroid prophet inequalities against an almighty adversary.
+2752 112 Beyond the square-root exponent for depth-three circuits.
+2768 113 Approximate counting and entropy of perfect matchings.
+2797 114 Approximate counting of common integer polymatroid bases.
+2822 115 Sampling and counting contingency tables with arbitrary margins.
+2847 116 Uniform black-box noncommutative identity testing across characteristics.
+2881 117 Uniform sparsest cut: hardness and semidefinite gaps.
+2906 118 Bin packing and unbounded configuration-LP gaps.
+2922 119 The Courtade–Kumar and Hellinger conjectures.
+2947 120 Almost-linear-time exact matching and prescribed-degree factors in general graphs.
+2963 121 Almost-linear approximation of edit distance.
+2979 122 Quantitative trace-reconstruction bounds with a uniform decoder.
+3013 124 Polynomial-time scheduling on three identical machines.
+3029 125 The metric <i>k</i>-median approximation threshold and recovery.
+3054 126 Exponential semidefinite complexity of perfect matching.
+3070 127 Average sensitivity of polynomial threshold functions.
+3086 128 A factor-two approximation for shortest common superstring.
+3102 129 Exponential state costs for two-way automata.
+3127 130 Exact Fourier transforms below $`n\log n`$.
+3152 131 Rapid mixing of graph switches for every degree sequence.
+3168 132 A superquadratic separation of sensitivity and block sensitivity.
+3184 133 The computational complexity of Weisfeiler–Leman refinement.
+3227 134 Generalized star height at most three.
+3261 135 Homogeneous depth-five lower bounds for iterated matrix multiplication.
+3277 136 A quasilinear PCP theorem for PPAD.
+3293 137 One-tape time simulation in two-fifths-power space.
+3309 138 Subset Sum in $`O(2^{0.49n})`$ time.
+3334 139 Subpolynomial query complexity for log-concave sampling.
+3350 140 Memory–sample lower bounds for noiseless Gaussian regression.
+3411 141 Existential–universal real sentences in the counting hierarchy.
+3427 142 Deterministic polynomial factorization over prime fields.
+3443 143 Hilbert's sixteenth problem: uniform bounds for limit cycles.
+3468 144 Banach’s simple Lebesgue-spectrum problem.
+3484 145 Rokhlin’s multiple-mixing problem.
+3500 146 Positive metric entropy for the standard map.
+3516 147 The near-boundary Birkhoff conjecture.
+3541 148 The entropy-rate dimension formula for self-similar measures.
+3557 149 Classwise permanence for weakly reversible mass-action systems.
+3582 150 Weak mixing of triangular billiards with an irrational angle.
+3607 151 A <i>C</i><sup>1</sup> counterexample to the entropy conjecture.
+3623 152 Zero entropy does not guarantee a smooth positive-volume model.
+3639 153 Arithmetic classification and non-Pisot singularity for Bernoulli convolutions.
+3655 154 Pointwise multiple ergodic averages for mixing transformations.
+3702 155 A counterexample to periodic tiling in dimension three.
+3718 156 Borsuk's conjecture fails in dimension nine.
+3734 157 Graph coloring, clique minors, and Colin de Verdière invariants.
+3768 158 The Euclidean plane cannot be colored with five colors.
+3784 159 Erdős’s reciprocal-sum conjecture and quasipolynomial Szemerédi bounds.
+3804 160 Superexponential van der Waerden numbers.
+3820 161 Counterexamples to Sidorenko’s conjecture and the forcing conjecture.
+3836 162 Counterexamples to Ryser’s covering conjecture.
+3861 164 Hindman’s finite sums and products conjecture.
+3877 165 The Harary–Hill and Zarankiewicz crossing-number formulas.
+3906 166 The higher-dimensional Erdős distinct-distances conjecture.
+3922 167 Planar distinct distances and unit-distance bounds.
+3947 168 Combinatorial invariance of Kazhdan–Lusztig polynomials.
+3963 169 Shareshian–Wachs elementary positivity.
+3979 170 Sharp logarithmic exponents for off-diagonal Ramsey numbers.
+4008 171 The hypercube Ramsey conjecture.
+4024 172 Classification of finite Euclidean Ramsey configurations.
+4040 173 Seymour’s second-neighborhood conjecture.
+4056 174 Deterministic construction of strong thin spanning trees.
+4081 175 Talagrand’s expectation thresholds, discrete convexity, and graph decompositions.
+4115 176 The second Kahn–Kalai conjecture with an edge-count bound.
+4131 177 Bounded-degree coboundary expanders.
+4147 178 Deterministic nonbipartite Ramanujan graphs in every fixed degree.
+4163 179 The circulant Hadamard and Barker-sequence conjectures.
+4179 180 Barnette’s Hamiltonian-cycle conjecture.
+4195 181 The Erdős–Gallai cycle-decomposition conjecture.
+4211 182 Power savings for intersective polynomial differences and prime arguments.
+4245 183 Power savings for planar halving lines and <i>k</i>-sets.
+4261 184 Correspondence coloring with a fixed forbidden subgraph.
+4286 185 Counterexamples to infinite matroid intersection and packing/covering.
+4302 186 Uniform influence and sharp thresholds for graph and hypergraph properties.
+4327 187 Snaky in 21 Maker moves.
+4343 188 The sharp terminal leave in random triangle removal.
+4359 189 Cycle–clique Ramsey numbers.
+4375 190 Polynomial removal fails for ordered binary matrices.
+4391 191 A power improvement in the Heilbronn triangle lower bound.
+4407 192 Boolean functions violate the square-root degree bound by arbitrary factors.
+4427 193 Serre’s intersection-multiplicity conjecture.
+4443 194 Lech’s multiplicity conjecture.
+4459 195 A counterexample to the small Cohen–Macaulay module conjecture.
+4475 196 A counterexample to Kaplansky’s zero-divisor conjecture.
+4491 197 A torsion-free group algebra that is not directly finite.
+4534 198 A counterexample to finitistic-dimension finiteness.
+4550 199 Counterexamples to Auslander–Reiten, Tachikawa and related homological conjectures.
+4575 200 Eisenbud–Green–Harris and lex-plus-powers.
+4600 201 A counterexample to Kurosh’s division-ring problem.
+4616 202 The blockwise Alperin weight conjecture.
+4632 203 Donovan's conjecture over fields and complete mixed-characteristic DVRs.
+4657 204 Tensor saturation for even spin groups.
+4673 205 Saxl’s conjecture and universal tensor squares.
+4698 206 Finite lattice representation and undecidability.
+4723 207 The ℓ¹-Bass conjecture for all discrete groups.
+4748 208 Finite symmetric tensor categories and the Verlinde tower.
+4764 209 Integral counterexamples to Gersten’s conjecture.
+4789 210 Foulkes' conjecture for sixth powers and quadratic stabilization.
+4814 211 The geometric phase diagram, diffusion, and spectra of random planar maps.
+4884 212 Planar first-passage geometry and the absence of bigeodesics.
+4909 213 Critical percolation on every quasi-transitive graph.
+4934 214 The Benjamini–Schramm nonuniqueness conjecture.
+4950 215 Canonical $`O(3)`$ continuum limit and exact $`O(4)`$ mass asymptotics.
+5006 216 Critical and near-critical XY scaling and BKT universality.
+5075 217 The low-temperature Sherrington–Kirkpatrick fluctuation law.
+5100 218 Conformal universality for weakly interacting and random-bond Ising models.
+5161 219 GOE bulk universality for regular graphs with weak Anderson disorder.
+5186 220 Directional zero–one laws beyond iid environments and iid ballisticity.
+5220 221 The Mézard–Parisi formula for diluted spin glasses.
+5236 222 Perceptron free energies and microscopic jamming exponents.
+5283 223 Random-cluster interfaces: critical, disordered, thermal, and natural-time scaling.
+5344 224 Critical and quenched near-critical universality for Poisson–Voronoi percolation.
+5378 225 Gaussian free field limits throughout the balanced six-vertex regime.
+5394 226 The double-dimer loop ensemble converges to CLE<sub>4</sub>.
+5410 227 Critical SK autocorrelation processes and dynamics across the temperature transition.
+5489 228 Continuum phase transitions for radial pair potentials.
+5514 229 Exact three- and four-state reconstruction thresholds and four-state tree capacity.
+5548 230 Exact Hausdorff gauges for SLE.
+5573 231 The free uniform spanning forest is a factor of IID.
+5589 232 Gaussian fields and interfaces for triangular-lattice Lipschitz heights.
+5623 233 The joint critical Ashkin–Teller current limit.
+5639 234 All-temperature pressure of orthogonally invariant Ising spin glasses.
+5655 235 Limiting random SAT thresholds, sharp variance and computability.
+5698 236 The exact factor-of-IID threshold for free Ising spins on trees.
+5714 237 The three-quarter exponent for honeycomb self-avoiding walk.
+5838 238 Optimal logarithmic mixing of the Thorp shuffle.
+5953 239 Sharp singularity rates for symmetric random sign matrices.
+5980 240 Shelah's eventual categoricity and the prescribed-threshold obstruction.
+6005 241 Rigidity of the Turing degrees.
+6021 242 Single-fold Diophantine representations and undecidability under an at-most-one-solution promise.
+6037 243 Separating choiceless counting from polynomial time and witnessed choice.
+6062 244 The Partition Principle does not imply Choice.
+6078 245 Weak normalization implies strong normalization in pure type systems.
+6094 246 Cannon's conjecture.
+6110 247 An infinite finitely presented residually finite 2-group and a finitely presented nil algebra.
+6135 248 Thompson's group <i>F</i> is nonamenable.
+6151 249 A finitely generated Eilenberg–Ganea counterexample.
+6167 250 Boone–Higman embeddings with higher finiteness.
+6201 251 Amenability, unitarizability, and strong Ulam stability.
+6226 252 A torsion-free hyperbolic group that is neither residually finite nor linear over any field.
+6242 253 An infinite finitely presented simple amenable group.
+6258 254 Classifying spaces and geometric obstructions for Artin groups.
+6292 255 Quasi-isometric recognition of virtually polycyclic groups.
+6308 256 Nonsingular systems of equations over arbitrary groups.
+6333 257 A hyperbolic group without a geometric CAT(0) action.
+6349 258 Gersten’s conjecture and virtual compact specialness of one-relator groups.
+6374 259 A group without fixed price.
+6390 260 Spacetime Penrose inequalities: enclosing area, charge, rotation, and anti-de Sitter extensions.
+6518 261 Localization and delocalization in the Anderson model.
+6543 262 Sharp finite-matrix Lieb–Thirring inequalities and all equality cases.
+6577 263 The ionization and generalized ionization conjectures.
+6611 264 Strong cosmic censorship near two-ended Kerr data.
+6645 265 Area laws and tensor networks for two-dimensional gapped systems.
+6670 266 Exactly three mutually unbiased bases in dimension six.
+6695 267 Positive-temperature Bose–Einstein condensation and exact quantum depletion.
+6747 268 The spin-one Haldane gap.
+6772 269 Uniform Laughlin gap and stability under bounded scalar disorder.
+6797 270 Threshold and positive-energy bound states of the BFSS matrix model.
+6822 271 Bloch's law, its lattice correction, and the spherical magnetization law.
+6865 272 Entanglement without distillable secret key.
+6881 273 The entropy photon-number inequality.
+6897 274 Parity is not in QAC<sup>0</sup>.
+6922 275 QMA-hardness of continuum Coulomb energy.
+6947 276 Classical capacity of generalized amplitude damping.
+6963 277 Threshold repetition for entangled games.
+6979 278 Failure of Kohn–Sham ensemble representation.
+6995 279 Exact quantum factoring over a fixed finite gate set.
+7011 280 Unitary vertex operator algebras and conformal nets.
+7027 281 QAOA attains the SK optimum in the thermodynamic-first limit.
+7052 282 From scale symmetry to local conformal symmetry in four-dimensional QFT.
+7068 283 Polynomial-time unitary synthesis from a Boolean oracle.
+7084 284 The optimal quartic separation between randomized and quantum queries.
+7100 285 Counterexamples to Baum–Connes and Kadison–Kaplansky.
+7134 286 Rigidity and arithmetic of lattice von Neumann algebras.
+7159 287 Isomorphism of the free group factors.
+7175 288 Kadison's similarity conjecture.
+7191 289 Strong Kadison–Kastler stability and its spatial boundaries.
+7225 290 Relative bicentralizers and modular spectral recovery.
+7250 291 Cuntz comparison, nuclear dimension, and equivariant Jiang–Su stability.
+7293 292 Kirchberg's $`\mathcal O_2`$ norm-ultrapower embedding problem.
+7309 293 Invariant projections, hyperinvariant subspaces, and transitive algebras.
+7334 294 Kaplansky's quasitrace conjecture and failure of tensor-product stable finiteness.
+7350 295 The Kadison–Ringrose cohomology conjecture.
+7366 296 The generator problem for finite factors.
+7382 297 A ZFC counterexample to Naimark's problem.
+7398 298 Two notions of free entropy differ even when both are finite.
+7414 299 The Kirchberg–Rørdam character criterion and infinite tensor-power Jiang–Su stability.
+7430 300 Approximation and quadratic strong-operator paving.
+7455 301 Trace cones and Razak–Jacelon stabilization.
+7471 302 Radius of comparison equals half the mean dimension.
+7496 303 Weak pure infiniteness and Cuntz-algebra absorption.
+7512 304 The Hilbert–Smith conjecture in every dimension.
+7528 305 Four-dimensional disk embedding and Wall's conjecture.
+7562 306 The purely cosmetic surgery conjecture.
+7578 307 Failure of rational injectivity for maximal coarse assembly.
+7603 308 Finite Smith–Toda complexes at every height.
+7628 309 The Kervaire invariant problem at the prime three.
+7644 310 Quillen's conjecture in rational homology.
+7660 311 The Hovey–Strickland and Chai conjectures.
+7676 312 The Grothendieck homotopy hypothesis.
+7692 313 Finite generation for the $`K(n)`$-local sphere.
+7708 314 Cyclic length and chromatic fixed-point loss.
+7724 315 The four-dimensional Singer conjecture.
+7740 316 Curtis’s conjecture.
+7756 317 Thomason model structures in all strict higher dimensions.
+7772 318 Chromatic splitting: filtrations and counterexamples.
+7824 319 Counterexamples to finite generation at chromatic height two.
+7840 320 Nonhomeomorphic closed aspherical four-manifolds.
+7856 321 A counterexample to Wall's finite D(2) problem.
+7872 322 Tingley’s sphere-isometry problem.
+7888 323 Independence of the separable quotient problem.
+7904 324 Lipschitz equivalent Banach spaces need not be linearly isomorphic.
+7929 325 The complete Crouzeix conjecture.
+7954 326 The cotype–cotype conjecture under the approximation property.
+7970 327 Markov type characterizes superreflexivity.
+7986 328 Nonexpansive fixed points in reflexive Banach spaces.
+8002 329 A counterexample to metric-entropy duality.
+8018 330 A uniformly discrete counterexample to bounded approximation in Lipschitz-free spaces.
+8034 331 Reflexive midpoint convexity and diamond distortion.
+8104 332 Metric Markov cotype of <i>ℓ</i><sub>1</sub> and Hilbert-space Lipschitz extension.
+8120 333 Smooth isometric immersions of surfaces into ℝ<sup>4</sup>.
+8136 334 A smooth surface metric with no local isometric immersion in ℝ<sup>3</sup>.
+8152 335 Gromov’s integral scalar-curvature bound for simplicial volume.
+8181 336 Spectral scalar curvature, Urysohn width, and macroscopic dimension.
+8215 337 Sharp Cartan–Hadamard isoperimetry and rigidity.
+8240 338 Yau's uniformization conjecture.
+8256 339 Katok's entropy rigidity conjecture.
+8272 340 A counterexample to the nearby Lagrangian conjecture.
+8288 341 Donaldson's hypersymplectic deformation conjecture.
+8304 342 Donaldson's tamed-to-compatible conjecture.
+8320 343 Symplectic ball packing in higher dimensions.
+8340 344 The metric Blaschke conjecture.
+8356 345 Infinitely many closed geodesics on Riemannian spheres and closed three-manifolds.
+8372 346 Sharp singular-set bounds for stationary integral varifolds.
+8397 347 Counterexamples to stable-Morse and strong Arnold fixed-point bounds.
+8449 348 Nonnegative-curvature Einstein classification and an <i>L</i><sup>2</sup> topological gap.
+8483 349 The Solomon–Yau least-volume conjecture.
+8499 350 Yau’s nodal bounds: surfaces and higher dimensions.
+8533 351 Scalar curvature and finite-time Ricci-flow singularities.
+8567 352 A finite-time singularity of Calabi flow.
+8583 353 Affine Bernstein rigidity through dimension nine and a smooth dimension-ten counterexample.
+8608 354 The isoperimetric profile of the cubic three-torus.
+8624 355 Unique tangent flows at the first surface singularity.
+8640 356 Gigli’s characterization of Alexandrov curvature.
+8665 357 Bi-Lipschitz coordinates at every regular RCD point.
+8681 358 A three-manifold without conjugate points or nonpositive curvature.
+8697 359 Negative Kähler curvature without bounded holomorphic coordinates.
+8722 360 Weak MTW curvature gives convexity and regular optimal transport.
+8747 361 Failure of integer-degree harmonic dimension comparison.
+8772 362 Global smoothness for relativistic Vlasov–Maxwell.
+8788 363 Nonuniqueness with local conservation for the hard-sphere Boltzmann equation.
+8813 364 Kinetic limits and fluctuations over the Boltzmann lifespan.
+8838 365 Joint metric and connection recovery from one boundary patch.
+8872 366 The planar Mumford–Shah regularity conjecture and local weak-<i>L</i><sup>4</sup> gradient bounds.
+8888 367 The critical dimension for the one-phase Bernoulli problem.
+8904 368 The three-dimensional Ball–Evans approximation problem.
+8929 369 The hot spots conjecture for simply connected planar domains.
+8945 370 The Lane–Emden and Hénon–Lane–Emden conjectures.
+8961 371 Stable blowup for the defocusing Schrödinger equation.
+8977 372 Global uniqueness in smooth isotropic elasticity.
+8993 373 Nonattainment of the three-marginal Coulomb Monge problem.
+9009 374 Sharp one-third stability of Brenier maps.
+9025 375 De Giorgi's conjecture in dimension eight.
+9041 376 Universal computation in forced Navier–Stokes flows.
+9129 377 Interior $`C^{1,\alpha}`$ regularity for infinity-harmonic functions.

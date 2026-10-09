@@ -1,0 +1,1254 @@
+                                                                                                   Oxford preprint OUTP-03-19P
+
+
+
+
+                                       The high temperature phase transition in SU(N) gauge theories
+arXiv:hep-lat/0307017v1 9 Jul 2003
+
+
+
+
+                                                            Biagio Lucini, Michael Teper and Urs Wenger
+
+                                                              Theoretical Physics, University of Oxford,
+                                                               1 Keble Road, Oxford, OX1 3NP, U.K.
+
+
+
+
+                                                     Dedicated to the memory of Ian Kogan, friend and colleague.
+
+
+
+
+                                                                              Abstract
+
+                                         We calculate the continuum value of the deconfining temperature in units of the string
+                                     tension for SU(4), SU(6) and SU(8) gauge theories, and we recalculate its value for SU(2)
+                                                                                                                             √
+                                     and SU(3). We find that the N-dependence for 2 ≤ N ≤ 8 is well fitted by Tc / σ =
+                                     0.596(4) + 0.453(30)/N 2, showing a rapid convergence to the large-N limit. We confirm our
+                                     earlier result that the phase transition is first order for N ≥ 3 and that it becomes stronger
+                                     with increasing N. We also confirm that as N increases the finite volume corrections become
+                                     rapidly smaller and the phase transition becomes visible on ever smaller volumes. We interpret
+                                     the latter as being due to the fact that the tension of the domain wall that separates the
+                                     confining and deconfining phases increases rapidly with N. We speculate on the connection
+                                     to Eguchi-Kawai reduction and to the idea of a Master Field.
+1    Introduction
+In a recent letter [1] we presented lattice calculations of the finite temperature deconfining
+transition in SU(4) and SU(6) gauge theories. These calculations showed that the phase tran-
+sition is first order and becomes more strongly so as N grows. Our continuum extrapolations,
+taken together with older SU(2) and SU(3) results, showed that the O(1/N 2) corrections to
+the N = ∞ limit appear to be small, even for SU(2). Finally, our finite volume studies showed
+that the finite volume corrections decrease as N grows and we speculated on the simple picture
+that this suggested for SU(N = ∞).
+    In this paper we will provide more accurate and more extensive calculations that confirm
+and make more precise our earlier study. For SU(4) and SU(6) we extend the range of
+lattice spacings at which we perform the calculations, thus allowing more reliable and precise
+continuum extrapolations. In addition we perform some calculations in SU(8) to strengthen
+our control of the N → ∞ limit. We also perform some SU(2) and SU(3) calculations,
+both to check that our methods produce results in agreement with older (but still accurate)
+calculations and to investigate the crucial volume dependence in more detail. In addition we
+perform dedicated string tension calculations for all the above SU(N) groups, generally at
+a value of the lattice coupling very close to the phase transition. This again improves the
+accuracy of our calculation and, as a by-product, leads to significant changes to the older
+continuum extrapolations of the SU(2) and SU(3) deconfining temperatures.
+    The plan of the paper is as follows. In the next section we briefly summarise the details of
+the lattice setup. We then describe how we will identify the location and nature of the phase
+                                                                                    √
+transition. We follow this with the details of our lattice results. We focus on Tc / σ, the value
+of the deconfining temperature in units of the string tension, on the order of the transition, on
+the (Euclidean) latent heat, where first order, and on the N-dependence of the finite volume
+corrections. We finish with some conjectures about the nature of physics at N = ∞, and with
+some conclusions.
+    We have, in addition, studied how topological fluctuations and (k-)string masses vary
+across the phase transition, how the bulk transition and the thermodynamic latent heat vary
+with N, and other aspects of the transition. These, together with more details about the
+technical aspects of our calculations, will be presented in a later publication [2]. For some
+comments on the interest of SU(N → ∞) gauge theories [3], some references to relevant lattice
+calculations, and some speculations [4] on the nature of the deconfining transition, we refer
+the reader to our earlier paper [1].
+
+
+2    Lattice setup
+Our lattice calculations are entirely conventional. We use hypercubic, periodic lattices with
+SU(N) matrices, Ul , assigned to the links l. We use the usual plaquette action
+                                         X           1
+                                  S=β         {1 −     ReTrUp },                             (1)
+                                          p
+                                                     N
+
+
+                                                1
+where Up is the ordered product of the SU(N) matrices around the boundary of the plaquette
+p, and which appears in the Euclidean path integral as e−S . This lattice action becomes the
+usual Yang-Mills action with
+                                             2N
+                                          β= 2                                           (2)
+                                              g
+in the continuum limit. The coupling g 2 is the bare coupling and, on a lattice of spacing a,
+may be regarded as a running coupling, g 2 (a), defined at the length scale a at which the action
+is defined. So to decrease a we decrease g 2(a) and hence increase β (once a is small enough).
+As we vary N we expect [3], that we will need to keep constant the ’t Hooft coupling, λ, and
+its inverse, γ,
+                                                         1      β
+                              λ(a) ≡ g 2 (a)N ;     γ≡ =                                      (3)
+                                                         λ    2N 2
+for a smooth large-N limit. Non-perturbative calculations [5, 6] support this expectation.
+    A periodic lattice whose size is L3 Lt with L ≫ Lt may be used to calculate thermal
+averages of the field theory at a temperature
+                                                    1
+                                          a(β)T =      .                                       (4)
+                                                    Lt
+We can therefore study the deconfining transition by fixing Lt and varying β so that T passes
+through Tc . For simplicity we shall refer to the 3+1 dimensional system as being at the
+temperature T given by eqn(4), although this can be deceptive (see below) and one needs to
+remember that the D=3+1 system is no more than a theoretical framework for calculating
+thermal averages in a given three dimensional spatial slice at this value of T .
+    The simulations are performed with a combination of heat bath and over-relaxation up-
+dates, as described in [5, 6]. We update all the N(N − 1)/2 SU(2) subgroups of the SU(N)
+link matrices.
+
+
+3     The phase transition
+We begin with some general comments about the deconfining phase transition and then we
+discuss how this phase transition appears in a finite volume and how one can extrapolate to
+the desired V = ∞ thermodynamic limit. The discussion here will be heuristic, but can be
+formalised through standard finite size scaling theory, both for first [7] and for second [8] order
+transitions. (We will summarise relevant aspects of this approach in our forthcoming paper
+[2].)
+
+3.1    General remarks
+The deconfining phase transition turns out to be second order for SU(2) and first order for
+SU(N ≥ 3). For a second order transition we have a diverging correlation length as T →
+Tc while for a first order transition various quantities will suffer a discontinuity at T = Tc
+(including the correlation length which in general will be finite). This clear-cut distinction
+
+                                                2
+only holds in the V = ∞ thermodynamic limit. On a finite volume, as in our numerical
+calculations, the two types of transition can be confounded and so a careful finite volume
+study is obligatory. We shall describe later on in this Section how we analyse the two kinds
+of phase transition.
+    We are of course interested in the continuum limit of this phase transition. The continuum
+limit of the lattice theory is described by a 2’nd order phase transition at β = ∞. This means
+that when we study the first order deconfining transition on the lattice, it will always appear to
+be weak; for example the latent heat is O(a4 ) and therefore small. Even on the coarser lattice
+spacings that are close to the bulk transition, which is first order for larger N, its latent heat is
+typically 1/50’th of the latter’s. This is because the deconfining phase transition is a physical
+transition that only affects fluctuations on physical length scales, and leaves untouched the
+short distance fluctuations that usually dominate the values of composite operators. A typical
+lattice transition, like the bulk transition, affects fluctuations on all length scales. So to judge
+whether the first order phase transition is strong or weak we should compare the latent heat
+to a physical quantity, such as the T = 0 gluon condensate.
+    The phase transition is characterised by the fact that for T < Tc the confining string
+tension is non-zero, σ 6= 0, while for T > Tc we have σ = 0. To calculate the string tension
+we calculate the free energy of two static sources in the fundamental representation placed
+a distance r apart, Fss̄ (r). Inserting such minimally coupled static sources into the action is
+equivalent to calculating the correlator of two Polyakov loops hlp† (r)lp (0)i where
+                                                          nY
+                                                           t =Lt
+
+                                            lp (~ns ) =            U0 (~ns , nt ).               (5)
+                                                          nt =1
+
+(Here we introduce the notation, Uµ (n), for the matrix on the link emanating from site n in
+direction µ.) In the confining phase at temperature T = 1/aLt
+                        Fss̄ (r)                             r→∞           2
+                   e−     T        = hlp† (r = anz )lp (0)i ∝ e−a σ(T )nz Lt         T < Tc      (6)
+
+where, to be definite, we take correlations in the z-direction. Since the operators lp are
+localised in a given z-slice, this correlator can be expressed in terms of the eigenstates and
+eigenvalues of the transfer matrix Tz that translates us in the z-direction:
+                                                   X
+                          hlp† (r = anz )lp (0)i =   |hvac|lp† |ni|2 e−amn nz               (7)
+                                                              n
+
+where Tz |ni = e−amn |ni. If the lightest state in the sum is ml then
+                                                                    nz →∞
+                                         hlp† (r = anz )lp (0)i ∝ e−aml nz                       (8)
+
+We see from eqns(6,8) that
+                                                 aml = a2 σ(T )Lt                                (9)
+and the fact that it is ∝ Lt indicates that this state of the z-transfer matrix is the lightest
+flux loop that winds once around the t-torus. Once we have determined that the interesting
+
+                                                             3
+quantity is this lightest flux loop, we can alter the operator in the correlator to make the
+calculation more efficient. For example, we smear/block [5, 6] the links to have a better
+overlap onto the extended lightest state and we take px = py = 0 sums of these smeared
+Polyakov loops so as to exclude explicitly the more energetic states with p~ 6= 0.
+    In the confining phase the Polyakov loop cannot have an overlap onto a non-winding state
+since otherwise we would lose the factor of Lt in the exponent of eqn(6). This constraint is
+enforced by a ZN ⊂ SU(N) symmetry of the action and integration measure:
+
+                                U0 (ns , nt ) → zU0 (ns , nt )   ∀ns                         (10)
+
+where z ∈ ZN is any one of the N’th roots of unity and nt is some fixed value that one
+can freely choose. This symmetry ensures that hlp i = 0 since lp → zlp under the symmetry
+transformation.
+     In the deconfined phase σ(T ) = 0 and we therefore lose the factor of nz in the exponent
+of eqn(6) and so, in general, limr→∞ hlp† (r)lp (0)i 6= 0, i.e. hlp i =
+                                                                      6 0. In terms of the ZN
+symmetry described above, this is only possible if that symmetry is spontaneously broken.
+This tells us that for T > Tc there are N degenerate deconfined vacua characterised by
+hlp i = cei2kπ/N ; k = 0, ..., N − 1 for c some real positive number. At very high T , where by
+asymptotic freedom g 2 (T ) ≪ 1, one can calculate the tensions of the domain walls separating
+these vacua in perturbation theory [9]. It is important to note that what we actually know
+is that this ZN symmetry breaking occurs in the D=3+1 lattice system as one passes from
+lt ≡ aLt > 1/Tc to lt < 1/Tc , and indeed in the continuum limit of that system. It is not
+however at all clear that it is actually a feature of the field theory at high T . That is to say,
+no-one has (we believe) succeeded in showing that this symmetry breaking is encoded in any
+thermal averages in a way that displays the existence of such ZN bubbles and domain walls
+in the hot field theory [10]. To avoid tedious circumlocution, we shall usually speak of our
+D=3+1 system as being at a temperature T = 1/aLt although it is actually a framework
+within which to calculate thermal averages in a given spatial slice, and so one must always be
+careful when ascribing the detailed dynamics of this 3+1 dimensional system to the hot field
+theory.
+     In summary, the natural order parameter for the deconfining phase transition is the average
+Polyakov loop, hlp i, and the mass of the flux loop that winds around the t-torus is the natural
+mass to focus upon, since it is simply proportional to σ(T ).
+
+3.2    Characterising first order transitions
+If the deconfining transition is first order, the finite-T effective potential will have both a
+confining vacuum and N degenerate deconfined vacua. At T = Tc all of these vacua are
+degenerate. On a finite volume there will be a finite range of T around Tc in which the
+system has a significant probability to be in both confining and deconfined vacua, occasionally
+tunnelling between them. As we move away from T = Tc , or β = βc , the degeneracy lifts and
+the confining/deconfined vacuum energies will split by some ∆E. The relative probabilities
+of the two vacua are given by e−β∆E . Since ∆E ∝ V we see that the finite volume transition
+
+
+                                                  4
+region is typically δβ ∼ O(1/V ). To calculate the V = ∞ value of βc , and hence of Tc , we
+must first make a choice of βc on a finite volume, so that we can extrapolate it. A sensible
+criterion will use a value of βc (V ) that is in the transition region, and therefore we generically
+can expect βc (V ) = βc (∞) + O(1/V ). We shall see examples of this below.
+    In an infinite volume the average plaquette will jump across the transition and the lo-
+cation of this jump defines for us the (pseudo-)critical coupling βc (V = ∞) and the critical
+temperature a(βc )Tc = 1/Lt . In a finite volume the change will be continuous but rapid (if V
+is not too small). A useful quantity to characterise this behaviour is the specific heat C(β):
+                             1          ∂
+                                C(β) ≡    hūp i = Np hū2p i − Np hūp i2                     (11)
+                             β2        ∂β
+where up ≡ ReTrUp /N and ūp is the average value of up for a given lattice field, and Np = 6L3 Lt
+is the total number of plaquettes. The maximum of the specific heat is the maximum of
+∂hūp i/∂β (neglecting the weakly varying β 2 factor) and so the β at which it occurs provides
+at least one sensible definition of βc (V ).
+    Let ūp,c and ūp,d be the average plaquette value for a lattice field in the confined and
+deconfined phase respectively, at β = βc (V ). This value will fluctuate around its average
+                                                         √
+value, hūp,ci or hūp,di, by an amount that is O(1/ Np ). As V → ∞ we can neglect these
+fluctuations and we can also neglect the very rare fields where the system is tunnelling from
+one phase to another. In that case it is easy to see that the maximum of C(β) occurs when
+the lattice fields are equally likely to be in the confined and deconfined phases, and in that
+case
+                                    1           1                      1
+                             lim        C(βc ) = (hūp,ci − hūp,di)2 = L2h                  (12)
+                            V →∞ βc2 Np         4                      4
+where Lh is the latent heat per site of the phase transition and βc denotes the value of β at
+which the maximum of C(β) occurs. (Note that this latent heat is that of the transition of
+the D=3+1 system; it is related to, but differs from, the latent heat of the finite-T transition
+of the field theory.) The V -dependence in eqn(12)
+
+                                           lim C(βc ) ∝ V                                      (13)
+                                          V →∞
+
+is a direct consequence of the discontinuity in ūp and so is characteristic of a first order
+transition.
+                                                                                            √
+    At√a finite but large value of V , ūp will fluctuate around hūp i by an amount O(1/ Np ) =
+O(1/ V ), i.e. hū2p i−hūp i2 = O(1/V ). (We can neglect the exponentially suppressed tunnelling
+fields.) It is then easy to show that C(βcC ) will receive a correction that is O(1/V ), as long
+as the fluctuations in the confined and deconfined phases differ. Thus we should expect the
+leading large-volume correction to both C(βcC ) and βcC (V ) to be O(1/V ).
+    As we pointed out in Section 3.1, the natural order parameter for the deconfining transition
+is the average Polyakov loop, hlp i. On a finite volume however, hlp i = 0 ∀T because of the
+tunnelling between the N deconfined vacua in the deconfined phase. (This is simply the
+statement that one only has spontaneous symmetry breaking in an infinite volume.) To
+finesse this problem we follow usual practice and replace hlp i by h|¯lp |i where ¯lp is the average
+
+                                                  5
+of the Polyakov loop over a single lattice field. Clearly h|¯lp√    |i =
+                                                                       6 0 ∀T > Tc . The price one pays
+              ¯
+is that now h|lp |i =
+                    6 0 also for T < Tc . However it is O(1/ V ) in the confining phase and for
+a large volume this is a small price to pay. We can use this to define a quantity analogous to
+C(β), where we replace the plaquette with the Polyakov loop. This is the normalised Polyakov
+loop susceptibility χl
+                                       χl                        2
+                                          = h|¯lp |2 i − h|¯lp |i .                                (14)
+                                       V
+Just as with the specific heat we can define βc (V ) to be the value of β at which χl has its
+maximum. At finite V the two definitions of βc (V ) will differ by O(1/V ) terms, but will
+coincide in the thermodynamic limit. (We shall refer to them as βcχ and βcC when we wish
+to distinguish them.) Again we have the characteristic first order behaviour χl ∝ V and
+corrections down by one power of V :
+                                           χl       c1
+                                       lim    = c0 + + . . .                                      (15)
+                                      V →∞ V        V
+Just as for the specific heat, the maximum of χl occurs where the system is equally likely
+to be in the confined and deconfined phases (for V → ∞). One might think that a more
+natural criterion would be one where the deconfined phase was N times more probable than
+the confined one (simply because of the relative multiplicity of the former) and that it would
+therefore have smaller O(1/V ) corrections. However we have not been able to construct a
+useful measure with such a behaviour to test this possibility.
+   As we remarked above, we expect the V = ∞ discontinuity to be smeared over an O(1/V )
+transition region in a finite volume, so that definitions of βc (V ) that use, for example, the
+peak of C(β) or χl will have corrections that are O(1/V ). In physical units, we expect the
+correction in the continuum limit to be
+                                  Tc (∞) − Tc (V ) V →∞ h′
+                                                     =       + ...                                (16)
+                                       Tc (∞)          V Tc3
+
+Inserting Tc (V ) = 1/a(βc (V ))Lt and Taylor expanding a(βc (V )) around V = ∞ this translates,
+on an L3 Lt lattice, to the conventional finite size extrapolation [11]
+
+                                                        V →∞    L3t
+                                     βc (V ) − βc (∞) = h                                         (17)
+                                                                L3
+where
+                                             h′             2N 2 h′
+                                h= d                   = d              .                         (18)
+                                      dβ
+                                         ln a(β = βc )   dγ
+                                                             ln a(γ c )
+Thus if the leading finite-V correction is to be finite as V → ∞ we should find h ∝ N 2 . In
+[1] we found some evidence that h is constant implying that the physical finite size correction
+vanishes as h′ ∝ 1/N 2 when N → ∞. Note that since h′ is a dimensionless physical quantity,
+it receives lattice corrections that are O(a2 ). The value of h on the other hand also depends
+on how a varies with β, i.e. on the violation of asymptotic scaling.
+
+
+                                                   6
+3.3    Characterising second order transitions
+If the deconfining transition is second order, the string tension σ(T ) will vanish smoothly
+as T → Tc− . The finite-T effective potential will have a single minimum for T < Tc with
+a quadratic term that vanishes at T = Tc . Thus at this temperature there is a diverging
+correlation length. This will be the inverse mass of the flux loop that winds around the t-
+torus; the vanishing at Tc of this mass follows from eqn(9) and from the vanishing of the
+string tension. For T > Tc the former minimum at the origin becomes a maximum and a new
+minimum smoothly develops at a non-zero value of the order parameter hlp i. For SU(N) there
+would be N degenerate such minima (as discussed in Section 3.1); however we know that only
+SU(2) is second order so we can specialise to that case, in which case we have two deconfined
+vacua characterised by hlp i ∝ ±1.
+    Because the effective potential becomes flat near the transition, there will be large fluc-
+tuations. These will however be smooth, in contrast to the large tunnelling fluctuations of
+a first order transition. As T increases above Tc one will begin to have distinct tunnelling
+transitions, but these will be between the deconfined vacua.
+    Just as for first order transitions, C(β) or χl diverge at Tc but the V dependence of this
+divergence is different and can be used to characterise the transition. Consider for example
+the specific heat. We may write it as
+             1           ∂
+               2
+                 C(β) =    hūp i = Np hū2p i − Np hūp i2 = Np h(ūp − hūp i)(ūp − hūp i)i   (19)
+             β          ∂β
+Since the correlation length diverges as T → Tc , we expect that the correlation function of
+                           r→∞
+the plaquettes will vary as ∝ e−m0 (T )r where m0 (T ) → 0 as T → Tc and V → ∞. Thus
+                                                           V →∞
+                                          C(βc (V )) ∝ V ζ                                        (20)
+
+where ζ ≤ 1 depends on the critical exponents of the transition through ζ = γ/νd, using the
+standard notation. A similar derivation can be carried out for the loop susceptibility, χl . All
+this, as well as the V -dependence of βc (V ), can be systematically analysed within the context
+of finite size scaling theory [8].
+
+3.4    Tunnelling between phases
+On an L3 Lt lattice with Lt ≪ L we can view as follows the tunnelling that occurs between
+phases that have nearly the same free energy. An intermediate step required for tunnelling is
+that the L3 periodic volume be split into two roughly equal domains each in one of the two
+phases. Separating these will be two domain walls. Since these walls have a finite tension the
+most probable configuration will be the one that minimises the area, so they will extend right
+across the short t-torus and across two of the spatial tori. The probability PW (T ) of forming
+such a bubble with two spatial walls of size l2 = (aL)2 is basically
+                                        energy walls          2σW l2         3    2
+                         PW (T ) ∝ e−        T         ∝ e−     T      ∝ e−2a σW L Lt             (21)
+
+                                                       7
+where σW is the tension of the wall (i.e. energy per unit area).
+   We see from the L-dependence in eqn(21) that the probability of fields with such large
+domain walls is exponentially suppressed as the volume grows. This means that the ‘time’
+the system spends in the transition between two phases is very small compared to the time it
+remains in one or the other phase: the transitions are rapid. It also means that the transitions
+are increasingly rare as L grows. These rare, large tunnelling fluctuations clearly distinguish
+between first and second order transitions once we are on a large enough volume. (Such
+tunnelling is also of course a feature of spontaneous symmetry breaking in a finite volume.)
+   This provides a qualitative description of the transition between confined and deconfined
+phases at T = Tc and between the N degenerate deconfined vacua for T > Tc . In the latter
+case, for T ≫ Tc where g 2(T ) ≪ 1, one can use perturbation theory to evaluate the wall
+tension. One finds [9] for the wall tension between the k = 0 and k’th deconfined phases,
+characterised by ¯lp ∼ 1 and ei2kπ/N repectively,
+
+                             0,k            4π 2 T 2
+                            σW   = k(N − k) p        (1 + O(g 2N))                           (22)
+                                           3 3λ(T )
+
+where λ(T ) ≡ g 2 (T )N is the ’t Hooft coupling that one keeps constant for a smooth large-N
+limit.
+    As we observed in [1] the deconfining phase transition appears to become more strongly first
+order as N ↑, and the finite-V corrections appear to become rapidly smaller, e.g. h′ ∝ 1/N 2
+in eqn(16). Our more extensive calculations in this paper will confirm this. The tunnelling
+near the phase transition can be seen on smaller V as N ↑, and for a given V (in physical
+units) the tunnelling becomes rapidly rarer as N ↑. We interpret this as being due to the
+confining/deconfining interface tension, σc,d , growing with N. A reasonable guess is that for
+T ≃ Tc the tunnelling between the k = 0 and k = N/2 deconfined phases (say N is even), will
+effectively pass through a sheet of confined phase so that
+                                          1 k=0,k=N/2
+                                    σc,d ∝ σW         ∝ N2                                   (23)
+                                          2
+using eqn(22). From eqn(21) we see that this means that the tunnelling has a probability
+                                                          cN 2 L2
+                                      Pc,d (L, T ) ∝ e−     T                                (24)
+
+so that to see tunnelling equally easily we need to reduce the volume L ∝ 1/N as we increase
+N. This roughly describes what we shall see in our calculations.
+    The assumptions of our above argument can, in fact, be weakened considerably. All we
+              k=0,k=N/2                                                  k=0,k=N/2
+need is that σW         ∼ O(N 2 ) for T ≃ Tc , and then the fact that σW           ≤ 2σc,d obtains
+for us eqn(23) as a lower bound on the N-dependence of the domain wall tension. We remark
+that the growth of domain wall surface tensions as a power of N appears to be a common
+phenomenon (see Section 5) so it is no surprise that it also occurs in the case of the deconfining
+phase transition.
+
+
+                                                8
+4     Results
+4.1    Setting the scale
+To set the scale of the lattice spacing in physical units we use the T = 0 string tension, σ. We
+extract σ from the mass of the lightest flux loop that winds around the spatial torus, which
+can be obtained from correlations of smeared Polyakov loops as described, for example, in [5].
+                                                        √
+We generally use spatial tori of length l ≡ aL ≥ 3/ σ, since earlier calculations [5] suggest
+that finite volume corrections are then accurately given by just the leading universal string
+correction, i.e.
+                                                            π
+                                      amp (L) = a2 σL −                                      (25)
+                                                           3L
+assuming the confining string is a simple bosonic string as suggested by [5, 13].
+    We have performed string tension calculations for all the SU(N) groups discussed in this
+paper. The calculations are taken from a study of improved gluonic lattice operators [14] and
+we use a type of blocking/smearing that is much more effective than in earlier calculations.
+                                                                                     √
+This leads to significant changes in earlier estimates of the continuum value of Tc / σ for both
+SU(2) and SU(3).
+                                 √
+    Our calculated values of a σ are listed in Table 1 and Table 2. Once we      √ determine the
+critical coupling βc (∞) for a given value of Lt , we interpolate our values of a σ to that value
+of β and this provides our lattice estimate of Tc
+                        aTc Tc       1                                1
+                         √ =√ =          √            ;   a(βc ) =         .                (26)
+                        a σ  σ  Lt a(βc ) σ                          Lt Tc
+Repeating the calculation for various Lt , we can attempt to extrapolate the results to the
+continuum limit using a leading O(a) lattice correction
+
+                                  Tc (a)  Tc (a = 0)
+                                  √      =√          + ca2 σ                                (27)
+                                    σ(a)    σ(a = 0)
+where c is some unknown quantity that is fitted.
+
+4.2    Locating the phase transition
+To locate a first order transition we search for values of β at which there is tunnelling between
+the confined and deconfined phases. (See e.g. Fig.1 and Fig.6 of [1].) This is easiest to do
+on smaller volumes where the tunnelling is sufficiently frequent that it can be seen in modest
+Monte Carlo runs. (Although if the volume is too small the transition will be completely
+washed out.) One can then use the βc (V ) extracted from a smaller volume as a starting point
+for calculations at larger V .
+    We typically carry out O(200K) sweeps at each β and have 2 to 5 useful values of β. They
+will be close enough together that the distributions of ūp have a strong overlap, and we then
+use standard reweighting techniques [15] to produce χl (β) and C(β) as continuous functions
+of β and to obtain an accurate value for the position of the maximum, βcC (V ) or βcχ (V ). An
+
+                                               9
+example is shown in Fig.1. We then repeat the calculation for various volumes, L3 , at a fixed
+value of Lt and perform a finite size study (see below) to obtain βc (∞), using eqn(17), the
+latent √
+       heat, using eqn(12), and so on. We then proceed to the lattice and continuum values
+of Tc / σ as described in Section 4.1.
+    In practice we carry out the finite volume study at one value of Lt for each value of N and
+then use the parameter h obtained from a fit of the form in eqn(17) at the other values of Lt
+where we perform calculations typically on just one volume. This is the procedure used in
+past SU(3) calculations, e.g. [11], but is dangerous because the corrections to h in eqn(17) are
+not merely O(a2 ), as they would be for h′ in eqn(16), but include the violations of asymptotic
+scaling in the d ln a/dβ factor. This is a weakness of this calculation, which can only be
+remedied by a study on a much larger scale than ours.
+    For the case of SU(2), where the transition is second order, it turns out that the specific
+heat C(β) has no visible peak as we vary β and its value does not grow with V . This anomalous
+behaviour arises because the plaquette has almost no overlap onto any correlation length that
+diverges. This interesting behaviour will be discussed in more detail in [2]. Here we merely
+note that one can instead focus upon the Polyakov loop susceptibility χl , as is usually done,
+and that exhibits all the characteristics of a second order phase transition.
+
+4.3    Finite size study at Lt = 5
+We perform our finite-V studies at Lt = 5 for all the values of N that we investigate. For a
+quick global view of what is going on we plot in Fig.2 the value of ln χl (extracted at its peak
+value) against ln V for all our values of N. We see that for N ≥ 3 the values fall approximately
+on a straight line of slope unity. This is just the slope appropriate to a first order transition
+(see eqns(13,15)) and is in contrast to the SU(2) line that is flatter (with a slope of ∼ 0.63)
+indicating that the transition there must be second order.
+     To see the corrections, a plot of the normalised susceptibility maxima χmax
+                                                                             l   /V versus 1/V is
+more useful, and this we show in Fig.3 for SU(2) and SU(3). We see that for SU(2) χmaxl   /V → 0
+as V → ∞ indicating it is second order. (Our largest SU(2) lattice is L = 64.) For SU(3) the
+behaviour at smaller V is similar to that of SU(2), indicating a growing correlation length, but
+eventually it turns upwards, showing that it is indeed dominated by a first-order discontinuity.
+So SU(3) is ‘weakly’ first order. For N ≥ 4 (Fig.4) the picture is much less ambiguous: there
+is the expected correction that is linear in 1/V with a flattening only at small V where
+presumably the correlation length is being felt. As N ↑ the values of V where the flattening
+occurs is at ever smaller V indicating that the strength of the first order transition is growing
+(in the sense that the discontinuity dominates over the contribution of the longest correlation
+length at ever smaller V ).
+     In Fig.5 we perform similar plots for the normalised specific heat maxima Cmax /V . We see
+a much nicer linear behaviour that is easy to extrapolate. The reason for this is that, unlike
+χl , C(β) is not sensitive to the lightest correlation length (which is proportional to σ(T )).
+Indeed we do not show the SU(2) curve, because we cannot identify a maximum – and if we
+did its value would be independent of V (in our range of V ).
+     We can use the maximum of χl to define βc (V ) and from a fit to eqn(17) we can extract
+
+                                               10
+h, the coefficient of the 1/V correction. This is tabulated in Table 3. We recall that the
+usually quoted SU(3) value is h ≤ 0.1 [11]. We find it impossible to extract a reliable value
+of h from our values of βc (V ) at Lt = 5 (although we have some calculations for Lt = 4 that
+agree precisely with earlier calculations) and we put that down to the weakness of the SU(3)
+transition – or perhaps a large statistical fluctuation in our calculations. In any case, it is
+already clear from Table 3 that we do not have h ∝ N 2 as one would need for a finite h′ in
+the N = ∞ limit. (See eqns(16,17,18).) Rather it looks as though h′ ∝ 1/N 2 .
+
+4.4    Latent heat
+We see from eqn(12) that we can obtain Lh , the latent heat per plaquette, from the V = ∞
+extrapolation of Cmax /V . Doing so for our Lt = 5 calculations, we obtain the value of Lh for
+each N and we plot the results in Fig.6.
+    The first thing we observe is that Lh grows with N. Moreover the growth is consistent
+with being due to a O(1/N 2) correction, as shown by the dashed line in the plot. It is clearly
+no surprise that the latent heat vanishes for 2 < N < 3, as exemplified by our fit, so that the
+N = 2 transition is second order.
+    The lattice latent heat is O(a4 ). Can a variation of a with N account for the variation
+we see in Fig.6? If we express a in units of Tc then the answer is of course no: by definition
+a = 1/Lt Tc = 1/5Tc is fixed for all N. If instead we use σ to set the scale, then a4 does indeed
+vary as we go from N = 3 to N = 6, but only by about ∼ 30% which is a very small part of the
+observed change. Thus we conclude that in physical units the latent heat increases strongly
+as we go from N = 3 to larger N, indicating that the first order transition strengthens as N ↑.
+    Finally we remark that if the latent heat goes to a non-zero constant as N → ∞, this
+means that it is proportional to the gluon condensate (with the ’t Hooft running coupling)
+[16] so that it is O(N 2 ).
+
+           √
+4.5    Tc / σ for all N
+We list our values of βc (V = ∞) in Table 4 and Table 5. The SU(2) values include older
+calculations [17] as do the SU(3) ones [11, 12]. The (interpolated) string tensions are new and
+more accurate than those used previously. For our SU(4) and SU(6) calculations at Lt = 6, 8
+we use the h extracted at Lt = 5. However we double the error so as to (hopefully) cover any
+change of h with Lt . For SU(8) we also extract h for Lt = 5, but because the error on it is
+already very large, we feel no need to increase it at larger Lt .
+                                                 √
+    We use eqn(26) to obtain the values of Tc / σ shown, and then use eqn(27) to obtain the
+continuum extrapolation, as tabulated in Table 6. (In the SU(4) case where the best χ2 is
+very poor, we use an error that covers the extrapolated values obtained using any two β values
+out of the three.)
+                                                           √
+    Finally we take our various continuum values of Tc / σ and plot them against 1/N 2 in
+Fig. 7. We see that the values are all well described by a leading large-N correction of the
+
+
+
+
+                                               11
+expected [3] functional form:
+
+                                   Tc             0.453(30)
+                                   √ = 0.596(4) +           .                                  (28)
+                                    σ                N2
+
+The coefficient is modest, indicating that for this physics at least, all values of N are close to
+N = ∞, despite the fact that SU(2) is second order while larger groups are first order. Only
+the latent heat appears to have large corrections in N.
+
+4.6    V -dependence as N ↑
+The values of h in Table 3 strengthen our earlier observation [1] that h is roughly constant
+indicating that the finite volume corrections disappear as ∝ 1/N 2 .
+     It is also clear from e.g. Fig.3 and 4 that the first order character of the transition becomes
+clearer on ever smaller volumes as V ↑. We have interpreted this as being related to the domain
+wall surface tension growing with N, perhaps as in eqns(22,23). To analyse this further we
+have roughly calculated the number of sweeps that the lattice spends in each of the confined
+and deconfined phases when it is very close to βc (V ). We call this number the persistence
+time, τp . From the statistical errors on our T = 0 string tension calculations, we infer that the
+efficiency of our Monte Carlo in decorrelating physical fluctuations does not vary much with
+N, so that comparing τp across N is physically meaningful. We plot τp for various volumes
+and various N in Fig.8, against L2 . We see that it is consistent with being τp ∝ exp −(N α L)2
+with α unity or greater. In fact the L dependence is not really well determined: a plot against
+L3 looks equally good. If we simply take the largest L where we have roughly equal τp for
+N = 3, 4, 6 i.e. L = 32, 20, 12 respectively, then a trend to be approaching a function of
+N × L for larger N is certainly consistent. However this analysis has to be regarded as very
+preliminary at this stage, and only indicative of what one might eventually achieve [2].
+
+
+5     Some conjectures about N = ∞
+5.1    Reduced models
+On a given spatial volume, V = L3 , at fixed Lt and at values of β close to the corresponding
+phase transition, we have found the tunnelling to be rapidly suppressed as N ↑. Roughly
+speaking if one wants to keep the tunnelling rate constant one needs to decrease the volume as
+L ∝ 1/N α , where α appears to be at least unity. This is roughly consistent with our conjecture
+that the surface tension of the confining/deconfining domain wall varies as σc,d ∝ N 2 , and in
+any case that this provides a lower bound on its variation with N. We also saw that the shift
+of aTc (V ) from aTc (∞) appears to be O(1/N 2), suggesting that as N → ∞ one can locate
+the transition on volumes V → 0.
+    As we pointed out in [1] this cannot really be the case, because once L < 1/a(β)Tc ≃ Lt
+the spatial version of the center symmetry in eqn(10) will become spontaneously broken. For
+example if we are considering Lx < Lt then the relevant symmetry is as in eqn(10) but with
+
+                                                12
+Ux replacing U0 , nx replacing nt , and ns counting the points in the (y, z, t) 3-slice. This
+breaking occurs for the same reason that the symmetry is broken in the temporal direction
+for Lt < 1/a(β)Tc ; after all the label of the Euclidean direction does not matter. (For finite
+N this breaking will itself be smoothened by finite volume effects; however as N → ∞ the
+observed loss of finite-V corrections suggests it will become precise, even on a finite volume.)
+For this reason we conjectured in [1] that as N → ∞ the deconfining transition will occur
+at exactly the same βc for all volumes L > Lt = 1/a(β)Tc , i.e. the deconfining physics is
+independent of the volume down to a critical volume, and we speculated upon the relation
+of this to Witten’s idea of an N = ∞ Master Field that is necessarily translation invariant
+[18]. We also note the relation of this to recent conjectures [19] about how the Eguchi-Kawai
+reduction [20] translates to the continuum.
+    Of course, as N → ∞ the transitions on this minimal V will presumably become rapidly
+rarer and the transition will become ever harder to locate. Here we speculate on a way of
+reducing V below this minimal value. This is based on the observation that if we impose
+an {x, t} twist for T > Tc , it induces a corresponding ZN domain wall separating two of
+the ZN deconfined phases. That is to say, it disorders the ZN symmetry breaking. Indeed
+this domain wall can be interpreted [21] as a ’t Hooft dual vortex in its ‘Higgs’ phase. If
+Lx becomes small there is no room for the two phases and the wall, and we expect that
+the corresponding symmetry breaking is suppressed. Thus we conjecture that on an L3 Lt
+volume at βc , if we reduce L < Lt but introduce a (maximal) twist in {x, y}, {x, z} and {y, z}
+we suppress the symmetry breaking and can continue to reduce L, perhaps as 1/N, while
+maintaining the physics of the deconfining transition. As N → ∞ we can therefore study Tc
+on an infinitesimal volume: in a sense on a single spatial point. And perhaps other physical
+quantities can also be so studied. This reduction connects naturally to the twisted Eguchi
+Kawai reduced model [20, 22].
+
+5.2    Master field(s)
+The factorisation of gauge invariant operators at large-N, and the fact that fluctuations vanish
+in leading order, led to an old speculation [18] that in the N = ∞ limit there is only a single
+Master field in the path integral (which is necessarily translation invariant for gauge invariant
+quantities). It has long been realised that this picture is deceptively simple (e.g. [23]).
+    In the case of interest here, we have seen that the fluctuations near T = Tc between the
+confined and deconfined phases, are suppressed exponentially in N 2 (at least) on a volume
+that is fixed in physical units as N ↑. If one wishes to talk of a ‘Master Field’ one has to talk
+of at least 2: one confined and one deconfined. (For the D=3+1 Euclidean system there are
+presumably N → ∞ deconfined Master Fields, separated by infinite barriers in that limit.)
+    We note that as T deviates from Tc the difference in free energy density between the
+confined and deconfined vacua will be O(N 2 ) and for large enough bubbles will outweigh the
+suppression of the domain walls (if that is also O(N 2 ) as we have suggested). However the
+system has to pass through small bubbles to reach these large bubbles, and the probability
+of these will continue to be dominated by the exponential suppression of the surface area
+of the bubble. That is to say, one can imagine a scenario at N = ∞ in which there is no
+
+                                               13
+transition between confining and deconfining phases at any value of T – a kind of infinite
+super-cooling/heating.
+   This picture of different phases separated by infinite barriers at N = ∞ is also char-
+acteristic of the lattice bulk transition [2, 6] and of the multiple vacua inferred from the
+θ-dependence of the SU(N) gauge theory [24, 25]. All this suggests that the gauge theory
+possesses an infinite number of ‘Master Fields’ that mutually decouple precisely at N = ∞
+but whose simultaneous existence ensures a rich physics of that limiting theory.
+
+
+6    Conclusions
+In this paper we have obtained some properties of the deconfining transition in SU(N) gauge
+theories. We have done so for enough values of N that we feel confident in our control of
+the N → ∞ limit. At the same time, our dedicated string tension calculations allow us to
+improve significantly upon older continuum extrapolations for SU(2) and SU(3).
+    We find the phase transition is first order for N ≥ 3, and that the latent heat (of the
+D = 3 + 1 Euclidean system) grows with N, as shown in Fig.6, showing that the transition
+becomes more strongly first order as N ↑. Indeed it is clear from Fig.6 that the SU(3)
+transition is quite weakly first-order, and that a naive interpolation of the latent heat as a
+function of N predicts that the transition ceases to be first order somewhere between N = 2
+and N = 3.
+    We also find that as N grows the phase transition becomes clearly defined on ever smaller
+volumes (see e.g. Fig.3-5). We argue that this is due to the interface tension between the
+confined and deconfined phases growing at least as rapidly as N 2 . At the same time we
+find that the finite-V corrections to Tc appear to be O(1/N 2) so that at N = ∞ Tc can
+be calculated on small volumes. We speculated in Section 5 how one might be able to take
+the limit V → 0 in a way that is reminiscent of the twisted Eguchi-Kawai model. We also
+speculated on how this might fit in with the old idea that N = ∞ is dominated by a Master
+Field that is translation invariant for gauge invariant observables. We plan to test the idea in
+Section 5.1, not only√for Tc but for other physical quantities as well.
+    The values of Tc / σ that we obtain in the continuum limit show a modest N-dependence,
+displayed in Fig. 7. This dependence can be well fitted with a leading O(1/N 2 ) correction all
+the way down to SU(2), as in eqn(28). Such modest corrections are in fact characteristic of
+the N dependence of many physical quantities [6, 26].
+    As we have stressed here and in [1] there are many ways in which our calculations need to
+be improved. Perhaps their main weakness lies in the control of finite-V corrections. Because
+such studies are expensive we have followed the usual strategy of performing a finite-V study
+only at the coarsest value of the lattice spacing a and then using that to estimate finite-V
+corrections at other values of a. That this is likely to be dangerous is indicated by the nature
+of the theoretical expression, eqn(18). Another weakness concerns our latent heat calculation
+which, being coupled to the finite-V study, has again only been performed for the coarsest
+value of a. Here in fact we can do better, using a different technique, and in [2] we will do so.
+In that paper we will also present calculations of the correlation lengths as T → Tc , obtained
+
+
+                                               14
+separately for the confined and deconfined phases. This will provide another measure of the
+strength of the transition. In addition we will present some results for the physical latent heat
+of the gauge theory (which is different from the ‘Euclidean’ latent heat that we discuss in this
+paper), for the way topological fluctuations change across T = Tc , and we will present the
+results discussed in this paper in greater detail.
+
+
+Acknowledgments
+We appreciate discussions with C.P. Korthals Altes and H. Neuberger. Our lattice calculations
+were carried out on the JIF/PPARC funded Astrophysics Beowulf cluster in Oxford Physics,
+on PPARC and EPSRC funded Alpha Compaq workstations in Oxford Theoretical Physics, on
+a desktop funded by All Souls College, and on the APE in Swansea Physics funded by PPARC
+under grant PPA/G/S/1999/00026. UW has been supported by a PPARC fellowship, and
+BL by a EU Marie Sklodowska-Curie postdoctoral fellowship.
+
+
+References
+ [1] B. Lucini, M. Teper and U. Wenger, Phys.Lett. B545 (2002) 197 (hep-lat/0206029);
+     hep-lat/0208080.
+
+ [2] B. Lucini, M. Teper and U. Wenger, in progress.
+
+ [3] G. ’t Hooft, Nucl. Phys. B72 (1974) 461.
+     E. Witten, Nucl. Phys. B160 (1979) 57.
+     S. Coleman, 1979 Erice Lectures.
+     A. Manohar, 1997 Les Houches Lectures, hep-ph/9802419.
+     S.R. Das, Rev. Mod. Phys. 59 (1987) 235.
+
+ [4] R. Pisarski and M. Tytgat, hep-ph/9702340.
+     R. Pisarski, hep-ph/0203271.
+
+ [5] B. Lucini and M. Teper, Phys. Rev. D64 (2001) 105019 (hep-lat/0107007);
+     Phys. Lett. B501 (2001) 128 (hep-lat/0012025).
+
+ [6] B. Lucini and M. Teper, JHEP 0106 (2001) 050 (hep-lat/0103027).
+
+ [7] B. Nienhuis and M. Nauenberg, Phys. Rev. Lett. 35 (1975) 477.
+     M. Fisher and A. Nihat Berker, Phys. Rev. B26 (1982) 2507.
+     M.S.S. Challa, D.P. Landau and K. Binder, Phys. Rev. B34 (1986) 1841.
+
+ [8] M.N. Barber, in Phase transitions and critical phenomena, Vol. 8, ed. C. Domb and
+     J.L. Lebowitz (Academic Press, New York, 1983), p. 146.
+     V. Privman, in Finite-size scaling and numerical simulations of statistical systems (World
+     Scientific Publishing Co., 1990).
+
+                                               15
+ [9] P. Giovannangeli and C. P. Korthals Altes,           Nucl. Phys. B608 (2001) 203
+     (hep-ph/0102022).
+[10] A. Smilga, hep-th/9409174.
+[11] G. Boyd et al., Nucl.Phys. B469 (1996) 419 (hep-lat/9602007).
+     B. Beinlich, F. Karsch, E. Laermann and A. Peikert, Eur. Phys. J. C6 (1999) 133
+     (hep-lat/9707023).
+[12] M. Fukugita, M. Okawa and A. Ukawa, Nucl.Phys. B337 (1990) 181. Y. Iwasaki et al.,
+     Phys. Rev. D46 (1992) 4657.
+[13] M. Luscher and P. Weisz, JHEP 0207 (2002) 049 (hep-lat/0207003).
+[14] B. Lucini, H. Meyer, U. Wenger and M. Teper, in progress.
+[15] A. M. Ferrenberg and R. H. Swendsen, Phys. Rev. Lett. 63, 1195 (1989); ibid. 61, 2635
+     (1988).
+     M. Falcioni, E. Mariniari, M. L. Paciello, G. Parisi and B. Taglienti, Phys. Lett. B108
+     (1982) 331.
+[16] M. Campostrini, A. Di Giacomo and Y. Gunduc, Phys. Lett. B225 (1989) 393.
+[17] J. Engels, J. Fingberg and M. Weber, Nucl.Phys. B332 (1990) 737. J. Engels, J. Fing-
+     berg and D. Miller, Nucl.Phys. B387 (1992) 501. F. Fingberg, U. Heller and F. Karsch,
+     Nucl.Phys. B392 (1993) 493 (hep-lat/9208012).
+[18] E. Witten, in Recent Developments in Gauge Theories, ed. G. ’t Hooft et al. (Plenum
+     Press, 1980).
+[19] R. Narayanan and H. Neuberger, hep-lat/0303023.
+[20] T. Eguchi and H. Kawai, Phys. Rev. Lett. 48 (1982) 1063.
+[21] C. Korthals Altes, A. Michels, M. Stephanov and M. Teper, Phys. Rev. D55 (1997) 1047
+     (hep-lat/9606021).
+     A. Hart, B. Lucini, Z. Schram and M. Teper, JHEP 0006 (2000) 040 (hep-lat/0005010).
+[22] A. Gonzales-Arroyo and M. Okawa, Phys. lett. 120B (1983) 174.
+[23] Y. Makeenko, Lectures given at NATO Advanced Study Institute on Quantum Geometry,
+     Akureyri, Iceland (hep-th/0001047).
+[24] E. Witten, Phys. Rev. Lett. 81 (1998) 2862 (hep-th/9807109).
+[25] G. Gabadadze and M. Shifman, Int. J. Mod. Phys. A17 (2002) 3689 (hep-ph/0206123).
+     A. Armoni and M. Shifman, hep-th/0304127.
+[26] L. Del Debbio, H. Panagopoulos and E. Vicari, JHEP 0208 (2002) 044 (hep-th/0204125).
+
+
+                                            16
+                              SU(2)                          SU(3)
+                                      √                             √
+                       β     L       a σ              β     L      a σ
+                    1.8800   4    0.773(16)        5.6925   8 0.3970(19)
+                    2.1768   8 0.5149(77)          5.6993   8 0.3933(16)
+                    2.2986   10 0.3667(18)         5.7995   10 0.3143(14)
+                    2.3726   12 0.2879(10)         5.8945   12 0.2607(11)
+                    2.4265   16 0.2388(9)          6.0625   16 0.19466(73)
+                    2.5115   20 0.17680(76)        6.3380   24 0.12946(61)
+
+Table 1: SU(2) and SU(3) string tensions calculated at the indicated values of β from confining
+strings of length aL that wind around the spatial torus.
+
+
+
+
+               SU(4)                       SU(6)                          SU(8)
+                      √                           √                              √
+         β    L      a σ             β    L      a σ               β     L      a σ
+       10.637 10 0.3254(11)        24.500 10 0.3420(19)          43.85    8 0.3646(25)
+       10.789 12 0.27015(86)       24.845 12 0.2801(13)          44.00   10 0.3406(20)
+       11.085 16 0.19871(85)       25.452 16 0.20992(82)         44.35   10 0.2991(20)
+                                                                 44.85   12 0.2596(24)
+
+Table 2: SU(4), SU(6) and SU(8) string tensions calculated at the indicated values of β from
+confining strings of length aL that wind around the spatial torus.
+
+
+
+
+                                       h       L∈    χ2 /ndf
+                             SU(4) 0.090(17) [12,20]  0.49
+                             SU(6) 0.112(19) [8,14]   0.04
+                             SU(8) 0.063(70) [6,8]      –
+
+Table 3: The coefficient h of the 1/V correction to βcχ (V ) for the groups shown, obtained
+from fits (best χ2 shown) to the range of volumes shown.
+
+
+
+
+                                              17
+                             SU(2)                              SU(3)
+                                         √                                √
+               Lt         βc         Tc / σ       Lt         βc       Tc / σ
+               2     1.8800(30)     0.647(15)      –         –            –
+               3     2.1768(30) 0.6474(111)        4    5.69236(15) 0.6296(30)
+               4      2.2986(6)    0.6818(35)      5     5.8000(5)⋆ 0.6370(29)
+                                 ⋆
+               5    2.37136(54)    0.6918(29)      6    5.8941(12) 0.6388(32)
+                                ⋆
+               6    2.4271(17)     0.6994(50)      8    6.0625(18) 0.6421(31)
+               8     2.5090(6)⋆    0.7008(34)     12    6.3385(55) 0.6442(51)
+
+Table 4: Critical values of β, extrapolated to V = ∞, for SU(2) and SU(3) for the values of
+Lt shown; with the corresponding values of the deconfining temperature in units of the string
+tension. Starred values are new calculations of βc .
+
+
+
+
+                    SU(4)                       SU(6)                     SU(8)
+                             √                            √                        √
+    Lt        βc        Tc / σ            βc       Tc / σ             βc       Tc / σ
+    5    10.63709(72) 0.6146(23)     24.5139(24) 0.5894(36)      43.978(22) 0.5814(68)
+    6    10.7893(23) 0.6171(26)      24.8458(33) 0.5952(32)       44.496(3) 0.5807(71)
+    8    11.0848(23) 0.6289(31)      25.4712(62) 0.6009(29)      45.606(35) 0.5964(154)
+
+Table 5: Critical values of β, extrapolated to V = ∞, for SU(4), SU(6) and SU(8) for the
+values of Lt shown; with the corresponding values of the deconfining temperature in units of
+the string tension.
+
+
+
+
+                                               √
+                                    lima→0 Tc / σ Lt ∈ χ2 /ndf
+                            SU(2)     0.7091(36)     [3,8]   0.28
+                            SU(3)     0.6462(30)    [4,12]   0.05
+                            SU(4)     0.634(12)      [5,8]   2.05
+                            SU(6)     0.6078(52)     [5,8]   0.00
+                            SU(8)     0.594(20)      [5,8]   0.53
+                            SU(∞)     0.5960(41)       –     0.29
+                                          √
+Table 6: Continuum extrapolations of Tc / σ with the range of Lt values used and the χ2 per
+degree of freedom of the fit. Also shown is the result of the N → ∞ extrapolation of these
+values, as described in the text.
+
+
+
+
+                                             18
+                  30
+                                      3
+                            SU(3), 32 x5 lattice:
+                                                 max
+                            βc=5.79903(12), χl      =22.932(396)
+
+                  25
+
+
+
+
+                  20
+             χl
+
+
+
+
+                  15
+
+
+
+
+                  10
+                   5.794    5.796           5.798               5.800   5.802   5.804
+                                                            β
+
+
+
+Figure 1: Reweighted susceptibility χl as a function of β for SU(3) on a L = 32 lattice at
+Lt = 5. The location of the maximum, βc , and the value of the maximum, χmax
+                                                                          l  , are given as
+well.
+
+
+
+
+                                                       19
+                        6
+
+
+
+
+                        4
+
+
+
+
+                        2
+               max
+               ln χl
+
+
+
+
+                                                                  SU(2)
+                        0                                         SU(3)
+                                                                  SU(4)
+                                                                  SU(6)
+                                                                  SU(8)
+                       −2
+
+
+
+
+                       −4
+                            0    2            4               6       8           10
+                                                       ln V
+
+
+
+Figure 2: The value of ln χmax
+                             l     plotted versus ln V for all our values of N at Lt = 5. The full
+lines are best fits for N = 3, 4, 6, 8 with a slope close to unity while the dashed line is the best
+fit for N = 2 with a slope of ∼ 0.63.
+
+
+
+
+                                                  20
+                    0.0030
+
+
+
+
+                    0.0020
+               /V
+              max
+              χl
+
+
+
+
+                    0.0010
+
+
+
+
+                                                                     SU(2)
+
+                    0.0000
+                             0     0.02           0.04        0.06           0.08
+                                                  1/V
+                    0.0010
+
+
+
+
+                    0.0008
+               /V
+              max
+              χl
+
+
+
+
+                    0.0006
+
+
+
+
+                                                                     SU(3)
+
+
+                    0.0004
+                             0     0.02           0.04        0.06           0.08
+                                                  1/V
+
+
+
+Figure 3: The normalised susceptibility maxima χmaxl  /V plotted against 1/V for N = 2, 3 at
+Lt = 5. The dashed line is a best fit with the leading scaling behaviour extracted from Fig.2
+and a leading O(1/V ) correction.
+
+
+
+                                             21
+                   0.0012
+
+
+                                                                    SU(4)
+
+
+
+
+                   0.0010
+              /V
+             max
+             χl
+
+
+
+
+                   0.0008
+
+
+
+
+                   0.0006
+                            0     0.02           0.04        0.06           0.08
+                                                 1/V
+                   0.0012
+
+
+                                                                    SU(6)
+
+
+
+
+                   0.0010
+              /V
+             max
+             χl
+
+
+
+
+                   0.0008
+
+
+
+
+                   0.0006
+                            0      0.1           0.2          0.3            0.4
+                                                 1/V
+
+
+
+Figure 4: The normalised susceptibility maxima χmax
+                                                 l  /V plotted against 1/V for N = 4, 6 at
+Lt = 5. The dashed lines are the best fits with O(1/V ) and O(1/V 2 ) corrections. Note the
+different scale for SU(6) on the x-axis.
+
+
+
+                                            22
+                                 0.003
+
+
+
+
+                                 0.002
+
+
+
+
+                        Cmax/V   0.001
+
+
+
+
+                                                                                            SU(3)
+
+
+                                 0.000
+                                         0.00          0.01            0.02            0.03            0.04
+                                                                     1/V
+                                 0.016
+
+
+
+
+                                 0.012
+                        Cmax/V
+
+
+
+
+                                 0.008
+
+
+
+
+                                 0.004
+
+
+                                                                                             SU(4)
+
+
+                                 0.000
+                                         0.00          0.02            0.04            0.06            0.08
+                                                                     1/V
+                                 0.140
+
+
+
+                                 0.120
+
+
+
+                                 0.100
+
+
+                                 0.080
+                        Cmax/V
+
+
+
+
+                                 0.060
+
+
+
+                                 0.040
+
+
+
+                                 0.020                                                        SU(6)
+
+
+                                 0.000
+                                         0.00   0.04     0.08   0.12          0.16   0.20       0.24   0.28
+                                                                   1/V
+
+
+
+
+Figure 5: The normalised specific heat maxima Cmax /V plotted against 1/V for N = 3, 4, 6
+at Lt = 5. The straight lines are best fits with a leading O(1/V ) correction. Also shown are
+the V → ∞ limits.
+
+
+                                                                23
+                  0.004
+
+
+
+
+                  0.003
+
+
+
+
+                  0.002
+             Lh
+
+
+
+
+                  0.001
+
+
+
+
+                     0
+                          2       4             6           8            10
+                                                N
+
+
+
+Figure 6: The latent heat, Lh , plotted versus N at Lt = 5. The dashed line is a large-N
+extrapolation with a leading O(1/N 2) correction.
+
+
+
+
+                                           24
+                     1.20
+
+
+
+                     1.00
+
+
+
+                     0.80
+             1/2
+
+
+
+
+                     0.60
+              Tc/σ
+
+
+
+
+                     0.40
+
+
+
+                     0.20
+
+
+
+                     0.00
+                        0.00   0.05   0.10        0.15    0.20   0.25      0.30
+                                                      2
+                                                  1/N
+
+
+
+Figure 7: The deconfining temperature, Tc , in units of the string tension, σ plotted versus
+1/N 2 . The dashed line is the large-N extrapolation with a leading O(1/N 2) correction.
+
+
+
+
+                                             25
+                     13
+
+
+
+
+                     11
+             ln τp
+
+
+
+
+                     9
+                                                                   SU(3)
+                                                                   SU(4)
+                                                                   SU(6)
+                                                                   SU(8)
+
+
+
+                     7
+                          0     500           1000          1500           2000
+                                                 2
+                                               L
+
+
+
+Figure 8: The persistence time, τp , plotted versus L2 for various N at Lt = 5. The straight
+lines are fits of the form τp ∝ exp −c(N)L2 .
+
+
+
+
+                                            26
+

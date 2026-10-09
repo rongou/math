@@ -1,0 +1,1957 @@
+                                           Submitted to the Annals of Probability
+
+
+
+
+                                                CORRELATION DECAY FOR FINITE LATTICE GAUGE THEORIES AT
+                                                                   WEAK COUPLING
+
+                                                                                             B Y A RKA A DHIKARI 1,a
+                                                      1 Department of Mathematics, Stanford University, 450 Jane Stanford Way, Building 380, Stanford, CA 94305,
+                                                                                                a arkaa@stanford.edu
+
+
+
+                                                                                                  B Y S KY C AO 2,b
+arXiv:2202.10375v3 [math.PR] 17 Mar 2024
+
+
+
+
+                                                  2 Department of Mathematics, Massachusetts Institute of Technology, 77 Massachusetts Ave, Cambridge, MA 02139,
+                                                                                                 b skycao@mit.edu
+
+
+                                                                          In the setting of lattice gauge theories with finite (possibly non-Abelian)
+                                                                     gauge groups at weak coupling, we prove exponential decay of correlations
+                                                                     for a wide class of gauge invariant functions, which in particular includes
+                                                                     arbitrary functions of Wilson loop observables.
+
+
+                                               1. Introduction. Lattice gauge theories are statistical mechanical models which arise as
+                                           discretizations of Yang–Mills theories. They were systematically introduced by Wilson [54]
+                                           in 1974, and since then they have been the subject of much study by both physicists and
+                                           mathematicians alike. The main physical motivation for the study of lattice gauge theories
+                                           is to understand the Standard Model of physics, which describes the behavior of elementary
+                                           particles at short distances. Mathematically, the goal is to construct a continuum Yang–Mills
+                                           theory, and one of the main approaches towards this is by taking a continuum limit of lat-
+                                           tice gauge theories. So far, this has not been achieved, but nonetheless there have been many
+                                           seminal works proving various aspects about the behavior of lattice gauge theories. For in-
+                                           stance, Bałaban [6]-[19] proved ultraviolet stability (a notion of tightness) for lattice gauge
+                                           theories in 3D and 4D via a renormalization group approach. The monograph of Glimm and
+                                           Jaffe goes into significant detail on constructive field theory, including the rigorous construc-
+                                           tion of U (1) theory in 2-dimensions [41]. For results on quark confinement, see the works
+                                           [23, 29, 39, 42, 43]. The works [20, 25, 27, 44] look at large N limits of lattice gauge the-
+                                           ories and resulting forms of gauge-string duality. We emphasize that we have left out many
+                                           important references in this paragraph; see [28] for a more complete list as well as a historical
+                                           overview.
+                                               Associated to lattice gauge theories is a parameter G, which is typically taken to be a Lie
+                                           group. However, in this paper, we will make a mathematical simplification and take G to be
+                                           a finite group. Of course, this lessens the direct relevance to physics, but on the other hand,
+                                           lattice gauge theories with finite groups G have been previously studied in the physics litera-
+                                           ture; see e.g. [2, 30, 38, 46, 49, 52, 53] for an incomplete list. Additionally, from a statistical
+                                           mechanical point of view, such models are interesting because they give examples of discrete
+                                           models with non-Abelian symmetries. These symmetries require the use of topology to han-
+                                           dle, and result in relations to knot theory as pointed out by [50]. Such considerations do not
+                                           appear in the usual discrete spin models such as the Ising or Potts models.
+                                               This paper expands on the analysis of the works [1, 24] to answer a natural question in
+                                           this area. The purpose of those papers was to calculate (for finite gauge groups) the expec-
+                                           tations of certain natural observables associated to lattice gauge theories. Having computed
+
+                                               MSC2020 subject classifications: Primary 70S15, 81T13, 81T25, 82B20.
+                                               Keywords and phrases: Lattice gauge theory, Decay of correlations, Wilson loop.
+                                                                                                            1
+2
+
+expectations of observables, a natural next step is to show decay of correlations of those
+same observables. This is precisely the purpose of the present paper. In general, comput-
+ing observable expectations and showing correlation decay are two related problems which
+however require different proof techniques, and thus the arguments of [1, 24] which give the
+former do not immediately give the latter. To prove correlation decay in this paper, we com-
+bine the technical tools developed in the previous papers with some crucial additional proof
+ideas that are tuned to the problem at hand.
+   The problem of showing exponential decay of correlations for a 4D lattice gauge theory
+(with gauge group a non-Abelian Lie group, say SU(3)) is one of the central questions of lat-
+tice gauge theory, as it is intimately related to showing the existence of a mass gap. Following
+the discussion of [28, Section 5], let fβ (x) denote the correlation between an appropriately
+defined Wilson loop variable centered at 0 and another centered at x. Then, the existence
+of a mass gap for a given β ≥ 0 is equivalent to the following statement: there exists some
+ξ(β) ∈ (0, ∞) such that
+                                              1        log fβ (x)
+                                        −       = lim             .
+                                            ξ(β) |x|→∞    |x|
+The conjecture is that the above holds for all β ≥ 0 (and we furthermore expect that
+limβ→∞ ξ(β) = ∞). Given this discussion, the main result of the present work can be in-
+terpreted as showing the existence of a mass gap in the setting of finite (non-Abelian) gauge
+groups at large β . In general, it is more difficult to prove exponential decay of correlations
+at large β compared to small β , as the latter case can usually be handled by a routine high-
+temperature expansion, and this works not just for finite groups, but also non-Abelian Lie
+groups (see [47]).
+
+   1.1. Previous work. There has been much recent interest in computing the expectations
+of Wilson loop observables – Chatterjee [28] considered the case G = Z2 , Forrström et al.
+[36] handled finite Abelian G, and Cao [24] covered finite (possibly non-Abelian) G. There
+is also recent work by Garban and Sepúlveda [40] for G = U(1). For lattice gauge theories
+with an additional Higgs field (i.e., lattice Higgs models), Forsström et al. [37] considered
+the finite Abelian case, and Adhikari [1] considered the finite (non-Abelian) case. Forsström
+[35] has also analyzed a more relevant class of observables for lattice Higgs models.
+   As for previous work on the decay of correlations, there is the classic monograph by Seiler
+[49], which shows exponential decay of correlations for finite Abelian lattice gauge theories
+in a variety of settings, using cluster expansion techniques1 . There is also recent work by
+Forsström [34], which also proves exponential decay in the Abelian case, using a certain
+probabilistic swapping argument, which relates correlations to percolation probabilities of
+the union of two independently sampled configurations. The general idea for this type of
+argument previously appeared before in the literature in other settings, see e.g. [5]. We will
+also use this general principle, however there are significant difficulties that arise in the non-
+Abelian case. We will discuss these difficulties, as well as difficulties in extending the cluster
+expansion of [49] to our setting in Section 1.2.
+   Finally, for some recent work on decay of correlations for other statistical mechanical
+models, see [3, 4, 32, 33, 45].
+
+    1
+    It is claimed in the monograph that the given cluster expansions extend without difficulty from finite Abelian
+groups to general finite groups. However, as pointed out by Borgs [22, Section 7], this is not the case.
+                           EXPONENTIAL DECAY OF CORRELATIONS                                     3
+
+   1.2. The difference between finite Abelian and finite non-Abelian. In this section, we
+comment on the main differences between Abelian lattice gauge theories and non-Abelian
+lattice gauge theories (here all groups are assumed to be finite). Actually, at a probabilistic
+level, it is generally the case that there is no difference, in that whatever probabilistic state-
+ment that is true in the finite Abelian case should also have an analog in the finite non-Abelian
+case. However, this always has to be proven, and the proofs are not merely technical improve-
+ments on the arguments which work in the Abelian case. Rather, significant new ideas must
+be developed to handle the non-Abelian case.
+   We now try to convey the reason why. The first part of the discussion will not be new to
+those who are familiar with Pirogov-Sinai theory. Recall that we are always working at low
+temperature (i.e. large β ). As is usually the case for finite spin systems, at low temperatures it
+is best to work in terms of “defects". E.g., for the Ising model, the defects are the edges with
+spin disagreements. The benefit is that now there is a unique ground state, which is the state
+with no defects (in the Ising model, this would be induced by either the all + configuration or
+all − configuration). At low temperature, the system can be analyzed as a small perturbation
+of this unique ground state. Mathematically, this is usually achieved by writing the partition
+function as a convergent cluster expansion. Once this is done, many (if not all) desired prop-
+erties of the model can then be read off from general cluster expansion results (see Seiler’s
+monograph [49]).
+   In order to write the partition function as a cluster expansion, the key property that one
+needs is that the partition function obeys a certain factorization property, which in words
+very roughly amounts to saying that disjoint defects appear independently of each other.
+Now for finite Abelian theories, this factorization property can be proven directly (see e.g.
+[24, Lemma 3.2.3]). However, for finite non-Abelian theories, the same proof does not work,
+and indeed cannot possibly work, because the exact same factorization property is simply
+not true anymore. To try to indicate why, consider an idealized situation with two defects as
+pictured:
+
+
+
+
+                                              Fig 1
+
+
+    Here, the two defects are given by the two loops, and observe that they are linked. In the
+Abelian case, the aforementioned factorization property holds for these two defects, whereas
+in the non-Abelian case, factorization does not hold, even though the two defects may be
+arbitrarily far apart from each other (see [50]). Thus in order to obtain some sort of weaker
+factorization property, we must treat the above picture as a single “connected" defect, even
+if there really are two connected components in the usual sense. This basic example points
+to the fact that non-Abelian theories lead to nontrivial topological considerations, and this
+seems to be a genuinely different phenomenon which is unseen elsewhere, as we are not
+aware of any other statistical mechanical models which lead to such considerations about the
+defects.
+4
+
+   More generally, connected defects in non-Abelian theories can be thought of as elementary
+links (in the sense of knot theory), although they are referred to as knots in [24, 50]. With this
+notion, a weaker form of the factorization property may be proved (this itself is nontrivial
+and requires algebraic topology – see [24, Section 4]). However, even after arriving at the
+right notion of connected defect in non-Abelian theories, there are additional difficulties that
+prevent one from writing the partition function as a cluster expansion in this case.2 Perhaps
+the main difficulty is that the elementary defects now interact in a multi-body interaction,
+instead of just a two-body interaction (and a cluster expansion typically requires the latter).
+This essentially comes from the fact that one can have three knots which are linked yet
+pairwise unlinked (the classic example being the Borromean rings).
+   Thus in summary, non-Abelian theories lead to a much more complicated notion of con-
+nected defect, and do not (as of yet) admit a cluster expansion. This is why the previous
+results [49, 34] on correlation decay only hold for Abelian groups – the former work relies
+on standard cluster expansion results, while the latter paper gives a more probabilistic argu-
+ment that does not use cluster expansion, but which in the end still crucially relies on the
+decomposition into connected defects which (as we explained) is more straightforward in the
+Abelian case.
+   By contrast, in this paper, we must delicately combine a probabilistic argument with a
+careful handling of the topological effects that appear. This is due to the fact that the ele-
+mentary defects are (1) now much more complicated to define (as we tried to convey) and
+(2) having defined them, they are very delicate to work with. In particular, we need to have
+a precise understanding of the associated topological difficulties in order to apply any sort of
+probabilistic “swapping" argument. These difficulties have no analogue in the Abelian case.
+In the end, we are forced to find novel arguments in order to combine the various intricate as-
+pects that are present to arrive at our proof. For these reasons, we believe that our arguments
+for the general non-Abelian case are substantial improvements over previous proofs which
+work only in the Abelian case.
+
+   1.3. Definitions and Notation. We proceed to give the basic definitions and then state our
+main theorems. We start with a preliminary discussion of concepts and definitions necessary
+to understand the paper; one can refer to [24] or [1] for more details.
+   Given an integer n ≥ 1, define [n] := {1, . . . , n}. Let G be a finite group, with the identity
+denoted by 1. We will commonly refer to G as the gauge group. Let ρ be a unitary repre-
+sentation of G, with dimension d, and let χ = Tr ρ be the character of ρ. From here on, fix a
+finite lattice
+                                   Λ := ([a1 , b1 ] × · · · × [a4 , b4 ]) ∩ Z4 ,
+where bi − ai is the same for all i ∈ [4]. The results of this paper apply to any such Λ. Let Λ0
+be the set of vertices of Λ. Let Λ1 be the set of (nearest-neighbor) edges of Λ. We implicitly
+assume that each edge e = (x, y) ∈ Λ1 carries a positive orientation, i.e., y = x + ei for some
+i ∈ [4]. In this paper, we only work in dimension four, as it is the most relevant dimension
+for lattice gauge theories (see [28]). However, we expect that our results can be extended to
+general dimensions, with some additional technical arguments.
+   We will refer to the elements σ ∈ GΛ1 as “edge configurations" (because they assign edges
+to group elements). Given an edge configuration σ ∈ GΛ1 and an edge e = (x, y) ∈ Λ1 , we
+can naturally extend σ to the negatively oriented version of e by setting σ(y,x) := σe−1 .
+
+    2
+     In [50] a cluster expansion is claimed, however much of the proof is omitted, and we are unable to reconstruct
+the proof from the arguments that are given.
+                                EXPONENTIAL DECAY OF CORRELATIONS                                        5
+
+   By a “plaquette" p in Λ, we mean a unit square whose four boundary edges are in Λ. Let
+Λ2 be the set of plaquettes in Λ. For p ∈ Λ2 , suppose the vertices of p are x1 , x2 , x3 , x4 , in
+(say) counter-clockwise order. In an abuse of notation, for σ ∈ GΛ1 , define
+(1.1)                              σp := σ(x1 ,x2 ) σ(x2 ,x3 ) σ(x3 ,x4 ) σ(x4 ,x1 ) .
+Define
+                                                    X
+(1.2)                                SΛ (σ) :=             Re(χ(1) − χ(σp )).
+                                                    p∈Λ2
+
+(By the conjugacy invariance of χ, it does not matter which vertex of p we choose to start at
+when defining σp .) For β ≥ 0, let µΛ,β be the probability measure on GΛ1 defined by
+                                                       −1 −βSΛ (σ)
+(1.3)                                     µΛ,β (σ) := ZΛ,β e       ,
+where ZΛ,β is the normalizing constant. We say that µΛ,β is the lattice gauge theory with
+gauge group G, on Λ, with inverse coupling constant β . In this paper, we will work in the
+large β regime, which is also known as the weak coupling regime.
+   Let γ be a closed loop in Λ, denoted by its sequence of oriented edges e1 , . . . , en . We write
+|γ| for the length of γ , i.e., the number of edges in γ . For σ ∈ GΛ1 , define (in another abuse
+of notation)
+                                                σγ := σe1 · · · σen .
+We say that σγ is the holonomy of σ around γ . Let χ0 be a character of G (there is no relation
+between χ0 and the character χ which appears in the definition (1.2) of SΛ ). The Wilson loop
+observable Wγ,χ0 associated to γ, χ0 is defined as a function GΛ1 → C by the formula
+                                      Wγ,χ0 (σ) := χ0 (σγ ), σ ∈ GΛ1 .
+Wilson loop observables are the main observables of interest in lattice gauge theories. See
+[28, Section 4] for the physical motivation in defining these observables, as well as for further
+discussion. Next, define
+                                        ∆G := min Re(χ(1) − χ(g)).
+                                                    g∈G
+                                                    g̸=1
+
+We can almost state our main result. In the following, by the notation “Σ ∼ µΛ,β ", we
+mean that Σ is a GΛ1 -valued random variable with distribution µΛ,β . We say that a func-
+tion f : Gk → C is conjugacy invariant if, for any g1 , . . . , gk ∈ G and h1 , . . . , hk ∈ G, we
+have that f (h−1                    −1
+                1 g1 h1 , . . . , hk gk hk ) = f (g1 , . . . , gk ). A rectangle B is a subset of Λ of the
+form [x1 , y1 ] × · · · × [x4 , y4 ], where we allow xi = yi . We let |B| be the number of plaquettes
+contained in B .
+
+   T HEOREM 1.1. Let β ≥ ∆1G (114 + 4 log |G|). Let L ≥ 0. Let B1 , B2 ⊆ Λ be rectangles
+that are at a ℓ∞ distance at least L from each other (i.e., the ℓ∞ distance between any vertex x
+of B1 and any vertex y of B2 is at least L). Let k1 , k2 ≥ 1, and let f1 : Gk1 → C, f2 : Gk2 → C
+                                                        (i)       (i)
+be conjugacy invariant functions. For i = 1, 2, let γ1 , . . . , γki be closed loops contained in
+Bi . Let Σ ∼ µΛ,β . Then
+           |Cov(f1 (Σγ (1) , . . . ,Σγ (1) ), f2 (Σγ (2) , . . . , Σγ (2) ))| ≤
+                           1            k1             1               k2
+
+                                                       2 |B1 |+|B2 |
+                                               24
+                                     4(4 · 10 |G| )                    ∥f1 ∥∞ ∥f2 ∥∞ e−(β/2)∆G (L−1) .
+6
+
+   R EMARK 1.2. Examples of f1 , f2 that one could take in the theorem are Wilson loop
+observables, or, more generally, arbitrary functions of arbitrary numbers of Wilson loop ob-
+servables.
+
+   We now sketch the underlying idea of the proof, which is quite general and, in prin-
+ciple, could be applied to other types of spin systems or statistical mechanical models.
+For illustration purposes, suppose that we have some probability measure µ on the space
+Ω = {±1}Λ0 of ±1 spin configurations. Let µ⊗2 be the two-fold product of µ, so that
+µ⊗2 is a probability measure on Ω2 . Let f1 , f2 : Ω → R be functions. The key assump-
+tion is: suppose that there is a bijection T : Ω2 → Ω2 such that for all (σ1 , σ2 ) ∈ Ω2 , we
+have that µ⊗2 (T (σ1 , σ2 )) = µ⊗2 (σ1 , σ2 ) and f1 (σ1 )f2 (σ2 ) = f1 (T1 (σ1 , σ2 ))f2 (T1 (σ1 , σ2 )),
+where here T1 : Ω2 → Ω is the first component function of T . Think of T as a map that swaps
+σ1 and σ2 on some set of vertices (e.g., the support of f2 ), which somehow satisfies the first
+condition (i.e., probabilities are preserved).
+                     i.i.d.                                                                             d
+   Now, let Σ1 , Σ2 ∼ µ. Observe that the first condition on T implies that T (Σ1 , Σ2 ) =
+(Σ1 , Σ2 ); indeed, that condition says that µ⊗2 ◦ T = µ⊗2 , and since T is a bijection, we
+obtain µ⊗2 ◦ T −1 = µ⊗2 , and now note that µ⊗2 ◦ T −1 is the law of T (Σ1 , Σ2 ) (and of
+                                                                                 d
+course, µ⊗2 is the law of (Σ1 , Σ2 )). Thus in particular, T1 (Σ1 , Σ2 ) = Σ1 . Combining the
+second condition on T with this observation, we obtain
+         E[f1 (Σ1 )f2 (Σ2 )] = E[f1 (T1 (Σ1 , Σ2 ))f2 (T1 (Σ1 , Σ2 ))] = E[f1 (Σ1 )f2 (Σ1 )],
+                                                                             i.i.d.
+from which we obtain Cov(f1 (Σ1 ), f2 (Σ1 )) = 0 (recall that Σ1 , Σ2 ∼ µ).
+   Of course, in practice, we will not have the bijection T defined on all of Ω2 . Rather, we will
+need to find a subset E ⊆ Ω2 on which we can define the bijection T : E → E which satisfies
+the two listed properties. A modification of the previous argument then gives an upper bound
+on Cov(f1 (Σ1 ), f2 (Σ1 )) in terms of P((Σ1 , Σ2 ) ∈/ E) (so we want to take the set E as large
+as possible).
+   Section 3 gives a more precise statement of this general argument. Needless to say, the
+main difficulty will be in actually constructing T and E for given f1 , f2 , and then bounding
+P((Σ1 , Σ2 ) ∈
+             / E). For this, we will rely on some concepts introduced in [24], which we review
+in Sections 2 and 4. Finally, if the reader is interested, in Appendices B and C, we show how
+to handle Higgs models at large and small κ (these models were recently analyzed in [1]).
+The corresponding analysis for models with a Higgs’ field is more technical and requires
+more notation that is not easy to unify with the existing arguments. Thus for the convenience
+of the reader, we have placed the discussion of these ideas in the appendices.
+
+    1.4. Acknowledgements. We thank Sourav Chatterjee for suggesting this problem, as
+well as for helpful conversations. A.A. would also like to thank NSF award 2102842 for
+its support.
+
+   2. Preliminaries. In this section (following [24]), we rephrase everything in the lan-
+guage of algebraic topology, using the starting observation that edge configurations σ ∈ GΛ1
+can be thought of as homomorphisms of the fundamental group of the lattice. The main ben-
+efit of this rephrasing is that it allows us to prove Lemma 4.9 (this was essentially already
+done in [24], see the proof of [24, Lemma 4.2.21]). This lemma, in turn, allows us to prove
+Lemma 4.10 and Corollary 4.11, which form the main technical foundation for the proof of
+Theorem 1.1.
+   Recall that a cell complex is a certain type of topological space obtained by assembling
+cells of varying dimensions; see, e.g., Section 0.2.4 of [51]. In our case, the cells will be
+                             EXPONENTIAL DECAY OF CORRELATIONS                                          7
+
+unit squares of dimension at most two, i.e., vertices, edges, and plaquettes. So for us, a one
+dimensional cell complex, or 1-complex, is a space consisting of vertices and edges, and thus
+it is a graph. A two dimensional cell complex, or 2-complex, is a space consisting of vertices,
+edges, and plaquettes.
+    In what follows, if we define a 1-complex by specifying a collection of edges, then that
+1-complex is understood to also include the vertices of the edges in the collection. Similarly,
+if we define a 2-complex by specifying a collection of plaquettes, then that 2-complex is
+understood to also include the vertices and edges of the plaquettes in the collection.
+    Let S1 (Λ) denote the 1-skeleton of Λ, i.e., the 1-complex obtained from the edges of
+Λ. Throughout this paper, fix some vertex x0 ∈ Λ0 . Recall that the fundamental group
+π1 (S1 (Λ), x0 ) is a group of equivalence classes of closed loops starting and ending at x0 .
+The equivalence relation is given by setting equivalent any two loops of the form ℓ1 ee−1 ℓ2
+and ℓ1 ℓ2 , where e = (x, y) is an edge of S1 (Λ), ℓ1 is a path in S1 (Λ) from x0 to x, and ℓ2 is
+a path in S1 (Λ) from x to x0 . The group operation is induced by loop concatenation.
+    Next, we observe that edge configurations σ ∈ GΛ1 naturally induce a homomorphism
+from π1 (S1 (Λ), x0 ) to G.
+
+    D EFINITION 2.1. Let Ω := Hom(π1 (S1 (Λ), x0 ), G) be the set of homomorphisms from
+π1 (S1 (Λ), x0 ) to G. Define the map ψx0 : GΛ1 → Ω as follows. Let σ ∈ GΛ1 . Given an ele-
+ment ξ ∈ π1 (S1 (Λ), x0 ), suppose that ξ can be represented as a loop that traverses the edges
+e1 , . . . , en . Define (ψx0 (σ))(ξ) := σe1 · · · σen . Note that this is well-defined, since if ee−1 ap-
+pears, then this gives the term σe σe−1 = σe σe−1 = 1.
+
+   R EMARK 2.2. The map ψx0 is exactly the same as the map ψTx0 defined in [24, Section
+4.1]. The difference in notation is due to the fact that in [24, Section 4.1], a spanning tree T
+of S1 (Λ) is fixed, and ψTx0 is defined in terms of this spanning tree. It was not noted in that
+paper, but it turns out that the definition of ψTx0 is independent of T , and thus we prefer to
+write ψx0 in the present paper.
+
+   An immediate consequence of Definition 2.1 is the following lemma, whose proof is omit-
+ted.
+
+   L EMMA 2.3. Let σ ∈ GΛ1 . For any loop γ in Λ, and any path ℓ in Λ from x0 to the initial
+vertex of γ , we have that σγ is conjugate to (ψx0 (σ))(ℓ−1 γℓ).
+
+   The following lemma is essentially [24, Lemma 4.1.1]. Due to the differences in notation
+between that paper and the present paper, we provide a proof of this lemma in Appendix A.1.
+
+   L EMMA 2.4. For any ψ ∈ Ω, there are exactly |G||Λ0 |−1 edge configurations σ ∈ GΛ1
+such that ψx0 (σ) = ψ .
+
+  R EMARK 2.5. This lemma shows that homomorphisms ψ ∈ Ω can be thought of as gauge
+equivalence classes.
+
+   Next, in the following sequence of definitions and lemmas culminating in Lemma 2.11
+below, we proceed to reinterpret the lattice gauge theory (1.3) as giving a random homomor-
+phism.
+
+   D EFINITION 2.6. For all x ∈ Λ0 , fix an arbitrary path ℓ(x0 , x) from x0 to x in S1 (Λ). Let
+γ be a loop in Λ with the initial vertex x. Define ξγ := ℓ(x0 , x)γℓ(x0 , x)−1 ∈ π1 (S1 (Λ), x0 ).
+For a plaquette p ∈ Λ2 , let γp be the same loop which traverses the boundary of p that was
+used in the definition (1.1) of σp . Define ξp := ξγp .
+8
+
+    D EFINITION 2.7.    For ψ ∈ Ω, define
+                                supp(ψ) := {p ∈ Λ2 : ψ(ξp ) ̸= 1}.
+This definition does not depend on the particular choices of ℓ(x0 , x), x ∈ Λ0 from Definition
+2.6, as a consequence of Lemma 2.3 and the fact that ψx0 : GΛ1 → Ω is onto (which itself
+follows by Lemma 2.4).
+
+    The following fact was proven in [24, Lemma 4.3.7], and thus we omit the proof here.
+
+    L EMMA 2.8.    Let P ⊆ Λ2 . The number of ψ ∈ Ω such that supp(ψ) = P is at most |G||P | .
+
+    D EFINITION 2.9.    For β ≥ 0, define φβ : G → (0, 1] by
+                                                              
+                       φβ (g) := exp − β Re(χ(1) − χ(g)) , g ∈ G.
+Recalling the definition (1.2) of SΛ , we have that e−SΛ (σ) = p∈Λ2 φβ (σp ).
+                                                              Q
+
+
+    D EFINITION 2.10.    Define the probability measure νΛ,β on Ω as follows:
+                                                  Y
+                                          ν
+                            νΛ,β (ψ) := (ZΛ,β )−1     φβ (ψ(ξp )),
+                                                        p∈Λ2
+       ν is the normalizing constant.
+where ZΛ,β
+
+    L EMMA 2.11.     Let Σ ∼ µΛ,β . Then ψx0 (Σ) ∼ νΛ,β .
+
+    P ROOF. For any ψ ∈ Ω, we have that
+                                                         X       Y
+                                           −1
+                         P(ψx0 (Σ) = ψ) = ZΛ,β                         φβ (σp ).
+                                                       σ∈G  Λ1  p∈Λ2
+                                                      ψx0 (σ)=ψ
+
+By Lemma 2.3, for any σ ∈ GΛ1 such that ψx0 (σ) = ψ , we have that φβ (σp ) = φβ (ψ(ξp ))
+for all p ∈ Λ2 . Combining this with Lemma 2.4, we obtain
+                                             Y               Y
+                 P(ψx0 (Σ) = ψ) ∝ |G||Λ0 |−1   φβ (ψ(ξp )) ∝   φβ (ψ(ξp )).
+                                                 p∈Λ2                  p∈Λ2
+
+The desired result now follows.
+
+    L EMMA 2.12. Let k ≥ 1, and let f := Gk → C be a conjugacy invariant function. Let
+γ1 , . . . , γk be closed loops in Λ. Let Σ ∼ µΛ,β , and let Ψ ∼ νΛ,β . Then
+                         Ef (Σγ1 , . . . , Σγk ) = Ef (Ψ(ξγ1 ), . . . , Ψ(ξγk )).
+
+    P ROOF. By Lemma 2.3 and the assumption that f is conjugacy invariant, we have that
+                                                                                   
+                f (Σγ1 , . . . , Σγk ) = f (ψx0 (Σ))(ξγ1 ), . . . , (ψx0 (Σ))(ξγk ) .
+By Lemma 2.11, we have that ψx0 (Σ) ∼ νΛ,β . The desired result follows.
+
+    We close this section by noting that ψx0 is a bijection when restricted to certain subsets of
+GΛ 1 .
+                             EXPONENTIAL DECAY OF CORRELATIONS                                    9
+
+   D EFINITION 2.13.      Given a spanning tree T of S1 (Λ), define
+                         GF (T ) := {σ ∈ GΛ1 : σe = 1 for all e ∈ Λ1 .}.
+Here “GF " stands for “gauge-fixed".
+
+   The following lemma is essentially [24, Lemma 4.1.6]. Due to the differences in notation
+between that paper and the present paper, we provide a proof of this lemma in Appendix A.1.
+
+   L EMMA 2.14. For any spanning tree T of S1 (Λ), ψx0 : GF (T ) → Ω is a bijection. More-
+over, supp(σ) = supp(ψx0 (σ)) for all σ ∈ GF (T ). For any loop γ in Λ, and any path ℓ in Λ
+from x0 to the initial vertex of γ , we have that σγ is conjugate to (ψx0 (σ))(ℓ−1 γℓ).
+
+   3. A general swapping argument. In this section, we give the general “swapping map"
+idea behind our proof of decay of correlations, as previously sketched after the statement of
+Theorem 1.1.
+
+   D EFINITION 3.1 (Swapping map). Let E ⊆ Ω2 . Let h1 , h2 : Ω → C be arbitrary func-
+tions. Let T : E → E . We say that T is a swapping map with respect to (E, h1 , h2 , νΛ,β ) if T
+is a bijection, and if additionally the following hold for all (ψ1 , ψ2 ) ∈ E :
+         ⊗2                                                 ⊗2                    ⊗2
+1. Let νΛ,β   be the two-fold product of νΛ,β on Ω2 . Then νΛ,β (T (ψ1 , ψ2 )) = νΛ,β ((ψ1 , ψ2 )).
+2. Let (ψ̃1 , ψ̃2 ) = T (ψ1 , ψ2 ). Then
+                                  h1 (ψ1 )h2 (ψ2 ) = h1 (ψ̃1 )h2 (ψ̃1 ).
+
+  The following lemma shows that the existence of a swapping map leads to a covariance
+bound.
+
+   L EMMA 3.2. Let E ⊆ Ω2 . Let h1 , h2 : Ω → C be arbitrary functions. Let T : E → E be
+                                                                i.i.d.
+a swapping map with respect to (E, h1 , h2 , νΛ,β ). Let Ψ1 , Ψ2 ∼ νΛ,β . Then
+                 |Cov(h1 (Ψ1 ), h2 (Ψ1 ))| ≤ 2∥h1 ∥∞ ∥h2 ∥∞ P((Ψ1 , Ψ2 ) ∈
+                                                                         / E).
+
+   P ROOF. Let F := {(Ψ1 , Ψ2 ) ∈ E}. We claim that
+(3.1)                    E(h1 (Ψ1 )h2 (Ψ1 )1F ) = E(h1 (Ψ1 )h2 (Ψ2 )1F ).
+Given this claim, we obtain
+          Cov(h1 (Ψ1 ), h2 (Ψ1 )) = E(h1 (Ψ1 )h2 (Ψ1 )) − E(h1 (Ψ1 )h2 (Ψ2 ))
+                                   = E(h1 (Ψ1 )h2 (Ψ1 )1F c ) − E(h1 (Ψ1 )h2 (Ψ2 )1F c ).
+We may then trivially bound both
+          |E(h1 (Ψ1 )h2 (Ψ1 )1F c )|, |E(h1 (Ψ1 )h2 (Ψ2 )1F c )| ≤ ∥h1 ∥∞ ∥h2 ∥∞ P(F c ),
+from which the desired result follows.
+   Thus it just remains to show the claim (3.1). We have that
+               E(h1 (Ψ1 )h2 (Ψ1 )1F ) =
+                                          X
+                                                  ⊗2
+                                                 νΛ,β ((ψ1 , ψ2 ))h1 (ψ1 )h2 (ψ1 ).
+                                          (ψ1 ,ψ2 )∈E
+
+Since T : E → E is a bijection, the right hand side above is equal to
+                   X
+                            ⊗2
+                          νΛ,β (T (ψ1 , ψ2 ))h1 (T1 (ψ1 , ψ2 ))h2 (T1 (ψ1 , ψ2 )),
+                   (ψ1 ,ψ2 )∈E
+10
+
+where T1 : E → Ω is the first coordinate function of T . Using conditions (1) and (2) of
+Definition 3.1, we obtain that the above is further equal to
+                             ((ψ1 , ψ2 ))h1 (ψ1 )h2 (ψ2 ) = E(h1 (Ψ1 )h2 (Ψ2 )1F ),
+                 X
+                         ⊗2
+                        νΛ,β
+                (ψ1 ,ψ2 )∈E
+
+as desired.
+
+    The following proposition shows that swapping maps exist for functions of the form spec-
+ified in Theorem 1.1.
+
+     P ROPOSITION 3.3.        Let β, L, B1 , B2 be as in Theorem 1.1. There exists a set E(B1 , B2 ) ⊆
+                              i.i.d.
+Ω2 such that for Ψ1 , Ψ2 ∼ νΛ,β , we have
+                           / E(B1 , B2 )) ≤ 2(4 · 1024 |G|2 )|B1 |+|B2 | e−(β/2)∆G (L−1) .
+              P((Ψ1 , Ψ2 ) ∈
+Moreover, there exists a bijection T : E(B1 , B2 ) → E(B1 , B2 ) such that T is a swapping map
+with respect to (E(B1 , B2 ), h1 , h2 , νΛ,β ), for any functions h1 , h2 : Ω → C of the following
+form. Let k1 , k2 ≥ 1, and let fi : Gki → C be a conjugacy invariant function for i = 1, 2. For
+                   (i)         (i)
+i = 1, 2, let γ1 , . . . , γki be closed loops contained in Bi , and then for ψ ∈ Ω, let hi (ψ) :=
+fi (ψ(ξγ (i) ), . . . , ψ(ξγ (i) )).
+         1              ki
+
+
+
+     We next note that Theorem 1.1 follows directly from Proposition 3.3.
+
+  P ROOF OF T HEOREM 1.1. This is a direct consequence of Lemmas 2.12 and 3.2, and
+Proposition 3.3.
+
+   The remainder of the paper is devoted to proving Proposition 3.3. In Section 4, we intro-
+duce the technical tools that are essential to the ensuing arguments. Then in Section 5, we
+construct the event E(B1 , B2 ) and the map T , and finally in Section 6, we bound the proba-
+bility P((Ψ1 , Ψ2 ) ∈
+                    / E(B1 , B2 )).
+
+   4. Knot decomposition. In this section, we review the concept of “knot decomposition"
+as well as some other results which were introduced in [24]. These results will allow us to
+prove Lemma 4.10, which (along with Corollary 4.11, its immediate corollary) is the main
+result of this section. Recall the discussion of 2-complexes at the beginning of Section 2. We
+start with a series of definitions, most which have previously appeared in [24, Section 4].
+
+   D EFINITION 4.1. Given a rectangle B contained in Λ, let S2 (B) denote the 2-complex
+obtained by including all plaquettes of B . Let ∂S2 (B) be the 2-complex obtained by including
+all plaquettes which are on the boundary of B , but not on the boundary of Λ. Note if B is
+contained in the interior of Λ, then ∂S2 (B) is simply the 2-complex made of all boundary
+plaquettes of B . Let S2c (B) be the 2-complex obtained by including all plaquettes of Λ that
+are not in B , as well as all plaquettes in ∂S2 (B).
+
+   D EFINITION 4.2 (Well separated). Given plaquette sets P1 , P2 ⊆ Λ2 , we say that P1 , P2
+are well separated, or P1 is well separated from P2 , if there exists a rectangle B in Λ such
+that P1 ⊆ S2 (B), P2 ⊆ S2c (B), and no plaquettes of P1 or P2 are contained in ∂S2 (B). For
+such a B , we say that P1 , P2 are well separated by B , or that B well separates P1 , P2 . Note
+this definition is not symmetric in P1 , P2 .
+                          EXPONENTIAL DECAY OF CORRELATIONS                                  11
+
+  Recall that a topological space is said to be simply connected if it is path connected and
+has trivial fundamental group.
+
+   D EFINITION 4.3 (Good rectangle). Let B be a rectangle in Λ. We say that B is good if
+S2 (B), S2c (B), and ∂S2 (B) are all simply connected.
+
+   R EMARK 4.4. The motivation for the preceding definition is to have Lemma 4.9 (see
+also [24, Lemmas 4.1.9 and 4.2.21]). Actually, this lemma should probably hold for general
+rectangles, at the cost of an additional argument that we prefer not to give (we are trying
+to keep the topological arguments to a minimum). Thus, we will work exclusively with good
+rectangles in this paper.
+
+   The following lemma gives the main examples of good rectangles that will be relevant for
+us.
+
+   L EMMA 4.5. Let B be a rectangle in Λ such that either: (a) all side lengths of B are
+strictly less than the side length of Λ, or (b) the vertices of B is a set of the form {x ∈ Λ0 :
+xi ≤ k} or {x ∈ Λ0 : xi ≥ k} for some i ∈ [4], k ∈ Z (i.e., B is the intersection of Λ and a
+half space which is parallel to one of the coordinate axes). Then B is a good rectangle.
+
+  Using the previously introduced notions, we can define a partition of any plaquette set
+P ⊆ Λ2 , as follows.
+
+  D EFINITION 4.6 (Knot decomposition).        For every plaquette set P ⊆ Λ2 , we fix a maxi-
+mal partition
+                                     P = K1 ∪ · · · ∪ Km ,
+such that for all 1 ≤ i ≤ m − 1, we have that Ki is well separated from Ki+1 ∪ · · · ∪ Km by a
+good rectangle Bi in Λ. Here, “maximal" means that for all 1 ≤ i ≤ m, there does not exist a
+further partition Ki = K ∪ K ′ such that K is well separated from K ′ by a good rectangle B
+in Λ. Such a maximal partition may not be unique; we just fix one. We refer to this partition
+as the “knot decomposition" of P . Let K be the collection of all K ⊆ Λ2 which appear in the
+knot decomposition of some P ⊆ Λ2 . We refer to the elements K ∈ K as “knots".
+
+   R EMARK 4.7. The definition of knot decomposition given here is slightly different than
+the one given at the end of [24, Section 4.1]. The slightly more complicated definition of [24]
+was needed for precisely computing Wilson loop expectations, which was the main focus of
+[24]. In the present paper, we are just trying to obtain upper bounds (on correlations), and
+so we can make do with simpler definition that is given.
+
+   The following lemma bounds the number of knots. This is essentially [24, Lemma 4.3.4].
+However, because the definition of knot decomposition is slightly different than the one given
+in [24], we give a proof in Appendix A.3.
+
+  L EMMA 4.8 (Cf. Lemma 4.3.4 of [24]). Let p ∈ Λ2 . For any m ≥ 1, the number of knots
+K ∈ K of size m which contain p is at most (1024 )m .
+
+   The following lemma is a slight generalization of [24, Lemma 4.2.21]. The point of the
+definitions of “well separated" and “good rectangle" (Definitions 4.2 and 4.3) is to have this
+lemma.
+12
+
+   L EMMA 4.9. Let P1 , P2 ⊆ Λ2 . Suppose P1 , P2 are well separated by a good rectangle B
+in Λ. Let T be a spanning tree of S1 (Λ) which contains spanning trees of S2 (B), S2c (B), and
+∂S2 (B). There is a bijection between the set of σ ∈ GF (T ) such that supp(σ) = P1 ∪ P2 ,
+and the set of tuples (σ 1 , σ 2 ) such that σ i ∈ GF (T ), supp(σ i ) = Pi , i = 1, 2. Moreover, if σ
+is mapped to (σ 1 , σ 2 ), then σ = σ 1 σ 2 , σ 1 = 1 on S2c (B), σ 2 = 1 on S2 (B). Consequently, for
+all p ∈ S2 (B), σp1 = σp , and for all p ∈ S2c (B), σp2 = σp .
+
+     P ROOF. This follows by [24, Lemma 4.1.9] (see the proof of [24, Lemma 4.1.21]).
+
+   Using Lemma 4.9, we can prove the next lemma, which will be important in constructing
+an event E(B1 , B2 ) and an associated swapping map T .
+
+   L EMMA 4.10. Let P1 , P2 ⊆ Λ2 be plaquette sets, and suppose that P1 is well separated
+from P2 by a good rectangle B in Λ. Then there is a bijection between
+                                  {ψ ∈ Ω : supp(ψ) ⊆ P1 ∪ P2 }
+and
+                          {(ψ1 , ψ2 ) ∈ Ω2 : supp(ψi ) ⊆ Pi for i = 1, 2}.
+Moreover, suppose that ψ is mapped to (ψ1 , ψ2 ) by the bijection. Then for any p ∈ Λ2 , we
+have that φβ (ψ(ξp )) = φβ (ψ1 (ξp ))φβ (ψ2 (ξp )). We also have that
+                               supp(ψ) = supp(ψ1 ) ∪ supp(ψ2 ).
+Finally, let B0 be a rectangle in Λ, and suppose that B0 ⊆ Pi for some i = 1, 2. Then for
+any loop γ in B0 , and any path ℓ from x0 to the initial vertex of γ , we have that ψ(ℓ−1 γℓ) is
+conjugate to ψi (ℓ−1 γℓ).
+
+     P ROOF. Let
+                              E := {ψ ∈ Ω : supp(ψ) ⊆ P1 ∪ P2 },
+and for i = 1, 2, let
+                                 Ei := {ψ ∈ Ω : supp(ψ) ⊆ Pi }.
+We want to construct a bijection between E and E1 × E2 . Fix TB , a spanning tree of S1 (Λ)
+which contains spanning trees of S2 (B), S2c (B) and ∂S2 (B) (to construct such a TB , first
+take a spanning tree T̃ of ∂S2 (B), and then extend it to spanning trees T1 , T2 of S2 (B),
+S2c (B) respectively, and then define TB := T1 ∪ T2 ). By Lemma 2.14, the set E is in bijection
+with the set F := {σ ∈ GF (TB ) : supp(σ) ⊆ P1 ∪ P2 }. By Lemma 4.9 and the assumption
+that P1 is well separated from P2 by the good rectangle B , the set F is in bijection with the
+set F1 × F2 , where
+                        Fi := {σ ∈ GF (TB ) : supp(σ) ⊆ Pi }, i = 1, 2,
+and moreover if σ is mapped to (σ 1 , σ 2 ) under this bijection, then σ = σ 1 σ 2 , σ 1 = 1 on
+S2c (B), and σ 2 = 1 on S2 (B). Next, by Lemma 2.14, for i = 1, 2, Fi is in bijection with Ei .
+We can thus obtain a bijection between E and E1 × E2 , by composing all the previously
+mentioned bijections:
+                                 E ↔ F ↔ F1 × F2 ↔ E1 × E2 .
+The various claimed properties of this bijection follow because (a) by Lemma 2.14, the
+bijections between E ↔ F and Ei ↔ Fi preserve conjugacy, and (b) in the bijection be-
+tween F ↔ F1 × F2 , we have that if σ is mapped to (σ 1 , σ 2 ), then σp = σpi for p ∈ Pi and
+σp = 1 = σp1 σp2 for p ∈
+                       / (P1 ∪ P2 ), and if B0 ⊆ Pi for some i = 1, 2, then for any loop γ in
+B0 , we have that σγ = σγi .
+                            EXPONENTIAL DECAY OF CORRELATIONS                                   13
+
+  Lemma 4.10 immediately implies the following corollary, whose proof is omitted.
+
+   C OROLLARY 4.11. Let P1 , . . . , Pk ⊆ Λ2 be plaquette sets, such that for all 1 ≤ i ≤ k − 1,
+Pi is well separated from Pi+1 ∪· · ·∪Pk by a good rectangle Bi in Λ. Then there is a bijection
+between
+                               {ψ ∈ Ω : supp(ψ) ⊆ P1 ∪ · · · ∪ Pk }
+and
+                      {(ψi , i ∈ [k]) ∈ Ωk : supp(ψi ) ⊆ Pi for all i ∈ [k]}.
+                       ψ is mapped to (ψi , i ∈ [k]) by the bijection. Then for any p ∈ Λ2 , we
+Moreover, suppose that Q
+have that φβ (ψ(ξp )) = i∈[k] φβ (ψi (ξp )). We also have that
+                                              [
+                                supp(ψ) =          supp(ψi ).
+                                                  i∈[k]
+
+Finally, let B0 be a rectangle in Λ, and suppose that B0 ⊆ Pi for some i ∈ [k]. Then for any
+loop γ in B0 , and any path ℓ from x0 to the initial vertex of γ , we have that ψ(ℓ−1 γℓ) is
+conjugate to ψi (ℓ−1 γℓ).
+
+   D EFINITION 4.12. Given a plaquette set P ⊆ Λ2 , let P = K1 ∪ · · · ∪ Km be the knot
+decomposition of P . Let Θ(P ) be a bijection corresponding to K1 , . . . , Km as in Corollary
+4.11. Such a bijection may not be unique; we just fix one.
+
+   5. Construction of the swapping map. In this section, we construct an event E(B1 , B2 )
+and an associated swapping map T , by using the notions introduced in Section 4. Throughout
+this section, fix rectangles B1 , B2 ⊆ Λ.
+
+  D EFINITION 5.1. Let E(B1 , B2 ) ⊆ Ω2 be the set of pairs (ψ1 , ψ2 ) such that the following
+holds. Take the knot decomposition
+                     supp(ψ1 ) ∪ supp(ψ2 ) ∪ B1 ∪ B2 = K1 ∪ · · · ∪ Km .
+For i = 1, 2, let ji ∈ [m] be such that Bi ⊆ Kji (the existence of such ji follows because
+Bi is a rectangle, and thus cannot be divided into separate knots, by the definition of knot
+decomposition). Then the condition is that j1 ̸= j2 (i.e. B1 , B2 are contained in different
+knots).
+
+  We proceed to define a map T : E(B1 , B2 ) → E(B1 , B2 ) with the properties required in
+Definition 3.1.
+
+  D EFINITION 5.2.      Let (ψ1 , ψ2 ) ∈ E(B1 , B2 ). As in the definition of E(B1 , B2 ), take the
+knot decomposition
+                  P := supp(ψ1 ) ∪ supp(ψ2 ) ∪ B1 ∪ B2 = K1 ∪ · · · ∪ Km ,
+and also let j2 be as defined in that definition. Recalling Definition 4.12, let Θ = Θ(P ).
+Define the map U from the set
+                    {(ψi , i ∈ [m]) ∈ Ωm : supp(ψi ) ⊆ Ki for all i ∈ [m]}2
+to itself as follows. Map
+             ((ψ1,i , i ∈ [m]), (ψ2,i , i ∈ [m])) 7→ ((ψ̃1,i , i ∈ [m]), (ψ̃2,i , i ∈ [m])),
+14
+
+where
+                                               (
+                                                ψ1,i     i ̸= j2
+                                      ψ̃1,i :=                   ,
+                                                ψ2,j2    i = j2
+                                               (
+                                                ψ2,i     i ̸= j2
+                                      ψ̃2,i :=                   .
+                                                ψ1,j2    i = j2
+In other words, U simply swaps the j2 -th coordinate. Let U1 , U2 be the coordinate functions
+of U , i.e. they are such that U = (U1 , U2 ). Finally, define T : E(B1 , B2 ) → E(B1 , B2 ) by
+               (ψ1 , ψ2 ) 7→ Θ−1 (U1 (Θ(ψ1 ), Θ(ψ2 ))), Θ−1 (U2 (Θ(ψ1 ), Θ(ψ2 ))) .
+                                                                                  
+
+This definition may not be very illuminating when written out, but just think of T as swapping
+the j2 -th coordinate (as in the definition of U ), once we have identified ψ1 , ψ2 with the tuples
+(ψ1,i , i ∈ [m]), (ψ2,i , i ∈ [m]) (and this identification is what Θ is doing).
+
+     The next sequence of lemmas combine to show that T has all the desired properties.
+
+   L EMMA 5.3. The map T is an involution, i.e. for any (ψ1 , ψ2 ) ∈ E(B1 , B2 ), we have
+that T 2 (ψ1 , ψ2 ) = (ψ1 , ψ2 ). As an immediate consequence, T is a bijection.
+
+   P ROOF. If we think of T as simply swapping the j2 -th coordinate, then it’s clear that T
+is an involution. This is the idea underlying the proof we proceed to give. Let T1 , T2 be the
+coordinate functions of T . By the definition of T and Corollary 4.11, we have that
+               supp(ψ1 ) ∪ supp(ψ2 ) = supp(T1 (ψ1 , ψ2 )) ∪ supp(T2 (ψ1 , ψ2 )).
+Let ψ̃i = Ti (ψ1 , ψ2 ) for i = 1, 2. The above implies that we get the exact same knot decom-
+position
+                      supp(ψ̃1 ) ∪ supp(ψ̃2 ) ∪ B1 ∪ B2 = K1 ∪ · · · ∪ Km .
+Therefore in obtaining T (ψ̃1 , ψ̃2 ), we use the exact same maps Θ, U as were used to define
+T (ψ1 , ψ2 ). Now by definition, we have that
+                             T1 (ψ̃1 , ψ̃2 ) = Θ−1 (U1 (Θ(ψ̃1 ), Θ(ψ̃2 ))),
+
+                         ψ̃1 = T1 (ψ1 , ψ2 ) = Θ−1 (U1 (Θ(ψ1 ), Θ(ψ2 ))),
+
+                         ψ̃2 = T2 (ψ1 , ψ2 ) = Θ−1 (U2 (Θ(ψ1 ), Θ(ψ2 ))).
+Let ηi = Ui (Θ(ψ1 ), Θ(ψ2 )) for i = 1, 2. Note that (η1 , η2 ) = U (Θ(ψ1 ), Θ(ψ2 )). Combining
+the above three displays, we obtain
+                T1 (ψ̃1 , ψ̃2 ) = Θ−1 (U1 (η1 , η2 )) = Θ−1 (U1 (U (Θ(ψ1 ), Θ(ψ2 )))).
+Next, observe that U is by construction an involution, from which we further obtain
+                                T1 (ψ̃1 , ψ̃2 ) = Θ−1 (Θ(ψ1 )) = ψ1 .
+The same argument shows that T2 (ψ̃1 , ψ̃2 ) = ψ2 . The desired result now follows.
+                                  EXPONENTIAL DECAY OF CORRELATIONS                                           15
+
+   L EMMA 5.4.        For any (ψ1 , ψ2 ) ∈ E(B1 , B2 ), we have that
+                      Y                 Y
+                         φβ (ψ1 (ξp ))      φβ (ψ2 (ξp )) =
+                      p∈Λ2                    p∈Λ2
+                                  Y                                    Y
+                                          φβ (T1 (ψ1 , ψ2 )(ξp ))              φβ (T2 (ψ1 , ψ2 )(ξp )).
+                                  p∈Λ2                              p∈Λ2
+                              ⊗2                    ⊗2
+As an immediate consequence, νΛ,β (T (ψ1 , ψ2 )) = νΛ,β ((ψ1 , ψ2 )) (recall Definition 2.10).
+
+  P ROOF. Let all notation be as in Definition 5.2. For i = 1, 2, let Θ(ψi ) = (ψi,j , j ∈ [m]).
+By Corollary 4.11, we have that
+                    Y                   Y Y
+                        φβ (ψi (ξp )) =          φβ (ψi,j (ξp )), i = 1, 2.
+                        p∈Λ2                         p∈Λ2 j∈[m]
+
+It follows that
+                      Y                       Y
+                          φβ (ψ1 (ξp ))             φβ (ψ2 (ξp )) =
+                  p∈Λ2                       p∈Λ2
+                                              Y                               Y                      
+                                                     φβ (ψ2,j2 (ξp ))                  φβ (ψ1,j (ξp )) ×
+                                             p∈Λ2                              j̸=j2
+                                              Y                               Y                      
+                                                     φβ (ψ1,j2 (ξp ))                  φβ (ψ2,j (ξp )) .
+                                             p∈Λ2                              j̸=j2
+
+By Corollary 4.11 and the definition of T , the right hand side above is exactly
+                    Y                            Y
+                         φβ (T1 (ψ1 , ψ2 )(ξp ))     φβ (T2 (ψ1 , ψ2 )(ξp )),
+                          p∈Λ2                                  p∈Λ2
+
+and thus the desired result follows.
+
+   L EMMA 5.5. Let k1 , k2 ≥ 1, and let f1 : Gk1 → C, f2 : Gk2 → C be conjugacy invariant
+                              (i)          (i)
+functions. For i = 1, 2, let γ1 , . . . , γki be closed loops contained in Bi . For any (ψ1 , ψ2 ) ∈
+E(B1 , B2 ), the following holds. Let ψ̃1 = T1 (ψ1 , ψ2 ). Then we have that
+                  f1 (ψ1 (ξγ (1) ), . . . , ψ1 (ξγ (1) ))f2 (ψ2 (ξγ (2) ), . . . , ψ2 (ξγ (2) )) =
+                                  1                   k1                   1                    k2
+
+
+                        f1 (ψ̃1 (ξγ (1) ), . . . , ψ̃1 (ξγ (1) ))f2 (ψ̃1 (ξγ (2) ), . . . , ψ̃1 (ξγ (2) )).
+                                      1                    k1                     1                   k2
+
+
+
+  P ROOF. Let all notation be as in Definition 5.2. For i = 1, 2, let Θ(ψi ) = (ψi,j , j ∈ [m]).
+By Corollary 4.11, we have that
+(5.1)                  ψi (ξγ (i) ) is conjugate to ψi,ji (ξγ (i) ), l ∈ [ki ], i = 1, 2.
+                              l                                        l
+
+Now by construction, we have that
+                        Θ(ψ̃1 ) = (ψ1,1 , . . . , ψ1,j2 −1 , ψ2,j2 , ψ1,j2 +1 , . . . , ψ1,m ).
+Thus by Corollary 4.11 and equation (5.1), we have that
+           ψ̃1 (ξγ (1) ) is conjugate to ψ1,j1 (ξγ (1) ) is conjugate to ψ1 (ξγ (1) ), l ∈ [k1 ]
+                  l                                        l                                      l
+
+
+
+           ψ̃1 (ξγ (2) ) is conjugate to ψ2,j2 (ξγ (2) ) is conjugate to ψ2 (ξγ (2) ), l ∈ [k2 ].
+                  l                                        l                                     l
+
+Since f1 , f2 are conjugacy invariant, the desired result now follows.
+16
+
+     The previous few lemmas combine to immediately imply the following corollary.
+
+   C OROLLARY 5.6. For any functions h1 , h2 : Ω → C as in Proposition 3.3, T is a swap-
+ping map with respect to (E(B1 , B2 ), h1 , h2 , νΛ,β ).
+
+   6. Probability bound. In this section, we prove the probability bound from Proposition
+3.3.
+
+     P ROPOSITION 6.1.          Let β, L, B1 , B2 be as in Theorem 1.1. Let E(B1 , B2 ) be defined
+                                                       i.i.d.
+using B1 , B2 , as in Definition 5.1. Let Ψ1 , Ψ2 ∼ νΛ,β . Then
+                          / E(B1 , B2 )) ≤ 2(4 · 1024 |G|2 )|B1 |+|B2 | e−(β/2)∆G (L−1) .
+             P((Ψ1 , Ψ2 ) ∈
+
+  As we will see, the proof is essentially a Peierls argument. To begin towards the proof, we
+make the following definitions.
+
+     D EFINITION 6.2.      Let P ⊆ Λ2 . Given ψ1 , ψ2 ∈ Ω, define
+                            suppP (ψ1 , ψ2 ) := supp(ψ1 ) ∪ supp(ψ2 ) ∪ P.
+
+     D EFINITION 6.3.     Let P0 , P ⊆ Λ2 . Define
+                      (2)
+                                       X           Y
+                     ΦP0 (P ) :=                     φβ (ψ1 (ξp ))φβ (ψ2 (ξp )).
+                                         ψ1 ,ψ2 ∈Ω      p∈Λ2
+                                     suppP0 (ψ1 ,ψ2 )=P
+
+                          (2)
+Define Φ(2) (P ) := Φ∅ (P ), i.e. if there is no subscript, then by default we take P0 to be the
+empty set.
+                                                                (2)
+   The following lemma shows that the function ΦP factors according to the notion of well
+separated (recall Definition 4.2).
+
+     L EMMA 6.4.     Let P1 , P2 ⊆ Λ2 be well separated by a good rectangle B in Λ. Then
+                                   Φ(2) (P1 ∪ P2 ) = Φ(2) (P1 )Φ(2) (P2 ).
+Additionally, let P0 ⊆ Λ2 , and suppose that P0 ⊆ P1 (resp. P0 ⊆ P2 ). Then
+                    (2)                   (2)                                          (2)
+                ΦP0 (P1 ∪ P2 ) = ΦP0 (P1 )Φ(2) (P2 ) (resp. Φ(2) (P1 )ΦP0 (P2 )).
+
+   P ROOF. To show the first identity, we need to show that there is a bijection between the
+sets
+                           E := {(ψ1 , ψ2 ) ∈ Ω2 : supp(ψ1 , ψ2 ) = P1 ∪ P2 }
+and E1 × E2 , where
+                    Ei := {(ψ1,i , ψ2,i ) ∈ Ω2 : supp(ψ1,i , ψ2,i ) = Pi }, i = 1, 2,
+and moreover, if (ψ1 , ψ2 ) is mapped to ((ψ1,1 , ψ2,1 ), (ψ1,2 , ψ2,2 )) by the bijection, then we
+have that
+           Y
+                φβ (ψ1 (ξp ))φβ (ψ2 (ξp )) =
+             p∈Λ2
+                    Y                                       Y
+                           φβ (ψ1,1 (ξp ))φβ (ψ2,1 (ξp ))             φβ (ψ1,2 (ξp ))φβ (ψ2,2 (ξp )).
+                    p∈Λ2                                    p∈Λ2
+                            EXPONENTIAL DECAY OF CORRELATIONS                                      17
+
+Let Θ be a bijection as in Corollary 4.11 corresponding to P1 , P2 . Given (ψ1 , ψ2 ) ∈ E
+and i = 1, 2, let Θ(ψi ) = (ψi,1 , ψi,2 ). Define the map E → E1 × E2 by (ψ1 , ψ2 ) 7→
+((ψ1,1 , ψ2,1 ), (ψ1,2 , ψ2,2 )). The fact that this is a bijection with the required properties fol-
+lows by Corollary 4.11. The second identity may be similarly argued.
+
+   By repeated applications of Lemma 6.4, we can obtain the following corollary. The proof
+is omitted.
+
+   C OROLLARY 6.5. Let P0 ⊆ Λ2 . Let K ⊆ Λ2 be a knot such that K ⊇ P0 . If P ⊆ Λ2 is
+such that K appears in the knot decomposition of P , then
+                                  (2)          (2)
+                                 ΦP0 (P ) = ΦP0 (K)Φ(2) (P − K).
+
+  In the usual Peierls argument for long range order of the Ising model at low temperatures,
+one shows that the presence of a large contour is exponentially unlikely in the length of the
+contour. The following two lemmas combine to give the analogous statement for our setting.
+
+                                                                                          i.i.d.
+  L EMMA 6.6. Let P0 ⊆ Λ2 . Let K ⊆ Λ2 be a knot such that K ⊇ P0 . Let Ψ1 , Ψ2 ∼ νΛ,β ,
+and let FK be the event that K appears in the knot decomposition of suppP0 (Ψ1 , Ψ2 ). Then
+           (2)
+P(FK ) ≤ ΦP0 (K).
+
+  P ROOF. For notational brevity, given P ⊆ Λ2 , let K ∈ P to mean that K is in the knot
+decomposition of P . We have that
+                    ψ1 ,ψ2 ∈Ω 1(K ∈ suppP0 (ψ1 , ψ2 )) p∈Λ2 φβ (ψ1 (ξp ))φβ (ψ2 (ξp ))
+                  P                                    Q
+      P(FK ) =                 P           Q                                           .
+                                 ψ1 ,ψ2 ∈Ω   p∈Λ2 φβ (ψ1 (ξp ))φβ (ψ2 (ξp ))
+
+Observe that the denominator is equal to P ⊆Λ2 Φ(2) (P ), while the numerator is equal to
+                                           P
+
+                         X (2)              (2)
+                                                   X
+                              ΦP0 (P ) = ΦP0 (K)         Φ(2) (P − K),
+                         P ⊆Λ2                          P ⊆Λ2
+                         K∈P                            K∈P
+
+where we have applied Corollary 6.5. We may further bound the right hand side above by
+                                  (2)
+                                         X
+                                 ΦP0 (K)      Φ(2) (P ).
+                                                P ⊆Λ2
+
+The desired result now follows by combining the previous observations.
+
+   L EMMA 6.7.     Let P0 , P ⊆ Λ2 . Then
+                                 (2)
+                              ΦP0 (P ) ≤ 4|P | |G|2|P | e−β∆G |P −P0 | .
+
+   P ROOF. In order for ψ1 , ψ2 ∈ Ω to be such that suppP0 (ψ1 , ψ2 ) = P , we must have
+that supp(ψ1 ), supp(ψ2 ) ⊆ P . Thus there are at most 4|P | = 2|P | 2|P | possible choices of
+(supp(ψ1 ), supp(ψ2 )). Now fix S1 , S2 ⊆ P (such that S1 ∪ S2 ∪ P0 = P ). It remains to show
+that
+                          X          Y
+                                         φβ (ψ1 (ξp ))φβ (ψ2 (ξp )) ≤
+                         ψ1 ,ψ2 ∈Ω       p∈P
+                     supp(ψi )=Si ,i=1,2
+
+                                                          |G|2|P | e−β∆G |P −P0 | .
+18
+
+First, note that for any ψ1 , ψ2 ∈ Ω such that supp(ψi ) = Si for i = 1, 2, we have that for any
+p ∈ (S1 ∪ S2 ) − P0 = P − P0 ,
+                                 φβ (ψ1 (ξp ))φβ (ψ2 (ξp )) ≤ e−β∆G .
+It thus follows that
+                          Y
+                                φβ (ψ1 (ξp ))φβ (ψ2 (ξp )) ≤ e−β∆G |P −P0 | .
+                          p∈P
+
+To finish, note that by Lemma 2.8, for i = 1, 2, the number of homomorphisms ψ ∈ Ω such
+that supp(ψ) = Si is at most |G||Si | ≤ |G||P | .
+
+   The following lemma shows that if a knot K contains plaquettes which are very far apart
+from each other, then the knot itself must be large (intuitively, this is true because knots are
+in some sense “connected"). This is the last ingredient needed for our Peierls argument.
+
+   L EMMA 6.8. Let L ≥ 0. Let P1 , P2 ⊆ Λ2 be plaquette sets such that the ℓ∞ distance
+between any vertex of P1 and any vertex of P2 is at least L. If K ⊆ Λ2 is a knot such that
+K ⊇ P1 ∪ P2 , then |K| ≥ |P1 | + |P2 | + L − 1.
+
+   P ROOF. By assumption, there is some coordinate direction i ∈ [4] such that the dis-
+tance between P1 and P2 in the ith coordinate is at least L. Thus (without loss of gen-
+erality) we can assume that there are integers m1 , m2 ∈ Z such that m2 − m1 ≥ L, and
+for all vertices x of a plaquette in P1 , and all vertices y of a plaquette in P2 , we have
+that xi ≤ m1 , yi ≥ m2 . For m1 + 1 ≤ k ≤ m2 − 1, let Rk be the rectangle in Λ defined
+by taking all vertices x ∈ Λ0 such that xi ≤ k . Observe that for all k , ∂S2 (Rk ) is the set
+of plaquettes p ∈ Λ2 such that all vertices x of p have xi = k . Thus the plaquette sets
+(∂S2 (Rk ), m1 + 1 ≤ k ≤ m2 − 1) are mutually disjoint, and moreover ∂S2 (Rk ) is disjoint
+from P1 ∪ P2 for all m1 + 1 ≤ k ≤ m2 − 1. By Lemma 4.5, Rk is a good rectangle, and thus
+by the definition of knot decomposition, we must have that for all m1 + 1 ≤ k ≤ m2 − 1,
+K ∩ ∂S2 (Rk ) ̸= ∅. Combining these observations with the assumption that K ⊇ P1 ∪ P2 ,
+we obtain that |K| ≥ |P1 | + |P2 | + (m2 − m1 − 1) ≥ |P1 | + |P2 | + L − 1, as desired.
+
+     We finally have enough to prove Proposition 6.1.
+
+   P ROOF OF P ROPOSITION 6.1. Let m0 := |B1 |+|B2 |. In order for (Ψ1 , Ψ2 ) ∈
+                                                                              / E(B1 , B2 ),
+there must be a knot K containing the plaquettes of B1 , B2 such that the event FK occurs.
+Thus by a union bound and Lemma 6.8, we have that
+                                                      ∞
+                                                      X             X
+                 P((Ψ1 , Ψ2 ) ∈
+                              / E(B1 , B2 )) ≤                                  P(FK ).
+                                                 m=m0 +L−1 K a knot of size m
+                                                             K⊇B1 ∪B2
+
+Now combining Lemmas 4.8, 6.6, and 6.7, we further obtain (using the assumption that β is
+large enough to ensure that the geometric series is summable)
+                                                ∞
+                                                X
+            P((Ψ1 , Ψ2 ) ∈
+                         / E(B1 , B2 )) ≤                (4 · 1024 |G|2 )m e−β∆G (m−m0 )
+                                            m=m0 +L−1
+
+                                                                (4 · 1024 |G|2 e−β∆G )L−1
+                                         = (4 · 1024 |G|2 )m0                             .
+                                                                 1 − 4 · 1024 |G|2 e−β∆G
+                            EXPONENTIAL DECAY OF CORRELATIONS                                     19
+
+To finish, note that the assumption on β implies that
+                                   4 · 1024 |G|2 e−(β/2)∆G ≤ 1,
+and thus we obtain
+                            / E(B1 , B2 )) ≤ 2(4 · 1024 |G|2 )m0 e−(β/2)∆G (L−1) ,
+               P((Ψ1 , Ψ2 ) ∈
+as desired.
+
+    P ROOF OF P ROPOSITION 3.3. This is a direct consequence of Corollary 5.6 and Propo-
+sition 6.1.
+
+                           APPENDIX A: TOPOLOGICAL FACTS
+   A.1. Edge configurations and homomorphisms. First, we recall an explicit set of gen-
+erators of π1 (S1 (Λ), x0 ) (for a reference, see e.g. [51, Section 2.1.7]). Fix a spanning tree T
+of S1 (Λ). For any vertex x ∈ Λ0 , let wx denote the unique path in T from x0 to x. For any
+edge e = (x, y) ∈ S1 (Λ), let ae be the closed loop obtained by starting at x0 , following wx to
+x, then traversing e = (x, y), then following the path wy in reverse, from y to x0 . Symboli-
+cally, we write
+                                           ae = wx ewy−1 .
+(Note if e is in the spanning tree T , and x is closer than y to x0 (in the distance induced by T ),
+then ae = wy wy−1 is the path which starts at x0 , follows the path wy to y , and then retraces its
+steps, following the path wy in reverse, from y to x0 . Thus in this case ae is equivalent to the
+trivial path.) Then for any closed loop γ = e1 · · · en in S1 (Λ) starting and ending at x0 , we
+have that γ is equivalent to ae1 · · · aen . Thus if [ae ] ∈ π1 (S1 (Λ), x0 ) denotes the equivalence
+class containing ae , we have that {[ae ], e ∈ S1 (Λ) − T } is a generating set for π1 (S1 (Λ), x0 ).
+
+   L EMMA A.1.      For any ψ ∈ Ω, there exists σ ∈ GΛ1 such that ψx0 (σ) = ψ .
+
+   P ROOF. Fix a spanning tree T of S1 (Λ). Define σ ∈ GΛ1 as follows. For e ∈ T , define
+σe := 1. For e ∈ S1 (Λ) − T , define σe := ψ([ae ]). By construction, we have that for all
+e ∈ S1 (Λ) − T , (ψx0 (σ))([ae ]) = σe = ψ([ae ]). Since {[ae ], e ∈ S1 (Λ) − T } is a generating
+set for π1 (S1 (Λ), x0 ), it follows that ψx0 (σ) = ψ , as desired.
+
+   L EMMA A.2. Let σ, τ ∈ GΛ1 . Then ψx0 (σ) = ψx0 (τ ) if and only if there exists a function
+h ∈ GΛ0 with hx0 = 1, such that for all edges e = (x, y) ∈ S1 (Λ), we have
+                                           σe = hx τe h−1
+                                                       y .
+
+  P ROOF. We prove the nontrivial direction. Suppose that ψx0 (σ) = ψx0 (τ ). We define h ∈
+GΛ0 as follows. Fix a spanning tree T of S1 (Λ). First, as required, hx0 := 1. Now for any
+edge e = (x0 , x) ∈ T , define hx so that
+                                           σe = hx0 τe h−1
+                                                        x ,
+
+i.e.
+                                            hx := σe−1 τe .
+More generally, for any x ∈ Λ0 , suppose wx = e1 · · · en (recall the notation that wx is the
+unique path in T from x0 to x). Define
+                                 hx := (σe1 · · · σen )−1 τe1 · · · τen .
+20
+
+We now show that h is as required. Fix an edge e = (x, y). Suppose first that e ∈ T . Without
+loss of generality, suppose that y is further from the root x0 of T than x, so that wy = wx e. If
+wx = e1 · · · en , then
+           hx τe h−1                  −1                                   −1
+                  y = (σe1 · · · σen ) τe1 · · · τen τe (τe1 · · · τen τe ) σe1 · · · σen σe = σe ,
+
+as desired. Now suppose e ∈ S1 (Λ)\T . Let wx = e1 · · · en , wy = f1 · · · fm . Then
+                hx τe h−1                  −1                                −1
+                       y = (σe1 · · · σen ) τe1 · · · τen τe (τf1 · · · τfm ) σf1 · · · σfm
+
+                           = (σe1 · · · σen )−1 (ψx0 (τ ))([ae ])σf1 · · · σfm .
+To finish, we want to show
+                           (σe1 · · · σen )−1 (ψx0 (τ ))([ae ])σf1 · · · σfm = σe .
+If we move all the σ ’s to the right hand side, we see that we need to show
+                                   (ψx0 (τ ))([ae ]) = (ψx0 (σ))([ae ]),
+which is true by assumption.
+
+  L EMMA A.3 (Lemma 4.1.3 of [24]). Let σ ∈ GΛ1 , and h ∈ GΛ0 with hx0 = 1. Let τ ∈
+G 1 be the edge configuration given by τe := hx σe h−1
+ Λ
+                                                    y for each e = (x, y) ∈ Λ1 . If there
+exists x ∈ Λ0 such that hx ̸= 1, then σ ̸= τ .
+
+     P ROOF OF L EMMA 2.4. This follows by Lemmas A.1, A.2, and A.3.
+
+   P ROOF OF L EMMA 2.14. Let ψ ∈ Ω. The existence of σ ∈ GF (T ) such that ψx0 (σ) = ψ
+follows from the proof of Lemma A.1. For uniqueness, observe that for e ∈ S1 (Λ) − T , we
+must have σe = (ψx0 σ)([ae ]) = ψ([ae ]). Thus ψx0 is a bijection. The various properties of
+ψx0 follow by Lemma 2.3.
+
+     A.2. Good rectangles.
+
+    P ROOF OF L EMMA 4.5. Case (a) is [24, Lemma 4.1.20]. For case (b), first note that by
+[24, Lemma 4.1.20], S2 (B) is simply connected, since B is a rectangle. Now, suppose that the
+vertices of B are given by the set {x ∈ Λ0 : xi ≤ k} for some i ∈ [4], k ∈ Z (the case xi ≥ k
+follows by the same argument). This implies that ∂S2 (B) is the 2-complex obtained from the
+set of plaquettes p whose vertices all lie in the set {x ∈ Λ0 : xi = k}. This implies that S2c (B)
+is also a rectangle (whose vertices are {x ∈ Λ0 : xi ≥ k}), and thus by [24, Lemma 4.1.20]
+S2c (B) is simply connected. To see why ∂S2 (B) is simply connected, note that it essentially
+is a rectangle in one lower dimension, i.e. it is a 3D rectangle. Following the proof of [24,
+Lemma 4.1.20] in [24, Appendix B], we may attach to ∂S2 (B) all 3-cells whose boundary
+plaquettes are all contained in ∂S2 (B). This operation does not change the fundamental
+group (see e.g. [51, Section 4.1.5]), and the resulting space is a 3D rectangle in R4 , which is
+simply connected.
+
+   A.3. Knot upper bound. Most of the following discussion is borrowed from [24, Sec-
+tion 4.4]. Indeed, to prove Lemma 4.8, we will show how to deduce it from [24, Corollary
+4.4.8].
+                             EXPONENTIAL DECAY OF CORRELATIONS                                    21
+
+   D EFINITION A.4 (Cf. Definition 3.2.2 of [24]). Given a plaquette set P ⊆ Λ2 , we may
+obtain an undirected graph G(P ) as follows. The vertices of the graph are the plaquettes of
+P . Place an edge between any two plaquettes p1 , p2 ∈ P such that there is a 3-cell c in Λ
+which contains both p1 , p2 .
+   A vortex is a set V ⊆ Λ2 such that G(V ) is connected. For general plaquette sets P ⊆
+Λ2 , we may partition G(P ) into connected components G1 , . . . , Gk , which corresponds to a
+partition of P into vortices V1 , . . . , Vk , such that Gi = G(Vi ) for all 1 ≤ i ≤ k . Observe that
+as the partition of an undirected graph into connected components is unique, the resulting
+partition of P into vortices is also unique.
+   Given a plaquette set P ⊆ Λ2 , let the unique partition of P into compatible vortices
+V1 , . . . , Vk as previously described be called the vortex decomposition of P . For each
+1 ≤ i ≤ k , we say that Vi is a vortex of P .
+
+   D EFINITION A.5. Given a plaquette set P ⊆ Λ2 , define B(P ) as a cube of minimal side
+length in Λ such that all plaquettes of P are in S2 (B(P )), but not in ∂S2 (B(P )). If the
+choice of B(P ) is not unique, fix one such cube. For P, P ′ ⊆ Λ2 , define the function
+                                (
+                          ′        1 P ∩ B(P ′ ) ̸= ∅ or P ′ ∩ B(P ) ̸= ∅
+                   J(P, P ) :=                                              .
+                                   0 otherwise
+
+To be clear, we are slightly abusing notation here by writing P ∩ B(P ′ ) ̸= ∅; what this means
+is that there is a plaquette p ∈ P which is contained in B(P ′ ).
+
+    D EFINITION A.6. We define a hierarchy of undirected graphs Gs (P ), for integers s ≥ 0.
+First, to define G0 (P ), consider the vortex decomposition P = V1 ∪ · · · ∪ Vn0 . Define Pi0 :=
+Vi , 1 ≤ i ≤ n0 . The vertex set of G0 (P ) is {P10 , . . . , Pn00 }. The edge set is
+                                {{Pi0 , Pj0 } : i ̸= j, J(Pi0 , Pj0 ) = 1}.
+Now suppose for some s ≥ 0, Gs (P ) is defined, with vertices P1s , . . . , Pnss ⊆ Λ2 which are
+compatible (and thus disjoint), and such that P = P1s ∪ · · · ∪ Pnss . To define Gs+1 (P ), first let
+ns+1 be the number of connected components of Gs (P ), with connected components given
+by the partition I1 ∪ · · · ∪ Ins+1 = [ns ]. For 1 ≤ i ≤ ns+1 , define
+                                                    [
+                                          Pis+1 :=      Pjs .
+                                                      j∈Ii
+
+The vertex set of Gs+1 (P ) is {P1s+1 , . . . , Pns+1
+                                                   s+1
+                                                       }, and the edge set is
+
+                          {{Pis+1 , Pjs+1 } : i ̸= j, J(Pis+1 , Pjs+1 ) = 1}.
+Observe that if s ≥ 1 is such that ns = 1, then Gs−1 (P ) is connected.
+
+   D EFINITION A.7. For P ⊆ Λ2 , define s∗ (P ) := min{s : ns = 1}. If ns > 1 for all s,
+define s∗ (P ) = ∞. Let D be the collection of P ⊆ Λ2 such that s∗ (P ) < ∞, and such that for
+all s ≤ s∗ (P ), any vertex of Gs (K) is of size at least 2s . Observe that if P ∈ D and |P | = m,
+then s∗ (P ) ≤ ⌊log2 m⌋, and consequently G⌊log2 m⌋−1 (P ) is connected. Now define
+                      A(m, s) := {P ∈ D : |P | = m, Gs (P ) is connected}.
+By the previous observation, note if s ≥ ⌊log2 m⌋ − 1, then A(m, s) = A(m, ⌊log2 m⌋ − 1).
+Now for p ∈ Λ2 , define
+                              A(m, s, p) := {P ∈ A(m, s) : P ∋ p}.
+22
+
+  L EMMA A.8 (Corollary 4.4.8 of [24]).     For all m ≥ 1, 0 ≤ s ≤ ⌊log2 m⌋ − 1, p ∈ Λ2 , we
+have that
+                                  |A(m, s, p)| ≤ (1024 )m .
+
+   L EMMA A.9. Let K ∈ K, s ≥ 0. If ns > 1, then there are no isolated vertices of Gs (K).
+Consequently, every connected component of Gs (K) is of size at least 2, and thus if also
+s ≤ s∗ (K), then for all vertices Pis of Gs (K), we have |Pis | ≥ 2s . Consequently, K ∈ D.
+
+   P ROOF. Let Pis be a vertex of Gs (K). Since ns > 1 by assumption, we have K − Pis ̸= ∅.
+Then by the definition of knot decomposition (Definition 4.6), there cannot exist a cube which
+well separates Pis from K − Pis (note that such a cube would automatically have side length
+strictly less than the side length of Λ, and thus by Lemma 4.5, it would be a good rectangle).
+Therefore we must have B(Pis ) ∩ (K − Pis ) ̸= ∅, and thus Pis cannot be an isolated vertex
+in Gs (K).
+
+    P ROOF OF L EMMA 4.8. By Lemma A.9, for any knot K ∈ K, we have that K ∈ D. Thus
+if |K| = m, then K ∈ A(m, ⌊log2 m⌋ − 1). The desired result now follows by Lemma A.8.
+
+
+                        APPENDIX B: HIGGS BOSON LARGE κ
+   In this section, we will adapt our swapping argument technique to establish correlation
+decay for Wilson loop observables for lattice Yang-Mills theories coupled to a Higgs boson.
+This is the model treated in the work [1].
+   In said work, the analysis of the Higgs’ boson differed in two cases; namely, the cluster
+expansion techniques used when κ was large or when κ was small were different. In this
+section, we discuss briefly the case that κ is large.
+   The mainPnew term of the Hamiltonian, when coupled to the Higgs’ boson, is a term of
+the form κ e=(x,y)∈Λ1 Re[ϕx Tr[ρ(σe )]ϕ−1  y − Tr[ρ(1)]]. When κ is large, this term tends to
+force σe = 1 as well as ϕx = ϕy .
+   The new difficulty introduced when applying our swapping argument is that we now need
+to describe how one will swap the Higgs’ boson configuration appropriately. On a high level,
+the appropriate ’clusters’ for the Higgs boson are found by locating the boundaries between
+unequal ϕx and ϕy . The swapping map we design will preserve said boundaries as appropri-
+ate. In what follows, we go into more detail on the construction.
+
+   B.1. Introduction. Our configurations consist of two components. The first is the gauge
+field σ : Λ1 → G with representation ρ. (We abuse notation slightly and use Λ1 to represent
+all edges rather than just the positively oriented ones; similarly, Λ2 will denote all of the
+plaquettes, rather than just the positively oriented ones.) We have considered excitations of
+this field in the previous sections. The second is a Higgs boson field that acts as a map from
+the vertices Λ0 → H . H is a subgroup of the multiplicative group of the unit circle. The
+Hamiltonian that we consider is,
+(B.1)               X                                 X
+  HN,β,κ (σ, ϕ) =       β Tr[ρ((dσ)p ) − ρ(1)] + κ           Re[ϕx Tr[ρ(σe )]ϕ−1
+                                                                              y − Tr[ρ(1)]].
+                 p∈Λ2                            e=(x,y)∈Λ1
+
+   If we consider computing the expectation of Gauge invariant functions, then we can make
+the following simplification to the gauge group. We let Ht be the set of elements ht such
+that there exists some g ∈ G such that ρ(g) = ht I . Then, by an appropriate simultaneous
+                           EXPONENTIAL DECAY OF CORRELATIONS                                  23
+
+gauge transformation of σ and ϕ, we may consider the case that the Higgs field is a map from
+Λ0 → H/Ht . The benefit of this gauge transformation is that if ϕx Tr[ρ(σe )]ϕ−1
+                                                                              y = Tr[ρ(1)],
+then necessarily ϕx = ϕy and σe = 1.
+   As such, we can have the following definition of support of our configuration.
+
+  D EFINITION B.1. Consider a configuration C = (σ, ϕ). We let EE , the set of our excited
+edges, be defined as,
+(B.2)                   EE := {e = (x, y) ∈ Λ1 : ϕx ̸= ϕy or σe ̸= 1}.
+  The definition of the support of our configuration is as follows,
+(B.3)                    supp(C) = {p ∈ Λ2 : ∃e ∈ EE s.t. e ∈ δp}.
+Namely, a plaquette p is in our support if there exists an edge e in the set of our excited edges
+EE such that e is in the boundary of p.
+  Given two configurations C1 and C2 , the joint support of C1 and C2 will be the union of the
+supports of C1 and C2 .
+
+(B.4)                    suppP (C1 , C2 ) = supp(C1 ) ∪ supp(C2 ) ∪ P.
+
+  Our goal in this section is to prove the following theorem,
+
+   T HEOREM B.2. Consider two boxes B1 , B2 separated by ℓ∞ distance L. Additionally,
+let f and g be functions such that f only depends on the values of σ and ϕ in the box B1 ,
+while g depends only on the values of σ and ϕ in the box B2 . Furthermore, assume that
+transformations of the form σe → ηx σe ηy−1 for some auxiliary field η : Λ0 → G, do not affect
+the values of f or g . Then, for sufficiently large β and κ, we have that
+                                                                h κ iL−|B1 ∪B2 |
+(B.5)         Cov(f, g) ≤ C||f ||∞ ||g||∞ |G|8L |H/Ht |8L exp −c                 ,
+                                                                    6
+where C is a constant that does not depend on |G|, |H/Ht |, β or κ, and c is a constant defined
+in Lemma B.7.
+
+   The statement can easily be generalized to the form phrased in Theorem 1.1 with little
+difficulty.
+
+    B.2. Construction of the Swapping Map. We will restrict our analysis to the case that
+H/Ht is the group Z2 . We can call one of the charge assignments + and the other charge
+assignments −. Our assignment of Higgs boson fields would be analogous to the assignment
+of charges in the Ising model.
+    Let B1 and B2 be two boxes separated by distance at least L. Let C1 = (σ1 , ϕ1 ) and C2 =
+(σ2 , ϕ2 ) be two configurations of gauge and Higgs boson fields.
+    Let V1 ∪ V2 ∪ . . . ∪ VN be the vortex decomposition of suppB1 ∪B2 (C1 , C2 ). Assume that
+B1 and B2 are in different vortices of the vortex decomposition. Assume that B1 ∈ V1 and
+B2 ∈ V2 . We will show that we can construct a swapping map in this case.
+    Observe from the definition of our support that σe = 1 for all edges e that are not boundary
+plaquettes of some plaquette in supp(C1 , C2 ). It is very easy to define our exchange map for
+σ . We let Λ1 (V2 ) be the set of edges that form boundary vertices of plaquettes in V2 . We set
+σ̃1 to be equal to σ1 on Λ1 (V2 )c and equal to σ2 on Λ1 (V2 ). We set σ̃2 to be equal to σ2 on
+Λ1 (V2 )c and equal to σ1 on Λ1 (V2 ).
+    The difficulty is to assign the Higgs boson field charges. Notice that the component of
+the support due to the assignment of Higgs boson fields is due to the presence of phase
+boundaries. These phase boundaries will separate regions of + charge from regions of −
+charge.
+24
+
+   L EMMA B.3. Let ϕ be an assignment of Higgs boson charges. Let P B1 ∪ . . . ∪ P Bn be
+some collection of phase boundaries found in ϕ. There exists some map χ : Λ0 → Z2 such
+that ϕχ will have all the same phase boundaries of ϕ except for the union P B1 ∪ . . . ∪ P BN .
+
+    P ROOF. The basic geometry is that one can find islands of different charges with the phase
+boundaries separating these islands. One can flip the innermost islands and iteratively proceed
+outwards to get rid of all phase boundaries.
+    For an example of this construction, consider the case that there is a single phase boundary
+P B1 . This phase boundary surrounds some set of vertices V ; all of the vertices inside V will
+have the same Higgs boson charge since there are no other phase boundaries. One can merely
+flip all of the charges inside V to match the charge outside V .
+    Now consider the case that we have two phase boundaries, P B1 and P B2 . WLOG, one
+can find two sets of vertices V1 and V2 such that P B2 surrounds V2 , P B1 surrounds V1 , and
+V2 ⊂ V1 . One can assert that all of the charges in V2 are the same while all of the charges
+of V1 \ V2 are the same. To find the map χ, one can first flip the vertices of V2 to match
+those of V1 ; this will remove the phase boundary P B2 . Afterward, one can flip all of the
+vertices of V1 to remove the phase boundary P B1 . Ultimately, this amounts to fixing the
+charge assignments of V2 and flipping those of V1 \ V2 .
+
+
+     Let P B11 ∪ P B21 ∪ . . . ∪ P Bn1 be the phase boundaries of C1 found in V1 , and P B12 ∪
+P B22 . . . ∪ P Bm
+                 2 be the phase boundaries of C found in V . Using Lemma B.3, one can find
+                                                    2          2
+some map χ1 : Λ0 → Z2 such that the new field ϕ1 χ1 will have the same phase boundaries
+as ϕ1 outside of the vortex V2 but will get rid of the phase boundaries P B11 ∪ . . . P Bn1 in V1 .
+     One can similarly find a map χ2 : VN → Z2 that removes the phase boundaries P B12 ∪
+. . . ∪ P Bm 2 and otherwise fixes all other phase boundaries. We define ϕ̃ to be ϕ χ χ−1
+                                                                                  1             1 1 2
+and ϕ̃1 = ϕ2 χ2 χ−11 . We   see  that ϕ̃ 1 will have the same phase boundary    as ϕ 1 outside    of V2
+                                               2            2
+and will have the phase boundaries P B1 ∪ . . . ∪ P Bm inside of V1 . ϕ̃2 will have the phase
+boundary as ϕ2 outside of V2 and the phase boundary P B11 ∪ . . . ∪ P Bn1 inside of V2 .
+     Our swapping map sends C1 , C2 → (C˜1 , C˜2 ) where C1 = (σ̃1 , ϕ̃1 ) and C2 = (σ̃2 , ϕ̃2 ).
+
+     L EMMA B.4.    Under the construction above we have,
+                            suppB1 ∪B2 (C1 , C2 ) = suppB1 ∪B2 (C˜1 , C˜2 ).
+   As a consequence of the above, the swapping map constructed above is an involution, and
+thus, a bijection.
+
+   P ROOF. Part 1: Equality of the supports
+   Let p be a plaquette in suppB1 ∪B2 (C1 , C2 ). If p were in B1 ∪ B2 , then it would still be in
+suppB1 ∪B2 (C˜1 , C˜2 ). Therefore, we only need to consider the case that p is in the support due
+to having an excited edge on its boundary. WLOG, assume that p has an excited edge of C1 .
+   Assume now that p is in the support due to having an edge with (σ1 )e ̸= 1. If e were an
+edge of Λ1 (V2 ), then (σ̃2 )e = (σ1 )e ̸= 1. Thus, e is an excited edge of σ̃2 and p is in the
+support of V2 . If e ∈ Λ1 (V2 )c , then (σ̃1 )e = (σ1 )e , and e is an excited edge of C˜1 . Thus,
+p ∈ supp(C˜1 ).
+   Now consider the case that p is in the support due to having an edge e = (x, y) in the
+boundary with (ϕ1 )x ̸= (ϕ1 )y . This means that the edge e was part of a phase boundary in C1 .
+Assume that p is not in V2 . This means that the phase boundary containing the edge e was
+not one of the phase boundaries P B11 , . . . , P Bn1 that were removed under the transformation
+                               EXPONENTIAL DECAY OF CORRELATIONS                                        25
+
+C1 → C˜1 . Thus, (ϕ̃1 )x ̸= (ϕ̃1 )y , and p is in the support of C˜1 . If instead, p was in P B11 ∪ . . . ∪
+P Bn1 , then we would have (ϕ̃2 )x ̸= (ϕ̃2 )y , and p would be in the support of C˜2 .
+   This shows that,
+                               suppB1 ∪B2 (C1 , C2 ) ⊂ suppB1 ∪B2 (C˜1 , C˜2 ).
+   Now, we show the other inclusion. Let p be a plaquette in suppB1 ∪B2 (C˜1 , C˜2 ) and assume
+that p is not in B1 ∪ B2 . WLOG, assume that p is in supp(C˜1 ). Now assume that p is in this
+support because there is an edge e ∈ δp with (σ̃1 )e ̸= 1. If the edge e was in Λ1 (V2 ), then
+(σ2 )e = (σ̃1 )e ̸= 1. Thus, e is an excited edge of σ2 , and p ∈ supp(σ̃2 ). If instead e was in
+Λ1 (V2 )c , then (σ1 )e = (σ̃1 )e , and e is an excited edge of σ1 . Thus, p ∈ supp(σ1 ).
+   Now consider the case that p has a boundary edge e = (x, y) with (ϕ̃1 )x ̸= (ϕ̃1 )y . Thus,
+the edge e is part of a phase boundary. The only phase boundaries found in ϕ̃1 are those phase
+boundaries of ϕ1 that lie outside of V2 (namely, all phase boundaries except for P B11 ∪ . . . ∪
+P Bn1 ) or one of the phase boundaries P B12 ∪ . . . ∪ P Bm   2 of σ that were in V . In the former
+                                                                     2              2
+case, e would be part of a phase boundary in ϕ1 , while it would be part of a phase boundary
+in ϕ2 in the other. In either case, we see that p would be in suppB1 ∪B2 (C1 , C2 ).
+   This shows the other inclusion and, thus, we have equality of supports.
+   Part 2: Showing the map is an involution
+   Now, since the supports are equal, we would have the same vortex decomposition. Thus,
+the definition of V2 would be the same whether we consider the pair (C1 , C2 ) or (C˜1 , C˜2 ).
+The exchange map for the gauge field configuration σ only depends on knowing the edges of
+E(V2 ), so it is clearly an involution on these gauge field configurations.
+   Furthermore, one can see that the relevant phase boundaries of ϕ̃1 are P B12 ∪ . . . ∪ P Bm   2 ,
+
+while the relevant phase boundaries of ϕ̃2 are P B11 ∪ . . . ∪ P Bn1 . We see that the map χ2
+would remove the phase boundary of ϕ̃1 while χ1 would remove the phase boundary of ϕ̃2 .
+We see that the map applied to ϕ̃1 sends ϕ̃1 to ϕ̃1 χ2 χ−1                −1     −1
+                                                             1 = ϕ1 χ1 χ2 χ2 χ1 = ϕ1 . Similarly,
+ϕ̃2 would be sent to ϕ2 . Thus, we see that our proposed map is an involution.
+
+   L EMMA B.5.       Let P be the measure generated by the Hamiltonian HN,β,κ . Then,
+(B.6)                                  P(C1 )P(C2 ) = P(C˜1 )P(C˜2 ).
+
+   P ROOF. It would suffice to show two equations.
+   First, we have to show,
+              X                                  X
+                  [Tr[ρ((dσ1 )p )] − Tr[ρ(1)]] +   [Tr[ρ((dσ2 )p )] − Tr[ρ(1)]]
+              p∈Λ2                                    p∈Λ2
+(B.7)             X                                        X
+              =          [Tr[ρ((dσ̃1 )p )] − Tr[ρ(1)]] +          [Tr[ρ((dσ̃2 )p )] − Tr[ρ(1)]].
+                  p∈Λ2                                     p∈Λ2
+
+   The only nontrivial terms on both sides correspond to plaquettes with (dσ)p ̸= 0. Let p
+be a plaquette with (dσ1 )p ̸= 0. There exists some edge e ∈ δp with (σ1 )e ̸= 0. Thus, the
+plaquette p must belong to supp(σ1 , σ2 )B1 ∪B2 . Thus, it suffices to prove the above inequality
+when restricted to the support S := suppB1 ∪B2 (σ1 , σ2 ) = suppB1 ∪B2 (σ̃1 , σ̃2 ).
+   Let p be a plaquette in the support S . If all of the boundary edges of p are in Λ1 (V2 ),
+then (σ1 )e = (σ̃2 )e and (σ2 )e = (σ̃1 )e for all boundary edges of p. This would imply that
+Tr[ρ((dσ1 )p )] = Tr[ρ((dσ̃2 )p )] and Tr[ρ((dσ2 )p )] = Tr[ρ((dσ̃1 )p )]. We could apply similar
+logic if all of the boundary edges of p are in Λ1 (V2 )c .
+   We now need to consider the case that some boundary edges of p are in Λ1 (V2 ) while
+others are in the complement. We first claim that if some boundary edge e of p is in Λ1 (V2 ),
+26
+
+then (σ1 )e = (σ2 )e = 1. If this were not the case, this would imply that e is an excited edge
+and, therefore, p must lie in V2 . But, this would imply that all boundary edges of p are in
+Λ1 (V2 ). This contradicts our assumption on p. Therefore, (σ1 )e = (σ2 )e = 1. Furthermore,
+(σ̃1 )e = (σ̃2 )e = 1. We can use this conclusion to show that (σ1 )e = (σ̃1 )e and (σ2 )e = (σ̃2 )e
+for all edges in the boundary of p. As before, this would show that the sums of the Wilson
+loop actions are the same. This completes the proof of our first equality.
+   Secondly, we have to show,
+                  X                                    X
+                        (ϕ1 )x Tr[ρ((σ1 )e )](ϕ1 )−1
+                                                  y +         (ϕ2 )x Tr[ρ((σ2 )e )](ϕ2 )−1
+                                                                                        y
+            e=(x,y)∈Λ1                                     e=(x,y)∈Λ1
+(B.8)              X                                                X
+            =                (ϕ̃1 )x Tr[ρ((σ̃1 )e )](ϕ̃1 )−1
+                                                          y +                (ϕ̃e )x Tr[ρ((σ̃2 )2 )](ϕ̃2 )−1
+                                                                                                          y
+                e=(x,y)∈Λ1                                      e=(x,y)∈Λ1
+
+   It suffices to prove the above identity as a sum over activated edges. Let e be an activated
+edge. If e were in Λ1 (V2 ), this would mean that (σ1 )e = (σ̃2 )e and (σ2 )e = (σ̃1 )e . Further-
+more, (ϕ1 )x (ϕ1 )−1                 −1                  −1               −1
+                   y = (ϕ̃2 )x (ϕ̃2 )y and (ϕ2 )x (ϕ2 )y = (ϕ̃1 )x (ϕ̃1 )y . This is due to the fact
+if e were part of a phase boundary in Λ1 (V2 ), then we would perform a flipping so that the
+phase boundaries of ϕ1 match those of ϕ̃2 while the phase boundaries of ϕ2 match those of
+ϕ̃1 in V2 . Otherwise, e is not part of a phase boundary, and all quantities are trivially equal to
+1.
+   Ultimately, this means that, (ϕ1 )x Tr[ρ((σ1 )e )](ϕ1 )−1                                     −1 and
+                                                                y = (ϕ̃2 )x Tr[ρ((σ̃2 )e )](ϕ̃2 )y
+(ϕ2 ))xTr[ρ((σ2 )e )](ϕ2 )−1                               −1
+                          y = (ϕ̃1 )x Tr[ρ((σ̃1 )e )](ϕ̃1 )y .
+   If, instead, e was in Λ1 (V2 ), we would know that (ϕ1 )x Tr[ρ((σ1 )e )](ϕ1 )−1                                −1
+                                                                                 y = (ϕ̃1 )x Tr[ρ((σ̃1 )e )](ϕ̃1 )y
+and (ϕ2 )x Tr[ρ((σ2 )e )](ϕ2 )−1                               −1
+                              y = (ϕ̃2 )x Tr[ρ((σ̃2 )e )](ϕ̃2 )y . We can sum this relationship over
+all edges to get the desired energy equality.
+
+
+   B.3. Completing the Argument. The discussion of the previous section establishes that
+we have a swapping map. At this point, we can apply Lemma 3.2 to derive our decay of
+correlation bounds. The only possibility we need to exclude is that there is a vortex that
+would connect boxes B1 and B2 that are separated by distance L. The probability of this event
+occurring can be followed by using the polymer counting functions of Section 6. We remark
+that our bounds are even easier since the condition for splitting vortices is only determined
+by the condition of compatibility, i.e., whether they are adjacent to each other or not. We give
+the following definition:
+
+                                                                    (2)
+     D EFINITION B.6. Our polymer counting function ΦP0 is defined as follows:
+            (2)
+                                 X
+(B.9)      ΦP0 (P ) =                              exp[HN,β,κ (C1 )] exp[HN,β,κ (C2 )]
+                          suppP0 (C1 =(σ1 ,ϕ1 ),C2 =(σ2 ,ϕ2 ))=P
+                         P                P       P
+                           v∈Λ (ϕ1 )v >0,
+                               0            v∈Λ0    v∈Λ (ϕ2 )v >0
+                                                       0
+
+
+
+   This polymer counting function satisfies properties similar to those outlined in Lemmas
+6.4 and 6.6. Just as these lemmas are consequences of splittings applied to each individual
+component (either ψ1 or ψ2 ) independently, we can apply the arguments of [1, Lemma 2] to
+C1 and C2 separately to derive these splitting lemmas( for vortices rather than knots). The only
+lemma we would need to change is the quantitative probability bound derived in Lemma 6.7;
+                                                                                      (2)
+to bound the total probability percolation, one can sum quantities of the form ΦB1 ∪B2 (V )
+over appropriate vortices V using an argument similar to the proof of Proposition 6.1.
+                           EXPONENTIAL DECAY OF CORRELATIONS                                      27
+
+   In the next lemma, we derive an analog of the bound in Lemma 6.7. An argument similar
+to the proof of Proposition 6.1 to bound the probability of percolation using estimates on
+  (2)
+ΦB1 ∪B2 (P ) is left to the reader.
+
+   L EMMA B.7. Let P be a plaquette set that cannot be decomposed into disjoint vortices.
+Assume that P contains the boxes B1 and B2 that are separated by distance K . Furthermore,
+define the constant c as
+                           c := 2      max         Re[Tr[aρ(b)] − Tr[ρ(1)]],
+                                    (a,b)̸=(1,1)
+
+where a can vary over entries in H/Ht , and b can vary over entries in G. Then, we have the
+                     (2)
+following bound on ΦB1 ∪B2 .
+                                                           h κ i|P |−|B1 ∪B2 |
+(B.10)           Φ2B1 ∪B2 ≤ 4|P | |G|8|P | |H/Ht |8|P | exp −c
+                                                               6
+
+   P ROOF. Consider two configurations C1 and C2 such that suppB1 ∪B2 (C1 , C2 ) = P . Then,
+supp(C1 ) and supp(C2 ) must be subsets of P . There are thus 4|P | ways to choose the supports
+supp(C1 ) and supp(C2 ). Furthermore, the only edges that have a nontrivial gauge field are
+those on the boundary of the plaquettes of P . There are at most 4|P | of these boundary edges
+and |G|8|P | ways to assign the σ ’s for C1 or C2 . Similarly, the only nontrivial Higgs boson
+values with ϕv ̸= 1 are those found on boundary vertices of P . This will give us |H/Ht |8|P |
+ways to assign ϕ1 and ϕ2 .
+   Finally, we remark that each plaquette p ∈ P \ (B1 ∪ B2 ) must be excited by having an
+excited edge e on the boundary. Furthermore, an excited edge can excite at most 6 plaquettes.
+Therefore, we must have at least (|P |−|B
+                                        6
+                                          1 ∪B2 )
+                                                  excited edges. Each of these excited edges will
+contribute exp[−cκ].
+
+                         APPENDIX C: HIGGS BOSON SMALL κ
+   The previously discussed paper [1] also considered the case when κ is small. In contrast
+to the case when κ is large, there is no longer any compulsion for ϕx = ϕy . Clusters are no
+longer defined by looking at the boundaries between distinct ϕx .
+   Instead,
+      P the main      idea of [1] was to expand       the part of the exponential contain-
+ing κ e=(x,y)∈Λu1 2Re[ϕx Tr[ρ(σe )]ϕ−1
+                                                
+                                        y  ] + c  in the Hamiltonian using the power series
+          P∞ xi
+exp[x] = i=0 i! . This introduces the new random variable i, representing the power used
+in the expansion along each edge. The swapping argument used in this section will not in-
+volve swapping the values of the Higgs field ϕx . The method, instead, will involve swapping
+the values of the field I , while summing over the Higgs field values ϕ. We will give the details
+in what follows.
+
+   C.1. Introduction to the model. To deal with the small κ case, we first have to expand
+the Hamiltonian via the random current expansion.
+   Let c be a constant such that,
+                                 2Re[ϕx Tr[ρ(σe )]ϕ−1
+                                                   y ] + c > 0,
+
+for all values of ϕx , ϕy and σe .
+   We can consider the Hamiltonian,
+                            X                                  X
+           1
+                                                                          2Re[ϕx Tr[ρ(σe )]ϕ−1
+                                                                                                
+(C.1) HN,β,κ    (σ, ϕ) = β      Tr[ρ(σe ) − ρ(1)] + κ                                       y ]+c ,
+                          e∈Λ1                              e=(x,y)∈Λu
+                                                                     1
+28
+
+where the sum e ∈ Λu1 is over the set of unoriented edges. Namely, instead of oriented pairs e
+and −e, we only include a single unoriented edge.
+  The random current expansion of this Hamiltonian would be,
+                              X
+         HN,β,κ (σ, ϕ, I) = β      Tr[ρ(σe ) − ρ(1)]
+                                e∈Λ1
+(C.2)                              X
+                                             I(e) log 2Re[ϕx Tr[ρ(σe )]ϕ−1
+                                                                              
+                           +κ                                           y ] + c − log I(e)!.
+                                e=(x,y)∈Λu
+                                         1
+
+
+  We have a new field I(e) that takes non-negative integer values. Marginalizing over the
+                                                       1
+I(e) variables would return our original Hamiltonian HN,β,κ . We have a new definition of
+support according to our new Hamiltonian HN,β,κ .
+
+  D EFINITION C.1.       We define our set of activated edges AE to be those edges e with
+I(e) ̸= 0.
+(C.3)                                  AE := {e : I(e) ̸= 0},
+and the set of activated vertices AV is the set,
+(C.4)                           AV := {v : ∃e ∈ AE s.t. v ∈ δe}.
+  We can now define the support of our configuration C = (σ, ϕ, I) to consist of those pla-
+quettes which have a boundary vertex in AV or those plaquettes with (dσ)p ̸= 1.
+
+(C.5)              supp(C) = {p ∈ PN : ∃v ∈ AV s.t. v ∈ δδp or (dσ)p ̸= 1},
+     Given two configurations C1 and C2 , we define
+(C.6)                     suppP (C1 , C2 ) = supp(C1 ) ∪ supp(C2 ) ∪ P.
+
+   Instead of directly swapping configurations of our Hamiltonian, we consider a swapping
+model on our associated reduced Gibbs’ measure. We can parameterize our configurations
+on our reduced Gibbs’ measure as (ψ, ϕ, I), where ψ ∈ Hom(π1 (S1 (Λ), x0 ), G). For each ψ ,
+let Σ denote the set of gauge field configurations σ that map to ψ .
+   Our reduced Gibbs’ measure has the following distribution,
+                                        X 1
+(C.7)                     G(ψ, ϕ, I) =         exp[HN,β,κ (σ, ϕ, I)].
+                                            Z
+                                          σ∈Σ
+     Our goal in this section is to prove the following theorem,
+
+   T HEOREM C.2. Consider two boxes B1 , B2 separated by ℓ∞ distance L. Additionally,
+f and g be functions such that f only depends on the values of σ and ϕ in the box B1 ,
+while g depends only on the values of σ and ϕ in the box B2 . Furthermore, assume that
+transformations of the form σe → ηx σe ηy−1 for some auxiliary field η : Λ0 → G, do not affect
+the values of f or g . Then, for sufficiently large β and κ, we have that
+(C.8)                     Cov(f, g) ≤ C||f ||∞ ||g||∞ |G|2L cL−|B1 ∪B2 | ,
+where C is a constant that does not depend on |G|, |H|, β or κ, and c is a constant defined in
+Lemma C.7.
+
+   Our gauge invariance condition includes examples of actions such as Wilson loop ex-
+pectations. Furthermore, the gauge invariance condition means that we would only need to
+consider functions of ψ rather than σ and, therefore, we could consider the auxiliary Hamil-
+tonian H and reduced Gibbs’ measure G . In the remainder of this section, we construct We
+prove this theorem by defining a swapping map for this reduced Gibbs’ measure.
+                               EXPONENTIAL DECAY OF CORRELATIONS                                             29
+
+     C.2. Swapping on reduced configurations. This section will construct an almost swap-
+ping for the gauge class.
+     Namely, we will do the following. Let RC1 = (ψ1 , ϕ1 , I1 ) and RC2 = (ψ2 , ϕ2 , I2 ) be two
+reduced configurations. We denote by Σ1 the set of all σ ’s that will map to the homomorphism
+ψ1 and by Σ2 the set of σ ’s that map to the homomorphism ψ2 .
+     Let B1 and B2 be two boxes separated by distance L. Let K1 ∪ . . . ∪ Kn be the knot
+decomposition corresponding to suppB1 ∪B2 (C1 , C2 ). Observe that if we replace σ1 with any
+other gauge field assignment in Σ1 , we would have the same knot decomposition. Assume
+that B1 is in Ki and B2 is in Kj for i ̸= j.
+     Apply the mapping T : (ψ1 , ψ2 ) → (ψ̃1 , ψ̃2 ) according to the knot decomposition K1 ∪
+. . . ∪ Kn as in Section 5. Let Σ̃1 and Σ̃2 be the sets of configurations that correspond to
+ψ̃1 and ψ̃2 . In addition to this, switch I1 (e), I2 (e) on the set of activated edges of Kj and
+switch ϕ1 , ϕ2 on the activated vertices of Kj ; these switches will give us I˜1 , I˜2 and ϕ̃1 , ϕ̃2 .
+We denote the full map from (ψ1 , ϕ1 , I1 ), (ψ2 , ϕ2 , I2 ) → (ψ̃1 , ϕ̃1 , I˜1 ), (ψ̃2 , ϕ̃2 , I˜2 ) as T̂ . We
+will first show that T̂ is an involution.
+
+  L EMMA C.3. Consider two configurations RC1 = (ψ1 , ϕ1 , I1 ) and RC2 = (ψ2 , ϕ2 , I2 ).
+We first have that,
+(C.9)       suppB1 ∪B2 (RC1 , RC2 ) = suppB1 ∪B2 (T̂ (RC1 , RC2 )|1 , T̂ (RC1 , RC2 )|2 ).
+
+   As a consequence of the above statement on the supports, we can argue that T̂ is an
+involution and, thus, a bijection.
+
+   P ROOF. Let p be a plaquette in the support suppB1 ∪B2 (RC1 , RC2 ) that is not part of B1 ∪
+B2 . This support has the knot decomposition K1 ∪ . . . Kn where Ki contains B1 , and Kj
+contains B2 with Kj ̸= Ki . There are two possibilities for p: either there is a boundary vertex
+of p that is simultaneously a boundary vertex for some activated edge in AE1 (the activated
+edges of RC1 ) or AE2 (the activated edges of RC2 ), or we have a nontrivial current around a
+vertex with ψ1 (ξp ) ̸= 1 or ψ1 (ξp ) ̸= 1.
+   Now, consider the first case that p shares a boundary vertex with an edge of AE1 or AE2 .
+WLOG, we may assume that this is an edge e of AE1 . If this plaquette were part of the
+knot Kj , then e would be an activated edge of the configuration T̂ (RC1 , RC2 )|2 by our def-
+inition of the map T̂ . Thus, p would be part of the support of T̂ (RC1 , RC2 )|2 and also in
+suppB1 ∪B2 (T̂ (RC1 , RC2 )|1 , T̂ (RC1 , RC2 )|2 ). If, instead, the plaquette p was not part of the
+knot Kj , then e would instead be an activated edge of the configuration T̂ (RC1 , RC2 )|1 , and
+we could apply the same logic.
+   If we consider the case that p has nontrivial current ψ1 (ξp ) ̸= 1 or ψ2 (ξp ) ̸= 1, then the fact
+that p ∈ suppB1 ∪B2 (T̂ (RC1 , RC2 )|1 , T̂ (RC1 , RC2 )|2 ) is true from the corresponding property
+of T in Lemma 5.3.
+   This shows that
+             suppB1 ∪B2 (RC1 , RC2 ) ⊂ suppB1 ∪B2 (T̂ (RC1 , RC2 )|1 , T̂ (RC1 , RC2 )|2 )
+.
+    The other inclusion is similar. If p were in
+                            suppB1 ∪B2 (T̂ (RC1 , RC2 )|1 , T̂ (RC1 , RC2 )|2 ),
+
+then either p shares a boundary vertex with an activated edge in one of T̂ (RC1 , RC2 )|1 or
+T̂ (RC1 , RC2 )|2 , or it has a nontrivial current with some ψ(ξp ) ̸= 1.
+30
+
+   The case that p has a nontrivial current was again treated in Lemma 5.3. Now we consider
+the case that p shares a boundary vertex with an activated edge. WLOG, assume the activated
+edge was in T̂ (RC1 , RC2 )|1 . All activated edges of T̂ (RC1 , RC2 ) come from an activated
+edge in RC1 ( if p was not part of Kj ) or an activated edge in RC2 ( if p was part of Kj ).
+Thus, p still shares a boundary vertex of an activated edge either in RC1 or in RC2 . In either
+case, p would belong to suppB1 ∪B2 (RC1 , RC2 ) as desired.
+   This shows the other inclusion,
+             suppB1 ∪B2 (T̂ (RC1 , RC2 )|1 , T̂ (RC1 , RC2 )|2 ) ⊂ suppB1 ∪B2 (RC1 , RC2 ).
+   Since the supports of both sides are equal, we see that both supports would have the same
+knot decomposition K1 ∪ . . . ∪ Kn . By the definition of T̂ , T̂ applied to T̂ (RC1 , RC2 ) would
+reverse the switching of the activated edges in Kj we performed in the first T̂ . Lemma 5.3
+additionally shows that T̂ will be an involution when restricted to the coordinates (ψ1 , ψ2 )
+(since T̂ is equal to T on this pair).
+
+
+     The remainder of this section is devoted to showing that T̂ preserves probability.
+     It will be a consequence of the following lemma.
+
+   L EMMA C.4. Let RC = (ψ, ϕ, I) have a support with knot decomposition K1 ∪ K2 . . . ∪
+Kn . Let B1 be the box that separates K1 from K2 ∪ . . . ∪ Kn . Let Σ be the set of all configu-
+rations σ that map to ψ .
+   Now, we can define notions that are related to our splitting. Let ϕin , I in denote the values
+of ϕ and I restricted to the activated vertices and edges in K1 (so ϕin and I in take trivial
+values for all other vertices and edges). We similarly let ϕout and I out denote the values of ϕ
+and I not included in ϕin and I in (so they would take trivial values on the activated vertices
+and edges in K1 ). Finally, let (ψ in , ψ out ) denote the splitting of the homomorphism ψ in
+accordance with the separation by the box B1 in Lemma 4.10. Let Σin (Σout ) be the set of all
+gauge configurations σ that map to the homomorphism ψ in (ψ out ).
+   Then, we have that,
+             1      X                                 1       X                      in in
+                                                                                                
+                        exp[H  N,β,κ (σ, ϕ, I)] =                  exp  H N,β,κ (σ, ϕ   , I    )
+         |G||Λ0 |−1 σ∈Σ                           |G||Λ0 |−1
+                                                             σ∈Σin
+(C.10)
+                                                      1       X                       out out
+                                                                                                   
+                                                ×                   exp  H N,β,κ (σ, ϕ     , I    )  .
+                                                  |G||Λ0 |−1 σ∈Σout
+
+   One can iterate this construction to derive components ϕin,j ,I in,j , Σin,j at the iteration
+of splitting Kj from Kj+1 ∪ . . . Kn . ( With ϕin,1 = ϕin ).
+   As a consequence, we notice that,
+(C.11)
+                                              n
+          1    X                            Y        1       X                    in,j in,j
+                                                                                               
+                   exp[H N,β,κ (σ, ϕ, I)] =                     exp  H N,β,κ (σ, ϕ     , I   )
+    |G||Λ0 |−1 σ∈Σ                          j=1
+                                                |G||Λ0 |−1    j
+                                                              σ∈Σ
+
+   P ROOF. With respect to B1 , one can choose a representative σ in Σ such that σ can de-
+compose as a product σ in σ out . σ in satisfies the property that its only nontrivial edge values
+are inside the box B1 , and σ out has its only nontrivial edges outside the box B1 .
+                                    EXPONENTIAL DECAY OF CORRELATIONS                                     31
+
+  By introducing an auxiliary field η , we see that we have,
+(C.12)
+     1      X
+                exp[HN,β,κ (σ, ϕ, I)]
+ |G||Λ0 |−1 σ∈Σ
+     Y                      1        X
+ =          φβ (ψ(ξp ))
+     p∈Λ2
+                          |G||Λ0 | η:Λ →G
+                                          0
+                                                                                                    
+                   X
+ × exp                         I(e) log[2Re[(ϕx )Tr[ρ(ηx )ρ((σ1 )e )ρ((σ2 )e )ρ(ηy−1 )](ϕy )−1 ] + c]
+            e=(x,y):I(e)̸=0
+        Y                                 1                X
+ =                φβ (ψ in (ξp ))
+                                    |G||Λ0 (K1 )|
+     p∈Λ2 (K1 )                                       η in :Λ0 (K1 )→G
+                                                                                                   
+                    X
+                                                                             in −1   in −1
+ × exp                           I in (e) log[2Re[ϕin      in
+                                                    x Tr[ρ(ηx )ρ((σ1 )e )ρ((ηy ) )](ϕy ) ] + c]
+                                                                                               
+            e=(x,y):I in (e)̸=0
+        Y                                     1                X
+ ×                φβ (ψ out (ξp ))
+                                     |G||Λ0 (K1 )|c
+     p∈Λ2 (K1 )                                         η out :Λ0 (K1 )c →G
+                                                                                                         
+                   X
+                                                                            out −1  out −1
+ × exp                         I out (e) log[2Re[ϕout     out
+                                                   x Tr[ρ(ηx )ρ((σ2 )e )ρ((ηy ) )](ϕy ) ] + c]
+                                                                                              
+            e=(x,y):I out ̸=0
+
+   The first equality merely reparameterizes the configurations in σ in terms of the auxiliary
+field η . The point of the last two lines is that B1 can split the connected clusters of I in and
+I out of the box B1 . This causes the Higgs boson interaction to split so that the Higgs boson
+interaction inside the box only depends on I in , ϕin , σ1 , and η in .
+   One can create dummy summation variables to turn η in and η out into full auxil-
+iary fields rather than restricted auxiliary fields. Once this is done and a compensat-
+                   1
+ing power of |G|       is added, one sees that the last two lines are a representation of
+     1                                out , I out ) , and the two lines preceding those represent
+             P                                    
+    |Λ   |−1  σ∈Σout exp HN,β,κ (σ, ϕ
+|G|    0
+     1                               in in
+             P                                
+|G||Λ0 |−1    σ∈Σin exp HN,β,κ (σ, ϕ , I ) .
+
+
+
+   An immediate corollary of the above fact is our desired multiplicative identity.
+
+   C OROLLARY C.5. Let RC1 = (ψ1 , ϕ1 , I1 ) and RC2 = (ψ2 , ϕ2 , I2 ) be two configurations
+with suppB1 ∪B2 (RC1 , RC2 ) = K1 ∪ . . . ∪ Kn with B1 in Ki and B2 in Kj with j ̸= 1. Let
+the configurations after switching be RC˜1 = (ψ̃1 , ϕ̃1 , I˜1 ) and RC˜2 = (ψ̃2 , ϕ̃2 , I˜2 ). After the
+switching, we have the probability conservation relation:
+                  1      X X
+                 2|Λ |−2
+                                   exp[HN,β,κ (σ, ϕ1 , I1 )] × exp[HN,β,κ (σ, ϕ2 , I2 )] =
+             |G| 0       σ∈Σ1 σ∈Σ2
+(C.13)
+                  1      X X           h
+                                                           ˜
+                                                               i       h
+                                                                                           ˜
+                                                                                               i
+                                   exp   H N,β,κ (σ, ϕ̃  ,
+                                                        1 1I )   × exp   H N,β,κ (σ, ϕ̃ 2 2 .
+                                                                                         , I  )
+             |G|2|Λ0 |−2      σ∈Σ σ∈Σ̃1           2
+
+
+
+   P ROOF. By using Lemma C.4, we see that we can decompose each sum of the form
+    1      P                                                           l,in l,in     l,in
+|G||Λ0 |−1  σ∈Σ1 exp[HN,β,κ (σ, ϕ1 , I1 )] into its constituent parts ψ1 , ϕ1 , and I1    with
+32
+
+respect to the division given by the knot decomposition K1 ∪ K2 ∪ . . . ∪ Kn and write it as a
+product.
+
+(C.14)
+                                             n
+     1      X                               Y       1      X        h
+                                                                                 l,in l,in
+                                                                                           i
+                exp[HN,β,κ (σ, ϕ1 , I1 )] =                      exp HN,β,κ (σ, ϕ1 , I1 ) ,
+ |G||Λ0 |−1 σ∈Σ                             l=1
+                                                |G||Λ0 |−1  l,in
+                  1                                                    σ∈Σ1
+                                                    n
+        1     X                                     Y          1        X           h                           i
+                      exp[HN,β,κ (σ, ϕ2 , I2 )] =                                exp HN,β,κ (σ, ϕl,in
+                                                                                                 2    , I2
+                                                                                                          l,in
+                                                                                                               )  .
+ |G||Λ0 |−1 σ∈Σ                                     l=1
+                                                          |G||Λ0 |−1
+                  2                                                    σ∈Σl,in
+                                                                          2
+
+
+  Now, the configurations (ψ̃1 , ϕ̃1 , I˜1 ) and (ψ̃1 , ϕ̃2 , I˜2 ) are formed by exchanging the com-
+ponents (ψ1j,in , ϕj,in    j,in           j,in j,in j,in
+                   1 , I1 ) and (ψ2 , ϕ2 , I2 ). Thus, we have that,
+(C.15)
+     1      X           h
+                                            ˜
+                                               i Y          1         X          h
+                                                                                                 l,in l,in
+                                                                                                             i
+                   exp    H N,β,κ (σ, ϕ̃  ,
+                                         1 1I ) =                            exp   H N,β,κ (σ, ϕ 1   , I1  )
+ |G||Λ0 |−1                                        l̸=j
+                                                        |G||Λ0 |−1      l,in
+             σ∈Σ̃1                                                     σ∈Σ1
+
+                                                           1        X           h                            i
+                                                ×                            exp HN,β,κ (σ, ϕj,in
+                                                                                             2    , I2
+                                                                                                      j,in
+                                                                                                           )   .
+                                                    |G||Λ0 |−1
+                                                                   σ∈Σj,in
+                                                                      2
+
+
+   A similar expression holds for (ψ̃2 , ϕ̃2 , I˜2 ). From these explicit decompositions, one can
+see that the products of the expressions are the same. This shows that the swapping T̂ pre-
+serves probabilities.
+
+   A consequence of the preceding corollary is that T̂ is a swapping map on reduced config-
+urations.
+
+   C.3. Probability Bounds. As we have mentioned in the last section, we have con-
+structed a swapping map that allows one to switch reduced configurations as long as that,
+in the knot decomposition, the boxes B1 and B2 are in different knots in the support. Thus,
+we have a decay of correlation bound whose error probability is bounded by the probability
+that B1 and B2 belong in the same knot in the knot decomposition. In this section, we define
+a polymer counting function that allows us to bound the probability of this event.
+
+                                                                       (2)
+     D EFINITION C.6.Out polymer counting function ΦP0 is defined as follows:
+        (2)                1               X
+(C.16) ΦP0 (P ) =             2|Λ |−2
+                                                    exp[HN,β,κ (C1 )] exp[HN,β,κ (C2 )].
+                  (|G||H/Ht |) 0
+                                                suppP0 (C1 ,C2 )=P
+
+
+   The main property we need regarding the above polymer counting function is that it splits
+as a product when there are two sets P1 and P2 in the support that are separated by a box
+B . This is an analog of Lemma 6.4 and can be proved using the methods of [1, Lemma 9].
+A consequence of this splitting is that the probability that there is a knot K that contains
+                                         (2)
+both boxes B1 and B2 is bounded by ΦB1 ∪B2 (K). Once we have a quantitative bound on
+  (2)
+ΦB1 ∪B2 (K) based on exp[−c|K|] for some c, we can bound the contribution of all knots
+by using the arguments in the proof of Proposition 6.1. Our next lemma gives a bound on
+  (2)
+ΦB1 ∪B2 (K), and we leave the full details of the bounds coming from summing up knots to
+the reader.
+                               EXPONENTIAL DECAY OF CORRELATIONS                                            33
+                                                                (2)
+  L EMMA C.7. We have the following bound on ΦP0 (P ).
+  We define c as,
+(C.17)                                                                     
+                                                κ
+  c := max exp[β(maxg̸=1 2Re[Tr[ρ(g) − ρ(1)]])], exp max(2Re[aTr[ρ(b)]] + c)
+                                                24       a̸=b
+
+
+                                    (2)
+(C.18)                           ΦP0 (P ) ≤ 16|P | G2|P | 28|P | c|P |−|P0 | .
+
+    P ROOF. Consider two configurations C1 and C2 with joint support P . This means that the
+supports of C1 and C2 are subsets of P . There are 4| P | ways to choose the support of C1 and
+C2 . Furthermore, the set of plaquettes p with nontrivial circulation (dσ ̸= 1) in C1 is a subset
+of the support of C1 ( and similar with C2 ). Thus, there are at most 4| P | ways to choose the
+set of plaquettes P1 ( resp. P2 ) with nontrivial circulation in C1 (resp. C2 ). This gives us our
+first factor of 16|P | in Equation (C.18).
+    Given the set of plaquettes P1 with nontrivial circulation, there are at most |G||P1 | homo-
+morphisms ψ1 that will have P1 as the subset with nontrivial circulation. Similarly, there are
+at most |G||P2 | homomorphisms ψ2 with P2 as the subset with nontrivial circulation. The
+factor of |G|−(|Λ0 |−1) will cancel out the factor coming from considering the gauge config-
+urations σ that would map to a homomorphism ψ1 or ψ2 . This explains the factor |G|2|P | in
+Equation (C.18).
+    Furthermore, the only activated edges in our configuration must be boundary edges of
+plaquettes in P . There are at most 24|P | ways to choose the set of activated edges in C1 and
+24|P | ways to choose the set of activated edges in C2 . This explains the third factor 28|P | in
+Equation (C.18).
+    Finally, we remark that if a plaquette is in P \ P0 , then either the plaquette has nontrivial
+circulation in one of C1 or C2 or there is an activated edge in C1 or C2 that shares a boundary
+vertex with p. The first quantity in the minimum appearing in c bounds the contribution from
+a plaquette with nontrivial circulation. The second factor bounds the contribution from the
+existence of an activated edge. The bound comes from summing over I(e) from 1 to ∞ and
+further noticing that a single activated edge could result in at most 24 plaquettes appearing in
+the support. This gives us our last factor of c|P |−|P0 | .
+
+                                              REFERENCES
+ [1] A DHIKARI ,A.(2021) Wilson loop expectations for non-abelian gauge fields coupled to a Higgs boson at
+          low and high disorder. Preprint available at arXiv:2111.07540.
+ [2] A IZENMAN , M. AND F RÖHLICH , J. (1984). Topological anomalies in the n dependence of the n-states
+          Potts lattice gauge theory. Nuclear Phys. B, 235 no. 1, 1-18.
+ [3] A IZENMAN , M. AND P ELED , R. (2019). A power-law upper bound on the correlations in the 2D random
+          field Ising model. Comm. Math. Phys. 372, 865-892.
+ [4] A IZENMAN , M., H AREL , M. AND P ELED , R. (2020). Exponential decay of correlations in the 2D random
+          field Ising model. J. Stat. Phys., 180, 304-331.
+ [5] A IZENMAN ,M. (1982), Geometric Analysis of ϕ4 Fields and Ising Models. Parts I and II. Comm. Math.
+          Phys., 86, 1-48.
+ [6] BAŁABAN , T. (1983). Regularity and decay of lattice Green’s functions. Comm. Math. Phys., 89 no. 4, 571–
+          597.
+ [7] BAŁABAN , T. (1984a). Renormalization group methods in non-abelian gauge theories. Harvard preprint,
+          HUTMP B134.
+ [8] BAŁABAN , T. (1984b). Propagators and renormalization transformations for lattice gauge theories. I. Comm.
+          Math. Phys., 95 no. 1, 17–40.
+ [9] BAŁABAN , T. (1984c). Propagators and renormalization transformations for lattice gauge theories. II.
+          Comm. Math. Phys., 96 no. 2, 223–250.
+[10] BAŁABAN , T. (1984d). Recent results in constructing gauge fields. Physica A, 124 no. 1-3, 79–90.
+34
+
+[11] BAŁABAN , T. (1985a). Averaging operations for lattice gauge theories. Comm. Math. Phys., 98 no. 1, 17–
+           51.
+[12] BAŁABAN , T. (1985b). Spaces of regular gauge field configurations on a lattice and gauge fixing conditions.
+           Comm. Math. Phys., 99 no. 1, 75–102.
+[13] BAŁABAN , T. (1985c). Propagators for lattice gauge theories in a background field. Comm. Math. Phys., 99
+           no. 3, 389–434.
+[14] BAŁABAN , T. (1985d). Ultraviolet stability of three-dimensional lattice pure gauge field theories. Comm.
+           Math. Phys., 102 no. 2, 255–275.
+[15] BAŁABAN , T. (1985e). The variational problem and background fields in renormalization group method for
+           lattice gauge theories. Comm. Math. Phys., 102 no. 2, 277–309.
+[16] BAŁABAN , T. (1987). Renormalization group approach to lattice gauge field theories. I. Generation of effec-
+           tive actions in a small field approximation and a coupling constant renormalization in four dimensions.
+           Comm. Math. Phys., 109 no. 2, 249–301.
+[17] BAŁABAN , T. (1988). Convergent renormalization expansions for lattice gauge theories. Comm. Math.
+           Phys., 119 no. 2, 243–285.
+[18] BAŁABAN , T. (1989a). Large field renormalization. I. The basic step of the R operation. Comm. Math.
+           Phys., 122 no. 2, 175–202.
+[19] BAŁABAN , T. (1989b). Large field renormalization. II. Localization, exponentiation, and bounds for the R
+           operation. Comm. Math. Phys., 122 no. 3, 355–392.
+[20] BASU , R. and G ANGULY, S. (2016). SO(N ) Lattice Gauge Theory, planar and beyond. To appear in Comm.
+           Pure Appl. Math.
+[21] B ISSACOT, R., F ERNÁNDEZ , R. AND P ROCACCI , A. (2010). On the convergence of cluster expansions for
+           polymer gases. J. Stat. Phys., 139 598-617.
+[22] B ORGS , C. (1984). Translation symmetry breaking in four-dimensional lattice gauge theories. Comm. Math.
+           Phys., 96 no. 2, 251-284.
+[23] B ORGS , C. (1988). Confinement, deconfinement and freezing in lattice Yang-Mills theories with continuous
+           time. Comm. Math. Phys., 116 no. 2, 309–342.
+[24] C AO , S. (2020). Wilson loop expectations in lattice gauge theories with finite gauge groups. Comm. Math.
+           Phys., 380, 1439-1505.
+[25] C HATTERJEE , S. (2015). Rigorous solution of strongly coupled SO(N ) lattice gauge theory in the large N
+           limit. To appear in Comm. Math. Phys.
+[26] C HATTERJEE , S. (2016). The leading term of the Yang-Mills free energy. J. Funct. Anal., 271, 2944–3005.
+[27] C HATTERJEE , S. and JAFAROV, J. (2016). The 1/N expansion for SO(N ) lattice gauge theory at strong
+           coupling. Preprint. Available at arXiv:1604.04777.
+[28] C HATTERJEE , S. (2018). Yang-Mills for probabilists. Probability and Analysis in Interacting Particle Sys-
+           tems - in honor of S.R.S. Varadhan.
+[29] C HATTERJEE , S. (2021). A probabilistic mechanism for quark confinement. Comm. Math. Phys., 385, 1007-
+           1039.
+[30] C REUTZ , M., JACOBS , L. AND R EBBI , C. (1979). Monte carlo study of abelian lattice gauge theories.
+           Phys. Rev. D., 20 no. 8, 1915-1922.
+[31] P. A. FARIA DA V EIGA , O’C ARROLL , M. AND S CHOR , R. (2004). Existence of baryons, baryon spectrum
+           and mass splitting in strong coupling lattice QCD. Comm. Math. Phys., 245 no. 2, 383–405.
+[32] D ING , J. AND X IA , J. (2021). Exponential decay of correlations in the two-dimensional random field Ising
+           model at zero temperature. Inventiones Mathematicae. 224, 999-1045.
+[33] D UMINIL -C OPIN , H., P ELED , R., S AMOTIJ , W., AND S PINKA , Y. (2017) Exponential decay of loop
+           lengths in the loop O(n) model. Comm. Math. Phys., 349, 777-817.
+[34] F ORSSTRÖM , M.P. (2021). Decay of correlations in finite Abelian lattice gauge theories. Preprint available
+           at arXiv:2104.03752.
+[35] F ORSSTRÖM , M.P. (2021). Wilson lines in the Abelian lattice Higgs model. Preprint available at
+           arXiv:2111.06620.
+[36] F ORSSTRÖM , M.P., L ENELLS , J., AND V IKLUND , F. (2020). Wilson loops in finite Abelian lattice gauge
+           theories. To appear in Ann. de l’inst. Henri Poincaré Probab. Stat.
+[37] F ORSSTRÖM , M.P., L ENELLS , J., AND V IKLUND , F. (2021). Wilson loops in the abelian lattice Higgs
+           model. Preprint available at arXiv:2111.06620.
+[38] F RÖHLICH , J. (1979). Confinement in Zn lattice gauge theories implies confinement in SU (n) lattice Higgs
+           theories. Phys. Lett. B. 83 no. 2, 195-198.
+[39] F RÖHLICH , J. and S PENCER , T. (1982). Massless phases and symmetry restoration in abelian gauge theo-
+           ries and spin systems. Comm. Math. Phys., 83 no. 3, 411–454.
+[40] G ARBAN , C. AND S EPÚLVEDA , A. (2021). Improved spin-wave estimate for Wilson loops in U (1) lattice
+           gauge theory. arXiv:2107.04021.
+                               EXPONENTIAL DECAY OF CORRELATIONS                                             35
+
+[41] G LIMM , J. AND JAFFE , A. (1987). Quantum physics. A functional integral point of view. Second edition.
+          Springer-Verlag, New York.
+[42] G ÖPFERT, M. and M ACK , G. (1982). Proof of confinement of static quarks in 3-dimensional U (1) lattice
+          gauge theory for all values of the coupling constant. Comm. Math. Phys., 82 no. 4, 545–606.
+[43] G UTH , A. H. (1980). Existence proof of a nonconfining phase in four-dimensional U (1) lattice gauge
+          theory. Phys. Rev. D, 21 no. 8, 2291–2307.
+[44] JAFAROV, J. (2016). Wilson loop expectations in SU (N ) lattice gauge theory. Preprint. Available at
+          arXiv:1610.03821.
+[45] L EES , B. AND TAGGI , L. (2021). Exponential decay of transverse correlations for O(N) spin systems and
+          related models. Prob. Theory. Relat. Fields, 180, 1099-1133.
+[46] M ACK , G. AND P ETKOVA , V.B. (1979). Comparison of lattice gauge theories with gauge groups Z2 and
+          SU (2). Ann. Physics, 123 no. 2, 442-467.
+[47] O STERWALDER , K. and S EILER , E. (1978). Gauge field theories on a lattice. Ann. Physics, 110 no. 2, 440–
+          471.
+[48] PAES -L EME , P. J. (1978). Ornstein-Zernike and analyticity properties for classical lattice spin systems.
+          Ann. Physics, 115 no. 2, 367–387.
+[49] S EILER , E. (1982). Gauge theories as a problem of constructive field theroy and statistical mechanics.
+          Springer-Verlag, Berlin.
+[50] S ZLACHÀNYI , K. AND V ECSERNYÈS P. (1989). Cluster expansion in terms of knots in gauge theories with
+          finite non-Abelian gauge groups J. Math. Phys., 30 no. 9, 2156-2159.
+[51] S TILLWELL , J. (1993). Classical topology and combinatorial group theory. Graduate Texts in Math. 72,
+          Springer-Verlag 1982; Second edition 1993.
+[52] T OMBOULIS , E.T. (1993). Confinement via dynamical monopoles. Phy. Lett. B. 303 no. 1-2, 103-108.
+[53] W EGNER , F.J. (1971). Duality in generalized Ising models and phase transitions without local order param-
+          eters. J. Math. Phys., 12 no. 10, 2259-2272.
+[54] W ILSON , K. G. (1974). Confinement of quarks. Phys. Rev. D, 10 no. 8, 2445–2459.
+

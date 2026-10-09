@@ -1,0 +1,2619 @@
+                                           A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS
+                                                           AT STRONG COUPLING
+
+                                                                HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+arXiv:2204.12737v1 [math.PR] 27 Apr 2022
+
+
+
+
+                                                Abstract. We develop a new stochastic analysis approach to the lattice Yang–Mills model
+                                                at strong coupling in any dimension d > 1, with t’ Hooft scaling βN for the inverse coupling
+                                                strength. We study their Langevin dynamics, ergodicity, functional inequalities, large N
+                                                limits, and mass gap.
+                                                                       N−2                                                  1
+                                                    Assuming |β| < 32(d−1)N    for the structure group SO(N ), or |β| < 16(d−1) for SU (N ), we
+                                                prove the following results. The invariant measure for the corresponding Langevin dynamic
+                                                is unique on the entire lattice, and the dynamic is exponentially ergodic under a Wasserstein
+                                                distance. The finite volume Yang–Mills measures converge to this unique invariant measure
+                                                in the infinite volume limit, for which Log-Sobolev and Poincaré inequalities hold. These
+                                                functional inequalities imply that the suitably rescaled Wilson loops for the infinite volume
+                                                measure has factorized correlations and converges in probability to deterministic limits in
+                                                the large N limit, and correlations of a large class of observables decay exponentially, namely
+                                                the infinite volume measure has a strictly positive mass gap. Our method improves earlier
+                                                results or simplifies the proofs, and provides some new perspectives to the study of lattice
+                                                Yang–Mills model.
+
+
+
+
+                                                                                        Contents
+                                           1. Introduction                                                                                         2
+                                           1.1. Lattice Yang–Mills                                                                                 3
+                                           1.2. Main Results                                                                                       4
+                                           1.3. Relevant literature and possible directions                                                        8
+                                           2. Notation and preliminaries                                                                           9
+                                           2.1. Product manifolds and Lie groups                                                                  11
+                                           3. Yang–Mills SDE                                                                                      12
+                                           4. Log-Sobolev and Poincaré inequalities and applications                                             17
+                                           4.1. Log-Sobolev and Poincaré inequalities                                                            17
+                                           4.2. Application I: large N limit of Wilson loops                                                      22
+                                           4.3. Application II: mass gap                                                                          24
+                                           5. Uniqueness of invariant measure                                                                     30
+                                           Appendix A. Construction of coupling                                                                   37
+                                           References                                                                                             41
+
+
+                                           Date: April 28, 2022.
+                                           2010 Mathematics Subject Classification. 37A25; 39B62; 60H10.
+                                                                                              1
+2                      HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+                                      1. Introduction
+   The purpose of this paper is to apply stochastic analysis and ergodic theory for Markov
+processes to study the lattice Yang–Mills model with structure group G ∈ {SO(N ), SU (N )}.
+In particular, we will consider the Langevin dynamics of these models, and under explicit
+strong coupling assumptions, we will prove uniqueness of invariant measures in infinite vol-
+ume, log-Sobolev and Poincaré inequalities, with some application in large N limits of Wilson
+loops and exponential decay of correlations.
+   Lattice discretizations of the Yang–Mills theories were first proposed in the physics litera-
+ture by Wilson [Wil74] which lead to well-defined Gibbs measures on collections of matrices.
+We refer to [Cha19b] for a nice review on the Yang–Mills model and its gauge invariant dis-
+cretization as well as the fundamental questions for the model. Among the literature we only
+mention that approximate computations of the Wilson loop expectations as the size N of the
+structure group becomes large was first suggested by ’t Hooft [tH74], where the Yang–Mills
+Hamiltonian is multiplied by βN (known as the ’t Hooft scaling), which is closely related to
+our present article.
+   The problems we discuss in this paper have been of interest and studied for decades in
+mathematical physics. A closely related earlier paper is by Osterwalder–Seiler [OS78], which
+showed that for the lattice Yang–Mills theory, when the coupling is sufficiently strong, the
+cluster expansion (or high-temperature expansion in statistical mechanics language) for the
+expectation values of local observables (i.e. bounded functions of finitely many edge variables)
+is convergent, uniformly in volume. The proof of this convergent cluster expansion was
+sketched in [OS78] since it follows similarly as [GJS73] for P (φ)2 model (and also [Spe75]);
+in fact it is simpler than the P (φ)2 model in [GJS73] since the fields are bounded in lattice
+Yang–Mills theory. Moreover, as explained in [OS78], the existence of a mass gap (exponential
+clustering) follows from convergence of the cluster expansion, so do existence of the infinite
+volume limit and analyticity of Schwinger functions in the inverse coupling. Uniqueness of
+infinite volume limit should also follow from cluster expansion, see e.g. [AHKZ89] for the
+case of the P (φ)2 model. We also refer to the book [Sei82] for these expansion techniques and
+results. As for the large N limits, in the recent papers, factorization property of the Wilson
+loop expectations was proved in [Cha19a, Corollary 3.2] and [Jaf16] under the assumption
+that β is sufficiently small.
+   Given the earlier work, we revisit these problems in this article for a number of reasons.
+First of all, the earlier work [OS78] didn’t consider ’t Hooft scaling, but if we translate their
+results into ’t Hooft scaling where the Hamiltonian is multiplied by βN then their condition
+amounts to requiring βN to be small. However, to our best knowledge, under the ’t Hooft
+scaling βN uniqueness was not known for β in a fixed small neighborhood of the origin when
+N is arbitrarily large (see for instance the discussion after [Cha19a, Theorem 3.1]); this is
+the reason that [Cha19a] and [Jaf16] formulated their large N results on a sequence of N -
+dependent finite volumes. One aim of this paper is to establish uniqueness of infinite volume
+measures for β in a fixed and explicit small neighborhood of the origin which is uniform in
+N , which allows us to prove the existence of a mass gap and large N limits of Wilson loops
+directly in infinite volume for this range of β.
+   Secondly, as another motivation of this paper, we develop new methods based on stochastic
+analysis and give new proofs to these results. In these methods, the curvature properties of
+the Lie groups are better exploited via the verification of the Bakry–Émery condition. In
+particular, this allows us to perform more delicate calculations and obtain more explicit
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                        3
+
+smallness condition on inverse coupling. As another novelty we study the Langevin dynamics
+(or stochastic quantization) and we prove uniqueness of the infinite volume measures by
+showing that the dynamic on the entire Zd has a unique invariant measure. To this end
+we employed coupling methods for our stochastic dynamics, which is a variant of Kendall–
+Cranston’s coupling. Such stochastic coupling arguments were used earlier in the stochastic
+analysis on manifolds, but to our best knowledge this appears to be the first time that such
+coupling arguments are used in the setting of statistical physics or lattice quantum field
+theory models with manifold target spaces. For our coupling arguments we will also need
+to introduce suitable weighted distances on the product manifolds, and in our calculations a
+subtle comparison between the weight parameter and the curvature plays a key role in order
+to obtain ergodicity.
+   As the third motivation, it appears to us that some of the proofs in this paper are simpler.
+For instance, the large N results on Wilson loops follow quickly from the Poincaré inequality,
+which simply comes from the Bakry–Émery condition. Our proof of exponential decay relies
+on some earlier ideas of Guionnet–Zegarlinski [GZ03] together with our explicit bounds on
+commutators between derivatives and Markov generators on Lie groups. This seems to be
+simpler than cluster expansion, or at least provides some new perspectives.
+
+
+
+1.1. Lattice Yang–Mills. We first recall the basic setup and definitions of the model.
+   Let ΛL = Zd ∩ LTd be a finite d dimensional lattice with side length L and unit lattice
+spacing, and we will consider various functions on it with periodic boundary conditions. We
+will sometimes write Λ = ΛL for short. We say that a lattice edge of Zd is positively oriented
+if the beginning point is smaller in lexographic order than the ending point. Let E + (resp.
+E − ) be the set of positively (resp. negatively) oriented edges, and denote by EΛ+L , EΛ−L
+the corresponding subsets of edges with both beginning and ending points in ΛL . Define
+   def
+E = E + ∪ E − and let u(e) and v(e) denote the starting point and ending point of an edge
+e ∈ E, respectively.
+   We write G for the Lie group SO(N ) or SU (N ) and g for the associated Lie algebra so(N )
+or su(N ). Note that we always view G as a real manifold (even for SU (N )), and g as a real
+vector space, and we will write d(g) = dimR g.
+   To define the lattice Yang–Mills theory we need more notation, for which we closely follow
+[Cha19a] and [SSZ22].
+   A path is defined to be a sequence of edges e1 e2 · · · en with ei ∈ E and v(ei ) = u(ei+1 ) for
+i = 1, 2, · · · , n − 1. The path is called closed if v(en ) = u(e1 ). A plaquette is a closed path of
+length four which traces out the boundary of a square. Also, let PΛL be the set of plaquettes
+whose vertices are all in ΛL , and PΛ+L be the subset of plaquettes p = e1 e2 e3 e4 such that the
+beginning point of e1 is lexicographically the smallest among all the vertices in p and the
+ending point of e1 is the second smallest.
+   The lattice Yang-Mills theory (or lattice gauge theory) on ΛL for the structure group G,
+with β ∈ R the inverse coupling constant, is the probability measure µΛL ,N,β on the set of all
+collections Q = (Qe )e∈E + of G-matrices, defined as
+                          ΛL
+
+
+                                                         Y
+                                    def
+                      dµΛL ,N,β (Q) = ZΛ−1
+                                         L ,N,β
+                                                exp  S(Q)    dσN (Qe ) ,                        (1.1)
+                                                                 +
+                                                              e∈EΛ
+                                                                  L
+4                       HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+with
+                                       def
+                                                      X
+                                 S(Q) = N βRe                 Tr(Qp ),                      (1.2)
+                                                        +
+                                                     p∈PΛ
+                                                         L
+
+                                                 def
+where ZΛL ,N,β is the normalizing constant, Qp = Qe1 Qe2 Qe3 Qe4 for a plaquette p = e1 e2 e3 e4 ,
+and σN is the Haar measure on G. Note that for p ∈ PΛ+L the edges e3 and e4 are negatively
+                                                        def
+oriented, so throughout the paper we define Qe = Q−1  e−1
+                                                          for e ∈ E − , where e−1 denotes
+the edge with orientation reversed. Also, Re is the real part, which can be omitted when
+G = SO(N ).
+
+
+1.2. Main Results. We will assume the following in our main results on lattice Yang–Mills.
+
+Assumption 1.1. Suppose that
+                    
+                     N + 2 − 1 − 8N |β|(d − 1) > 0,
+                    
+                                                                         G = SO(N ) ,
+                def
+            KS = N 4+ 2
+                    
+                           − 1 − 8N |β|(d − 1) > 0 ,                    G = SU (N ) .
+                        2
+    Assumption 1.1 is equivalent to the following strong coupling assumption:
+                               1              1
+                          
+                                       −             ,     G = SO(N ) ,
+                    |β| <   32(d −  1)    16N (d − 1)                                       (1.3)
+                               1
+                                      ,                    G = SU (N ) .
+                            16(d − 1)
+
+                                               def      +
+   Define the (product) topological space Q = GE , which will serve as our infinite volume
+configuration space. By Tychonoff’s theorem Q is compact. For each a > 1 we define the
+distance ρ∞,a on Q by
+                                           def
+                                               X 1
+                            ρ2∞,a (Q, Q′ ) =        |e|
+                                                        ρ2 (Qe , Q′e ),               (1.4)
+                                                +
+                                                  a
+                                              e∈E
+
+with |e| being the distance from 0 to e in Zd . Here the distances for different choices of a give
+equivalent topologies, and we just write ρ∞ when there’s no confusion. Q is then a Polish
+space w.r.t. ρ∞ . By standard results in topology, the topology induced by ρ∞ is equivalent
+with the product topology on Q.
+   We can easily extend the measure µΛL ,N,β to the infinite volume configuration space Q by
+periodic extension, which is still denoted as µΛL ,N,β . Namely, we can construct a random
+variable with law given by µΛL ,N,β and extend the random variable periodically, and the law
+of the periodic extension gives the desired extension of measure. Since G and Q are compact,
+{µΛL ,N,β }L⩾1 form a tight set.
+   We will consider the Langevin dynamic on Q, formally given by
+                                                      √
+                                   dQ = ∇S(Q)dt + 2dB ,                                      (1.5)
+
+with B = (Be )e∈E + being independent Brownian motions on G. This is formal since we will
+need to “extend” ∇S to infinite volume in a suitable sense. More precisely, the Langevin
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                  5
+
+dynamic we consider is the following SDE system parametrized by e ∈ E + :
+         1      X                        1              √
+  dQe = − N β         (Qp − Q∗p )Qe dt − (N − 1)Qe dt + 2dBe Qe ,     if G = SO(N ),
+         2                               2
+              p∈P,p≻e
+         1      X                     1              
+ dQe = − N β            (Qp − Q∗p ) − Tr(Qp − Q∗p )IN Qe dt                      (1.6)
+         2                            N
+                p∈P,p≻e
+
+                                       N2 − 1        √
+                                     −        Qe dt + 2dBe Qe ,           if G = SU (N ).
+                                         N
+Here B = (Be )e∈E is a collection of independent Brownian motions on the Lie algebra g of
+G, and the terms linear in Qe arise from Casimir elements of the Lie algebras; we will review
+these in Section 2.
+Remark 1.1. We note that the above SDE (in finite volume) was used earlier in [SSZ22] to
+derive the loop equations (i.e. Dyson–Schwinger or Makeenko–Migdal equations) for Wilson
+loops of the model (1.1). These loop equations also hold for any infinite volume tight limit
+of the measures, and in particular for the unique invariant measure for β satisfying (1.3) as
+given in Theorem 1.2.
+   The study of a quantum field theory of the form (1.1) via a dynamic (1.5) is also called
+stochastic quantization as first proposed by [Nel66, PW81].
+   We will prove that there exists a unique probabilistically strong solutions to SDE (1.6)
+starting from any initial data in Q in Proposition 3.4. Hence the solutions form a Markov
+process in Q and the related semigroup is denoted by (Pt )t⩾0 .
+   Our first main result is as follows.
+Theorem 1.2 (Uniqueness and ergodicity). Under Assumption 1.1, the following statements
+hold.
+   (1) The invariant measure of the Markov semigroup (Pt )t⩾0 for the Langevin dynamic (1.6)
+is unique. We denote this invariant measure by µymN,β .
+   (2) Furthermore, every tight limit of {µΛL ,N,β }L is the same, and the whole sequence
+{µΛL ,N,β }L converges to µym
+                           N,β as L → ∞.
+   (3) Finally, the Markov semigroup (Pt )t⩾0 is exponentially ergodic in the following sense:
+there exists a constant a > 1 such that for any ν ∈ P(Q)
+                             ρ                        −K S t   e
+                          W2 ∞,a (νPt , µym
+                                         N,β ) ⩽ C(a)e       ,         t ⩾ 0,             (1.7)
+         e S > 0 which only depends on the constant a, d, β and G (in particular N ).
+for some K
+          ρ
+  Here W2 ∞,a is the Wasserstein distance w.r.t. ρ∞,a given for any µ, ν ∈ P(Q)
+                                 ρ         def
+                             W2 ∞,a (µ, ν) =       inf       π(ρ2∞,a )1/2 ,
+                                                 π∈C (µ,ν)
+
+with C (µ, ν) being the set of couplings between µ and ν. Remark that K e S can be explicitly
+given by (5.15) below and gives a lower bound of spectral gap for (Pt )t⩾0 in Wasserstein
+distance. In Theorem 1.4 we will see that KS gives a lower bound of spectral gap in L2 (µym
+                                                                                         N,β ).
+Remark 1.3. The periodic boundary condition in the definition of {µΛL ,N,β }L is not essen-
+tial. By the same argument as in Theorem 3.5 the tight limit of {µΛL ,N,β }L when changing
+the periodic boundary condition to Dirichlet or other boundary conditions is also the invariant
+measure of the SDE (1.6), hence, is the same as µym N,β .
+6                          HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+   We remark that uniqueness for small β could possibly also be proven using the method
+of Dobrushin, see e.g. [Dob70]. To this end one would also need to consider the related
+Wasserstein metric with respect to the Riemannian distance similarly as we do in this paper.
+However as we understand such an argument has not been carried out in detail for lattice
+Yang Mills in the literature. Here we give a proof based on a new idea which is a variant of
+Kendall–Cranston’s coupling used earlier in the stochastic analysis on manifold.
+   The idea for the proof of Theorem 1.2 is to use finite dimensional approximation, for
+which we construct a suitable coupling and find a suitable distance such that the associ-
+ated Wasserstein distance between the two finite dimensional approximations starting from
+different initial distributions decays exponentially fast in time with uniform speed.
+   We define the cylinder functions Ccyl∞ (Q) by
+
+                          n                                                             o
+                ∞
+              Ccyl (Q) = F : F = f (Qe1 , . . . , Qen ), n ∈ N, ei ∈ E + , f ∈ C ∞ (Gn ) . (1.8)
+
+We then obtain the following log-Sobolev inequality for µym
+                                                         N,β based on Bakry–Émery’s crite-
+rion.
+Theorem 1.4 (Log-Sobolev inequality). Under Assumption 1.1, the log-Sobolev inequality
+holds for the measure µym                                                          ∞
+                       N,β in Theorem 1.2. Namely, for all cylinder functions F ∈ Ccyl (Q)
+with µym     2
+       N,β (F ) = 1,
+
+                                     2     2         2 X ym
+                              µym
+                               N,β (F log F ) ⩽           µN,β (|∇e F |2 ).                             (1.9)
+                                                    KS  +e∈E
+                                                                            ∞ (Q),
+This implies the Poincaré inequality, i.e. for all cylinder functions F ∈ Ccyl
+
+                                 2        1 X ym
+                          µym
+                           N,β (F ) ⩽          µN,β (|∇e F |2 ) + µym      2
+                                                                   N,β (F ) ,                         (1.10)
+                                         KS  +e∈E
+
+with ∇e the gradient w.r.t. the variable Qe .
+
+   Theorem 1.4 follows from Theorem 1.2 and Corollary 4.5, which states the log-Sobolev
+inequality for every tight limit of (µΛL ,N,β )L⩾1 . The RHS of (1.9) is the Dirichlet form
+associated with the Langevin dynamic (see Proposition 3.6). Hence, (1.9) holds for the
+functions in the domain of Dirichlet form by lower-semicontinuity.
+   As some simple applications of the Poincaré inequality, we show certain “susceptibility”
+bounds on the field Qe and Tr(Qp ), see Corollaries 4.7 and 4.8. These examples demonstrate
+how to choose suitable functions in these functional inequalities to yield interesting bounds
+for the model.
+   Log-Sobolev and Poincaré inequalities in Theorem 1.4 follow by checking the Bakry–Émery
+criteria [BE85, BGL14] directly for the finite dimensional approximation on the product
+manifolds. As the Ricci curvatures of the target manifolds G are given by positive constants,
+so are the Ricci curvatures of the configuration space (i.e. the product manifolds). The
+Hessian of the Hamiltonian could also be bounded by the Ricci curvatures in the strong
+coupling regimes.
+   As a corollary of Theorem 1.4 we obtain the following large N properties of the Wilson
+loops. For the rest of this paper, by a loop we mean an equivalent class of closed paths
+(as defined in Section 1.1), where the equivalence relation ∼ is given by cyclic permutations
+e1 e2 · · · en ∼ ei ei+1 · · · en e1 e2 · · · ei−1 for any i ∈ {1, ..., n}, and it has no two successive edges
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                       7
+
+of the form e−1 e. We will always assume that a loop is non-empty, i.e. has positive number
+of edges. Given a loop ℓ = e1 e2 · · · en , recall that the Wilson loop variable Wℓ is defined as
+                                       def
+                                   Wℓ = Tr(Qe1 Qe2 · · · Qen ) .                             (1.11)
+Corollary 1.5 (Large N limit of Wilson loops). Under Assumption 1.1, for every Wilson
+loop (1.11), writing Var and E for the variance and expectation under the measure µym         N,β in
+Theorem 1.2, one has
+        1       n(n − 3)                         1       4n(n − 3)
+    Var     Wℓ ⩽             , G = SO(N ); Var          Wℓ ⩽              , G = SU (N ) .
+         N            KS N                           N            KS N
+                                                                                              (1.12)
+In particular, we obtain the convergence
+                                 Wℓ     Wℓ
+                                    −E        →0      as N → ∞                                (1.13)
+                                 N       N
+in probability, and the factorization property of Wilson loops, i.e. for any loops ℓ1 , . . . , ℓm
+                                                         Ym
+                                    Wℓ . . . Wℓ               Wℓ
+                              lim E 1 m m = lim             E i.
+                             N →∞       N          N →∞        N
+                                                           i=1
+
+   Corollary 1.5 is proven in Section 4. Our proof is novel which is based on the Poincaré
+inequality (1.10). Note that our formulation of the result is different from [Cha19a] and [Jaf16]
+in which the factorization property of Wilson loops was obtained by taking a sequence of
+increasing finite lattices Zd = ∪∞
+                                 N =1 ΛN , considering the correlations of Wilson loops over ΛN ,
+and taking infinite volume limit simultaneously as the large N limit when sending N → ∞.
+In our approach, we work directly in infinite volume, which seems more natural. The subtlety
+here, as mentioned above and also explained in [Cha19a], is that the ’t Hooft coupling places
+N β instead of β in front of the Hamiltonian so one would require N β to be sufficiently small
+to obtain the infinite volume limit, which would appear to be problematic when taking the
+large N limit afterwards. However, thanks to our precise smallness condition on β in (1.3),
+we can take β small uniformly in N . This also allows us to derive bounds on the variances of
+Wilson loops which are explicit in terms of N . Our proof based on the Poincaré inequality
+which follows from the Bakry–Émery condition also appears to be simpler than the arguments
+in aforementioned previous work.
+   Furthermore, we obtain the following exponential decay property of the covariance. Con-
+            ∞ (Q) and we write Λ for the set of the edges f depends on. Let |Λ | denote the
+sider f ∈ Ccyl                     f                                                f
+cardinality of Λf . We define
+                                               def
+                                                   X
+                                     |||f |||∞ =     k∇e f kL∞ ,
+                                              e∈Λf
+         ∞ (Q) is introduced in (1.8) and ∇ is introduced in Section 3. We also write
+where Ccyl                                    e
+d(A, B) for the distance between A, B ⊂ E + , which is given by the nearest distance between
+the vertices in A and B.
+Corollary 1.6 (Mass gap). Suppose that Assumption 1.1 holds. Writing Cov for the covari-
+                                                                      ∞
+ance under the measure µym N,β in Theorem 1.2. For f, g ∈ Ccyl (Q), suppose that Λf ∩ Λg = ∅.
+It holds that
+                                                                                               
+            Cov(f, g) ⩽ c1 d(g)e−cN d(Λf ,Λg ) |||f |||∞ |||g|||∞ + kf kL2 (µym
+                                                                             N,β ) kgkL 2 (µym ) ,
+                                                                                            N,β
+
+where c1 depends on |Λf |, |Λg | and cN depends on KS , N and d.
+8                      HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+   Note that f and g in the above corollary can be chosen to be Wilson loops, or functions
+of an arbitrary number of Wilson loops, which are of particular interest in physics. We
+also remark that exponential decay of correlations (together with certain center symmetry
+conditions) is also related to Wilson’s area law for Wilson loops (see [Cha21, Theorem 2.4]).
+The proof of Corollary 1.6 is given in Section 4.
+   We conclude this subsection by some brief comments on the challenges or subtleties in the
+proofs of the above results. One of the important ingredients in the proofs is to estimate
+the Hessian or the general second order derivatives for the interaction S defined in (1.2).
+Note that a term of the form N Tr(Qp ) in the interaction S would “appear” to be of order
+N 2 , which would be too large for us to obtain the desired results. In our proofs we will
+properly arrange terms and apply certain properties of the Lie groups and we will show that
+the relevant second order derivatives are actually at most of order |β|N . See the explanations
+before Lemma 4.1 and the proof of Theorem 1.2 in Section 5 for more details. This is one
+of the crucial reasons which allow us to compare the Ricci curvatures of the Lie groups and
+Hessians to verify the Bakry–Émery condition by choosing β small, and also prove ergodicity
+using a suitable weighted distance.
+
+1.3. Relevant literature and possible directions. The study of properties of lattice
+gauge theories recently attracts much interest. Besides the aforementioned work by [Cha19a]
+and [Jaf16], [Cha16] computed the leading terms of free energies, [BG18] provided an elabo-
+rate description of loop expectations in the planar setting, and [CJ16] derived 1/N expansions
+in the SO(N ) case at strong coupling. Wilson loops (and also Wilson lines when coupled
+with Higgs) for gauge theories with finite structure groups were studied in [Cha20, FLV20,
+FLV21, Cao20, For21b, Adh21]; see also [GS21] for the U (1) case. Moreover, exponential
+correlation decay for lattice gauge theories with finite abelian structure groups was obtained
+by [For21a] using coupling argument, and for finite non-abelian structure groups this was
+proved by [AC22].
+   Our present article provides a new approach to study these models via stochastic analysis
+and dynamical perspective; see also [SSZ22] for a new derivation of loop i.e. Makeenko–
+Migdal equations for Wilson loops by such methods.
+Remark 1.7. Here by “stochastic analysis approach”, we do not mean the stochastic analysis
+approach for 2D Yang–Mills in continuum developed earlier by [GKS89] and [Dri89] (See
+Def. 3.3 therein) in which parallel translations (which are related with Wilson loops) are
+formulated as stochastic differential equations. See [Dri19] and references therein for more
+recent literature in this direction. Our Yang–Mills SDE on the other hand is the stochastic
+dynamic for the connection fields on a lattice with fixed spacing, which is along the line of
+stochastic quantization.
+
+   We remark that the choice of constant positive curvature Lie groups SO(N ) and SU (N )
+in this article is a technical simplification for demonstrating our method, and it should apply
+as well for other compact target spaces with constant or non-constant positive curvatures.
+For instance it should apply to a lattice SO(N ) Yang–Mills model coupled with a Higgs field
+Φ which takes values in a sphere in RNP(i.e. rotatorP   model) via a gauge-covariant derivative
+term, whose action takes the form Re p Tr(Qp ) + e |Qe Φv(e) − Φu(e) |2 .
+   It would certainly be interesting to show if log-Sobolev inequalities still hold when the
+lattice spacing vanishes, in the situations where the continuum limits of these models are
+shown or expected to exist. In this direction, on the two dimensional torus, the continuum
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                 9
+
+limit of lattice approximations of the Yang–Mills measures on 1-forms was recently obtained
+by Chevyrev [Che19], who also showed that a certain class of Wilson loop observables of
+this random 1-form coincide in law with the corresponding observables under the Yang–Mills
+measure in the sense of [Lév03]. Note that the Langevin dynamics for Yang–Mills models
+on the two and three dimensional continuous torus were recently constructed in [CCHS20,
+CCHS22] (see [Che22] for a review of these results), and as mentioned in [CCHS20] it would
+be interesting to show that the lattice dynamics of the type (1.5) converge to the processes
+constructed in the above papers in two and three dimensions. For some of the recent progress
+along this direction, see the proof of log-Sobolev inequalities for the Φ42,3 and sine-Gordon
+models [BD22, BB21], and the 1D nonlinear σ-model (see [AD99, Hai16, BGHZ21]) for which
+the log-Sobolev inequality, ergodicity and non-ergodicity (depending on the curvature of the
+target manifolds) were obtained in [RWZZ20, CWZZ21].
+   Notation. Given a Polish space E, we write C([0, T ]; E) for the space of continuous
+functions from [0, T ] to E. We use P(E) to denote all the probability measures on E with
+Borel σ-algebra.
+Acknowledgments. We would like to thank Scott Smith, Feng-Yu Wang, Xicheng Zhang
+and Xin Chen for very helpful discussions. H.S. gratefully acknowledges financial support
+from NSF grants DMS-1954091 and CAREER DMS-2044415. R.Z. gratefully acknowledges
+financial support from the NSFC (No. 11922103). X.Z. is grateful to the financial supports by
+National Key R&D Program of China (No. 2020YFA0712700) and the NSFC (No. 12090014,
+12288201) and the support by key Lab of Random Complex Structures and Data Science,
+Youth Innovation Promotion Association (2020003), Chinese Academy of Science. R.Z. and
+X.Z. are grateful to the financial support by the DFG through the CRC 1283 “Taming
+uncertainty and profiting from randomness and low regularity in analysis, stochastics and
+their applications”
+
+                               2. Notation and preliminaries
+   In this section we collect some notation and standard facts about Riemannian geometry,
+Lie groups and Brownian motions.
+   Riemannian manifolds. Let M be a Riemannian manifold of dimension d. We denote by
+   ∞
+C (M ) the space of real-valued smooth functions on M . For x ∈ M we denote by Tx M the
+tangent space at x with inner product h·, ·iTx M . For X ∈ Tx M , we write Xf or X(f ) for
+the differentiation of f along X at x. For a smooth curve γ : [α, β] → M the tangent vector
+along γ is defined by
+                                       d
+                                γ̇t f = f (γt ), f ∈ C ∞ (M ).
+                                       dt
+   Let ∇ be the Levi-Civita connection, which is a bilinear operation associating to vector
+fields X and Y a vector field ∇Y X. Recall that (∇Y X)(x) depends on Y only via Y (x) for
+x ∈ M (e.g. [dC92, Remark 2.3]).
+   For f ∈ C ∞ (M ), we denote by ∇f the gradient vector field of f . We also write Hess(f )
+for the Hessian. It can be calculated in the following ways
+                         def
+            Hessf (X, Y ) = Hess(f )(X, Y ) = h∇X ∇f, Y i = X(Y f ) − (∇X Y )f .         (2.1)
+It is a two-tensor:Hessf (ϕX, Y ) = Hessf (X, ϕY ) = ϕHessf (X, Y ) for any ϕ ∈ C ∞ (M ) so
+Hessf (X, Y )(x) depends only on X(x) and Y (x). Since Levi-Civita connection is torsion-free,
+Hess(f ) is symmetric in X, Y .
+10                       HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+     The Riemann curvature tensor R(·, ·) associated to vector fields X, Y is an operator defined
+by
+                        R(X, Y )Z = ∇X (∇Y Z) − ∇Y (∇X Z) − ∇[X,Y ] Z.
+Let {Wi }di=1 be an orthonormal basis of Tx M . The Ricci curvature tensor is defined by
+                                           d
+                                           X
+                              Ric(X, Y ) =   hR(X, Wi )Wi , Y iTx M                         (2.2)
+                                           i=1
+and is independent of the choice of {Wi }. Note that Ric(X, Y )(x) depends on X, Y only via
+X(x), Y (x) for x ∈ M .
+   Let γ be a geodesic. A smooth vector field J is called a Jacobi field along γ : [0, t] → M
+if ∇γ̇ ∇γ̇ J + R(J, γ̇)γ̇ = 0. For any X ∈ Tγ0 M and Y ∈ Tγt M , there exists a Jacobi field J
+along γ satisfying J0 = X and Jt = Y (c.f. [CE75, Section 1.5], [Wan06, Section 0.4] ).
+   Lie groups and algebras. For any matrix M we write M ∗ for the conjugate transpose of
+M . Let MN (R) and MN (C) be the space of real and complex N × N matrices.
+   For Lie groups SO(N ), SU (N ), we write the corresponding Lie algebras as so(N ), su(N )
+respectively. Every matrix Q in one of these Lie groups satisfies QQ∗ = IN , and every matrix
+X in one of these Lie algebras satisfies X + X ∗ = 0. Here IN denotes the identity matrix.
+   We endow MN (C) with the Hilbert-Schmidt inner product
+                           hX, Y i = ReTr(XY ∗ )      ∀X, Y ∈ MN (C).                       (2.3)
+We restrict this inner product to our Lie algebra g, which is then invariant under the adjoint
+action. In particular for X, Y ∈ so(N ) or su(N ) we have hX, Y i = −Tr(XY ). Note that
+Tr(XY ) ∈ R since we have Tr((XY )∗ ) = Tr(Y ∗ X ∗ ) = Tr(XY ), and Tr(A∗ ) = Tr(A) for any
+A ∈ MN (C).
+   Below G is always understood as SO(N ) or SU (N ). Every X ∈ g induces a right-invariant
+             e on G, and for each Q ∈ G, X(Q)
+vector field X                              e     is just given by XQ since G is a matrix Lie
+group. Indeed, given any X ∈ g, the curve t 7→ etX Q is well approximated near t = 0 by
+Q + tXQ up to an error of order t2 .
+   The inner product on g induces an inner product on the tangent space at every Q ∈ G
+via the right multiplication on G. Hence, for X, Y ∈ g, we have XQ, Y Q ∈ TQ G, and their
+inner product is given by Tr((XQ)(Y Q)∗ ) = Tr(XY ∗ ). This yields a bi-invariant Riemannian
+metric on G.
+   For any function f ∈ C ∞ (G) and X ∈ g, the right-invariant vector field X e induced by X
+acts on f at Q ∈ G by the right-invariant derivative
+                                   e (Q) = d |t=0 f (etX Q).
+                                  Xf                                                     (2.4)
+                                             dt
+We have
+               ^
+              [X,        e Ye ],
+                  Y ] = [X,        namely,      ([X, Y ]Q)f (Q) = [XQ, Y Q]f (Q),
+where the [·, ·] is the Lie bracket on g on the LHS and the vector fields commutator on the
+RHS. Also, for the Levi-Civita connection ∇ we have
+                                                  1^
+                                       ∇Xe (Ye ) = [X, Y ].                           (2.5)
+                                                  2
+     We refer the above facts to [AGZ10, Appendix F], e.g. Lemma F.27 therein.
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                             11
+
+  Brownian motions. Denote by B and B the Brownian motions on a Lie group G and its
+Lie algebra g respectively. The Brownian motion B is characterized by
+                    h                  i
+                  E hB(s), XihB(t), Y i = min(s, t)hX, Y i   ∀X, Y ∈ g.       (2.6)
+
+By [L1́7, Sec. 1.4], the Brownian motions B and B are related through the following SDE:
+                                                                 cg
+                                    dB = dB ◦ B = dB B + Bdt,                           (2.7)
+                                                                 2
+where ◦ is the Stratonovich product, and dB B is in the Itô sense. Here the constant cg is
+                P                             d(g)
+determined by α vα2 = cg IN where (vα )α=1 is an orthonormal basis of g. Moreover, by [L1́7,
+            1
+Lem. 1.2],
+                                         1                          N2 − 1
+                              cso(N ) = − (N − 1), csu(N ) = −             .            (2.8)
+                                         2                           N
+   Denote by δ the Kronecker function, i.e. δij = 1 if i = j and 0 otherwise. For any matrix
+M , we write M ij for its (i, j)th entry. The following holds by straightforward calculations
+(see e.g. [SSZ22, (2.5)]):
+                                       1
+                     dhB ij , B kℓ i = (δik δjℓ − δiℓ δjk )dt,        g = so(N );      (2.9a)
+                                       2
+                                                     1         
+                     dhB ij , B kℓ i = − δiℓ δjk + δij δkℓ dt ,        g = su(N ).     (2.9b)
+                                                    N
+2.1. Product manifolds and Lie groups. For Riemannian manifolds M1 , M2 , the tangent
+space of the product manifolds T(x1 ,x2 ) (M1 × M2 ) is isomorphic with Tx1 M1 ⊕ Tx2 M2 which
+is endowed with the inner product
+                 hu1 + u2 , v1 + v2 iT(x ,x ) (M1 ×M2 ) = hu1 , v1 iTx1 M1 + hu2 , v2 iTx2 M2 .
+                                         1   2
+
+For a finite collection of Riemannian manifolds (Me )e∈A where A is some finite set, the
+product is defined analogously.
+   If all Me are the same manifold M , the product is written as M A . In this case, given a
+point x = (xe )e∈A ∈ M A , if ue ∈ Txe Me for some xe ∈ Me , we will sometimes view ue as
+a tangent vector in Tx M A which has zero components for all ē 6= e. Continuing with this
+                                                                                    i=1,...,d
+notation, if (vei )di=1 is a basis (resp. orthonormal basis) of Txe Me , then (vei )e∈A       is a basis
+(resp. orthonormal basis) of Tx M A .
+   For Lie groups G1 , G2 , the group multiplication is defined on G1 × G2 componentwise.
+The Lie algebra g of G1 × G2 is isomorphic to g1 ⊕ g2 where gi is the Lie algebra of Gi .
+The Lie bracket on g1 ⊕ g2 is defined componentwise. If X = (X1 , X2 ) ∈ g, then induced
+the right-invariant vector field X(x) e    for every x ∈ G1 × G2 is equal to (X   e1 (x), X  e2 (x)). In
+particular, (2.5) still holds for any two right-invariant vector fields on the Lie group product.
+   With similar notation as above we can define product GA and its Lie algebra gA for a
+finite set A. Given X ∈ gA , the exponential map t 7→ exp(tX) is also defined pointwise as
+           def
+exp(tX)e = etXe for each e ∈ A.
+   In the following we choose G to be one of the matrix Lie groups as before. Define the
+                                                                   E+
+configuration space as the Lie group product QL = G ΛL , consisting of all maps Q : e ∈
+                                  E+
+EΛ+L 7→ Qe ∈ G. Let qL = g ΛL be the corresponding direct sum of g. Note that qL is the
+   1Note that in [L1́7, Lem. 1.2], the scalar product differs from (2.3) by a scalar multiple depending on N
+and g, so we accounted for this in the expression for cg above.
+12                       HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+Lie algebra of the Lie group QL . For any matrix-valued functions A, B on EΛ+L , we denote
+by AB the pointwise product (Ae Be )e∈E + .
+                                              ΛL
+
+     As above, the tangent space at Q ∈ QL consists of the products XQ = (Xe Qe )e∈E + with
+                                                                                             ΛL
+X ∈ qL , and given two such elements XQ and Y Q, their inner product is defined by
+                                             X
+                            hXQ, Y QiTQ QL =      Tr(Xe Ye∗ ).
+                                                        +
+                                                     e∈EΛ
+                                                            L
+
+The basis of the tangent space TQ QL is given by {Xei Q : e ∈ EΛ+L , 1 ⩽ i ⩽ d(g)} where for
+each e, {Xei }i is a basis for g.
+                                                                                d
+   Given any function f ∈ C ∞ (QL ), the right-invariant derivative is given by dt |t=0 f (exp(tX)Q).
+For each Q ∈ QL , the gradient ∇f (Q) is an element of the tangent space at Q which satisfies
+for each X ∈ qL
+                                                d
+                      h∇f (Q), XQiTQ QL =              f (exp(tX)Q) = (XQ)f.                  (2.10)
+                                                dt t=0
+                        Pd(g) P            i     i        i         +
+We can write ∇f =             i=1      + (ve f )ve with {ve : e ∈ E
+                                    e∈EΛ                           ΛL , i = 1, · · · , d(g)} being an
+                                         L
+orthonormal basis of TQ QL . We then define
+                         d(g)                                  d(g)
+                         X
+                        def                        def
+                                                               X
+                  ∇e f =      (vei f )vei ,   ∆e f = div∇e f =      h∇vei ∇e f, vei i.
+                              i=1                                  i=1
+
+Here ∇e and ∆e can be viewed as the gradient and the Laplace–Beltrami operator (w.r.t.
+the variable Qe ) on G endowed with the metric given above.
+
+                                         3. Yang–Mills SDE
+   In this section we first recall the Langevin dynamics (1.6) associated to the lattice Yang–
+Mills model in finite volume from [SSZ22]. We then extend the dynamics from finite volume
+to the whole Zd and prove the global well-posdness of the SDE (1.6). Furthermore, we prove
+that every tight limit of (µΛL ,N,β )L is an invariant measure for the SDE (1.6).
+   We consider the Langevin dynamic for the measure (1.1), which is the following SDE on
+QL                                                     √
+                                    dQ = ∇S(Q)dt + 2dB ,                                  (3.1)
+with B = (Be ) being independent Brownian motions on G. Here dB can be viewed as the
+white noise w.r.t. the inner product on TQ QL .
+  We now recall the explicit expression for ∇S. To this end, we introduce the following
+notation. For a plaquette p = e1 e2 e3 e4 ∈ P, we write p ≻ e1 to indicate that p is a plaquette
+that starts from edge e1 . Note that for each edge e, there are 2(d − 1) plaquettes in P
+such that p ≻ e. For any Lie algebra g embedded into MN (C) (denoted as MN below for
+short), it forms a closed subspace of MN , and therefore MN has an orthogonal decomposition
+MN = g ⊕ g⊥ . Given M ∈ MN , we denote by pM ∈ g the orthogonal projection onto g.
+Lemma 3.1. Writing · for matrix multiplication, for each e ∈ EΛ+L we have
+                                          X
+                       ∇S(Q)e = N β              pQ∗p · (Q∗e )−1 .                                (3.2)
+                                               p∈PΛL ,p≻e
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                     13
+
+Proof. See [SSZ22, Lemma 3.1]. We remark that in this calculation of the gradient of S, for
+each fixed e, we replace the Qp in (1.2) where p contains e or e−1 by a product of the form
+Qe Q· Q· Q· , which does not change the trace. This motivates our introduction of the notation
+p ≻ e.                                                                                       
+
+  The above result holds for general matrix Lie groups, and for our specific choices of Lie
+groups, we have the SDE system (3.1) on the finite lattice ΛL more explicitly as
+                                                    √
+                   dQe = ∇S(Q)e dt + cg Qe dt + 2dBe Qe ,             (e ∈ EΛ+ )          (3.3)
+                         X
+                1
+            
+            
+             −    N β           (Qp − Q∗p )Qe ,                                 G = SO(N ) ,
+                2
+                       p∈PΛL ,p≻e
+  ∇S(Q)e =       1        X                      1                   
+            
+             −    N β            (Q   − Q  ∗
+                                              ) −   Tr(Q   − Q ∗
+                                                                 )I    Qe ,      G = SU (N ) .
+            
+                                    p      p            p     p    N
+             2        p∈P ,p≻e
+                                                  N
+                           ΛL
+
+                                                                                             (3.4)
+  We recall the following two results from [SSZ22, Lemmas 3.2-3.3].
+Lemma 3.2. For fixed N ∈ N and any initial data Q(0) = (Qe (0))e∈E + ∈ QL , there exists
+                                                                               ΛL
+a unique solution Q = (Qe )e∈E + ∈ C([0, ∞); QL ) to (3.3).
+                                 ΛL
+
+
+Lemma 3.3. (1.1) is invariant under the SDE system (3.3).
+
+   By global well-posedness of the SDE (3.3), the solutions form a Markov process in QL .
+We use (PtL )t⩾0 to denote the associated semigroup, i.e. for f ∈ C ∞ (QL ), (PtL f )(x) =
+Ef (Q(t, x)) for x ∈ QL , where Q(t, x) denotes the solution at time t to (3.3) starting from
+x ∈ QL . We can also write down the Dirichlet form associated with (PtL )t⩾0 . More precisely,
+for F ∈ C ∞ (QL ) we consider the following symmetric quadratic form
+                                     Z
+                         L       def
+                       E (F, F ) = h∇F, ∇F iTQ QL dµΛL ,N,β
+                                      X Z
+                                 =          h∇e F, ∇e F idµΛL ,N,β
+                                         +
+                                      e∈EΛ
+                                           L
+                                       X Z
+                                  =            Tr(∇e F (∇e F )∗ )dµΛL ,N,β .
+                                         +
+                                      e∈EΛ
+                                           L
+
+
+Using integration by parts formula for the Haar measure, we have that (E L , C ∞ (QL )) is
+closable, and its closure (E L , D(E L )) is a regular Dirichlet form on L2 (QL , µΛL ,N,β ). (c.f.
+[FOT94].)
+   Recall S in (1.2). We write the generator associated to the above Dirichlet form for
+F ∈ C ∞ (QL ) as
+                                    X              X
+                         LL F =           ∆e F +       h∇S(Q)e , ∇e F i.                      (3.5)
+                                     +              +
+                                  e∈EΛ           e∈EΛ
+                                       L              L
+                                                                                   R
+We use D(LL ) to denote the domain of the generator. Moreover, E L (F, G) = − LL F GdµΛL ,N,β
+for F, G ∈ C ∞ (QL ). It is easy to see that (PtL )t⩾0 is a µΛL ,N,β -version of the L2 (µΛL ,N,β )-
+semigroup associated with the Dirichlet form (E L , D(E L )). (c.f. [MR92] or [FOT94].)
+14                     HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+                         +
+  Recall that Q = GE . Now we extend ΛL to Zd and consider the SDE (1.6) on the
+                                      E+ =
+                                            Q
+entire space. To this end, we write MN        e∈E + MN for the direct product of infinitely
+                                            E +
+many vector spaces MN (i.e. an element of MN is allowed to have infinitely many non-zero
+components). We define a norm on MN  E + by
+
+                                       def
+                                           X 1
+                                  kQk2 =        |e|
+                                                    |Qe |2 ,                          (3.6)
+                                             +
+                                               2
+                                                  e∈E
+
+with |Qe |2 = hQe , Qe i for h·, ·i as in (2.3) and |e| given by the distance from 0 to e in Zd .
+(More precisely, |e| is the minimum of the distances from the two vertices of e to 0.) Now we
+give existence and uniqueness of solutions to (1.6).
+Proposition 3.4. Fix N ∈ N, β ∈ R. For any Q0 ∈ Q, there exists a unique probabilistically
+strong solution Q to (1.6) in C([0, ∞); Q) starting from any Q0 . Namely, for a given prob-
+ability space (Ω, F, P) and Brownian motion (Be )e∈E + on it, there exists an (Ft )t⩾0 -adapted
+process Q ∈ C([0, ∞); Q) and Q satisfy (1.6) P-a.s. with (Ft )t⩾0 given by normal filtration
+generated by the Brownian motion (Be )e∈E + .
+
+Proof. For every initial data Q0 ∈ Q, we can easily find QL (0) ∈ QL with the periodic
+extension still denoted by QL (0) such that kQL (0) − Q0 k → 0 as L → ∞. Indeed, we can
+set QL (0) as follows (the specification on EΛ+L \EΛ+L−1 is just to ensure periodic boundary
+condition):                         (
+                                      Qe (0)      e ∈ EΛ+L−1
+                          QLe (0) =
+                                      IN          e ∈ EΛ+L \EΛ+L−1 .
+By Lemma 3.2 we obtain a unique solution QL ∈ C([0, ∞); QL ) to (3.3) from QL (0). We
+could also extend QL to Q by periodic extension. Since Q is compact, the marginal laws of
+{QL } at each t ⩾ 0 form a tight set in Q.
+  Furthermore, using the SDE (3.3), for t ⩾ s ⩾ 0
+                                Z t              Z t           √ Z t
+                L       L                 L              L
+              Qe (t) − Qe (s) =     ∇S(Q )e dr +     cg Qe dr + 2    dBe QL
+                                                                          e.
+                                  s              s               s
+                                     L
+By Itô’s formula and the fact that Qe ∈ G which is compact, we have the following bound
+for p ⩾ 1 and 0 ⩽ s, t ⩽ T
+                     E|QL        L
+                        e (t) − Qe (s)|
+                                       2p
+                                          ⩽ CN,β,p,T (|t − s|2p + |t − s|p ),
+where CN,β,p,T is a positive constant and may change from line to line. Since the above
+constant is independent of e, we have
+                     EkQL (t) − QL (s)k2p ⩽ CN,β,p,T (|t − s|2p + |t − s|p ).
+Hence, by Kolmogorov criterion we have for α < 1/2
+                                           kQL (t) − QL (s)k 
+                        sup E      sup                          < ∞.
+                         L      s6=t∈[0,T ]      |t − s|α
+Hence, the laws of {QL }, which are denoted by {PL } form a tight set in C([0, ∞); Q) equipped
+with the distance
+                         ∞
+                         X                              
+                     def
+          ρe(Q, Q′ ) =     2−n 1 ∧ sup kQ(t) − Q′ (t)k , Q, Q′ ∈ C([0, ∞); Q).
+                      n=0             t∈[n,n+1]
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                                       15
+
+We write PQ for one tight limit. For simplicity we still write {PL } for the converging subse-
+quence. Since (C([0, ∞); Q), ρe) is a Polish space, existence follows from the usual Skorohod
+Theorem and taking limit on the both sides of the equation. More precisely, there exists
+a stochastic basis (Ω̃, F˜ , P̃) and C([0, ∞); Q)-valued random variables {Q̃L }L , Q̃ on it such
+            d         d
+that Q̃L = PL , Q̃ = PQ and Q̃L → Q̃ in C([0, ∞); Q) P̃-a.s., L → ∞. As a result, for every
+       ∞ (Q), which can be viewed as function on Q for L large enough, we know that
+F ∈ Ccyl                                             L
+                                                   Z t
+                        F (Q̃L (t)) − F (QL (0)) −     LL F (Q̃L (s))ds
+                                                                 0
+
+is a P̃-martingale, where LL is as in (3.5). Letting L → ∞
+                                    X Z t                                      
+                               0
+               F (Q̃(t)) − F (Q ) −           ∆e F (Q̃(s)) + hZe , ∇e F i(Q̃(s)) ds
+                                                     0
+                                             e∈E +
+
+is a P̃-martingale with
+                        X
+                1
+             
+              −   N β        (Qp − Q∗p )Qe ,                                                G = SO(N ) ,
+              2
+         def           p∈P,p≻e
+  Ze (Q) =       1       X                   1                                                                (3.7)
+             
+                                        ∗           ∗
+             − 2 N β
+                              (Qp − Qp ) − Tr(Qp − Qp )IN Qe ,
+                                              N
+                                                                                             G = SU (N ) .
+                              p∈P,p≻e
+
+We then obtain a martingale solution to (1.6). By martingale representation theorem we could
+construct a stochastic basis and on it Brownian motions (B e )e∈E + and Q ∈ C([0, ∞), Q) with
+law given by PQ such that Q and (B e )e∈E + satisfy SDE (1.6), which gives the existence of
+probabilistically weak solutions to SDE (1.6).
+   Now we prove pathwise uniqueness: Consider two solutions Q, Q′ ∈ C([0, T ]; Q) starting
+from the same initial data Q(0) ∈ Q and we apply Itô’s formula to calculate dkQ − Q′ k2 .
+Since Qe , Q′e ∈ G for every e ∈ E + , by the Burkholder–Davis–Gundy inequality and (2.9) for
+the stochastic integral we obtain
+      E sup |Qe − Q′e |2
+         t∈[0,T ]
+                      Z T                                      X XZ T
+         ⩽ CN,β,T              E|Qe − Q′e |2 ds + CN,β,T                         E|Qe − Q′e ||Qē − Q′ē |ds,
+                          0                                  p∈P,p≻e ē∈p    0
+
+where CN,β,T may change from line to line. We then use
+                               2|Qē − Qē′ ||Qe − Q′e | ⩽ |Qē − Qē′ |2 + |Qe − Q′e |2 ,
+to obtain
+                                                  Z T
+                 1               ′ 2           1
+                    E sup |Qe − Qe | ⩽ CN,β,T |e|      E|Qe − Q′e |2 ds
+                2|e| t∈[0,T ]                 2    0
+                                                X X 1 Z T
+                                     + CN,β,T                  |ē|
+                                                                      E|Qē − Q′ē |2 ds.
+                                              p∈P,p≻e e6=ē∈p
+                                                              2     0
+
+Summing over e we get
+                                                                  Z T
+                                                  ′ 2
+                               E sup kQ − Q k ⩽ CN,β,T                   EkQ − Q′ k2 ds.
+                                  t∈[0,T ]                           0
+16                        HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+Hence, pathwise uniqueness follows by Gronwall’s lemma. By Yamada–Watanabe Theorem
+[Kur07], weak existence and pathwise uniqueness gives us existence and uniqueness of strong
+solution. In particular one can consider other boundary conditions for finite L and the infinite
+volume limit solution is the same which is the unique solution to SDE (1.6).                  
+   By Proposition 3.4, the solutions to (1.6) form a Markov process in Q. We denote by
+(Pt )t⩾0 the associated semigroup. As we are in the compact setting, it is easy to obtain the
+tightness of the field (µΛL ,N,β )L in Q as L → ∞. Since by Lemma 3.3 µΛL ,N,β is an invariant
+measure for (3.3), we then obtain the following result.
+Theorem 3.5. Every tight limit µN,β of {µΛL ,N,β } is an invariant measure for (1.6).
+Proof. Suppose that a subsequence – still denoted by µΛL ,N,β for simplicity – converges to
+µN,β weakly in Q. We start from the unique solutions QL to equation (3.3) with initial
+distribution µΛL ,N,β and the unique solutions Q to (1.6) with initial distribution µN,β . By
+exactly the same arguments as in the proof of Proposition 3.4, we know that the laws of
+{QL } are also tight in C([0, T ]; Q) and every tight limit satisfies equations (1.6) with initial
+distribution µN,β . By uniqueness of solution to (1.6) from Proposition 3.4, we have that the
+whole sequence of the laws of {QL } converge to the law of Q in C([0, T ]; Q). Since by Lemma
+3.3 µΛL ,N,β is an invariant measure for (3.3), the result follows.                             
+  We can also write the Dirichlet form and generator associated with (1.6). Recall Ccyl  ∞ (Q)
+                                                        ∞
+defined in (1.8). For every tight limit µN,β and F ∈ Ccyl (Q) we define the following symmetric
+quadratic form
+                                        def
+                                            X Z
+                         E µN,β (F, F ) =        h∇e F, ∇e F idµN,β
+                                                   e∈E +
+                                                   X Z                                        (3.8)
+                                                                                 ∗
+                                               =           Tr(∇e F (∇e F ) )dµN,β .
+                                                   e∈E +
+                                                    ∞ (Q)
+By (3.5) and letting L → ∞ we have that for F, G ∈ Ccyl
+                                             Z
+                              µN,β
+                            E      (F, G) = − LF G dµN,β ,                                    (3.9)
+
+with
+                                         def
+                                               X                X
+                                  LF =                 ∆e F +           hZe , ∇e F i,
+                                               e∈E +            e∈E +
+for Ze in (3.7).
+                             ∞ (Q)) is closable and its closure (E µN,β , D(E µN,β )) is a regular
+Proposition 3.6. (E µN,β , Ccyl
+Dirichlet form on L2 (Q, µN,β ).
+                                                               ∞ (Q)). Let {F }
+Proof. It is sufficient to prove the closability of (E µN,β , Ccyl                    ∞
+                                                                             n n∈N ⊂ Ccyl (Q) be
+such that
+                   lim µN,β (Fn2 ) = 0,                lim E µN,β (Fn − Fm , Fn − Fm ) = 0.
+                   n→∞                              n,m→∞
+                      ∞ (Q) we have
+Using (3.9), for G ∈ Ccyl
+                                                           Z
+                                  µN,β
+                              E          (G, Fn ) = −          LG Fn dµN,β → 0.
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                       17
+
+Hence, the result follows from [MR92, Chapter I. Lemma 3.4].                                        
+
+            4. Log-Sobolev and Poincaré inequalities and applications
+   In this section we prove log-Sobolev inequality under the usual Bakry–Émery condition
+(see (4.7) below). As applications we obtain large N limit, factorization property of rescaled
+Wilson loops and the exponential decay of a large class of observables.
+
+4.1. Log-Sobolev and Poincaré inequalities. In this section we first prove Log-Sobolev
+and Poincaré inequalities for the probability measure µΛL ,N,β on the finite dimensional com-
+pact manifold QL . We then let L → ∞ to derive the log-Sobolev inequality for every tight
+limit of µΛL ,N,β . As simple application we give a proof of correlation bounds (or susceptibility
+bounds) for the field Q, and that for the “microscopic Wilson loops” Tr(Qp ) for plaquettes
+p.
+   Below to verify the Bakry–Émery’s condition we need to calculate HessS (v, v)(Q) and
+Ric(v, v)(Q) for v ∈ TQ QL and Q ∈ QL , and we recall (2.1)(2.2) for their definitions. Follow-
+ing the convention in Section 2.1, we write
+                                                     X
+                                    v = (ve )e∈E + =      Xe Qe                             (4.1)
+                                                Λ
+                                                         +
+                                                      e∈EΛ
+
+with Xe ∈ qL being zero for all components except for the component e. We also write
+|v|2 = hv, viTQ QL .
+   We first compute HessS (v, v) for v ∈ TQ QL . Note that as a “naive” guess, S defined in
+(1.2) would appear to be of order N 2 , since the trace of the orthogonal or unitary matrix Qp
+would be generally bounded by N and there is another factor N outside the summation. If
+the Hessian of S was indeed of order N 2 , or N p for any p > 1, then in Assumption 1.1 we
+would never be able to fix β small uniformly in N and ensure that KS is strictly positive
+when N gets large. Fortunately in the next lemma by properly arranging terms and using
+Hölder inequalities we prove that the Hessian is actually at most of order N .
+Lemma 4.1. For v = XQ ∈ TQ QL we have
+                                 |HessS (v, v)| ⩽ 8(d − 1)N |β||v|2 .                           (4.2)
+
+Proof. In the proof we omit the subscript L for simplicity. We view v = XQ ∈ TQ QL as
+a right-invariant vector field on QL generated by X ∈ qL . By (2.5) (and the discussion in
+Sec. 2.1) we have ∇v v = 0. We apply the second identity in (2.1) and using (4.1) we have
+                                                X
+                       HessS (v, v) = v(v(S)) =    (Xē Qē )(Xe Qe )S.                (4.3)
+                                                          +
+                                                    e,ē∈EΛ
+
+Recall S from (1.2), which is a sum over plaquettes p ∈ PΛ+L , and is also a linear (affine)
+function in each variable Qe . Since p ∈ P + , we can write Qp = Qe1 Qe2 Q∗e3 Q∗e4 where
+e1 , e2 , e3 , e4 ∈ E + . Then it is easy to calculate the derivatives using the definition (2.4), for
+instance
+                                    d
+                   (Xe3 Qe3 )Qp =         Qe Qe (etXe3 Qe3 )∗ Q∗e4 = Qe1 Qe2 Q∗e3 Xe∗3 Q∗e4     (4.4)
+                                    dt t=0 1 2
+which is effectively just inserting the matrix Xe∗3 .
+    Note that:
+18                              HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+   (1) For the terms with e = ē, the term involving plaquette p in S is non-zero if and only
+if the plaquette p contains e or e−1 . In this case, we write p ∈ Pe , and there will be 2(d − 1)
+such plaquettes p. Direct calculation as in (4.4) yields a result of the following form
+                            (Xe Qe )(Xe Qe )Tr(Qp ) = Tr(Y1 Qe1 Y2 Qe2 Q∗e3 Y3∗ Q∗e4 Y4∗ )
+for some matrices Y1 , Y2 , Y3 , Y4 , in which three of them are IN and one of them is Xe2 .
+   (2) For the terms with e 6= ē, the summand on the RHS of (4.3) is non-zero if and only if
+there exists a plaquette p which contains both e or e−1 and ē or ē−1 . In this case, we write
+p ∈ Pe,ē and there will be only one such plaquette, and
+                            (Xē Qē )(Xe Qe )Tr(Qp ) = Tr(Y1 Qe1 Y2 Qe2 Q∗e3 Y3∗ Q∗e4 Y4∗ )
+where two of Y1 , Y2 , Y3 , Y4 are IN , and the other two are Xe and Xē .
+  In either case, there are two occurrences of X, so by cyclic invariance of trace we can write
+the result into one of the following forms:
+     Tr(QXe · Q̃Xē ),          Tr(QXe · (Q̃Xē )∗ ),            Tr((QXe )∗ · Q̃Xē ),      Tr((QXe )∗ · (Q̃Xē )∗ )
+for some Q, Q̃ ∈ G. By the Cauchy–Schwarz inequality for the Hilbert–Schmidt inner product,
+each of these terms is bounded by
+                                     1                        1
+                                       2                          2
+                    Tr(QXe · (QXe )∗ )     Tr(Q̃Xē · (Q̃Xē )∗ ) = |Xe ||Xē |
+
+and when e 6= ē this is bounded by 12 (|Xe |2 + |Xē |2 ).
+  Therefore we have
+  1 X                              X X                      X
+           |(Xē Qē )(Xe Qe )S| ⩽           |β||Xe |2 =       2|β|(d − 1)|Xe |2 = 2|β|(d − 1)|v|2
+ N       +                          +                        +
+       e=ē∈EΛ                             e∈EΛ p∈Pe                       e∈EΛ
+
+and
+             1     X                                      X       X |β|
+                            |(Xē Qē )(Xe Qe )S| ⩽                     (|Xe |2 + |Xē |2 )
+             N          +                                       +
+                                                                     2
+                 e6=ē∈EΛ                             e6=ē∈EΛ p∈Pe,ē
+                     X         X                  |β|                       X X
+                 =                   1p∈Pe,ē ·       (|Xe |2 + |Xē |2 ) =      1p∈Pe · 3|β||Xe |2
+                        +        +
+                                                   2                         + +
+                     p∈PΛ e6=ē∈EΛ                                              p∈PΛ e∈EΛ
+                     X X                           X
+                                           2
+                 =                3|β||Xe | =            6(d − 1)|β||Xe | = 6(d − 1)|β||v|2
+                                                                                2
+
+                        + p∈Pe                       +
+                     e∈EΛ                         e∈EΛ
+
+which implies (4.2).                                                                                                   
+
+   We denote the Riemannian distance on G by ρ. We write ρL for the induced Riemannian
+distance on QL given by
+                                   def
+                                       X
+                      ρL (Q, Q′ )2 =     ρ(Qe , Q′e )2 , Q, Q′ ∈ QL .
+                                                      +
+                                                   e∈EΛ
+                                                         L
+
+For any µ, ν ∈ P(QL ), we introduce the Wasserstein distance as
+                                                                           π(ρpL )1/p ,
+                                                         def
+                                         WpρL (µ, ν) =           inf
+                                                               π∈C (µ,ν)
+
+with C (µ, ν) being the set of couplings between µ and ν.
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                    19
+
+
+  We then have the following result using the Bakry–Émery condition (4.7) and [Wan06,
+Theorem 5.6.1], which was first proved by [Bak97] and [vRS05].
+Theorem 4.2. Under Assumption 1.1, the following hold.
+   (1) The dynamic defined by the SDE (3.3) is exponentially ergodic in the sense that
+                 W2ρL (δQ PtL , δQ̄ PtL ) ⩽ e−KS t ρL (Q, Q̄),     t ⩾ 0,     Q, Q̄ ∈ QL .   (4.5)
+   (2) For 1 < p < 2
+                WpρL (µPtL , νPtL ) ⩽ e−KS t WpρL (µ, ν),        t ⩾ 0,     µ, ν ∈ P(QL ),   (4.6)
+In particular, invariant measure of (PtL )t⩾0 is unique.
+Proof. Using [Wan06, Theorem 5.6.1(1)(11)(12)] we know that (4.5), (4.6) and the following
+condition are all equivalent: for every v = XQ ∈ TQ QL ,
+                                 Ric(v, v) − h∇v ∇S, vi ⩾ KS |X|2 .                          (4.7)
+Here we recall that |v|2 = |X|2 and h∇v ∇S, vi = HessS (v, v). By [AGZ10, (F.6)], for any
+tangent vector u of G,
+                                          α(N + 2)     
+                             Ric(u, u) =             − 1 |u|2 ,
+                                               4
+                                                                        P
+with α P = 1, 2 for SO(N ) and SU (N ) respectively. Since Ric(v, v) =    e Ric(ve , ve ) and
+    2           2
+|X| = e |Xe | , we have
+                                          α(N + 2)     
+                             Ric(v, v) =            − 1 |X|2 .                           (4.8)
+                                               4
+By Lemma 4.1 and definition of KS in Assumption 1.1, we obtain (4.7), and therefore (4.5),
+(4.6) follow.
+   Uniqueness of invariant measure follows from (4.6) by letting t → ∞.                     
+Remark 4.3. In general, if we do not require KS to be strictly positive as in Assumption
+1.1, (4.5)-(4.6) still hold, and (4.7) is also equivalent with the following statements: for any
+t ⩾ 0, f ∈ C 1 (QL )
+                                                  |∇PtL f | ⩽ e−KS t PtL |∇f |,              (4.9)
+                                                               2(1 − e−2K   t
+                                                                           S )
+               PtL (f 2 log f 2 ) − (PtL f 2 ) log(PtL f 2 ) ⩽                 PtL |∇f |2 . (4.10)
+                                                                    KS
+We refer to [Wan06, Theorem 5.6.1] for these results and more equivalent statements.
+
+   As (4.7) is the Bakry–Émery’s condition, we have the following log-Sobolev inequality (c.f.
+[Wan06, Theorem 5.6.2]). In fact, it follows from taking integral w.r.t. µΛL ,N,β on the both
+sides of (4.10) and letting t → ∞.
+Corollary 4.4. Under Assumption 1.1, the log-Sobolev inequality holds for each L > 1, i.e.
+for F ∈ C ∞ (QL ) with µΛL ,N,β (F 2 ) = 1,
+                                                        2 L
+                             µΛL ,N,β (F 2 log F 2 ) ⩽    E (F, F ).
+                                                       KS
+This implies the Poincaré inequality: for F ∈ C ∞ (QL ),
+                                             1 L
+                        µΛL ,N,β (F 2 ) ⩽      E (F, F ) + µΛL ,N,β (F )2 .        (4.11)
+                                            KS
+20                           HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+  We could view any probability measure ν in P(QL ) as a probability measure in P(Q) by
+periodic extension. Namely, we can construct a random variable with law given by ν ∈ P(QL )
+and extend the random variable periodically. The law of the periodic extension gives the
+desired extension of ν. Since G is compact, {µΛL ,N,β }L form a tight set and passing to a
+subsequence we obtain a tight limit, which is denoted by µN,β . Hence, by approximation we
+have the following results.
+Corollary 4.5. Under Assumption 1.1, the log-Sobolev inequality holds, i.e. for cylinder
+               ∞ (Q) with µ
+functions F ∈ Ccyl                2
+                            N,β (F ) = 1,
+
+                                                              2 µN,β
+                                     µN,β (F 2 log F 2 ) ⩽      E    (F, F ).                   (4.12)
+                                                             KS
+                                                                   ∞ (Q)
+This implies the Poincaré inequality: for cylinder functions F ∈ Ccyl
+                                                  1 µN,β
+                                 µN,β (F 2 ) ⩽      E    (F, F ) + µN,β (F )2 .                 (4.13)
+                                                 KS
+   In Section 5 we will prove Theorem 1.2 which will then identify the tight limit µN,β in
+(4.12) and (4.13) as the measure µym
+                                  N,β in Theorem 1.2; this then proves Theorem 1.4.
+
+Remark 4.6. By the Poincaré inequality (4.11) and (4.13), the semigroup (PtL )t⩾0 and
+(Pt )t⩾0 satisfy
+                        kPtL f − µΛL ,N,β (f )kL2 (µΛ ,N,β ) ⩽ e−tKS kf kL2 (µΛ ,N,β ) ,
+                                                       L                          L
+
+and
+                               kPt f − µN,β (f )kL2 (µN,β ) ⩽ e−tKS kf kL2 (µN,β ) .
+(c.f. [Wan06, Theorem 1.1.1]). However, this does not imply the uniqueness of the invariant
+measure for (Pt )t⩾0 .
+
+     The following two results are simple applications of the Poincaré inequality.
+Corollary 4.7. Under Assumption 1.1, for every e0 ∈ E + and every unit vector E in MN
+we have
+                                                 (
+              X                                 1/KS ,    G = SO(N ),
+                  CovN,β,L hQe0 , Ei, hQe , Ei ⩽
+                +
+                                                  2/KS ,    G = SU (N ).
+                 e∈EΛ
+                       L
+
+Here CovN,β,L means covariance w.r.t. the measure µΛL ,N,β . In particular,
+                                                    (
+              X                                      2/KS ,      G = SO(N ),
+                     CovN,β,L hQe0 , Ei, hQe , Ei ⩽
+               +
+                                                       4/KS ,      G = SU (N ).
+               e∈EΛ \{e0 }
+                   L
+
+                           1   P
+Proof. Let f = |EΛ+L |− 2                                                                        ∗
+                                      + hQe , Ei. By direct calculation, one has ∇hQe , Ei = p(EQe )Qe ,
+                                   e∈EΛ
+                                       L
+which implies that |∇f |2 ⩽ γ with γ = 1 for G = SO(N ) and γ = 2 for G = SU (N ), where
+for G = SU (N ) we used that for any matrices Q, Q′ ∈ MN
+                1                 1                        1
+       Tr (Q − Tr(Q)IN )(Q′ − Tr(Q′ )IN ) = Tr(QQ′ ) − Tr(Q)Tr(Q′ ).               (4.14)
+                N                  N                         N
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                            21
+
+Hence, by the Poincaré inequality (4.11) we get
+                        1    X                                         γ
+                        +           Cov N,β,L  hQ e , Ei, hQ e ′ , Ei  ⩽    .
+                    |EΛL | ′ +                                           KS
+                                   e,e ∈EΛ
+                                              L
+
+With periodic boundary condition we have translation invariance, so for fixed edge e0
+                         X                                 γ
+                             CovN,β,L hQe0 , Ei, hQe , Ei ⩽     ,
+                           +
+                                                            KS
+                              e∈EΛ
+                                      L
+
+which implies the first result and
+                X                                  γ                     
+                      CovN,β,L hQe0 , Ei, hQe , Ei ⩽    + VarN,β,L hQe0 , Ei ,
+                +
+                                                     KS
+              e∈EΛ \{e0 }
+                  L
+
+where we used triangle inequality and VarN,β,L means variance under µΛL ,N,β . Now we take
+g = hQe0 , Ei and have |∇g|2 ⩽ γ. Then by the Poincaré inequality (4.11)
+                                                      γ
+                                VarΛL ,N,β hQe0 , Ei ⩽     .
+                                                       KS
+Thus the second result follows.                                                                         
+Corollary 4.8. Under Assumption 1.1, it holds that for every plaquette p in PΛ+L
+                                            (
+          X                                8N (d − 1)/KS ,       G = SO(N ),
+              CovN,β,L ReTrQp , ReTrQp̄ ⩽
+        p̄∈P
+                                             16N (d − 1)/KS ,      G = SU (N ).
+             ΛL
+
+
+Here CovN,β,L means covariance w.r.t. the measure µΛL ,N,β . In particular, for every plaquette
+p in PΛ+L
+                                            (                     
+        X                                    8N (d − 1) + 4N /KS ,           G = SO(N ),
+                CovN,β,L ReTrQp , ReTrQp̄ ⩽                         
+    p̄∈P ,p̄6=p
+                                               16N (d − 1) + 8N /KS ,          G = SU (N ).
+       ΛL
+
+
+                          1   P
+Proof. Let f = |PΛ+L |− 2             +
+                                  p̄∈PΛ   ReTrQp̄ . By the same calculation as (3.2) and (3.4) for the
+                                      L
+action S we have
+                       X
+                1
+         
+          −                   (Qp − Q∗p )Qe ,                                          G = SO(N ) ,
+          2|P + |1/2
+                ΛL    p∈PΛ ,p≻e
+  ∇fe =          1      X                      1                   
+         
+          −                    (Q   − Q  ∗
+                                            ) −   Tr(Q   − Q ∗
+                                                               )I    Qe ,               G = SU (N ) .
+         
+          2|P |1/2
+                +                  p      p            p     p    N
+                ΛL
+                                                N
+                      p∈P ,p≻e    Λ
+
+
+Thus in SO(N ) case we have
+                           1          X                                        4N (d − 1)2
+            |∇fe |2 =                           Tr  (Q p − Q ∗
+                                                             p )(Q p̄ − Q ∗ ∗
+                                                                          p̄ )  ⩽            ,
+                        4|PΛ+L | p,p̄∈P ,p,p̄≻e                                    |PΛ+L |
+                                          Λ
+
+which implies that
+                                                  |∇f |2 ⩽ 8N (d − 1).
+22                          HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+
+Here we used |PΛ+L | = 2(d−1)
+                          4   |EΛ+L |, since each plaquette has 4 edges and each edge is adjacent
+to 2(d − 1) plaquettes. Hence, applying the Poincaré inequality to f we get
+                     1      X                                     8N (d − 1)
+                                  Cov   N,β,L  ReTrQ p , ReTrQ p̄  ⩽           .
+                  |PΛ+ |   L   +
+                                                                       KS
+                               p,p̄∈PΛ
+                                       L
+
+We choose periodic boundary condition to have translation invariance and we get for fixed p
+                     X                               8N (d − 1)
+                         CovN,β,L ReTrQp , ReTrQp̄ ⩽                .
+                       +
+                                                             KS
+                           p̄∈PΛ
+                                 L
+
+Thus the first result follows and
+               X                                 8N (d − 1)            
+                       CovN,β,L ReTrQp , ReTrQp̄ ⩽            + Var ReTrQp .
+                +
+                                                      KS
+            p̄∈PΛ ,p̄6=p
+                 L
+
+Moreover, take f = ReTrQp̄ and |∇f |2 ⩽ 4N and we obtain
+                                             4N
+                                 Var ReTrQp ⩽       .
+                                                 KS
+Thus the second result follows for SO(N ) case. The result for the SU (N ) case follows by
+similar arguments and using (4.14).                                                      
+
+4.2. Application I: large N limit of Wilson loops. In the following we give the proof
+of Corollary 1.5 by applying the Poincaré inequality.
+
+Proof of Corollary 1.5. Since Theorem 1.2 identifies any tight limit µN,β as the measure µym   N,β ,
+it suffices to prove the result for any tight limit µN,β . We apply the Poincaré inequality (4.13)
+to Wilson loops defined in (1.11). Consider the SO(N ) case. Let
+                                              1     1
+                                   f (Q) =      Wℓ = Tr(Qe1 Qe2 . . . Qen ).
+                                              N     N
+We get
+                                                                         1     
+                                     µN,β (f 2 ) − µN,β (f )2 = Var           Wℓ .
+                                                        N
+We then need to calculate ∇f which appears on the RHS of the Poincaré inequality. For an
+edge which appears in the location x of the loop ℓ, we write
+                               n
+                               Y                          x−1
+                                                          Y                          n
+                                                                                     Y
+                     Qℓ =            Qe i ,       Qax =         Qe i ,    Qbx =           Qe i .
+                               i=1                        i=1                     i=x+1
+
+We then have Wℓ = Tr(Qℓ ). For each e ∈ E + , we may have an edge ex in ℓ which is e or e−1 ,
+so by straightforward calculation we have
+                                              n
+                                           1X
+                     (∇Wℓ )e = −                1e =e (Qex Qbx Qax − Q∗ax Q∗bx Q∗ex )Qe
+                                           2 x=1 x
+                                              n                                                    (4.15)
+                                        1X                       ∗       ∗   ∗
+                                      +      1      −1 (Qbx Qax Qe − Qe Qa Qb )Qe .
+                                        2 x=1 ex =e                        x  x
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                                         23
+
+Here, the calculation is similar as in Lemma 3.1 (see [SSZ22]). Namely, when ex = e, by
+cyclic invariance of trace, we write Wℓ = Tr(Qex Qbx Qax ), and for X ∈ g we compute
+             ∂t |t=0 Tr(etX Qex Qbx Qax ) = Tr(XQex Qbx Qax ) = hX, p(Qex Qbx Qax )∗ i
+                                                                                                              (4.16)
+                                          = hXQex , p(Qex Qbx Qax )∗ Qex i
+where p is defined in Lemma 3.1 and is the orthogonal projection of a matrix to the Lie
+algebra g of skew-symmetric matrices, and XQex is a tangent vector at Qex . On the other
+hand if ex = e−1 , we write Wℓ = Tr(Qbx Qax Q∗e ), so for X ∈ g similar calculation as above
+yields
+              Tr(Qbx Qax Q∗e X ∗ ) = hX, p(Qbx Qax Q∗e )i = hXQe , p(Qbx Qax Q∗e )Qe i        (4.17)
+which gives the second term on the RHS of (4.15).
+   Using (4.15) we have
+               1 X
+                   n                                                                              
+            2
+  |(∇Wℓ )e | =         1ex =ey =e Tr (Qex Qbx Qax Qex − Q∗ax Q∗bx )(Qey Qby Qay Qey − Q∗ay Q∗by )∗
+               4 x,y=1
+                   n
+                 1 X                                                                   
+                                                    ∗   ∗                       ∗   ∗ ∗
+             −       1e−1
+                       x =ey =e
+                                Tr  (Q   Q
+                                       bx ax − Q  Q   Q
+                                                 e ax bx eQ )(Q   Q  Q  Q
+                                                                ey by ay ey − Q   Q
+                                                                                ay by )
+                 4
+                   x,y=1
+
+                 1  Xn                                                                                          
+                                                                    ∗     ∗                      ∗     ∗       ∗
+             −           1ex =e−1 =e Tr  (Q e x Q bx Q ax Q e x − Q a   Q b  )(Q by Q ay − Q e Q a   Q b  Q e )
+                 4 x,y=1       y                                      x    x                       y    y
+
+
+                   n
+                 1 X                                                                         
+             +       1ex =ey =e−1 Tr (Qbx Qax − Qe Q∗ax Q∗bx Qe )(Qby Qay − Qe Q∗ay Q∗by Qe )∗ .
+                 4
+                   x,y=1
+
+Note that the trace of any SO(N ) matrix is bounded by N , and therefore each of the four
+traces above is bounded by 4N . Summing over e ∈ E + , we see that the Dirichlet form term
+in the Poincaré inequality is bounded as follows:
+                         X
+        E µN,β (f, f ) =    µN,β (|∇e f |2 )                                         (4.18)
+                         e∈E +
+
+                        1 X X                                                                
+                               n
+                      ⩽            1ex =ey =e + 1e−1 =e   =e + 1e   =e −1
+                                                                          =e + 1e x =e y =e −1 .
+                        N  + x,y=1
+                                                  x     y         x    y
+                             e∈E
+
+For any edge e ∈ E + we let A(e) be the number of locations in ℓ where e occurs and B(e)
+be the number of locations in ℓ where e−1 occurs. (4.18) is then bounded by
+                             1 X                      n(n − 3)
+                                     (A(e) + B(e))2 ⩽          ,
+                            N                            N
+                               e∈E +
+              P
+where we used e∈E + (A(e) + B(e)) = n and A(e) + B(e) ⩽ n − 3. The Poincaré inequality
+then yields
+                                    1         1 n(n − 3)
+                                Var     Wℓ ⩽                .
+                                      N        KS     N
+Letting N → ∞, (1.13) follows for the SO(N ) case.
+                                        √
+  For G = SU (N ) we choose, with ι = −1,
+                                1           1                    
+                     fR (Q) = ReWℓ = ReTr Qe1 Qe2 . . . Qen ,
+                               N           N
+24                           HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+                                          1         1                       
+                             fI (Q) =       ImWℓ = − ReTr ιQe1 Qe2 . . . Qen
+                                          N         N
+to obtain the result for the real and imaginary parts. It is sufficient to calculate ∇ReWℓ .
+Besides the terms in (4.15) we also have the following additional terms
+                              n
+                        1X        1
+                             1e =e Tr(Qex Qbx Qax − Q∗ax Q∗bx Q∗ex )Qe
+                        2 x=1 x N
+                                   n
+                              1X         1
+                            −    1ex =e−1 Tr(Qbx Qax Qex − Qe Q∗ax Q∗bx )Qe .
+                              2          N
+                                  x=1
+
+(This is similar with how the second case in (3.4) was derived, namely, the projection p
+appearing in (4.16)(4.17) should also make the matrices traceless in the SU (N ) case.) Noting
+that (4.14) we have
+                          n 
+                          X                                                     
+                        2
+         |(∇ReWℓ )e | ⩽ 2    1ex =ey =e + 1e−1
+                                            x =ey =e
+                                                     + 1ex =e−1
+                                                             y =e
+                                                                  + 1ex =ey =e−1 N.
+                                  x,y=1
+
+Summing over e ∈ E + we get
+
+                        2 X X                                                          
+                               n
+        E(fR , fR ) ⩽              1ex =ey =e + 1e−1
+                                                  x =ey =e
+                                                           + 1     −1
+                                                              ex =ey =e + 1ex =ey =e −1
+                        N  + x,y=1
+                              e∈E
+                      2n(n − 3)
+                    ⩽           .
+                         N
+Similarly, we get
+                                                             2n(n − 3)
+                                             E(fI , fI ) ⩽             .
+                                                                N
+Hence, (1.13) holds for SU (N ).
+  To prove the factorization property, by the Cauchy–Schwarz inequality we have
+
+                             N −n E(Wℓ1 . . . Wℓn ) − E(Wℓ1 . . . Wℓn−1 )EWℓn
+
+                              ⩽ N −n E(Wℓ1 . . . Wℓn−1 (Wℓn − EWℓn )
+                                     W 1/2
+                                       ℓn
+                              ⩽ Var            → 0.
+                                      N
+Hence, the result follows by induction.                                                      
+
+4.3. Application II: mass gap. In this section we use the Poincaré inequality to prove the
+                                                                    ∞ (Q), recall that Λ is
+existence of mass gap for lattice Yang–Mills. To this end, for f ∈ Ccyl                 f
+the set of edges f depends on. We define
+                                             def
+                                                 X
+                                   |||f |||∞ =     k∇e f kL∞ .
+                                                      e∈Λf
+
+In this section it will be convenient for the calculations to consider an explicit choice of an
+orthonormal basis of g. This choice is standard, see e.g. [AGZ10, Proposition E.15]. Let
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                           25
+
+ekn ∈ MN for k, n = 1, . . . , N be the elementary matrices,
+                                                      √       namely its (k, n)-th entry is 1 and
+all the other entries are 0. For 1 ⩽ k < N and ι = −1, let
+                                        ι                   Xk     
+                              Dk = √           − kek+1,k+1 +     eii .
+                                      k + k2                 i=1
+For 1 ⩽ k, n ⩽ N , let
+                                          ekn − enk                      ιekn + ιenk
+                                Ekn =        √      ,        Fkn =           √       .              (4.19)
+                                               2                               2
+Then:
+      • {Ekn : 1 ⩽ k < n ⩽ N } is an orthonormal basis of so(N ), and,
+      • {Dk : 1 ⩽ k < N } ∪ {Ekn , Fkn : 1 ⩽ k < n ⩽ N } is an orthonormal basis of su(N ).
+                                                                         E+
+This then determines an orthonormal basis {vei } of g ΛL , which consists of right-invariant
+vector fields on QL .
+  We first prove the following lemma for Lie brackets.
+Lemma 4.9. It holds that for every vei
+                     X                      1
+                         |[vei , vej ]f |2 ⩽ |∇e f |2              for     G = SO(N ),
+                                            2
+                            j
+                           X                          9
+                                |[vei , vej ]f |2 ⩽     |∇e f |2   for     G = SU (N ).
+                                                      2
+                            j
+
+Proof. By direct calculation we have
+                                                eij emn = δjm ein .
+Using this and (4.19), we deduce
+      2[Ekn , Elm ] = [ekn − enk , elm − eml ]
+                    = δnl ekm − δkm eln − δnm ekl + δlk emn
+                      − δkl enm + δmn elk + δkm enl − δnl emk                                    (4.20)
+                    = δnl (ekm − emk ) + δkm (enl − eln ) + δnm (elk − ekl ) + δlk (emn − enm ).
+With this calculation, observe that if we fix (k, n) and vary (l, m), we either get 0 or one of the
+orthonormal basis vectors of so(N ) up to a factor ± √12 , and in the latter case different values of
+(l, m) yield different basis vectors. This implies that for G = SO(N ), {[vei , vej ], j = 1, . . . , d(g)}
+is a subset of orthonormal basis of TQe G up to a factor ± √12 . Hence, the result holds for
+SO(N ) by definition of |∇e f |2 .
+    The proof for the SU (N ) case is similar but requires a bit more calculations. We have
+     2
+       [Ekn , Flm ] = [ekn − enk , elm + eml ]
+     ι
+                    = δnl ekm − δkm eln + δnm ekl − δlk emn
+                      − δkl enm + δmn elk − δkm enl + δnl emk                                        (4.21)
+                    = δnl (ekm + emk ) + δkm (−enl − eln ) + δnm (elk + ekl ) + δlk (−emn − enm ).
+When k = l 6= n = m
+              2
+                [Ekn , Flm ] = δnm (elk + ekl ) + δlk (−emn − enm ) = 2ekk − 2enn .                 (4.22)
+              ι
+26                                     HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+Furthermore
+        −2[Fkn , Flm ] = [ekn + enk , elm + eml ]
+                       = δnl ekm − δkm eln + δnm ekl − δlk emn
+                         + δkl enm − δmn elk + δkm enl − δnl emk                                  (4.23)
+                       = δnl (ekm − emk ) + δkm (enl − eln ) + δnm (ekl − elk ) + δlk (enm − emn ).
+For Lie brackets involving D we have
+                                                 [Ekn , emm ] = (δmn Fmk − δmk Fmn )/ι.
+                                                 [Fkn , emm ] = ι(δmn Ekm + δmk Enm ).
+By this we obtain, for k < n,
+                                               
+                                               
+                                                0                                    m+1<k
+                                               
+                                               
+                                                √ m
+                                                m+m2 Fkn
+                                                                                     m+1=k
+                                                     1
+                                  [Ekn , Dm ] = − √m+m   F
+                                                        2 kn
+                                                                                      k ⩽m<m+1<n                                (4.24)
+                                               
+                                               
+                                               
+                                                   m+1
+                                                 − √m+m2 Fkn                          k ⩽m<m+1=n
+                                               
+                                               
+                                               
+                                                 0                                    k, n ⩽ m,
+and                                            
+                                               
+                                               0                                     m+1<k
+                                               
+                                               
+                                                 √ m
+                                               − m+m2 Ekn
+                                                                                     m+1=k
+                                                   1
+                                  [Fkn , Dm ] = √m+m  2
+                                                        Ekn                           k ⩽m<m+1<n                                (4.25)
+                                               
+                                               
+                                               √
+                                                 m+1
+                                                        Ekn                           k ⩽m<m+1=n
+                                               
+                                                     2
+                                                m+m
+                                                0                                     k, n ⩽ m.
+     For vei = Ekn Qe or Fkn Qe , we decompose {vep , p = 1, . . . , d(g)} into the following three sets
+          I1 = {Elm Qe , Flm Qe , 1 ⩽ l < m ⩽ N, l 6= k or n 6= m},                                  I2 = {Ekn Qe , Fkn Qe },
+and
+                                 I3 = {Dk Qe , 1 ⩽ k ⩽ N − 1}.
+By (4.20)-(4.23) we view {[ve , vej ], vej ∈ I1 } as a subset of orthonormal basis of TQe G up to a
+                            i
+
+factor ± √12 . Hence,
+                                                      X                               1
+                                                                |[vei , vej ]f |2 ⩽     |∇e f |2 .
+                                                                                      2
+                                                      vej ∈I1
+We further use (4.22) to have
+                       X
+                           |[vei , vej ]f |2 ⩽ |∇e f |2 |ekk − enn |2 = 2|∇e f |2 .
+                                       vej ∈I2
+
+We also use (4.24)-(4.25) to have
+       X                                      (k − 1)2                   n2          X   1             n−2
+                 |[vei , vej ]f |2 ⩽                        1k⩾2 +                  +           |∇e f |2
+                                           k − 1 + (k − 1)2        n − 1 + (n − 1)2     m + m2
+       vej ∈I3                                                                                           m=k
+
+                                    1  1
+                                             n−2
+                                             X 1     1   
+                                 = 2− +    +     ( −    ) |∇e f |2 = 2|∇e f |2 .
+                                     k n−1        m m+1
+                                                                     m=k
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                                    27
+
+As a consequence, the result holds for vei = Ekn Qe or Fkn Qe .
+   For vei = Dm Qe as [Dl , Dm ] = 0 we also use (4.24)-(4.25) to view {[vei , vej ], j = 1, . √
+                                                                                               . . , d(g)}
+as a subset of orthonormal basis up to a factor with absolute value smaller than 2. We
+then have                          X
+                                       |[vei , vej ]f |2 ⩽ 2|∇e f |2 .
+                                                     j
+Hence, the result follows.                                                                                       
+
+  We first prove the following lemma. We write ē ∼ e if ē and e appear in the same plaquette;
+more precisely, if there exists p ∈ P such that {e, e−1 } ∩ p 6= ∅ and {ē, ē−1 } ∩ p 6= ∅.
+Lemma 4.10. Let {vei } be the orthonormal basis given above. For every f ∈ C ∞ (QL ) and
+every e ∈ EΛ+L , one has
+                                          X
+                     |[vei , LL ]f (Q)| ⩽   ae,ē |∇ē f (Q)|, ∀Q ∈ QL ,
+                                                          +
+                                                         EΛ ∋ē∼e
+                                                           L
+                  p
+with ae,ē = N |β| d(g) for e 6= ē and
+                                           p      √
+                      ae,e = 2(d − 1)N |β|( d(g) + 2N 1/2 γ) ,
+                                      √
+where γ = 1 when G = SO(N ) and γ = 3 2 for G = SU (N ).
+
+Proof. In this proof all the sums over ē are restricted to EΛ+L . Since the metric on G is bi-
+invariant and each vei is right-invariant which generates a one-parameter family of isometries,
+vei commutes with the Beltrami-Laplacian ∆e . So we have
+                   [vei , LL ]f = vei LL f − LL vei f
+                                  X
+                                =       ∇vei ∇ē S, ∇ē f + ∇e S , ∇vei ∇e f − ∇e vei f .
+                                      ē∼e
+                   P       j     j
+Writing ∇ē S =        j (vē S)vē , and using (2.5), the first term on the RHS is equal to
+                       XDX                                    E 1 XD                         E
+                                      (vei vēj S)vēj , ∇ē f +    (vej S)[vei , vej ], ∇e f .
+                       ē∼e
+                                                                 2
+                                  j                                      j
+                                                      P       j     j
+For the second term we use ∇e f =                         j (ve f )ve and (2.5) to write it as
+                    XD                                                            E
+                         ∇e S, (vei vej f )vej + vej f ∇vei vej − (vej vei f )vej
+                              j
+                          X       D                  E 1X      D                  E
+                        =  (vej S) [vei , vej ], ∇e f +   vej f ∇e S, [vei , vej ] .
+                                                        2
+                              j                                              j
+
+Therefore,
+                                  XDX                                        E 3X        D                   E
+                [vei , LL ]f =                       (vei vēj S)vēj , ∇ē f +   (vej S) [vei , vej ], ∇e f
+                                  ē∼e
+                                                                                2
+                                             j                                   j
+
+                                          1X j D                   E     3
+                                                                         X
+                                                                     def
+                                      +     ve f ∇e S, [vei , vej ] =      Ik .
+                                          2
+                                                 j                                   k=1
+28                          HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+
+   For I1 , by similar calculation as in the proof of Lemma 4.1, we have |vei vēj S| ⩽ N |β| for
+e 6= ē; also, |vei vej S| ⩽ 2(d − 1)N |β| since for each edge e there are 2(d − 1) plaquettes
+containing e or e−1 . Combining with Hölder’s inequality we have
+                          XX                         XX               1/2  X            1/2
+               |I1 | =          (vei vēj S)vēj f ⩽     |vei vēj S|2          |vēj f |2
+                       ē∼e    j                   ē∼e   j                      j
+                          p     X                         p
+                   ⩽ N |β| d(g)   |∇ē f | + 2(d − 1)N |β| d(g)|∇e f |.
+                                     ē∼e,ē6=e
+
+  For I2 and I3 , fixing the edge e we recall our choice of the orthonormal basis {vei }1⩽i⩽d(g)
+above. Using Lemma 4.9 we then have
+               3  X j 2 1/2  X i j 2 1/2 1  X j 2 1/2  X i j 2 1/2
+  |I2 + I3 | ⩽        |ve S|         |[ve , ve ]f | +         |ve f |       |[ve , ve ]S|
+               2                                       2
+                   j               j                        j             j
+               √  X j 2 1/2  X j 2 1/2 √
+             ⩽ 2γ1         |ve S|         |ve f |   = 2γ1 |∇e S||∇e f |
+                        j                     j
+                √
+             ⩽ 2 2(d − 1)N 3/2 γ|β||∇e f |,
+
+where γ1 = 1 for G = SO(N ) and γ1 = 3 for G = SU (N ) and we use (3.4) to bound |∇e S|
+by 2(d − 1)N 3/2 |β|γ/γ1 in the last inequality. Hence, the result follows.          
+
+     The next corollary together with uniqueness in Section 5 proves Corollary 1.6.
+                                                               ∞ (Q), suppose that
+Corollary 4.11. Suppose that Assumption 1.1 holds. For f, g ∈ Ccyl
+Λf ∩ Λg = ∅. Then one has
+
+                   Cov(f, g) ⩽ c1 d(g)e−cN d(Λf ,Λg ) (|||f |||∞ |||g|||∞ + kf kL2 kgkL2 ),
+
+where c1 depends on |Λf |, |Λg |, and cN depends on KS , N and d. Here the covariance and
+L2 are with respect to every tight limit of {µΛL ,N,β }L .
+
+Proof. With the calculations and bounds obtained in the previous lemmas, together with our
+Poincaré inequality, to prove exponential decay we can then apply an argument essentially
+from [GZ03, Section 8.3]. We write µL = µΛL ,N,β for simplicity and consider
+
+            CovµL (f, g) = µL (f g) − µL (f )µL (g) = µL (PtL (f g)) − µL (PtL f )µL (PtL g)
+                            = µL (PtL (f g) − PtL f PtL g) + Cov(PtL f, PtL g)
+                            ⩽ µL (PtL (f g) − PtL f PtL g) + Var(PtL f )1/2 Var(PtL g)1/2 .    (4.26)
+
+Recall that the Poincaré inequality is equivalent to the following: Var(PtL f ) ⩽ e−2tKS kf k2L2 (µL )
+(see Remark 4.6). Therefore by the Poincaré inequality, the last term in (4.26) is bounded
+by
+
+                     Var(PtL f )1/2 Var(PtL g)1/2 ⩽ e−2tKS kf kL2 (µL ) kgkL2 (µL ) .          (4.27)
+
+  As LL is uniform elliptic operator with smooth coefficient, by Hörmander’s Theorem (c.f.
+[Nua06, Theorem 2.3.3]) PtL f ∈ C ∞ (QL ). Now we consider PtL (f g) − PtL f PtL g in (4.26) and
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                                             29
+
+we omit L for notation simplicity. Recall that Pt and L commute on the domain D(L) (see
+e.g. [MR92, Chap. I Exercise 1.9]). We have
+                       Z t
+                           d
+Pt (f g) − Pt f Pt g =       [Ps (Pt−s f Pt−s g)]ds
+                        0 ds
+                       Z th                                                              i
+                     =      Ps L(Pt−s f Pt−s g) − Ps (LPt−s f Pt−s g + Pt−s f LPt−s g) ds
+                        0
+                        XZ t                                    XZ t
+                     =2         Ps h∇e Pt−s f, ∇e Pt−s gids = 2         Ps [(vei Pt−s f ) · (vei Pt−s g)]ds.
+                          e        0                                            e,i    0
+
+Here, to obtain the third line from the second line, recalling the definition of L, by ∇(f g) =
+g∇f + f ∇g the first order terms cancel, and it then follows from ∆(f g) = g∆f + f ∆g +
+2h∇f, ∇gi. Note that for every e, i, we have (Ps vei f ) · (Ps vei g) = 0 since Λf ∩ Λg = ∅. From
+this we then have
+      X                              X
+         (vei Pt−s f )(vei Pt−s g) =  (vei Pt−s f − Pt−s vei f ) · (vei Pt−s g − Pt−s vei g)
+       e,i                                 e,i
+                                           X
+                                       +         (vei Pt−s f − Pt−s vei f ) · (Pt−s vei g)
+                                           e,i
+                                           X                                                 def
+                                                                                                   X
+                                       +         (vei Pt−s g − Pt−s vei g) · (Pt−s vei f ) =        (Ie1 + Ie2 + Ie3 ).
+                                           e,i                                                      e
+                                                                                  ∞ (Q ),
+  Suppose for the moment that we can prove the following: for any c > 0 and f ∈ Ccyl   L
+there exists B > 0 such that for d(e, Λf ) ⩾ Bt one has
+                       X
+                          kvei Pt f − Pt vei f kL∞ ⩽ d(g)e−2cd(e,Λf ) |||f |||∞ .   (4.28)
+                              i
+We choose t ∼ d(Λf , Λg )/B below. Applying (4.28) to the function g with e ∈ Λf (in which
+case Ie2 = 0 since vei g = 0) and using (4.9)
+                                     X
+                    kIe1 + Ie3 kL∞ ⩽    kvei Pt−s f kL∞ kvei Pt−s g − Pt−s vei gkL∞
+                                                  i
+                                           ⩽ d(g)e−2cd(Λf ,Λg ) |||f |||∞ |||g|||∞ .
+Similarly for e ∈ Λg , Ie3 = 0 and
+                                  kIe1 + Ie2 kL∞ ⩽ d(g)e−2cd(Λg ,Λf ) |||g|||∞ |||f |||∞ .
+      / Λf ∪ Λg we have Ie2 = Ie3 = 0 and d(e, Λf ) ⩾ d(Λg , Λf )/2 or d(e, Λg ) ⩾ d(Λg , Λf )/2.
+For e ∈
+For both cases we have
+                      kIe1 kL∞ ⩽ d(g)e−cd(Λf ,Λg )−c(d(e,Λf )∧d(e,Λg )) |||f |||∞ |||g|||∞ .
+  With these bounds on Ie1 , Ie2 , Ie3 , we sum over e and obtain that for d(Λf , Λg ) ⩾ Bt
+                       kPt (f g) − Pt f Pt gkL∞ ⩽ c1 d(g)e−cd(Λf ,Λg ) |||f |||∞ |||g|||∞ .                           (4.29)
+Substituting (4.27) and (4.29) into (4.26) we get
+                CovµL (f, g) ⩽ c1 d(g)e−cd(Λf ,Λg ) |||f |||∞ |||g|||∞ + e−2tKS kf kL2 kgkL2 ,
+where c1 depends on |Λf | and |Λg | and is independent of L. Since t ∼ d(Λf , Λg )/B, letting
+L → ∞ the result follows.
+30                           HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+  It remains to check the claimed bound (4.28). We use a similar argument as in [GZ03,
+Theorem 8.2] which we adapt into our setting. We have
+                                     Z t                           Z t
+               i            i            d         i
+                                                         
+              ve Pt f − Pt ve f =            Pt−s ve Ps f ds =          Pt−s [vei , L]Ps f ds. (4.30)
+                                      0  ds                         0
+By Lemma 4.10, we have
+                                                   X
+                             k[vei , L]Ps f kL∞ ⩽       ae,ē k∇ē Ps f kL∞ ,
+                                                                 ē∼e
+for constants ae,ē which are uniformly bounded in e, ē. Hence, by (4.30)
+                  X                  X             Z tX
+                        i                i
+                      kve Pt f kL∞ ⩽   kve f kL∞ +         De,ē k∇ē Ps f kL∞ ds,
+                      i                          i                      0     ē
+with a matrix D such that De,ē = d(g)ae,ē if e ∼ ē and De,ē = 0 for other case. Since e ∈
+                                                                                            / Λf
+we get vei f = 0 and by iteration
+                       X                   ∞
+                                           X
+                              i                tn X (n) X i
+                            kve Pt f kL∞ ⩽             De,ē    kvē f kL∞ ,
+                                               n! ē
+                              i                          n=Ne                      i
+                                    (n)
+with Ne = d(e, Λf ) and De,ē ⩽ C0n with C0 = d(g)(ae,e + 6(d − 1)ae,ē ). As a result, using
+n! ⩾ en log n−2n , for 2 − log B + log C0 + CB0 ⩽ −2c and d(e, Λf ) ⩾ Bt we have
+     X                      ∞
+                            X tn                                (C0 t)Ne tC0
+          kvei Pt f kL∞ ⩽               C0n d(g)|||f |||∞ ⩽             e d(g)|||f |||∞ ⩽ d(g)e−2cd(e,Λf ) |||f |||∞ .
+                                   n!                             Ne !
+      i                     n=Ne
+
+Hence, (4.28) follows.                                                                                                   
+Remark 4.12. From the above proof one can see
+                                           KS
+                          cN ∼                              ,
+                                d(g)(ae,e + 6(d − 1)ae,ē )
+but this is not necessarily optimal.
+
+                                   5. Uniqueness of invariant measure
+   In this section we prove Theorem 1.2. As the results (4.5) and (4.6) in Theorem 4.2 depend
+on ρL , we cannot simply send L → ∞ to conclude the result for (Pt )t⩾0 on Q. The idea of
+our proof is to construct a suitable coupling and find a suitable distance ρ∞,a such that
+for any µ, ν ∈ P(QL ), the Wasserstein distance w.r.t. ρ∞,a between µPtL and νPtL decays
+exponentially fast in time. Recall that ρ∞,a is given in (1.4) and we will choose a suitable
+parameter a > 1 below.
+  We denote CRic,N = α(N4+2) − 1 which is a constant arising from Ricci curvature in (4.8),
+where α = 1, 2 for SO(N ) and SU (N ) respectively. For any µ, ν ∈ P(Q), we introduce the
+Wasserstein distance
+                                           ρ              def
+                                        Wp ∞,a (µ, ν) =           inf       π(ρp∞,a )1/p .
+                                                                π∈C (µ,ν)
+
+     Recall that the generator LL is given by
+                                    X           X
+                           LL F =        ∆e F +   h∇S(Q)e , ∇e F i.                                                 (5.1)
+                                                  +                 +
+                                               e∈EΛ              e∈EΛ
+                                                     L                  L
+        A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                                     31
+
+For fixed Q ∈ QL define
+                        def                                            def
+                      C = {(Q, Q′ ) : Q′ ∈ cut(Q)},                D = {(Q, Q) : Q ∈ QL },                       (5.2)
+where cut(Q) consists of conjugate points of Q and points having more than one minimal
+geodesics to Q.
+  In the following we prove the result for any a > 1.
+                           e S def               √
+Lemma 5.1. Suppose that K      = CRic,N − (4 + 4 a)N |β|(d − 1) > 0. Then for every L ∈ Z,
+                  ρ                           e       ρ
+             W2 ∞,a (µPtL , νPtL ) ⩽ e−KS t W2 ∞,a (µ, ν),                     t ⩾ 0,     µ, ν ∈ P(QL ).
+Here we use periodic extension to view every measure as a probability on Q.
+
+Proof. To prove the statement we will construct a suitable coupling (Q(t), Q′ (t))t⩾0 between
+the two Markov processes associated to the generator LL starting from two different points
+(Q, Q′ ). We will then use Itô’s fomula to calculate dρ2∞,a(Q(t), Q′ (t)) and obtain
+
+                       ρ2∞,a(Q(t), Q′ (t)) ⩽ e−2K̃S t ρ2∞,a (Q(0), Q′ (0)),                t ⩾ 0.                (5.3)
+                                                  ′
+Suppose that (5.3) holds and we use PQ,Q
+                                      t     to denote the distribution of the coupling (Q(t), Q′ (t)).
+Then for any µ, ν ∈ P(QL ) and π ∈ C (µ, ν) we set
+                                 Z
+                                        ′
+                                   PQ,Q
+                             def
+                          πt =      t     π(dQ, dQ′ ) ∈ C (µPtL , νPtL ).
+
+Hence, for t ⩾ 0
+                                                      Z
+                              ρ                                                  e
+                           W2 ∞,a (µPt , νPt )2 ⩽           ρ2∞,a dπt ⩽ e−2KS t π(ρ2∞,a ),
+
+and the result follows. In the following we prove (5.3) in three steps.
+  Step 1. Construction of coupling (Q(t), Q′ (t))t⩾0 and calculation of dρ2 (Qe (t), Q′e (t)).
+  The usual coupling for Brownian motions and diffusions on Riemannian manifolds is the
+Kendall–Cranston’s coupling (c.f. [Ken86]). In our case we adapt a construction in [Wan06,
+Proposition 2.5.1] to cancel the noise part, with one of the key modifications due to our new
+weighted distance on our product manifold.
+  More precisely, let (Q(t), Q′ (t)) be the coupling on QL × QL starting from (Q, Q′ ) given
+by the following generator
+           X                X                  XqL D
+                                              dim                          E
+    c
+  L =             ∆Q e +           ∆Q′e + 2               PQ,Q′ vi , vj′             vi vj′ + ∇S(Q) + ∇S(Q′ ),   (5.4)
+                                                                            TQ′ QL
+             +
+          e∈EΛ                +
+                           e∈EΛ               i,j=1
+              L                L
+
+where ∆Qe f (Q, Q′ ) = (∆e f (·, Q′ ))(Q), ∆Q′e f (Q, Q′ ) = (∆e f (Q, ·))(Q′ ) and {vi }, {vj′ } are
+orthonormal bases of tangent spaces at Q and Q′ , and PQ,Q′ : TQ QL → TQ′ QL is the parallel
+translation along the geodesic from Q to Q′ . It is easy to see that Lc is independent of the
+choices of the basis {vi }, {vj′ }. In fact, to construct such coupling we need to avoid the cut
+locus C and the diagonal set D by suitable cut-off approximation and we refer to Appendix A
+and [Wan06, Section 2.1] for more details on the construction.
+                                                                      def
+  We intend to apply Itô’s formula to ρ2e with ρe = ρ(Qe , Q′e ). To this end, we consider
+                                                  def
+the projection map πe : QL → G defined by πe Q = Qe . We then write ρ̂e ( · ; Q′e ) for the
+32                        HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+pull-back of the function ρ(·, Q′e ) via the map πe . Namely, fixing any Q′e ∈ G, the function
+ρ̂e ( · ; Q′e ) is a function on QL defined by
+                                   def
+                       ρ̂e (Q; Q′e ) = ρ(πe Q, Q′e ) = ρ(Qe , Q′e )       for Q ∈ QL .
+Similarly we define function ρ̂e (Qe ; · ) on QL as
+                                   def
+                      ρ̂e (Qe ; Q′ ) = ρ(Qe , πe Q′ ) = ρ(Qe , Q′e )       for Q′ ∈ QL .
+We can also write ρe = ρ(πe Q, πe Q′ ) and view ρe as a function on QL × QL .
+   For R ∈ N, we choose a smooth cut-off function χR : [0, ∞) → [0, ∞) satisfying χR (x) = x
+for x ⩾ 1/R and χR |[0, 1 ] = 0 and χ′R ⩾ 0.
+                          2R
+
+   Since ρ2e is smooth near the diagonal, we claim that by Itô’s formula (see [Wan06, Section
+2.1], [Hsu02, Section 6.5]), and writing ρe (t) = ρ(Qe (t), Q′e (t)), we have
+                           dχR (ρ2e (t)) ⩽ 2χ′R (ρ2e (t))ρe (t)J(Q(t), Q′ (t))dt                             (5.5)
+           def
+for t < T = inf{t ⩾ 0, Q(t) = Q′ (t)} where J is a continuous function on QL × QL such that
+J ⩾ IS on (D ∪ C)c . Here
+                                                                               
+                      def
+          IS (Q, Q′ ) = I(Qe , Q′e ) + (∇S)ρ̂e ( · ; Q′e ) (Q) + (∇S)ρ̂e (Qe ; · ) (Q′ ) , (5.6)
+and I(x, y) is the index along γ : [0, ρ(x, y)] → G which is the minimal geodesic from x to y
+in G:
+                            def
+                                  X Z ρ(x,y) 
+                                dimg−1                                          
+                    I(x, y) =                   |∇γ̇ Ji |2 − hR(Ji , γ̇)γ̇, Ji i ds,
+                                           0                                           s
+                                   i=1
+
+where {Ji }dimg−1
+            i=1     are Jacobi fields along γ such that at x and y, they, together with γ̇, form
+an orthonormal basis. Note that the reason to derive a bound in terms of J instead of IS in
+(5.5) is that J is defined everywhere on QL × QL whereas IS is not well-defined on C ∪ D. In
+Step 2 below we control IS by a continuous function on QL × QL , which can also control J.
+   The rigorous derivation of (5.5) follows by cut-off approximation to avoid the cut locus
+C and the diagonal set D (c.f. [Wan06, Theorem 2.1.1], [Hsu02, Theorem 6.6.2]). In the
+following we give the idea on how the terms in (5.6) arise and we put more details of the
+construction and derivation of (5.5) in Appendix A.
+   For t < T and (Q(t), Q′ (t)) ∈/ C ∪ D, on the support of χR (ρ2e ), IS (Q, Q′ ) is given by Lc ρe .
+To prove this, since ρe = ρ(πe Q, πe Q′ ) = ρ(Qe , Q′e ) only depends on Qe , Q′e (i.e. independent
+of the values of Q, Q′ on the other edges), we can write the first three terms in Lc ρe as (see
+the RHS of (5.4))
+                                                d(g) D                     E
+                                                X
+     ∆Qe ρ(Qe , Q′e ) + ∆Q′e ρ(Qe , Q′e ) + 2                          ′
+                                                      PQe ,Q′e ve,i , ve,j               ′
+                                                                                   ve,i ve,j ρ(Qe , Q′e ),   (5.7)
+                                                                           TQ′ G
+                                                i,j=1                          e
+
+                   ′ } being an orthonormal basis of the tangent space at Q , Q′ and P
+with {ve,i } and {ve,j                                                      e   e      Qe ,Q′e :
+                                                                              ′
+TQe G → TQ′e G being the parallel translation along the geodesic from Qe to Qe . Here we used
+the fact that
+                            PQe ,Q′e (ve ) = (PQ,Q′ v)e ∀v ∈ TQ QL
+(in particular the e component of the geodesic from Q to Q′ is the geodesic from Qe to Q′e .)
+By the second variational formula (c.f. [CE75, p21-22], [Ken86, Theorem 2], [Hsu02, Lemma
+6.6.1]) we know that (5.7) is equal to I(Qe , Q′e ).
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                              33
+
+  Moreover, the last two terms involving ∇S in Lc give rise to the last two terms in (5.6).
+  The quadratic variation of the martingale part from applying Itô’s formula to ρe is
+                                                        d(g)−1
+                                                         X
+                  |hγ̇, γ̇i(Q′e ) − hγ̇, γ̇i(Qe )|2 +            |hJi , γ̇i(Q′e ) − hJi , γ̇i(Qe )|2    (5.8)
+                                                         i=1
+
+by the first variation formula (c.f. [CE75, p5], [Hsu02, Section 6.6]). Since {Ji }dimg−1
+                                                                                   i=1    together
+with γ̇ form an orthonormal basis, each term in (5.8) is zero, which implies that the martingale
+part is zero. We also refer to the derivation of (A.5) in Appendix A for more details on the
+calculation of the quadratic variation.
+   Step 2. Estimate the RHS of (5.6).
+   In this step we estimate the RHS of (5.6) and prove that for t < T
+                                                      X           X 
+                       ∂t ρ2e ⩽ −2CRic,N ρ2e + 2N |β|    ρe ρe +        ρē .                (5.9)
+                                                               p,p≻e             e6=ē∈p
+
+   By the index lemma (see [Wan06, Theorem 2.1.4] or [Hsu02, Lemma 6.7.1]), for x = Qe ,
+y = Q′e with γ : [0, ρe ] → G the minimal geodesic from Qe to Q′e , where we recall that
+ρe = ρ(Qe , Q′e ), we have
+                                           Z ρe
+                                   ′
+                           I(Qe , Qe ) ⩽ −      Ric(γ̇, γ̇)ds = −CRic,N ρe .      (5.10)
+                                                0
+
+   In the following we consider the last two terms in (5.6). Given Q, Q′ ∈ QL as above, we
+define a path Γ : [0, ρe ] → QL which goes from Q to Q′ as follows. For any ē ∈ EΛ+L , we can
+find a geodesic γ ē : [0, ρē ] → Gē from Qē to Q′ē . Here ρē is the length of the geodesic. We
+then set
+                       
+        Γ(s) = γ̃ ē (s)        +
+                                  ∈ QL      (s ∈ [0, ρe ])    where        γ̃ ē (s) = γ ē (ρē s/ρe ).
+                          ē∈EΛ
+                                L
+
+We can check that we indeed have Γ(0) = Q and Γ(ρ) = Q′ and Γ is the geodesic from Q to
+Q′ . Also, we have
+                           πe (Γ(s)) = γ(s)   (∀s ∈ [0, ρe ]).
+With the above notation at hand, we write the last two terms in (5.6) as
+                                              
+      (∇S)ρ̂e ( · ; Q′e ) (Q) + (∇S)ρ̂e (Qe ; · ) (Q′ ) = h∇S, γ̇i(Q′ ) − h∇S, γ̇i(Q),                 (5.11)
+
+with γ̇ extended as a tangent vector field on QL along the curve Γ, which is still denoted by
+γ̇, by setting all the other components as zero.
+    We then write (5.11) as
+                   Z ρe  D                  E    Z ρe           
+                          d
+                              ∇S(Γ(s)), γ̇(s) ds =       Γ̇h∇S, γ̇i (Γ(s))ds.
+                     0   ds                         0
+
+  Hence, we get                              Z ρe           
+                                    (5.11) =       Γ̇h∇S, γ̇i (Γ(s))ds.
+                                               0
+Below we estimate the above integral. With a slight abuse of notation, for an edge e ∈ EΛ+L
+we write e ∈ p if {e, e−1 } ∩ p 6= ∅, namely we view edges as undirected in the calculation
+below. We also extend γ̃˙ ē , ē ∈ EΛ+L as tangent vector field on QL along Γ, which is still
+34                            HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+denoted by γ̃˙ ē , by setting all the components other than ē to be zero. Then recalling our
+formula for S we have
+                    Z ρe                          X X Z ρe
+                          Γ̇h∇S, γ̇i (Γ(s))ds = N β          γ̃˙ ē (γ̇ReTr(Qp ))ds
+                      0                                      p≻e ē∈p     0
+                                                               X X Z ρe
+                                                     ⩽ N |β|                        |γ̃˙ ē ||γ̇| ds
+                                                               p≻e ē∈p       0
+                                                               X                  X           
+                                                     ⩽ N |β|          ρe +                  ρē ,                (5.12)
+                                                               p≻e                e6=ē∈p
+
+where we used |γ̇| = 1 and |γ̃˙ ē | = ρē /ρe . Here we calculate γ̃˙ ē (γ̇ReTr(Qp )) as follows: for
+Qp = Qe Qē Q1 Q2 with Q1 , Q2 ∈ G we get
+                                           d       d                               
+                   γ̃˙ ē (γ̇ReTr(Qp )) =                   ReTr γ(s)γ̃ ē (t)Q1 Q2
+                                          dt t=0  ds s=0 
+                                        = ReTr γ̇ γ̃˙ ē Q1 Q2 ,
+
+the absolute value of which by Hölder’s inequality for trace is bounded by |γ̃˙ ē | |γ̇|. Similar
+calculation holds for Qp = Qe Q1 Qē Q2 and Qp = Qe Q1 Q2 Qē and we use similar argument
+as in the proof of Lemma 4.1 to control γ̇ γ̇ReTr(Qp ) by |γ̇|2 . Hence, by (5.5), (5.6), (5.10),
+(5.12), we get
+                                                                     X       X       
+           ∂t χR (ρ2e ) ⩽ −2CRic,N χ′R (ρ2e ) ρ2e + 2χ′R (ρ2e )N |β|    ρ2e +   ρē ρe .
+                                                                              p,p≻e                    e6=ē∈p
+
+Letting R → ∞ and by dominated convergence theorem and the fact that χ′R is uniformly
+bounded in R, (5.9) holds.
+  Step 3. Derivation of (5.3).
+  We extend (Q(t), Q′ (t))t⩾0 periodically as a process on Q × Q, which is still denoted as
+(Q(t), Q′ (t))t⩾0 . (5.9) also holds for the extension. By (5.9) we have
+                                                                X X           
+                    ∂t ρ2e ⩽ −2CRic,N ρ2e + 2N |β| 2(d − 1)ρ2e +         ρē ρe .
+                                                                                  p,p≻e e6=ē∈p
+
+In the following we bound ρē ρe . To obtain the desired rate given by K  e S t, we need to control
+ρē ρe in different ways depending on the relations between |e| and |ē|. We first fix a plaquette
+p and consider two edges ē 6= e.
+For the edges satisfying |e| = |ē| 2 we have
+                                                 2ρē ρe ⩽ ρ2ē + ρ2e .
+For the edges satisfying |e| =
+                             6 |ē| we have
+                                               2        1
+                                              √ ρē ρe ⩽ ρē2 + ρ2e .
+                                                a       a
+The reason for the choice of the above weight is as follows: there is one plaquette p such that
+only one edge ē 6= e in p with the same distance as |e| and other edges with the distance
+
+     2If two edges e 6= ē share the same vertex and this vertex is closer to origin, we may have |e| = |ē|.
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                                                   35
+
+larger than |e|. Thus, since for each edge e there are 2(d − 1) plaquettes in P such that p ≻ e,
+we get
+              X X
+      2N |β|            ρē ρe
+                p,p≻e e6=ē∈p
+           √            X        X 1                    X                   X                        
+       ⩽       aN |β|                 ρ2ē + ρ2e + N |β|                                     ρ2ē + ρ2e
+                                    a
+                        p,p≻e |e|6=|ē|∈p                p,p≻e           |e|=|ē|∈p,e6=ē
+           √            X        X          1 2       √                               X                     X
+       =       aN |β|                         ρē + (4 a + 2)(d − 1)N |β|ρ2e + N |β|                                     ρē2
+                        p,p≻e |e|6=|ē|∈p
+                                            a                                        p,p≻e            |e|=|ē|∈p,e6=ē
+
+where the first sum for ē with |e| =      6 |ē| includes two edges and the second sum for ē with
+|e| = |ē| contains only one edge. Note that we also get an extra a1 before ρē2 with |ē| = |e| + 1,
+                                          1
+which can be put into the weight a|ē|      . Substituting the above calculation into (5.9) and using
+again the fact that for each edge e there are 2(d − 1) plaquettes in P such that p ≻ e we get
+                    1                         1          √                   1
+                     |e|
+                         ∂t ρ2e ⩽ − 2CRic,N |e| ρ2e + (4 a + 6)N |β|(d − 1) |e| ρ2e
+                   a                         a                              a
+                                            X √       X      1 2       X            
+                                                                                   2
+                                  + N |β|           a             ρ   +         ρ  ē .
+                                          p,p≻e
+                                                             a|ē| ē
+                                                           |e|6=|ē|∈p            |e|=|ē|∈p,e6=ē
+
+Taking sum over e we notice that ρ2e also appears when calculating a1|ē| ∂t ρ2ē with ē and e
+                                           √        1 2
+in the same plattque, which at most gives 2 aN |β| a|e| ρe and N |β| a1|e| ρ2e from a1|ē| ∂t ρ2ē with
+|ē| =
+     6 |e| and |ē| = |e|, respectively. Since for each edge e there are 2(d − 1) plaquettes in P
+such that p ≻ e, we get
+         X 1                          X 1                   √                X 1
+                        2                         2
+               |e|
+                   ∂t ρ e ⩽ −2C Ric,N        |e|
+                                                 ρe + (8 + 8  a)N |β|(d − 1)        ρ2 .
+                                                                                 |e| e
+                                                                                           (5.13)
+            +
+              a                          +
+                                           a                                  +
+                                                                                a
+       e∈E                                    e∈E                                              e∈E
+
+Hence, (5.3) follows from Gronwall’s lemma.                                                                                     
+
+   Now we prove Theorem 1.2. One of the important ingredients in the proof is that under
+Assumption 1.1, the condition of Lemma 5.1 can indeed be satisfied by tuning the weight
+parameter a > 1 to be sufficiently close to 1, see Eq. (5.15) below. The crucial reason for
+this proof to work is that the last term in our bound (5.13) is of order N , rather than N p
+for some p > 1. This is a nontrivial point: indeed, that term comes from bounding the ∇S
+terms on the right-hand side of (5.6), but note that S defined in (1.2) would appear to be
+of order N 2 if one naively bound Tr(Qp ) ⩽ N , in which case the proof would break down.
+In fact in the previous proof we instead apply the property of the Lie group G and Hölder
+inequality to separate different vector fields appearing in the second order derivative of S,
+which could finally be bounded by sum of Riemannian distances up to a factor N |β|.
+
+Proof of Theorem 1.2. For any two invariant measures µ, ν of (1.6), we can find two sequences
+{µL }, {νL } ⊂ P(QL ) such that their periodic extensions over the entire Q, which are still
+denoted by µL , νL , converge to µ, ν weakly in Q, with the distance induced by k · k defined
+in (3.6). Indeed, let Q(0) : Ω → Q be a random variable such that Law(Q(0)) = µ, and then
+           def
+define µL = Law(QL (0)) where QL (0) : Ω → QL is given by
+                                     (
+                             L        Qe (0)      e ∈ EΛ+L−1
+                           Qe (0) =
+                                      IN ,        e ∈ EΛ+L \EΛ+L−1 ,
+36                        HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+then {µL } satisfy the desired property. The sequence {νL } can be constructed in the same
+way.
+  By Lemma 3.2 we obtain the unique solutions QL ∈ C([0, ∞); QL ) to (3.3) starting from
+the initial distribution µL ∈ P(QL ). By periodic extension we view QL ∈ C([0, ∞); Q).
+Recall that (PtL )t⩾0 is the Markov semigroup associated with the solution to (3.3). By global
+                                              ∞ (Q) and t ⩾ 0
+well-posedness of (3.3), we obtain for F ∈ Ccyl
+                                  Z
+                                     PtL F dµL = EF (QL (t)).
+
+Similarly, using Lemma 3.4 we obtain unique solutions Q ∈ C([0, ∞); Q) to (1.6) starting
+from the initial distribution µ. Recall that (Pt )t⩾0 is the Markov semigroup for the Markov
+process associated to (1.6). By uniqueness in law of the solution to (1.6) we have
+                                   Z
+                                      Pt F dµ = EF (Q(t)).
+
+  As µL converges to µ weakly in Q, by the same argument as in the proof Proposition 3.4,
+the law of {QL } is tight in C([0, ∞); Q) and the tight limit satisfies the limit equation (1.6)
+with the initial distribution µ. By uniqueness in law of equation (1.6), which follows from
+pathwise uniqueness in Proposition 3.4 and Yamada–Watanabe Theorem, the law of QL
+converges weakly to the law of Q in C([0, ∞); Q), as L → ∞. As a result, for F ∈ Ccyl     ∞ (Q)
+
+we have
+               Z                                          Z
+                    L               L
+                  Pt F dµL = EF (Q (t)) → EF (Q(t)) = Pt F dµ, L → ∞.                     (5.14)
+
+Similarly, we obtain
+                                    Z                 Z
+                                        PtL F dνL →       Pt F dν,   L → ∞.
+
+Moreover, by the condition KS > 0, there exists a > 1 such that
+                                              √
+                        Ke S = CRic,N − (4 + 4 a)N |β|(d − 1) > 0.                       (5.15)
+We then invoke Lemma 5.1 to have
+     Z         Z         Z           Z                  Z             Z
+        F dµ − F dν =       Pt F dµ − Pt F dν = lim       Pt F dµL − PtL F dνL
+                                                            L
+                                                   L→∞
+                           Z
+                                                                 ρ
+     = lim       inf         (F (x) − F (y))dπ(x, y) ⩽ CF lim W2 ∞,a (µL PtL , νL PtL )
+        L→∞ π∈C (µL PtL ,νL PtL )                                        L→∞
+               e             ρ                             e
+     ⩽ CF e−KS t lim W2 ∞,a (µL , νL ) ⩽ C(a)e−KS t
+                   L→∞
+
+where CF only depends on F , and the constant C(a) is independent of L by boundedness of
+ρ∞,a , i.e. ρ∞,a (Q, Q′ ) < ∞ for any Q, Q′ ∈ Q. Letting t → ∞ we have
+                                      Z        Z
+                                         F dµ − F dν = 0.
+
+Hence, µ = ν. This gives the uniqueness of invariant measure, as denoted by µym      N,β in the
+theorem.
+  By Theorem 3.5, every tight limit is the invariant measure of (1.6). Hence, it is also unique
+and the second result of the theorem follows.
+     A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                          37
+
+   To prove the last statement (1.7), taking now an arbitrary probability measure ν on Q
+we also have {νL } constructed similarly as above. We denote by QνL and Qν the processes
+starting from νL and ν, respectively. We also have, as in (5.14),
+              Z                                           Z
+                   L               νL             ν
+                 Pt F dνL = EF (Q (t)) → EF (Q (t)) = Pt F dν, L → ∞.              (5.16)
+
+   Recall {µL } and µ = µym
+                         N,β as the unique invariant measure given above. By triangle
+inequality and Lemma 5.1 we have for t ⩾ 0
+           ρ                  ρ                        ρ                          ρ
+        W2 ∞,a (νPt , µ) ⩽ W2 ∞,a (νL PtL , νPt ) + W2 ∞,a (νL PtL , µL PtL ) + W2 ∞,a (µ, µL )
+                              ρ                        e      ρ                   ρ
+                         ⩽ W2 ∞,a (νL PtL , νPt ) + e−KS t W2 ∞,a (µL , νL ) + W2 ∞,a (µ, µL )
+                                                                  e       ρ
+                         ⩽ Eρ2∞,a (QνL (t), Qν (t)) + C(a)e−KS t + W2 ∞,a (µ, µL ).               (5.17)
+As Q is compact w.r.t. the distance ρa∞ , QνL (t) is tight in (Q, ρa∞ ). Using (5.16) we then
+have for t ⩾ 0
+                         Eρ2∞,a (QνL (t), Qν (t)) → 0, L → ∞.
+Letting L → ∞ in (5.17), we have
+                                     ρ                            e
+                                   W2 ∞,a (νPt , µ) ⩽ C(a)e−KS t ,
+                                             e S only depends on the constant a, d, β and
+which is (1.7). It is clear from (5.15) that K
+dimension of G.                                                                         
+
+                         Appendix A. Construction of coupling
+  In this appendix, we follow [Ken86], [Wan06, Section 2.1] to construct the coupling
+                                          (Q(t), Q′ (t))t⩾0
+starting from (Q, Q′ ) by approximation, and prove (5.5). The coupling argument presented
+here is similar with [Wan06, Chapter 2] but a main difference is that the above reference
+applies Itô’s formula to a distance on a given manifold – which would be ρL (not ρe ) in our
+case, but we will apply Itô’s formula to the quantity χR (ρ2e ).
+   Before proceeding we recall the basic definitions and notations (c.f. [Hsu02, Chapter 2]
+for more detailed explanations). Recall that QL is a Riemannian manifold with dimension
+d = |EΛ+L |d(g). Let O(QL ) be the orthonormal frame bundle over QL , which is a d(d + 1)/2-
+dimensional Riemannian manifold. Given l ∈ Rd , let Hl be the corresponding horizontal
+vector field on O(QL ). Denote by π : O(QL ) → QL be the canonical projection. For any
+Φ ∈ O(QL ) we have Φl ∈ TπΦ QL and Hl (Φ) ∈ TΦ O(QL ) is the horizontal lift of Φl ∈ TπΦ QL
+to Φ. In particular, let {li }di=1 be an orthonormal basis of Rd , define the horizontal Laplace
+operator
+                                                    d
+                                                    X
+                                                def
+                                        ∆O(QL ) =     Hl2i ,
+                                                     i=1
+which is independent of the choice of the basis {li }. Moreover, for any vector field Z on QL
+                                      def
+we define its horizontal lift by HΦ Z = HΦ−1 Z (Φ) for Φ ∈ O(QL ), where Φ−1 Z is the unique
+vector l ∈ Rd such that ZπΦ = Φl.
+  As in [Hsu02, Chapter 6], for a function f defined on O(QL ) × O(QL ), we denote by Hli ,1 f
+and Hli ,2 f the derivatives of f with respect to the horizontal vector field Hli on the first
+38                                  HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+and the second variable respectively. The horizontal Laplacian on the first and the second
+variable are
+                                   X d                       d
+                                                             X
+                       ∆O(QL ),1 =     Hl2i ,1 , ∆O(QL ),2 =   Hl2i ,2 .
+                                                        i=1                            i=1
+                                                                                                                   def
+     Construction of coupling. Consider the following Stratonovich SDE with Q(t) = π(Φt )
+                                   d
+                                   X                                          √
+                           dΦt =         HΦt (Φt ) ◦ dNt ,         dNt =          2dBt + Φ−1
+                                                                                          t ∇S(Q(t))dt,                  (A.1)
+                                   i=1
+where (Bt )t⩾0 is a standard d-dimensional Brownian motion and πΦ0 = Q. Then Q(t) is an
+LL -diffusion process (LL as in (3.5)) starting from Q and Φt is called its horizontal lift.
+  As the Riemannian distance is not smooth on C and D defined in (5.2), we introduce
+cut-off approximation as follows: For any n ⩾ 1 and ε ∈ (0, 1), let hn,ε ∈ C ∞ (QL × QL ) such
+that 0 ⩽ hn,ε ⩽ 1 − ε, hn,ε |Cnc = 1 − ε and hn,ε |C2n = 0, where
+                             n                                    1o
+                         def        ′                    ′
+                     Cn = (Q, Q ) : ρQL ×QL ((Q, Q ), C) ⩽          , n ⩾ 1,
+                                                                  n
+with ρQL ×QL the Riemannian distance on QL × QL . Let gn ∈ C ∞ (QL × QL ) such that
+0 ⩽ gn ⩽ 1, gn (Q, Q′ ) = 0 if ρL (Q, Q′ ) ⩽ 2n1
+                                                   and gn (Q, Q′ ) = 1 if ρL (Q, Q′ ) ⩾ n1 . Let Ψn,ε
+                                                                                                  t
+and N n,ε solve the following SDE with Q
+               t                                     = πΨn,ε
+                                           e n,ε (t) def
+                                                                                t
+                           d
+                           X
+               dΨn,ε
+                 t =             HΨn,ε
+                                   t
+                                       (Ψn,ε     n,ε
+                                         t ) ◦ dNt ,
+                           i=1
+                           √                                                                                             (A.2)
+               dNtn,ε =                       en,ε (t))(Ψn,ε )−1 P
+                            2(hn,ε gn )(Q(t), Q          t              en,ε (t) Φt dBt
+                                                                   Q(t),Q
+                            q
+                           + 2(1 − (hn,ε gn )2 (Q(t), Q en,ε (t))) dB ′ + (Ψn,ε )−1 ∇S(Qe n,ε (t)) dt,
+                                                                      t        t
+
+where Bt′ is a Brownian motion in Rd independent of Bt , πΨ0 = Q′ and PQ,Q′ : TQ QL →
+TQ′ QL is parallel translation along the geodesic from Q to Q′ . As the coefficients are smooth
+on the compact manifold, we have unique solutions (Φt , Ψn,εt ) to (A.1) and (A.2).
+  The generator for (Φt , Ψn,ε
+                             t ) is then given by
+                                                                  d
+                                                                  X
+                   Ln,ε
+                    O(QL ) = ∆O(QL ),1 + ∆O(QL ),2 + 2              (hn,ε gn )Hli∗ ,2 Hli ,1 + HΦ ∇S + HΨ ∇S,
+                                                                  i=1
+
+with li∗ (Φ, Ψ) = Ψ−1 PπΦ,πΨ Φli ∈ Rd .
+     We then consider the following approximation to the generator Lc defined in (5.4).
+                    X                X                            dim
+                                                                   XqL
+         n,ε
+     L         =           ∆Q e +               ∆Q′e + 2gn hn,ε           hPQ,Q′ vi , vj′ iTQ′ QL vi vj′ + ∇S(Q) + ∇S(Q′ ),
+                      +
+                   e∈EΛ                +
+                                    e∈EΛ                          i,j=1
+                       L                    L
+
+with {vi }, {vj′ } as in the definition of Lc in (5.4).
+   It is easy to see that Ln,ε                  n,ε                 2
+                           O(QL ) is a lift of L . Namely, for f ∈ C (QL × QL ) and F (Φ, Ψ) =
+f (πΦ, πΨ), one has Ln,ε F (Φ, Ψ) = Ln,ε f (πΦ, πΨ). We then know (Q(t), Q
+                                   O(QL )
+                                                                            en,ε ) = (πΦt , πΨt )
+                                                                                                          t
+starting from (Q, Q′ ) is generated by Ln,ε (c.f. [Wan06, Section 2.1]). Since the marginal
+                                           en,ε ) gives a coupling of LL -diffusions starting from
+operators of Ln,ε coincide with LL , (Qt , Q t
+different initial data.
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                          39
+
+  Let PQ denote the law of LL -diffusion (Q(t))t⩾0 starting from Q ∈ QL in C([0, ∞); QL )
+endowed with the distance
+                      ∞
+                      X                                
+                ′ def
+       ρeL (Q, Q ) =    2−n 1 ∧ sup ρL (Q(t), Q′ (t)) , Q, Q′ ∈ C([0, ∞); QL ).
+                        n=0            t∈[n,n+1]
+                                                                                         ′
+As the marginal law of (Q, Q e n,ε )n,ε is tight in C([0, ∞); QL ), the joint law PQ,Q            en,ε
+                                                                                     n,ε of (Q, Q )n,ε
+                                                                                              Q,Q′
+is also tight. Therefore, for every ε > 0 there exists a probability measure Pε                    and a
+                                                  ′              Q,Q′     Q,Q′
+subsequence, which is still denoted by PQ,Q   n,ε   such  that P n,ε  → P ε    weakly  in  C([0, ∞); QL ).
+                             Q,Q′          Q,Q  ′              Q,Q′     Q,Q ′
+Moreover, we could find Pεk and P                 such that Pεk → P            weakly in C([0, ∞); QL ).
+  Q,Q ′                                      Q         Q ′
+P       is then the desired coupling of P and P .
+   Proof of inequality (5.5). In the following we prove (5.5).
+   Following [Ken86], [Wan06, Section 2.1] we apply Itô’s formula to χR (ρ2 )(Qe (t), Q          en,ε
+                                                                                                   e (t))
+            ′
+and use χR ⩾ 0 to obtain
+                           en,ε
+         dχR (ρ2 )(Qe (t), Q e (t))
+              = dMtn,ε + 2(4ρ2 χ′′R (ρ2 ) + 2χ′R (ρ2 ))(1 − gn hn,ε )(Q(t), Q
+                                                                            en,ε (t))dt − dLn,ε
+                                                                                            t      (A.3)
+                                                                    
+                             ′   2                                           e n,ε
+                + 1C c ∩Dc 2χR (ρ )ρ gn hn,ε IS + (1 − gn hn,ε )Z (Q(t), Q (t))dt.
+                   en,ε
+Here ρ = ρ(Qe (t), Q                  2         2          en,ε              ′ ′′
+                     e (t)) and f (ρ ) = f (ρ )(Qe (t), Qe (t)) for f ∈ {χR , χR }. The term
+  n,ε
+Mt is a martingale with quadratic variation process given by
+                       Z t
+                                                                en,ε (s))ds,
+                           4(2χ′R (ρ2 )ρ)2 (1 − gn hn,ε )(Q(s), Q
+                         0
+      n,ε                                                           en,ε (t)) ∈ C.
+and Lt is a non-decreasing process which increases only when (Q(t), Q                                The
+term IS is given in (5.6) and finally
+                                                                                         
+  Z(Q, Q′ ) = ∆ρ(·, Q′e )(Qe ) + ∆ρ(Qe , ·)(Q′e ) + (∇S)ρ̂e (·, Q′e ) (Q) + (∇S)ρ̂e (Qe , ·) (Q′ ).
+                                                                                              (A.4)
+with ∆ being the Laplace–Beltrami operator on G.
+  In fact, to derive (A.3), we may first apply Itô’s formula to dρ(Qe (t), Q  en,ε
+                                                                                e (t)) and then
+                                   2
+apply Itô’s formula again to χR (ρ ). Suppose for now that the quadratic variation process of
+the martingale part M ρ for ρ is given by
+                                     Z t
+                               ρ                              en,ε (s))ds.
+                           hMt i = 4 (1 − gn hn,ε )(Q(s), Q                                   (A.5)
+                                          0
+Then the second term on the r.h.s. of (A.3) comes from hMtρ i. As explained in (5.6)–(5.7)
+the last line in (A.3) comes from Ln,ερ.
+  We now verify (A.5). Using (A.1) and (A.2) we have, for ρe(Φ, Ψ) = ρ(πe πΦ, πe πΨ),
+                           d h
+                           X                                                                 i
+                                                               2                          2
+             dhMtρ i = 2         Hli ,1 ρe + gn hn,ε Hli∗ ,2 ρe + 1 − (gn hn,ε )2 Hli ,2 ρe dt.
+                           i=1
+As ρe only depends on the component at e, this now boils down to standard arguments.
+Namely, since the above quantity is independent of the choice of basis, we can write the
+above terms as vector fields on G, and choose basis in such a way that one basis vector is
+tangent to the geodesic and the others are perpendicular to the geodesic, and use the first
+variation formula to derive (A.5) (c.f. [Hsu02, Section 6.6]).
+40                              HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+   In the following we send n → ∞, ε → 0 to derive (5.5).
+   Let (x(t), y(t)) be the canonical process on (C([0, ∞); QL ) × C([0, ∞); QL ), F × F ) and
+let {Ft }t⩾0 be the natural filtration. On the support of χR using Laplacian comparison
+theorem (c.f. [Hsu02, Corollary 3.4.4]) we know that Z defined in (A.4) satisfies Z ⩽ CR for
+                                                                             1
+some constant CR > 0. Since the support of χR (ρ2 ) ⊂ {ρ2 ⩾ 2R                 } and for n large enough
+                             √
+ρL (x, y) ⩾ ρ(xe , ye ) ⩾ 1/ 2R ⩾ 1/n, gn (x, y) = 1 on the support of χR (ρ2 ), we obtain that
+                                      Z t
+                          en,ε (t)) −
+         χR (ρ2 )(Qe (t), Q                                                               en,ε (s))
+                                          2(4ρ2 χ′′R (ρ2 ) + 2χ′R (ρ2 ))(1 − hn,ε )(Q(s), Q
+                            e
+                                       0
+                                                                           
+                                    + 2χ′R (ρ2 )ρ hn,ε J + (1 − hn,ε )CR (Q(s), Q    en,ε (s)) ds
+
+is a supermartingale, where J is as in (5.5). Therefore,
+                                Z t
+   n,ε def   2
+ St = χR (ρ )(xe (t), ye (t)) −     2(4ρ2 χ′′R (ρ2 ) + 2χ′R (ρ))(xe (s), ye (s))(1 − hn,ε )(x(s), y(s))
+                                 0
+                                                                                      
+                              + 2(χ′R (ρ2 )ρ)(xe (s), ye (s)) hn,ε J + (1 − hn,ε )CR (x(s), y(s)) ds
+            ′
+is a PQ,Q
+      n,ε -supermartingale.
+                                                                     ′
+  Furthermore, since by [Wan06, Lemma 2.1.2] PQ,Q         ε    ((x(s), y(s)) ∈ C) = 0 for s > 0, using
+the same argument as in [Wan06, Proof part (b) of Theorem 2.1.1] we let n → ∞ and obtain
+that
+                                    Z t
+      ε def    2
+     St = χR (ρ )(xe (t), ye (t)) −     2ε(4ρ2 χ′′R (ρ2 ) + 2χ′R (ρ))(xe (s), ye (s))
+                                     0
+                                                                                     
+                                  + 2(χ′R (ρ2 )ρ)(xe (s), ye (s)) (1 − ε)J + εCR (x(s), y(s)) ds
+            ′
+ia a PQ,Q
+      ε   -supermartingale.
+   Letting ε → 0 we obtain that
+                                                    Z t
+                    def     2
+                 St = χR (ρ )(xe (t), ye (t)) − 2         (χ′R (ρ2 )ρ)(xe (s), ye (s))J(x(s), y(s)) ds
+                                                     0
+            ′
+is a PQ,Q -supermartingale. Hence, by Doob–Meyer’s decomposition
+                                                               
+      dχR ρ2 (xe (t), ye (t)) = dMt + 2(χ′R (ρ2 )ρ) xe (t), ye (t) J(x(t), y(t))dt − dLt ,               (A.6)
+with M a martingale and L a predictable increasing process.
+  In the following we prove M = 0. Similarly we use the above argument for f (χR (ρ2 (xe (t), ye (t))))
+with 0 ⩽ f ∈ C 2 (R+ ), f ′ ⩾ 0 and we have that
+                                 Z t                                      
+              2
+     f χR (ρ )(xe (t), ye (t)) − 2      f ′ (χR (ρ2 ))χ′R (ρ2 )ρ xe (s), ye (s) J(x(s), y(s)) ds
+                                          0
+
+is a P   Q,Q′   -supermartingale. Choosing f (r) = exp(mr), m ∈ N and setting
+                                                                
+                                     def
+                                  Ξt = exp mχR ρ2 (xe (t), ye (t)) ,
+we have that
+                                                 Z t
+                                       Ξt − 2m            Ξ1s J(x(s), y(s)) ds
+                                                    0
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                            41
+
+          ′
+is a PQ,Q -supermartingale with
+                                                    
+                       Ξ1s = exp(mχR (ρ2 ))χ′R (ρ2 )ρ (xe (s), ye (s)).
+
+By Doob–Meyer’s decomposition,
+                                     ft + 2mΞ1 J(x(t), y(t))dt − dL
+                              dΞt = dM                            et,                                (A.7)
+                                             t
+
+      ft is a martingale and L
+where M                      e t is predictable increasing.
+  On the other hand, applying Itô’s formula to (A.6) we obtain
+                         1
+         dΞt = m Ξt dMt + m2 Ξt dhMt , Mt i + 2m Ξ1t J(x(t), y(t)) dt − m Ξt dLt .                   (A.8)
+                         2
+                                                2
+Comparing (A.7) and (A.8) we obtain dhM, M it ⩽ m dLt . Letting m → ∞, we get dhM, M it =
+0. Hence, (5.5) follows.
+
+                                              References
+[AC22]   A. Adhikari and S. Cao. Correlation decay for finite lattice gauge theories at weak coupling. arXiv
+         preprint arXiv:2202.10375, 2022.
+[AD99]   L. Andersson and B. K. Driver. Finite dimensional approximations to Wiener measure and path
+         integral formulas on manifolds. Journal of functional analysis, 165(2):430–498, 1999.
+[Adh21]  A. Adhikari. Wilson loop expectations for non-abelian gauge fields coupled to a Higgs boson at low
+         and high disorder. arXiv preprint arXiv:2111.07540, 2021.
+[AGZ10] G. W. Anderson, A. Guionnet, and O. Zeitouni. An introduction to random matrices, volume 118
+         of Cambridge Studies in Advanced Mathematics. Cambridge University Press, Cambridge, 2010.
+[AHKZ89] S. Albeverio, R. Hoegh-Krohn, and B. Zegarliński. Uniqueness of Gibbs states for general P (ϕ)2 -
+         weak coupling models by cluster expansion. Comm. Math. Phys., 121(4):683–697, 1989.
+[Bak97]  D. Bakry. On Sobolev and logarithmic Sobolev inequalities for Markov semigroups. In New trends
+         in stochastic analysis (Charingworth, 1994), pages 43–75. World Sci. Publ., River Edge, NJ, 1997.
+[BB21]   R. Bauerschmidt and T. Bodineau. Log-Sobolev inequality for the continuum Sine-Gordon model.
+         Communications on Pure and Applied Mathematics, 74(10):2064–2113, 2021.
+[BD22]   R. Bauerschmidt and B. Dagallier. Log-Sobolev inequality for the ϕ42 and ϕ43 measures. arXiv
+         preprint arXiv:2202.02295, 2022.
+[BE85]   D. Bakry and M. Émery. Diffusions hypercontractives. In Séminaire de probabilités, XIX, 1983/84,
+         volume 1123 of Lecture Notes in Math., pages 177–206. Springer, Berlin, 1985.
+[BG18]   R. Basu and S. Ganguly. SO(N ) lattice gauge theory, planar and beyond. Comm. Pure Appl. Math.,
+         71(10):2016–2064, 2018.
+[BGHZ21] Y. Bruned, F. Gabriel, M. Hairer, and L. Zambotti. Geometric stochastic heat equations. J. Amer.
+         Math. Soc., 35(1):1–80, 2021.
+[BGL14] D. Bakry, I. Gentil, and M. Ledoux. Analysis and geometry of Markov diffusion operators, volume
+         103. Springer, 2014.
+[Cao20]  S. Cao. Wilson loop expectations in lattice gauge theories with finite gauge groups. Comm. Math.
+         Phys., 380(3):1439–1505, 2020.
+[CCHS20] A. Chandra, I. Chevyrev, M. Hairer, and H. Shen. Langevin dynamic for the 2D Yang-Mills
+         measure. arXiv preprint arXiv:2006.04987, 2020.
+[CCHS22] A. Chandra, I. Chevyrev, M. Hairer, and H. Shen. Stochastic quantisation of Yang-Mills-Higgs in
+         3D. arXiv preprint arXiv:2201.03487, 2022.
+[CE75]   J. Cheeger and D. G. Ebin. Comparison theorems in Riemannian geometry. North-Holland Math-
+         ematical Library, Vol. 9. North-Holland Publishing Co., Amsterdam-Oxford; American Elsevier
+         Publishing Co., Inc., New York, 1975.
+[Cha16]  S. Chatterjee. The leading term of the Yang-Mills free energy. J. Funct. Anal., 271(10):2944–3005,
+         2016.
+[Cha19a] S. Chatterjee. Rigorous solution of strongly coupled SO(N ) lattice gauge theory in the large N
+         limit. Comm. Math. Phys., 366(1):203–268, 2019.
+42                        HAO SHEN, RONGCHAN ZHU, AND XIANGCHAN ZHU
+
+[Cha19b] S. Chatterjee. Yang-Mills for probabilists. In Probability and analysis in interacting physical sys-
+         tems, volume 283 of Springer Proc. Math. Stat., pages 1–16. Springer, Cham, 2019.
+[Cha20]  S. Chatterjee. Wilson loops in Ising lattice gauge theory. Comm. Math. Phys., 377(1):307–340,
+         2020.
+[Cha21]  S. Chatterjee. A probabilistic mechanism for quark confinement. Comm. Math. Phys., 385(2):1007–
+         1039, 2021.
+[Che19]  I. Chevyrev. Yang-Mills measure on the two-dimensional torus as a random distribution. Comm.
+         Math. Phys., 372(3):1027–1058, 2019.
+[Che22]  I. Chevyrev. Stochastic quantisation of Yang-Mills. arXiv preprint arXiv:2202.13359, 2022.
+[CJ16]   S. Chatterjee and J. Jafarov. The 1/N expansion for SO(N ) lattice gauge theory at strong coupling.
+         arXiv preprint arXiv:1604.04777, 2016.
+[CWZZ21] X. Chen, B. Wu, R. Zhu, and X. Zhu. Stochastic heat equations for infinite strings with values in
+         a manifold. Trans. Amer. Math. Soc., 374(1):407–452, 2021.
+[dC92]   M. P. do Carmo. Riemannian geometry. Mathematics: Theory & Applications. Birkhäuser Boston,
+         Inc., Boston, MA, 1992. Translated from the second Portuguese edition by Francis Flaherty.
+[Dob70]  R. L. Dobrushin. Prescribing a system of random variables by conditional distributions. Theory of
+         Probability & Its Applications, 15(3):458–486, 1970.
+[Dri89]  B. K. Driver. YM2 : continuum expectations, lattice convergence, and lassos. Comm. Math. Phys.,
+         123(4):575–616, 1989.
+[Dri19]  B. K. Driver. A functional integral approaches to the Makeenko-Migdal equations. Comm. Math.
+         Phys., 370(1):49–116, 2019.
+[FLV20]  M. P. Forsström, J. Lenells, and F. Viklund. Wilson loops in finite Abelian lattice gauge theories.
+         arXiv e-prints, January 2020.
+[FLV21]  M. P. Forsström, J. Lenells, and F. Viklund. Wilson loops in the abelian lattice Higgs model. arXiv
+         e-prints, July 2021.
+[For21a] M. P. Forsström. Decay of correlations in finite abelian lattice gauge theories. arXiv preprint
+         arXiv:2104.03752, 2021.
+[For21b] M. P. Forsström. Wilson lines in the abelian lattice Higgs model. arXiv preprint arXiv:2111.06620,
+         2021.
+[FOT94] M. Fukushima, Y. Oshima, and M. Takeda. Dirichlet forms and symmetric Markov processes,
+         volume 19 of De Gruyter Studies in Mathematics. Walter de Gruyter & Co., Berlin, 1994.
+[GJS73]  J. Glimm, A. Jaffe, and T. Spencer. The particle structure of the weakly coupled P (φ)2 model and
+         other applications of high temperature expansions. In Constructive quantum field theory, pages
+         132–198. Springer, 1973.
+[GKS89] L. Gross, C. King, and A. Sengupta. Two-dimensional Yang-Mills theory via stochastic differential
+         equations. Ann. Physics, 194(1):65–112, 1989.
+[GS21]   C. Garban and A. Sepúlveda. Improved spin-wave estimate for Wilson loops in U (1) lattice gauge
+         theory. arXiv e-prints, July 2021.
+[GZ03]   A. Guionnet and B. Zegarlinski. Lectures on logarithmic Sobolev inequalities. In Séminaire de
+         Probabilités, XXXVI, volume 1801 of Lecture Notes in Math., pages 1–134. Springer, Berlin, 2003.
+[Hai16]  M. Hairer. The motion of a random string. ArXiv e-prints, May 2016.
+[Hsu02]  E. P. Hsu. Stochastic analysis on manifolds, volume 38 of Graduate Studies in Mathematics. Amer-
+         ican Mathematical Society, Providence, RI, 2002.
+[Jaf16]  J. Jafarov. Wilson loop expectations in SU (N ) lattice gauge theory. arXiv preprint
+         arXiv:1610.03821, 2016.
+[Ken86]  W. S. Kendall. Nonnegative Ricci curvature and the Brownian coupling property. Stochastics,
+         19(1-2):111–129, 1986.
+[Kur07]  T. G. Kurtz. The Yamada-Watanabe-Engelbert theorem for general stochastic equations and in-
+         equalities. Electron. J. Probab., 12:951–965, 2007.
+[L1́7]   T. Lévy. The master field on the plane. Astérisque, (388):ix+201, 2017.
+[Lév03] T. Lévy. Yang-Mills measure on compact surfaces. Mem. Amer. Math. Soc., 166(790):xiv+122,
+         2003.
+[MR92]   Z. M. Ma and M. Röckner. Introduction to the theory of (nonsymmetric) Dirichlet forms. Univer-
+         sitext. Springer-Verlag, Berlin, 1992.
+[Nel66]  E. Nelson. Derivation of the Schrödinger Equation from Newtonian Mechanics. Phys. Rev.,
+         150:1079–1085, Oct 1966.
+      A STOCHASTIC ANALYSIS APPROACH TO LATTICE YANG–MILLS AT STRONG COUPLING                               43
+
+[Nua06]  D. Nualart. The Malliavin calculus and related topics. Probability and its Applications (New York).
+         Springer-Verlag, Berlin, second edition, 2006.
+[OS78]   K. Osterwalder and E. Seiler. Gauge field theories on a lattice. Annals of Physics, 110(2):440–471,
+         1978.
+[PW81]   G. Parisi and Y. S. Wu. Perturbation theory without gauge fixing. Sci. Sinica, 24(4):483–496, 1981.
+[RWZZ20] M. Röckner, B. Wu, R. Zhu, and X. Zhu. Stochastic Heat Equations with Values in a Manifold
+         via Dirichlet Forms. SIAM J. Math. Anal., 52(3):2237–2274, 2020.
+[Sei82]  E. Seiler. Gauge theories as a problem of constructive quantum field theory and statistical mechanics,
+         volume 159 of Lecture Notes in Physics. Springer-Verlag, Berlin, 1982.
+[Spe75]  T. Spencer. The decay of the Bethe-Salpeter kernel in P (φ)2 quantum field models. Comm. Math.
+         Phys., 44(2):143–164, 1975.
+[SSZ22]  H. Shen, S. A. Smith, and R. Zhu. A new derivation of the finite n master loop equation for lattice
+         Yang–Mills. arXiv preprint arXiv:2202.00880, 2022.
+[tH74]   G. ’t Hooft. A planar diagram theory for strong interactions. Nuclear Phys. B, 72:461–473, 1974.
+[vRS05]  M.-K. von Renesse and K.-T. Sturm. Transport inequalities, gradient estimates, entropy, and Ricci
+         curvature. Comm. Pure Appl. Math., 58(7):923–940, 2005.
+[Wan06] F. Wang. Functional inequalities, Markov semigroups and spectral theory. Elsevier, 2006.
+[Wil74]  K. G. Wilson. Confinement of quarks. Physical review D, 10(8):2445, 1974.
+
+   (H. Shen) Department of Mathematics, University of Wisconsin - Madison, USA
+   Email address: pkushenhao@gmail.com
+
+   (R. Zhu) Department of Mathematics, Beijing Institute of Technology, Beijing 100081, China
+   Email address: zhurongchan@126.com
+
+  (X. Zhu) Academy of Mathematics and Systems Science, Chinese Academy of Sciences, Beijing
+100190, China
+  Email address: zhuxiangchan@126.com
+

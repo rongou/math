@@ -1,0 +1,206 @@
+                                                                                                                        
+
+
+Millennium  Prize  Description  and  Rules  
+  
+1.   The  Clay  Mathematics  Institute  (“CMI”)  has  named  seven  (7)  Millennium  Prize  Problems  
+      (each,  a  “Problem”).  CMI    selected  these  Problems,  focusing  on  important  classic  questions  
+      that  have  resisted  solution  over  the  years.  Official  descriptions  of  the  Problems  are  available  
+      at  https://www.claymath.org/millennium-­problems.    
+2.   CMI    has  designated  a  $7  million  prize  fund  for  the  solutions  to  these  Problems,  with  $1  
+      million  allocated  to  each  Problem  (each,  a  “Prize”).  Below  are  the  Rules  for  qualifying  for  
+      award  of  a  Prize  for  solving  any  Problem.      
+3.   General  Provisions:  
+           a.   CMI,  and  no  other  persons  or  body,  has  the  sole  authority  to  award  and  authorize  
+                payment  of  Prizes,  and  to  modify  or  interpret  these  Rules  in  its  sole  discretion.  
+           b.   CMI  may,  in  its  sole  discretion,  consult  with,  and  receive  advice  from,  the  Scientific  
+                Advisory  Board  of  CMI  and  others  in  connection  with  application  and  interpretation  of  
+                these  rules,  evaluation  of  proposed  solutions  to  the  Problems  that  are  considered  by  
+                CMI,  and  award  of  Prizes,  although  CMI  is  not  obligated  to  follow  such  advice.  
+           c.   All  decisions  and  actions    by  CMI  with  respect  to  the  interpretation  and  application  of  
+                these  Rules.  and  decisions  whether,  when,  to  whom    and  under  what  conditions  
+                Prizes  should  be  awarded,  are  final.        
+           d.   All  decision-­making  procedures  concerning  the  Problems  and  Prizes  are  and  shall  
+                remain  private  and  confidential.  This  includes  the  deliberations  or  recommendations  
+                of  any  person  or  persons  CMI  has  used  to  obtain  advice  on  this  question.  No  records  
+                of  these  deliberations  or  related  correspondence  may  be  made  public  without  the  
+                prior  approval  of  the  BOD  and  the  SAB  unless  fifty  (50)  years  time  have  elapsed  
+                after  the  date  of  such  deliberations  or  correspondence  in  question.    Persons  whose  
+                Proposed  Solutions  (as  defined  below)  are  evaluated  by  CMI  shall  not  be  entitled  to,  
+                and  shall  not  receive,  an  explanation  regarding  CMI’s  decision  with  respect  to  the  
+                Proposed  Solution.  
+4.   Criteria  For  Prizes:  General  
+CMI  may  award  a  Prize  in  connection  with  a  Proposed  Solution  (as  defined  below)  to  a  Problem  
+if  and  only  if:  
+           a.   the  Proposed  Solution  has  been  published  by  a  Qualifying  Outlet,  as  defined  below;;  
+           b.   at  least  two  (2)  years  have  elapsed  since  publication  of  the  Proposed  Solution  in  a  
+                Qualifying  Outlet;;  
+           c.   the  Proposed  Solution  has  achieved  general  acceptance  in  the  global  mathematics  
+                community,  as  determined  in  the  sole  discretion  of  CMI;;  and  
+           d.   the  Proposed  Solution  has  satisfactorily  answered  the  questions  raised  by  the  
+                Problem’s  official  description,  as  determined  in  the  sole  discretion  of  CMI.    
+5.   Proposed  Solutions  
+           a.   Only  a  complete  mathematical  solution  to  a  Problem  as  it  is  defined  in  its  official  
+                Problem  description  (a  “Proposed  Solution”)  will  be  eligible  for  consideration  for  a  
+                Prize.  Completeness  of  the  mathematical  solution  to  a  Problem  shall  be  determined  
+                in  the  sole  discretion  of  CMI.  
+
+
+
+
+{N0530588;;  1}  
+  
+
+
+        b.   In  the  case  of  the  P  versus  NP  Problem  and  the  Navier-­Stokes  Problem,  a  resolution  
+             in  either  direction  will  be  evaluated  by  the  standard  evaluation  procedure  set  forth  in  
+             Section  7.  
+        c.   In  the  case  of  the  other  Problems,  if  a  counterexample  is  proposed,  such  
+             counterexample  shall  be  evaluated  using  the  same  evaluation  procedure  as  if  it  were  
+             a  Proposed  Solution.      
+                  i.   If,  in  the  opinion  of  CMI,  the  counterexample  effectively  resolves  the  Problem,  
+                         then  CMI  may  recommend  the  award  of  a  Prize.    
+                  ii.   If,  alternatively,  the  counterexample  shows  that  the  original  Problem  survives  
+                         after  reformulation  or  elimination  of  some  special  case,  then  CMI  may  
+                         recommend  that  a  small  prize,  of  an  amount  to  be  determined  by  CMI  in  its  
+                         sole  discretion,  be  awarded  to  the  author.  The  money  for  this  prize  will  not  be  
+                         taken  from  the  Problem  fund,  but  from  other  CMI  funds.    
+        d.   A  paper  that  does  not  address  or  refer  to  the  specific  mathematical  questions  set  out  
+             in  detail  in  the  official  Problem  description  will  not  be  considered  to  be  a  Potential  
+             Solution  of  one  of  the  Problems,  even  if  it  addresses  closely  related  scientific  
+             questions.  
+        e.   CMI  will  not  accept  Proposed  Solutions  submitted  directly  to  CMI  and  is  under  no  
+             obligation  to  provide  explanation  or  justification.  
+6.   Publication  of  a  Proposed  Solution  to  a  Problem  
+        a.   A  Proposed  Solution  must  be  published  in  a  “Qualifying  Outlet,”  which  is  either:  
+                  i.   a  refereed  mathematics  publication  of  worldwide  repute  meeting  the  
+                         conditions  in  Section  6(e);;  or  
+                  ii.   a  publication  meeting  a  relaxed  set  of  conditions  approved  by  the  BOD  
+                         following  a  recommendation  from  the  SAB  under  the  procedure  set  out  in  
+                         Section  6(f).  
+        b.   CMI  will  not  make  recommendations  to  authors  regarding  which  journal  to  submit  a  
+             paper  to,  or  how  to  submit  a  paper.  
+        c.   CMI  does  not  maintain  a  list  of  publications  that  meet  the  requirements  in  Section  
+             4(a),  and  will  not  certify  that  any  particular  publication  meets  its  requirements.  
+        d.   CMI  will  not  consider  supplementary  material  submitted  by  the  author  of  a  Proposed  
+             Solution.    
+        e.   Without  limiting  any  other  provision  in  this  Section,  a  publication  lacking  any  of  the  
+             following  characteristics  will  be  deemed  not  to  be  a  Qualifying  Outlet:  
+                  i.   an  editorial  board  whose  members  are  named  and  available  for  contact;;  
+                  ii.   an  editor  or  editorial  board  member  whose  professional  knowledge  of  the  
+                         global  mathematics  community  would  enable  him  or  her  to  identify  an  
+                         appropriate  referee  to  review  a  submitted  paper;;    
+                  iii.   a  published  refereeing  process  that,  in  the  opinion  of  CMI,  ensures  that  a  
+                         submitted  paper  is  reviewed  and  verified  by  appropriate  experts  in  the  field  of  
+                         the  Problem;;  or    
+                  iv.   inclusion  in  the  list  of  publications  maintained  by  MathSciNet.  
+        f.   The  ultimate  decision  as  to  whether  a  publication  qualifies  as  a  “Qualifying  Outlet”  
+             shall  reside  in  the  sole  and  unfettered  discretion  of  CMI.    CMI  may,  in  its  discretion,  
+
+
+
+{N0530588;;  1}  
+  
+
+
+             relax  or  remove  one  or  more  of  the  conditions  listed  in  Section  6(e)  above  if  it  has  
+             received  advice  from  experts  in  the  field  of  the  Problem,  chosen  by  CMI,that  a  
+             published  solution  is  likely  to  be  correct.  
+7.   Evaluation  of  a  Proposed  Solution  
+        a.   After  publication  in  a  Qualifying  Outlet,  a  Proposed  Solution  must  satisfy  the  
+             following  two  (2)  stages  of  evaluation  in  order  to  qualify  for  a  Prize.  The  two  (2)  
+             stages  must  be  satisfied  sequentially.  
+                  i.   First,  a  Proposed  Solution  must  achieve  general  acceptance  in  the  global  
+                        mathematics  community,  as  determined  by  CMI  in  its  sole  discretion.      
+                           1.   CMI  will  take  reasonable  steps  to  remain  aware  of  Proposed  Solutions  
+                                  considered  by  the  global  mathematics  community.      
+                                      a.   In  this  connection,  it  is  noted  that  the  Problems  are  hard  
+                                           mathematical  problems  of  considerable  interest  to  the  global  
+                                           mathematics  community,  and  a  plausible  potential  solution  to  a  
+                                           Problem  will  be  effectively  unmissable  to  all  but  the  most  
+                                           superficial  monitoring.  
+                           2.   The  Proposed  Solution  must  survive  rigorous  examination  by  the  
+                                  global  mathematics  community  for  a  minimum  of  two  (2)  years.  
+                                  Determination  of  what  constitutes  “rigorous  examination”  shall  lie  
+                                  within  the  sole  discretion  of  CMI.      
+                           3.   No  CMI-­affiliated  entity  will  accept  invitations,  requests  or  demands  to  
+                                  recognize  the  status  of  a  Proposed  Solution.  
+                           4.   In  determining  whether  a  Proposed  Solution  has  achieved  general  
+                                  acceptance  in  the  global  mathematics  community,  CMI  may  consider:  
+                                      a.   the  number  and  quality  of  journal  articles,  books,  and  other  
+                                           publications  by  independent  researchers  discussing  the  
+                                           Proposed  Solution;;  
+                                      b.   the  number  and  quality  of  international  conferences  and  other  
+                                           professional  mathematics  gatherings  discussing  the  Proposed  
+                                           Solution;;  
+                                      c.   the  number  and  quality  of  awards  recognizing  the  Proposed  
+                                           Solution;;  and  
+                                      d.   any  other  factors  CMI  considers  indicative  of  consensus  in  the  
+                                           global  mathematics  community.  
+                  ii.   Second,  a  Proposed  Solution  must  satisfy  examination  by  CMI.    
+                           1.   If  CMI  determines  that  a  Proposed  Solution  has  achieved  general  
+                                  acceptance  in  the  global  mathematics  community,  and  at  least  two  (2)  
+                                  years  have  elapsed  since  the  qualifying  publication  of  the  Proposed  
+                                  Solution,  CMI  will  decide,  in  its  sole  discretion,  whether  a  Proposed  
+                                  Solution  merits  detailed  consideration.      
+                           2.   If  CMI  decides  that  detailed  consideration  is  not  merited,  then  CMI  
+                                  may  determine  that  no  Prize  be  awarded  for  the  Proposed  Solution  
+                                  and  no  further  action  will  be  taken.  
+
+
+
+
+{N0530588;;  1}  
+  
+
+
+                          3.   If  CMI    determines  that  detailed  consideration  is  merited,  then  CMI  will  
+                               convene  a  special  advisory  committee  to  examine  the  Proposed  
+                               Solution.    The  special  advisory  committee  will  consist  of  no  fewer  than  
+                               three  (3)  members,  at  least  two  of  which  are  experts  in  the  area  of  the  
+                               Problem,  to  be  selected  by  CMI  in  its  sole  discretion.      
+                          4.   The  special  advisory  committee  will  report  within  a  reasonable  time  to  
+                               CMI.    Based  on  this  report  and,  if  appropriate,  further  investigation,  
+                               CMI  will  determine  whether  a  Prize  should  be  awarded.    
+8.   Award  of  a  Prize  
+       a.   CMI  may,  in  its  discretion,  determine  that:  
+                  i.   no  Prize  be  awarded;;  
+                  ii.   a  Prize  be  awarded  to  one  person;;  
+                  iii.   a  Prize  be  awarded  to  and  divided  among  multiple  solvers  of  a  Problem  or  
+                         their  heirs;;  or  
+                  iv.   a  counterexample  resulting  in  a  reformulation  of  the  Problem  merits  a  small,  
+                         non-­Prize  award  to  the  author,  as  described  in  Section  5(c)(ii).  
+       b.   CMI  will  pay  special  attention  to  the  question  of  whether  a  Prize  solution  depends  
+            crucially  on  insights  published  prior  to  the  solution  under  consideration.  CMI  may,  in  
+            its  discretion,  recognize  such  prior  work  in  the  Prize  citation,  and/or    recommend  the  
+            inclusion  of  the  author  of  prior  work  in  the  award.    
+       c.   If  CMI  cannot  come  to  a  decision  about  the  correctness  of  a  solution  to  a  Problem,  its  
+            attribution,  or  the  appropriateness  of  an  award,  CMI  may  conclude  that  no  Prize  be  
+            awarded  for  a  particular  Problem.  If  new  information  comes  to  light,  CMI  may,  in  its  
+            discretion,  reconsider  a  negative  decision  to  award  a  Prize  for  a  Proposed  Solution,  
+            but  only  after  an  additional  two  (2)  year  waiting  period  following  the  time  that  the  new  
+            information  comes  to  light.    
+       d.   Any  person  who  is  not  a  disqualified  person  (as  that  term  is  defined  in  section  4946  
+            of  the  Internal  Revenue  Code)  in  connection  with  CMI,  or  a  then-­serving  member  of  
+            CMI’s  Scientific  Advisory  Board  or  Board  of  Directors,  may  be  eligible  to  receive  a  
+            Prize.  
+       e.   Prizes  shall  be  delivered  to  the  recipient  by  no  later  than  ninety  (90)  days  after  the  
+            recipient  is  notified  that  such  recipient  has  won  a  Prize.  
+         
+     This  statement  of  the  Rules  for  the  Millennium  Prize  Problems  has  been  approved  by  the  
+     Board  of    Directors  of  the  Clay  Mathematics  Institute.  It  supersedes  all  earlier  statements  of  
+     the  Rules.    These  Rules  shall  for  all  purposes  be  construed  in  accordance  with  and  governed  
+     by  the  laws  of  the  State  of  Delaware  without  reference  to  its  conflict  or  choice  of  laws  
+     principles.  Any  person  applying  for  or  seeking  award  of  a  Prize  irrevocably  and  
+     unconditionally  submits,  for  itself  and  its  property,  to  the  nonexclusive  jurisdiction  of  the  
+     Superior  Court  of  the  State  of  New  Hampshire  sitting  in  Hillsborough  County  and  of  the  United  
+     States  District  Court  for  the  District  of  New  Hampshire,  and  any  appellate  court  from  any  
+     thereof,  in  any  action  or  proceeding  arising  out  of  or  relating  to  these  Rules.  
+       
+       
+     Date              26  September,  2018  
+
+
+
+{N0530588;;  1}  
+

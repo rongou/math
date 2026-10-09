@@ -1,0 +1,2114 @@
+                                             EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES
+
+
+                                                                             SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+                                                   Abstract. We extend the parameter regimes for which area law is proven for pure UpN q lattice Yang–
+                                                   Mills theories, in particular when N is large. This improves on a classical result of Osterwalder-Seiler from
+                                                   1978. To do so, we view the master loop equation as a linear inhomogeneous equation for Wilson string
+                                                   expectations, and then prove an a priori bound for solutions to the equation. The main novelty is in how
+                                                   we deal with the merger term in the master loop equation. This is done by introducing a truncated model
+arXiv:2505.16585v3 [math.PR] 26 Sep 2025
+
+
+
+
+                                                   for which the merger term is unproblematic, and then showing that the truncated model well approximates
+                                                   the original model.
+
+
+
+
+                                                                                                  Contents
+                                             1. Introduction                                                                                                        1
+                                             2. Preliminaries                                                                                                       6
+                                             2.1. Parameters                                                                                                        7
+                                             2.2. General master loop equation                                                                                      9
+                                             3. Truncated model                                                                                                    12
+                                             4. Original model                                                                                                     18
+                                             4.1. Bad plaquette reduction                                                                                          19
+                                             4.2. Modified master loop equation                                                                                    22
+                                             4.3. A priori estimate                                                                                                25
+                                             References                                                                                                            33
+
+
+
+
+                                                                                              1. Introduction
+                                              The problem of quark confinement in four dimensions is one of the major open problems in Yang–Mills
+                                           theory. For instance, it is mentioned as one of the natural extensions to the Yang–Mills millennium problem
+                                           in [JW06]. The problem amounts to showing a rapid decay property for a family of observables known as
+                                           Wilson loop expectations. This rapid decay property is known as area law, and was introduced by Wilson
+                                           [Wil74] as a potential explanation for the phenomenon of quark confinement (that is, single quarks are never
+                                           observed in nature). The conjecture is that in four dimensions, area law should hold for non-Abelian Yang–
+                                           Mills theories at all values of the inverse coupling constant β, which is a parameter that governs the amount
+                                           of order/disorder in the system. Due to physical reasons, the main theory of interest is SUp3q Yang–Mills
+                                           theory, but it would already be mathematically interesting to show area law at all β for any non-Abelian
+                                           theory.
+                                              As far as we are aware, the only prior result showing area law in dimension four in some regime of β
+                                           is the classical result of Osterwalder-Seiler [OS78], which works in the strong coupling regime (where β is
+                                           small). We briefly survey other relevant works. Fröhlich-Spencer [FS82] showed that area law does not hold
+                                           for the Up1q Yang–Mills theory in four dimensions at large enough β (so that the non-Abelian assumption
+                                           is necessary). In dimension three, area law is known to hold for the Up1q theory at all β [GM81], and then
+                                           by a general result of [Frö79], this implies that the same is true for UpN q Yang–Mills theory for any N ě 1.
+                                           We remark that [Frö79] also applies in general dimensions, but by tracking the constants in that paper, one
+                                           sees that in general dimensions, it reproves the Osterwalder-Seiler result [OS78]. The works [Cha19a, Jaf16]
+                                           showed area law in the large-N limit, under certain conditions on β. The works [DF80, Cha21] gave sufficient
+                                           conditions for area law to hold, in terms of strong enough mass gap assumptions.
+                                                                                                        1
+2                               SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Remark 1.1. Although [OS78] is the strongest prior result, we should note that since this paper first appeared
+on the arXiv, there has been a posterior result: namely, the current authors in [CNS25] were able to establish
+area law for a larger range of β values (albeit with weaker constants for the exponential decay rates) using a
+completely different approach—one that combines dynamical techniques recently introduced in [SZZ23] with
+more classical area-law-proof techniques from [DF80]. Nonetheless, is is worth noting that several features
+distinguish the current paper from [CNS25]. First, the proof in this paper is inspired by the ideas of gauge
+string duality (string trajectories, surfaces) and it has long been of independent interest to explore what
+results could be obtained from this duality. Second, as noted above, the “string tension” bound obtained in
+this paper is better than the one in [CNS25], see item 4 in Remark 1.3, so at least for now there is also some
+technical advantage to the string theoretic point of view. Finally, as further discussed below, it remains a
+major open problem to show area law for large β and d “ 4 for arbitrary N ą 1 (e.g. N “ 2 or N “ 3)
+and to control the corresponding string tension constants in the large β limit. Area law is known not to hold
+for large β and d “ 4 when N “ 1, so any proof will have to use N ą 1 in a crucial way. The dynamical
+and string-theoretic approaches provide different answers to the question of why one might expect taking
+N ą 1 to make a difference: in the dynamical approach of [SZZ23] and [CNS25], the difference is the positive
+curvature of groups like SUpN q when N ą 1 and the implications for the mixing rates of a type of Glauber
+dynamics on the configuration space. In the surface sum or string trajectory formulation, the difference is
+that when N ą 1, there is a bias toward surface configurations with many small and low genus components.
+Introducing a large Wilson loop effectively forces the existence of a large “defect” (e.g. a large surface or
+string trajectory) and one expects to pay a “cost” proportional to the size of the defect (although controlling
+this cost becomes more challenging when β is large and N is small, see Remark 1.4).
+   In recent years, there have also been a number of works in probability studying other aspects of Yang–Mills,
+see e.g. [She21, GS23, SSZ24b, SZZ23, CS23, CPS23, CG25, AN23, Cha24, BCS24, CC24b, SSZ24a, SZZ24,
+BCS25] for results on the lattice, and [Che19, CCHS22, CC23, CC24a, CCHS24, Che22, BC23, BC24, CS25]
+for results in the continuum. For additional discussion and even more references about area law and Yang–
+Mills more broadly, see the survey [Cha19b].
+   In this paper, we improve on the classical Osterwalder-Seiler result [OS78] by showing area law for pure
+UpN q Yang–Mills theories in an extended regime, in particular when N is large. For a visualization of the
+difference between the two regimes, see Figure 1. Our main theorem is as follows. Any unfamiliar notation
+will be defined in Section 2.
+Theorem 1.2 (Area law). Consider lattice Yang–Mills theory with gauge group G “ UpN q. For all d ě 2,
+there exists β0 pdq ą 0 such that for all β ď β0 pdq and all N ě 1, for any rectangular loop ℓ belonging to a
+finite lattice Λ, we have that
+                                                      |ℓ|
+                                 |xWℓ yΛ,β,N | ď C1,d CN expp´C2,d areapℓqq,
+where |ℓ| denotes the perimeter of ℓ, and C1,d , C2,d are constants depending on d, and CN is a constant
+depending on N .
+Remark 1.3. We make the following remarks regarding Theorem 1.2.
+    (1) The result is really a result about large enough N , because if N is bounded, then we could apply the
+        Osterwalder-Seiler result [OS78]. Thus throughout this paper, one should think of N as larger than
+        some dimensional constant. One main point behind Theorem 1.2 is that when N becomes large, it
+        should become easier to prove area law. This is due to various reasons which we will discuss later.
+        Our proof manages to take advantage of these reasons, whereas the Osterwalder-Seiler result does
+        not, which is why it gives a threshold which becomes worse with N .
+    (2) The result is uniform in the lattice Λ, and thus the same estimate will hold for any infinite-volume
+        subsequential limit. In fact, in our current regime, one would expect the infinite volume limit to
+        be unique, as was shown for SOpN q, SUpN q in [SZZ23]. One would expect that their proof can be
+        extended to UpN q, althought currently this is not written anywhere, to our knowledge.
+    (3) As long as ℓ is a (sequence of) rectangular loop(s) with both side lengths tending to infinity, the
+                |ℓ|
+        factor CN will be swamped by the factor expp´C2,d areapℓqq, because in this case |ℓ| ! areapℓq.
+        Thus for such sequences of rectangular loops (which indeed are of primary interest), the area decay
+        becomes more manifest.
+                   EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                              3
+
+
+     β                                                         β̃
+
+
+                                                                                                   [CNS25]
+
+
+
+                                          [CNS25]
+
+
+
+                                          [OS78]                                                   [OS78]
+
+
+         1                            N                             1                          N
+
+         Figure 1. Left: The two curves correspond to the β thresholds below which area law is
+         proven to hold. The dark red curve corresponds to the Osterwalder-Seiler result [OS78],
+         which shows that taking β !d 1{N (i.e., β ď cpdq{N for some small dimensional constant
+         cpdq) suffices. We show that taking β !d 1 suffices, which corresponds to the violet line.
+         In particular, our threshold does not decay with N . Due to various choices of dimensional
+         constants in our argument, our threshold may initially start out lower than the Osterwalder-
+         Seiler threshold, but once N is large enough, our threshold is better. Right: If one uses
+         the normalized trace in defining lattice Yang–Mills (i.e. if one uses eigenvalue mean instead
+         of eigenvalue sum; see Section 2), then the parameter β is effectively replaced by β̃ “ N β.
+         With this scaling, [OS78] proves area law for β̃ !d 1 (dark red line), while we establish area
+         law for β̃ !d N (violet line). This scaling is natural for some purposes, see Remark 2.4.
+         From either perspective, it is an open problem to further extend the purple region upward
+         and leftward. Treating small N and large β (or equivalently, large β̃) is of particular interest.
+
+
+
+   (4) (Comparison with the dynamical approach) The area law upper bound proved in [CNS25, Theorem
+       1.6] at present exhibits poor dependence on the parameter N . That is, the analog of the constant
+       C2,d (which governs the rate of area law decay) from Theorem 1.2 actually decays with N in [CNS25,
+       Theorem 1.6] (see the footnote on [CNS25, Page 6], which is related to [SZZ23, Remark 4.12]). On
+       the other hand, the constant C2,d in Theorem 1.2 does not decay with N . Thus, in the regime
+       β ď β0 pdq of the current paper, the upper bound of Theorem 1.2 is better than the corresponding
+       upper bound of [CNS25, Theorem 1.6].
+   (5) We expect that our proof approach should work for various other groups such as SUpN q, and perhaps
+       even SOpN q, after various minor adjustments. In this paper, we focus on the most concrete case of
+       UpN q, where the master loop equation (to be discussed soon) is the simplest.
+
+   In order to prove Theorem 1.2, we introduce new techniques for analyzing lattice Yang–Mills theory. In
+particular, we develop a way of analyzing the finite-N Master loop equation, which is a recursive equation
+satisfied by Wilson string expectations. In the past, this equation has only been understood in the large
+N -limit, see [Cha19a, Jaf16, CJ16]. In this limit, the solution to the equation may be expressed as an
+absolutely convergent expansion (essentially by Picard iteration), while at finite N , the same does not hold,
+which forms an immediate barrier to understanding the finite-N equation.
+   To circumvent this issue, we compare the lattice Yang-Mills theory to a “truncated model” for which
+solutions to the “truncated Master loop equation” may indeed be expressed as a convergent expansion. We
+then extend this argument back to the original model, by essentially showing that the truncated model very
+well approximates the original model. We sketch the argument in more detail in the paragraphs following
+the next two remarks.
+   As discussed more thoroughly in Remark 1.8, one can interpret our approach as implementing a “surface
+exploration process” for the surfaces constructed in [CPS23]. In particular, our argument can be thought
+of as analyzing lattice Yang–Mills theory via a geometric representation for its correlation functions (i.e.
+Wilson string expectations). For more discussion on this general approach towards understanding statistical
+4                                SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+mechanical models, see [BCS25, Section 1.1]. We hope that our approach can be further developed, for
+instance to handle the future directions discussed in Remark 1.4.
+Remark 1.4 (Future directions). It would be natural to try to extend Theorem 1.2 to the case where β is
+allowed to depend linearly in N , e.g. β „ cd N , where cd is a small dimensional constant. In other words,
+the natural next step is to further develop the approach of the present paper to reprove the main result of
+[CNS25]. This is the regime of the large-N limit, in that upon sending N to infinity, we obtain the limiting
+theory described in [Cha19a, Jaf16, BCS24]. While much is known about the limiting N Ñ 8 theory,
+comparatively less is known about more quantitative questions related to rates of convergence to the limit.
+We remark that while the result [CNS25] covers the regime β „ cd N , at present it does not imply such
+quantitative statements, due the poor dependence on N of certain constants, which was discussed in item 4
+in Remark 1.3 (in principle it may be possible to refine the arguments of [SZZ23, CNS25] to obtain such
+quantitative statements, but so far this has not yet been done).
+   If we are able to extend the approach of the current paper to the linear regime β „ cd N , then we expect
+that by necessity, we will be able to obtain quantitative estimates on rates of convergence. In order to obtain
+the extension, it appears that new ideas are needed even for the truncated model. If one wants to still
+perform some type of contraction mapping argument, then the main question is in finding an ansatz for the
+norm appearing in the contraction estimate (1.1). Presumably, it needs to account for certain cancellations
+that occur in the regime β „ cd N , which currently we are not utilizing. To put it differently, if a proof were
+formulated in terms of surface sums, it might require showing that a certain sum of surface weights is small,
+even though the sum of the absolute values of those weights is large; to this end, one would have to show
+that the positive and negative weights very nearly cancel each other out. This issue may become even more
+delicate when one goes beyond the β „ cd N regime, which would be the natural next step after achieving
+the linear regime β „ cd N .
+    Next, we discuss some of the main ideas in the proof of Theorem 1.2 in more detail. The main property we
+use is that the Wilson string expectations satisfy a linear inhomogeneous equation, known as the master loop
+equation. This equation appeared in various forms in [Cha19a, CJ16, Jaf16, SSZ24b, CPS23, AN23, BCS24],
+as well as in many physics references (see [Cha19a]). The approach is then to prove an a priori estimate for
+solutions to this equation, which amounts to proving a contraction estimate for the linear operator appearing
+in the equation. More explicitly, we are just using the simple fact that if we have a matrix G and vectors
+f˚ , g such that
+                                                f˚ “ Gf˚ ` g,
+and moreover G satisfies the contraction estimate
+                                              1
+                                      }Gf } ď }f } for all vectors f ,                                  (1.1)
+                                              2
+where }¨} is some appropriate norm, then we automatically have that (assuming of course that }f˚ }, }g} ă 8)
+                                                 }f˚ } ď 2}g}.
+In the context of Yang–Mills, one should think of f˚ as a function mapping strings to Wilson string expec-
+tations, and the norm } ¨ } is defined so that if }f˚ } À 1, then area law decay holds.
+   This PDE viewpoint was first introduced in the context of Yang–Mills by Chatterjee in [CJ16], and
+subsequently applied in [CJ16, Jaf16]. All these cited works dealt with the large-N limit (or expansions
+around the large-N limit), because in this case the master loop equation simplifies, and so it is more
+manageable to prove the contraction estimate (1.1), which then directly leads to area law.
+   When N is finite, the master loop equation becomes more complicated, due to the presence of the so-called
+“merger term”. These merger terms come with a prefactor of N ´2 , which is why they are not present in the
+large-N limit, and also why we expect that area law is easier to prove when N becomes large.
+   Nevertheless, even with the N ´2 prefactor, this merger term forms an essential obstruction towards proving
+the contraction estimate (1.1). In particular, the previous arguments in [Cha19a, CJ16, Jaf16, BCS24] do
+not directly apply. One of the main novelties in the present work is a new approach towards managing
+this problematic term, at least when N is large. To do so, we first introduce a truncated version of lattice
+Yang–Mills, which is defined precisely so that the merger term becomes unproblematic. Thus the contraction
+estimate (1.1) can be proven for this truncated model, from which area law follows. On the other hand,
+                   EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                               5
+
+
+in our regime of parameters, one expects the truncated model to approximate the original model very well.
+Therefore, one hopes to be able to extend some form of the contraction estimate to the original model. The
+main idea in the extension step is that it should be extremely rare for the merger term to be problematic,
+and thus instead of trying to prove the contraction estimate in all situations, we content ourselves with
+proving the contraction estimate in the “typical” situation. In the atypical scenarios where we come across
+a problematic merger term, we a priori know that this is quite rare, and so such a term already comes with
+a huge cost.
+   In slightly more detail, the truncated model is defined by imposing an upper bound on the number of
+copies of each plaquette in the system. As a consequence of this upper bound, the number of possible merger
+terms itself becomes bounded, which ultimately is why these terms become unproblematic. On the other
+hand, the imposed upper bound is still large enough so that it is extremely rare to see plaquettes with more
+copies than the upper bound, which in the end is the reason why we are able to obtain the result for the
+original model. In this discussion, we have neglected one key idea which is needed to handle this extension
+step, because the discussion of this idea would perhaps be too detailed in current introductory section. Thus,
+we include an even more detailed discussion of the extension step near the beginning of Section 4.
+   At a high level, this strategy for extending the contraction estimate to the original model is analogous
+to following way of refining the second moment method in probability. In various problems of probability,
+the main thing to show is that for some given random variable, the second moment is of the same order as
+the square of the first moment. However, there are certain situations where this is not the case, because the
+second moment is much larger. On the other hand, if one can show that this largeness arises from events
+of very low probability, then one can hope to make a modified version of the second moment method work,
+where one computes the second moment after excluding these low probability problematic events.
+Remark 1.5 (Comparison to the proof of [OS78]). To compare with the proof strategy of Osterwalder-Seiler
+[OS78], there the authors set the truncation level to be at one plaquette, in that they assumed that β was
+small enough so that it is very rare to see even a single plaquette. The corresponding truncated model is
+then a system with no plaquettes, for which area law trivially holds.
+   Our refinement of [OS78] arises because we allow our truncation level to depend on N ; as N increases,
+so does our truncation level. The additional input needed is an area law result for more general truncated
+models, where the truncation level is allowed to be much larger than 0. As previously discussed, we are able
+to show such a result via a contraction argument, recall (1.1).
+Remark 1.6 (Relation to the Dyson-Schwinger equation). The master loop equation can also be thought
+of as the Yang–Mills analog of the Dyson-Schwinger equation for matrix models. The Dyson-Schwinger
+equation has been an important tool for studying matrix models and interacting particle systems, see e.g.
+[BG13, GN15, BGK15, Gui19, GH24]. However, similar to the previous works [Cha19a, CJ16, Jaf16, BCS24]
+in the lattice Yang-Mills setting, in these other settings the Dyson-Schwinger equation was used to recover
+1{N asymptotic expansions or other asymptotic properties for N Ñ 8. In contrast, we are able to prove a
+non-asymptotic result, i.e. area law at finite N .
+Remark 1.7 (Relation to bootstrap). The idea to use the master loop equation to deduce results about Wilson
+loop expectations has also recently appeared in physics, under the name “bootstrap”. See the recent works
+[KZ23, KZ25] which obtain numerical results along these lines. In other areas of physics, the bootstrap has
+been quite successful in numerically determining observable expectation values, see e.g. the breakthrough
+work [ESPP` 12] on the 3D Ising model.
+Remark 1.8 (Relation to the surface sums of [CPS23]). The work [CPS23] gave a formula for Wilson loop
+and string expectations in terms of weighted surface sums. Given a loop, the formula involves a sum over
+all surfaces spanning the loop. Although these surface sums do not appear directly in the present work, we
+found it conceptually quite helpful to think in terms of surfaces. In terms of surfaces, our proof strategy
+proceeds by exploring the surface spanned by the loop, one face at a time. This is exactly analogous to how
+one analyzes models of random planar maps via peeling [Cur23]. In the context of planar maps, conditioning
+on the first step of the peeling process leads to Tutte’s equation, which is absolutely central in the analysis
+of planar maps. In our context, conditioning on the first step of the exploration process of our surfaces
+precisely leads to the master loop equation. Thus, one should think of the master loop equation as the
+analog of Tutte’s equation for the surface models described in [CPS23].
+6                               SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+    In terms of the surfaces, it becomes clear why one should expect area law (at least in our regime of β):
+every time we see a plaquette in the exploration, this comes with a huge cost. Thus if we know that we
+must see at least areapℓq many plaquettes (since our sum only involves surfaces which span the loop ℓ), we
+should expect to have to pay a cost which is exponential in areapℓq. The way to make this rigorous is via
+the contraction estimate (1.1).
+    From the surface viewpoint, the problematic merger term is related to understanding the contribution of
+higher genus surfaces. On the one hand, each surface is weighted by their genus g like N ´2g . Thus, when N
+is large, we prefer to have lower genus surfaces. This gives another heuristic towards why it should be easier
+to prove area law at large N , because in general, sums over planar maps or low-genus surfaces are easier to
+understand than sums over very high genus surfaces. Nevertheless, when N is large but finite, we still need
+to quantitatively understand the contributions of the very high genus surfaces, which in general is a difficult
+problem. See e.g. [BL21, BL22] for recent results in this vein.
+    Finally, for a surface interpretation of the extension argument from the truncated model to the original
+model, we can imagine a modified exploration process, where we allow ourselves only to explore those
+plaquettes which have a limited number of copies (recall the upper bound we imposed in the truncated
+model). As previously mentioned, it is extremely rare for a plaquette to have too many copies, and so if we
+ever come across such a plaquette, we already know there is a huge associated cost, and so there is no need
+to explore at this plaquette.
+   We briefly summarize the remainder of the paper. In Section 2, we make definitions and introduce some
+preliminary results. In Section 3, we introduce the truncated model, and then show that area law holds for
+this model. In Section 4, we extend the argument to the original model, ultimately proving Theorem 1.2.
+
+Acknowledgements: We thank Jacopo Borga and Jasper Shogren-Knaak for helpful conversations. S.C.
+was partially supported by the NSF under Grant No. DMS-2303165. R.N. was supported by the NSF under
+Grant No. GRFP-2141064. S.S. was partially supported by the NSF under Grant No. DMS-2153742.
+
+                                                 2. Preliminaries
+   The present section serves as a preliminary section which will set notation and discuss preliminary results
+to be used in the rest of the paper. First, we fix some notation. The parameter N ě 1 denotes the size
+of the matrices in our matrix group UpN q. In this paper, whenever we refer to a lattice Λ, we will mean
+a square lattice of the form Λ “ r´L, Lsd Ď Zd . One should think of L " 1, and in this paper, all of our
+estimates will be uniform in L. Let EΛ` (resp. EΛ ) be the collection of positively oriented (resp. oriented)
+edges in Λ. Similarly, let PΛ` (resp. PΛ ) denote the set of positively oriented (resp. oriented) plaquettes in
+Λ. For oriented edges e P EΛ , we denote by e´1 the oppositely oriented version of e. Similarly, for oriented
+plaquettes p P PΛ , we denote by p´1 the oppositely oriented version of p.
+Definition 2.1 (Lattice gauge configuration). A lattice gauge configuration U is a function U : EΛ` Ñ UpN q.
+We always implicitly extend U : EΛ Ñ UpN q to oriented edges, by imposing that Ue´1 :“ Ue´1 for all e P EΛ` .
+Definition 2.2 (Plaquette variable). Given a lattice gauge configuration U : EΛ` Ñ UpN q and an oriented
+plaquette p “ e1 e2 e3 e4 , we define the plaquette variable (abusing notation)
+                                                Up :“ Ue1 Ue2 Ue3 Ue4 .
+    Next, we define the lattice Yang–Mills measure.
+Definition 2.3 (Lattice Yang–Mills). The lattice Yang-Mills measure with Wilson action and gauge group
+                              `
+UpN q is the measure on UpN qEΛ given by
+                                             1    ź
+                            dµΛ,β,N pU q “             expp2βReTrpUp qqdU,
+                                           ZΛ,β,N    `
+                                                         pPPΛ
+             ś                                                                             `
+where dU “        ` dUe is an independent copy of Haar measure on UpN q for each edge e P E , and
+               ePEΛ                                                                        Λ
+                                            ˆ           ź
+                                ZΛ,β,N :“         `
+                                                              expp2βReTrpUp qqdU.
+                                            UpN qEΛ       `
+                                                       pPPΛ
+
+We denote by x¨yΛ,β,N expectation with respect to the probability measure µΛ,β,N .
+                     EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                        7
+
+
+Remark 2.4 (Trace versus normalized trace). In this paper, we choose to use the trace instead of the normal-
+ized trace in the definition of lattice Yang–Mills. On the other hand, the normalized trace is a natural choice
+from certain points of view. For instance, trpU q “ N1 TrpU q P r´1, 1s for unitary matrices U P UpN q, for any
+N ě 1. That is, the range of the normalized trace does not depend on N . Note also that βTrpU q “ β̃trpU q,
+where β̃ “ N β is the scaled analog of β mentioned in the caption of Figure 1 (right). For x P r´1, 1s, one
+can approximate the function x Ñ e2β̃x by a polynomial of x that does not depend on N .
+   Next, we define a collection of quantities associated to the lattice Yang–Mills measure. These quantities
+are associated to loops and strings, which we first define.
+Definition 2.5 (Loops and strings). We will represent loops ℓ in Λ by the sequence of oriented edges
+ℓ “ e1 ¨ ¨ ¨ en that are traversed by ℓ. We denote |ℓ| :“ n the perimeter (i.e., length) of the loop. For x P Zd ,
+we denote by ∅x the null loop at x, i.e. the loop starting and ending at x with no edges.
+   We say that a loop ℓ contains a backtrack if ℓ is of the form ℓ “ aee´1 b. We say that ℓ1 “ ab is the loop
+obtained by erasing the backtrack ee´1 . We denote by rℓs the loop obtained by erasing all backtracks in ℓ
+(note the order of erasure does not matter).                                             řn
+   A string s “ pℓ1 , . . . , ℓn q is a sequence of loops ℓ1 , . . . , ℓn . We let |s| :“ i“1 |ℓi | denote the perimeter of
+the string s. Let SΛ be the set of finite collections of nonempty loops s “ ps1 , . . . , sn q contained in Λ with
+no backtracks. By convention, the null loops ∅x are elements of SΛ .
+Definition 2.6 (Loop variables and observables). Let U : EΛ` Ñ UpN q be a lattice gauge configuration.
+For loops ℓ “ e1 e2 . . . en , let Uℓ :“ Ue1 Ue2 . . . Uen denote the corresponding loop variable. We define
+                                                   Wℓ pU q :“ trpUℓ q,
+where tr “ N1 Tr is the normalized trace. For strings s “ pℓ1 , . . . , ℓn q, we define
+                                                      ź
+                                           Ws pU q :“     Wℓi pU q.
+                                                            iPrns
+
+We refer to Wℓ as a Wilson loop observable, and Ws as a Wilson string observable.
+   One can think of the Wilson string expectations as the multipoint functions of the lattice Yang–Mills
+measure, and one typically studies the measure via its multipoint functions. We remark that at this point,
+we have introduced all the notation appearing in Theorem 1.2.
+   Next, due to the identity U U ´1 “ id for unitary matrices U , we have that Uℓ “ Urℓs and Wℓ pU q “ Wrℓs pU q
+for all loops ℓ, that is, the Wilson loop observables are invariant under backtrack erasure. Note also that
+U∅x “ id and W∅x pU q “ 1.
+Notation 2.7. Often in this paper, we will have a function J : PΛ Ñ N, and we will raise a number x to
+the power J, i.e. we will write
+                                           ź            ř
+                                                              Jppq
+                                    xJ :“      xJppq “ x pPPΛ      .
+                                                   pPPΛ
+
+We will also write B ´ J where B is a number. This should be taken to mean the function PΛ Ñ N which
+takes value pB ´ Jqppq “ B ´ Jppq. The same considerations apply if J : PΛ` Ñ N is a function of the
+positively oriented plaquettes.
+2.1. Parameters. Throughout this paper, we will assume that N is large enough depending on d such that
+                                                     N ě 1010 d10 .                                                  (2.1)
+                                                                             10 10
+In Section 4, we will comment on the case where N is smaller than 10 d . We will take parameters β, B ě 0
+such that
+                                                    β ď 10´10d d´1 ,                                  (2.2)
+                                        1 ´3             1
+                                          10 N ď B ď 10´3 N.                                          (2.3)
+                                       2d                d
+Moreover, we will assume that B is odd, which will be convenient later. One should always think of relative
+sizes of β, B as satisfying
+                                            dN β ! B, d5 ! B, dB ! N.
+8                                SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+In particular, at many intermediate places, there will be constants C floating around, and due to our choices
+of N, β, B, we will always e.g. have that
+                                      CdN β ď 10´3 B, Cd5 ď 10´3 B.
+Remark 2.8. In plain terms, one should think of β as tiny, B as huge, and N as even larger than B by a
+dimensional factor. Of course, the precise values such as 1010 d10 are somewhat arbitrary, and are chosen so
+that we always have a lot of room in the estimates.
+   The assumptions (2.1)-(2.3) are always implicitly assumed to hold (unless otherwise stated). Nonetheless,
+at various points in the statements of results we will still explicitly recall these parameter assumptions.
+Definition 2.9 (Truncated exponential). For k0 ě 0, define the truncated exponential
+                                                              k0
+                                                              ÿ  xk
+                                               expk0 pxq :“              .
+                                                              k“0
+                                                                    k!
+Define also the exponential tail function
+                                                                               8
+                                                                               ÿ    xk
+                                  τk0 pxq :“ exppxq ´ expk0 pxq “                      .
+                                                                             k“k `1
+                                                                                    k!
+                                                                                0
+
+
+Remark 2.10. As we will see later in Section 3, the truncated model will be defined by replacing the usual
+exponential exp in Definition 2.3 by the truncated exponential expB . One outcome of the next lemma is
+that τB is tiny compared to expB , which is related to the discussion in Section 1 about why it is extremely
+rare for a plaquette to have too many copies.
+    We will need the following properties of the truncated exponential.
+Lemma 2.11 (Properties of truncated exponential). Under the parameter assumptions (2.1)-(2.3), the
+following properties hold for all |x| ď 2N β:
+     (1)
+                                              0 ă expB pxq ď exppxq.                                     (2.4)
+     (2)
+                                       |τB pxq| ď expp´B{10q expB pxq.                                   (2.5)
+     (3) For all k ď B,
+                                            | expk pxq| ď eB´k expB pxq.                                 (2.6)
+Proof. We begin by proving one half of (2.4). Since B is odd and B ě 4p2N βq, for all |x| ď 2N β,
+                                                  8                         8 ˆ       ˙k ˙
+                                     xB`1              xk      xB`1
+                                                                      ˆ
+                                                 ÿ                         ÿ     |x|
+               exppxq ´ expB pxq “           `            ě             1´
+                                   pB ` 1q! k“B`2 k!         pB ` 1q!      k“1
+                                                                                B`2
+                                          8
+                                                       xB`1
+                                   ˆ      ÿ         ˙
+                                 ě 1´        p1{4qk            ą 0,
+                                         k“1
+                                                      pB ` 1q!
+proving that exppxq ´ expB pxq ě 0.
+   To prove the other half of (2.4) as well as (2.5), we recall the classical Poisson concentration inequality
+(see e.g. [BLM13, Chapter 2]):
+                                                     t2
+                                             ˆ             ˙
+                       PpX ě λ ` tq ď exp ´                  , t ě 0, X „ Poissonpλq.                    (2.7)
+                                                  2pλ ` tq
+Applying this with λ “ 2N β and t “ B ` 1 ´ λ " λ, we obtain
+                                             8
+                                             ÿ    p2N βqk
+                                    e´2N β                 ď expp´B{4q,
+                                           k“B`1
+                                                     k!
+which implies that for |x| ď 2N β,
+                                  |τB pxq| ď e2N β expp´B{4q ď expp´B{6q.                                (2.8)
+                    EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                       9
+
+
+It follows that
+                       expB pxq “ exppxq ´ τB pxq ě exppxq ´ |τB pxq|
+                                                     ě expp´2N βq ´ expp´B{6q
+                                                                 `                    ˘
+                                                     ě expp´2N βq 1 ´ expp´B{6 ` 2N βq
+                                                     ě expp´2N βqp1 ´ expp´B{8qq.
+In summary, we obtain the lower bound
+                                   expB pxq ě expp´2N βqp1 ´ expp´B{8qq ą 0,                                       (2.9)
+which proves the other half of (2.4). Next, to prove (2.5), we combine the above with (2.8), and claim that
+                             expp´B{6q ď expp´B{10q expp´2N βqp1 ´ expp´B{8qq.
+This can be seen by rearranging and using our parameter assumptions, since B " N β and B " d ě 1.
+
+Lastly, we prove (2.6) by splitting into two cases.
+
+Case 1: B{10 ď k ď B. If k “ B there is nothing to prove. Thus, assume further that k ă B. Again by
+Poisson concentration (2.7), we have that (since k ´ 2N β " 2N β)
+                   e´2N β | expk pxq ´ expB pxq| ď expp´pk ´ 2N βq{4q ` expp´pB ´ 2N βq{4q
+                                                  ď expp´B{50q.
+It follows that
+                                 | expk pxq| ď expp2N β ´ B{50q ` e´2N β expB pxq
+                                            ď 2 expB pxq ď 2B´k expB pxq
+where we used the lower bound (2.9), as well as the fact that k ă B.
+
+Case 2: k ă B{10. In this case, we may bound
+                                                          k
+                                                          ÿ |x|k
+                             ek´B | expk pxq| ď e´9B{10              ď e´9B{10 expp2N βq.
+                                                          j“0
+                                                                k!
+To finish, we again use the lower bound (2.9) to reduce to the claim that
+                                e´9B{10 expp2N βq ď expp´2N βqp1 ´ expp´B{8qq,
+which follows from our parameter choices.                                                                             □
+2.2. General master loop equation. In this section, we recall the master loop equation which will be
+central to our analysis. At a high level, the master loop equation relates a given string expectation to a
+weighted sum of string expectations, over strings which “neighbor” the original string. Such neighboring
+strings are obtained by performing one of a finite set of string operations, which we next discuss.
+   Let s “ ps1 , . . . , sn q P SΛ , that is, s is a string without backtracks. To define our string operations, will
+assume that s is not a null loop (otherwise, there would be no operations). There are six total types of string
+operations, grouped into three categories: splittings, mergers, and deformations.
+Notation 2.12. We reserve the letter e for edges of the lattice Λ, and e for edges of strings s.
+Definition 2.13 (Splitting). Suppose that ℓ1 contains two edges e, e1 which are the same lattice edge, so
+that ℓ1 “ aebe1 c. Define loops pℓ11,1 , ℓ11,2 q :“ pae1 c, ebq. The positive splitting of s at pe, e1 q is defined to be
+the string s1 “ prℓ11,1 s, rℓ11,2 s, ℓ2 , . . . , ℓn q.
+   Similarly, if ℓ1 contains edges e, e1 such that e, pe1 q´1 are the same lattice edge, so that ℓ1 “ aebe1 c or
+ℓ1 “ ae1 bec, then define loops pℓ11,1 , ℓ11,2 q :“ pac, bq. The negative splitting of s at pe, e1 q is defined to be the
+string s1 :“ prℓ11,1 s, rℓ11,2 s, ℓ2 , . . . , ℓn q.
+   The definitions directly extend to the case where the edges e, e1 are on some other loop ℓj . Given an edge
+e of s, we let S` ps, eq{S´ ps, eq to be the sets of all positive/negative splittings of s at pe, e1 q for some other
+edge e1 (which must necessarily be on the same loop as e). We will frequently use the notation S˘ ps, eq to
+denote the set of positive or negative splittings of s at e.
+10                                         SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Definition 2.14 (Merger). Let ℓi , ℓj be loops of s which both contain some lattice edge e. Thus, ℓi “ aeb
+and ℓj “ ce1 d, where e, e1 are the same lattice edge. Define ℓi ‘e,e1 ℓj :“ ae1 dceb. The positive merger of s at
+pe, e1 q is defined to be the string s1 :“ prℓi ‘e,e1 ℓj s, ℓ1 , . . . , ℓ̂i , . . . , ℓ̂j , . . . , ℓn q, where here ℓ̂ denotes omission.
+   Similarly, if ℓi “ aeb, ℓj “ ce1 d where e, pe1 q´1 are the same lattice edge, then define ℓi ae,e1 ℓj :“ adcb.
+The negative merger of s at pe, e1 q is defined to be the string s1 :“ prℓi ‘e,e1 ℓj s, ℓ1 , . . . , ℓ̂i , . . . , ℓ̂j , . . . , ℓn q.
+   Given an edge e of s, we let M` ps, eq{M´ ps, eq be the sets of all positive/negative mergers of s at pe, e1 q
+for some other edge e1 . We will frequently use the notation M˘ ps, eq to denote the set of positive or negative
+mergers of s at e.
+Definition 2.15 (Deformation). Let e be an edge of ℓi for some loop ℓi of s. Then ℓi “ aeb. For any oriented
+plaquette p P PΛ which contains (the lattice edge corresponding to) e, we may consider the loop given by
+ℓp “ e1 c tracing the boundary of p. Here, e1 is the same lattice edge as e. We define ℓi ‘e p :“ ae1 ceb, and
+define the positive deformation of s at e to be the string s1 :“ pℓ1 , . . . , rℓi ‘e ps, . . . , ℓn q.
+   Similarly, for any oriented plaquette p P PΛ which contains (the lattice edge corresponding to) e´1 , we
+may consider the loop given by ℓp “ e1 c tracing the boundary of p. Here, e1 is the same lattice edge
+as e´1 . We define ℓi ae p :“ acb, and define the negative deformation of s at e to be the string s1 :“
+pℓ1 , . . . , rℓi ‘e1 ps, . . . , ℓn q
+   Given an edge e of s, we let D` ps, eq{D´ ps, eq to be the set of all positive/negative deformations of s at
+e. We will frequently use the notation D˘ ps, eq to denote the set of positive or negative deformations of s
+at e.
+   In principle, the definition of D˘ depends on Λ, since we restrict to only considering plaquettes p P PΛ .
+We will omit this dependence in the following, to lessen notation.
+Remark 2.16 (Reduced loops may vanish). In some cases (but not all), the loop(s) obtained after applying
+a string operation may actually reduce to zero. For instance, if the first loop of s “ pℓ1 , ℓ2 q is a single
+plaquette loop corresponding to some plaquette p, and we negatively deform using the oppositely oriented
+plaquette p´1 , then reduced loop rℓ1 ae p´1 s will actually be a null loop. In such situations, we erase any
+null loops arising in s1 , so that s1 “ pℓ2 q instead of p∅x , ℓ2 q. With this convention, all string operations result
+in elements of SΛ , which recall was defined (in Definition 2.5) to be the set of strings s which are either null
+loops, or such that all loops of s are nonempty and without backtracks.
+     Next, we prove a general master loop equation which will be used in Sections 3 and 4.
+Proposition 2.17 (General master loop equation at a single location). Let ε ą 0 and let Dp0, 2N β ` εq
+denote the open ball in C of radius 2N β ` ε centered at 0. For each p P PΛ` , fix a holomorphic function
+ρp : Dp0, 2N β ` εq Ñ C. Then for any non-null string s and any edge e of s, we have that
+           ˆ            ź
+             dU Ws pU q   ρp p2βReTrpUp qq
+                               `
+                            pPPΛ
+                                                 ÿ        ˆ                  ź
+                                   “¯                         dU Ws1 pU q          ρp p2βReTrpUp qq
+                                           s1 PS˘ ps,eq                        `
+                                                                            pPPΛ
+                                                              ˆ
+                                     1           ÿ                               ź
+                                   ¯ 2                             dU Ws1 pU q          ρp p2βReTrpUp qq
+                                    N
+                                             s1 PM˘ ps,eq                           `
+                                                                                 pPPΛ
+                                                          ˆ
+                                       β         ÿ                                                    ź
+                                   ´                              dU Ws1 pU qρ1p0 p2βReTrpUp̃ qq                 ρp p2βReTrpUp qq
+                                       N
+                                           s1 PD` ps,eq                                               `
+                                                                                                   pPPΛ ztp0 u
+                                           s1 “s‘e p0
+                                                          ˆ
+                                       β         ÿ                                                    ź
+                                   `                              dU Ws1 pU qρ1p0 p2βReTrpUp̃ qq                 ρp p2βReTrpUp qq.
+                                       N     1                                                        `
+                                           s PD´ ps,eq                                             pPPΛ ztp0 u
+                                           s1 “sae p0
+
+To be clear, the ¯ notation is paired with the ˘ notation, so that positive splittings and mergers come with
+a minus sign, while negative splittings and mergers come with a positive sign. We refrain from using the
+notation for deformations, to avoid introducing an “oplusminus” command in LATEX. Also, in the last two
+terms, for s1 P D˘ ps, eq, we write p0 for the plaquette which is used to deform s.
+                  EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                                 11
+
+
+Proof. Since ρ is holomorphic on Dp0, 2N β ` ϵq, it has a Taylor series centered at z “ 0 which converges
+absolutely on Dp0, 2N βq. We thus have that
+                       ˆ            ź
+                         dU Ws pU q    ρp p2βReTrpUp qq
+                                             `
+                                          pPPΛ
+                                                   ˆ
+                                    ÿ         βK                          ź
+                          “                            dU Ws pU q                ρpKppqq
+                                                                                  p      p0qp2ReTrpUp qqKppq               (2.10)
+                                 `
+                                              K!                             `
+                              K:PΛ ÑN                                     pPPΛ
+                                                       ˆ
+                                ÿ    β J ź pKJ ppqq                 ź
+                          “                 ρp      p0q dU Ws pU q     TrpUp qJppq ,
+                              J:P ÑN
+                                     J!   `                        pPP
+                                    Λ             pPPΛ                                             Λ
+
+
+where KJ ppq :“ Jppq ` Jpp´1 q for p P PΛ` . Here, in the last identity we used that 2ReTrpUp q “ TrpUp q `
+TrpUp´1 q as well the binomial expansion identity:
+                                              k             k
+                                          1 ÿ              ÿ        1
+                                                px ` yqk “                xj y k´j .
+                                          k! j“0           j“0
+                                                               j!pk ´ jq!
+
+The argument now follows similarly to [CPS23, Theorem 5.7]. For brevity, let
+                                           ˆ           ź
+                                 Ips, Jq :“ dU Ws pU q    TrpUp qJppq .
+                                                                              pPP
+
+Fix J : P Ñ N. It may help to keep in mind that Jppq counts the number of copies of p that are present.
+Let us now set some notation. Let e be the lattice edge given by e. We write p ą e to mean that p contains
+e, and p ą e´1 to means that p contains e´1 . If p ą e or p ą e´1 , let s ‘e p and s ae p be the positive and
+negative deformations of s by p at e. For p P PΛ , let δp : PΛ Ñ N be the delta function at p. Following the
+proof of [CPS23][Theorem 5.7], by applying the word recursion [CPS23, Proposition 5.3], we obtain that
+                                ÿ                   ÿ
+                 Ips, Jq “ ´          Ips1 , Jq `          Ips1 , Jq
+                               s1 PS` ps,eq                   s1 PS´ ps,eq
+                             1                ÿ                       1           ÿ
+                           ´ 2                         Ips1 , Jq `                          Ips1 , Jq
+                            N                                         N2
+                                        s1 PM` ps,eq                         s1 PM´ ps,eq
+                             1 ÿ                            1 ÿ
+                           ´       JppqIps ‘e p, J ´ δp q `       JppqIps ae p, J ´ δp q.
+                             N pPP                          N pPP
+                                        pąe                                           pąe´1
+
+(Here, the factor of Jppq arising in the last two terms arises because there are Jppq copies of the plaquette
+p which can possibly be used to deform s.) Combining this with the identity (2.10), we obtain
+                     ˆ             ź
+                       dU Ws pU q      ρp p2βReTrpUp qq
+                                           `
+                                        pPPΛ
+                                                           ÿ          ˆ                     ź
+                                               “¯                         dU Ws1 pU q             ρp p2βReTrpUp qq
+                                                       s1 PS˘ ps,eq                        `
+                                                                                        pPPΛ
+                                                                      ˆ
+                                                   1         ÿ                               ź
+                                               ¯                           dU Ws1 pU q             ρp p2βReTrpUp qq
+                                                   N2
+                                                         s1 PMps,eq                            `
+                                                                                            pPPΛ
+
+                                               ` D1 ` D 2 ,
+  where
+                                               βJ
+                                                  ˆ ź               ˙
+                          1 ÿ      ÿ
+                                                        pKJ ppqq
+                  D1 :“ ´               Jpp0 q         ρp        p0q Ips ‘e p0 , J ´ δp0 q,
+                          N p PP J:P ÑN        J!    `
+                                    0         Λ                       pPPΛ
+                                p0 ąe Jpp0 qě1
+                                                               J
+                                                                 ˆ ź                          ˙
+                        1       ÿ             ÿ   β
+                  D2 :“                    Jpp0 q                             ρpK
+                                                                               p
+                                                                                  J ppqq
+                                                                                         p0q      Ips ae p0 , J ´ δp0 q.
+                        N      p PP J:P ÑN
+                                                  J!                  pPPΛ
+                                0        Λ
+                              p0 ąe´1 Jpp0 qě1
+12                                 SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Next, we change variables J ÞÑ J ´ δp0 to obtain
+                       β ÿ      ÿ βJ                      ˆ        ź                        ˙
+                                          pKJ pp0 q`1q
+              D1 “ ´                     ρ             p0q                    ρpK J ppqq
+                                                                                         p0q    Ips ‘e p0 , Jq.
+                      N p PP J:P ÑN J! p0                          `
+                                                                               p
+                            0       Λ                           pPPΛ ztp0 u
+                           p0 ąe
+
+Finally, using the identity (2.10) in reverse, with ρp0 replaced by ρ1p0 , we obtain
+                         β     ÿ ˆ                                        ź
+                D1 “ ´                  dU Ws1 pU qρ1p0 p2βReTrpUp0 qq          ρp p2βReTrpUp qq.
+                        N 1                                               `
+                           s PD` ps,eq                                        pPPΛ ztp0 u
+                           s1 “s‘e p0
+
+The term D2 is handled similarly; we omit the details.                                                            □
+
+                                              3. Truncated model
+   In this section, we define the following truncated version of the lattice Yang–Mills measure, which was
+previously alluded to in Section 1. We then proceed to prove area law for this truncated model. In the
+following, recall our parameter choices (2.1)-(2.3), as well as the definition of the truncated exponential
+(Definition 2.9).
+Definition 3.1 (Truncated lattice Yang–Mills). Define the truncated lattice Yang–Mills measure via the
+density:
+                                             1     ź
+                        dµΛ,β,N,B pU q :“              expB p2βReTrpUp qqdU.
+                                          ZΛ,β,N,B   `
+                                                           pPPΛ
+
+Let x¨yΛ,β,N,B denote expectation with respect to the measure µΛ,β,N,B .
+   Since we are assuming throughout that our parameter choices (2.1)-(2.3) are satisfied, we have by Lemma
+2.11 that the truncated exponential expB is pointwise positive, and so that µΛ,β,N,B is indeed a probability
+measure (in particular, it is positive). We now state the main theorem of the present section, which is that
+area law holds for the truncated model.
+Theorem 3.2 (Area law for the truncated model). With the choice of parameters as in (2.1)-(2.3), we have
+that for any rectangular loop ℓ contained in a lattice Λ,
+                                     |xWℓ yΛ,β,N,B | ď 2N |ℓ|{4´1 p103 dβqareapℓq .
+In particular, we have area law decay for Wilson loop expectations in the truncated model.
+Remark 3.3. Strictly speaking, Theorem 3.2 is not needed in the proof of Theorem 1.2. However, its proof
+is quite short, and the proof of Theorem 1.2 in Section 4 builds quite heavily on the ideas introduced in this
+section. Thus we chose to state and prove Theorem 3.2 in this section, as a warmup towards the full result
+Theorem 1.2.
+   To recall the discussion after the statement of Theorem 1.2, the main idea is use the fact that Wilson
+string expectations satisfy a linear inhomogeneous equation, and then to prove a contraction estimate of the
+general form (1.1), which will result in an a priori bound on solutions to the equation. We begin to develop
+the necessary framework for the contraction mapping argument.
+   First, we define a notion of area for general strings s. In terms of the relation to the surface sums from
+[CPS23], there is a very natural interpretation for the area we will define: it will precisely be the area of
+the minimal area surface which spans the string s. However, here we will directly define the area without
+introducing the surfaces appearing in [CPS23].
+Definition 3.4 (Plaquette count). We will refer to functions K : PΛ` Ñ N or J : PΛ Ñ N as plaquette
+counts. Our convention will be that the letter K will denote an upper bound on the number of copies of
+each plaquette in our system, in that for each p P PΛ` , Kppq is an upper bound on the total number of copies
+of p and p´1 . Whereas when we use the letter J, we will think of Jppq as specifying the exact number of
+copies of each oriented plaquette p P PΛ .
+   Given plaquette counts K : PΛ` Ñ N or J : PΛ Ñ N, we define supppKq :“ tp P PΛ` : Kppq ‰ 0u, and
+similarly for supppJq. We refer to these sets as the supports of K, J.
+                   EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                 13
+
+
+   Additionally, we will often abuse notation and write B for the plaquette count PΛ` Ñ N which assigns
+every plaquette p P PΛ` the value B. It should always be clear from context whether B represents a number
+or a plaquette count.
+Definition 3.5. Let s be a string, and let J : PΛ Ñ N be a plaquette count. For oriented edges e P EΛ ,
+define the edge occurrence number
+                               ne ps, Jq :“ number of occurrences of e in ps, Jq.
+By this, we mean that each plaquette p appears with Jppq number of copies. Thus if a given edge e is
+contained in p, then there will be Jppq occurrences of e coming from p. We say that ps, Jq is balanced if
+ne ps, Jq “ ne´1 ps, Jq for all e P EΛ .
+   Similarly, given a plaquette count K : PΛ` Ñ N and a positively oriented edge e P EΛ` , we define the
+“unoriented” edge occurrence number
+                           ne ps, Kq :“ number of occurrences of e or e´1 in ps, Kq.
+In this definition, the convention is each plaquette p P PΛ` has Kppq copies.
+Definition 3.6 (Area). Let s be a string. We define areapsq to be the minimum area over all plaquette
+counts J : PΛ Ñ N such that ps, Jq is balanced. I.e.,
+                                             ! ÿ                             )
+                             areapsq :“ min         Jppq : ps, Jq is balanced .
+                                                 pPPΛ
+
+Remark 3.7. Note that for rectangular loops ℓ with side lengths R, L, we have that areapℓq “ RL, which
+coincides with the usual notion of area of a rectangular loop. This is because the minimal plaquette count
+is given by the indicator function on the set of plaquettes in the rectangle spanned by ℓ.
+  Having defined the area of a general string, next we define the quantities entering into the master loop
+equation. For K : PΛ` Ñ N, let
+                                      ˆ             ź
+                           ϕps, Kq :“ dU Ws pU q        expKppq p2βReTrpUp qq.                       (3.1)
+                                                           `
+                                                        pPPΛ
+
+For null loops ∅x , the value of ϕp∅x , Kq does not depend on the basepoint x, and is explicitly given by
+                                             ˆ      ź
+                                 ϕp∅x , Kq “ dU        expKppq p2βReTrpUp qq.
+                                                       `
+                                                    pPPΛ
+
+Thus in a slight abuse of notation, we will write ϕp∅, Kq to denote the above value. Also, note that
+                                                                          ϕps, Bq
+                               ϕp∅, Bq “ ZΛ,β,N,B ,     xWs yΛ,β,N,B “            .                          (3.2)
+                                                                         ZΛ,β,N,B
+Next, recall the string operations defined in Section 2.2. We will need a variant of the deformation operation
+which takes the plaquette count K into account.
+Definition 3.8 (Deformation). Let s P SΛ be a string, and suppose that s is non-null. Let e be an edge
+of s. Let K : PΛ Ñ N be a plaquette count. Let D˘ ps, e, Kq be the set of pairs ps1 , K 1 q such that s1 is a
+positive/negative deformation of s at e, and such that K 1 satisfies the following constraint. First, let p0 P PΛ`
+be the positively oriented plaquette such that s1 is a deformation of s using either p0 or p´1
+                                                                                            0 . Then we assume
+that Kpp0 q ě 1, and we impose that K 1 is given by
+                                                  #
+                                           1        Kppq       p ‰ p0 ,
+                                        K ppq “
+                                                    Kppq ´ 1 p “ p0 .
+Note by definition that for all ps1 , K 1 q P D˘ ps, e, Kq,
+                                             ÿ                  ÿ
+                                                 K 1 ppq “ ´1 `   Kppq.                                      (3.3)
+                                            `                     `
+                                         pPPΛ                  pPPΛ
+
+In the case where Kpp0 q “ 0 for all plaquettes p0 such that either p0 or p´1
+                                                                           0  contain the edge e, then we
+define D˘ ps, e, Kq :“ ∅.
+14                                       SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Remark 3.9. Intuitively, one should think of K as keeping track of the maximum number of plaquettes in
+the system, so that if we deform using a given plaquette, then the value of K at that plaquette should be
+decremented.
+     We next show the following master loop equation for ϕps, Kq.
+Proposition 3.10 (Master loop equation). Let s P SΛ be non-null, e be an edge of s, and K : PΛ` Ñ N be
+a plaquette count. We have that
+                          ÿ                 1   ÿ                β       ÿ
+            ϕps, Kq “ ¯         ϕps1 , Kq ¯ 2        ϕps1 , Kq ¯                   ϕps1 , K 1 q.
+                        1
+                                           N  1
+                                                                 N   1 1
+                               s PS˘ ps,eq                    s PM˘ ps,eq                   ps ,K qPD˘ ps,e,Kq
+
+Proof. This follows directly from Proposition 2.17, upon taking ρp “ expKppq , and noting that exp1k “ expk´1 ,
+as well as that if Kppq “ 0, then ρ1p p0q “ 0, so that in the deformation terms, one only has to restrict to
+those plaquettes for which Kppq ě 1.                                                                        □
+    Having obtained the master loop equation, we now turn towards defining the norm to be used in the
+contraction mapping argument. One key component of the norm involves the following statistic for strings,
+first introduced in [Cha19a], which we refer to as the “splitting complexity”. One should think of this
+statistic as keeping track of the number of possible splittings of any given string. In particular, we will show
+that this statistic decreases upon splitting. This will be essential in the ensuing contraction argument.
+Definition 3.11 (Splitting complexity). For non-null s P SΛ , s “ ps1 , . . . , sn q, let ιpsq :“ |s|
+                                                                                                   4 ´ n. Here,
+recall |s| is the perimeter of s. For null loops ∅x , we set ιp∅x q :“ 0.
+   In the following sequence of lemmas, we show how the splitting complexity changes under the various
+loop operations.
+Lemma 3.12 (Splitting complexity decreases after splitting). For s P SΛ non-null, an edge e in s, and
+s1 P S˘ ps, eq, we have that ιps1 q ď ιpsq ´ 1.
+Proof. We first handle the positive splitting case, i.e. suppose that s1 P S` ps, eq. Without loss of generality,
+suppose that e is the first edge of s1 , and so we may write s1 “ es1,1 e1 s1,2 . By the assumption that s1 has
+no backtracks, neither do s1,1 , s1,2 . Thus neither s1,1 , s1,2 are equivalent to the null loop, and thus we have
+that s1 “ pe1 s1,1 , es1,2 , s2 , . . . sn q. This shows that ιps1 q “ |s|{4 ´ pn ` 1q “ ιpsq ´ 1.
+   Next, consider a negative splitting, i.e. s1 P S´ ps, eq. Again, without loss of generality, suppose that e is
+the first edge of s1 . Then s1 “ es1,1 e1 s1,2 , where e1 is the same lattice edge as e´1 . Moreover, neither s1,1 , s1,2
+are empty (otherwise s1 would have a backtrack) nor have backtracks. Thus s1 “ ps1,1 , s1,2 , s2 , . . . , sn q. Thus
+ιps1 q “ p|s| ´ 2q{4 ´ pn ` 1q “ ιpsq ´ 3{2 ď ιpsq ´ 1.                                                                □
+Lemma 3.13 (Splitting complexity increases by at most 1 after merger). For s P SΛ non-null, an edge e in
+s, and s1 P M˘ ps, eq, we have that ιps1 q ď ιpsq ` 1.
+Proof. Without loss of generality, suppose that e is the first edge of the first loop s1 . First, suppose that
+s1 is a positive merger, i.e. s1 P M` ps, eq. Then s1 “ es11 , and for some 2 ď j ď n, sj “ e1 s1j , and we have
+that s1 “ pe1 s1j es11 , s2 , . . . , ŝj , . . . , sn q. Here, the ŝj denotes omission. (Note that since es11 , e1 s1j do not have
+backtracks, neither does e1 s11 es1j .) Thus ιps1 q “ |s|{4 ´ pn ´ 1q “ ιpsq ` 1.
+   Next, suppose s1 is a negative merger, i.e. s1 P M´ ps, eq. Then s1 “ es11 , and for some 2 ď j ď n,
+sj “ e1 s1j , and we have that either s1 “ prs11 s1j s, s2 , . . . , ŝj , . . . , sn q, or s1 “ ps2 , . . . , ŝj , . . . , sn q, where the
+latter case occurs if s11 s1j is equivalent to the null loop (recall that the notation rs11 s1j s denotes the loop s11 s1j
+with any backtracks erased). In the former case, we have that ιps1 q ď p|s| ´ 2q{4 ´ pn ´ 1q ď ιpsq ` 1. In
+the latter case, note that s1 , sj have length at least four (as they are closed loops in the lattice with no
+backtracks), and thus |s1 | ď |s| ´ 8, so that ιps1 q ď p|s| ´ 8q{4 ´ pn ´ 2q “ |s| ´ n “ ιpsq.                                           □
+Lemma 3.14 (Splitting complexity increases by at most 1 after deformation). Let s P SΛ be non-null, e be
+an edge of s, K : PΛ` Ñ N be a plaquette count, and ps1 , K 1 q P D˘ ps, e, Kq. Then ιps1 q ď ιpsq ` 1.
+Proof. Suppose without loss of generality that e is the first edge of the first loop s1 . First suppose that s1 is
+a positive deformation, i.e. ps1 , K 1 q P D` ps, e, Kq. Then s1 “ ps1 ‘e p, s2 , . . . , sn q for some plaquette p (there
+are no backtracks in s1 ‘e p). So 4 edges were added, thus ιps1 q ď p|s| ` 4q{4 ´ n “ ιpsq ` 1. Next, suppose
+                    EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                      15
+
+
+that s1 is a negative deformation, i.e. ps1 , K 1 q P D´ ps, e, Kq. Then either s1 “ prs1 ae ps, s2 , . . . , sn q (which
+happens in the case where s1 ae p is non-null, or s1 “ ps2 , . . . , sn q, which happens in the case where s1 ae p
+is null. In the former case, we have at most 3 new edges, so ιps1 q ď p|s| ` 3q{4 ´ n ď ιpsq ` 1. In the latter
+case, since |s1 | ě 4, we have that ιps1 q ď p|s| ´ 4q{4 ´ pn ´ 1q “ ιpsq.                                             □
+
+   Next, we show how the area changes after applying a loop operation.
+Lemma 3.15. Let s P SΛ be non-null, and e be an edge of s. For all s1 P S˘ ps, eq Y M˘ ps, eq, we have that
+areaps1 q “ areapsq. For s1 P D˘ ps, eq, we have that areapsq ď areaps1 q ` 1.
+Proof. From the definition of area as well as the definitions of splittings and mergers, we have that for
+s1 P S˘ ps, eq Y M˘ ps, eq and any plaquette count J, the pair ps, Jq is balanced if and only if ps1 , Jq is
+balanced. In the case of deformations, suppose s1 is a deformation of s using a plaquette p. Then for any
+plaquette count J 1 such that ps1 , J 1 q is balanced, we have that ps, J 1 ` δp´1 q is balanced. Taking J 1 to be
+minimal area, we obtain the inequality areapsq ď areaps1 q ` 1.                                                 □
+
+  Next, we define the space on which we will perform the contraction argument, as well as the norm that
+we will use. In the following, recall the unoriented edge occurrence number from Definition 3.5.
+Definition 3.16 (Truncated space). Define
+                               !                                          )
+                        ΩB :“ ps, Kq : s P SΛ , K ď B, max ne ps, Kq ď 2dB .
+                                                                           `
+                                                                        ePEΛ
+
+Note that ΩB is finite.
+Remark 3.17. In the definition of ΩB , we impose that ne ps, Kq ď 2dB for all e P EΛ` . In words, this limits
+the number of copies of any given edge in our system. As we will see, this will impose an upper bound on
+the number of mergers (Lemma 3.20), which is crucial for the contraction mapping argument.
+   We also remark that if ℓ is a rectangular loop, then pℓ, Bq P ΩB . To see this, note that each edge is
+contained in 2pd ´ 1q unoriented plaquettes, and thus if each plaquette has at most B copies, the number of
+copies of any given edge in pℓ, Bq is at most 1 ` 2pd ´ 1qB ď 2dB.
+Definition 3.18 (Norm). For λ, ρ ď 1, and γ ě 1, define the norm } ¨ }λ,γ,ρ on RΩB by
+                                     }f }λ,γ,ρ :“     sup      λιpsq γ areapsq ρB´K |f ps, Kq|.
+                                                    ps,KqPΩB
+
+Here, ρB´K “                B´Kppq
+                                     . Note that since ΩB is finite, }f }λ,γ,ρ ă 8 for any f P RΩB .
+                ś
+                      ` ρ
+                   pPPΛ
+
+Remark 3.19 (Conceptual remarks). On a conceptual level, one should think of λ ! 1, so that the weight
+λιpsq is tiny if s has many possible splittings. The necessity of this weight is because in the master loop
+equation (Proposition 3.10), there is no small prefactor in front of the splitting term, while both the merger
+and deformation terms come with small prefactors. Chatterjee [Cha19a] observed that by adding in this
+weight, a prefactor λ will be generated in front of each splitting term, essentially because ιpsq decreases by
+at least 1 after any splitting. This small prefactor λ then allows us to close the contraction argument.
+    On the other hand, in the merger and deformation terms, there will now be a large prefactor λ´1 , because
+ιpsq may increase by 1 after a merger. Fortunately, the prefactors N ´2 and βN ´1 in front of the merger and
+deformation terms are small enough to absorb this prefactor, at least under our current choice of parameters.
+    One should also think of γ " 1, so that if }f }λ,γ,ρ À 1, then |f ps, Bq| À γ ´areapsq , and we obtain the area
+decay this way. Thus, γ ´1 should be thought of as the rate of decay in the area law.
+    The term ρB´K is just needed to handle the “base case” or i.e. the “boundary term”, where s is a
+null loop. Ultimately, we want to compare |ϕp∅, Kq| to our original partition function |ϕp∅, Bq|, and the
+additional weight ρB´K allows us some room in making this comparison. The reason why we expect that it
+is safe to add this prefactor is because each deformation term comes with a tiny factor βN ´1 , so that every
+plaquette we see, we pay a huge cost.
+   The key property of the truncated model that will allow us to close the contraction mapping argument is
+the following result which bounds the total number of string operations. In particular, the total number of
+mergers is bounded.
+16                                 SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Lemma 3.20. For any ps, Kq with s non-null, any edge e of s, and K : PΛ` Ñ N, we have that
+                                           |D` ps, e, Kq Y D´ ps, e, Kq| ď 4d.
+If additionally ps, Kq P ΩB , then
+                                              |S` ps, eq Y S´ ps, eq| ď 2dB,
+                                            |M` ps, eq Y M´ ps, eq| ď 2dB.
+Remark 3.21. In the large-N limit, when the merger term in the master loop equation is not present, one can
+actually close a contraction estimate even without an upper bound on the number of splittings as in Lemma
+3.20, see [Cha19a, BCS24]. This is done by using a mixed ℓ1 ´ ℓ8 norm, where the ℓ1 norm comes from a
+sum over all “loop profiles”. Also, the deformation terms are always bounded by a dimensional constant.
+Thus, the main new thing here is that the number of merger terms is also bounded.
+Proof. Note that every edge e P Zd is contained in exactly 2pd ´ 1q unoriented plaquettes. Thus,
+                                |D` ps, e, Kq Y D´ ps, e, Kq| ď 2 ˆ 2pd ´ 1q ă 4d.
+Next, let ps, Kq P ΩB with s “ ps1 , . . . , sn q non-null, and without loss of generality, let e be an edge of s1 .
+                                                                                                             ´1
+Denote theřncorresponding lattice edge by e P EΛ . Let ki peq denote the number of occurrences of e or e in
+si . Then i“1 ki peq ď ne ps, Kq ď 2dB, so
+                                        |S` ps, eq Y S´ ps, eq| ď k1 peq ď 2dB,
+                                                                  ÿn
+                                      |M` ps, eq Y M´ ps, eq| ď       ki peq ď 2dB,
+                                                                    i“2
+as desired.                                                                                                       □
+  We are almost ready to carry out the contraction mapping argument. First, we define the operator
+appearing in the master loop equation.
+Definition 3.22 (Loop equation operator). We define an operator M on the space of functions f : ΩB Ñ R
+as follows. Let f : ΩB Ñ R. Let ps, Kq P ΩB be such that s is non-null, and let e “ es be the first edge of
+s. Define
+                              ÿ                1   ÿ                  β       ÿ
+          pM f qps, Kq :“ ¯       f ps1 , Kq ¯ 2         f ps1 , Kq ¯                  f ps1 , K 1 q.
+                            1
+                                              N  1
+                                                                      N   1 1
+                             s PS˘ ps,eq                 s PM˘ ps,eq              ps ,K qPD˘ ps,e,Kq
+
+For null loops, we define
+                                           M f p∅x , Kq :“ f p∅x , Kq, x P Λ.
+     By the master loop equation (Proposition 3.10), we have that ϕ “ M ϕ, where ϕ is as defined in (3.1).
+Proposition 3.23 (Contraction estimate). Let λ, ρ ď 1, and γ ě 1. For any f P RΩB , we have that
+                            ´       2dB     4dβγ ¯
+               }M f }λ,γ,ρ ď 2dBλ `       `        }f }λ,γ,ρ ` sup sup ρB´K |f p∅x , Kq|.
+                                    λN 2    λρN                xPΛ KďB
+
+Proof. Note that for any x P Λ, the set tK : p∅x , Kq P ΩB u “ tK : K ď Bu. Note also ιp∅x q “ 0, areap∅x q “
+0. Thus
+               }M f }λ,γ,ρ ď sup λιpsq γ areapsq ρB´K |f ps, Kq| ` sup sup ρB´K |f p∅x , Kq|.
+                               ps,KqPΩB                                   xPΛ KďB
+                                  s‰∅
+To finish, it suffices to show that
+                                                              ´       2dB    4dβγ ¯
+                       sup   λιpsq γ areapsq ρB´K |f ps, Kq| ď 2dBλ `      `        }f }λ,γ,ρ .
+                    ps,KqPΩB                                          λN 2   λρN
+                      s‰∅
+
+Towards this end, fix ps, Kq P ΩB with s non-null. By the definition of M , it suffices to prove the following
+three estimates:
+                                                    ÿ
+                               λιpsq γ areapsq ρB´K      |f ps1 , Kq| ď 2dBλ}f }λ,γ,ρ                     (3.4)
+                                                       s1 PS˘ ps,es q
+                    EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                      17
+
+                                                               ÿ                                 2dB
+                                  λιpsq γ areapsq ρB´K                     |f ps1 , Kq| ď            }f }λ,γ,ρ     (3.5)
+                                                                                                  λ
+                                                          s1 PM˘ ps,es q
+                                                          ÿ                                      4dγ
+                          λιpsq γ areapsq ρB´K                             |f ps1 , K 1 q| ď         }f }λ,γ,ρ .   (3.6)
+                                                                                                 λρ
+                                                 ps1 ,K 1 qPD˘ ps,es ,Kq
+
+Proof of (3.4). Let s1 P S˘ ps, es q. By Lemma 3.12, we have that ιps1 q ď ιpsq ´ 1, and so λιpsq “ λ ¨ λιpsq´1 ď
+        1
+λ ¨ λιps q (since λ ď 1). We also have that areapsq “ areaps1 q (Lemma 3.15). Note also that ps, Kq P ΩB
+implies that ps1 , Kq P ΩB . Thus
+                                                                 1            1
+                   λιpsq γ areapsq ρB´K |f ps1 , Kq| ď λλιps q γ areaps q ρB´K |f ps1 , Kq| ď λ}f }λ,γ,ρ .
+Since there are at most 2dB positive or negative splittings (Lemma 3.20), the estimate (3.4) follows.
+
+Proof of (3.5). Let s1 P M˘ ps, es q. By Lemma 3.13 and the fact that λ ď 1, we have that λιpsq “
+                       1
+λ´1 λιpsq`1 ď λ´1 λιps q . We also have that areapsq “ areaps1 q (Lemma 3.15). Note also that ps, Kq P ΩB
+implies that ps1 , Kq P ΩB . Thus
+                                                                 1            1
+                 λιpsq γ areapsq ρB´K |f ps1 , Kq| ď λ´1 λιps q γ areaps q ρB´K |f ps1 , Kq| ď λ´1 }f }λ,γ,ρ .
+Since there are at most 2dB positive or negative mergers (Lemma 3.20), the estimate (3.5) follows.
+
+Proof of (3.6). Let ps1 , K 1 q P D˘ ps, es , Kq. By (3.3), we have that
+                                                                 1                           1
+                                           ρB´K “ ρB´pK `1q “ ρ´1 ρB´K .
+                                                                                         1
+By Lemma 3.14, we have that ιps1 q ď ιpsq ` 1, and so λιpsq ď λ´1 λιps q (as in the merger case). We also have
+                                                                                  1
+that areapsq ď areaps1 q ` 1 (Lemma 3.15), and thus γ areapsq ď γ areaps q`1 (since γ ě 1). Finally, ps, Kq P ΩB
+               1     1
+implies that ps , K q P ΩB . Thus
+                                                                 1          1       1                 γ
+             λιpsq γ areapsq ρB´K |f ps1 , K 1 q| ď λ´1 ρ´1 γλιps q γ areaps q ρB´K |f ps1 , K 1 q| ď    }f }λ,γ,ρ .
+                                                                                                      λρ
+Since there are at most 4d positive or negative deformations (Lemma 3.20), we obtain the estimate (3.6).
+This completes the proof of Proposition 3.23.                                                         □
+   Before using the contraction estimate (Proposition 3.23) to prove Theorem 3.2, we first need to estimate
+the “boundary term” by the partition function ZΛ,β,N,B . In the following, recall that with ϕ defined as in
+(3.1), the value ϕp∅x , Kq does not depend on the basepoint x, so that we abuse notation and write ϕp∅, Kq.
+Proposition 3.24. With the choice of parameters as in (2.1)-(2.3), we have that
+                                    sup e´pB´Kq |ϕp∅, Kq| ď ϕp∅, Bq “ ZΛ,β,N,B .
+                                   KďB
+
+Proof. We previously already observed the equality (recall (3.2)), and thus we just show the inequality. We
+have that                               ˆ     ź                ˇ                      ˇ
+                   e´pB´Kq |ϕp∅, Kq| ď dU          e´pB´Kppqq ˇ expKppq p2βReTrpUp qqˇ.
+                                                            `
+                                                         pPPΛ
+
+By (2.6), we have the pointwise bound
+                                    ˇ                      ˇ
+                         e´pB´Kppqq ˇ expKppq p2βReTrpUp qqˇ ď expB p2βReTrpUp qq,
+and applying this for all p P PΛ` , we obtain the desired result.
+                                                                                                                      □
+   By combining the previous proposition with the contraction estimate (Proposition 3.23), we can now show
+area law for the truncated model.
+Proof of Theorem 3.2. Let λ “ N ´1 , γ “ p103 dβq´1 ě 1, ρ “ e´1 . Then by our assumptions on N, β, B
+(2.1)-(2.3), we have by Propositions 3.10 and 3.24 that
+                                                        1
+                                }ϕ}λ,γρ “ }M ϕ}λ,γ,ρ ď }ϕ}λ,γ,ρ ` ZΛ,β,N,B .
+                                                        2
+18                              SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+In slightly more detail, we claim that
+                                                   2dB    4dβγ  1
+                                         2dBλ `         `      ď .
+                                                   λN 2   λρN   2
+This follows because λ “ N ´1 , dB ! N (which handles the first two terms), and
+                                               dβγ “ 10´3 ! 1,
+which handles the third term. Letting ℓ be a rectangular loop, and recalling by Remark 3.17 that pℓ, Bq P ΩB ,
+we obtain that
+                                  λιpℓq γ areapℓq |ϕpℓ, Bq| ď }ϕ}λ,γ,ρ ď 2ϕp∅, Bq.
+The desired result now follows upon recalling the values of λ, γ, using that ιpℓq “ |ℓ|{4 ´ 1, and noting that
+xWℓ yΛ,β,N,B “ ϕpℓ, Bq{ZΛ,β,N,B .                                                                           □
+
+                                            4. Original model
+  In this section, we prove Theorem 1.2 by adapting the contraction mapping argument of Section 3. The
+main result of this section is the following theorem.
+Theorem 4.1 (Area Law). Under the parameter assumptions on N, β given in (2.1)-(2.2), for any lattice
+Λ and any rectangular loop ℓ in Λ, we have that
+                                     |xWℓ yβ,Λ,N | ď 2|ℓ|N |ℓ|{4´1 αareapℓq ,
+where
+                              α “ 2 ˆ 103d maxp103 dβ, expp´10´7 d´2 N qq ! 1.
+   First, we show that Theorem 4.1 implies Theorem 1.2. The main point is that in Theorem 4.1, N is
+assumed to be sufficiently large, whereas Theorem 1.2 is stated for all N ě 1. To handle the latter case, we
+just use the fact that for each fixed N , we know area law at sufficiently small β.
+Proof of Theorem 1.2. From [OS78, Theorem 5.1], for each N ě 1, there exists some β0 pd, N q such that for
+all β ď β0 pd, N q, area law in the form stated in Theorem 1.2 holds. Combining this with Theorem 4.1, we
+may define
+                                              `                              ˘
+                                 β0 pdq :“ min 10´10d d´1 , min    β0 pd, N q ,
+                                                           N ď1010d d10
+
+which is then a threshold that works for all N ě 1.                                                         □
+    We next discuss some elements in the proof of Theorem 4.1, which is the main focus of the rest of Section
+4. The main difficulty is that in principal, the total number of copies of a given plaquette may be unbounded,
+while the contraction mapping argument of Section 3 only works if each plaquette has at most „ B copies.
+On the other hand, the point of choosing the parameters β, B in the way specified by (2.2)-(2.3) is that if a
+given plaquette has more than B copies, then we are in the tail of the exponential, and this should already
+come with a huge cost (recall e.g. the estimate (2.5)).
+    However, even accounting for this, there is another key idea which is needed, which is dealing with the
+case where the loop is completely contained in the “bad plaquettes”, i.e. the plaquettes with too many
+copies. This is a problem because we only ever want to apply the master loop equation at edges which are
+only contained in good plaquettes (i.e., plaquettes with at most B copies), so if every edge of the loop is
+contained in a bad plaquette, then there are no edges at which to apply the master loop equation. In terms
+of the surface exploration heuristic from Remark 1.8, we only want to explore at the edges of our string
+which are completely contained in good plaquettes, so if no such edges exist, then our exploration process
+is stuck. See Figure 2 for a visualization of such a situation. It may also be good to have the figure in mind
+while reading the ensuing discussion.
+    The way around this conundrum is to add another possible string operation to the master loop equation,
+which is applied precisely when the string is stuck in a set of bad plaquettes. The operation, which we
+term “revival”, simply proceeds by introducing new loops. These new loops are copies of good plaquettes
+that border the component of bad plaquettes in which the loop is currently stuck. The number of copies
+introduced is given by the current plaquette count, which recall tracks the total number of copies of the
+plaquette in our system. We can then continue exploration process by exploring the edges of these new
+                  EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                             19
+
+
+
+
+        Figure 2. Shown is our enemy scenario. It could happen that our loop ℓ (black) is com-
+        pletely contained in a set of bad plaquettes (red) which is of size „ |ℓ|. In this case, we only
+        pay a cost which is exponential in |ℓ| due to the bad plaquettes, whereas we ultimately want
+        to exhibit a cost which is exponential in areapℓq " |ℓ|. The way we want to exhibit this
+        cost is to begin exploring, and to say that we must see „ areapℓq many deformations, each
+        of which comes with a cost. However, because every edge of the loop is contained in a bad
+        plaquette, we cannot start our exploration. (We only want to explore at edges completely
+        contained in good plaquettes, because only for these edges can we close the contraction
+        mapping argument as in Section 3.) As described in the main text, the fix is to add another
+        operation in the master loop equation, which introduces new loops corresponding to good
+        plaquettes (yellow) which border the bad plaquette component in which we are currently
+        stuck. We can then begin exploring at the edges of these new loops.
+
+
+loops. In terms of the surface exploration heuristic, the main point here is that we know there must be a
+surface spanning the original loop, and thus it must be possible to continue the exploration upon introducing
+the new loops, because at least one of the new loops must be part of the spanning surface.
+   In the end, the area law decay will follow because in our exploration process, the combined number of bad
+plaquettes and good plaquettes that we see must be at least the area of the original loop (because there must
+be a surface spanning the loop). The bad plaquettes are extremely rare and thus they come with a huge
+cost, and the good plaquettes also come with a huge cost, essentially because in the master loop equation,
+deformations come with a prefactor of βN ´1 .
+   We briefly summarize the rest of Section 4. In Section 4.1, we reduce Theorem 4.1 to proving a certain
+estimate for each fixed “bad plaquette” configuration. In Section 4.2, we introduce a modified master loop
+equation, and in particular define the new revival operation. Finally, in Section 4.3, we prove an a priori
+estimate for solutions to the modified master loop equation, and then use this to prove Theorem 4.1.
+
+4.1. Bad plaquette reduction. In this section, we perform a preliminary reduction towards the proof of
+Theorem 4.1. The main result of this section is Proposition 4.7. Before we state the result, we include some
+preliminary discussion of plaquette sets.
+Convention 4.2 (Good and bad plaquettes). In the following, we will often fix a plaquette set P Ď PΛ` ,
+which we will refer to as the set of “bad plaquettes”. Essentially, P will track for us the plaquettes which
+have too many copies. Conversely, when we refer to a “good plaquette”, we mean a plaquette in PΛ` zP ,
+which will have at most B copies. The good plaquettes are good because our contraction mapping argument
+from Section 3 works at edges completely contained in good plaquettes.
+Remark 4.3. For a picture to keep in mind throughout the present section, it may help to think of the bad
+plaquette set P as in Figure 2. That is, it is a plaquette set which has size À |ℓ|, and which may possibly
+contain many (or all) the edges of ℓ (which would prevent us from directly applying the argument of Section
+3). This is our enemy scenario, because if, on the other hand, there are Á areapℓq many bad plaquettes near
+our loop ℓ, then we will automatically have the area law decay, because bad plaquettes are extremely rare.
+20                               SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+   We will often talk about “connected” plaquette sets, and so we define the following graph structure on
+the set of plaquettes.
+Definition 4.4 (Graph structure on plaquettes). We say that two plaquettes p, p1 P PΛ` are neighbors if
+they share a common edge e P EΛ , and we write p „ p1 . Given a plaquette set C Ď PΛ` and a loop ℓ, we will
+say that C Y ℓ is connected if every connected component of C contains at least one edge of ℓ.
+  A plaquette set C such that C Y ℓ is connected may contain several disjoint connected components. These
+components are connected to each other via the loop ℓ.
+Definition 4.5. For any bad plaquette configuration P Ď PΛ` , let
+                                ␣                                                    (
+                  M pP q :“ max |P X C| : C Ď PΛ` , C Y ℓ is connected, |C| ď areapℓq .                     (4.1)
+   The following lemma bounds the number of sets C such that C Y ℓ is connected and which are at most a
+given size. Such statements are quite classical, but for completeness, we provide a proof. The reader may
+skip the proof on a first reading.
+Lemma 4.6. Let ℓ be a rectangular loop. For any M ě 0, we have that
+                           #tC Ď PΛ` : C Y ℓ is connected, |C| ď M u ď e2d|ℓ| 50dM .                        (4.2)
+Proof. The following is quite similar to the proof of [BCS24, Lemma 5.19]. It suffices to fix 1 ď m ď M ,
+and bound
+                           #tC Ď PΛ` : C Y ℓ is connected, |C| “ mu ď e2d|ℓ| 40dm .                         (4.3)
+The result then follows by summing in 1 ď m ď M . For fixed m, any plaquette set C of size |C| “ m such
+that C Y ℓ is connected decomposes into k connected components, where 1 ď k ď m. The sizes n1 , . . . , nk ě 1
+of these connected components form a partition of m, i.e. n1 ` ¨ ¨ ¨ ` nk “ m. For n ě 1, let N pℓ, nq be the
+number of connected plaquette sets C which contain some edge of ℓ. We then have that
+                                                               m                         k
+                                                               ÿ 1            ÿ          ź
+                 #tC Ď PΛ` : C Y ℓ is connected, |C| “ mu ď                                   N pℓ, ni q.   (4.4)
+                                                              k“1
+                                                                    k!    n1 ,...,nk ě1 i“1
+                                                                         n1 `¨¨¨`nk “m
+
+Next, we claim that
+                                   N pℓ, nq ď 2pd ´ 1q|ℓ|10dn for all n ě 1.
+This follows because each edge in ℓ is contained in at most 2pd ´ 1q plaquettes, and for any fixed plaquette,
+the number of connected plaquette sets of size n containing that plaquette is at most 10dn (see e.g. [Gri00,
+Chapter 4], and in particular, (4.24) therein). Plugging this estimate into (4.4) and combining with the
+elementary inequalities
+                           ˆ      ˙ ˆ              ˙k´1
+                             m´1          pm ´ 1qe
+                                     ď                  , and suppm{xqx ď em{e ,                        (4.5)
+                             k´1            k´1               xą0
+
+we obtain (here,
+             ` note
+                  ˘ by stars-and-bars that the number of partitions n1 `¨ ¨ ¨`nk “ m such that n1 , . . . , nk ě
+1 is given by m´1
+               k´1 )
+                                                        m     ˆ       ˙
+                                                       ÿ   1 m´1
+            #tC Ď PΛ` : C Y ℓ is connected, |C| “ mu ď                  p2pd ´ 1q|ℓ|qk 10dm
+                                                       k“1
+                                                           k!   k ´ 1
+                                                        m     ˆ           ˙k´1
+                                                       ÿ   1 pm ´ 1qe
+                                                     ď                         p2pd ´ 1q|ℓ|qk 10dm
+                                                       k“1
+                                                           k!     k ´ 1
+                                                                           m
+                                                                           ÿ 1
+                                                      ď 10dm epm´1q{e                p2epd ´ 1q|ℓ|qk
+                                                                     k“1
+                                                                                k!
+                                                           dm pm´1q{e m 2pd´1q|ℓ|
+                                                      ď 10    e           e e             .
+The estimate (4.3) now follows because e1{e ˆ e ˆ 10 ă 40.                                                     □
+                    EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                               21
+
+
+   The following proposition is the main result of this section. It provides a sufficient condition under which
+area law holds. In the following, recall the truncated exponential and exponential tail functions expB , τB
+from Definition 2.9. These were defined so that exp “ expB `τB .
+Proposition 4.7 (Reduction to fixed bad plaquette configuration). Suppose that for some constants C1 , C2 ,
+we have that for all P Ď PΛ` ,
+           ˇˆ                                                         ˇ
+           ˇ               ź                      ź                   ˇ
+           ˇ dU Wℓ pU q        expB p2βReTrpUp qq    τB p2βReTrpUp qqˇˇ                             (4.6)
+           ˇ
+                                  `
+                               pPPΛ zP                            pPP
+
+                                           ď C1 expppB{40qM pP qq expp´C2 pareapℓq ´ 20dM pP qq` q
+                                                    ˆ     ź                         ź
+                                                  ˆ dU          expB p2βReTrpUp qq     τB p2βReTrpUp qq.
+                                                                  `
+                                                               pPPΛ zP                          pPP
+
+Here, pareapℓq ´ 20dM pP qq` “ maxpareapℓq ´ 20dM pP q, 0q. Then we have that
+              |xWℓ yΛ,β,N | ď C1 e2d|ℓ| 50d¨areapℓq 2areapℓq maxpexpp´C2 q, expp´d´1 10´3 Bqqareapℓq .                      (4.7)
+Remark 4.8. Of course, the estimate in (4.7) is only effective if C2 " d log 50 ` log 2. As we will see later,
+this will be guaranteed by our choice of parameters (2.1)-(2.3).
+Proof. First, for every plaquette configuration P Ď PΛ` , let
+                                          CpP q P tC : C Y ℓ is connected, |C| ď areapℓqu
+be a set which achieves maximal intersection, i.e. such that |P X CP | “ M pP q. We may then estimate
+           ˇˆ            ź                    ˇ
+           ˇ                                  ˇ
+           ˇ dU Wℓ pU q     expp2βReTrpUp qqˇˇ
+           ˇ
+                           pPP `
+                  ˇˆ      Λ
+                                                                        ¯ˇˇ
+                  ˇ            ź ´
+               “ ˇˇ dU Wℓ pU q     expB p2βReTrpUp qq ` τB p2βReTrpUp qq ˇˇ
+                                         `
+                                      pPPΛ
+                 ÿ ˇˇ ˆ                           ź                             ź                      ˇ
+                                                                                                       ˇ
+               ď    ˇ dU Wℓ pU q                           expB p2βReTrpUp qq         τB p2βReTrpUp qqˇˇ
+                    ˇ
+                       `
+                   P ĎPΛ                        pPP ` zP                        pPP
+
+                   ÿ     ÿ       ˇˆ          Λ
+                                               ź                                      ź                      ˇ
+                                 ˇ                                                                           ˇ
+               ď                 ˇ dU Wℓ pU q                  expB p2βReTrpUp qq           τB p2βReTrpUp qqˇˇ
+                                 ˇ
+                   C   P ĎPΛ `                          `
+                                                     pPPΛ zP                          pPP
+                       CpP q“C
+                   ÿ     ÿ            ÿ      ˇˆ                  ź                              ź                      ˇ
+                                             ˇ                                                                         ˇ
+               ď                             ˇ dU Wℓ pU q                expB p2βReTrpUp qq           τB p2βReTrpUp qqˇˇ.
+                                             ˇ
+                   C   P ĎPΛ `   P0 ĎC                            `
+                                                               pPPΛ zP                          pPP
+                                     `
+                       CpP q“C QĎPΛ zC
+                               P “P0 YQ
+
+Here, to be clear, the sum over C is a sum over C Ď PΛ` such that C Y ℓ is connected and |C| ď areapℓq.
+Also, the innermost sum is really just a sum over a single pair pP0 , Qq, which is uniquely determined by the
+conditions P0 Ď C, Q Ď PΛ` zC, P “ P0 Y Q. Also, note that since CpP q “ C, we have that |P0 | “ M pP q.
+Next, inserting the assumed bound (4.6), we obtain the further upper bound
+                        ÿ ÿ          ÿ
+                   ď C1                    expp´C2 pareapℓq ´ 20d|P0 |q` q expppB{40q|P0 |q
+                             C   P ĎPΛ `   P0 ĎC
+                                               `
+                                 CpP q“C QĎPΛ zC
+                                         P “P0 YQ
+                                      ˆ          ź                             ź
+                                  ˆ       dU             expB p2βReTrpUp qq         τB p2βReTrpUp qq.
+                                                  `
+                                               pPPΛ zP                        pPP
+
+Next, by applying (2.5) to bound τB ď expp´B{10q expB for each p P P0 , we obtain the further upper bound
+                        ÿ ÿ        ÿ
+                 ď C1                   expp´C2 pareapℓq ´ 20d|P0 |q` q expp´pB{20q|P0 |q
+                           C     P ĎPΛ `   P0 ĎC
+                                               `
+                                 CpP q“C QĎPΛ zC
+                                         P “P0 YQ
+22                                     SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+                                   ˆ         ź                                 ź
+                               ˆ       dU             expB p2βReTrpUp qq             τB p2βReTrpUp qq.
+                                               `
+                                            pPPΛ zQ                            pPQ
+
+Using that pareapℓq ´ 20d|P0 |q` ` 20d|P0 | ě areapℓq, and letting α :“ maxpexpp´C2 q, expp´d´1 10´3 Bqq, we
+may estimate
+                            expp´C2 pareapℓq ´ 20d|P0 |q` q expp´pB{20q|P0 |q ď αareapℓq .
+Next, switching the order of summation so that the sum over Q is outside, we further obtain
+                     ÿ     ÿ     ÿ       ÿ ˆ          ź                        ź
+             areapℓq
+      ď C1 α                                     dU       expB p2βReTrpUp qq      τB p2βReTrpUp qq.
+                         `
+                      QĎPΛ    `
+                           CĎPΛ zQ P ĎPΛ`   P0 ĎC                      `
+                                                                    pPPΛ zQ                                 pPQ
+                                          P “P0 YQ
+                                  CpP q“C
+
+Now for any Q fixed, the number of possible choices of C is at most e2d|ℓ| 50d¨areapℓq by (4.2). Having fixed C,
+the set P is determined by the choice of P0 Ď C, and there are at most 2areapℓq subsets of C. It follows that
+the above is further upper bounded by
+                                                   ÿ ˆ    ź                         ź
+         ď C1 e2d|ℓ| 50d¨areapℓq 2areapℓq αareapℓq     dU     expB p2βReTrpUp qq        τB p2βReTrpUp qq
+                                                         `
+                                                      QĎPΛ              `
+                                                                     pPPΛ zQ                                pPQ
+
+         “ C1 e2d|ℓ| 50d¨areapℓq 2areapℓq αareapℓq ZΛ,β,N .
+The desired result now follows by combining the previous chain of inequalities.
+                                                                                                                  □
+4.2. Modified master loop equation. In this section, we introduce a new string operation called “revival”,
+and then prove a modified master loop equation which involves this new operation. This will allow us to
+deal with the case where the current string is completely contained in bad plaquettes. The main results of
+this section are Propositions 4.15 and 4.18, which when combined, give the modified master loop equation.
+Throughout this section, we fix a bad plaquette set P Ď PΛ` , and set M “ M pP q, where recall M pP q is
+defined in (4.1).
+Convention 4.9 (Good edges). Having fixed the set of bad plaquettes P , we will say that an edge e P EΛ
+is good if it is not contained in a bad plaquette, i.e. if it is completely contained in good plaquettes.
+Definition 4.10. For any subset of positively oriented plaquettes Q, let opQq “ tp, p´1 : p P Qu.
+Definition 4.11 (Revival). Let s “ pℓ1 , . . . , ℓn q be a string, and R be some collection of plaquettes R Ď PΛ`
+referred to as a revival set. Let J : opRq Ñ N be a plaquette count on opRq. Suppose that opRq “ tp1 , . . . , pm u,
+and that Jppi q “ ji for 1 ď i ď m. We define the revival as the string
+                                               p1q         p1q         pmq         pmq
+                                s∆R J “ pℓ1 , . . . , ℓj1 , . . . , ℓ1 , . . . , ℓjm , ℓ1 , . . . , ℓn q,
+              piq
+where each ℓk is a copy of the plaquette loop pi . The set of all revivals of s with revival set R will be
+denoted Rps, Rq.
+Remark 4.12. This new revival operation is the one that was mentioned in the discussion after the proof of
+Theorem 1.2 in the beginning of Section 4. As discussed there, the main point of this operation is to deal
+with the case where all edges of the string are contained in bad plaquettes (this is the notion of stuck string,
+which we will soon define in Definition 4.14). By introducing this new operation, we introduce new loops
+into the system, and we can continue our exploration from there (recall Figure 2).
+   As a matter of notation, we make the following definition involving operations on pairs ps, Kq of strings
+s and plaquette counts K.
+Definition 4.13 (Operations on string and plaquette count pairs). Let s P SΛ be non-null and K : PΛ` zP Ñ
+N be a plaquette count supported on good plaquettes. We make the following definitions.
+   (1) If s contains a good edge e, then ps1 , K 1 q is a positive merger of ps, Kq at e if s1 P M` ps, eq and
+       K 1 “ K. The set of all positive mergers of ps, Kq at e is denoted by M` pps, Kq, eq.
+   (2) The sets M´ pps, Kq, eq, S` pps, Kq, eq, and S´ pps, Kq, eq may be similarly defined.
+                   EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                 23
+
+
+    (3) If s contains a good edge e, we say that ps1 , K 1 q is a positive (resp. negative) deformation of ps, Kq
+        at e, if we can express s1 “ s ‘e p (resp. s1 “ s ae p) for some plaquette p, and moreover K 1 is
+        given by (here |p| denotes the positively oriented version of p, which may be p itself if it is already
+        positively oriented)
+                                             #
+                                      1        Kpqq           q P PΛ` zt|p|u,
+                                     K pqq “
+                                               Kppq ´ 1 q “ |p|.
+        The set of all such ps1 , K 1 q is denoted D` pps, Kq, eq (resp. D´ pps, Kq, eq).
+    (4) We say that ps1 , K 1 q is a revival of ps, Kq with revival set R if s1 P Rps, Rq, K 1 ppq “ Kppq for
+        p P PΛ` zR, K 1 ppq “ 0 for all p P R, and the plaquette count J : opRq Ñ N such that s1 “ s∆R J
+        satisfies Jppq ` Jpp´1 q ď Kppq for all p P PΛ` . In this case, we write ps1 , K 1 q “ ps, Kq∆R J. The set
+        of all revivals of ps, Kq with revival set R is denoted Rpps, Kq, Rq.
+  Next, we define what it means for a string to be “stuck” in the bad plaquette set P .
+Definition 4.14 (Stuck strings). For a non-null string s P SΛ , we say that s is stuck in Q Ď P if Q is the
+union of all connected components of P touching s, and all edges in the loops of s belong to plaquettes in Q.
+  Next, we define the quantity for which we will derive the modified master loop equation. For any s P SΛ
+and plaquette count K : PΛ` zP Ñ N, let
+                           ˆ             ź                           ź
+                ϕps, Kq :“ dU Ws pU q         expKppq p2βReTrpUp qq     τB p2βReTrpUp qq.            (4.8)
+                                              `
+                                           pPPΛ zP                       pPP
+
+Next, we state the first main result of this section.
+Proposition 4.15 (Master loop equation when not stuck). Let s P SΛ be non-null with at least one good
+edge e, and let K : PΛ` Ñ N be a plaquette count. We have that
+                           ÿ                1     ÿ                β     ÿ
+           ϕps, Kq “ ¯          ϕps1 , Kq ¯ 2          ϕps1 , Kq ¯              ϕps1 , K 1 q.
+                         1
+                                           N   1
+                                                                   N 1 1
+                         s PS˘ ps,eq                 s PM˘ ps,eq           ps ,K qPD˘ ps,e,Kq
+
+Proof. We apply Proposition 2.17 with the choices ρp pxq “ expKppq pxq for p P PΛ` zP , and ρp pxq “ τB for
+                               d
+p P P , and use the fact that dx expk pxq “ expk´1 pxq.                                                  □
+  Before we state the second main result of this section (the master loop equation for stuck strings), we
+make the following definitions.
+Definition 4.16 (Plaquette boundary). For a set of bad plaquettes Q Ď P , we define the boundary
+                                   BQ :“ tp P PΛ` zP : p „ p1 for some p1 P Qu,
+i.e. BQ is the set of good plaquettes which share an edge with an element of Q.
+   Next, we define a modified notion of area for strings, which will be slightly more convenient in the following.
+We remark that for rectangular loops, this modified notion of area coincides with our previous definition of
+area (Definition 3.6), which coincides with the usual notion of the area of a rectangle.
+Definition 4.17 (Modified area). For a string s P SΛ , define the modified area of s as
+                    areapsq :“ mint|supppJq| : J : PΛ Ñ N such that ps, Jq is balancedu.
+   In the rest of this section, whenever we refer to area, by default we will mean area. We remark that
+the reason why areapℓq “ areapℓqř for a rectangular loop ℓ is because the plaquette set J which makes pℓ, Jq
+balanced and which minimizes p Jppq is 0{1-valued.
+Proposition 4.18 (Master loop equation for stuck strings). Let s P SΛ be a non-null string which is stuck
+in Q Ď P . Let K : PΛ` zP Ñ N be a plaquette count. Suppose that |Q| ă areapsq. Then
+                                             ÿ       pN βqJ
+                             ϕps, Kq “                      ϕpps, Kq∆BQ Jq,
+                                          J:P ÑN
+                                                       J!
+                                                 Λ
+                                           ∅‰supppJqĎBQ
+                                               JďK
+24                                    SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+where by J ď K we mean that for any oriented plaquette p, we have that Jppq ` Jpp´1 q ď Kp|p|q (here |p|
+denotes the positively oriented version of p). Note the RHS above is 0 if K ” 0 on BQ.
+   Before proving Proposition 4.18, we collect a few key properties of balanced pairs ps, Kq (recall the
+definition of balanced in Definition 3.5).
+Lemma 4.19. If ps, Jq is not balanced, then
+                                   ˆ             ź
+                                      dU Ws pU q   TrpUp qJppq “ 0.
+                                                                pPPΛ
+
+Proof. By assumption, there is an edge e0 P EΛ` such that me0 :“ ne0 ps, Jq ´ ne´1 ps, Jq ‰ 0, where recall
+                                                                                0
+ne0 ps, Jq is the total number of appearances of e0 in ps, Jq, and similarly ne´1 ps, Jq is the total number of
+                                                                                                   0
+appearances of e´10 in ps, Jq. Now take any θ P r0, 2πq such that e
+                                                                     iθme0
+                                                                           ‰ 1. By Haar invariance, eiθ Ue0 is
+still Haar distributed, and thus the lattice gauge configuration Ũ defined by
+                                                   #
+                                                    Ue      e ‰ e0
+                                            Ũe :“   iθ
+                                                    e Ue0 e “ e0
+is still product Haar distributed, and thus we obtain
+                      ˆ             ź                      ˆ            ź
+                                               Jppq   iθme
+                         dU Ws pU q     TrpUp q     “e       dU Ws pU q   TrpUp qJppq .
+                                           pPPΛ                                             pPPΛ
+
+Since eiθme ‰ 1, we obtain that the integral must be zero, as desired.                                                             □
+Lemma 4.20. Suppose that ps, J1 `J2 q and p∅x , J2 q are both balanced (the second condition is independent
+of the choice of x P Λ). Then ps, J1 q is balanced.
+Proof. For any edge e P EΛ` , e and e´1 appear the same number of times in s and J1 ` J2 together, as well
+as just in J2 . Thus e and e´1 appear the same number of times in s and J1 together.                    □
+Lemma 4.21. Suppose that ps, Jq is balanced, and let S be the union of all connected components of
+supppJq which neighbor any loop of the string s. Then |S| ě areapsq.
+Proof. We can decompose J “ J1 ` J2 where J1 :“ J 1S . Since ps, J1 ` J2 q is balanced and any edge
+intersecting the support of J2 does not lie on any loop of s, p∅, J2 q is balanced. Therefore ps, J1 q is balanced,
+and thus necessarily S “ supppJ1 q satisfies |S| ě areapsq.                                                      □
+Proof of Proposition 4.18. We begin by Taylor expanding the truncated exponentials at every p P BQ, so
+that
+
+                          ˆ
+                ÿ                           ź        β Jppq TrpUp qJppq     ź                                  ź
+ϕps, Kq “                     dU Ws pU q                                            expK 1 ppq p2βReTrpUp qq         τB p2βReTrpUp qq
+               J:PΛ ÑN
+                                                            Jppq!                                              pPP
+                                           pPopBQq                        pPPΛ zP
+             supppJqĎBQ
+                 JďK
+                ÿ         pN βqJ
+         “                       ϕpps, Kq∆BQ Jq,
+               J:PΛ ÑN
+                            J!
+             supppJqĎBQ
+                JďK
+
+where in the right hand side of the first line, K 1 ppq “ 0 for all p P BQ, and K 1 ppq “ Kppq otherwise. To
+conclude, we just need to prove that the term above corresponding to J ” 0 is 0. To see this, we expand the
+remaining exponentials in series so that,
+                       ˆ              ź                             ź
+                         dU Ws pU q        expK 1 ppq p2βReTrpUp qq    τB p2βReTrpUp qq
+                                            pPPΛ zP                                 pPP
+
+                                                          ÿβ    K̃ ˆ                 ź
+                                                      “                dU Ws pU q          TrpUp qK̃ppq ,                       (4.9)
+                                                               K̃!                  pPPΛ
+                                                          K̃
+                    EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                     25
+
+
+where the K̃ in the sum above are 0 on BQ, K̃ ď K on the remaining good plaquettes, and K̃ ą B on the
+bad plaquette set P . The key observation is that for any such K̃, ps, K̃q cannot be balanced. To see this, let
+S be the union of all connected components of supppK̃q neighboring s. Then we have that S Ď Q, because
+K̃ “ 0 on BQ. By Lemma 4.21 combined with the fact that |Q| ă areapsq, we have that the pair ps, K̃q
+cannot be balanced. As a result, every integral in the sum (4.9) must vanish (by Lemma 4.19), thereby
+concluding the proof.                                                                                        □
+
+4.3. A priori estimate. In this section, we prove an a priori estimate for solutions to the modified master
+loop equation from Section 4.2, which will then allow us to obtain the estimate assumed in Proposition 4.7,
+which then will allow us to prove Theorem 4.1. The main proposition in the section is Proposition 4.41,
+which is the aforementioned a priori estimate, which we will gradually build towards.
+   Throughout this section, fix a rectangular loop ℓ belonging to a lattice Λ. We also fix a subset P Ď PΛ`
+of bad plaquettes. We will consider triples ps, K, Qq where s P SΛ , K : PΛ` zP Ñ N, and Q Ď P .
+
+Definition 4.22 (String operations on triples). Suppose s P SΛ , K : PΛ` zP Ñ N, and Q Ď P . We make the
+following definitions.
+    (1) If s contains a good edge e, then ps1 , K 1 , Q1 q is a positive merger of ps, K, Qq at e if ps1 , K 1 q P
+        M` pps, Kq, eq and Q1 “ Q. The set of all positive mergers of ps, Kq at e is denoted by M` pps, K, Qq, eq.
+        We can define M´ pps, K, Qq, eq, S˘ pps, K, Qq, eq, and D˘ pps, K, Qq, eq similarly.
+    (2) If s is stuck in a minimal collection of connected components Q̃ Ď P , then ps1 , K 1 , Q1 q is a revival of
+        ps, K, Qq if (1) ps1 , K 1 q P Rpps, Kq, B Q̃q, (2) the plaquette count J such that ps1 , K 1 q “ ps, Kq∆BQ J
+        satisfies J ‰ 0, and (3) Q1 “ Q̃ Y Q. The set of all revivals of ps, K, Qq is denoted Rps, K, Qq.
+
+Remark 4.23. Note that for any ps1 , K 1 , Q1 q obtained by applying a string operation to ps, K, Qq, we have
+that ne ps1 , K 1 q ď ne ps, Kq for all good edges e. In words, the total number of copies of any given good edge
+is non-increasing under the application of string operations.
+   Additionally, from the definition of revivals (Definition 4.13), we have that for all ps1 , K 1 , Q1 q P Rps, K, Qq,
+the plaquette count K 1 is zero on BpQ1 zQq. In words, this is because to obtain ps1 , K 1 , Q1 q from ps, K, Qq, we
+introduce a number of loops corresponding to plaquettes in BpQ1 zQq, while simultaneously zeroing out the
+plaquette count on BpQ1 zQq.
+
+Convention 4.24. In this section, our plaquette count K : PΛ` zP Ñ N will always be supported on good
+plaquettes, even if we do not explicitly say so. Thus, when we write B ´ K, we mean the plaquette count
+supported on PΛ` zP whose value at any given good plaquette p is given by B ´ Kppq. In particular, the
+value of B ´ K at a bad plaquette is zero. In particular, when we use B to denote a plaquette count, we
+mean the plaquette count which takes the constant value B on the good plaquettes, and is zero on the bad
+plaquettes.
+
+   Next, we show how the area (from Definition 4.17) changes under a string operation.
+
+Lemma 4.25. Let s P SΛ be non-null, and e be an edge of s. For all s1 P S˘ ps, eq Y M˘ ps, eq, we have that
+areaps1 q “ areapsq. For s1 P D˘ ps, eq, we have that areapsq ď areaps1 q ` 1. Lastly, if ps1 , K 1 , Q1 q P Rps, K, Qq,
+then areapsq ď areaps1 q ` 8pd ´ 1qp|Q1 | ´ |Q|q.
+
+Proof. From the definition of area as well as the definitions of splittings and mergers, we have that for any
+string s1 P S˘ ps, eq Y M˘ ps, eq and any plaquette count J, the pair ps, Jq is balanced if and only if ps1 , Jq is
+balanced. This implies that areaps1 q “ areapsq for s1 .
+    In the case of deformations, suppose s1 is a deformation of s using a plaquette p. Then for any plaquette
+count J 1 such that ps1 , J 1 q is balanced, we have that ps, J 1 ` δp´1 q is balanced and |supppJ 1 ` δp´1 q| ď
+|supppJ 1 q| ` 1. Taking J 1 to be minimal area, we obtain the inequality areapsq ď areaps1 q ` 1.
+    Finally, suppose that ps1 , K 1 , Q1 q P Rps, K, Qq and s1 “ s∆BpQ1 zQq J for some plaquette count J. For each
+plaquette, there are at most 4 ˆ 2pd ´ 1q “ 8pd ´ 1q neighboring plaquettes, and thus we can crudely bound
+the support of J by |BpQ1 zQq| ď 8pd ´ 1q|Q1 zQ| “ 8pd ´ 1qp|Q1 | ´ |Q|q. Moreover, if ps1 , Jq˜ is balanced, then
+ps, J˜ ` Jq is balanced, and |supppJ˜ ` Jq| ď |supppJq|  ˜ ` |supppJq| ď |supppJq| ˜ ` 8pd ´ 1qp|Q1 | ´ |Q|q. Taking
+J˜ such that |supppJq|˜ “ areaps1 q, we obtain the desired result.                                                 □
+26                                   SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+   Next, we begin to define the configuration space Ω which will serve as the analog of ΩB from Definition
+3.16. First, we define the notion of string trajectory. In the following, for every non-null string s P SΛ which
+is not stuck in P , we fix a particular good edge e “ es of s.
+Definition 4.26 (String trajectory). A string trajectory starting at ps, K, Qq of length l is a finite sequence
+                               ´                                                         ¯
+                                ps0 , K0 , Q0 q, ps1 , K1 , Q1 q, . . . , psl , Kl , Ql q ,
+where ps0 , K0 , Q0 q “ ps, K, Qq, and at each non-terminal step i ă l, si is non-null, and if si is stuck in a
+minimal union of connected components Q Ď P , then |Q| ă areapsi q and
+                                           psi`1 , Ki`1 , Qi`1 q P Rpsi , Ki , Qi q.
+In the case where si is not stuck, then
+              psi`1 , Ki`1 , Qi`1 q P S˘ ppsi , Ki , Qi q, eq Y M˘ ppsi , Ki , Qi q, eq Y D˘ ppsi , Ki , Qi q, eq.
+   One should think of a string trajectory as encoding an “exploration process”, where at each step of this
+process, we either choose a good edge of the string to explore, or if the string is stuck, we introduce new
+plaquettes through the revival operation.
+   Next, we prove the following lemma which says that in this exploration process, we are always tracing
+out connected components. In the following, it may help to recall the definition (4.1) of M pP q.
+Lemma 4.27 (String trajectories trace out cluster). For any string trajectory
+                             ´                                                          ¯
+                               ps0 , K0 , Q0 q, ps1 , K1 , Q1 q, . . . , psl , Kl , Ql q
+starting at pℓ, B, ∅q, for each 0 ď i ď l, we have that
+                               supppB ´ Ki q Y Qi P tC Ď PΛ` : C Y ℓ is connectedu.                                  (4.10)
+If si is stuck in a minimal union of connected components Q̃i , we also have that
+                            supppB ´ Ki q Y Qi Y Q̃i P tC Ď PΛ` : C Y ℓ is connectedu.                               (4.11)
+We call elements of tC Ď PΛ` : C Y ℓ is connectedu connected clusters of ℓ.
+Proof. We first show the first claim, i.e. (4.10). We proceed by induction. We claim that for all 0 ď i ď l,
+we have that (4.10) is true, and also that
+                                              si Ď supppB ´ Ki q Y Qi Y ℓ.                                           (4.12)
+When i “ 0, by assumption, ps0 , K0 , Q0 q “ pℓ, B, ∅q, and supppB ´ Bq “ ∅, so that supppB ´ Bq Y Q0 “
+∅ P tC : PΛ` : C Y ℓ is connectedu. Also, s0 “ ℓ Ď ℓ, and thus (4.12) is also true.
+   Next, suppose that the first claim is true for all 1 ď i ď j, for some 1 ď j ă l. If sj`1 is a splitting or
+merger of sj , then Kj`1 “ Kj and Qj`1 “ Qj , and thus supppB ´ Kj`1 q Y Qj`1 “ supppB ´ Kj q Y Qj ,
+which shows (4.10) in this case. Moreover, sj`1 Ď sj (in terms of unoriented edge sets), and thus (4.12) is
+also true in this case.
+   If sj`1 is a deformation of sj , then supppB ´ Kj`1 q at most may only differ from supppB ´ Kj q at a single
+plaquette p0 P PΛ` , and moreover, p0 must contain an edge of sj . Also, Qj`1 “ Qj . Let Cj Ď PΛ` be such
+that Cj Y ℓ is connected, and such that
+                                                supppB ´ Kj q Y Qj “ Cj .
+Since (4.12) holds for sj , we then have that Ci Y tp0 u Y ℓ is connected, and that
+                                         supppB ´ Kj`1 q Y Qj`1 “ Ci Y tp0 u.
+Thus, (4.10) holds. Finally, from the definition of deformation, we also have that
+                                     sj`1 Ď sj Y p0 Ď supppB ´ Kj`1 q Y Qj`1 ,
+which shows (4.12).
+   Finally, suppose that sj`1 is a revival of sj . Then sj is stuck in a minimal union of connected components
+Q̃j Ď P , and Qj`1 “ Qj Y Q̃j . Also, there is some R Ď B Q̃j such that supppB ´ Kj`1 q “ supppB ´ Kj q Y R,
+and sj`1 Ď sj Y R. Since (4.12) holds for sj , we then obtain
+                     sj`1 Ď sj Y R Ď supppB ´ Kj q Y R Y Qi Ď supppB ´ Kj`1 q Y Qi`1 ,
+                      EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                             27
+
+
+and thus (4.12) holds for sj`1 . Finally, let Cj Ď PΛ` be such that Cj Y ℓ is connected, and such that
+                                                 supppB ´ Kj q Y Qj “ Cj .
+Note that each component of R is connected to Q̃j , and also each component of Q̃j is connected to some
+edge of sj , and thus since sj Ď Cj Y ℓ, it follows that Cj Y R Y Q̃j Y ℓ is connected, and
+                    supppB ´ Kj`1 q Y Qj`1 “ supppB ´ Kj q Y Qj Y R Y Q̃j “ Cj Y R Y Q̃j ,
+and thus (4.10) holds. This concludes the proof of the inductive step, and thus we have shown (4.10).
+  To see (4.11), let Ci Ď PΛ` be such that Ci Y ℓ is connected, and such that
+                                                 supppB ´ Ki q Y Qi “ Ci .
+Then si Ď Ci (by (4.12)), and by definition, each component of Q̃i is connected to an edge of si . Consequently,
+Ci Y Q̃i Y ℓ is connected, which is the claim (4.11).                                                         □
+
+Definition 4.28 (Configuration space). Let Ω be the set of all triples ps, K, Qq which appear in a string
+trajectory starting at pℓ, B, ∅q, and such that |supppB ´ Kq Y Q| ď areapℓq. Here, technically Ω “ Ωℓ,B,P,Λ
+depends on ℓ, B, P, Λ, but as these are all fixed for us, we will omit the dependence of Ω on these parameters.
+Note that Ω is finite.
+Remark 4.29. Recalling that the total number of copies of any given good edge is non-increasing under
+application of string operations (Remark 4.23), we have that for all ps, K, Qq P Ω, for any good edge e, the
+number of copies ne ps, Kq ď ne pℓ, Bq ď 2dB. From this, it follows that the total number of mergers and
+splittings of ps, K, Qq is at most 2dB (as in Lemma 3.20).
+   Next, we define the notion of terminal string, which should be thought of as the boundary of the config-
+uration space Ω. In particular, if our exploration process has reached a terminal string, we stop exploring.
+Remark 4.36 gives some intuition as to why it suffices to stop exploring at terminal strings.
+Definition
+`                4.30 (Terminal strings). We˘ call the triple ps, K, Qq P Ω terminal if any string trajectory
+  ps0 , K0 , Q0 q, ps1 , K1 , Q1 q, . . . , psl , Kl , Ql q starting at ps, K, Qq necessarily has ps1 , K1 , Q1 q R Ω, or if there
+are simply no such string trajectories of length greater than 0. The set of all terminal ps, K, Qq P Ω is
+denoted BΩ, and we set Ω˝ :“ ΩzBΩ.
+Remark 4.31 (Examples of terminal strings). We remark that any triple of the form p∅x , K, Qq is a terminal
+string, because there are no string operations on null loops. Another example of a terminal string includes
+a triple ps, K, Qq where s is stuck in a minimal union of connected components Q̃ Ď Q, such that |supppB ´
+Kq Y Q Y Q̃| ą areapℓq.
+  We next begin towards Proposition 4.35, which gives a decomposition of the set of terminal strings. Before
+we state and prove the result, we need some preliminary discussion.
+Definition 4.32. Let s be a string and K be a plaquette count. We say that the pair ps, Kq has an isolated
+edge e P E ` pΛq, if ne ps, Kq “ 1, i.e. if the number of occurrences of e and e´1 in ps, Kq is exactly 1.
+   Note that by definition, any pair ps, Kq which contains an isolated edge cannot be balanced.
+Definition 4.33. Let B0 Ω Ď BΩ be the set of ps, K, Qq P BΩ such that either (1) ps, Kq contains an isolated
+edge, or (2) s is stuck in some minimal union of connected components Q̃ Ď PΛ` , |Q̃| ă areapsq, and
+Rps, K, Qq “ ∅. Let B1 Ω :“ BΩzB0 Ω, so that BΩ “ B0 Ω \ B1 Ω.
+Remark 4.34. In terms of the surface exploration heuristic, the set B0 Ω corresponds to the situation where
+in the middle of the surface exploration, we realize that it is not possible to see a surface spanning the
+original rectangular loop ℓ. We should then be able to conclude that this case contributes zero. This is part
+Proposition 4.35, to be stated shortly. See Remark 4.36 for more discussion.
+Proposition 4.35. We have the following properties.
+    (1) For all triples ps, K, Qq P B0 Ω, ϕps, Kq “ 0.
+    (2) For all triples ps, K, Qq P B1 Ω, |supppB ´ Kq| ` 8dM pP q ě areapℓq.
+28                               SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+Remark 4.36. Following Remark 4.34, this proposition says that when we are done exploring, either we
+realize that there cannot be a surface spanning the loop, and this case contributes zero, or we have seen
+Á areapℓq good or bad plaquettes. Put differently, to reach a terminal string in B1 Ω starting from pℓ, B, ∅q,
+we must either have taken many deformation steps, or gotten stuck in large bad plaquette clusters. We will
+pay an exponential cost in the combined total number, which by point (2), is at least given by areapℓq. Thus,
+the cost will at least be exponential in areapℓq. This is ultimately the reason why we can stop exploring once
+we have reached the boundary BΩ.
+Proof. We begin with the first claim. As previously remarked, if ps, Kq contains an isolated edge, then it
+cannot be balanced, and thus ϕps, Kq “ 0 by Lemma 4.19. Similarly, if s is stuck in some minimal union of
+connected components Q̃ Ď PΛ` , and |Q̃| ă areapsq, then note by the definition of Rps, K, Qq and Proposition
+4.18, we have that
+                                               ÿ
+                         ϕps, K, Qq “                    cps1 , K 1 , Q1 qϕps1 , K 1 , Q1 q,
+                                         ps1 ,K 1 ,Q1 qPRps,K,Qq
+
+where here ϕps, K, Qq :“ ϕps, Kq, and cps1 , K 1 , Q1 q is some combinatorial factor. Thus if Rps, K, Qq “ ∅, we
+obtain that ϕps, Kq “ 0. We have thus shown the first claim of the proposition.
+
+For the second claim, we split into the following cases. In the following, we assume that ps, K, Qq P B1 Ω.
+
+Case 1: If s has at least one good edge e and at least one of the merging, splitting, or deformation operations
+is possible, then since any of these operations increases |supppB ´ Kq Y Q| by at most 1, we must have that
+|supppB ´ Kq Y Q| “ areapℓq if ps, K, Qq P BΩ. But supppB ´ Kq Y Q is a connected cluster of ℓ (by Lemma
+4.27) and Q is solely made up bad plaquettes, thus |Q| ď M pP q from the definition 4.1 of M pP q and thus
+|supppB ´ Kq| ` M pP q ě areapℓq.
+
+Case 2: Suppose that s is stuck in a minimal union of connected components Q̃, and
+                             |supppB ´ Kq Y Q Y Q̃| ď areapℓq ´ 8pd ´ 1qM pP q.                           (4.13)
+This implies that |Q Y Q̃| ď M pP q (by the definition 4.1 of M pP q, combined with the fact that supppB ´
+Kq Y Q Y Q̃ is a connected cluster of ℓ (by Lemma 4.27)). Next, by inductively applying Lemma 4.25, we
+obtain
+                              areapℓq ď areapsq ` |supppB ´ Kq| ` 8pd ´ 1q|Q|.
+By combining the previous considerations, the desired result will now follow upon showing that areapsq ď |Q̃|.
+Since ps, K, Qq P B1 Ω, by definition, either areapsq ď |Q̃| already, or Rps, K, Qq ‰ ∅. We proceed show that
+under the working assumption (4.13), the condition Rps, K, Qq ‰ ∅ actually implies that areapsq ď |Q̃|,
+which will finish the proof of this case. Towards this end, assume that Rps, K, Qq ‰ ∅. We argue by
+contradiction. If |Q̃| ă areapsq, then since Rps, K, Qq ‰ ∅, there would exist a nontrivial string trajectory
+starting at ps, K, Qq. Let ps1 , K1 , Q1 q be the next triple in the trajectory, then necessarily supppB ´ K1 q Ď
+supppB ´ Kq Y B Q̃ and Q1 “ Q Y Q̃, so
+                        |supppB ´ K1 q Y Q1 | ď |supppB ´ Kq Y Q Y Q̃| ` |B Q̃|
+                                                ď |supppB ´ Kq Y Q Y Q̃| ` 8pd ´ 1q|Q̃|
+                                                ď areapℓq,
+where in the final inequality we used (4.13) and |Q̃| ď M pP q. Thus ps1 , K1 , Q1 q P Ω, which contradicts the
+assumption that ps, K, Qq is terminal. This shows that areapsq ď |Q̃|, finishing the proof of the present case.
+
+Case 3: Suppose that s is stuck in a minimal union of connected components Q̃ Ď P with |supppB ´ Kq Y
+Q̃ Y Q| ą areapℓq ´ 8pd ´ 1qM pP q. We claim that upon possibly deleting some plaquettes from Q̃, we may
+obtain a subset Q1 Ď Q Y Q̃ such that supppB ´ Kq Y Q1 is a connected cluster of ℓ with size
+                          areapℓq ´ 8pd ´ 1qM pP q ď |supppB ´ Kq Y Q1 | ď areapℓq                        (4.14)
+(the main point here is that the upper bound also holds, which is why we may have to delete some plaquettes).
+We show this claim at the end. Given this claim, we now must have |Q1 | ď M pP q (by the definition (4.1) of
+                   EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                           29
+
+
+M pP q), and thus |supppB ´ Kq| ě areapℓq ´ 8pd ´ 1qM pP q ´ M pP q, and as a consequence, |supppB ´ Kq| `
+8dM pP q ě areapℓq, completing the proof of this case, modulo the claim.
+   To show the claim, note by Lemma 4.27 that both supppB ´ Kq Y Q and supppB ´ Kq Y Q Y Q̃
+are connected clusters of ℓ. Moreover, by the definition of the space Ω (Definition 4.28), we have that
+|supppB ´ Kq Y Q| ď areapℓq. Our goal is to find a subset Q̃1 Ď Q̃ such that upon setting Q1 “ Q Y Q̃1 ,
+we have that supppB ´ Kq Y Q1 is a connected cluster of ℓ satisfying (4.14). Towards this end, first de-
+compose Q̃ “ Q̃1 Y ¨ ¨ ¨ Y Q̃k into connected components. By our previous observation, supppB ´ Kq Y Q
+and supppB ´ Kq Y Q Y Q̃ are connected, and thus we must have that each component Q̃j is connected to
+supppB ´ Kq Y Q. Thus for each component Q̃j , we may take an element pj P Q̃j which is connected to
+supppB ´ Kq Y Q. We may then take a spanning tree of Q̃j rooted at pj . We then begin to delete elements
+of Q̃1 , starting from the leaves of the spanning tree, and working our way up towards the root. If we have
+completely deleted Q̃1 and the upper bound (4.14) is still not satisfied, we move onto Q̃2 and repeat. We
+stop deleting plaquettes once (4.14) is satisfied, at which point we have arrived at the desired set Q̃1 . The
+point here is that by starting the deletion process from the leaves of the trees, we preserve connectivity after
+each deletion, so we are guaranteed that the set Q̃1 is such that supppB´KqYQYQ̃1 is a connected cluster of ℓ.
+
+Case 4: If s is the null loop, then there exists a plaquette count K 1 supported on supppB ´ Kq Y Q such
+that pℓ, K 1 q is balanced. It follows that
+                                        |supppB ´ Kq| ` |Q| ě |supppK 1 q| ě areapℓq,
+and thus we may conclude by using that |Q| ď M pP q (note by definition of Ω that |supppB´KqYQ| ď areapℓq,
+so that |Q| ď M pP q follows by the definition (4.1) of M pP q and Lemma 4.27).
+
+This concludes the proof of Proposition 4.35.                                                                             □
+   In the following, recall the notion of splitting complexity (Definition 3.11) which was introduced in Section
+3 in the course of the contraction mapping argument. To carry out the contraction mapping argument in
+the present setting, we will also need to understand how the splitting complexity changes under a revival
+operation, which is the purpose of the next lemma.
+Lemma 4.37 (Revival splitting complexity). Let s P SΛ be a non-null stuck string, and let ps1 , K 1 , Q1 q P
+Rps, K, Qq. Then ιps1 q “ ιpsq.
+Proof. Suppose s1 “ s∆BQ̃ J for some Q̃ Ď P and plaquette count J with support supppJq “ tp1 , . . . , pm u.
+                  řm
+Then s1 has |J| “ i“1 Jppi q more loops and |s1 | “ 4|J| ` |s|. Thus ιps1 q ´ ιpsq “ p4|J|q{4 ´ |J| “ 0. □
+  Next, we define a norm on the space of functions f : Ω Ñ R.
+Definition 4.38 (Norm on configuration space). For parameters λ, γ, ρ, ą 0, define the following norm on
+RΩ :
+                                                          ř
+                                        |supppB´KqzBQ|         `           pB´Kppqq ιpsq
+         }f }λ,γ,ρ :“     sup       γ                    ρ pPPΛ zpP YBQq           λ       expp10´2 B|Q|q|f ps, K, Qq|.
+                        ps,K,QqPΩ
+
+Since Ω is finite, every function f P RΩ has finite norm.
+Remark 4.39 (Conceptual remarks). We make several conceptual remarks about the norm. First, the pa-
+rameter γ should really be thought of as the inverse of the parameter γ from the corresponding norm for the
+truncated model (Definition 4.41). In particular, one should think of γ ! 1. This is due to the fact that for
+the initial configuration pℓ, B, ∅q, the weight |supppB ´ KqzB∅| “ |supppB ´ Bq| “ 0, whereas in the norm
+of Definition 3.18, the weight starts off at areapℓq. One should now think of γ |supppB´KqzBQ| as tracking the
+total “cost” that we have accumulated during the exploration process. For a technical reason, we want to
+exclude the plaquettes of BQ from this cost.
+   Next, the additional weight expp10´2 B|Q|q is present to provide a bit of extra room when bounding
+the revival term. This is because in principal, the revival term does not come associated with any small
+parameters. So the only way to absorb the revival term is to add a weight that increases when Q increases
+(this is similar in spirit to the weight λιpsq which is needed to absorb the splitting term). Thus, we can think
+of expp10´2 B|Q|q as tracking the total size of the revivals we have seen. In the end this is sufficient for our
+ 30                                       SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+ purposes, since we have shown in Proposition 4.7 that such a weight can still be absorbed. This is ultimately
+ due to the fact that all plaquettes in Q are bad, and bad plaquettes are extremely rare.
+    Next, we define the operator which appears in the modified master loop equation from Section 4.2. Recall
+ that Ω˝ “ ΩzBΩ.
+ Definition 4.40 (Master loop equation operator). For ps, K, Qq P Ω˝ , if s has at least one good edge, let e
+ be its designated good edge and define
+                            ÿ                    1  ÿ                     β        ÿ
+     pM f qps, K, Qq :“ ¯        f ps1 , K, Qq ¯ 2        f ps1 , K, Qq ¯                    f ps1 , K 1 , Qq.
+                          1
+                                                N 1                       N 1 1
+                               s PS˘ ps,eq                            s PM˘ ps,eq                              ps ,K qPD˘ ps,e,Kq
+
+                    ˝                                                                                      1
+ If ps, K, Qq P Ω is stuck in the minimal union of connected components Q , set
+                                                                  ÿ              pN βqJ
+                                pM f qps, K, Qq :“                                      f pps, Kq∆BQ J, Q1 q.
+                                                            J:PΛ ÑN
+                                                                                   J!
+                                                         ∅‰supppJqĎBQ1
+                                                             JďK
+
+ Lastly if ps, K, Qq P BΩ, set pM f qps, K, Qq :“ ϕps, Kq.
+    We remark that with ϕps, K, Qq :“ ϕps, Kq, where ϕps, Kq is defined as in (4.8), we have that ϕ “ M ϕ,
+ which folllows from Propositions 4.15 and 4.18. We are now ready to state and prove the contraction estimate
+ for M , which is the main intermediate step towards the proof of Theorem 4.1.
+ Proposition 4.41 (Contraction estimate). Let 0 ă λ, γ, ρ ď 1. Then for f P RΩ ,
+                     ˆ                                        ˙
+                              2dB     4dβ               ´3
+        }M f }λ,γ,ρ ď 2dBλ `       `        ` expp´10      Bq   }f }λ,γ,ρ
+                              λN 2   λγρN
+                                                                            ř
+                                                                                   `           pB´Kppqq
+                               `       sup        γ |supppB´KqzBQ| ρ pPPΛ zpP YBQq                        expp10´2 B|Q|q|ϕps, Kq|.
+                                   ps,K,QqPB1 Ω
+
+ Proof. For notational convenience, given a triple ps, K, Qq, define
+                                                                  ř
+                                                                         `             pB´Kppqq ιpsq
+                         wps, K, Qq :“ γ |supppB´KqzBQ| ρ pPPΛ zpP YBQq                             λ    expp10´2 B|Q|q.
+ For any ps, K, Qq P BΩ, either ps, K, Qq P B0 Ω in which case pM f qps, K, Qq “ ϕps, Kq “ 0 (by Proposition
+ 4.35), or ps, K, Qq P B1 Ω, and so
+                                                                                           ř
+                                                                                                    `          pB´Kppqq
+   sup       wps, K, Qq|pM f qps, K, Qq| ď           sup         γ |supppB´KqzBQ| ρ pPPΛ zpP YBQq                         expp10´2 B|Q|q|ϕps, Kq|,
+ps,K,QqPBΩ                                       ps,K,QqPB1 Ω
+
+ where we used that λ ă 1 and ιpsq ě 0 for any s P SΛ . To finish, it suffices to show that
+                                               ˆ                                            ˙
+                                                          2dB        4dβ              ´3
+             sup wps, K, Qq|pM f qps, K, Qq| ď 2dBλ `           `           ` expp´10 Bq }f }λ,γ,ρ .
+         ps,K,QqPΩ˝                                       λN 2      λγρN
+
+ Towards this end, fix ps, K, Qq P Ω˝ . By the definition of M , it suffices to prove the following four estimates:
+                                                  ÿ
+                                   wps, K, Qq            |f ps1 , K, Qq| ď 2dBλ}f }λ,γ,ρ ,                   (4.15)
+                                                           s1 PS˘ ps,es q
+                                                                    ÿ                               2dB
+                                               wps, K, Qq                       |f ps1 , Kq| ď          }f }λ,γ,ρ ,                       (4.16)
+                                                                                                     λ
+                                                               s1 PM˘ ps,es q
+                                                               ÿ                                     4d
+                                      wps, K, Qq                                |f ps1 , K 1 q| ď       }f }λ,γ,ρ ,                       (4.17)
+                                                                                                    λγρ
+                                                    ps1 ,K 1 qPD˘ ps,es ,Kq
+                                              ÿ                pN βqJ
+                        wps, K, Qq                                    |f ps1 , K 1 , Q1 q| ď expp´10´3 Bq}f }λ,γ,ρ .                      (4.18)
+                                                                 J!
+                                     ps1 ,K 1 ,Q1 qPRps,K,Qq
+                                           s1 “s∆BQ1 J
+                      EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                         31
+
+
+Proof of (4.15). Let s1 P S˘ ps, es q. By Lemma 3.12, we have that ιps1 q ď ιpsq ´ 1, and so λιpsq “ λ ¨ λιpsq´1 ď
+        1
+λ ¨ λιps q (since λ ď 1). By the definition of splittings, no other part of wps, K, Qq changes besides λιpsq , and
+thus
+                           wps, K, Qq|f ps1 , K, Qq| ď λwps1 , K, Qq|f ps1 , K, Qq| ď λ}f }λ,γ,ρ .
+Since es is a good edge, there are at most 2dB positive or negative splittings at es (recall Remark 4.29), and
+so the estimate (4.15) follows.
+
+Proof of (4.16). Let s1 P M˘ ps, es q. By Lemma 3.13 and the fact that λ ď 1, we have that λιpsq “
+                      1
+λ´1 λιpsq`1 ď λ´1 λιps q . By the definition of splittings, no other part of wps, K, Qq changes besides λιpsq , and
+thus
+                        wps, K, Qq|f ps1 , K, Qq| ď λ´1 wps1 , K, Qq|f ps1 , K, Qq| ď λ´1 }f }λ,γ,ρ .
+Since es is a good edge, there are at most 2dB positive or negative mergers (recall Remark 4.29), and so the
+estimate (4.16) follows.
+                                                                                                                       1
+Proof of (4.17). Let ps1 , K 1 q P D˘ ps, es , Kq. By Lemma 3.13, ιps1 q ď ιpsq ` 1, and so λιpsq ď λ´1 λιps q (as
+in the merger case). Since K 1 is obtained from K by subtracting 1 from a single plaquette value Kppq, and
+Q1 “ Q, we also have that |supppB ´ K 1 qzBQ1 | ď |supppB ´ KqzBQ| ` 1, and since γ ď 1, this implies that
+                                                                                             1        1
+                                           γ |supppB´KqzBQ| ď γ ´1 γ |supppB´K qzBQ | .
+Similarly, we also have that
+                                     ÿ                                       ÿ
+                                                   pB ´ K 1 ppqq ď                       pB ´ Kppqq ` 1,
+                                  `                                     `
+                               pPPΛ zpP YBQq                         pPPΛ zpP YBQq
+
+and thus since ρ ď 1, we obtain
+                                                                                                  pB´K 1 ppqq
+                                   ř                                         ř
+                                           `          pB´Kppqq                       `
+                                  ρ pPPΛ zpP YBQq                 ď ρ´1 ρ pPPΛ zpP YBQq                            .
+Combining these considerations, we obtain
+                          wps, K, Qq|f ps1 , K 1 , Q1 q| ď λ´1 γ ´1 ρ´1 wps1 , K 1 , Qq|f ps1 , K 1 , Q1 q|
+                                                             ď λ´1 γ ´1 ρ´1 }f }λ,γ,ρ .
+Since there are at most 4d positive or negative deformations (by Lemma 3.20), the estimate (4.17) follows.
+
+Proof of (4.18). Let ps1 , K 1 , Q1 q P Rps, K, Qq. By Lemma 4.37, we have that ιps1 q “ ιpsq. Also, by the
+definition of Rps, K, Qq, K 1 is obtained from K by zeroing out the plaquettes of BpQ1 zQq Ď BQ1 (recall
+Remark 4.23), and thus we have that supppB ´ K 1 qzBQ1 Ď supppB ´ KqzBQ. Since γ ď 1, we obtain
+                                                                                         1        1
+                                               γ |supppB´KqzBQ| ď γ |supppB´K qzBQ | .
+Similarly, by the definition of Rps, K, Qq, we have that K 1 “ K on PΛ` zpP Y BQ1 q (again since K 1 is obtained
+from K by only modifying its values on BpQ1 zQq Ď BQ1 ), we have that (using also that BQ Ď BQ1 )
+                                  ÿ                           ÿ
+                                          pB ´ Kppqq ě              pB ´ K 1 ppqq.
+                                    `                                     `
+                                 pPPΛ zpP YBQq                         pPPΛ zpP YBQ1 q
+
+Since ρ ď 1, we obtain
+                                                                                                 pB´K 1 ppqq
+                                       ř                                 ř
+                                               `        pB´Kppqq                 `           1
+                                    ρ pPPΛ zpP YBQq                 ď ρ pPPΛ zpP YBQ q                         .
+Combining these considerations, we obtain
+                  wps, K, Qq|f ps1 , K 1 , Q1 q| ď expp´10´2 Bp|Q1 | ´ |Q|qqwps1 , K 1 , Q1 q|f ps1 , K 1 , Q1 q|
+                                                    ď expp´10´2 Bp|Q1 | ´ |Q|qq}f }λ,γ,ρ ,
+and as a result
+                                           ÿ              pN βqJ
+                   wps, K, Qq                                    |f ps1 , K 1 , Q1 q|
+                                                            J!
+                                ps1 ,K 1 ,Q1 qPRps,K,Qq
+                                      s1 “s∆BQ1 J
+32                                      SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+                                                                                           ÿ             pN βqJ
+                                 ď expp´10´2 Bp|Q1 | ´ |Q|qq}f }λ,γ,ρ
+                                                                                                           J!
+                                                                               ps1 ,K 1 ,Q1 qPRps,K,Qq
+                                                                                     s1 “s∆BQ1 J
+
+                                 ď expp´10´2 Bp|Q1 | ´ |Q|qq}f }λ,γ,ρ expp16N βpd ´ 1qp|Q1 | ´ |Q|qq
+                                 ď expp´10´3 Bp|Q1 | ´ |Q|qq}f }λ,γ,ρ
+                                 ď expp´10´3 Bq}f }λ,γ,ρ .
+Here, we used that due to our choice of parameters, we have that 16N βpd ´ 1q ! B and expp´10´3 Bq ă 1.
+Also, in the last step, we used the fact that |Q1 | ´ |Q| ě 1. This concludes the proof of (4.18) and thus also
+the proof of Proposition 4.41.                                                                               □
+     Proposition 4.41 directly leads to the following corollary under our assumptions on the parameters N, β, B.
+Corollary 4.42. Under the choice of parameters (2.1)-(2.3), let λ “ N ´1 , γ “ 103 dβ ď 1, ρ “ e´1 . We
+have that
+                1
+                                                            ř
+                                                                `          pB´Kppqq
+   }M f }λ,γ,ρ ď }f }λ,γ,ρ `     sup      γ |supppB´KqzBQ| ρ pPPΛ zpP YBQq          expp10´2 B|Q|q|ϕps, K, Qq|.
+                2            ps,K,QqPB1 Q
+
+Proof. This follows by Proposition 4.41, combined with the fact that
+                                        2dB     4dβ                  1
+                               2dBλ `        `       ` expp´10´3 Bq ď .
+                                        λN 2   λγρN                  2
+To see this, use that λ “ N ´1 , ρ “ e´1 , and recall that dB ! N (which handles the first two terms),
+                                                dβ
+                                                    “ 10´3 ! 1,
+                                                 γ
+which handles the third term, and expp´10´3 Bq ! 1, which handles the last term.                                              □
+     Before we prove Theorem 4.1, we estimate the terminal string integrals appearing in Corollary 4.42.
+Lemma 4.43 (Bound on terminal string integrals). For all ps, K, Qq P B1 Ω, we have that
+                                                                               ř
+                                                                                     `         pB´Kppqq
+                     expp10´2 B|Q|q|ϕps, Kq| ď expppB{50q|Q|qe pPPΛ zpP YBQq                               ZΛ,P ,
+where
+                                      ˆ           ź                                ź
+                            ZΛ,P :“        dU             expB p2βReTrpUp qq             τB p2βReTrpUp qqq.
+                                                   `
+                                                pPPΛ zP                            pPP
+
+Proof. We trivially have the pointwise bound |Ws pU q| ď 1 for all U : EΛ` Ñ UpN q. Combining this with
+(2.6), we have that
+                      ˇˆ                                                             ˇ
+                      ˇ            ź                           ź                     ˇ
+          |ϕps, Kq| “ ˇ dU Ws pU q
+                      ˇ                  expKppq p2βReTrpUp qq     τB p2βReTrpUp qqqˇˇ
+                                              `
+                                           pPPΛ zP                                 pPP
+                        ˆ          ź                                   ź
+                    ď       dU             expKppq p2βReTrpUp qq             τB p2βReTrpUp qqq
+                                    `
+                                 pPPΛ zP                               pPP
+                        ˆ         ź                  ź                                            ź
+                    ď       dU          e2N β                   eB´Kppq expB p2βReTrpUp qq               τB p2βReTrpUp qqq.
+                                 pPBQ              `
+                                                pPPΛ zpP YBQq                                     pPP
+
+Here, we applied the bound expKppq ď eB´Kppq expB for the terms p P PΛ` zpP Y BQq (recall (2.6)), and the
+bound | expKppq pxq| ď expp2N βq for all |x| ď 2N β for the terms p P BQ. Next, we use that (by (2.6)) for all
+|x| ď 2N β,
+                                 expB pxq “ exppxq ´ τB pxq ě e´2N β ´ e´B{10 expB pxq,
+so that (since B " 1 so e´B{10 ! 1)
+                                                                       1 ´2N β
+                                                          expB pxq ě     e     ,
+                                                                       2
+                     EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                        33
+
+
+and thus we obtain the further upper bound
+                                                                 ř
+                                                                      `          pB´Kppqq
+                                  |ϕps, Kq| ď 2|BQ| e4N β|BQ| e pPPΛ zpP YBQq               ZΛ,P .
+To finish, we use that |BQ| ď Cd|Q| and dN β ! B, d ! B, which holds due to our choice of parameters.                    □
+  We are finally ready to prove Theorem 4.1.
+Proof of Theorem 4.1. Let f ps, K, Qq :“ ϕps, Kq. By Propositions 4.15 and 4.18, we have that M f “ f , and
+thus by Corollary 4.42, upon setting λ “ N ´1 , γ “ 103 dβ, ρ “ e´1 , we obtain that
+                                                             ř
+                                                                  `           pB´Kppqq
+            }f }λ,γ,ρ ď 2       sup        γ |supppB´KqzBQ| ρ pPPΛ zpP YBQq              expp10´2 B|Q|q|ϕps, K, Qq|
+                            ps,K,QqPB1 Ω
+
+                     ď2         sup        γ |supppB´KqzBQ| expppB{50q|Q|qZΛ,P ,
+                            ps,K,QqPB1 Ω
+
+                     ď2         sup        γ pareapℓq´8dM pP q´|BQ|q` expppB{50q|Q|qZΛ,P .
+                            ps,K,QqPB1 Ω
+
+where we used Lemma 4.43 in the second inequality, and Proposition 4.35 in the third inequality (combined
+with γ ď 1). Next, using that |Q| ď M pP q (since supppB ´KqYQ is a connected cluster by Lemma 4.27, and
+moreover its size is at most areapℓq “ areapℓq by the definition of Ω), which also implies that |BQ| ď 8dM pP q,
+we further obtain that
+                           }f }     ď 2γ pareapℓq´20dM pP qq` expppB{50qM pP qqZ .
+                                   λ,γ,ρ                                                       Λ,P
+
+In summary, we obtain (using that areapℓq “ areapℓq for rectangular loops, ιpℓq “ |ℓ|{4´1, and that λ “ N ´1 )
+          ϕpℓ, Bq ď N |ℓ|{4´1 }f }λ,ρ,γ ď 2N |ℓ|{4´1 ˆ p103 dβqpareapℓq´20dM pP qq` expppB{40q|M pP q|qZΛ,P .
+Plugging this into Proposition 4.7, we obtain (using that |ℓ| ď areapℓq, so that e2d|ℓ| ď e2d|areapℓq| )
+            |xWℓ yΛ,β,N | ď 2|ℓ|e2d|ℓ| N |ℓ|{4´1 ˆ 50d¨areapℓq 2areapℓq maxp103 dβ, expp´10´3 d´1 Bqqareapℓq
+                                           ´                                           ¯areapℓq
+                          ď 2|ℓ|N |ℓ|{4´1 2 ˆ 103d maxp103 dβ, expp´10´3 d´1 Bqq                .
+                            1
+To finish, we use that B ě 2d 10´3 N by (2.3), and thus
+                                            expp´10´3 d´1 Bq ď expp´10´7 d´2 N q.                                        □
+
+                                                          References
+[AN23]      Omar Abdelghani and Ron Nissim. Geometric Derivation of the Finite N Master Loop Equation. arXiv e-prints,
+            page arXiv:2309.07399, September 2023.
+[BC23]      Bjoern Bringmann and Sky Cao. A para-controlled approach to the stochastic Yang-Mills equation in two dimen-
+            sions. arXiv e-prints, page arXiv:2305.07197, May 2023.
+[BC24]      Bjoern Bringmann and Sky Cao. Global well-posedness of the stochastic Abelian-Higgs equations in two dimensions.
+            arXiv e-prints, page arXiv:2403.16878, March 2024.
+[BCS24]     Jacopo Borga, Sky Cao, and Jasper Shogren-Knaak. Surface sums for lattice Yang-Mills in the large-N limit. arXiv
+            e-prints, page arXiv:2411.11676, November 2024.
+[BCS25]     Jacopo Borga, Sky Cao, and Jasper Shogren-Knaak. Surface sums in two-dimensional large-N lattice Yang–Mills:
+            Cancellations and explicit computations for general loops. arXiv e-prints, page arXiv:2508.13827, August 2025.
+[BG13]      Gaëtan Borot and Alice Guionnet. Asymptotic expansion of β matrix models in the one-cut regime. Communications
+            in Mathematical Physics, 317:447–483, 2013.
+[BGK15]     Gaëtan Borot, Alice Guionnet, and Karol K. Kozlowski. Large-N asymptotic expansion for mean field models with
+            Coulomb gas interaction. Int. Math. Res. Not. IMRN, (20):10451–10524, 2015.
+[BL21]      Thomas Budzinski and Baptiste Louf. Local limits of uniform triangulations in high genus. Inventiones mathemat-
+            icae, 223:1–47, 2021.
+[BL22]      Thomas Budzinski and Baptiste Louf. Local limits of bipartite maps with prescribed face degrees in high genus.
+            The Annals of Probability, 50(3):1059–1126, 2022.
+[BLM13]     Stéphane Boucheron, Gábor Lugosi, and Pascal Massart. Concentration inequalities. Oxford University Press,
+            Oxford, 2013. A nonasymptotic theory of independence, With a foreword by Michel Ledoux.
+[CC23]      Sky Cao and Sourav Chatterjee. The Yang-Mills heat flow with random distributional initial data. Comm. Partial
+            Differential Equations, 48(2):209–251, 2023.
+[CC24a]     Sky Cao and Sourav Chatterjee. A state space for 3D Euclidean Yang-Mills theories. Comm. Math. Phys., 405(1):Pa-
+            per No. 3, 69, 2024.
+34                                    SKY CAO, RON NISSIM, AND SCOTT SHEFFIELD
+
+
+[CC24b]    Ajay Chandra and Ilya Chevyrev. Gauge field marginal of an Abelian Higgs model. Comm. Math. Phys., 405(6):Pa-
+           per No. 143, 43, 2024.
+[CCHS22] Ajay Chandra, Ilya Chevyrev, Martin Hairer, and Hao Shen. Langevin dynamic for the 2D Yang-Mills measure.
+           Publ. Math. Inst. Hautes Études Sci., 136:1–147, 2022.
+[CCHS24] Ajay Chandra, Ilya Chevyrev, Martin Hairer, and Hao Shen. Stochastic quantisation of Yang-Mills-Higgs in 3D.
+           Invent. Math., 237(2):541–696, 2024.
+[CG25]     Ilya Chevyrev and Christophe Garban. Villain action in lattice gauge theory. J. Stat. Phys., 192(3):Paper No. 38,
+           15, 2025.
+[Cha19a]   Sourav Chatterjee. Rigorous solution of strongly coupled SO(N ) lattice gauge theory in the large N limit. Com-
+           munications in Mathematical Physics, 366(1):203–268, 2019.
+[Cha19b]   Sourav Chatterjee. Yang-Mills for probabilists. In Probability and Analysis in Interacting Physical Systems, pages
+           1–16. Springer, Cham: Springer, 2019.
+[Cha21]    Sourav Chatterjee. A probabilistic mechanism for quark confinement. Communications in Mathematical Physics,
+           385(2):1007–1039, 2021.
+[Cha24]    Sourav Chatterjee. A scaling limit of SUp2q lattice Yang-Mills-Higgs theory. arXiv e-prints, page arXiv:2401.10507,
+           January 2024.
+[Che19]    Ilya Chevyrev. Yang-Mills measure on the two-dimensional torus as a random distribution. Communications in
+           Mathematical Physics, 372(3):1027–1058, 2019.
+[Che22]    Ilya Chevyrev. Stochastic quantization of Yang-Mills. J. Math. Phys., 63(9):Paper No. 091101, 19, 2022.
+[CJ16]     Sourav Chatterjee and Jafar Jafarov. The 1{N expansion for SO(N ) lattice gauge theory at strong coupling. arXiv
+           preprint arXiv:1604.04777, 2016.
+[CNS25]    Sky Cao, Ron Nissim, and Scott Sheffield. Dynamical approach to area law for lattice Yang-Mills. arXiv e-prints,
+           page arXiv:2509.04688, September 2025.
+[CPS23]    Sky Cao, Minjae Park, and Scott Sheffield. Random surfaces and lattice Yang-Mills. arXiv e-prints, page
+           arXiv:2307.06790, July 2023. To appear in Comm. Amer. Math. Soc.
+[CS23]     Ilya Chevyrev and Hao Shen. Invariant measure and universality of the 2D Yang-Mills Langevin dynamic. arXiv
+           e-prints, page arXiv:2302.12160, February 2023.
+[CS25]     Ilya Chevyrev and Hao Shen. Uniqueness of gauge covariant renormalisation of stochastic 3D Yang-Mills-Higgs.
+           arXiv e-prints, page arXiv:2503.03060, March 2025.
+[Cur23]    Nicolas Curien. Peeling random planar maps, volume 2335 of Lecture Notes in Mathematics. Springer, Cham,
+           [2023] ©2023. École d’Été de Probabilités de Saint-Flour XLIX—2019, École d’Été de Probabilités de Saint-Flour.
+           [Saint-Flour Probability Summer School].
+[DF80]     B Durhuus and J Fröhlich. A connection between ν-dimensional yang-mills theory and (ν- 1)-dimensional, non-linear
+           σ-models. Communications in Mathematical Physics, 75(2):103–151, 1980.
+[ESPP` 12] Sheer El-Showk, Miguel F. Paulos, David Poland, Slava Rychkov, David Simmons-Duffin, and Alessandro Vichi.
+           Solving the 3D Ising Model with the Conformal Bootstrap. Phys. Rev. D, 86:025022, 2012.
+[Frö79]   Jurg Fröhlich. Confinement in zn lattice gauge theories implies confinement in su(n) lattice higgs theories. Physics
+           Letters B, 83(2):195–198, 1979.
+[FS82]     Jürg Fröhlich and Thomas Spencer. Massless phases and symmetry restoration in abelian gauge theories and spin
+           systems. Communications in Mathematical Physics, 83:411–454, 1982.
+[GH24]     Vadim Gorin and Jiaoyang Huang. Dynamical loop equation. Ann. Probab., 52(5):1758–1863, 2024.
+[GM81]     Markus Göpfert and Gerhard Mack. Proof of confinement of static quarks in 3-dimensional Up1q lattice gauge
+           theory for all values of the coupling constant. Communications in Mathematical Physics, 82(4):545 – 606, 1981.
+[GN15]     Alice Guionnet and Jonathan Novak. Asymptotics of unitary multimatrix models: The schwinger–dyson lattice
+           and topological recursion. Journal of Functional Analysis, 268(10):2851–2905, 2015.
+[Gri00]    Geoffrey R. Grimmett. Percolation. In Development of mathematics 1950–2000, pages 547–575. Birkhäuser, Basel,
+           2000.
+[GS23]     Christophe Garban and Avelio Sepúlveda. Improved spin-wave estimate for Wilson loops in U p1q lattice gauge
+           theory. Int. Math. Res. Not. IMRN, (21):18142–18198, 2023.
+[Gui19]    Alice Guionnet. Asymptotics of random matrices and related models: the uses of Dyson-Schwinger equations,
+           volume 130. American Mathematical Soc., 2019.
+[Jaf16]    Jafar Jafarov. Wilson loop expectations in SU(N ) lattice gauge theory. arXiv preprint arXiv:1610.03821, 2016.
+[JW06]     Arthur Jaffe and Edward Witten. Quantum Yang-Mills theory. The millennium prize problems, 1:129–152, 2006.
+[KZ23]     Vladimir Kazakov and Zechuan Zheng. Bootstrap for lattice yang-mills theory. Phys. Rev. D, 107:L051501, Mar
+           2023.
+[KZ25]     Vladimir Kazakov and Zechuan Zheng. Bootstrap for finite N lattice Yang-Mills theory. JHEP, 03:099, 2025.
+[OS78]     K Osterwalder and E Seiler. Gauge field theories on a lattice. Annals of Physics, 110(2):440–471, 1978.
+[She21]    Hao Shen. Stochastic quantization of an abelian gauge theory. Communications in Mathematical Physics,
+           384(3):1445–1512, 2021.
+[SSZ24a]   Hao Shen, Scott A. Smith, and Rongchan Zhu. Makeenko-Migdal equations for 2D Yang-Mills: from lattice to
+           continuum. arXiv e-prints, page arXiv:2412.15422, December 2024.
+[SSZ24b]   Hao Shen, Scott A. Smith, and Rongchan Zhu. A new derivation of the finite N master loop equation for lattice
+           Yang-Mills. Electron. J. Probab., 29:Paper No. 29, 18, 2024.
+                   EXPANDED REGIMES OF AREA LAW FOR LATTICE YANG–MILLS THEORIES                                    35
+
+
+[SZZ23]    Hao Shen, Rongchan Zhu, and Xiangchan Zhu. A stochastic analysis approach to lattice Yang-Mills at strong
+           coupling. Comm. Math. Phys., 400(2):805–851, 2023.
+[SZZ24]    Hao Shen, Rongchan Zhu, and Xiangchan Zhu. Langevin dynamics of lattice Yang-Mills-Higgs and applications.
+           arXiv e-prints, page arXiv:2401.13299, January 2024.
+[Wil74]    Kenneth G Wilson. Confinement of quarks. Physical review D, 10(8):2445, 1974.
+
+   Department of Mathematics, Massachusetts Institute of Technology, Cambridge, MA 02139
+   Email address: skycao@mit.edu
+
+   Email address: rnissim@mit.edu
+
+   Email address: sheffield@math.mit.edu
+

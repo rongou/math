@@ -1,0 +1,814 @@
+                                                           YANG–MILLS FOR PROBABILISTS
+
+                                                                         SOURAV CHATTERJEE
+arXiv:1803.01950v1 [math.PR] 5 Mar 2018
+
+
+
+
+                                           Dedicated to friend and teacher Raghu Varadhan on the occasion of his 75th birthday.
+
+
+                                                  Abstract. The rigorous construction of quantum Yang–Mills theories,
+                                                  especially in dimension four, is one of the central open problems of
+                                                  mathematical physics. Construction of Euclidean Yang–Mills theories
+                                                  is the first step towards this goal. This article presents a formulation
+                                                  of some of the core aspects this problem as problems in probability
+                                                  theory. The presentation begins with an introduction to the basic setup
+                                                  of Euclidean Yang–Mills theories and lattice gauge theories. This is
+                                                  followed by a discussion of what is meant by a continuum limit of lattice
+                                                  gauge theories from the point of view of theoretical physicists. Some of
+                                                  the main issues are then posed as problems in probability. The article
+                                                  ends with a brief review of the mathematical literature.
+
+
+
+
+                                                                               Contents
+                                            1. Introduction                                                                     1
+                                            2. Euclidean Yang–Mills theories                                                    3
+                                            3. Lattice gauge theories                                                           4
+                                            4. Wilson loop variables and quark conﬁnement                                       7
+                                            5. The problem of deﬁning the continuum limit                                       9
+                                            6. Review of the mathematical literature                                           10
+                                            Acknowledgments                                                                    13
+                                            References                                                                         13
+
+
+
+                                                                           1. Introduction
+                                             Four-dimensional quantum Yang–Mills theories are the building blocks of
+                                          the Standard Model of quantum mechanics. The Standard Model encapsu-
+                                          lates the sum total of all that is currently known about the basic particles
+                                          of nature (see [48] for more details about the physics). Unfortunately, in
+                                          spite of their incredible importance, quantum Yang–Mills theories have no
+                                          rigorous mathematical foundation. In fact, the mathematical foundation is
+
+                                             2010 Mathematics Subject Classification. 70S15, 81T13, 81T25, 82B20.
+                                             Key words and phrases. Lattice gauge theory, Yang–Mills theory, Wilson loop variable,
+                                          continuum limit, area law, quark confinement.
+                                             Research partially supported by NSF grant DMS-1608249.
+                                                                                     1
+2                           SOURAV CHATTERJEE
+
+so shaky that we do not even know for certain the right spaces on which
+these theories should be deﬁned, or the right observables to look at.
+   Quantum Yang–Mills theories are deﬁned in Minkowski spacetime. Eu-
+clidean Yang–Mills theories are ‘Wick-rotated’ quantum Yang–Mills theories
+that are deﬁned in Euclidean spacetime. These should, at least in princi-
+ple, be easier to understand and analyze than their Minkowski counterparts.
+Although these theories are not rigorously deﬁned either, they are formally
+probability measures on spaces of connections on certain principal bundles
+(more details to follow). Moreover, they have lattice analogs, known as lat-
+tice gauge theories or lattice Yang–Mills theories, that are rigorously deﬁned
+probabilistic models. Therefore, the construction of Euclidean Yang–Mills
+theories, when viewed as a problem of taking scaling limits of lattice gauge
+theories, reveals itself as a problem in probability theory.
+   The problem of rigorously constructing Euclidean Yang–Mills theories,
+and then extending the deﬁnition to Minkowski spacetime via Wick rota-
+tion, is the problem of Yang–Mills existence, posed as a ‘millennium prize
+problem’ by the Clay Institute [54].
+   Quantum Yang–Mills theories are certain kinds of quantum ﬁeld theories.
+A standard approach to the rigorous construction of quantum ﬁeld theories
+is via the program of constructive quantum ﬁeld theory, as outlined in the
+classic monograph of Glimm and Jaﬀe [46]. One of the important objec-
+tives of constructive quantum ﬁeld theory is to deﬁne Euclidean quantum
+ﬁeld theories as probability measures on appropriate spaces of generalized
+functions, and then show that these probability measures satisfy certain ax-
+ioms (the Wightman axioms, or the Osterwalder–Schrader axioms), which
+would then imply that the theory can be ‘quantized’ to obtain the desired
+quantum ﬁeld theories in Minkowski spacetime. However, as noted in the
+monograph of Seiler [74], there is a fundamental problem in following this
+path for Yang–Mills theories: the key observables in these theories do not
+take values at points, but at curves. Thus, it is not clear how to describe
+these theories as probability measures on spaces of generalized functions on
+manifolds — they should, rather, be probability measures on spaces of gen-
+eralized functions on spaces of curves. These considerations led Seiler [74]
+to pose the problem as a problem of constructing an appropriate random
+function on a suitable space of closed curves. This is the route that we will
+adopt in this section, partly because it gives the most straightforward way
+of stating the problem.
+   That said, however, we still need a bit of preparation. After presenting
+quick introductions to Euclidean Yang–Mills theories, lattice gauge theories
+and Wilson loops in the ﬁrst three sections, the physicist’s deﬁnition of
+a continuum limit of lattice gauge theories is discussed and well-deﬁned
+mathematical problems are formulated. The last section contains a brief
+review of the mathematical literature.
+                       YANG–MILLS FOR PROBABILISTS                            3
+
+                  2. Euclidean Yang–Mills theories
+   An Euclidean Yang–Mills theory involves a dimension n, and a ‘gauge
+group’ G, usually a compact Lie group. For simplicity, let us assume that
+G is a closed subgroup of the group of unitary matrices of some order N .
+Examples are G = U (1) for quantum electrodynamics, G = SU (3) for quan-
+tum chromodynamics, and G = SU (3) × SU (2) × U (1) for the Standard
+Model, with dimension n = 4 in each case.
+   The Lie algebra g of the Lie group G is a subspace of the vector space
+of all N × N skew-Hermitian matrices. A G connection form on Rn is a
+smooth map from Rn into gn . If A is a G connection form, its value A(x) at
+a point x is an n-tuple (A1 (x), . . . , An (x)) of skew-Hermitian matrices. In
+the language of diﬀerential forms,
+                                     n
+                                     X
+                                A=         Aj dxj .
+                                     j=1
+
+The curvature form F of a connection form A is the g-valued 2-form
+                               F = dA + A ∧ A .
+In coordinates, this means that at each point x, F (x) is an n × n array of
+skew-Hermitian matrices of order N , whose (j, k)th entry is the matrix
+                              ∂Ak   ∂Aj
+                  Fjk (x) =       −     + [Aj (x), Ak (x)] ,
+                              ∂xj   ∂xk
+where [B, C] = BC − CB denotes the commutator of B and C.
+  Let A be the space of all G connection forms on Rn . The Yang–Mills
+action on this space is the function
+                                     Z
+                       SYM (A) := −    Tr(F ∧ ∗F ) ,
+                                       Rn
+where F is the curvature form of A and ∗ denotes the Hodge star operator,
+assuming that this integral is ﬁnite. Explicitly, this is
+                                 Z X   n
+                  SYM (A) = −            Tr(Fjk (x)2 ) dx .         (2.1)
+                                   Rn j,k=1
+
+The Euclidean Yang–Mills theory with gauge group G on Rn is formally
+described as the probability measure
+                                            
+                             1        1
+                   dµ(A) = exp − 2 SYM (A) dA ,
+                             Z       4g
+where A belongs to the space A of all U (N ) connection forms, SYM is the
+Yang–Mills functional deﬁned above,
+                                  n Y
+                                  Y
+                           dA =              d(Aj (x))
+                                  j=1 x∈Rn
+4                             SOURAV CHATTERJEE
+
+is inﬁnite-dimensional Lebesgue measure on A, g is a parameter called the
+coupling strength, and Z is the normalizing constant that makes this a
+probability measure.
+   The above description of Euclidean Yang–Mills theory with gauge group
+G is not directly mathematically meaningful because any simple-minded
+way of deﬁning inﬁnite-dimensional Lebesgue measure on A would yield
+Z = ∞ and make it impossible to deﬁne µ as a probability measure. While
+it has been possible to circumvent this problem in roundabout ways and give
+rigorous meanings to similar descriptions of Brownian motion and various
+quantum ﬁeld theories in dimensions two and three, Euclidean Yang–Mills
+theories have so far remained largely intractable.
+
+                        3. Lattice gauge theories
+   In 1974, Wilson [79] proposed a discretization of Euclidean Yang–Mills
+theories. These are now known as lattice gauge theories or lattice Yang–
+Mills theories. Let G be as in the previous section. The lattice gauge
+theory with gauge group G on a ﬁnite set Λ ⊆ Zn is deﬁned as follows.
+Suppose that for any two adjacent vertices x, y ∈ Λ, we have a unitary
+matrix U (x, y) ∈ G, with the constraint that U (y, x) = U (x, y)−1 . Let us
+call any such assignment of matrices to edges a ‘conﬁguration’. Let G(Λ)
+denote the set of all conﬁgurations. A square bounded by four edges is
+called a plaquette. Let P (Λ) denote the set of all plaquettes in Λ. For a
+plaquette p ∈ P (Λ) with vertices x1 , x2 , x3 , x4 in anti-clockwise order, and
+a conﬁguration U ∈ G(Λ), deﬁne
+                Up := U (x1 , x2 )U (x2 , x3 )U (x3 , x4 )U (x4 , x1 ).   (3.1)
+The Wilson action of U is deﬁned as
+                               X
+                    SΛ (U ) :=      Re(Tr(I − Up )),                      (3.2)
+                                   p∈P (Λ)
+
+where I is the identity matrix of order N . Let σΛ be the product Haar
+measure on G(Λ). Given β > 0, let µΛ,β be the probability measure on
+G(Λ) deﬁned as
+                                    1
+                       dµΛ,β (U ) := e−βSΛ (U ) dσΛ (U ) ,
+                                    Z
+where Z is the normalizing constant. This probability measure is called
+the lattice gauge theory on Λ for the gauge group G, with inverse coupling
+strength β.
+   Often, it is convenient to work with an inﬁnite volume limit of the theory,
+that is, a weak limit of the above probability measures as Λ ↑ Zn . The
+inﬁnite volume limit may or may not be unique. Indeed, the uniqueness (or
+non-uniqueness) is in general unknown for lattice gauge theories in dimen-
+sions higher than two when β is large.
+   Lattice gauge theories in several variations are a huge computational en-
+gine for numerical approximations for the Standard Model. They are used to
+                         YANG–MILLS FOR PROBABILISTS                             5
+
+make very accurate predictions of quantities like the masses of hadrons [16].
+For readers who want to learn more about the physics of lattice gauge the-
+ories, two textbook references are [70] and [45]. There are also two rather
+extensive scholarpedia articles on lattice gauge theories and lattice quantum
+ﬁeld theory, respectively.
+   The passage from a lattice gauge theory to an Euclidean Yang–Mills the-
+ory is heuristically justiﬁed as follows. First, discretize the space Rn as the
+scaled lattice ǫZn for some small ǫ. Next, take a G connection form
+                                      Xn
+                                A=       Aj dxj .
+                                          j=1
+
+Let e1 , . . . , en denote the standard basis vectors of Rn . For a directed edge
+(x, x + ǫej ) of ǫZn , deﬁne
+                              U (x, x + ǫej ) := eǫAj (x) ,
+and let U (x + ǫej , x) := U (x, x + ǫej )−1 . This deﬁnes a conﬁguration of
+unitary matrices assigned to directed edges of ǫZn . For a plaquette p in ǫZn ,
+let Up be deﬁned as in (3.1). Then a formal calculation using the Baker–
+Campbell–Hausdorﬀ formula for products of matrix exponentials shows that
+when ǫ is small,
+                     X                        ǫ4−n
+                         Re(Tr(I − Up )) ≈         SYM (A),
+                       p
+                                                4
+
+where SYM is the Yang–Mills action deﬁned in (2.1). The calculation goes
+as follows. Take any x ∈ ǫZn and any 1 ≤ j < k ≤ n, and let
+          x1 = x, x2 = x + ǫej , x3 = x + ǫej + ǫek , x4 = x + ǫek .
+Let p be the plaquette formed by the vertices x1 , x2 , x3 , x4 . Let Up be deﬁned
+as in (3.1). Then
+                    Up = eǫAj (x1 ) eǫAk (x2 ) e−ǫAj (x4 ) e−ǫAk (x1 ) .
+Recall the Baker–Campbell–Hausdorﬀ formula for products of matrix expo-
+nentials:
+                                                          
+           B C               1
+          e e = exp B + C + [B, C] + higher commutators .
+                             2
+Iterating this gives, for any m and any B1 , . . . , Bm ,
+                     X m                                               
+   B1     Bm                    1 X
+  e ···e      = exp        Ba +          [Ba , Bb ] + higher commutators .
+                                2
+                       a=1            1≤a<b≤m
+
+Recall that the eigenvalues of a skew-Hermitian matrix are all purely imag-
+inary, and that the commutator of two skew-Hermitian matrices is skew-
+Hermitian. Consequently, the term within the exponential on the right side
+of the above display is skew-Hermitian and therefore has a purely imaginary
+trace. This implies that if N is the order of the matrices, if the entries of
+6                              SOURAV CHATTERJEE
+
+B1 , . . . , Bm are of order ǫ and if the entries of B1 + · · · + Bm are of order ǫ2 ,
+then
+                                           X m                              2 
+                    B1     Bm          1                1 X
+      Re(Tr(I − e · · · e )) = − Tr               Ba +              [Ba , Bb ]
+                                       2      a=1
+                                                        2
+                                                          1≤a<b≤m
+                                            5
+                                     + O(ǫ ),
+where the real part of the trace was replaced by the trace on the right because
+the square of a skew-Hermitian matrix has real eigenvalues. Writing
+                                                        ∂Ak
+                Ak (x2 ) = Ak (x + ǫej ) = Ak (x) + ǫ       + O(ǫ2 )
+                                                        ∂xj
+and using a similar Taylor expansion for Aj (x4 ), we get
+                                                              
+                                                     ∂Ak   ∂Aj
+     Aj (x1 ) + Ak (x2 ) − Aj (x4 ) − Ak (x1 ) = ǫ       −       + O(ǫ2 ).
+                                                     ∂xj   ∂xk
+Combining the above observations gives
+                                                            2 
+                       1 4     ∂Ak     ∂Aj
+  Re(Tr(I − Up )) = − ǫ Tr           −      + [Aj (x), Ak (x)]     + O(ǫ5 )
+                       2       ∂xj      ∂xk
+                       1
+                  = − ǫ4 Tr(Fjk (x)2 ) + O(ǫ5 ).
+                       2
+This gives the formal approximation
+                  X
+          S(U ) =     Re(Tr(I − Up ))
+                      p
+                                 n
+                     1 X X 4
+                  ≈−               ǫ Tr(Fjk (x)2 )
+                     4      n
+                        x∈ǫZ j,k=1
+                       4−n       n
+                     ǫ                                  ǫ4−n
+                           Z X
+                  ≈−                 Tr(Fjk (x)2 ) dx =      SYM (A).
+                        4   Rn                            4
+                                 j,k=1
+
+The above heuristic was used by Wilson to justify the approximation of
+Euclidean Yang–Mills theory by lattice gauge theory, scaling the inverse
+coupling strength β like ǫ4−n as the lattice spacing ǫ → 0. The most im-
+portant dimension is n = 4, because spacetime is four-dimensional. In the
+above formulation, β does not scale with ǫ at all when n = 4. Currently,
+however, the general belief in the physics community is that β should scale
+like log(1/ǫ) in dimension four, although there are doubts about this belief
+and the question remains an open mathematical problem.
+   The problem of constructing continuum limits of lattice gauge theories,
+from the point of view of theoretical physicists, is discussed in greater de-
+tail in the following sections. Most of this is ‘common knowledge’ in the
+theoretical physics community, but not formalized in the sense of rigorous
+mathematics. I do not have references, but I have found [59, 60, 74] helpful.
+                       YANG–MILLS FOR PROBABILISTS                            7
+
+In particular, [74] proposes a formulation of continuum limits in terms of
+Wilson loop expectations, from which I borrow.
+
+
+         4. Wilson loop variables and quark confinement
+   Any physical theory should have observables of interest. For Yang–Mills
+theories, the most important observables are Wilson loop variables. These
+are deﬁned as follows. Suppose that we have an Euclidean Yang–Mills theory
+on Rn with gauge group G, as deﬁned in Section 2. Given a piecewise smooth
+closed path γ in Rn and a G connection A, the Wilson loop variable for γ
+is deﬁned as
+                                    Z X n         
+                     Wγ := Tr P exp          Aj dxj    ,
+                                         γ j=1
+
+where P is the path-ordering operator. In diﬀerential geometric terminology,
+the term inside the trace in the above display is the holonomy of A along
+the closed path γ. Alternatively, it is the parallel transport of the identity
+matrix along γ by the connection A. If the reader is unfamiliar with these
+concepts, there is nothing to worry. A simple deﬁnition of Wilson loop
+variables for lattice gauge theories is given below.
+   The physical importance of Wilson loop variables stems in part from their
+connection with the static quark potential. It was argued by Wilson [79] that
+the potential between a static quark and antiquark separated by distance R
+is given by the formula
+                                         1
+                       V (R) = − lim         loghWγR,T i,
+                                   T →∞ T
+
+where γR,T is the boundary of a rectangle of length T and breadth R, and
+h·i denotes expectation with respect to a suitable Yang–Mills theory. If
+V (R) grows to inﬁnity as R → ∞, the quark-antiquark pair cannot sepa-
+rate beyond a ﬁxed distance. This is the phenomenon of quark conﬁnement,
+observed in experiments but currently lacking a satisfactory theoretical un-
+derstanding (much less proof) due to the uncertainty about the existence of
+a continuum limit (although extensive numerical work in the lattice com-
+munity points to a positive answer). In fact, it is believed that V (R) grows
+like a multiple of R for non-Abelian Yang–Mills theories in dimension four.
+This is known as Wilson’s area law. If the area law holds, then the quantity
+                                    V (R)
+                                  lim
+                                 R→∞ R
+
+has physical signiﬁcance. It is called the ‘string tension’ of the continuum
+theory, and represents the energy density per unit length in the theory.
+  For lattice gauge theories, the deﬁnition of a Wilson loop variable is very
+simple. Suppose that we have a lattice gauge theory on Λ ⊆ Zn with gauge
+group G, as in Section 3. A loop in Zn is simply a directed path in the lattice
+8                            SOURAV CHATTERJEE
+
+which ends where it started. Given a loop γ with directed edges e1 , . . . , em ,
+the Wilson loop variable Wγ is deﬁned as
+
+                      Wγ := Tr(U (e1 )U (e2 ) · · · U (em )).
+
+The rationale for this deﬁnition is as follows. Let A be a smooth G connec-
+tion on Rn . Take some small ǫ and deﬁne a conﬁguration of group elements
+assigned to directed edges of ǫZn using the connection A, as in Section 3.
+Let γ be a smooth closed path in Rn and let γǫ be a loop in ǫZn that ap-
+proximates this path. Then, as ǫ → 0, the discrete Wilson loop variable Wγǫ
+approaches the continuous Wilson loop variable Wγ .
+   Wilson’s original motivation for investigating lattice gauge theories was
+to gain a theoretical proof of quark conﬁnement. Since the expected values
+of Wilson loop variables are mathematically well-deﬁned for lattice gauge
+theories, one can hope to give a rigorous proof of the area law in the discrete
+setting. In fact, the following upper bound suﬃces.
+
+Problem 4.1 (Area law). Take any compact non-Abelian Lie group G ⊆
+U (N ) for some N ≥ 2 and consider any infinite volume limit of four-
+dimensional lattice gauge theory with gauge group G at inverse coupling
+strength β. Let γR,T be a rectangular loop of breadth R and length T in the
+lattice. Prove that
+                          |hWγR,T i| ≤ C(β)e−c(β)RT ,
+
+where C(β) and c(β) are positive constants that depend only on the inverse
+coupling strength β and the gauge group.
+
+   Soon after the appearance of Wilson’s paper, physicists realized that the
+area law holds for any lattice gauge theory at suﬃciently small β. A rigorous
+proof was given by Osterwalder and Seiler [72]. However, this also implied
+that the area law at small β cannot be evidence for quark conﬁnement,
+because there are certain Yang–Mills theories that should not be conﬁning
+quarks. An example is four-dimensional U (1) Yang–Mills theory, which is
+the theory of electromagnetism. It is a fact of nature that there are no
+conﬁned quarks in electromagnetism.
+   This apparent paradox was resolved by Guth [53], who showed that four-
+dimensional U (1) lattice gauge theory fails to satisfy the area law at large β.
+A fully rigorous proof of Guth’s theorem was given by Fröhlich and Spencer
+[44]. This result suggested that to prove quark conﬁnement in a Yang–Mills
+theory, the area law has to be proved for the corresponding lattice theory at
+arbitrarily large β. For non-Abelian theories, this is currently known only
+in dimension two, where it is not very hard to prove. For U (1) theory, there
+is a remarkable result of Göpfert and Mack [47], who proved the area law
+at arbitrary β in dimension three. The solution of Problem 4.1 for four-
+dimensional non-Abelian lattice gauge theories at large β remains elusive.
+                        YANG–MILLS FOR PROBABILISTS                              9
+
+          5. The problem of defining the continuum limit
+   Take a lattice gauge theory as in Section 3, and consider an inﬁnite volume
+limit of this theory on Zn obtained by taking a weak limit of the theories on
+ﬁnite cubes. Let γ1 and γ2 be two Wilson loops of ﬁxed length, such as two
+plaquettes. The correlation between Wγ1 and Wγ2 is deﬁned as the quantity
+                           hWγ1 Wγ2 i − hWγ1 ihWγ2 i.                       (5.1)
+Let d(γ1 , γ2 ) denote the Euclidean distance between the two loops. If the
+logarithm of the above correlation behaves like −d(γ1 , γ2 )/ξ for some ξ > 0
+as d(γ1 , γ2 ) → ∞, then the number ξ is called the correlation length of the
+model. We have to take the logarithm because there may be polynomial
+correction terms to the exponential decay in the actual correlation [35, 73].
+    Physicists say that the model has a continuum limit if there is a critical
+point βc ∈ [0, ∞] such that as β → βc , the correlation length tends to
+inﬁnity. The reason for saying this is that if such a critical point exists, then
+it is possible to deﬁne the model on the scaled lattice ǫZn instead of Zn , and
+send ǫ → 0 in an appropriate manner as β → βc such that the correlation
+length tends to a ﬁnite nonzero limit. In other words, it is possible to deﬁne
+correlations in the continuum.
+    It is believed that in dimension four (which, as stated earlier, is the dimen-
+sion of greatest physical signiﬁcance since spacetime is four-dimensional),
+many of the non-Abelian lattice models of interest have βc = ∞. That is,
+one needs to take β → ∞ while sending the lattice spacing ǫ to zero, to
+obtain a nontrivial correlation function in the limit.
+    The following is a possible formulation of the above discussion as a con-
+crete mathematical problem.
+Problem 5.1 (Mass gap). Take any compact non-Abelian Lie group G ⊆
+U (N ) for some N ≥ 2 and consider any infinite volume limit of four-
+dimensional lattice gauge theory with gauge group G at inverse coupling
+strength β. For each x ∈ R4 , let px be the plaquette that is closest to x
+(breaking ties by some arbitrary rule). Let fβ (x) denote the correlation be-
+tween Wp0 and Wpx , as defined in (5.1). Show that for any β > 0, there
+exists some ξ(β) ∈ (0, ∞) such that
+                                 log fβ (x)      1
+                            lim             =−      .
+                           |x|→∞    |x|        ξ(β)
+Moreover, prove that
+                                  lim ξ(β) = ∞.
+                                  β→∞
+
+   The correlation length ξ has a physical meaning. Any lattice gauge theory
+contains information of an associated class of elementary particles called
+‘glueballs’ or ‘gluon-balls’. The existence of glueballs is considered to be
+one of the most important predictions of the Standard Model, but has not
+yet been experimentally veriﬁed. The number ξ represents the reciprocal of
+the mass of the lightest glueball in the theory.
+10                           SOURAV CHATTERJEE
+
+   One approach to the construction of continuum limits of lattice gauge
+theories is via Wilson loops. This is the approach that is advocated by Seiler
+[74, Chapter 8], from which we draw inspiration. While Seiler [74] gives a
+detailed description of the desired properties of the continuum limit that
+would presumably facilitate the quantization of the theory, we will restrict
+attention to the most basic question that needs to be solved before making
+any further progress.
+   Let βc be as above. The problem of constructing a continuum limit at this
+critical point in terms of Wilson loop expectations can be stated as follows.
+As β → βc , one would like to show that the lattice spacing ǫ can be taken to
+0 in such a way that if γǫ is any sequence of lattice loops converging to a loop
+γ in Rn , then hWγǫ i converges to a nontrivial limit after some appropriate
+renormalization.
+   Since ∞ is believed to be a critical point of compact non-Abelian lattice
+gauge theories in dimension four, one way to formulate the above question
+for the simple case of rectangular loops is the following.
+Problem 5.2 (Continuum limit). Take any compact non-Abelian Lie group
+G ⊆ U (N ) for some N ≥ 2 and consider any infinite volume limit of four-
+dimensional lattice gauge theory with gauge group G at inverse coupling
+strength β. Let γR,T denote a rectangular loop of length T and breadth R.
+Prove that as β → ∞, there are sequences ǫ = ǫ(β) → 0 and c = c(β) → ∞,
+and a nonzero constant d, such that for any R and T ,
+                 loghWγR/ǫ,T /ǫ i = −c(R + T ) − dRT + o(1).               (5.2)
+   Note that R + T is the limiting perimeter of the rectangular loops after
+scaling by ǫ, and RT is the limiting area. Since c → ∞, the above conjecture
+says that Wilson’s area law holds in the continuum only after subtracting
+oﬀ (‘renormalizing away’) the ﬁrst term when taking the limit. That is, the
+logarithm of the Wilson loop expectation hWγR,T i in the continuum should
+be deﬁned as
+               loghWγR,T i := lim (loghWγR/ǫ,T /ǫ i + c(R + T )).
+                              β→∞
+
+With this deﬁnition, the string tension of the continuum theory (as deﬁned
+in Section 4) is the number d in (5.2).
+   Since none of the above has been proved, it is not clear to me whether
+the renormalization term c(R + T ) is indeed necessary. It seems entirely
+possible that the limit in (5.2) holds without the renormalization term.
+   The next section gives a brief summary of existing rigorous results on the
+problem of constructing continuum limits of lattice gauge theories in various
+dimensions.
+
+             6. Review of the mathematical literature
+  There is a long and quite successful development of two-dimensional
+Yang–Mills theories in the mathematical literature. The two-dimensional
+                      YANG–MILLS FOR PROBABILISTS                          11
+
+Higgs model, which is U (1) Yang–Mills theory with an additional Higgs ﬁeld,
+was constructed by Brydges, Fröhlich and Seiler [20, 21, 22] and further de-
+veloped by Borgs and Seiler [18]. Building on an idea of Bralić [19], Gross,
+King and Sengupta [52] formulated a rigorous mathematical approach to
+performing calculations in two-dimensional Yang–Mills theories via stochas-
+tic calculus. Diﬀerent ideas leading to the same goal were implemented by
+Driver [30, 31] and Klimek and Kondracki [58]. The papers of Driver [30, 31]
+made precise the idea of using objects called lassos to deﬁne the continuum
+limit of Yang–Mills theories. Explicit formulas for Yang–Mills theories on
+compact surfaces were obtained by Fine [42, 43] and Witten [80, 81]. All of
+these results were generalized and uniﬁed by Sengupta [75, 76, 77] using a
+stochastic calculus approach.
+   Yet another approach was introduced by Lévy [61, 62], who constructed
+two-dimensional Yang–Mills theories as random holonomy ﬁelds. A random
+holonomy ﬁeld is a stochastic process indexed by curves on a surface, sub-
+ject to boundary conditions, and behaving under surgery as dictated by a
+Markov property. Lévy’s framework allows parallel transport along more
+general curves than the ones considered previously, and makes interesting
+connections to topological quantum ﬁeld theory. A relatively non-technical
+description of this body of work is given in Lévy [63].
+   Recently, Nguyen [71] has established the mathematical validity of the
+perturbative approach to 2D Yang–Mills theory by comparing its predictions
+with rigorous results obtained by the approaches outlined above. Another
+important body of recent work consists of the papers of Lévy [64], Driver,
+Hall and Kemp [34], Driver, Gabriel, Hall and Kemp [33] and Driver [32],
+who establish the validity of the Makeenko–Migdal equations for 2D Yang–
+Mills theories [68] by a number of diﬀerent approaches.
+   Euclidean Yang–Mills theories in dimensions three and four have proved
+to be more challenging to construct mathematically. At suﬃciently strong
+coupling (that is, small β), a number of conjectures about lattice gauge
+theories in arbitrary dimensions — such as quark conﬁnement and the exis-
+tence of a positive self-adjoint transfer matrix — were rigorously proved by
+Osterwalder and Seiler [72]. An expansion of partition functions of lattice
+gauge theories as asymptotic series in the dimension of the gauge group was
+proposed by ’t Hooft [78], leading to a large body of work. The papers
+of Chatterjee [26], Chatterjee and Jafarov [28], Basu and Ganguly [15] and
+Jafarov [55] contain some recent advances on ’t Hooft type expansions and
+connections with gauge-string duality at strong coupling. Conﬁnement and
+deconﬁnement in three- and four-dimensional lattice gauge theories at weak
+coupling were investigated by Guth [53], Fröhlich and Spencer [44], Göpfert
+and Mack [47] and Borgs [17].
+   None of the above techniques, however, help in constructing the contin-
+uum limit. The problems posed in Section 5 have not been mathematically
+tractable. An alternative route is the method of phase cell renormalization.
+In this approach, one starts with a lattice gauge theory on ǫZn for some
+12                           SOURAV CHATTERJEE
+
+small ǫ. Choosing an integer L, the theory is then ‘renormalized’ to yield
+an ‘eﬀective ﬁeld theory’ on the coarser lattice LǫZn , which is just another
+lattice gauge theory but with a more complicated action. A survey of the
+various ways of carrying out this renormalization step is given in [46, Chap-
+ter 22]. The process is iterated to produce eﬀective ﬁeld theories on Lk ǫZn
+for k = 2, 3, . . ., until the lattice spacing Lk ǫ attains macroscopic size (for
+example, becomes greater than 1). Note that the macroscopic eﬀective ﬁeld
+theory obtained in this way is dependent on ǫ. The goal of phase cell renor-
+malization is to show that the eﬀective ﬁeld theory at the ﬁnal macroscopic
+scale converges to a limit as ǫ → 0. Usually, convergence is hard to prove,
+so one settles for subsequential convergence by a compactness argument.
+The existence of a convergent subsequence is known as ultraviolet stability,
+for the following reason. The approximation of an Euclidean Yang–Mills
+theory by a lattice gauge theory on a lattice with spacing ǫ is analogous to
+truncating a Fourier series at a ﬁnite frequency, which grows as ǫ → 0. In
+this sense, a lattice approximation is an ultraviolet cutoﬀ (ultraviolet = high
+frequency), and the compactness of the eﬀective ﬁeld theories is ultraviolet
+stability, that is, stability with respect to the cutoﬀ frequency.
+   A notable success story of phase cell renormalization is the work of King
+[56, 57], who established the existence of the continuum limit of the three-
+dimensional Higgs model. The continuum limit of pure U (1) Yang–Mills
+theory (that is, without the Higgs ﬁeld) was established earlier by Gross
+[49], but with a diﬀerent notion of convergence. Gross’s approach was later
+used by Driver [29] to construct a continuum limit of 4D U (1) lattice gauge
+theory.
+   Ultraviolet stability of three- and four-dimensional non-Abelian lattice
+gauge theories by phase cell renormalization, as outlined above, was fa-
+mously established by Balaban [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+in a long series of papers spanning six years. A somewhat diﬀerent ap-
+proach, again using phase cell renormalization, was pursued by Federbush
+[36, 37, 38, 39, 40] and Federbush and Williamson [41].
+   Phase cell renormalization is not the only approach to constructing Eu-
+clidean Yang–Mills theories. Magnen, Rivasseau and Sénéor [67] formulated
+a program of directly constructing Yang–Mills theories in the continuum
+instead of using lattice theories. The main idea in [67] was to regularize
+the continuum theory by introducing a quadratic term in the Hamiltonian.
+The problem with this regularization is that it breaks gauge invariance. The
+problem is taken care of by showing that it is possible to remove the qua-
+dratic term and restore gauge invariance by taking a certain kind of limit of
+the regularized theories.
+   In spite of the remarkable achievements surveyed above, there is yet no
+construction of a continuum limit of a lattice gauge theory in any dimen-
+sion higher than two where Wilson loop variables have been shown to have
+nontrivial behavior. The standard approach of regularizing Wilson loop
+variables by phase cell renormalization has not yielded deﬁnitive results. In
+                       YANG–MILLS FOR PROBABILISTS                           13
+
+a recent series of papers, Charalambous and Gross [23, 24, 25] and Gross
+[50, 51] have proposed a method of regularizing connection forms in R3 by
+letting them ﬂow for a small amount of time according to the Yang–Mills
+heat ﬂow (see also the papers of Lüscher [65, 66] for a similar idea). It will
+be interesting to see whether this new approach, in combination with some
+ideas developed in the paper [27], can lead to the construction of nontrivial
+three-dimensional Euclidean Yang–Mills theories with non-Abelian gauge
+groups.
+
+                            Acknowledgments
+  I thank Erik Bates, David Brydges, Persi Diaconis, Len Gross, Jafar
+Jafarov, Erhard Seiler, Scott Sheﬃeld, Steve Shenker, Tom Spencer and
+Edward Witten for many valuable conversations and comments.
+
+                                References
+ [1] Balaban, T. (1983). Regularity and decay of lattice Green’s functions.
+     Comm. Math. Phys., 89 no. 4, 571–597.
+ [2] Balaban, T. (1984a). Renormalization group methods in non-abelian
+     gauge theories. Harvard preprint, HUTMP B134.
+ [3] Balaban, T. (1984b). Propagators and renormalization transforma-
+     tions for lattice gauge theories. I. Comm. Math. Phys., 95 no. 1, 17–40.
+ [4] Balaban, T. (1984c). Propagators and renormalization transforma-
+     tions for lattice gauge theories. II. Comm. Math. Phys., 96 no. 2, 223–
+     250.
+ [5] Balaban, T. (1984d). Recent results in constructing gauge ﬁelds.
+     Physica A, 124 no. 1-3, 79–90.
+ [6] Balaban, T. (1985a). Averaging operations for lattice gauge theories.
+     Comm. Math. Phys., 98 no. 1, 17–51.
+ [7] Balaban, T. (1985b). Spaces of regular gauge ﬁeld conﬁgurations on
+     a lattice and gauge ﬁxing conditions. Comm. Math. Phys., 99 no. 1,
+     75–102.
+ [8] Balaban, T. (1985c). Propagators for lattice gauge theories in a back-
+     ground ﬁeld. Comm. Math. Phys., 99 no. 3, 389–434.
+ [9] Balaban, T. (1985d). Ultraviolet stability of three-dimensional lattice
+     pure gauge ﬁeld theories. Comm. Math. Phys., 102 no. 2, 255–275.
+[10] Balaban, T. (1985e). The variational problem and background ﬁelds
+     in renormalization group method for lattice gauge theories. Comm.
+     Math. Phys., 102 no. 2, 277–309.
+[11] Balaban, T. (1987). Renormalization group approach to lattice gauge
+     ﬁeld theories. I. Generation of eﬀective actions in a small ﬁeld approx-
+     imation and a coupling constant renormalization in four dimensions.
+     Comm. Math. Phys., 109 no. 2, 249–301.
+[12] Balaban, T. (1988). Convergent renormalization expansions for lattice
+     gauge theories. Comm. Math. Phys., 119 no. 2, 243–285.
+14                         SOURAV CHATTERJEE
+
+[13] Balaban, T. (1989a). Large ﬁeld renormalization. I. The basic step of
+     the R operation. Comm. Math. Phys., 122 no. 2, 175–202.
+[14] Balaban, T. (1989b). Large ﬁeld renormalization. II. Localization,
+     exponentiation, and bounds for the R operation. Comm. Math. Phys.,
+     122 no. 3, 355–392.
+[15] Basu, R. and Ganguly, S. (2016). SO(N ) Lattice Gauge Theory,
+     planar and beyond. To appear in Comm. Pure Appl. Math.
+[16] Bazavov, A. Toussaint, D., Bernard, C., Laiho, J., DeTar,
+     C., Levkova, L., Oktay, M. B., Gottlieb, S., Heller, U. M.,
+     Hetrick, J. E., Mackenzie, P. B., Sugar, R. and Van de Water,
+     R. S. (2010). Nonperturbative QCD simulations with 2 + 1 ﬂavors of
+     improved staggered quarks. Rev. Mod. Phys., 82 no. 2, 1349–1417.
+[17] Borgs, C. (1988). Conﬁnement, deconﬁnement and freezing in lattice
+     Yang-Mills theories with continuous time. Comm. Math. Phys., 116 no.
+     2, 309–342.
+[18] Borgs, C. and Seiler, E. (1983). Lattice Yang-Mills theory at
+     nonzero temperature and the conﬁnement problem. Comm. Math.
+     Phys., 91 no. 3, 329–380.
+[19] Bralić, N. E. (1980). Exact computation of loop averages in two-
+     dimensional Yang-Mills theory. Phys. Rev. D (3), 22, no. 12, 3090–
+     3103.
+[20] Brydges, D., Fröhlich, J. and Seiler, E. (1979). On the construc-
+     tion of quantized gauge ﬁelds. I. General results. Ann. Physics, 121
+     nos. 1-2, 227–284.
+[21] Brydges, D., Fröhlich, J. and Seiler, E. (1980). Construction of
+     quantised gauge ﬁelds. II. Convergence of the lattice approximation.
+     Comm. Math. Phys., 71 no. 2, 159–205.
+[22] Brydges, D., Fröhlich, J. and Seiler, E. (1981). On the construc-
+     tion of quantized gauge ﬁelds. III. The two-dimensional abelian Higgs
+     model without cutoﬀs. Comm. Math. Phys., 79 no. 3, 353–399.
+[23] Charalambous, N. and Gross, L. (2013). The Yang-Mills heat semi-
+     group on three-manifolds with boundary. Comm. Math. Phys., 317 no.
+     3, 727–785.
+[24] Charalambous, N. and Gross, L. (2015). Neumann domination for
+     the Yang–Mills heat equation. J. Math. Phys., 56 no. 7, 073505, 21 pp.
+[25] Charalambous, N. and Gross, L. (2017). Initial behavior of solu-
+     tions to the Yang-Mills heat equation. J. Math. Anal. Appl., 451 no. 2,
+     873–905.
+[26] Chatterjee, S. (2015). Rigorous solution of strongly coupled SO(N )
+     lattice gauge theory in the large N limit. To appear in Comm. Math.
+     Phys.
+[27] Chatterjee, S. (2016). The leading term of the Yang-Mills free energy.
+     J. Funct. Anal., 271, 2944–3005.
+[28] Chatterjee, S. and Jafarov, J. (2016). The 1/N expansion for
+     SO(N ) lattice gauge theory at strong coupling. Preprint. Available at
+                       YANG–MILLS FOR PROBABILISTS                         15
+
+     arXiv:1604.04777.
+[29] Driver, B. K. (1987). Convergence of the U (1)4 lattice gauge theory
+     to its continuum limit. Comm. Math. Phys., 110 no 3, 479–501.
+[30] Driver, B. K. (1989a). Classiﬁcations of bundle connection pairs by
+     parallel translation and lassos. J. Funct. Anal., 83 no. 1, 185–231.
+[31] Driver, B. K. (1989b). YM2 : continuum expectations, lattice conver-
+     gence, and lassos. Comm. Math. Phys., 123 no. 4, 575–616.
+[32] Driver, B. K. (2017). A Functional Integral Approaches to the
+     Makeenko-Migdal Equations. Preprint. Available at arXiv:1709.04041.
+[33] Driver, B. K., Gabriel, F., Hall, B. C. and Kemp, T. (2016). The
+     Makeenko–Migdal equation for Yang-Mills theory on compact surfaces.
+     Preprint. Available at arXiv:1602.03905.
+[34] Driver, B. K., Hall, B. C. and Kemp, T. (2016). Three proofs
+     of the Makeenko–Migdal equation for Yang–Mills theory on the plane.
+     Preprint. Available at arXiv:1601.06283.
+[35] P. A. Faria da Veiga, O’Carroll, M. and Schor, R. (2004).
+     Existence of baryons, baryon spectrum and mass splitting in strong
+     coupling lattice QCD. Comm. Math. Phys., 245 no. 2, 383–405.
+[36] Federbush, P. (1986). A phase cell approach to Yang-Mills theory.
+     I. Modes, lattice-continuum duality. Comm. Math. Phys., 107 no. 2,
+     319–329.
+[37] Federbush, P. (1987a). A phase cell approach to Yang-Mills the-
+     ory. III. Local stability, modiﬁed renormalization group transformation.
+     Comm. Math. Phys., 110 no. 2, 293–309.
+[38] Federbush, P. (1987b). A phase cell approach to Yang-Mills theory.
+     VI. Nonabelian lattice-continuum duality. Ann. Inst. H. Poincaré Phys.
+     Théor., 47 no. 1, 17–23.
+[39] Federbush, P. (1988). A phase cell approach to Yang-Mills theory.
+     IV. The choice of variables. Comm. Math. Phys., 114 no. 2, 317–343.
+[40] Federbush, P. (1990). A phase cell approach to Yang-Mills theory. V.
+     Analysis of a chunk. Comm. Math. Phys., 127 no. 3, 433–457.
+[41] Federbush, P. and Williamson, C. (1987). A phase cell approach
+     to Yang-Mills theory. II. Analysis of a mode. J. Math. Phys., 28 no. 6,
+     1416–1419.
+[42] Fine, D. S. (1990). Quantum Yang-Mills on the two-sphere. Comm.
+     Math. Phys., 134 no. 2, 273–292.
+[43] Fine, D. S. (1991). Quantum Yang-Mills on a Riemann surface. Comm.
+     Math. Phys., 140 no. 2, 321–338.
+[44] Fröhlich, J. and Spencer, T. (1982). Massless phases and symmetry
+     restoration in abelian gauge theories and spin systems. Comm. Math.
+     Phys., 83 no. 3, 411–454.
+[45] Gattringer, C. and Lang, C. B. (2010). Quantum chromodynamics
+     on the lattice. An introductory presentation. Springer-Verlag, Berlin.
+[46] Glimm, J. and Jaffe, A. (1987). Quantum physics. A functional in-
+     tegral point of view. Second edition. Springer-Verlag, New York.
+16                          SOURAV CHATTERJEE
+
+[47] Göpfert, M. and Mack, G. (1982). Proof of conﬁnement of static
+     quarks in 3-dimensional U (1) lattice gauge theory for all values of the
+     coupling constant. Comm. Math. Phys., 82 no. 4, 545–606.
+[48] Griffiths, D. (2008). Introduction to elementary particles. John Wiley
+     & Sons.
+[49] Gross, L. (1983). Convergence of U (1)3 lattice gauge theory to its
+     continuum limit. Comm. Math. Phys., 92 no. 2, 137–162.
+[50] Gross, L. (2016). The Yang-Mills heat equation with ﬁnite action.
+     Preprint. Available at arXiv:1606.04151.
+[51] Gross, L. (2017). Stability of the Yang-Mills heat equation for ﬁnite
+     action. Preprint. Available at arXiv:1711.00114.
+[52] Gross, L., King, C. and Sengupta, A. (1989). Two-dimensional
+     Yang-Mills theory via stochastic diﬀerential equations. Ann. Physics,
+     194 no. 1, 65–112.
+[53] Guth, A. H. (1980). Existence proof of a nonconﬁning phase in four-
+     dimensional U (1) lattice gauge theory. Phys. Rev. D, 21 no. 8, 2291–
+     2307.
+[54] Jaffe, A. and Witten, E. (2006). Quantum Yang–Mills theory. The
+     millennium prize problems, 129–152, Clay Math. Inst., Cambridge, MA.
+[55] Jafarov, J. (2016). Wilson loop expectations in SU (N ) lattice gauge
+     theory. Preprint. Available at arXiv:1610.03821.
+[56] King, C. (1986a). The U (1) Higgs model. I. The continuum limit.
+     Comm. Math. Phys., 102 no. 4, 649–677.
+[57] King, C. (1986b). The U (1) Higgs model. II. The inﬁnite volume limit.
+     Comm. Math. Phys., 103 no. 2, 323–349.
+[58] Klimek, S. and Kondracki, W. (1987). A construction of two-
+     dimensional quantum chromodynamics. Comm. Math. Phys., 113, no.
+     3, 389–402.
+[59] Kogut, J. B. (1979). An introduction to lattice gauge theory and spin
+     systems. Rev. Mod. Phys., 51 no. 4, 659–713.
+[60] Kogut, J. B. (1983). The lattice gauge theory approach to quantum
+     chromodynamics. Rev. Mod. Phys., 55 no. 3, 775–836.
+[61] Lévy, T. (2003). Yang-Mills measure on compact surfaces. Mem.
+     Amer. Math. Soc., 166 no. 790.
+[62] Lévy, T. (2010). Two-dimensional Markovian holonomy ﬁelds.
+     Astérisque, No. 329.
+[63] Lévy, T. (2011). Topological quantum ﬁeld theories and Markovian
+     random ﬁelds. Bull. Sci. Math., 135 no. 6-7, 629–649.
+[64] Lévy, T. (2011). The master ﬁeld on the plane. Preprint. Available at
+     arXiv:1112.2452.
+[65] Lüscher, M. (2010). Trivializing maps, the Wilson ﬂow and the HMC
+     algorithm. Comm. Math. Phys., 293 no. 3, 899–919.
+[66] Lüscher, M. (2010). Properties and uses of the Wilson ﬂow in lattice
+     QCD. J. High Energy Phys., 2010 no. 8, 071, 18 pp.
+[67] Magnen, J., Rivasseau, V. and Sénéor, R. (1993). Construction of
+                       YANG–MILLS FOR PROBABILISTS                       17
+
+     YM4 with an infrared cutoﬀ. Comm. Math. Phys., 155 no. 2, 325–383.
+[68] Makeenko, Y. M. and Migdal, A. A. (1979). Exact equation for
+     the loop average in multicolor QCD. Phys. Lett. B, 88 no. 1, 135–137.
+[69] Mandelstam, S. (1976). Extended systems in ﬁeld theory. Phys. Rev.
+     C, 23, 245-249.
+[70] Montvay, I. and Münster, G. (1997). Quantum fields on a lattice.
+     Reprint of the 1994 original. Cambridge University Press, Cambridge.
+[71] Nguyen, T. (2015). Quantum Yang–Mills Theory in Two Dimensions:
+     Exact versus Perturbative. Preprint. Available at arXiv:1508.06305.
+[72] Osterwalder, K. and Seiler, E. (1978). Gauge ﬁeld theories on a
+     lattice. Ann. Physics, 110 no. 2, 440–471.
+[73] Paes-Leme, P. J. (1978). Ornstein-Zernike and analyticity properties
+     for classical lattice spin systems. Ann. Physics, 115 no. 2, 367–387.
+[74] Seiler, E. (1982). Gauge theories as a problem of constructive quantum
+     field theory and statistical mechanics. Springer-Verlag, Berlin.
+[75] Sengupta, A. (1992). The Yang-Mills measure for S 2 . J. Funct. Anal.,
+     108 no. 2, 231–273.
+[76] Sengupta, A. (1993). Quantum gauge theory on compact surfaces.
+     Ann. Physics, 221 no. 1, 17–52.
+[77] Sengupta, A. (1997). Gauge theory on compact surfaces. Mem. Amer.
+     Math. Soc., 126 no. 600.
+[78] ’t Hooft, G. (1974). A planar diagram theory for strong interactions.
+     Nuclear Phys. B, 72 no. 3, 461–473.
+[79] Wilson, K. G. (1974). Conﬁnement of quarks. Phys. Rev. D, 10 no.
+     8, 2445–2459.
+[80] Witten, E. (1991). On quantum gauge theories in two dimensions.
+     Comm. Math. Phys., 141 no. 1, 153–209.
+[81] Witten, E. (1992). Two-dimensional gauge theories revisited. J.
+     Geom. Phys., 9 no. 4, 303–368.
+
+Department of Statistics
+Stanford University
+Sequoia Hall, 390 Serra Mall
+Stanford, CA 94305
+
+souravc@stanford.edu
+

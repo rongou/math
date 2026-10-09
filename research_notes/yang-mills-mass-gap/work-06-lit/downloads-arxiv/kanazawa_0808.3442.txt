@@ -1,0 +1,2166 @@
+                                                                                                                                 TKYNT-08-13
+
+
+
+
+                                             Generalizing the Tomboulis-Yaffe Inequality to
+                                              SU (N ) Lattice Gauge Theories and General
+                                                         Classical Spin Systems
+arXiv:0808.3442v3 [math-ph] 2 Apr 2009
+
+
+
+
+                                                                                        Takuya Kanazawa∗
+                                                   Department of Physics, University of Tokyo, Tokyo 113-0033, Japan
+                                                                                        October 23, 2018
+
+
+                                                                                            Abstract
+                                             We extend the inequality of Tomboulis and Yaffe in SU (2) lattice gauge theory (LGT) to SU (N )
+                                         LGT and to general classical spin systems, by use of reflection positivity. Basically the inequalities
+                                         guarantee that a system in a box that is sufficiently insensitive to boundary conditions has a non-zero
+                                         mass gap. We explicitly illustrate the theorem in some solvable models. Strong coupling expansion is
+                                         then utilized to discuss some aspects of the theorem. Finally a conjecture for exact expression to the
+                                         off-axis mass gap of the triangular Ising model is presented. The validity of the conjecture is tested
+                                         in multiple ways.
+                                         PACS: 05.50.+q, 11.15.Ha, 12.38.Aw, 75.10.Hk
+                                         Key words: lattice gauge theory, vortex free energy, classical spin model, mass gap
+
+
+
+
+                                           ∗ Email: tkanazawa@nt.phys.s.u-tokyo.ac.jp
+
+
+
+
+                                                                                               1
+1      Introduction
+In this paper we generalize the inequality proved originally by Tomboulis and Yaffe in SU (2) gauge
+theories [1] to SU (N ) gauge theories with general N and also to a wide range of classical spin systems.
+To make this paper readable for those working on spin systems, we give in this section an elementary
+introduction to studies of quark confinement in lattice gauge theories (LGT) with an emphasis on
+interrelations between concepts in spin systems and those in gauge theories.
+    That a specific kind of defect could be responsible for determining a phase structure of a statistical
+system is appreciated as a quite useful idea in wide areas of modern physics. It has a long history,
+possibly dating back to R. Peierls’ argument on the Ising model [2]. In as early as 1944 L. Onsager, in
+his famous paper on the exact solution of the two-dimensional square Ising model, calculated what he
+called a ‘boundary tension’ (the free energy per unit length of a domain wall separating two regions of
+opposite magnetic order) and found that it is zero above and nonzero below the critical temperature
+[3]; hence magnetization is not the only quantity that can characterize the phase structure of the
+system. The history after Onsager clearly tells us the significance of understanding how defects, or
+dislocations, induce the volatility of the order parameter: for instance the seminal work of Kosterlitz
+and Thouless [4] made understanding the infinitely smooth phase transition of the XY -model possible
+by adopting the chemical potential of vortices as an order parameter.
+    Such an idea was imported into the studies of SU (N ) gauge theories ingeniously by ’t Hooft [5],
+Mack and Petkova [6] and several others [7]. Remember that in spin models, the system is said to be
+in a disordered phase if the two-point correlation function decays exponentially making the correlation
+length finite; otherwise the system is said to be either in an ordered phase or in a Kosterlitz-Thouless-
+type phase. In parallel, a non-Abelian gauge theory is said to be in a confining phase if the expectation
+value of a Wilson loop decays exponentially with the area it spans; otherwise the system is said to be
+either in the Higgs phase or in the Coulomb (or massless) phase. The SU (N ) gauge theory with no
+matter field has been believed to be in a confining phase for entire values of coupling constant (SU (3)
+is of special importance as it is supposed to be the true theory of strong interactions in nature, where
+quarks have never been directly observed in experiments). What is mysterious is that a rigorous
+proof of confinement is still missing in spite of a tremendous amount of work dedicated to this issue
+so far. However, according to the scenario(s) pioneered by ’t Hooft, Mack, Petkova and others [7],
+the rapid decay of a Wilson loop expectation value might be attributable to a percolation of center
+vortices. It is an object of co-dimension 2 (thus it is a loop in 2+1 spacetime and a closed surface
+in 3+1 spacetime). A rough explanation of their appearance is as follows: in pure SU (N ) gauge
+theory, all the fields belong to the adjoint representation of SU (N ), so that the actual gauge group
+is SU (N )/ZN rather than SU (N ). Π1 (SU (N )/ZN ) = ZN means that the systems has a line defect
+associated to each element of ZN , which is denominated as a ‘center vortex’, or a ‘’t Hooft loop’. If
+a vortex associated to z ∈ ZN wraps around the Wilson loop, the latter is multiplied by a factor z.
+Then the appearance of infinitely many center vortices piercing the Wilson loop randomly with no
+mutual correlation can efficiently disorder the value of the Wilson loop, resulting in an exponential
+suppression of the expectation value for larger loops follows.1
+    Roughly speaking, the formulation of ’t Hooft concerns a macroscopically large center vortex
+wrapping around the periodic lattice, ensuring its presence by imposing a twisted boundary condition
+on the lattice. This procedure is essentially tantamount to imposing an anti-periodic condition to
+produce a domain wall in the Ising model. He presented a convincing argument that the behavior
+    1 It is interesting to note that a similarity of the ’t Hooft loop in LGT to the domain wall in spin models gets even
+
+clearer in the deconfined phase at high temperature. The action of SU (N ) LGT possesses a global ZN symmetry, and
+the confinement-deconfinement transition is conventionally interpreted as its spontaneous breaking [8]. The tension
+of an interface separating different ZN deconfined vacua is calculated perturbatively and numerically from the (dual)
+string tension of the spatial ’t Hooft loop [9].
+
+
+
+                                                            2
+of the free energy of a large vortex in approaching the thermodynamic limit characterizes in which
+phase the system is in; if it vanishes exponentially, then the vortices percolates and the system is in
+the confining phase. On the other hand Mack and Petkova formulated a center vortex contained in a
+torus of finite diameter with a fixed boundary condition on the surface, and the presence of a center
+vortex was ensured by a singular gauge transformation operated on the surface. In order to elucidate
+its intuitive meaning to spin theorists, we would like comment on the concept of ‘thickness’ of the
+vortex. It is well known that, in the continuum, an infinitely thin center vortex is unphysical in the
+sense that it is associated with an infinite action. For illustration let us consider the XY model on
+a one-dimensional chain of length L. Suppose we fix the angle at one end of the chain to ϕ and the
+angle at the other end to ϕ + θ. If the angles of spins change smoothly as much as possible from
+one end toward the other, the energy cost is easily estimated to be (θ/L)2 × L ∼ O(1/L) for L ≫ 1.
+This is in sharp contrast to the situation in the Ising model on the same chain, in which a smooth
+change is impossible, thus leading to the energy cost of O(1) and making a spontaneous symmetry
+breaking easier to happen. The lesson we learn in this example is that it is generally possible to
+reduce an energy cost associated with a defect by smoothly changing the variables around it; the
+energy cost associated with a domain wall can be reduced if we give it a finite thickness.2 What Mack
+and Petkova achieved is to prove an inequality rigorously, whose intuitive interpretation being that
+the area-law decay of the Wilson loop expectation value would follow if the free energy of such a ‘thick’
+vortex decreases sufficiently rapidly when its diameter is increased. A lucid exposition of dynamics of
+thick vortices in SU (N ) lattice gauge theories (LGT) can be found in ref.[11].
+    As is well known, a fundamental difference between spin systems and gauge theories is that the
+latter has no known local order parameter (such as magnetization in the former) that can character-
+ize the phases of gauge theories. That is why non-local quantities such as Wilson or ’t Hooft loops
+have been given a special weight in studies of strong-coupling phenomena such as confinement. As a
+classical reference, we would like to mention ref.[12] in which physical relevance of defects generated
+by the twisting procedure, including both center vortices in LGT and domain walls in spin systems,
+and usefulness of using them as a probe for the phase structure in computer simulations, are reviewed
+and discussed from a unified point of view.
+
+    Tomboulis and Yaffe thoroughly investigated SU (2) LGT at finite temperature and rigorously
+proved the absence of confinement at sufficiently high temperature [1]. In their study they derived a
+number of inequalities between observables such as the Wilson loop expectation value, the ’t Hooft
+loop expectation value, the electric flux expectation value and the Polyakov loop correlator. Among
+others they gave an upper bound of the Wilson loop expectation value by a specific function of the
+center vortex free energy (as presented in the next section as theorem 1). It gave a firm foundation to
+’t Hooft’s original argument in the continuum [5], that if in approaching the thermodynamic limit the
+free energy of a center vortex that encircles two of the four periodic directions of the lattice vanishes
+exponentially w.r.t. the cross section of the lattice perpendicular to the vortex, then the area law
+behavior of the Wilson loop expectation value would follow. Thus it sheds light on dynamics of the
+center vortices in a somewhat different manner from the Mack-Petkova inequality. In this paper we
+call it the Tomboulis-Yaffe (TY) inequality throughout this paper.
+    The purpose of this paper is to present a generalization of the TY inequality to SU (N ) LGT for
+arbitrary N and to general classical spin models. Our result gives a rigorous relation between the
+effect of twisted boundary conditions and the correlation function (Wilson loop) in spin models (in
+LGT) respectively.3 Among spin models, the SU (N ) × SU (N ) principal chiral model (PCM) is of
+   2 Dobrushin and Shlosman elevated this idea to a rigorous proof of the absence of magnetic order in two-dimensional
+
+ferromagnets with a continuous symmetry [10].
+   3 Historically, changing of boundary conditions has been utilized in studies of Anderson localization as a method for
+
+estimating the broadening of the wave function [13]. More recently it was utilized in the lattice QCD calculation [14]
+
+
+                                                           3
+particular interest for researches of gauge theory, since it bears a number of similarities to SU (N )
+gauge theories and serves as a good testing ground for techniques in gauge theories [15, 16, 17, 18].
+The action of SU (N ) PCM is given by
+                              d
+                             XX
+                      S=β              Re Tr {U (x)U † (x + µ̂)},   U ∈ SU (N ), x ∈ Zd ,                     (1)
+                              x µ=1
+
+where µ̂ denotes a unit vector in xµ -direction. It is quite straightforward to extend the original TY
+inequality for SU (N ) LGT to SU (N ) PCM, using a natural correspondence (site ↔ link, link ↔
+plaquette, . . . ) and indeed the TY inequality for SU (2) PCM has already appeared in the literature
+[19, 20]. On the other hand, however, it is technically nontrivial how to extend it to other more
+general spin models. Let us take G2 PCM as an example. Since G2 is an exceptional group with
+trivial center, we can no longer use a twist by a center of the gauge group, which gives rise to a
+technical difficulty. Furthermore the use of center twist for PCM is not physically motivated; in the
+case of SU (N ) gauge theory, the use of center element is mandatory, but in PCM we can use any
+other element of the symmetry group for twist. Thus the generality of our formulation, that does not
+rely on the center of the symmetry group at all, seems to be a fundamental progress.4
+    This paper is organized as follows. In section 2 we will recapitulate the TY inequality for SU (2)
+and then prove its generalization to SU (N ). We will use the two-dimensional SU (N ) LGT to illustrate
+our result. In section 3 we will prove a generalization of the inequality to general classical spin systems.
+We will use the one-dimensional PCM and the two-dimensional Ising models on square and triangular
+lattices to illustrate the proved inequality. Especially, in section 3.5, we derive a rigorous upper bound
+of the off-axis correlation length in the triangular Ising model, whose exact expression is still unknown,
+and conjecture that it is indeed the exact one. In section 3.6 the strong coupling expansion technique
+is employed to shed light on the implication of our theorem, as well as to test the conjecture. Section
+4 is devoted to the conclusion.
+
+
+2     TY inequality in LGT
+2.1    N =2
+Let us recapitulate the TY inequality for SU (2) [1]. Λ is a d-dimensional hypercubic lattice of
+length Lµ (µ = 1, . . . , d) with periodic boundary condition and V, called “vortex”, is a stacked set
+of plaquettes winding around the lattice Λ in d − 2 periodic directions.5 We assume the directions
+unwrapped by V to be xµ and xν (µ 6= ν). The ordinary and the “twisted” partition functions are
+given by
+                                                          
+                                               β
+                               Z Y               X
+                        ZΛ ≡         dUb exp        Tr Up  ,                                     (2)
+                                               2
+                                  b              p⊂Λ
+                                              "                             #
+                                               β
+                               Z Y
+                        (−)
+                                                   X              X
+                     ZΛ ≡            dUb exp         Tr (−Up ) +      Tr Up  ,                   (3)
+                                               2
+                                   b                   p⊂V               p⊂Λ\V
+
+                                                                              †      †
+where dU is the normalized Haar measure of SU (2) and Up ≡ Ux,µ Ux+µ,ν Ux+ν,µ      Ux,ν  is a plaquette
+variable. It is important that local redefinition of variables U → −U can move the locations of twisted
+plaquettes but cannot remove the twist from Λ entirely.
+to study charmonium properties in deconfinement phase.
+   4 As an aside we note that the inequality of Mack and Petkova for SU (N ) LGT was generalized to SU (N ) PCM by
+
+Borisenko and Skala [21].
+   5 V forms a closed loop when d = 3 and a closed surface (2-torus) when d = 4, on the dual lattice. See fig.1.
+
+
+
+
+                                                        4
+   Next, consider a rectangle C lying in a xµ -xν plane with AC the area enclosed by C, and let W (C)
+                                                                                         1     Y
+the Wilson loop in the fundamental representation associated with C, namely W (C) ≡ Tr             Ub .
+                                                                                         2
+                                                                                                      b∈C
+Then the following inequality holds [1, 22]:
+
+Theorem 1.                                        (                       !)AC /Lµ Lν
+                                                                   (−)
+                                                      1      Z
+                                    hW (C)i ≤ 2            1− Λ                                             (4)
+                                                      2       ZΛ
+where h. . . i is the expectation value w.r.t. the measure of ZΛ .
+
+    The site-reflection positivity of the Wilson action [23] plays an essential role in the proof. (As is well
+known, the Wilson action is among those actions for which the link-reflection positivity is also satisfied
+[24] but it is not a matter of interest here.) Indeed (4) can be proved with any one-plaquette action,
+since they are site-reflection positive (although not necessarily link-reflection positive, of course).
+                                                                                                    (−)
+    An important implication of (4) is that the area-law decay of hW (C)i would follow if 1−ZΛ /ZΛ ≈
+  −ρLµ Lν                                                         6
+e         for some constant ρ > 0 in the thermodynamic limit . This is a famous criterion of confine-
+ment originally proposed by ’t Hooft [5] and is also numerically supported [25, 26, 27]. Moreover such
+                 (−)
+a behavior of ZΛ /ZΛ has been verified explicitly by Münster using the convergent strong-coupling
+cluster expansion technique [28]. See page 10 for more discussion on this point.
+    Theorem 1 was utilized in a recent attempt at a rigorous proof of confinement [29] with related
+discussions [30, 31].
+
+2.2    General N
+The authors of ref.[1] state without explicit construction that their result is extendable to any other
+gauge group with nontrivial center. Since the mentioned extension does not seem to be so trivial and,
+to the author’s best knowledge an explicit formula for general N is not found in the literature, we
+think it valuable to present the extension of (4) from SU (2) to SU (N ) together with its proof.
+    Let us give a formulation of vortices in SU (N ) LGT and prove their properties before presenting
+TY inequality in SU (N ) LGT. The ordinary and the “twisted” partition functions are respectively
+given by
+                                                          
+                                           β
+                         Z Y                  X
+                   ZΛ ≡        dUb exp           Re Tr Up  ,                                      (5)
+                                           N
+                             b                p⊂Λ
+                                            "                                     #
+                                           β
+                         Z Y
+                    [k]
+                                               X                     X
+                  ZΛ ≡         dUb exp            Re Tr (z k Up ) +     Re Tr Up  ,               (6)
+                                           N
+                                b                      p⊂V                     p⊂Λ\V
+
+                                        2πi 
+                                z ≡ exp       , k ≡ 1, 2, ..., N − 1 (mod N ).                      (7)
+                                          N
+Hereafter h. . . i represents the expectation value with the measure (5). The vortex creation operators
+{O[k] } and the electric flux creation operators {F [m] } are defined by
+                                                                    [k]
+                                                                   ZΛ
+                                                 hO[k] [V]i ≡         ,                                     (8)
+                                                                   ZΛ
+                                                            N −1
+                                                          1 X mk [k]
+                                       hF [m] [V]i ≡             z hO [V]i.                                 (9)
+                                                          N
+                                                             k=0
+  6 We neglected the entropy factor for simplicity.
+
+
+
+
+                                                             5
+                              N
+                              X −1
+Thus we have hO[k] [V]i =            z −km hF [m] [V]i. The explicit form of O is given by
+                              m=0
+                                            β X                              
+                             O[k] [V] = exp      [Re Tr (z k Up ) − Re Tr Up ] .                               (10)
+                                             N
+                                                      p⊂V
+
+Lemma 1. If V, V ′ , V ′′ , . . . are homologous7 , we have
+                                                          ′                    ′
+                                        hO[k] [V]O[k ] [V ′ ]i = hO[k+k ] [V]i,                                (11)
+                                                  N
+                                                  X −1
+                                                              F [m] [V] = 1,                                   (12)
+                                                  m=0
+                                                                                   (N )
+                                        hF [l] [V]F [m] [V ′ ]i = hF [l] [V]i δl,m ,                           (13)
+                                                                                   (N ) (N )
+                               hF [l] [V]F [m] [V ′ ]F [n] [V ′′ ]i = hF [l] [V]i δl,m δm,n  ,                 (14)
+                                                                  ..
+                                                                   .
+        (N )                                   (N )
+where δl,m = 1 if l ≡ m (mod N ) and δl,m = 0 otherwise.
+                                                                                                 ′
+Proof. (11) can be derived by iterating the redefinition of variables U → z k U to bring V ′ to V.
+Relations (12)-(14) follow from (9) and (11).
+
+    (12)-(14) imply that {F [m] }m can be seen as projection operators [5, 11].
+    Consider a (d − 1)-dimensional hyperplane π defined by xµ = m with m ∈ Z fixed.8 Define the
+                                            
+reflection operator θ w.r.t. π by θ F ({Ub }) = F ({Uθ[b] }) where F is an arbitrary observable (that
+is, a map from configurations on Λ to C). The reflection θ[b] of a link b is also defined by the same
+notation where locations of b and θ[b], are defined to be symmetrical about π.
+Lemma 2. With V θ ≡ θ[V] we have
+                                               h        i
+                                              θ O[k] [V] = O[−k] [V θ ],                                       (15)
+                                               h         i
+                                              θ F [m] [V] = F [m] [V θ ],                                      (16)
+                                                  0 ≤ hO[k] [V]i ≤ 1,                                          (17)
+                                                 0 ≤ hF [m] [V]i ≤ 1.                                          (18)
+
+Proof. (15) is obvious from the fact that the orientation of plaquettes are reversed by reflection. (15)
+yields
+                                       h         i    h 1 NX
+                                                           −1               i
+                                      θ F [m] [V] = θ         z mk O[k] [V]                                    (19)
+                                                        N
+                                                                       k=0
+                                                                N −1
+                                                              1 X −mk [−k] θ
+                                                      =              z O  [V ]                                 (20)
+                                                              N
+                                                                 k=0
+                                                               [m] θ
+                                                      =F           [V ]                                        (21)
+
+which proves (16). Next, using the Schwarz inequality |hF i| ≤ hF θF i1/2 and (11), (15) we find
+                                                      h        i
+                               hO[k] [V]i ≤ hO[k] [V]θ O[k] [V] i1/2                             (22)
+                                                 = hO[k] [V]O[−k] [V θ ]i1/2 = 1.                              (23)
+  7 Plural vortices are called homologous if and only if they wind around the same periodic directions of Λ.
+  8 In this paper we never use hyperplanes defined by xµ = m + 1 ; that is, we never use link-reflections.
+                                                               2
+
+
+
+                                                                 6
+which proves the second inequality in (17) while the first one is trivial. Since V and V θ are homologous
+we can apply (13) to obtain
+
+                                        hF [m] [V]i = hF [m] [V]F [m] [V θ ]i                                     (24)
+                                                                 h            i
+                                                    = hF [m] [V]θ F [m] [V] i ≥ 0.                                (25)
+
+(25) and (12) prove (18). (These simple proofs of (17) and (18) seem to be new.)
+                                  [k]                                            [m]                     [k]
+   The vortex free energy Fv and the electric flux free energy Fel                     are defined by e−Fv ≡ hO[k] [V]i
+          [m]
+        −Fel
+and e           ≡ hF [m] [V]i, respectively.
+
+   Let N (R) ∈ {0, 1, . . . , N − 1} denote the N -ality of an irreducible representation R9 of SU (N )
+whose dimension is dR . Take a rectangle C lying in a xµ -xν plane and let AC the area enclosed by
+                                                                            1    Y 
+C. For the normalized Wilson loop in the representation R, WR (C) ≡           χR       Ub , we have
+                                                                           dR
+                                                                                                  b∈C
+
+Theorem 2 (TY inequality for SU (N ) LGT).
+                                                               n               oAC /Lµ Lν
+                        |hWR (C)i| ≤ hF [N (R)] [V]iAC /Lµ Lν + 1 − hF [0] [V]i           .                       (26)
+
+In addition, if N (R) 6= 0 we have
+                                              n               oAC /Lµ Lν
+                                |hWR (C)i| ≤ 2 1 − hF [0] [V]i                                                    (27)
+                                              (         N −1
+                                                                       )AC /Lµ Lν
+                                                    1 X [k]
+                                           =2 1−              hO [V]i             .                               (28)
+                                                    N
+                                                                k=0
+
+Proof. Although the argument below parallels that of ref.[22] for SU (2), we describe the proof in full
+detail for readers’ convenience. Suppose V, V ′ are stacked set of plaquettes wrapping around d − 2
+periodic directions of Λ and V is linking once with C while V ′ is not. (See fig.1 for a 3-dimensional
+illustration of the setting.)
+
+
+
+
+                                        Figure 1: Locations of V, V ′ and C.
+
+                                                                   1    Y 
+   Let us rewrite the expectation value of WR (C) ≡                  χR   Ub as follows:
+                                                                  dR
+                                                                           b∈C
+
+                         hWR (C)i = h(1 − F [0] [V])WR (C)i + hF [0] [V]WR (C)i                                   (29)
+                                                                          N −1
+                                                                      1   X
+                                    = h(1 − F [0] [V])WR (C)i +                 hO[k] [V]WR (C)i.                 (30)
+                                                                      N
+                                                                          k=0
+  9 N -ality is the number (mod N ) of boxes in the Young tableau of R.
+
+
+
+
+                                                            7
+The presence of the second term is not desirable from the viewpoint of obtaining a meaningful upper
+bound of hWR (C)i, so let us perform redefinitions of variables U → z k U to bring V to V ′ , which
+causes the change
+                           hO[k] [V]WR (C)i → z ±N (R)k hO[k] [V ′ ]WR (C)i.                   (31)
+This is because in the course of bringing V to V ′ we must change one of the link variables on C. (The
+sign of exponent depends on the orientation of C.) Thus (30) becomes
+                                                         N −1
+                                                       1 X ±N (R)k [k] ′
+                hWR (C)i = h(1 − F [0] [V])WR (C)i +          z   hO [V ]WR (C)i                 (32)
+                                                       N
+                                                            k=0
+
+                         = h(1 − F [0] [V])WR (C)i + hF   [±N (R)]
+                                                                     [V ′ ]WR (C)i.              (33)
+
+ Our next step is expressed in fig.2 schematically in which a black square represents the oper-
+
+
+
+
+Figure 2: The Schwarz inequality enables us to double the size of the rectangle. This figure is
+essentially borrowed from ref.[22].
+
+ator (1 − F [0] [V]). Labeling four vertices as A, B, C, D, setting the hyperplane π so that it is
+perpendicular to the rectangle and contains the edge CD, and applying the Schwarz inequality
+
+
+
+
+                                                  8
+|hF θGi| ≤ hF θF i1/2 hGθGi1/2 we obtain
+
+             h(1 − F [0] [V])WR DA+AB+BC+CD i                                                                             (34)
+            1
+         =    h(1 − F [0] [V])χR DA+AB+BC+CD i                                                                            (35)
+           dR
+            1 X
+         =         (1 − F [0] [V]){χR DA+AB+BC }αβ {χR CD }βα                                                             (36)
+           dR
+                   α,β
+
+              1 XD                                                                               E1/2
+         ≤          (1 − F [0] [V])(1 − F [0] [V θ ]){χR DA+AB+BC }αβ {χR DAθ +Aθ B θ +B θ C }αβ
+             dR
+                α,β
+                                       D                        E1/2
+                                    × {χR CD }βα {χR CD }βα                                                               (37)
+              1 D                 X                                             E1/2 p
+         ≤        (1 − F [0] [V])   {χR DA+AB+BC }αβ {χR DAθ +Aθ B θ +B θ C }αβ     × dR                                  (38)
+             dR
+                                    α,β
+
+         = h(1 − F [0] [V])WR AB+BB θ +B θ Aθ +Aθ A i1/2 .                                                                (39)
+
+In going from (37) to (38) we used (13). The length of the rectangle doubled.
+    Let lµ × lν the size of the original rectangle and assume that Lµ = 2p lµ and Lν = 2q lν for some
+p, q ∈ N10 . Repeating the operation above for sufficiently many times in both xµ - and xν - directions,
+due to the periodic boundary conditions the rectangle finally vanishes away, yielding
+                                        n               o1/2p+q
+               h(1 − F [0] [V])WR (C)i ≤ 1 − hF [0] [V]i                                                                  (40)
+                                        n               olµ lν /Lµ Lν n               oAC /Lµ Lν
+                                       = 1 − hF [0] [V]i             = 1 − hF [0] [V]i           .                        (41)
+
+hF [±N (R)] [V ′ ]WR (C)i ≤ hF [±N (R)] [V ′ ]iAC /Lµ Lν can be shown in a similar way, hence (26) is proved.
+    (27) is a consequence of (26) and hF [N (R)] [V]i ≤ 1 − hF [0] [V]i.
+                                                                                                                          [k]
+    The message of (28) is that the exponential decay of the vortex free energy, i.e. hO[k] [V]i ≡ e−Fv =
+1 − O(e−ρLµ Lν ) for every k, is a sufficient condition for the area law of the Wilson loop to hold. The
+area law does not hold, or is at least difficult to prove, if not all of the hOi’s converge to 1.
+    Several comments are in order. Firstly, suppose that the action in (2) is in the adjoint representa-
+tion. Then hO[k] [V]i = 1 follows for any k, hence making hWR (C)i with N (R) 6= 0 vanish identically
+for arbitrary finite volume (see (28)). This is to be anticipated; since the adjoint Wilson action is
+invariant under the local transformation U → zU (z ∈ ZN ), which cannot break spontaneously ac-
+cording to the Elitzur’s theorem, and since WR (C) with N (R) 6= 0 transforms nontrivially under this
+transformation, its expectation value must vanish.
+    Secondly, there are a lot more varieties of inequalities available other than (26). Assume N = 6
+for instance. From (13) we have (F [1] [V] + F [2] [V])(F [1] [V ′ ] + F [2] [V ′ ]) = hF [1] [V] + F [2] [V]i and
+ (F [3] [V] + F [4] [V] + F [5] [V])(F [3] [V ′ ] + F [4] [V ′ ] + F [5] [V ′ ]) = hF [3] [V] + F [4] [V] + F [5] [V]i, hence by
+modifying the above proof one can straightforwardly show
+                                      n                oAC /Lµ Lν n                        oAC /Lµ Lν
+  |hWR (C)i| ≤ hF [N (R)] iAC /Lµ Lν + hF [1] + F [2] i          + hF [3] + F [4] + F [5] i           .                   (42)
+
+However (42) and all of its cousins are weaker than (26) with N = 6, which can be understood by the
+elementary inequality ( i xi )α < i (xi )α for 0 < α < 1 and 0 < xi .
+                       P           P
+
+  10 This condition was also present in the original TY inequality [1]. It is not a severe restriction, however, as long as
+
+we believe the asymptotic behavior of observables to be independent of the way we take Lµ , Lν to infinity.
+
+
+
+                                                               9
+    Note that one cannot derive the area law from (26) when N (R) = 0, as can be seen from
+            h              i                          1 AC /Lµ Lν
+             r.h.s. of (26) ≥ hF [0] [V]iAC /Lµ Lν ≥                       → 1 as Lµ , Lν → ∞.          (43)
+                                                       N
+The above implies that the “gluons” of SU (N ) can screen particles of zero N -ality.
+     Thirdly, theorem 2 is correct even after a matter field whose N -ality is zero is introduced into
+the theory, since the matter-gauge coupling Φ†x+µ̂ Dr [Ux,µ ]Φx preserves reflection positivity and is
+insensitive to the change of variables U → zU .
+     Finally we remark on the utility of strong-coupling cluster expansion techniques. (Similar discus-
+sion will be presented in section 3.6.) As already mentioned, the exponential suppression of vortex
+free energy − loghO[V]i ≈ e−ρLµ Lν has been verified by Münster [28] for SU (2) LGT and for suf-
+ficiently strong coupling. Especially he showed to all orders of strong-coupling expansion that the
+constant ρ appearing in the vortex free energy (’t Hooft’s string tension) is equal to the conventional
+Wilson’s string tension. His proof hinges on the observation that both the calculation of Wilson loop
+expectation value and that of vortex free energy reduce, at sufficiently strong coupling, to the problem
+of fluctuating random surfaces. It is understood without difficulty that the methods he employed can
+be readily used for SU (N ) LGT to show − loghO[k] [V]i ≈ e−ρLµ Lν for every k 6= 0 (hence proving the
+area law). This time ρ is equal to the fundamental string tension (since the gauge action (5) is in the
+fundamental representation).
+*                    *                   *                   *
+   Let us then turn to LGT with matter field of non-zero N -ality; the relations (11)-(14) are no
+longer valid. If the matter field has N -ality m and the greatest common divisor of N and m is s , the
+subgroup Zs ⊂ ZN is a symmetry of the theory. It is thus straightforward to prove the following
+Theorem 3. If N (R) 6≡ 0 (mod s), we have
+                                                    (     s−1
+                                                                     )AC /Lµ Lν
+                                                              [kN/s]
+                           n
+                                  [0]
+                                       oAC /Lµ Lν       1 X ZΛ
+             |hWR (C)i| ≤ 2 1 − hf [V]i           =2 1−                         .                       (44)
+                                                        s      ZΛ
+                                                                       k=0
+
+
+   Although the development so far has been for SU (N ) LGT, the inequalities evidently apply to
+U (N ) LGT since the center of U (N ) is U (1) which contains all of Z2 , Z3 , Z4 , Z5 , . . . . Let us focus
+on U (1) for simplicity and define the twisted partition function as
+                                             "                                 #
+                             Z Y                 X                   X
+                    ZΛ (θ) ≡        dUb exp β        Re (eiθ Up ) +      Re Up  .                      (45)
+                                  b                p⊂V                 p⊂Λ\V
+
+We state below the counterpart of theorem 2. The proof is straightforward.
+Theorem 4. For the Wilson loop of U (1)-charge q ∈ Z \ {0}, we have
+                                                    (Z                     !)AC /Lµ Lν
+                                     oAC /Lµ Lν          2π
+                     n
+                             [0]                            dθ      ZΛ (θ)
+       |hWq (C)i| ≤ 2 1 − FU(1) [V]             =2              1−                     ,                (46)
+                                                       0    2π       ZΛ
+
+with                                                  Z 2π
+                                         [0]                 dθ ZΛ (θ)
+                                      hFU(1) [V]i ≡                    .                                (47)
+                                                       0     2π ZΛ
+
+    Finally we point out that theorem 2 can be proved even if we add a Wilson loop with zero N -
+ality, of size 2 × 2 or 2 × 1 to the action. It is simply because the site-reflection positivity is kept and
+the algebras of twists are still well defined.
+
+                                                      10
+2.3    Demonstration in 2D SU(N) LGT
+Let us explicitly verify the proved inequality in solvable two-dimensional SU (N ) LGT. In two dimen-
+sion, the twist is introduced on just one plaquette. Let the size of the lattice L1 × L2 and impose
+periodic boundary conditions in both directions. First we expand the exponentiated one-plaquette
+action, e−Sp , into characters of irreducible unitary representations of SU (N ):
+                                                                    X
+                                                   e−Sp (U) =             dr Fr χr (U )                                      (48)
+                                                                      r
+
+where dr denotes the dimension of a representation r and the reality of Sp implies Fr = Fr (overline
+represents complex conjugation). Then a straightforward calculation using formulae
+
+                                                                                1
+                                  Z
+                                      dU χr (V U )χr′ (U † W ) =                   δrr′ χr (V W ),                           (49)
+                                                                                dr
+
+                                                                            1
+                                      Z
+                                           dU χr (V U W U † ) =                χr (V )χr (W ),                               (50)
+                                                                            dr
+yields11
+                                               Z Y                                               !
+                                                                    Y X
+                                      ZΛ ≡                   dUb                dr Fr χr (Up )                               (51)
+                                                       b∈Λ          p       r
+                                               X
+                                           =           (Fr )L1 L2 .                                                          (52)
+                                                   r
+
+On the other hand, introducing a twist z k = exp(2πik/N ) into arbitrary one plaquette on Λ gives the
+twisted partition function
+                                       [k]
+                                             X
+                                     ZΛ =       (Fr )L1 L2 z kN (r) .                            (53)
+                                                                r
+                     N
+                     X −1
+Using the identity          z kN (r) = N δ0,N (r) we easily obtain
+                     k=0
+
+                                                                             X
+                                                                                        (Fr )L1 L2
+                                                   N −1
+                                               1   X                      r; N (r)6=0
+                                      1−                     hO[k] i =                                                       (54)
+                                               N                             X
+                                                       k=0                          (Fr )L1 L2
+                                                                                r
+                                                                             X
+                                                                                        (cr )L1 L2
+                                                                          r; N (r)6=0
+                                                                    =           X                                            (55)
+                                                                          1+            (cr )L1 L2
+                                                                                r6=T
+
+
+                                                                                            Fr
+where T implies the trivial representation and we defined cr ≡                                 . Note that cr = cr . Since
+                                                                                            FT
+
+                                      1
+                                           Z                                        Z
+                            |Fr | =            dU e−Sp (U) χr (U ) <                    dU e−Sp (U) = FT ,                   (56)
+                                      dr
+ 11 (52) differs from that obtained in ref.[32] because they impose free boundary conditions.
+
+
+
+
+                                                                    11
+we have |cr | < 1, while 0 ≤ cr can be shown for a wide class of gauge actions including the Wilson
+action.
+    From above considerations we obtain
+                                               (      N −1
+                                                                )AC /L1 L2
+                           h               i        1 X [k]
+                             r.h.s. of (27) = 2 1 −       hO i                                 (57)
+                                                    N
+                                                               k=0
+                                                        AC
+                                               → 2(cr′ )             as L1 L2 → ∞.                            (58)
+
+Here cr′ is defined as the largest value among {cr | N (r) 6= 0}. In order to determine r′ we need an
+explicit form of the action Sp .
+    Let us turn to the l.h.s. of (27), i.e. the Wilson loop expectation value. We borrow the result of
+ref.[32] which in our notation reads
+                                            hWR (C)i = (cR )AC .                                 (59)
+If N (R) 6= 0, we obviously have cR ≤ cr′ , hence the inequality (27) holds for sure.
+
+
+3     Extension of inequalities to spin systems
+Main result of this section is theorem 5 on page 17, which is a generalization of theorem 2 to general
+spin systems. Before that, we need some preliminary analyses.
+
+3.1     Basic formulation
+Let us formulate a twisting procedure in spin systems obeying ref.[12]. Consider a statistical system
+with nearest-neighbor interactions whose partition function is given by
+                                                                       
+                                 Z Y               XX  d
+                           ZΛ ≡        dφx exp           A(φy , φy+µ̂ ) ,                       (60)
+                                         x∈Λ               y∈Λ µ=1
+
+where Λ is a d-dimensional hypercubic lattice with periodic boundary conditions, µ̂ is a unit vector
+                       XX  d
+in the µ-direction and       is a sum over all links in Λ. The real-valued symmetric function A( , )
+                         y∈Λ µ=1
+dictates the interaction between nearest sites (and possibly includes self interactions on each site). It
+can be shown by standard arguments that site-reflection positivity is automatically satisfied for any
+nearest neighbor interaction (see p.33 of ref.[23]) while link-reflection, not needed in the following, is
+often violated. Hereafter h. . . i represents the expectation value with the measure (60). Let us assume
+that the system is invariant under a global transformation φ → gφ for any element g of a global
+symmetry group G:12
+
+                                          A(φ, φ′ ) = A(gφ, gφ′ ),                    g ∈ G.                  (61)
+
+We assume that G is compact.
+    A twist for a link is defined as the change of interaction from A(φ, φ′ ) to A(φ, gφ′ ). An important
+difference from the twist in LGT is that g need not belong to the center of G. G may or may not
+have a nontrivial center and that is not important for us.
+    Next, let us take a stacked set of links, V, which winds around Λ in d − 1 periodic directions (V is
+a closed loop when d = 2 and a closed surface when d = 3 on the dual lattice, see fig. 3). Hereafter
+such V is called a wall in distinction from a (center) vortex.
+   12 Note that G need not be the maximal symmetry group of the system. The development in this section still holds
+
+if we take as G an arbitrary subgroup of the maximal symmetry group.
+
+
+                                                        12
+                                  Figure 3: V in two- and three- dimensions.
+
+
+    The twisted partition function associated to g ∈ G is given by
+                                                                                                     #
+                                            d
+                     Z Y                      "
+                                       XX
+         ZΛ (g)[V] ≡        dφx exp            (1 − δ[V]y,µ )A(φy , φy+µ̂ ) + δ[V]y,µ A(φy , gφy+µ̂ )  .
+                           x∈Λ                y∈Λ µ=1
+                                                                                                         (62)
+The symbol δ[V]y,µ is defined to be = 1 if the link hy, y+ µ̂i is contained in V and = 0 otherwise. It is not
+difficult to see that V cannot be removed from Λ by local redefinition of variables φ → gφ. Let Ĝ denote
+the set of irreducible unitary representations of G. The wall creation operators {O(g)[V]| g ∈ G} and
+their duals {FR (g)[V]| g ∈ G, R ∈ Ĝ} are defined as follows:
+
+                                   ZΛ (g)[V]
+                      hO(g)[V]i ≡            ,                                                               (63)
+                                      ZΛ
+                                      XX     d        h                                  i
+                ⇐⇒      O(g)[V] = exp           δ[V]y,µ − A(φy , φy+µ̂ ) + A(φy , gφy+µ̂ ) ,                 (64)
+                                              y∈Λ µ=1
+                                                   Z
+                       FR (g)[V] ≡ (dim R)             dx O(gx)[V]χR (x).                                    (65)
+                                                   G
+
+Lemma 3. If the walls V, V ′ are homologous 13 , we have
+
+                              hO(g)[V] · O(g ′ )[V ′ ]i = hO(gg ′ )[V]i = hO(g ′ g)[V]i,                     (66)
+                                          ′    ′                      ′                    ′
+                     hFR (g)[V] · FR′ (g )[V ]i = δRR′ hFR (gg )[V]i = δRR′ hFR (g g)[V]i,                   (67)
+                                                       X
+                                         hO(g)[V]i =      hFR (g)[V]i,                                       (68)
+                                                               R∈Ĝ
+                                                        X
+                                                   1=       hFR (1)[V]i.                                     (69)
+                                                        R∈Ĝ
+
+(66), (67) imply that hO(g)[V]i and hFR (g)[V]i are class functions on G.
+
+Proof. (66) is trivial, since the relative position of walls can be reversed owing to the periodic boundary
+  13 Plural walls are called homologous if and only if they wind around the same periodic directions of Λ.
+
+
+
+
+                                                               13
+condition (see fig. 4). (67) can be shown by exploiting the invariance of the Haar measure:
+                                                 Z                    Z                      
+           hFR (g)FR′ (g ′ )i = (dim R)(dim R′ )     dx O(gx)χR (x)        dy O(g ′ y)χR′ (y)           (70)
+                                                 Z G Z                   G
+
+                              = (dim R)(dim R′ )    dx    dy hO(gxg ′ y)iχR (x)χR′ (y)                  (71)
+                                                  G     G
+                                                 Z            Z
+                              = (dim R)(dim R′ )    dx hO(x)i     dy χR ((gg ′ )−1 xy −1 )χR′ (y)       (72)
+                                                  G             G
+                                             Z
+                              = δRR′ (dim R)    dx hO(x)iχR ((gg ′ )−1 x)                               (73)
+                                                    G
+                              = δRR′ hFR (gg ′ )i.                                                      (74)
+
+Finally, (68) is a consequence of the Peter-Weyl theorem [33] according to which any f ∈ L2 (G) can
+be represented as                                   Z
+                                        X
+                                f (g) =     (dim R)   dx f (xg)χR (x).                         (75)
+                                                                G
+                                             R∈Ĝ
+
+(69) trivially follows from (68).
+
+
+
+
+        Figure 4: Relative position of V and V ′ can be reversed by using the periodicity of Λ.
+
+    Note that (66) cannot be proved in general when other operators are inserted, that is,
+
+                      hO(g)[V] · O(g ′ )[V ′ ] . . . i =
+                                                       6 hO(gg ′ )[V] . . . i =
+                                                                              6 hO(g ′ g)[V] . . . i,   (76)
+
+in general, where . . . denote additional insertions. It is because the proof of (66) involves a sequence of
+changes of variables. Thus (66) could be proved if inserted operators are invariant under the changes
+of variables.
+    Take an arbitrary (d − 1)-dimensional hyperplane π defined by xµ = m, m ∈ Z with m and µ
+fixed. Denote by θ the reflection about π.
+
+Lemma 4. If the wall V seen on the dual lattice is also perpendicular to the xµ -axis (see the left of
+fig. 5), we have
+                                   h         i
+                                  θ O(g)[V] = O(g −1 )[V θ ],                                    (77)
+                                            hO(g)[V]i = hO(g −1 )[V]i,                                  (78)
+                            hFR (g)[V]i = hFR (g −1 )[V]i and hFR (1)[V]i ∈ R,                          (79)
+                                        h          i
+                                       θ FR (g)[V] = FR (g −1 )[V θ ],                                  (80)
+
+where V θ ≡ θ[V] and 1 denotes the unit element of G.
+
+
+
+                                                           14
+                              Figure 5: Insertion of a reflection plane π.
+
+
+Proof. From the right of fig. 5 we observe
+                                  h               i
+                                 θ A(φy , gφy+µ̂ ) = A(φz+µ̂ , gφz )                              (81)
+                                                   = A(φz , g −1 φz+µ̂ ).                         (82)
+
+The twist g changed to g −1 , hence (77) is proved. (78) immediately follows from (77).
+   Using (78) we can show
+                      Z                           Z
+                          dx hO(gx)[V]iχR (x) =       dx hO((gx)−1 )[V]iχR (x)                    (83)
+                        G                           G
+                                                  Z
+                                                =     dx hO(x−1 g −1 )[V]iχR (x)                  (84)
+                                                    G
+                                                  Z
+                                                =     dx hO(xg −1 )[V]iχR (x−1 )                  (85)
+                                                  ZG
+                                                =     dx hO(g −1 x)[V]iχR (x),                    (86)
+                                                    G
+
+therefore (79) is proved. In the last step we used the fact that R is a unitary representation. (80) is
+obvious from (79).
+
+   Though it seems hard to find more properties on general grounds, further nontrivial result can be
+obtained if we exploit the site-reflection positivity of the measure of (60).
+Lemma 5.
+
+                                    hO(g)[V]i, hFR (1)[V]i ∈ [0, 1],                              (87)
+                                      |hFR (g)[V]i| ≤ hFR (1)[V]i.                                (88)
+
+Proof. Let V θ ≡ θ[V]. With the aid of (66), (77) and the Schwarz inequality |hF i| ≤ hF θF i1/2 we get
+                                                     h       i
+                              hO(g)[V]i ≤ hO(g)[V]θ O(g)[V] i1/2                                   (89)
+                                         = hO(g)[V]O(g −1 )[V θ ]i1/2 = 1.                        (90)
+
+Next, using (67) and (80) yields
+
+                             hFR (1)[V]i = hFR (1)[V] · FR (1)[V θ ]i                             (91)
+                                                         h            i
+                                         = hFR (1)[V] · θ FR (1)[V] i ≥ 0.                        (92)
+
+
+                                                   15
+(92) combined with (69) yields (87).
+    Finally, to show (88) we use (80) and the Schwarz inequality |hF θGi| ≤ hF θF i1/2 hGθGi1/2 as
+follows: letting V ′ denote a wall homologous to V, we have
+
+                  |hFR (g)[V]i| = |hFR (g)[V]FR (1)[V ′ ]i|                                            (93)
+                                ≤ hFR (g)[V]FR (g −1 )[V θ ]i1/2 hFR (1)[V ′ ]FR (1)[V ′θ ]i1/2        (94)
+                                                1/2            ′   1/2
+                                = hFR (1)[V]i         hFR (1)[V ]i                                     (95)
+                                = hFR (1)[V]i.                                                         (96)
+
+
+
+
+3.2    TY inequality in spin systems
+A natural counterpart in spin systems of Wilson loops in LGT is a two-point correlation function
+Γ(φx , φy ) as explained in the Introduction. Γ will decay exponentially with a mass gap (in symmetric
+phase) while decay algebraically without a mass gap (in a spontaneous symmetry breaking phase or
+Kosterlitz-Thouless-type phase). If hO(g)i defined above converges to 1 in the thermodynamic limit,
+it follows that arbitrarily huge domain walls grow with little cost and eventually drive the system to
+the disordered phase with a mass gap (see fig. 6). hO(g)i → 1 (|Λ| → ∞) can also be regarded as
+a sign of insensitivity of the system to boundary conditions, which indicates the absence of massless
+particles.
+    If (as in Ising-like models) we assume that the intersection of a correlation line with a wall changes
+the sign of Γ, a small closed wall gives no contribution ((−1)2 = 1) while a huge wall can give (−1).
+If each link on the correlation line of total length L is assumed to intersect with a wall independently
+with probability p, we obtain
+                 L  
+                 X  L
+         hΓi ∼             (−1)k pk (1 − p)L−k = (1 − 2p)L ∼ e−mL ,               m = − log(1 − 2p).   (97)
+                       k
+                 k=0
+
+
+
+
+                               Figure 6: Disorder being caused by walls.
+
+  Our goal in this section is to elevate the above heuristic relation of disorder and a mass gap to a
+mathematically rigorous inequality.
+  Suppose that the explicit form of the correlation function Γ is given by
+                                           X
+                             Γµ (x; n) =       fα (φx )fα (φx+nµ̂ ),       n ∈ N,                      (98)
+                                           α
+
+where f is an arbitrary function from the order-parameter space to C endowed with generic indices
+{α}. Here fα is meant to specify, for example, the α-th component of a vector spin in O(N )-like
+models, or the α-th matrix element of a matrix spin in PCM-like models. Note that hΓµ (x; n)i is
+
+
+                                                         16
+independent of x due to the translational invariance of the system. An important requirement on Γµ
+is its invariance under G :
+                      X                         X
+                         fα (φx )fα (φx+nµ̂ ) =   fα (gφx )fα (gφx+nµ̂ ), g ∈ G.              (99)
+                           α                            α
+
+Another requirement, which is truly indispensable for all the following development, is
+                                    Z
+                                       dg fα (gφ) = 0     for ∀ φ.                                                (100)
+                                               G
+                                                                                     Z
+If (100) were not satisfied, we should replace fα (φ) by fα′ (φ) ≡ fα (φ) −                  dg fα (gφ).
+                                                                                         G
+
+Theorem 5. Assume (99), (100) and the existence of k ∈ N such that Lµ = 2k n, with Lµ the extent
+of Λ in the xµ -direction.14 Then we have
+                                                              n/Lµ                  n/Lµ
+                                              hΓµ (x; 0)2 i
+                                          
+                      |hΓµ (x; n)i|
+                                                                        Z
+                                    ≤2                               1−   dg hO(g)[V]i      ,                     (101)
+                       hΓµ (x; 0)i            hΓµ (x; 0)i2                  G
+
+where V is a wall perpendicular to the xµ -direction .15
+Proof. We first decompose the correlation function into two parts:
+
+                   hΓµ (x; n)i = hΓµ (x; n)(1 − FT (1)[V])i + hΓµ (x; n)FT (1)[V]i,            (102)
+                                                             Z
+where T denotes the trivial representation, i.e. FT (1)[V] =    dg O(g)[V]. Our basic idea here is to
+                                                                           G
+apply the Schwarz inequality
+                                           |hF θGi| ≤ hF θF i1/2 hGθGi1/2                                         (103)
+to each term of (102). The procedure afterward is represented graphically in fig. 7 where (1−FT (1)[V])
+is indicated by red segments and a blue line is drawn to guide the eye. Let y ≡ x+nµ̂ and z ≡ x+2nµ̂.
+Consider a reflection θ about π (a hyperplane perpendicular to µ̂ and lying at y ). Using (67), (80),
+(99) and (103) we get
+
+      |hΓµ (x; n)(1 − FT (1)[V])i|
+                                                                                                         (104)
+                hΓµ (x; 0)i
+           1       X
+    =                   hfα (φx )fα (φy )(1 − FT (1)[V])i                                                (105)
+      hΓµ (x; 0)i α
+           1      XD                                h                       iE1/2 D          h        iE1/2
+    ≤                    fα (φx )(1 − FT (1)[V]) · θ fα (φx )(1 − FT (1)[V])        fα (φy )θ fα (φy )
+      hΓµ (x; 0)i α
+                                                                                                                  (106)
+           1       X                                                      1/2                  1/2
+    =                   fα (φx )(1 − FT (1)[V])fα (φz )(1 − FT (1)[V θ ])     fα (φy )fα (φy )                    (107)
+      hΓµ (x; 0)i α
+           1      DX                                   E1/2 D X                  E1/2
+    ≤                   fα (φx )fα (φz )(1 − FT (1)[V])          fα (φy )fα (φy )                                 (108)
+      hΓµ (x; 0)i    α                                        α
+                                      1/2
+        hΓµ (x; 2n)(1 − FT (1)[V])i
+    =                                       .                                                                     (109)
+                  hΓµ (x; 0)i
+
+  14 It does not seem to be very restrictive; in general we believe in the existence of the limit L
+                                                                                                      µ → ∞ for physical
+observables independent of the way we take Lµ → ∞.
+  15 0 < hΓ (n)i can be proved by the site-reflection positivity if n is even.
+           µ
+
+
+
+                                                              17
+Figure 7: Schwarz inequality enables us to double the distance of points in the correlation function.
+
+
+   Iterating this procedure for (k − 1) times yields (note Lµ = 2k n)
+                                                                                      2n/Lµ
+                     |hΓµ (n)(1 − FT (1)[V])i|         hΓµ (Lµ /2)(1 − FT (1)[V])i
+                                               ≤                                                .             (110)
+                              hΓµ (0)i                           hΓµ (0)i
+
+   Finally, let us define the reflection θ w.r.t. the hyperplane π which runs through x and x+(Lµ /2)µ̂
+(thus θ[x] = x and θ[x + (Lµ /2)µ̂] = x + (Lµ /2)µ̂, see fig.8). Then we obtain
+
+           hΓµ (x; Lµ /2)(1 − FT (1)[V])i
+                                                                                                              (111)
+                     hΓµ (x; 0)i
+         hΓµ (x; Lµ /2)θ[Γµ (x; Lµ /2)]i1/2 h(1 − FT (1)[V])(1 − FT (1)[V θ ])i1/2
+       ≤                                                                                                      (112)
+                                        hΓµ (x; 0)i
+                                            1/2                      1/2                       !
+         hΓµ (x; 0)2 i1/2 {1 − hFT (1)[V]i}            hΓµ (x; 0)2 i
+                                                     
+                                                                                            1/2
+       ≤                                          =                       {1 − hFT (1)[V]i}       ,           (113)
+                        hΓµ (x; 0)i                    hΓµ (x; 0)i2
+
+thus
+                                                                       n/Lµ
+                                                       hΓµ (x; 0)2 i
+                                                   
+                 hΓµ (x; n)(1 − FT (1)[V])i                                                        n/Lµ
+              0≤                            ≤                                  {1 − hFT (1)[V]i}          .   (114)
+                          hΓµ (x; 0)i                  hΓµ (x; 0)i2
+
+
+
+
+                                                        18
+Figure 8: θ is a reflection about π that bisects Λ. Here Λ is shown as a one-dimensional chain for
+simplicity.
+
+In deriving (113) we used hΓµ (x; Lµ /2)θ[Γµ (x; Lµ /2)]i ≤ hΓµ (x; 0)2 i. This can be shown as follows:
+  hΓµ (x; Lµ /2)θ[Γµ (x; Lµ /2)]i                                                                                   (115)
+  XD                                  h                          iE
+=       fα (φx )fα (φx+(Lµ /2)µ̂ ) · θ fβ (φx )fβ (φx+(Lµ /2)µ̂ )                                                   (116)
+    α,β
+    X
+=          fα (φx )fα (φx+(Lµ /2)µ̂ ) fβ (φx )fβ (φx+(Lµ /2)µ̂ )                                                    (117)
+    α,β
+    XD                         h                 iE1/2 D                                         h                                    iE1/2
+≤          fα (φx )fβ (φx ) · θ fα (φx )fβ (φx )         fα (φx+(Lµ /2)µ̂ )fβ (φx+(Lµ /2)µ̂ ) · θ fα (φx+(Lµ /2)µ̂ )fβ (φx+(Lµ /2)µ̂ )
+    α,β
+                                                                                                                    (118)
+  X
+=  h|fα (φx )|2 |fβ (φx )|2 i1/2 h|fα (φx+(Lµ /2)µ̂ )|2 |fβ (φx+(Lµ /2)µ̂ )|2 i1/2                                  (119)
+    α,β
+    DX                               E1/2 D X                                                  E1/2
+≤          |fα (φx )|2 |fβ (φx )|2               |fα (φx+(Lµ /2)µ̂ )|2 |fβ (φx+(Lµ /2)µ̂ )|2                        (120)
+     α,β                                   α,β
+
+= hΓµ (x; 0)2 i1/2 hΓµ (x + (Lµ /2); 0)2 i1/2 = hΓµ (x; 0)2 i.                                                      (121)
+
+                                          hΓµ (x; n)FT (1)[V]i
+    Next we have to estimate                                   . The outline is similar to the previous case, but
+                                               hΓµ (x; 0)i
+additional intricacies occur.
+                             0 ≤ hΓµ (x; n)FT (1)[V]i                                                               (122)
+                                 XZ
+                               =         dg hfα (φx )fα (φy )O(g)[V]i                                               (123)
+                                      α    G
+
+
+Let us consider another wall V ′ that is parallel to V and bookends x with V (see fig.9). Moving V to
+V ′ passing over φx and using (100), we get
+                            XZ
+                        =          dg hfα (gφx )fα (φy )O(g)[V ′ ]i                             (124)
+                                      α    G
+                                     XZ          D                                          E
+                               =               dg fα (gφx )fα (φy ) O(g)[V ′ ] − FT (1)[V ′ ] .                     (125)
+                                      α    G
+
+
+
+                                                                 19
+This step (from (124) to (125)) is the most nontrivial operation in this proof. Using (103) w.r.t. the
+
+
+
+
+             Figure 9: By redefinition of variables, V is moved to V ′ , passing over the site x.
+
+hyperplane which runs through y, with z = θ[x], yields
+  XZ       D                                   h                                     iE1/2
+                                                                                                                1/2
+=        dg fα (gφx ) O(g)[V ′ ] − FT (1)[V ′ ] · θ fα (gφx ) O(g)[V ′ ] − FT (1)[V ′ ]        fα (φy )fα (φy )
+    α    G
+                                                                                                            (126)
+    XZ         D                                                                         E1/2
+                                                                          θ              θ                         1/2
+=            dg fα (gφx ) O(g)[V ′ ] − FT (1)[V ′ ] fα (gφz ) O(g −1 )[V ′ ] − FT (1)[V ′ ]       fα (φy )fα (φy )
+    α    G
+                                                                                                              (127)
+    XZ         D                                                                                         E1/2
+                                                           θ                θ
+=            dg fα (gφx )fα (gφz ) 1 − O(g)[V ′ ]FT (1)[V ′ ] − O(g −1 )[V ′ ]FT (1)[V ′ ] + FT (1)[V ′ ]
+    α    G
+                                    1/2
+           × fα (φy )fα (φy )                                                                             (128)
+                 Z    D                                                                                E1/2
+                                                         θ                θ
+≤ hΓµ (y; 0)i1/2   dg Γµ (x; 2n) 1 − O(g)[V ′ ]FT (1)[V ′ ] − O(g −1 )[V ′ ]FT (1)[V ′ ] + FT (1)[V ′ ]
+                       G
+                                                                                                                  (129)
+                   hZ           D                                                                               Ei1/2
+                                                                  θ                θ
+≤ hΓµ (x; 0)i1/2            dg Γµ (x; 2n) 1 − O(g)[V ′ ]FT (1)[V ′ ] − O(g −1 )[V ′ ]FT (1)[V ′ ] + FT (1)[V ′ ]
+                        G
+                                                                                                                (130)
+                   h
+                                                                          θ                                 θ
+= hΓµ (x; 0)i1/2 hΓµ (x; 2n)i − hΓµ (x; 2n)FT (1)[V ′ ]FT (1)[V ′ ]i − hΓµ (x; 2n)FT (1)[V ′ ]FT (1)[V ′ ]i
+                                         i1/2
+               + hΓµ (x; 2n)FT (1)[V ′ ]i                                                                  (131)
+= hΓµ (x; 0)i1/2 hΓµ (x; 2n)(1 − FT (1)[V ′ ])i1/2 ,                                                            (132)
+                                                                                               1/2
+                                                              hΓµ (x; 2n)(1 − FT (1)[V ′ ])i
+                                                          
+                                hΓµ (x; n)FT (1)[V]i
+                            ∴                        ≤                                                 .        (133)
+                                     hΓµ (x; 0)i                       hΓµ (x; 0)i
+Combining this result with (114) yields
+                                                                      n/Lµ
+                                                      hΓµ (x; 0)2 i
+                                                  
+                       hΓµ (x; n)FT (1)[V]i                                                          n/Lµ
+                                            ≤                                 {1 − hFT (1)[V ′ ]i}          .   (134)
+                            hΓµ (x; 0)i               hΓµ (x; 0)i2
+
+(114) and (134) lead to (101).
+
+    Here are a few comments:
+
+
+
+                                                              20
+   • hO(g)i is a class function on G. It implies that when G is a compact connected Lie group we
+     can rewrite the integral in the r.h.s. of (101) as an integral over the maximal torus of G with a
+     proper Jacobian, using the Weyl’s integration formula [33].
+
+   • According to (101), the exponential decay of the wall free energy, i.e.
+
+                              hO(g)[V]i = 1 − O(e−ρ(g)Lµ )           with ρ(g) > 0,   ∀
+                                                                                          g ∈ G,         (135)
+
+      is a sufficient condition for the existence of a mass gap. Indeed if we define ρ[G] ≡ min ρ(g) and
+                                                                                                   g∈G
+      take the limit Lµ → ∞, the r.h.s. of (101) converges to O(1) × e−ρ[G]n , thus ρ[G] gives a lower
+      bound for the mass gap. It is also obvious that ρ[G] ≤ ρ[H] follows if H ⊂ G. hO(g)[V]i would
+      be calculable by, for example, Monte Carlo Simulations and weak-coupling-, strong-coupling-,
+      1/d- and 1/N -expansions.
+
+   • We proved the theorem on a square lattice, but it can be easily generalized to other lattices
+     such as a triangular lattice.
+
+   • Note that theorem 5 is derived with no knowledge of the interaction except for the reflection
+     positivity. The strength of interaction can be made anisotropic, since it respects reflection
+     positivity. And it is also correct in arbitrary dimensions.
+
+3.3     Examples
+There are many classes of lattice systems to which our theorem is applicable. One is the class of coset
+models, where the field takes values in G/H with G an arbitrary Lie group and H its closed subgroup.
+We present three explicit examples.
+
+Example 1. The O(N ) Heisenberg model.
+
+   The partition function is given by
+                      Z Y              X            
+                  Z=           ~y exp β
+                              dφ          ~x · φ
+                                          φ    ~ x+µ̂ ,          ~ ∈ S N −1 = O(N )/O(N − 1).
+                                                                 φ                                       (136)
+                          y∈Λ              x,µ
+
+The most natural definition of a correlation function is
+
+                                                     ~x · φ
+                                         Γµ (x; n) = φ    ~x+nµ̂ .                                       (137)
+
+In this case Z2 is obviously the smallest possible invariance group; of course, O(N ) itself can also be
+chosen. One can check that the requirements (99), (100) are met for both of them. If one is going
+to choose other arbitrary subgroup of O(N ), the correlation function should be redefined properly as
+explained below (100). Since the length of spin is normalized, the prefactor in (101) becomes 1.
+
+Example 2. The CP N −1 model.
+
+   The partition function is given by16
+        Z Y              X                  
+   Z=          dPy exp β       Tr [Px Px+µ̂ ] ,     P ∈ CP N −1 = U (N )/(U (1) × U (N − 1)).            (138)
+              y∈Λ           x,µ
+
+
+P is an N × N matrix and obeys Px2 = Px , Px† = Px , Tr Px = 1. (An alternative way is to express
+Pij = zi∗ zj , where ~z ∈ CN and |~z|2 = 1.) The action is invariant under the global transformation Px →
+ 16 See also ref.[34].
+
+
+
+
+                                                    21
+  ΩPx Ω† with Ω ∈ SU (N ).17 In two dimension, the model is believed to possess a nonperturbatively
+  generated mass gap for which, however, no rigorous result is available. Defining an appropriate
+  correlation function needs some care; we define
+                                                           
+                                         1N             1N                       1
+                    Γµ (x; n) = Tr [Px −     ][Px+nµ̂ −    ] = Tr [Px Px+nµ̂ ] −   ,         (139)
+                                          N             N                        N
+
+  where 1N denotes the unit matrix of size N × N . Then it is easy to confirm (100) for G = SU (N ):
+
+                                                                                 δij
+                         Z                                Z
+                                   h        1N i
+                                 dΩ ΩP Ω† −         = Pkl         dΩ Ωik Ω† lj −                     (140)
+                          SU(N )            N    ij        SU(N )                N
+                                                                     δij δkl   δij
+                                                             = Pkl           −     = 0.              (141)
+                                                                       N       N
+
+  Example 3. G × G principal chiral model (PCM).
+
+     Here G is an arbitrary compact group. The partition function is given by
+                                                                    
+                        Z Y                X
+                   Z=         dUy exp β       Re Tr [Ux (Ux+µ̂ )−1 ] ,   Ux ∈ G.                   (142)
+                                   y∈Λ               x,µ⊂Λ
+
+                                                                           −1
+  This model is invariant under a global G×G transformation U → gL U gR       . The corresponding twisted
+  partition function is given, in agreement with the original definition (62), by (V : wall)
+                                                                                            
+           Z Y                    X                               X
+   Z(g) =         dUy exp β           Re Tr [Ux (Ux+µ̂ )−1 ] + β     Re Tr [Ux (gUx+µ̂ )−1 ] ,  g ∈ G.
+              y∈Λ                   x,µ⊂Λ\V                               x,µ⊂V
+                                                                                                     (143)
+  The correlation function is defined as
+                                                                    −1
+                                                Γµ (x; n) = χR (Ux Ux+nµ̂ ),                         (144)
+
+ where R denotes an irreducible unitary representation of G. If we choose G itself, then (100) is satisfied
+ if and only if R is a nontrivial representation. This is a direct consequence of the Schur orthogonality
+ relation in representation theory; see Corollary 4.10 in ref.[33]. If G = SU (N ) and we choose ZN ,
+ then (100) is satisfied iff R has a nonzero N -ality. Anyway the prefactor in (101) becomes 1. We
+ emphasize that G need not have a nontrivial center.
+     As an example other than coset models, we only present
+
+  Example 4. SU (Nf ) × SU (Nf ) linear sigma model.
+
+    Usually this model is used to study the chiral phase transition [35]. On the lattice, the partition
+ function is given by
+   Z Y               X                                                                                     
+                                                                                     2
+                          Re Tr (Φx Φ†x+µ̂ ) − β2
+                                                  X                   X                   X
+Z=        dΦy exp β1                                Tr (Φ†x Φx ) − λ1    Tr (Φ†x Φx ) − λ2     Tr (Φ†x Φx )2 ,
+        y∈Λ                  x,µ                           x∈Λ                    x∈Λ         x∈Λ
+                                                                                                     (145)
+                                                        Φx ∈ M(Nf , C).                              (146)
+                                             †
+  This model is invariant under Φ → eiα gL ΦgR with eiα ∈ UA (1) and gL , gR ∈ SU (Nf ).
+    17 The true symmetry is SU (N )/Z
+                                         N , since Ω ∈ ZN does not change Px at all.
+
+
+
+
+                                                              22
+   It might be the case that whether the upper bound (101) gives an exponential decay or not depends
+on the choice of G, a point worth further study.
+*                   *                     *                    *
+    Although we proved theorem 5 only in the case of the nearest-neighbor interaction, we can
+prove it even in the presence of non-nearest-neighbor and multi-site interactions if some
+appropriate conditions are satisfied. To make the argument concrete, let us consider the SU (N )×
+SU (N ) PCM and suppose that ZN ⊂ SU (N ) was chosen as a symmetry group for theorem 5. There
+are two crucial conditions: one is site-reflection positivity and the other is that twists and their algebra
+(see 3.1) should remain well-defined. Here is a partial list of possible extensions (on a square lattice):
+
+    1. The multi-site interaction term between four variables on the same plaquette,
+                                                         †              †
+                                              Re χR (Ux Ux+µ̂ Ux+µ̂+ν̂ Ux+ν̂ ),                        (147)
+
+      can be added to the action without spoiling theorem 5 if the N -ality of R is 0.
+                                                                   †
+    2. The non-nearest-neighbor interaction term Re χR (Ux Ux+2µ̂       ) can be added to the action if the
+       N -ality of R is 0 and the coefficient in front of it is positive. (If the distance is larger than two
+       lattice spacings, or if the coefficient is negative, then the site-reflection positivity becomes hard
+       to prove.)
+                                                            †
+    3. The non-nearest-neighbor interaction term Re χR (Ux Ux+µ̂+ν̂ ), µ 6= ν, can be added to the action
+       if the N -ality of R is 0.
+
+                     *                   *                  *                  *
+    Note that our proved inequality may fail to be useful in phases other than the disordered phase,
+even though it is correct in any phases. Consider a spin system with a global symmetry group G in
+a d-dimensional box of size L1 × · · · × Ld whose boundary condition is twisted by g ∈ G in the x1 -
+                                                                                             Yd
+direction and otherwise periodic. Let Z g denote the twisted partition function and set L⊥ ≡    Lk .
+                                                                                                     k=2
+Based on our experience in gauge theories, we generally expect following behaviors of Z g /Z in various
+phases:
+                       Z g /Z ≈ exp(−xL⊥ exp(−yL1 )) (Disordered phase)
+                       Z g /Z ≈ exp(−zL⊥)                   (Ordered phase)                       (148)
+                       Z g /Z ≈ exp(−wL⊥ /L1 )              (Massless phase)
+where x, y, z and w are functions of the coupling constants and the choice of g. Letting α denote the
+value of (1 − Z g /Z)1/L1 in the thermodynamic limit, we have α = e−y in the disordered phase, while
+α = 1 in the other cases so that the r.h.s. of (101) tends to a constant independent of n. So the
+bottom line is that algebraic decay of correlation function cannot be inferred from the behavior of the
+r.h.s. in general.
+    Finally we comment on the formal difference between the inequality derived by Kovács and
+Tomboulis in refs.[19, 20] and ours in the two-dimensional SU (2) × SU (2) PCM. Their result is
+
+                                                         Zn (+, +) − Zn (−, −)
+                   hΓµ (x; n)i           ≤                                                 ,           (149)
+                                 Lµ =∞       Zn (+, +) + Zn (+, −) + Zn (−, +) + Zn (−, −)
+
+where Zn (τ1 , τ2 ) (τ1,2 = ±1) is the partition function on the lattice of size n × n with a twist τµ
+operated in the xµ -direction.
+
+
+
+
+                                                         23
+   On the other hand, our result ((101) with G = Z2 ) gives
+
+                                   hΓµ (x; n)i ≤ 2 {1 − hF0 [V]i}n/Lµ                                              (150)
+                                                   ( "                         #)n/Lµ
+                                                     1 ZLµ (+, +) − ZLµ (+, −)
+                                               =2                                     .                            (151)
+                                                     2           ZLµ (+, +)
+
+Note that in the latter, both r.h.s. and l.h.s. are estimated on the lattice of size Lµ . In both formulas
+the correlation function is assumed to be in the fundamental representation. Although they look
+different, both relates the exponential suppression of the wall free energy (in the thermodynamic
+limit) to the mass gap, thus their physical contents are totally consistent.
+
+3.4     Demonstration in 1D PCM and 2D square Ising model
+Let us verify the proved inequality (101) explicitly in the G × G PCM in one-dimension, with G an
+arbitrary compact group. The partition function of the model on a periodic chain of length L is given
+by
+                                   L
+                                 Z Y              XL                 
+                                                                 −1
+                       ZΛ ≡               dUk exp β   Re Tr (Ui Ui+1 ) ,                    β > 0, Ui ∈ G,         (152)
+                                    k=1                   i=1
+                                   L
+                                 Z Y            L hX
+                                                Y                             i
+                                                                         −1
+                             =            dUk              dr Fr χr (Ui Ui+1 ) ,                                   (153)
+                                    k=1         i=1   r
+
+        X
+where            runs over all irreducible unitary representations of G. Fr = Fr > 0 follows from the
+            r
+reflection positivity and reality of the action. Let us define cr ≡ Fr /F0 for later convenience (0
+denotes the trivial representation). Straightforward calculation yields
+                                                                  X
+                                                           ZΛ =         d2r (Fr )L .                               (154)
+                                                                   r
+
+The twisted partition function ZΛg is similarly given by
+                  L
+                Z Y               hX                              L hX
+                                                                 iY                       i
+       ZΛg ≡                dUk           dr′ Fr′ χr′ (gU1 U2−1 )                    −1
+                                                                       dr Fr χr (Ui Ui+1 ) ,            g ∈ G′ ,   (155)
+                      k=1           r′                            i=2      r
+                X
+            =         dr χr (g)(Fr )L ,                                                                            (156)
+                  r
+
+where G′ ⊂ G is an arbitrary subgroup of G. (ZΛg reduces to ZΛ for g = 1, as it should be.) Hence
+we get
+                                                                   X′            n/L
+                                                                        2       L 
+                                                                  
+                                                                  
+                                                                      dr (c r )  
+                                                                                  
+                                      n    Z           on/L                      
+                                                                    r
+                                   lim 1 −     dghO(g)i     = lim                                                  (157)
+                                  L→∞                        L→∞ X 2
+                                            G′                        dr (cr )L 
+                                                                                  
+                                                                  
+                                                                                 
+                                                                                  
+                                                                                        r
+                                                                                    n
+                                                                        = (c ) .
+                                                                               r′                                  (158)
+       X′
+Here            is defined as a sum over all representations of G which are nontrivial w.r.t. G′ , and cr′ is
+        r
+defined as the largest one among {cr | r is nontrivial w.r.t. G′ }.
+
+                                                                    24
+   Next we define the correlation function as Γ(n) = χR (U0 Un−1 ). Then (100) requires R to be
+nontrivial w.r.t. G. After straightforward calculation we get
+
+                                       hΓ(n)i    1
+                                              =    hχR (U0 Un−1 )i = (cR )n                                        (159)
+                                       hΓ(0)i   dR
+
+in the thermodynamic limit (L → ∞). Since cR ≤ cr′ is obvious from their definitions, we conclude
+from (158) and (159) that the inequality (101) certainly holds at least in the limit L → ∞. 18
+*                  *                   *                 *
+   As a next example let us take the two-dimensional Ising model on a square lattice. The partition
+function of the model is given by
+                                           L1 X
+                                              L2
+                           Z Y                                               !
+                                          X
+                    ZΛ =          dσk exp        (aσµν σµ+1,ν + bσµν σµ,ν+1 ) ,              (160)
+                                   k∈Λ              µ=1 ν=1
+
+
+                                                               1 X
+                                                                 Z
+where σµν is the Ising spin located at the site (µ, ν) and           dσ ≡
+                                                                      . Periodic boundary conditions
+                                                               2 σ=±1
+are imposed so that σ1,ν = σL1 +1,ν , σµ,1 = σµ,L2 +1 . We assume a > 0, b > 0. Let us focus on the
+high temperature (disorder) phase of the model.
+    The exact asymptotic form of the two-point correlation function is known [36] and the mass gap
+(or inverse correlation length) M ≡ 2(a − b), where a is the dual temperature defined by
+
+                                                 sinh 2a sinh 2a = 1.                                              (161)
+
+b is defined in the same way.
+    To estimate the free energy of walls we need explicit formulae for twisted and untwisted partition
+functions. Here we use the expressions due to Kastening [37], which in out notation read
+
+      1
+ZΛ =    [2 sinh(2a)]L1 L2 /2 ×
+      2
+(L                             L2 h                    L2 h                    L2 h
+                                                                                                       )
+   2 h        L          i Y            L        i Y          L        i Y          L         i
+                 1                           1                       1                       1
+ Y
+      2 cosh       γ2k−1 +         2 sinh      γ2k−1 +     2 cosh      γ2k−2 −     2 sinh      γ2k−2     ,
+                2                          2                       2                       2
+    k=1                            k=1                               k=1                             k=1
+                                                                                                                   (162)
+    (−) 1
+ZΛ        [2 sinh(2a)]L1 L2 /2 ×
+          =
+        2
+(L                               L2 h                    L2 h                    L2 h
+                                                                                                         )
+   2 h        L          i Y              L        i Y          L        i Y          L         i
+                  1                            1                       1                       1
+ Y
+      2 cosh        γ2k−1 +          2 sinh      γ2k−1 −     2 cosh      γ2k−2 +     2 sinh      γ2k−2     .
+                 2                           2                       2                       2
+    k=1                            k=1                               k=1                             k=1
+                                                                                                                   (163)
+
+    (−)
+ZΛ is the twisted partition function; more precisely, it is a partition function on a lattice which
+is antiperiodic in x1 -direction and periodic in x2 -direction. (Note that this boundary condition is
+equivalent to the existence of a wall wrapping around a periodic lattice in x2 -direction.) γk > 0 is
+defined by
+                                                            πk
+                           cosh γk = cosh 2a cosh 2b − cos     sinh 2a sinh 2b.                 (164)
+                                                            L2
+  18 (101) should hold for finite L too, but expressions of both sides of (101) become highly complicated for finite L and
+
+verification seems to be hard.
+
+
+
+
+                                                           25
+The inequality to be checked, namely (101) for the square Ising model, is given by
+                                                          (                           !)n/L1
+                                                                                (−)
+                                                               1       Z
+                                          hσ0 σn iΛ ≤ 2              1− Λ                         .                        (165)
+                                                               2        ZΛ
+
+h. . . iΛ denotes the expectation value measured on a finite lattice (= Λ). Similarly h. . . i∞ denotes an
+                                                                                     (−)
+                                                                                   Z
+expectation value in the thermodynamic limit. For simplicity we calculate not Λ but
+                                                                                    ZΛ
+                                                                    L2           L               
+                                                                                      1
+                                                                    Y
+                                                              1−          tanh            γ2k−2
+                         ZΛ − ZΛ
+                                  (−)                                                 2
+                                                                    k=1
+                               (−)
+                                        =                 L                                    L                 .      (166)
+                         ZΛ + ZΛ
+                                                                            
+                                                                1                                     1
+                                             L2 cosh                γ2k−1         L2 sinh                 γ2k−1
+                                             Y                 2                  Y                   2
+                                                          L                 +                 L                
+                                            k=1 cosh            1                 k=1 cosh            1
+                                                                    γ2k−2                                 γ2k−2
+                                                               2                                      2
+
+Considering that19 0 < γ0 = 2(a − b) is the smallest among {γk }, we obtain, after some algebra,
+                                                  !1/L1                          2L2 −1
+                                            (−)
+                                     Z                              n         1 X               o
+                          lim      1− Λ                   = exp         − γ0 +         (−1)k+1 γk .                        (167)
+                         L1 →∞        ZΛ                                       2
+                                                                                          k=0
+
+         2L
+          X 2 −1                   1 
+Since           (−1)k+1 γk = O               for L2 ≫ 1, we get
+                                     L2
+          k=0
+                                                          h                  i
+                                           lim      lim       r.h.s. of (165) = 2e−γ0 n .                                  (168)
+                                          L2 →∞ L1 →∞
+
+We compare this result with the asymptotic form of the exact two point function in the high temper-
+ature phase [36]:
+
+                                                   1        h      1 i
+                             hσ0 σn i∞ = f (a, b) p e−γ0 n × 1 + O                                            for n ≫ 1,   (169)
+                                                    n              n
+
+where the factor f (a, b) is independent of n.
+    (168) and (169) tells that the exponential decay rates of both sides coincide exactly for all values
+of (a, b) when the system is in the disorder phase. This result suggests that our inequality might be
+a rather accurate one in general.
+
+3.5       Demonstration in 2D triangular Ising model
+Our next example is the two-dimensional Ising model on a triangular lattice. In the square Ising
+model, exact expression for mass gap was already known, thus the value of our theorem is obscured.
+However, as for the triangular Ising model, an exact expression for mass gap is not known except for
+special cases, so (unlike in the previous section) the results we give in this section are essentially new.
+   We consider a lattice of size L1 ×L2 with periodic boundary conditions.20 See fig.10 for an example
+with L1 = 6 and L2 = 3; upper and lower edges painted in blue should be identified, and also right
+and left edges painted in red should be identified. (This lattice is the one that appeared in the seminal
+work of Houtappel [38] in which an analytic formula for the triangular Ising model was obtained for
+ 19 0 < γ stems from the fact that now the system is in the high temperature (disorder) phase.
+         0
+ 20 L
+        1 denotes the number of triangles. It is not the actual length of the lattice.
+
+
+
+                                                                    26
+the first time.) Another triangular lattice commonly used in the literature is depicted in fig.11, where
+edges are again colored for the purpose of indicating the periodic structure of the lattice. It is easy to
+prove that these lattices are equivalent if and only if L1 is a multiple of 2L2 . See fig.12 for illustration
+of this fact. Numbers are written to guide the eye; edges assigned with the same number should be
+identified. Hereafter we will assume this condition, but this is only a technical assumption and not
+essential for we will be interested in the limit L1 → ∞. The reason we did not start with the lattice
+in fig.11 is because it does not allow for simple use of reflection positivity.
+
+
+
+
+                                                          Figure 11: A triangular lattice constructed
+Figure 10: A triangular lattice of size L1 × L2           from a square lattice by addition of diagonal
+with periodic boundary conditions; the red and            edges. Its periodic structure is indicated by
+the blue ends are identified, respectively. This          coloring as in fig.10.
+lattice is symmetric w.r.t. each of vertical axes.
+
+
+
+
+                                                          Figure 13: A Z2 -twist represented by a blue
+                                                          loop on the dual (hexagonal) lattice. On the
+                                                          original (triangular) lattice, it is represented
+Figure 12: An illustration of the fact that those
+                                                          by a stacked set of links (colored in red) with
+lattices given in figs.10 and 11 are equivalent
+                                                          couplings of opposite sign.
+iff L1 is a multiple of 2L2 . Here L1 = 6 and
+L2 = 3.
+
+    Let us define a twist on a planar triangular lattice. A twist is a closed loop on the dual lattice, and
+the dual of a triangular lattice is a honeycomb (or hexagonal) lattice as shown in fig.13. Note that
+the blue line in fig.13 is a closed loop owing to the periodic structure of the lattice. It becomes, on the
+original lattice, a stacked set of links with a coupling constant of opposite sign, which is depicted as
+a set of red links in fig.13. Note that introducing a twist to a periodic lattice as in fig.13 is equivalent
+to imposing an anti-periodic boundary condition in the horizontal direction.
+
+                                                     27
+    Let us remember that it is not the number of the walls but rather the number mod 2 of them that
+is physically relevant. This ‘Z2 conservation’ of walls is a direct consequence of σ 2 = 1 in the present
+model, and we can show it explicitly by a sequence of changes of variables σ → −σ. For instance, the
+partition function containing one wall and that containing three walls agree completely as illustrated
+in fig.14 in which red segments represent twisted links.
+
+
+
+
+Figure 14: The partition function does not differ for any odd number of twists, owing to the Z2
+conservation of the twist.
+
+    Exact expressions for partition functions of a planar triangular Ising model with various boundary
+                                                                                                       (−)
+conditions were derived by Wu and Hu via ‘Grassmann path integral method’ [39]. Let ZΛ (ZΛ )
+denote the partition function with periodic boundary condition in both directions (with periodic in
+vertical and anti-periodic in horizontal direction), respectively. On a triangular lattice, three different
+couplings can be defined in each directions, so let us introduce J1 as the coupling constant on vertical
+bonds in figs.10,11 and J2 , J3 the other two. Reflection positivity however requires J2 = J3 (≡ J).
+Introduce
+                                t1 ≡ tanh(J1 /kB T ), t ≡ tanh(J/kB T ).                              (170)
+Our convention is such that t(1) > 0 corresponds to ferromagnetic coupling. On the (t, t1 )-plane, there
+is a line which corresponds to T = Tc and we will call it the “critical line” in the following. Under
+the change of notation L1 → N and L2 → M , the result due to Hu and Wu for this case reads
+
+                      1              MN h                                                i
+                   ZΛ =   2 cosh3 (βJ)     Ω 21 , 12 + Ω 21 ,0 + Ω0, 21 − sgn (T − Tc )Ω0,0 ,                   (171)
+                      2
+                  (−) 1              MN h                                                i
+                 ZΛ =     2 cosh3 (βJ)     Ω 21 , 12 + Ω 21 ,0 − Ω0, 21 + sgn (T − Tc )Ω0,0 ,                   (172)
+                      2
+
+where
+                   M−1
+                   Y NY−1 h                                                  2π(p + µ) 2π(q + ν) i1/2
+                                          2π(p + µ)        2π(q + ν)
+Ωµν = (A0 )MN/2                1−B cos              −A cos           −A cos            −                ,
+                   p=0 q=0
+                                             M                N                  M         N
+                                                                                                                (173)
+
+                                                                2(1 − t21 )(1 − t2 )t          2t1 (1 − t2 )2
+   A0 = (1 + t2 t1 )2 + (t1 + t2 )2 + 2t2 (1 + t1 )2 ,   A=                           ,   B=                    (174)
+                                                                        A0                          A0
+with Tc the phase-transition temperature. Using the formulae given above, we can show
+
+Lemma 6. In the disordered phase ( ⇔ T > Tc ) we have
+                                                                    !1/N
+                                                              (−)
+                                                       Z
+                                       lim    lim    1− Λ                  = e−ρ ,                              (175)
+                                     M→∞ N →∞           ZΛ
+
+
+
+
+                                                         28
+where
+                                                         
+                                                    g(B)
+                                         ρ ≡ cosh−1         > 0,                                    (176)
+                                                     |A|
+                                                                      
+                                         p                            1
+                                          −2x(1 + x)     −1  < x <  −
+                                       
+                                       
+                                                                      3
+                                       
+                                g(x) ≡                                   .                         (177)
+                                           1 − x            1
+                                                         −    ≤  x < 1
+                                       
+                                       
+                                             2              3
+                                       
+
+The order of two limits in (175) must not be changed.
+                      g(B)
+   In the above,            ≥ 1 and |B| < 1 are implicitly assumed; these can be shown for every
+                       |A|
+                                                       g(B)
+(t, t1 ) ∈ (−1, 1)2 by elementary methods. (Note that         = 1 defines the critical line.) The proof of
+                                                        |A|
+theorem 6 is elementary but technically cumbersome, which we relegate to the appendix.
+     To gain an intuitive understanding of the above result, let us see fig.15, in which the projection of
+1 − e−ρ onto the (t1 , t)-plane is drawn. The black region corresponds to the (anti-)ferromagnetically
+ordered phase, while the colored region to the disordered phase. Brighter color represents larger ρ,
+hence larger mass gap. Fig.15 clearly shows a symmetry under t ↔ −t; this is a manifestation of the
+
+
+
+
+                         -1
+
+                                                                                  1
+                                                                                  0.8
+                        -0.5
+                                                                                  0.6
+                                                                                  0.4
+                          0
+                    t
+
+
+
+
+                                                                                  0.2
+                                                                                  0
+
+                        0.5
+
+
+
+                          1
+                               -1       -0.5           0       0.5         1
+                                                      t1
+
+Figure 15: The projection of 1 − e−ρ onto the (t1 , t)-plane. The black region corresponds to the (anti-
+)ferromagnetically ordered phase and the colored region to the disordered phase. Brighter (darker)
+color represents larger (smaller) ρ and especially ρ diverges on the t = 0 line. The boundary of the
+colored region signifies the critical line.
+
+well-known fact that the triangular Ising model is invariant under simultaneous sign reversal of any
+two of J1 , J2 , J3 .
+
+
+
+
+                                                      29
+    The inequality of our primary interest, namely (101) for the triangular Ising model, reads21
+                                                     (                    !)n/N
+                                                                    (−)
+                                                         1       Z
+                                     hσ0 σn iΛ ≤ 2             1− Λ               .                               (178)
+                                                         2        ZΛ
+
+Letting M → ∞ after N → ∞, we obtain
+
+Theorem 6.
+                                                 hσ0 σn i∞ ≤ 2e−ρn .                                              (179)
+    The above is the main result in this subsection; ρ is a rigorous lower bound of the true mass gap.
+We should keep in mind that the l.h.s. of (178) is a pair correlation between two spins on the same
+horizontal level as depicted in fig.10; the two spins are not on the same lattice axis.
+    Since the exponential decay rates are equal for both sides of the inequality in the the square Ising
+model, it is natural to expect so in the triangular Ising model too. The asymptotic correlation between
+two spins on the same lattice axis in the triangular Ising model was derived by Stephenson for both
+ferromagnetic and antiferromagnetic couplings [40]. However, the asymptotic correlation between two
+spins off the axis is not found in the literature. We conjecture as follows:
+
+Conjecture.
+ρ is equal to the true off-axis mass gap for every (t, t1 ) in the disordered phase.
+
+The most straightforward way to test the conjecture would be to measure the mass gap directly
+via Monte Carlo simulation. However, as already seen from (169) the exponential falloff generically
+receives power law corrections (the so-called ‘Ornstein-Zernike’ decay [41]) which makes a reliable
+fitting difficult. To evade this hamper would call for sophisticated methods such as the Monte Carlo
+Transfer Matrix Method [42]. A numerical check of the conjecture therefore seems to be a highly
+nontrivial task, and we defer it to future work.
+     In a special case, analytical test is possible: when t1 = 0 the model reduces to the isotropic square
+Ising model and the off-axis correlation function reduces to the diagonal correlation function. From
+(176) it follows that
+
+                                                (1 + t2 )2
+                           ρ t1 =0 = cosh−1
+                                                                                      p
+                                                                  for |t| < tC =       2 − 1,                     (180)
+                                               4|t|(1 − t2 )
+
+which completely agrees with the exact diagonal mass gap obtained by Cheng and Wu in 1967 [36].
+     Further insight is gained by considering the isotropic case t = t1 . Since the two-point correlation
+function in this case is expected to be approximately√
+                                                         isotropic (except for sign in antiferromagnetic
+                                         −ρ       −( 3/2)m
+case),
+ p it seems reasonable to compare e with e                  where m is the exact on-axis mass gap [40].
+( 3/2 is a geometric correction factor.)       √                             p
+     Fig.16 depicts the graphs of e−ρ and e−( 3/2)m against t ∈ [−1, 2 − 3 ]. For t > 0 they agree
+quite well; their nonzero difference is hardly discernible to the eye. For t < 0 agreement is still not
+bad. To say the least, the comparison suggests that ρ be fairly close to the true off-axis mass gap and
+supports, rather than defies, the conjecture.
+     It is readily seen from (177),(176) that e−ρ is a nonanalytic function in the region of negative
+t1 , which, assuming the validity of our conjecture, implies non-analyticity of the mass gap. Such
+an exotic possibility definitely deserves further study. Strictly speaking, however, there are different
+possibilities that cannot be denied here: for example it could be the case that ρ equals the true mass
+  21 Actually, we originally proved (101) on a square lattice, but the whole procedure of the proof goes over to the case
+
+of a triangular lattice almost unchanged.
+
+
+
+                                                             30
+                                1
+
+                             0.8
+
+                             0.6
+
+                             0.4
+
+                             0.2                   exp(-ρ)
+                                                       1/2
+                                            exp(-(3 /2)m)
+                                0
+                                    -1     -0.8       -0.6        -0.4     -0.2         0        0.2
+                                                                     t
+                             √
+Figure 16: e−ρ and e       −( 3/2)m
+                               are plotted against t in the case of isotropic case (t = t1 ). Their
+agreement is remarkable especially at t positive.
+
+
+gap only when t1 ≥ 0. In the latter case, non-analyticity of ρ does not signify that of the true mass
+gap.
+    Let us end this subsection by invoking the effectiveness of our approach. Although the circumstance
+concerning our conjecture is rather moot, it can be safely said that our result in this subsection is
+essentially new to the extent that it rigorously gives a lower bound for the still-unknown off-axis mass
+gap of the triangular (both ferromagnetic and antiferromagnetic, both isotropic and anisotropic) Ising
+model in the disordered phase.
+
+3.6     Strong coupling analysis
+In this section we show, using the convergent strong-coupling (taken as synonymous with high temper-
+ature) expansion, that both sides of the proved inequality (101) have an identical exponential decay
+rate at long distance as long as the on-axis correlation function is considered.22 The proof is valid in
+any dimension and makes no use of reflection positivity. Since the corresponding result in LGT has
+already been derived by Münster [28] (as mentioned in section 2.2) and since no essential difficulty
+arises in extending his proof to the case of spin models, we shall be brief here and only try to sketch
+the main idea behind the approach. Implications of this result to our conjecture will be discussed
+later.
+    For simplicity of exposition let us consider the isotropic square Ising model and its on-axis corre-
+lation function (though our argument is readily extendable to more general models such as PCM). A
+precise statement of the claim goes follows: as long as the size of the lattice is larger enough than n,
+the strong coupling expansion (SCE) of ρ and m are identical at least up to order n. (Our notation is
+such that the definition of ρ is in (175), m is the mass gap, Z, Z (−) , L1 , L2 are the same as in section
+3.4 and t ≡ tanh(J/kB T ).)
+  22 High-temperature behavior of correlation functions in Ising-like models have been studied by many authors in a
+
+variety of methods; see ref.[43], for example. It is worthwhile to note that a majority of existing studies deal with neither
+the off-axis correlation function nor the case of an antiferromagnetic coupling. Hopefully a partial understanding of
+this fact will be gained through the discusions in this subsection.
+
+
+
+
+                                                             31
+                                           XY
+   Let us begin with the expression Z =      (1 + tσi σj ). Expanding Z into sums of disconnected
+                                            {σ} i6=j
+                                                            X
+loops and then taking the logarithm, we have log Z =            t|γ| with γ any connected loop and |γ| the
+                                                            γ
+                                                                     Z (−)      X
+perimeter of γ. Using similar expression for Z (−) we obtain log           = −2   t|γ| where S is the set
+                                                                      Z
+                                                                                γ∈S
+of loops wrapping around the lattice in x1 -direction for odd number of times. Since we are interested
+in the limit |t| ≪ 1, it is sufficient to consider only such loops that wind around the lattice in x1 -
+direction only once. Factorizing the degeneracy factor due to translational symmetry in x2 -direction,
+             Z (−)          X
+we have log        = −2L2         t|γ| ; the definition of S ′ should be obvious.
+               Z
+                           γ∈S  ′
+
+    It is clear that the leading contribution, of order O(tL1 ), comes from a straight line extending
+in x1 -direction while the subleading contributions come from loops which are formed via addition of
+some ‘decorations’ to the leading line. Dividing by the leading contribution and taking the logarithm
+will single out contributions of connected decorations, which is proportional to L1 owing to the
+translational invariance of the straight line. Thus we find exactly the behavior (148) in section 3.3:
+                                        h 1       Z (−) . L1 i
+                                                        
+                                    log        log        t     ∝ L1 .                            (181)
+                                           L2       Z
+On the other hand, the on-axis two-point correlation function hσx σx+r i∞ can be written as a sum over
+contributions of lines connecting σ1 to σ2 , whose leading term comes from a straight line extending
+between σ1 and σ2 and subleading terms from zig-zag lines that descend from the leading one through
+addition of decorations. In this way we see that the SCE of
+                                    h 1      Z (−) . L1 i.
+                                                   
+                            lim log      log           t     L1 (= −ρ − log t)                   (182)
+                        L1 ,L2 →∞     L2       Z
+is identical, term by term, to the SCE of lim log hσx σx+r i∞ /tr r (= −m − log t). Hence m = ρ.
+                                                                 
+                                           r→∞
+
+    The argument above is valid for various other models as long as on-axis correlation functions are
+concerned. Then it is natural to ask about off-axis correlation functions. (This is the case relevant
+for the conjecture.) From fig.10 it is easily understood that the leading contribution to the SCE of
+        Z (−)
+                                                                                       
+ 1                                                                                  L1
+    log       does not come from a single straight line: instead it comes from            different loops,
+L2       Z                                                                         L1 /2
+all of the same length L1 . So we now have a number of different ways to see a given higher-order
+loop as a sum of any one of the leading-order loops and a decoration added to it! This implies that
+                                                 1     Z (−)
+the counting of diagrams appearing in SCE of       log        (and of off-axis correlation function, too)
+                                                L2       Z
+is immensely complicated. We even face another problem: since most of the leading-order loops have
+no translational symmetry, it becomes a nontrivial task to show (181). For these reasons we cannot
+give a mathematically rigorous proof of the conjecture even at sufficiently high temperature.
+    Some caveats are in order.
+   • First, remember that we did confirm m = ρ for the diagonal correlation function in the square
+     Ising model ((180) and the accompanying discussion). This fact implies that our inability to
+     prove (the very existence of m, ρ and) the equality m = ρ for off-axis correlation function in
+     SCE approach does not itself constitute a disproof.
+
+   • One may be tempted to argue that, since an exact one-to-one correspondence between the
+                                                        1      Z (−)
+     diagrams for SCE of hσ1 σ2 i∞ and those for SCE of    log       exists, m = ρ would readily
+                                                        L2      Z
+
+                                                       32
+       follow even in the off-axis case if we presume the existences of both m and ρ. This reasoning is
+       however incorrect, because the exact correspondence is present only in the on-axis case. (This
+                                                                                    1      Z (−)
+       point is quite nontrivial.) An example of a loop that appears in SCE of         log       as one
+                                                                                   L2       Z
+       of the leading contributions but has no counterpart among the diagrams in SCE of hσ1 σ2 i∞ is
+       shown in fig.17. (Although somewhat counterintuitive, this loop has a minimum perimeter to
+       wind around the lattice in horizontal direction.)
+       Since we have to send L1 → ∞ before L2 → ∞ in estimating ρ, those loops can never be
+       neglected. From this point of view, it is rather surprising that m = ρ holds in the off-axis case
+       of the square Ising model.
+
+    • It seems worthwhile to note a qualitative difference between ferromagnetic and antiferromagnetic
+                                                                 X
+      cases. The so-called random path representation hσ1 σ2 i =      t|γ| , where the sum runs over every
+                                                                              γ
+       path connecting σ1 to σ2 , loses its probabilistic interpretation when t|γ| < 0. This actually
+       happens in a triangular Ising model with antiferromagnetic couplings. In such a case it is
+       impossible to apply fertile probability-theoretical methods, so that a particular difficulty is
+       envisaged in settling the conjecture when the coupling is antiferromagnetic.
+
+Summarizing above, we do not have a definitive answer as to the validity of the conjecture even at
+sufficiently high temperature, and further analysis on this topic will be hopefully reported elsewhere.
+
+
+
+
+Figure 17: Drawn in red is an example of a loop wrapped around the lattice in vertical as well as in
+horizontal direction. Such loops appear numerously if the horizontal size of the lattice is much larger
+than its vertical size.
+
+
+
+4     Conclusion
+In this paper we generalized the inequality of Tomboulis-Yaffe in SU (2) LGT to SU (N ) LGT and also
+to general classical spin systems, together with a detailed analysis of basic properties of non-Abelian
+twists. Our result is obtained essentially on a finite lattice and gives a rigorous upper bound of a
+Wilson loop and a two-point correlation function. An intriguing point is that the inequality obtained
+for spin models does not require the center of the symmetry group, so they can be applied e.g. to
+G × G PCM with centerless G. This point seems to be a progress compared with preceding studies
+in which the center was perceived as special without physically convincing motivation23 .
+  23 Some arguments that allege the speciality of the center do exist in the literature, but they seem to be rather subtle,
+
+as discussed attentively in ref.[21].
+
+
+
+
+                                                            33
+    Furthermore we demonstrated our result explicitly in some solvable models and found in the
+square Ising model that the obtained lower bound of the mass gap is equal to the exact one. We also
+calculated the off-axis mass gap in the triangular Ising model for various couplings, but this time the
+exact mass gap is not known and direct comparison is impossible. We conjectured that the bound is
+indeed saturated and pointed out that the conjecture implies the non-analyticity of the mass gap. We
+have tested its validity in several ways, including strong coupling analysis, but a definitive conclusion
+is still lacking and is left for future work.
+    At present the mechanisms of the quark confinement in non-Abelian gauge theories and the mass
+gap generation in non-Abelian spin models still remain elusive, and we hope that our result will be
+useful for further clarification of the issue.
+
+Note added
+    After this work was completed, we learned that C. Borgs and E. Seiler had already obtained a
+result very similar to theorem 2 of this paper; see Lemma II.8 and the accompanying discussion in
+ref.[44]24 . But since it links the Polyakov loop correlator and not the Wilson loop with the electric
+flux free energy, it is not quite the same as ours. It does, however, already imply the ’t Hooft’s string
+tension is less than or equal to Wilson’s (see (II.48) and (II. 50) of ref.[44]). Finally we note that their
+results hardly overlap with ours in section 3.
+
+
+Acknowledgment
+The author thanks Tetsuo Hatsuda, Yoshio Kikukawa, Seiji Miyashita, Masao Ogata, Shoichi Sasaki,
+Hiroshi Suzuki, Shun Uchino and Tamiaki Yoneya for enlightening discussions and Ming-Chya Wu for
+valuable correspondence concerning ref.[39]. Thanks also go to the anonymous referee for useful sug-
+gestions. This work was supported in part by Global COE Program “the Physical Sciences Frontier”,
+MEXT, Japan.
+
+
+Appendix A                 Proof of Lemma 6
+For T > Tc , (171) and (172) yield
+                                                    (−)        Ω0, 21 − Ω0,0
+                                           ZΛ − ZΛ
+                                                 (−)
+                                                          =                         .                 (183)
+                                           ZΛ + ZΛ            Ω 12 , 21 + Ω 21 ,0
+
+               B
+Let us define θA (µ, p, M ) ≥ 0 by
+
+                            B                              2π(p + µ) .        π(p + µ)
+                      cosh θA (µ, p, M ) ≡ 1 − B cos                   2A cos          .              (184)
+                                                              M                  M
+                                                                            B
+It is tedious but straightforward to show that the minimum of cosh θA          as a function of −1 ≤
+    π(p + µ)                     g(B)                         g(B)
+cos           ≤ 1 is given by           (see (177)), and that       ≥ 1 for every (t, t1 ) ∈ (0, 1)2 , with
+       M                          |A|                          |A|
+equality on the critical line. After elementary calculations, we find
+                                             (M−1                                      )N
+                                 A MN                      π(p + µ)
+                                     0
+                                              Y
+                           2                                               B
+                    (Ωµν ) ≃                          2A cos          exp θA (µ, p, M )               (185)
+                                    2           p=0
+                                                                M
+ 24 I thank E. Seiler for kindly pointing out this fact to me.
+
+
+
+
+                                                          34
+for N ≫ 1. Since (185) has no dependence on ν,
+
+                                                            Ω 12 ,0           Ω0,0
+                                                     lim              = lim             = 1.                       (186)
+                                                 N →∞ Ω 1 , 1           N →∞ Ω0, 1
+                                                              2 2                   2
+
+
+Next, using (185) we get
+
+                         Ω 21 , 21        n 2M−1
+                                             X               k o
+                                     ≃ exp N    (−1)k+1 fAB                                     for N ≫ 1,         (187)
+                         Ω0, 12                              2M
+                                                       k=0
+
+with
+                              1    n                                  q                 2           2 o
+              fAB (x) ≡         log 1 − B cos(2πx) +                      1 − B cos(2πx) − 2A cos(πx)    .         (188)
+                              2
+                                       Ω0,0
+Let us investigate how fast                   converges to 1. Using (185) we can show
+                                       Ω0, 21
+
+                         Ω            2       M−1
+                                                Y n                         o
+                                 0,0                                     B
+                                            ≃              1 − 4 exp(−N θA )                   for N ≫ 1.          (189)
+                              Ω0, 21
+                                                 p=0
+
+                              B
+Define θ as the smallest of {θA (0, p, M )}p . Then (189) simplifies to
+                                       Ω            2
+                                              0,0
+                                                           ≃ 1 − K e−N θ             for N ≫ 1.                    (190)
+                                            Ω0, 21
+
+K is an integer ∈ {4, 8, 12, 16}, dependent on A, B and M . Substitution of (186), (187) and (190)
+into (183) yields
+                        (−)                           2M−1
+                    ZΛ                      n     h    X                k io
+             1−               ≃ 2 exp           −N θ+      (−1)k+1 fAB                                for N ≫ 1.   (191)
+                     ZΛ                                                 2M
+                                                                k=0
+
+                                                           2M−1
+               −1       g(B)               1                X                      k      1 
+Since θ = cosh                       +O                and            (−1)k+1 fAB         =O       for M ≫ 1, we find
+                         |A|                  M                                      2M        M
+                                                               k=0
+
+                                                                   !1/N
+                                                               (−)
+                                                             ZΛ
+                                              lim lim 1 −                = e−ρ ,                                   (192)
+                                             M→∞ N →∞         ZΛ
+                                                                    
+                                                           −1   g(B)
+                                                   ρ ≡ cosh            ,                                           (193)
+                                                                 |A|
+
+which is the desired result.                                                                                            
+
+
+
+
+                                                                       35
+References
+ [1] E. T. Tomboulis, L. G. Yaffe, Commun. Math. Phys. 100 (1985) 313.
+
+ [2] R. Peierls, Proc. Cambridge Phil. Soc. 32 (1936) 477.
+
+ [3] L. Onsager, Phys. Rev. 65 (1944) 117; Nuovo Cimento (Suppl.) 6 (1949) 261.
+
+ [4] J. M. Kosterlitz, D. J. Thouless, J. Phys. C6 (1973) 1181;
+    see also V. L. Berezinskii, Sov. Phys. JETP 34 (1972) 610.
+
+ [5] G. ’t Hooft, Nucl. Phys. B138 (1978) 1; ibid. B153 (1979) 141.
+
+ [6] G. Mack, V. B. Petkova, Annals Phys. 125 (1980) 117.
+
+ [7] T. Yoneya, Nucl. Phys. B144 (1978) 195;
+    J. M. Cornwall, Nucl. Phys. B157 (1979) 392;
+    H. B. Nielsen, P. Olesen, Nucl. Phys. B160 (1979) 380.
+
+ [8] B. Svetitsky, L. G. Yaffe, Nucl. Phys. B210[FS6] (1982) 423.
+
+ [9] F. Bursa, M. Teper, JHEP 08 (2005) 060 [arXiv:hep-lat/0505025];
+    Ph. de Forcrand, D. Noth, Phys. Rev. D72 (2005) 114501 [arXiv:hep-lat/0506005].
+
+[10] R. L. Dobrushin, S. B. Shlosman, Commun. Math. Phys. 42 (1975) 31.
+
+[11] L. G. Yaffe, Phys. Rev. D21 (1980) 1574.
+
+[12] J. Groeneveld, J. Jurkiewicz, C. P. Korthals Altes, Phys. Scripta 23 (1981) 1022.
+
+[13] P. A. Lee, T. V. Ramakrishnan, Rev. Mod. Phys. 57 (1985) 287 and references therein.
+
+[14] H. Iida, T. Doi, N. Ishii, H. Suganuma, K. Tsumura, Phys. Rev. D74 (2006) 074502
+     [arXiv:hep-lat/0602008].
+
+[15] F. Green, S. Samuel, Nucl. Phys. B190[FS3] (1981) 113.
+
+[16] A. M. Polyakov, Gauge Fields and Strings, Harwood, 1987.
+
+[17] P. Rossi, M. Campostrini, E. Vicari, Phys. Rept. 302 (1998) 143 [arXiv:hep-lat/9609003].
+
+[18] L. Del Debbio, H. Panagopoulos,            P.   Rossi,   E.   Vicari,   JHEP   01   (2002)   009
+     [arXiv:hep-th/0111090].
+
+[19] T. Kovács, E. T. Tomboulis, Phys. Lett. B321 (1994) 75 [arXiv:hep-lat/9311005]; Phys. Lett.
+     B367 (1996) 254 [arXiv:hep-lat/9508010]; Nucl. Phys. Proc. Suppl. 47 (1996) 290.
+
+[20] T. Kovács, Nucl. Phys. B482 (1996) 613 [arXiv:hep-lat/9603022]; UCLA PhD Thesis (1996).
+
+[21] O. A. Borisenko, P. Skala, Phys. Rev. D62 (2000) 014502.
+
+[22] T. Kovács, E. T. Tomboulis, Phys. Rev. D65 (2002) 074501 [arXiv:hep-lat/0108017].
+
+[23] I. Montvay, G. Münster, Quantum fields on a lattice, Cambridge University Press, Cambridge,
+     1994.
+
+[24] K. Osterwalder, E. Seiler, Ann. Phys. 110 (1978) 440.
+
+                                                36
+[25] T. Kovács, E. T. Tomboulis, Phys. Rev. Lett. 85 (2000) 704 [arXiv:hep-lat/0002004].
+
+[26] Ph. de Forcrand, M. D’Elia, M. Pepe, Phys. Rev. Lett. 86 (2001) 1438 [arXiv:hep-lat/0007034].
+
+[27] Ph. de Forcrand, L. von Smekal, Phys. Rev. D66 (2002) 011504 [arXiv:hep-lat/0107018].
+
+[28] G. Münster, Nucl. Phys. B180[FS2] (1981) 23.
+
+[29] E. T. Tomboulis, arXiv:0707.2179[hep-th].
+
+[30] T. Kanazawa, Phys. Lett. B670 (2009) 421 [arXiv:0805.2742].
+
+[31] K. R. Ito, E. Seiler, arXiv:0803.3019[hep-th].
+
+[32] D. J. Gross, E. Witten, Phys. Rev. D21 (1980) 446.
+
+[33] A. W. Knapp, Lie Groups Beyond an Introduction, 2nd ed., Birkhäuser, Boston, 2002.
+
+[34] B. B. Beard, M. Pepe, S. Riederer, U.-J. Wiese, Comput. Phys. Commun. 175 (2006) 629
+     [arXiv:hep-lat/0602018].
+
+[35] R. D. Pisarski, F. Wilczek, Phys. Rev. D29 (1984) 338.
+
+[36] B. M. McCoy, T. T. Wu, The Two-Dimensional Ising Model, Harvard University Press, Cam-
+     bridge, 1973;
+    C. Itzykson, J.-M. Drouffe, Statistical field theory, Cambridge University Press, Cambridge,
+    1989;
+    J. Palmer, Planar Ising Correlations, Progr. Math. Phys. 49, Birkhäuser, Boston, 2007.
+
+[37] B. Kastening, Phys. Rev. E66 (2002) 057103 [arXiv:cond-mat/0209544].
+
+[38] R. M. F. Houtappel, Physica 16 (1950) 425.
+
+[39] M.-C. Wu, C.-K. Hu, J. Phys. A35 (2002) 5189 [arXiv:cond-mat/0204217].
+
+[40] J. Stephenson, J. Math. Phys. 11 (1970) 413; ibid. 420.
+
+[41] M. Campanino, D. Ioffe, Y. Velenik, Probab. Theory Rel. Fields 125 (2003) no. 3, 305
+     [arXiv:math/0111274] and references therein.
+
+[42] N. A. Alves, B. A. Berg, R. Villanova, Phys. Rev. B41 (1990) 383;
+    N. A. Alves, B. A. Berg, R. Villanova, Phys. Rev. B43 (1991) 5846.
+
+[43] P. J. Paes-Leme, Ann. Phys. 115 (1978) 367;
+    R. Schor, Commun. Math. Phys. 59 (1978) 213;
+    B. Simon, Commun. Math. Phys. 77 (1980) 111;
+    M. O’Carroll, J. Stat. Phys. 34 (1984) 597;
+    M. O’Carroll, Phys. Lett. B143 (1984) 188;
+    J. Bricmont, J. Flöhlich, Nucl. Phys. B251[FS13] (1985) 517;
+    J. Bricmont, J. Flöhlich, Commun. Math. Phys. 98 (1985) 553;
+    J. Bricmont, J. Flöhlich, Nucl. Phys. B280[FS18] (1987) 385.
+
+[44] C. Borgs, E. Seiler, Commun. Math. Phys. 91 (1983) 329.
+
+
+
+                                                  37
+

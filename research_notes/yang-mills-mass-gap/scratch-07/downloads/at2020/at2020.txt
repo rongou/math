@@ -1,0 +1,3090 @@
+                                               The glueball spectrum of SU(3) gauge theory in 3+1 dimensions
+arXiv:2007.06422v2 [hep-lat] 20 Oct 2020
+
+
+
+
+                                                                        Andreas Athenodoroua and Michael Teperb
+
+                                           a
+                                               Dipartimento di Fisica, Università di Pisa and INFN, Sezione di Pisa, Largo Pontecorvo 3,
+                                                                                    56127 Pisa, Italy.
+                                                                                           and
+                                               Computation-based Science and Technology Research Center, The Cyprus Institute, 20
+                                                                          Kavaﬁ Str., Nicosia 2121, Cyprus
+                                                         b
+                                                             Rudolf Peierls Centre for Theoretical Physics, University of Oxford,
+                                                                             Parks Road, Oxford OX1 3PU, UK
+                                                                                             and
+                                                                           All Souls College, University of Oxford,
+                                                                             High Street, Oxford OX1 4AL, UK
+
+
+
+
+                                                                                         Abstract
+                                               We calculate the low-lying glueball spectrum of the SU(3) lattice gauge theory in 3 + 1
+                                           dimensions for the range β ≤ 6.50 using the standard plaquette action. We do so for states
+                                           in all the representations R of the cubic rotation group, and for both values of parity P and
+                                           charge conjugation C. We extrapolate these results to the continuum limit of the theory using
+                                           the conﬁning string tension σ as our energy scale. We also present our results in units of the
+                                           r0 scale and, from that, in terms of physical ‘GeV’ units. For a number of these states we
+                                           are able to identify their continuum spins J with very little ambiguity. We also calculate the
+                                           topological charge Q of the lattice gauge ﬁelds so as to show that we have suﬃcient ergodicity
+                                           throughout our range of β, and we calculate the multiplicative renormalisation of Q as a
+                                           function of β. We also obtain the continuum limit of the SU(3) topological susceptibility.
+
+
+
+
+                                           E-mail: andreas.athinodorou@df.unipi.it, mike.teper@physics.ox.ac.uk
+Contents
+1 Introduction                                                                                  1
+
+2 Calculating on a lattice                                                                      3
+
+3 String tension                                                                                4
+
+4 Glueball spectrum                                                                             5
+  4.1 Quantum numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         6
+  4.2 Finite volume corrections . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     7
+  4.3 Glueball masses . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    12
+
+5 Continuum limit                                                                              13
+  5.1 Continuum mass ratios . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      13
+  5.2 Physical units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   15
+  5.3 Continuum glueball spins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     15
+
+6 Comparisons                                                                                  18
+
+7 Topological fluctuations                                                                     20
+  7.1 Topology on the lattice . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    21
+  7.2 Critical slowing down . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    25
+
+8 Possible improvements                                                                        27
+
+9 Discussion                                                                                   28
+
+
+1    Introduction
+The spectrum of the SU(3) gauge theory in 3+1 dimensions is of interest for both phe-
+nomenological and theoretical reasons. On the phenomenological side it may inform us about
+the approximate location of glueballs in QCD if the mixing with q q̄ states is as modest as sug-
+gested by the OZI rule. Here it is the lighter glueballs, with masses below say 3 GeV, that are
+of greatest interest given the experimental constraints in observing and identifying glueballs.
+The masses of such glueballs, some 4 or 5 in total, have been reasonably well determined for a
+long time: see for example [1]. Subsequent calculations, for example [3, 4, 5, 6], have remained
+consistent with these earlier estimates, albeit with much reduced errors, indicating that this
+part of the spectrum is well understood. Slight shifts in the mass estimates are mostly due to
+diﬀerences in importing the physical ‘GeV’ scale into the unphysical pure gauge theory. Since
+the two theories are not the same this reﬂects an intrinsic ambiguity.
+    On the theoretical side the spectrum represents the obvious challenge for attempts to obtain
+an analytic control of the gauge theory. (This is also of indirect phenomenological importance
+since much of the diﬃculty in obtaining analytic control of the long distance physics of QCD
+
+                                                1
+arises from the non-perturbative physics of the underlying gauge theory.) To use the glueball
+spectrum as a test of theoretical approaches it is important to have a substantial number of
+states for a variety of spins J, parities P and charge conjugations C, with excited as well as
+ground states. Many of these states will be quite heavy and calculating their masses on the
+lattice is more challenging. Moreover here we need accurate mass estimates, since the errors
+cannot be hidden within the uncertainty associated with importing a physical ‘GeV’ scale.
+Such calculations are still open to considerable improvement and the purpose of the present
+paper is to take some further steps in that direction.
+     The ﬁrst step is to try to improve the reliability of our calculation of lattice masses. Since
+the usual way to calculate masses on the lattice is from the time decay of correlators of
+lattice operators, we use a large basis of operators so as to decrease the probability that we
+miss intermediate states in the spectrum. To improve our extrapolation of these masses to
+the continuum limit we perform calculations over a wide range of lattice spacings, a, down
+     √
+to a σ ∼ 0.10 where σ is the conﬁning string tension (which we also calculate). We also
+perform a ﬁnite volume comparison at one of our smaller lattice spacings so as to identify
+any ﬁnite volume corrections to our calculations. The calculations at the smallest values of
+a are of course the most important, and here one needs to be concerned about the ergodicity
+of the Monte Carlo and in particular about the possible freezing of the ﬁelds into sectors of
+unchanging topological charge Q. To investigate this we calculate the decorrelation of Q for
+all our values of a. In the process we need to demonstrate that our method of calculating Q
+is reliable and this also allows us to provide a precise estimate of the continuum topological
+susceptibility χt .
+     The glueball states that we calculate will belong to the representations R of the subgroup
+of rotations that leave the cubic lattice invariant. That is to say, they are labelled by RP C
+rather than the continuum J P C . Since one knows how the 2J + 1 dimensional vector space
+associated with a glueball of spin J is partitioned amongst the various cubic representations
+R, and since these 2J + 1 states should be nearly degenerate at small a, one can attempt to
+identify the value of J through the observation of the appropriate near-degeneracies. This
+is limited by the accuracy of our calculation of enough excited states as well as the ground
+states but we are still able to identify J for a substantial number of states. It is however worth
+emphasising that if one wants to compare the predicted spectrum of a theoretical approach
+or model to our lattice data, it may make sense to convert the predictions from those for J P C
+to those for RP C . This is simple to do using the conversion that we will present later in this
+paper.
+     Our paper is as follows. In the next section we give a brief overview of our lattice setup
+and how we calculate energies. We then move on to present our calculations of the conﬁning
+string tension σ which we shall use as our scale for the calculated glueball masses in our
+extrapolation of the latter to the continuum limit. We then turn to the calculation of the
+glueball masses mG on our cubic lattices. Here we discuss the representations of the cubic
+group and present the relation between these and the continuum rotation group. We also
+provide a detailed discussion and check of ﬁnite volume eﬀects. In the following section we
+                                                                                       √
+present our extrapolations to the continuum limit of the dimensionless ratios mG / σ and the
+conversion of the masses into ‘GeV’ units. Where possible we also identify the continuum spin
+
+                                                2
+J of the states. We follow this section with a comparison of our results to those of some of the
+most comprehensive earlier spectrum calculations. We then return to the issue of the freezing
+of the topological charge at the smallest lattice spacings. We calculate Q on large ensembles
+of lattice ﬁelds, to check for ergodicity, and as a byproduct obtain a value for the topological
+susceptibility in the continuum limit. We then turn to pinpointing the ways in which our
+calculations need to be improved. We summarise our ﬁndings in the concluding section.
+
+
+2    Calculating on a lattice
+Our lattice setup is entirely standard. We work on hypercubic lattices of size L3s Lt with lattice
+spacing a and with periodic boundary conditions on the ﬁelds. Our ﬁelds are SU(3) matrices,
+Ul , assigned to the links l of the lattice, The Euclidean path integral is
+                                          Z
+                                     Z = DU exp{−βS[U]},                                       (1)
+
+where DU is the Haar measure and we use the standard plaquette action,
+                              X       1
+                                                
+                                                            6
+                       βS = β      1 − ReTrUp       ; β = 2.                                  (2)
+                               p
+                                       3                    g
+
+Here Up is the ordered product of link matrices around the plaquette p. We write β = 6/g 2,
+where g 2 is the bare coupling and this provides a deﬁnition of the running coupling on the
+length scale a. Since the theory is asymptotically free g 2 → 0 and hence β → ∞ as a → 0.
+Monte Carlo calculations are performed using a mixture of standard Cabibbo-Marinari heat
+bath and over-relaxation sweeps through the lattice in the ratio 1:4. We typically perform
+2 × 106 sweeps at each value of β at each lattice size, and we typically calculate correlators
+every 25 sweeps.
+    We calculate masses M and energies E from the exponential decay of appropriate correla-
+tion functions. For example, the energy Egs of the lightest state with the quantum numbers
+of the operator φ is given by
+                                             X                     t→∞
+                C(t = ant ) = hφ† (t)φ(0)i =   |hvac|φ†|ni|2 e−En t ∝ e−Egs ant .          (3)
+                                              n
+
+These masses and energies are obtained in lattice units, i.e. as aEgs , and are relative to the
+vacuum once Lt is large enough, so that the vacuum energy is zero. If φ has the quantum
+numbers of the vacuum then the lightest state of interest is the ﬁrst excited state above the
+vacuum. In this case it can be convenient to use the vacuum-subtracted operator φ − hφi,
+which will remove the contribution of the vacuum in eqn(3), so that the lightest non-trivial
+state appears as the leading term in the expansion of states.
+    The accuracy of such a calculation of aEgs is constrained by the fact that the statistical
+errors are roughly independent of t (for pure gauge theories) while the desired ‘signal’ is
+decreasing exponentially with t. So if the overlap of the desired state onto our basis is small,
+
+                                                  3
+the relevant correlator will disappear into the statistical ‘noise’ before we get to large enough
+t for the correlator to be dominated by the simple exponential from which we can extract
+the ground state energy. Similarly the correlator of a more massive state will disappear into
+the ‘noise’ at smaller t = ant and this may make ambiguous the judgement of whether it is
+dominated by a single exponential. All this may provide an important source of systematic
+error.
+    The glueball masses calculated using eqn(3) are in lattice units, i.e. aM, and to remove
+this factor of a we can take a ratio of masses or energies. For this purpose we simultaneously
+                                                                                            √
+calculate the conﬁning string tension, a2 σ, and form the dimensionless ratio aM/a σ =
+    √
+M/ σ from which the lattice scale has disappeared. The leading lattice corrections to such
+a ratio are O(a2 ) so we extrapolate to the continuum limit using
+
+                           M       M
+                           √     = √       + c1 a2 σ + c2 (a2 σ)2 + ...                      (4)
+                             σ a     σ a=0
+
+We will usually only need the leading correction. In reality the coeﬃcients ci are power series
+in g 2 but this dependence on a is too weak (logarithmic) to be visible in our data, so we follow
+common practice in treating the ci as constants.
+    The values of β we use are listed in Table 1. The lattice sizes next to these β values are
+the ones we use for our string tension and glueball mass calculations. The lattices listed on
+the right are used for calculating topology and also, in some cases, to check for ﬁnite volume
+corrections. We also show the average plaquette at each value of β as well as the string tension
+(see Section 3) and the mass gap (see Section 4).
+
+
+3    String tension
+We calculate the string tension by calculating the ground state energy E(l) of a ﬂux tube of
+length l that closes on itself by winding once around a spatial torus of size l. We use eqn(3)
+where the operator φ is the product of SU(3) link matrices taken around a non-contractible
+closed path that winds once around the spatial torus. The simplest such operator is the spatial
+Polyakov loop                                   ( L                           )
+                                           X      Y x
+
+                       φ(nt ) = lp (nt ) =   Tr       Ux (nx , ny , nz , nt )              (5)
+                                        ny ,nz       nx =1
+
+where we take the product of the link matrices in the x-direction around the x-torus of length
+l = aLx . Here (x, y, z, t) = (anx , any , anz , ant ), and the sum over ny and nz produces an
+operator and hence a state with zero transverse momentum, py = pz = 0. Since φ is clearly
+invariant under translations in x, the state also possesses px = 0. We do the same for loops
+over the y and z spatial tori and average over all three. We do the same replacing the link
+matrices by blocked link matrices, which is the essential step in obtaining a useful overlap
+onto the ground state. This provides a vector space of operators on which we perform a
+variational calculation to extract the operator that is our best approximation to the ground
+state wavefunctional. From the correlator of this operator we extract a value for E(l).
+
+                                                 4
+    We extract the string tension σ from E(l) using the ‘Nambu-Goto’ formula
+                                                      1/2
+                                       NG          2π
+                                 E(l) = σl 1 −              ,                                  (6)
+                                                  3σl2
+which arises from the light-cone quantisation of the bosonic string and is known to provide an
+excellent approximation to the lattice calculations [7] for reasons that have now become well
+understood. (See for example [8, 9].)
+   To extract the ground state energy of the ﬂux tube using eqn(3) we need to be conﬁdent
+that we have gone to large enough t = nt that the correlator is dominated by a single expo-
+nential within errors, and moreover that these errors are small enough for this observation to
+be signiﬁcant. A useful way to test for a single exponential is to extract an eﬀective energy
+                                                         C(nt )
+                                  aEef f (nt ) = − ln             .                            (7)
+                                                        C(nt − 1)
+If a single exponential dominates C(nt ) for nt ≥ ñt , then Eef f (nt ) should become independent
+of nt for nt ≥ ñt , and in that case Eef f (ñt ) provides an estimate of the energy E(l) . (In
+practice we extract our E from a ﬁt over a range of nt .) That is to say, we search for a ‘plateau’
+in the values of Eef f (nt ) against nt . An important point is that as long as our operators are
+entirely spacelike, the reﬂection positivity of our action ensures that Eef f (nt ) ≥ E(l) for
+any nt , up to statistical errors, and indeed that the value of Eef f (nt ) must be monotonically
+decreasing with increasing nt .
+    In Fig. 1 we plot the values of aEef f (t) for each of our β values together with the ±1σ error
+band for our best estimate of the energy E(l). At our smallest value of β, a and hence aE are
+large and the exponential disappears into the statistical errors before we see an unambiguous
+eﬀective energy plateau – hence the very wide error band around our estimate of E(l). At
+other values of β there is little ambiguity and the error bands are correspondingly narrow.
+We also note that the asymptotic exponential typically begins at t = a at smaller β and at
+t = 2a at larger β. Since we expect that our space of multiply blocked operators will have
+an overlap onto the ground state that is weakly dependent on a(β), this is as expected. It is
+also the reason that for our lowest value of β, where no eﬀective energy plateau apears, we
+are conﬁdent in choosing a value of E that encompasses, within errors, the values of aEef f (t)
+for t = a and t = 2a.
+
+
+4     Glueball spectrum
+We calculate glueball masses from Euclidean correlators as in eqn(3). Since only states |ni such
+that hvac|φ†|ni =
+                6 0 will contribute to the correlator, we can restrict the contributing states
+to have particular quantum numbers by choosing operators φ with those quantum numbers.
+Since the error to signal ratio of such a correlator increases exponentially in t = ant , we can
+only hope to identify an eﬀective mass plateau using eqn(7) if the overlap of the state onto the
+operator φ is large enough. So in order to avoid missing intermediate states in the spectrum
+one needs a suﬃciently large basis of operators.
+
+                                                 5
+     In this paper we employ a basis of 27 diﬀerent operators. The operators are contractible
+closed loops of links, and we take their traces. We include all loops of length 4 and length 6 as
+well as ﬁfteen of length 8 and eight of length 10, with all their rotations and parity inverses.
+In addition to constructing the loops out of elementary links we also construct them out of
+link matrices that have been ‘blocked’ [10, 11] using the algorithm described for example in
+[12]. The length of a blocked link is 2nb a, where nb is the blocking level, and we use all blocked
+link matrices up to a maximum level that depends on the lattice size and is 6 for our largest
+384 lattice which corresponds to blocked links of length 32a. Our loops are of length 4, 6, 8, 10
+in units of the blocked links being employed in their construction.
+     As we increase β, and hence decrease a(β), we increase the spatial lattice size Ls so that the
+lattice volume is approximately constant in physical units. We√choose for our physical units
+our calculated values of the string tension, σ, so that we keep a σLs roughly constant. Since
+our blocked operators cover all length scales on such a lattice, we expect that their overlap
+onto the desired glueball states will only change weakly with β and this indeed appears to be
+the case.
+     We calculate all the cross-correlators, Cij (t = ant ) = hφ†i (t)φj (0)i, of all the operators
+φi , φj with given quantum numbers (see below) and this means that we can calculate the
+correlator of any linear combination in the vector space generated by the {φi } and so we
+can perform a variational calculation to ﬁnd the linear combination Φ0 that minimises the
+energy (and hence maximises exp{−Et}). We then look for an eﬀective mass plateau in the
+correlator of Φ0 to provide our best estimate of the ground state energy. We now take the
+subspace of {φi } that is orthogonal to Φ0 and repeat the variational procedure to ﬁnd the
+linear combination Φ1 that minimises the energy in this subspace and hence provides, from
+its correlator, our best estimate of the mass of the ﬁrst excited state. And so on. Note that
+one needs to ensure that the φi one keeps are linearly independent so as to avoid singularities
+in the standard variational procedure.
+     The number of our operators φi in a given quantum number sector can be very large (up
+to nearly 800) and we sometimes do not use all of our operators where doing so would make
+the analysis very unwieldy. In a few quantum number sectors the number is not large, but in
+any case the minimum is 30 operators, which should be large enough for the lightest couple
+of states, which is all we need in those cases.
+     In this section we start by describing the rotational quantum numbers of our lattice states
+and how these relate to the continuum spins. We then address the important issue of correc-
+tions due to the ﬁnite volume of our lattice. Finally we provide our results for the glueball
+spectrum with some demonstrations of how reliable are our mass estimates.
+
+4.1    Quantum numbers
+In the continuum theory the relevant quantum numbers of glueballs are their spin J, parity
+P and their sign under charge conjugation, C. (They also have momentum but since we are
+interested in the masses we choose to calculate states with zero momentum.)
+    On a cubic lattice the rotational symmetry is restricted to the octahedral subgroup of
+the full rotation group and there are only ﬁve irreducible representations which we shall
+
+                                                6
+label generically as R. These ﬁve representations are often labelled as A1 , A2 , E, T1 , T2 . The
+dimensions of these are 1, 1, 2, 3, 3 respectively. The states that we calculate will belong to
+one of these representations and we will generically label them by RP C or more speciﬁcally
+as AP1 C etc. As a(β) → 0 the glueball size diverges in lattice units and we recover the full
+rotational invariance where the states fall into the 2J + 1 multiplets labelled by J. Thus the
+lattice states can also be labelled by the continuum spin J to which they tend continuously
+as a(β) → 0. (Ignoring ambiguities due to level crossing, which should be appropriate once
+we are close enough to the continuum limit.) Of course at non-zero a the energy degeneracy
+will be broken except for that part of it that is enforced by the dimensionality of the lattice
+representations.
+    The way that the states labelled by the spin J of the full rotation group are partitioned
+amongst the representations of the subgroup of the symmetry rotations of the cube is well-
+known (see for example Section 9.4 and Table 9.4 of [13]) and we reproduce the result for the
+lowest spins in Table 2. One can readily check that for each J the total number of states in the
+corresponding cubic representations, taking into account their degeneracies, is indeed 2J + 1.
+Where these states fall into diﬀerent cubic representations they will not be degenerate, but
+one expects that the breaking of the degeneracy will be small once a(β) is small. Thus one
+can try to identify the spin J of a lattice state by seeing if there are a set of near-degenerate
+states in the corresponding cubic represntations listed in Table 2. In practice this works
+well for the lightest states, but breaks down for heavier states where the spectrum of states
+becomes suﬃciently dense that an apparent near-degeneracy (within errors) is increasingly
+likely to be accidental. This method has been used to good eﬀect, within its limitations, in
+for example [5], and it is the method we will employ in the present paper. There also exists
+a more powerful method which consists in ascertaining the approximate rotational properties
+of the states using an appropriate variation of a Fourier transform. This approach has been
+used successfully in [6, 16] and more recently in [14] but requires a dedicated calculation of a
+kind that is beyong the scope of the present paper.
+
+4.2    Finite volume corrections
+The ﬁnite volume dependence of the glueball spectrum has two main components. The ﬁrst
+is due to self-energy corrections that are modiﬁed by the periodic boundary conditions [15].
+For example when a glueball emits a virtual glueball, one of the loop propagators can wind
+around the spatial torus before being reabsorbed. These corrections are typically exponentially
+suppressed in mG ls where mG is the mass gap and ls is the spatial periodicity, and since in our
+typical calculations mG ls ∼ 10 the resulting mass shift will be invisible within our statistical
+errors.
+    The second ﬁnite volume inﬂuence on the glueball spectrum consists of extra states whose
+energy → ∞ as ls → ∞, so that they disappear in the thermodynamic limit, but can have the
+same quantum numbers as glueballs and so can mix with the latter and be mistaken for them
+in a ﬁnite volume. These states are composed of ﬂux tubes that wind around a spatial torus,
+and are generically called torelons. A single ﬂux tube has non-trivial quantum numbers under
+a certain centre group transformation under which glueballs tranform trivially, and hence has
+
+                                                7
+zero overlap with contractible glueball operators and so is irrelevant here. (Although it is of
+course relevant to calculating the string tension as in Section 3.) The simplest non-trivial such
+ﬁnite volume state will consist of a torelon with a conjugate torelon closed around the same
+spatial torus. If the ground state energy of the torelon is ET , then the minimum energy of
+such a state will be ET T̄ ∼ 2ET ∼ 2σls and it will in principle appear as an extra state in our
+glueball correlator. Such a ‘ditorelon’ state may be a bound state or a scattering state. There
+will be a set of scattering states where each of the two torelons has an equal and opposite
+momentum (since our glueball operators have zero total momentum). One can estimate their
+energies using the allowed lattice momenta, e.g. apx = 2πn/Lx , although the actual momenta
+may have substantial shifts from these values due to the interactions. (It is only the total
+momentum of the state that has these quantised values.) Since the ditorelon states correspond
+to double trace operators while our glueball operators are single trace, we expect the overlap of
+the ditorelons onto our glueball operator basis to have some ‘large-N’ suppression which may
+mean that some of these ﬁnite volume states may become invisible in our actual calculations.
+However it has long been known that the lightest of these ditorelon states will certainly
+appear as the lightest glueball states in the A++1  and E ++ representations once the volume is
+small enough. (See e.g. [17].) Since this simplest ditorelon operator is real, invariant under
+reﬂections and also invariant under rotations of π, it will only contribute to the A++
+                                                                                    1   and E ++
+representations. Nonetheless this poses a potential problem since the glueball states that are
+lightest and hence of greatest phenomenological interest are the J P C = 0++ , 2++ ground states
+and these fall into the A++1  and E ++ representations respectively. So it will be important to
+make sure that the spatial volume is large enough for the ditorelon not to inﬂuence these mass
+estimates. For the J P C = 2++ state 2 of the 2J + 1 = 5 components are in the E ++ and 3
+are in the T2++ and since the ditorelon does not contribute to the latter this provides a useful
+crosscheck. However the 0++ only appears in the A++    1 . Since the ditorelon mass is ∝ ls one
+can make the spatial volume large enough for the ditorelon not to inﬂuence these important
+mass estimates. Then by comparing calculations on diﬀerent volumes we can identify the
+location of any such ditorelon states in the glueball spectra. If we keep ls roughly constant in
+units of σ as we vary β we can keep such a state in the same location in the ordered spectrum
+and so obtain reliable continuum limits of the other ‘true’ glueballs.
+    In addition to the ditorelon one can form a tritorelon composed of three winding ﬂux
+tubes. In SU(3) this has trivial centre symmetry quantum numbers and so can mix with local
+glueball states. The operator has an imaginary part and so it can contribute to some C = −
+states. However its energy is ∼ 3σls and so it will not inﬂuence the lightest states given
+that we will work on lattices where the ditorelons are much heavier than the lightest states.
+Moreover this is a triple trace operator whose overlap onto the single trace operators we use
+in our glueball calculations is likely to be small enough that these states make no impact on
+our spectrum.
+    We also note that the above ditorelon is the simplest of a larger family of ditorelon states.
+A winding ﬂux tube has a spectrum of excitations [7] and one can have a ditorelon consisting
+of an excited torelon as well as a ground state (conjugate) torelon, or indeed both torelons
+being excited. Such states may contribute to various RP C representations but will be heavier
+and will be less easy to identify since their volume dependence is much weaker at intermediate
+
+                                               8
+volumes. It is however not clear that they will have a large enough overlap onto our glueball
+operator basis to be relevant and we do not attempt to identify them explicitly in the present
+work.
+    To establish some explicit control over these ﬁnite volume ambiguities we have performed
+calculations on three diﬀerent volumes at β = 6.235. This corresponds to one of our smaller
+values of a(β) and that enables us to obtain reasonably reliable mass estimates for our heavier
+states as well as our lightest states. In addition to the 263 26 lattice, which corresponds to the
+standard physical volume that we will use in our glueball calculations below, we also perform
+calculations on a smaller 183 26 lattice and a larger 343 26 lattice. In this comparison we will
+normally extract the masses from the same range of nt in the correlators on these three lattices
+so as to minimise enhancing the statistical ﬂuctuations betweeen the calculations. This means
+that some of these masses may diﬀer slightly from those presented in the following section.
+    We begin with the P, C = +, + sector of states, our mass estimates being listed in Table 3.
+The states are ordered by the eﬀective mass aMef f (t) of the corresponding correlator at t = a,
+which will normally, but not always, correspond to being ordered in the value of the mass
+taken from the eﬀective mass ‘plateau’. To make the comparison clearer we have left gaps
+where a state on a smaller lattice has no partners on the larger lattices. At the bottom of the
+table is listed the energy of a pair of non-interacting torelons on each lattice; presumably the
+mass of a ditorelon would be close to this. In the A++  1   sector of the 183 26 lattice we clearly
+see a state at aM ≃ 0.70 which does not appear in the spectra of the larger lattices. This
+has a mass close to twice that of the torelon and is undoubtedly a ditorelon. Similarly it is
+clear that the spectrum on the 263 26 lattice has an extra state: between the very well deﬁned
+ﬁrst excited state at aM ≃ 0.86 and the well deﬁned states at aM ≃ 1.23 and aM ≃ 1.33
+there are 4 states on the 263 26 lattice but only 3 states on the 343 26 lattice. Which of these
+states is the extra one is ambiguous since all 4 states have quite similar masses. We note that
+the third of these four states on the 263 26 lattice has a lower mass, aM ≃ 1.054, than the
+preceeding two; this is because it has a smaller overlap so that there is a larger gap between
+the value of the mass and the value of aMef f (t = a). We have chosen this to be the extra
+state, mainly because we expect the ditorelon to have a reduced overlap onto the single trace
+operators of our basis. However from a purely matching point of view, we could equally well
+have chosen the next higher state at aM ≃ 1.19. In both cases this extra state has a mass
+close to twice that of that lattice’s torelon, as expected. In the E representation on the 183 26
+lattice it is the ground state with aM ≃ 0.66 that is deﬁnitely an extra state and hence the
+candidate for a ditorelon, and on the 263 26 lattice it is the excited state with aM ≃ 1.206
+that appears to be the extra state and hence a ditorelon. If we now compare the other states
+from the 343 26 and 263 26 lattices we see that they agree well with each other: there are no
+diﬀerences that are greater than 2 standard deviations, except 2.6σ for the A2 ground state.
+More surprisingly, the same is true for most (but not all) states on the small 183 26 lattice.
+    We perform a similar comparison for the other values of P and C. In Table 4 we do so for
+the P, C = −, + sector of states. We see that all the masses on the 263 26 and 343 26 lattices
+are within 2σ of each other, with most diﬀerences much less than that. So that it appears
+that the 263 26 lattice is large enough within our statistics. This is not the case for the 183 26
+lattice which shows large diﬀerences for a number of states. The conclusion is the same for the
+
+                                                9
+P, C = +, − and P, C = −, − sectors of states, as we seefrom Table 5 and Table 6 respectively.
+    While we can provide a plausible identiﬁcation of the ditorelon contribution to the spec-
+trum, as we have done above, it would be useful to complement that with an alternative
+calculation. One way to do this is to include operators that are explicitly ditorelon. We shall
+now provide a ﬁrst limited step in that direction at β = 6.235 where we have performed our
+above ﬁnite volume comparison. We take operators that are a product of a zero momentum
+Polyakov loop times its conjugate. (Note that in so far as the torelons interact with each other
+this mometum is not conserved so this operator should couple to ditorelons with non-zero rel-
+ative momenta.) We include only the three largest blocking levels since, as we have checked,
+it is these that provide essentially the whole of the ﬂux tube ground state wave function at
+this value of β. These ditorelon operators should contribute primarily to the A1++ and E ++
+representations. Taking into account the fact that the two torelon operators in the ditorelon
+can have diﬀerent blocking levels this means that we have 6 distinct double trace operators
+in the A1++ representation and 12 in the E ++ (since it has dimension two). Note that to
+contribute eﬃciently to other representations we would need to include Polyakov loop opera-
+tors with non-trivial quantum numbers, employing suitable transverse deformations, and with
+non-zero momenta (equal and opposite so as to give zero total momentum). This would also
+give a more complete basis for the A1++ and E ++ representations, but would go well beyond
+the scope of the present work. In the same exploratory spirit of this calculation we include
+only 12 diﬀerent loops in our glueball basis, rather than the 27 used in most of our other
+calculations, and we have lower statistics (by a factor of two) and we restrict ourselves to the
+three largest blocking levels. That is to say, we have 36 and 108 single trace glueball operators
+for A1++ and E ++ respectively. We perform the calculations on our smaller 18326 lattice as
+well as on our standard 263 26 lattice. We begin by showing in Fig. 2 the eﬀective mass plots
+for the lightest three A1++ and E ++ states that we obtain on the 183 26 lattice using only
+our ditorelon operators. We compare these to the lightest three states obtained with two free
+torelons on the same lattice. (We also indicate the lightest free tritorelon energy, although its
+relevance is not clear given that it should have a reduced overlap onto our ditorelon basis.)
+In interpreting this plot one must bear in mind that these ditorelon operators should have
+a non-trivial projection onto glueball states, and where these are lighter they will drive the
+behaviour of the eﬀective masses at larger t. We begin by noting that the E ++ ground state
+has the same energy as the free ditorelon suggesting a negligible interaction energy. And it is
+the lightest E ++ state overall. By contrast the lightest A1++ ditorelon shows a nice plateau
+at intermediate t but one which is about 15% below the free ditorelon energy, indicating a
+signiﬁcant interaction energy in this representation: presumably a genuine bound state. At
+larger t the eﬀective energy appears to drift lower, presumably towards the mass of the light-
+est A1++ glueball. Finally we remark that while the excited ditorelon states begin roughly
+within striking range of the corresponding free ditorelon energies, they appear to be drifting
+rapidly lower, presumably driven by their overlaps onto the lighter glueball states, and there
+is no evidence that they harbour any bound states. We turn next to Fig. 3 where we show
+eﬀective mass plots for our lightest four A1++ states on the 183 26 lattice. We show the results
+using our basis of 36 single trace operators and also when this basis is augmented by the 6
+ditorelon operators. We see that the ground state and the third excited state are unaﬀected
+
+                                               10
+by the ditorelon operators; presumably because they are far enough from the energy of the
+free ditorelon. In contrast, the overlaps of the ﬁrst and second excited states onto the opera-
+tor basis are both signiﬁcantly increased when the ditorelon operators are included. This is
+consistent with our earlier conclusion that the ﬁrst excited state is the extra ditorelon state
+when compared to the spectra on larger volumes, but is not so speciﬁc. In Fig. 4 we repeat the
+plot for the four lightest E ++ states, and the picture is very similar. The overlap of the two
+lightest states is increased by the inclusion of the ditorelon operators, but the higher states,
+which are much further in energy from the free ditorelon energy, are unaﬀected. Again while
+this is consistent with our earlier conclusion that the lightest E ++ state is in fact a ditorelon,
+it is more ambiguous. The ambiguity is due to the fact that the ditorelon state, if any, al-
+ready appears in the spectrum obtained with our single trace glueball operators. That is to
+say there is a strong mixing between the single and double trace operators, at least on this
+smaller volume. The corresponding spectra obtained on the larger 263 26 lattice are shown in
+Fig. 5 and Fig. 6. The picture here is quite diﬀerent in two main ways. The ﬁrst and trivial
+diﬀerence is that the individual ﬂux tubes are longer and more massive, so that the ditorelon is
+much more massive and appears amongst the higher excited states. This should, in principle,
+make its identiﬁcation more diﬃcult. The second and more interesting diﬀerence is that the
+inclusion of the ditorelon operators appears to lead to an extra state in both the A1++ and
+E ++ representations, i.e. the second excited state when using the ditorelon extended operator
+basis, and these states are close in energy to that of a free ditorelon. There thus appears
+to be little ambiguity in identifying these as ditorelon states. Since we use the same single
+trace basis on the 183 26 and 263 26 lattices the fact that these states appear with that basis
+on the former lattice but not on the latter suggests that the overlap of the ditorelon onto
+the conventional glueball basis decreases as its length increases. This means that the value
+of Eef f (t = a) will increase relative to the ditorelon energy, so that it will appear higher in
+the spectrum and with larger errors. If we make the single trace operator basis much larger,
+then the overlap should increase, perhaps suﬃciently for the ditorelon states to reappear as
+low-lying states in that spectrum. This is indeed what appears to happen: our ﬁnite volume
+comparison between the 263 26 and 343 26 lattices used a much larger basis and this appears
+to resurrect the ditorelon states in the conventional glueball spectrum. We can conclude that
+even though these ditorelon calculations are intended to be exploratory, they already reveal
+some usefulness in complementing our earlier comparison of spectra across diﬀerent volumes.
+    We conclude that the important ﬁnite volume eﬀects on a lattice that has the physical
+spatial volume of a 263 lattice at β = 6.235 are the extra ditorelon states in the A++     1   and
+E ++ representation. As we see in Table 3 this is probably the 5’th A++    1   state  and the  5’th
+E ++ state. We will work on lattices at other values of β which are chosen so as to be roughly
+the same physical size (in units of the string tension) and so provided there is no strong
+lattice correction to the level ordering, we can assume that the location of the ditorelons
+in the spectrum of these extra states is the same. When we come to perform continuum
+extrapolations of our lattice masses we shall limit ourselves to the lightest 4 A++ 1   states and
+                  ++
+the lightest 4 E       states, which means that if our identiﬁcation of the ditorelon states in
+Table 3 is correct, then we should not have any contamination from these ditorelon states in
+our ﬁnal results. This is not guaranteed of course: there are several states close together in
+
+                                                11
+the relevant energy range which may enhance mixing and changes in level ordering on slightly
+diﬀerent volumes. Nonetheless, by the same token this means that our energy estimates of
+the genuine glueball states should be quite accurate.
+
+4.3    Glueball masses
+We calculate a number of the lightest glueball masses for each set of RP C quantum numbers.
+Since our mass estimates becomes less reliable as the the mass becomes larger, our ﬁrst task
+is to provide some evidence for their reliability. This we do by providing eﬀective mass plots
+for all the states to which we will eventually assign a cotinuum spin J, i.e those states that
+are of greatest phenomenological interest. We do so for our β = 6.50 calculation on a 384
+lattice, because it has the smallest lattice spacing and so is the closest to the continuum limit
+and has the ﬁnest resolution of the glueball correlators.
+    We begin, in Fig. 7, with the lightest and ﬁrst excited J P C = 0++ , 2++ glueballs. The
+0++ ground state is the lightest of all the glueballs and constitutes the theory’s mass gap.
+We show also, as horizontal lines, our best estimates of the various masses. We see that we
+have well deﬁned eﬀective mass plateaux in all cases and that these begin from either t = a
+or from t = 2a. In the case of the 0++ ground state we see a noticeable increase in the
+aMef f (t) at larger values of t, but since we know that the exact value of aMef f (t) must be
+monotonically decreasing as t increases this rise must be a statistical ﬂuctuation. In general
+the eﬀecive masses do show ﬂuctuations up or down at large t which is presumably due to
+the incompleteness of our straightforward error analyses. In addition for excited states the
+incompleteness of our variational basis means that our best operator for an excited state may
+contain components of lower mass states. When these components are small, which we try
+to achieve with our operator basis being large, one will see the desired eﬀective mass plateau
+over an intermediate t range followed by a slow drift at larger t to a secondary plateau (and
+so on). So sometimes a downward drift at large t will be real rather than a ﬂuctuation. In
+any case our interest is in the initial eﬀective mass plateau. Returning to Fig. 7 what we see
+is that in the cases shown the mass estimates are robust. It is also clear that the T2 and E
+states that make up the ﬁve components of the J = 2 state are degenerate within errors as
+we would expect once a(β) is small enough and the spatial volume is large enough.
+    Note that since the states of T1 and T2 come in degenerate triples and those of E in doublets,
+we shall average the corresponding correlators to produce single values for the masses. That is
+to say, whenever in this paper we refer to a state of one these representations we are actually
+referring to an average of the 3 or 2 states that would be exactly degenerate with inﬁnite
+statistics. This is what we have done in Fig. 7 for the E and T2 masses. So the former state
+actually represents two states and the latter three giving a total of ﬁve as needed for J = 2.
+    In Fig. 8 we display the eﬀective masses of some P, C = −, + states. The lightest and ﬁrst
+excited 0−+ have well deﬁned plateaux starting at around t = 2a. As do the ground and ﬁrst
+excited 2−+ , with a near-degeneracy between the E and T2 components. The lightest three
+T1−+ triplets are heavier and have worse overlaps: for two of the states there is evidence for a
+plateau starting near t = 2a but less evidence for the third. We assign all three to J = 1 (see
+Section 5.3) but with modest conﬁdence for some. In Fig. 9 we display the eﬀective masses
+
+                                               12
+of some P, C = +, − states. The lightest and ﬁrst excited 1+− have well deﬁned plateaux
+starting at around t = 2a. The 2+− are reasonably convincing. The near degeneracies needed
+to identify the J = 3 state are convincing, and the eﬀective mass plateau is quite plausible.
+Finally in Fig. 10 we display the 1−− and 2−− eﬀective masses and it is clear that here we can
+only make an estimate by assuming that, as in the previous states, the plateau starts from
+t = 2a.
+    The message here is that our lighter states are robust but that as the mass becomes higher
+the extraction of a mass will typically become more ambiguous. In addition we have seen that
+for most states the eﬀective mass plateau begins at t = 2a, or even t = a, in this calculation at
+β = 6.50. Since our operator basis is designed so that the correlators scale approximately with
+the physical mass scale, this implies that for β ≤ 6.0 the eﬀective mass plateau will usually
+begin at t = a. Since at our smaller β values the lattice spacing a and hence the lattice mass
+aM are considerably larger, an eﬀective mass plateau is harder to establish except for the
+lightest states, and in these cases the fact that we can assume the plateau typically begins
+from t = a becomes useful.
+    We list our resulting mass estimates in Tables 7 to 13.
+
+
+5     Continuum limit
+                                                                      √
+We take the masses in Tables 7 to 13 and express them as M/ σ in units of the string
+tension that we have already calculated. It is this dimensionless ratio that we extrapolate
+to the continuum limit in Section 5.1 using eqn(4). However while expressing the continuum
+masses in terms of the string tension is theoretically elegant it is not ideal if we are thinking
+of phenomenological applications where we want to express masses in GeV units. For this
+purpose one typically expresses masses in units of the r0 scale [18] and hence into ‘GeV’ units,
+as discussed in Section 5.2. Of course this still involves some ambiguity because the SU(3)
+gauge theory and QCD are two diﬀerent theories and there can be no single rescaling that will
+match their physics. In addition to expressing the masses in physical units we will obviously
+want to identify the continuum spins of as many states as possible, which we do in Section 5.3.
+
+5.1    Continuum mass ratios
+                                                    √
+We use eqn(4) to extrapolate our mass ratios, M/ σ, to the continuum limit. We choose
+to use just the leading O(a2 σ) correction and where necessary we drop masses at the largest
+values of β in order to obtain acceptable ﬁts. We list in Table 14 the resulting continuum
+extrapolations for states with various quantum numbers. Some of the entries in Table 14 are
+starred, indicating particularly poor ﬁts where the χ2 per degree of freedom is greater than
+2.5. How good the ﬁts are is cleary an important issue. This involves not only the χ2 per
+degree of freedom but also the range ﬁtted. So to provide evidence for the reliability of these
+continuum extrapolations we shall show explicitly a number of them below. Since the most
+important states are those whose continuum spin we are able to identify, these are the ones
+we shall show.
+
+
+                                               13
+    Note that by deliberately limiting ourselves in Table 14 to the lightest four A++
+                                                                                   1   and E ++
+states we expect to exclude from our spectra the ﬁnite-volume ditorelon states that were
+discussed in Section 4.2.
+    We begin by showing in Fig. 11 two extrapolations of the very lightest glueball mass,
+the A++
+      1   ground state which has J = 0. One extrapolation keeps just the leading O(a2 σ)
+correction, while the other includes an additional O(a4σ 2 ) correction. As is well known this
+state has a deep dip around β ∼ 5.5 where one has a crossover between the regimes of
+weak and strong bare coupling. This dip is a reason for attempting to improve the linear
+ﬁt with a higher order correction. However, since our calculations go to quite large β the
+continuum limits obtained with these two extrapolations turn out to be identical within errors:
+       √
+M0++ / σ = 3.405(21) and 3.391(23) respectively. We shall employ the ﬁrst value, primarily
+because it makes no diﬀerence, but also because the strong to weak coupling transition involves
+a change in the functional form of the expansion in β, and there is no guarantee that simply
+including a higher order term derived in weak-coupling is the right way to parametrise it.
+    In Fig. 12 we display the continuum extrapolations of the lightest four A++  1  states. The
+lightest two have J = 0; and the very lightest has already been shown in Fig. 11. The third
+state probably belongs to J = 4 (see below) and we have no J assignment for the fourth state.
+As we see, the continuum limits appear to be quite unambiguous in all cases.
+    In Fig. 13 we move on to the lightest and ﬁrst excited E ++ and T2++ states. Recall
+that since the states in the E come in degenerate pairs (up to ﬂuctuations), we average the
+correlators to produce a single mass. Similarly for the triply degenerate T2 (and T1 ). So, for
+example, the lightest T2 mass corresponds to the lightest three states and the ﬁrst excited T2
+mass corresponds to the next three states. This labelling of the states is used throughout the
+paper. Returning to Fig. 13 we see that for these states, which we shall see below correspond
+to J = 2, there is remarkably little lattice dependence over our whole range of β, leading to
+continuum extrapolations that are unambiguous.
+    Some heavier states with P = + and C = + are displayed in Fig. 14 and Fig. 15. Here one
+sometimes sees a scatter of points indicating worse ﬁts, and this is presumably due to the in-
+creasing uncertainty in extracting the masses of heavier states. Nonetheless the extrapolations
+are plausible within the errors quoted in Table 14.
+    Moving now to states with P = − and C = +. The lightest two A−+        1   states plotted in
+Fig. 16 show small O(a2 ) corrections and are simple to extrapolate to the continuum. The
+lightest two E −+ and T2−+ states, plotted in Fig. 17, also show small corrections and hence
+easy extrapolations. In Fig. 18 we plot the lightest three T1−+ states (each triply degenerate)
+which have very similar masses.
+    Turning to the C = − states, we plot in Figs 19, 20, 21 and 22 a number of states with
+P = +. Those in the ﬁrst three ﬁgures have well deﬁned extrapolations, but the heaviest
+states in the last ﬁgure are increasingly uncertain. Some states with P = − are shown in
+Figs 23, 24 and while the extrapolations of the E −− and T1−− ground states are unambiguous,
+that of the T2−− ground state is only plausible.
+
+
+
+
+                                              14
+5.2    Physical units
+We have used the string tension as the energy scale for our continuum extrapolation of the
+glueball masses both because it is a quantity that is of fundamental dynamical signiﬁcance
+in the theory and because one can calculate it very accurately in our lattice calculation, as
+described in Section 3. However for phenomenological applications one would like to present
+the spectrum in ‘GeV’ units. Strictly speaking this is of course not possible: the pure gauge
+theory and QCD, with its various quark masses at their physical values, are two diﬀerent
+theories. Nonetheless phenomena such as the OZI rule and lattice calculations showing that
+SU(3) is ‘close to’ SU(∞), both for the pure gauge theory [19] and also when quarks are added
+[20], motivates attempting a translation into GeV units, something which has traditionally
+been done in past lattice calculations.
+     One possibility is to use the QCD value for the string tension σ. Since the QCD string will
+contain virtual q q̄ pairs – which eventually cause it to break – this is not unambiguous. For
+a rough estimate one might look to the long-distance linearly rising piece of the potential de-
+scribing heavy quarkonia, but since the dynamics of these heavy states is primarily determined
+by the interactions at short distances this is not very constraining. The traditional approach
+is to take the slope of the observed Regge trajectories and to use a simple asymptotic rotating
+                                                √
+string model, and this gives something like σ ∼ 440 MeV . How good this interpretation is
+for the relatively low J states that in practice determine these Regge trajectories is of course
+uncertain.
+     An alternative scale that has been widely used is to determine the distance r at which
+the slope of the static (heavy) quark potential, the force F (r), has some value. For example
+r 2 F (r)|r=r0 = 1.65 determines the scale r0 [18] and there are arguments that this should be
+relatively insensitive to the inclusion of quarks. An analysis of various lattice QCD calculations
+with at least 3 light quarks leads to the estimate [21]
+                                                          1
+                               r0 = 0.472(5)f m =              .                              (8)
+                                                     418(5)MeV
+We have not attempted to calculate r0 /a in our calculations but there are calculations covering
+our range of β in [22, 23] which provide interpolating formulae for r0 /a|β . We have used these
+                                                                                             √
+formulae to interpolate to our values of β and have extrapolated the resulting values of r0 σ
+to the continuum limit. We ﬁnd good ﬁts which agree within errors and give us
+                                 √        1.160(6)
+                                     σ=            = 485(6)MeV                                (9)
+                                             r0
+using the value for r0 in eqn(8). Using this scale we can convert the continuum mass ratios
+in Table 14 to GeV units and this results in the masses listed in Table 15.
+
+5.3    Continuum glueball spins
+In the continuum theory a glueball transforms according to an irreducible representation of
+the (proper) rotation group SO(3) and so will possess some continuum spin J, and it will be
+
+                                                15
+part of a set of 2J + 1 degenerate states. All such states will in principle be included in the set
+of states we have obtained by extrapolating our lattice calculations, albeit with the obvious
+caveats arising from the limitations of our basis, our statistics etc. However our calculated
+states are all labelled by the irreducible representations A1 , A2 , E, T1 , T2 of the octahedral
+subgroup O of SO(3), so we need to map back from these to the multiplets corresponding to
+a given J. The mapping can be readily derived (see Section 9.4 of [13]), and is summarised
+for the lowest values of J in Table 2. (There is a simple relation allowing one to calculate the
+mapping for any J once one has the mappings for J ≤ 5, as explained in Section 9.4 of [13]).
+Taking into account the triple degeneracy of the T1 and T2 representations, and the double
+degeneracy of E, we can see that the sum of states is indeed 2J + 1 in each case, as it should
+be. We have, optimistically included the mapping up to J = 8 although, as we will see, we
+are not able to calculate masses beyond J = 4.
+    In a calculation with inﬁnite statistics identifying states of spin J from our continuum
+calculations would be unambiguous: we would simply search for 2J + 1 degenerate states
+located in the towers of states in each of the appropriate cubic representations listed in Table 2.
+In practice, with ﬁnite statistical and systematic errors and with the energy gaps between
+neighbouring states in each tower decreasing with increasing energy, this strategy has severe
+limitations. An alternative approach would be to exploit the fact that even on a cubic lattice
+the full SO(3) rotational invariance becomes a better approximation on physical length scales
+as a → 0. Once one calculates the variationally selected glueball wave-functional at each β one
+can analyse its approximate rotational properties so as to determine the probable continuum
+spin and see if it approaches the corresponding continuum angular wave-function as a(β)
+decreases. A pioneering calculation of this type [6, 16] in D = 3 + 1 gauge theories appears
+promising. Moreover in D = 2 + 1, where the rotation group is Abelian so that there is no
+J-dependent degeneracy to exploit, this technique has proved quite powerful in recent work
+[14] that builds upon the earlier exploratory studies [6].
+    In the present paper we attempt to identify states of various spin J using the decomposition
+in Table 2 applied to our results in Table 14. The arguments will be as follows, leading to the
+identiﬁcations presented in Table 16. We will also ﬁnd it useful to refer to the spectra obtained
+at various values of a, on the assumption that lattice corrections are small, as appears to be
+the case for most states.
+    We begin with the P, C = +, + sector of states. First we note that the lightest two masses
+in RP C = A++  1   are very much lighter (as always, compared to errors) than any states in
+other R . So these are, unambiguously, the ground and ﬁrst excited J P C = 0++ states.
+         ++
+
+The lightest two E ++ states (each doubly degenerate) are nearly degenerate with the lightest
+two T2++ states (each triply degenerate) but not with any other states (by a large margin).
+Moreover this near-degeneracy is the case at all values of β as we see in Fig. 13. So these
+are unambiguously, the ground and ﬁrst excited J P C = 2++ states. One might wonder if the
+lightest T1++ state in Table 14 is J = 1? We note however that it is essentially degenerate
+with the ﬁrst excited T1++ and also with the lightest A++ 2  and with either the second ot third
+excited T1 state, which are nearly degenerate. In addition the second excited A++
+           ++
+                                                                                           1   and
+E ++ have similar masses. This suggests that we have a 3++ ground state and a 4++ ground
+state as in Table 16, which happen to have very similar masses. If we look at the states as
+
+                                                16
+a function of β, with the 3++ in Fig. 14 and the 4++ in Fig. 15, then the assignments look
+plausible, particularly in the former case. However it is clear that these choices are no more
+than plausible, because all the states shown in Fig. 14 and Fig. 15 are very close in mass.
+An alternative interpretation could be that the lightest T1++ is J = 1 and that the remaining
+states listed above make up the J = 6++ ground state. However this would mean that the
+J = 6 ground state is lighter than the J = 4 ground state, which appears less likely to us.
+Hence our choice. However this discussion illustrates the limitations of our approach.
+    We now turn to the P, C = −, + sector of states. The lightest two A−+     1   states have no
+partners in other representations and so are unambiguously the ground and ﬁrst excited 0−+
+states. The lightest two E −+ states are nearly degenerate with the lightest two T2−+ states
+but not with any other states, so it is unambiguous that they are the ground and ﬁrst excited
+2−+ states. Again this is reinforced by noting the near-degeneracy at all values of β as shown
+in Fig. 13. The lightest three T1−+ states (each triply degenerate) have no obvious partners
+in other representations, so we have labelled all of them as being 1−+ states. We do so with
+some unease: why the apparent degeneracy of these three states? (See also Fig. 18.) Perhaps
+only one is truly 1−+ and the other two are nearly degenerate because they appear together
+as components of a higher spin state? Unfortunately we have no plausible partners in other
+representations to realise this suggestion.
+    In the P, C = +, − sector of states the lightest glueball is the T1+− and it has no partners
+elsewhere: hence it is unambigously the 1+− ground state. The second excited T1+− has
+no partners elsewhere so we are conﬁdent that it is the ﬁrst excited 1+− glueball. Both their
+continuum limits are robust as we see from Fig. 20. The A+−2   ground state is nearly degenerate
+            +−                                            +−
+with the T2 ground state and with the ﬁrst excited T1 , with no nearby states elsewhere.
+And, as we see in Fig. 21, this is so at all β. Hence we are conﬁdent that this is the 3+−
+ground state. There appears to be little ambiguity in identifying the 3+− ground state with
+the A+−
+      2    and T2+− ground states and the ﬁrst excited T1+− , since these states are not very
+heavy and it is clear that there are no partner states elsewhere. We further note that the
+ground state E +− and the ﬁrst excited T2+− are nearly degenerate and so we assign them to
+the 2+− ground state. This is also the case throughout our range of β as we see in Fig. 19.
+However the mass and errors are large, and there are other states with masses about 2σ away,
+so the assignment has some uncertainty. However looking at the corresponding spectra at
+β = 6.50, 6.338, 6.235 does increases the evidence for no partner states elsewhere. Finally we
+can speculate that the A+− 1  ground state partners the ﬁrst excited E +− , the second excited
+  +−                          +−
+T2 and the third excited T1 to form the 4+− ground state. This claim is slightly weakened
+by what we observe in the spectra at smaller β, as shown in Fig. 22 and is somewhat ﬂimsy.
+    Finally, in the P, C = −, − sector the states are all heavy making it diﬃcult to calculate
+much of the spectrum with suﬃcient accuracy to be able to search for near-degeneracies. The
+lightest three states are the E −− , T1−− and T2−− ground states and there are no potential
+partners to these. Given the possibilies listed in Table 2, there is no ambiguity in assigning
+the E −− and T2−− ground states to give the 2−− ground state, and the T1−− ground state to
+be the 1−− ground state.
+    Having made these identiﬁcations we average the masses of the states in Table 14 that
+correspond to a state of given J P C , taking some account of any splittings between the masses
+
+                                              17
+in the diﬀerent cubic representations. This leads to the masses listed in Table 17, for a number
+of continuum states with various values of J P C . Where we have some hesitation about the spin
+assignment, as discussed above, we qualify the value with a single star. Two stars indicate a
+speculation.
+    Our predictions for the glueball masses are given in terms of the string tension. If one
+wishes one may express the masses in units of the mass gap, the mass of the lightest  √      0++
+glueball, simply by multiplying the various mass ratios by the inverse of m0++ / σ. Since
+many of these states may be of phenomenological interest it is useful to provide an estimate in
+                                                                   √
+physical GeV units and this we do in Table 18 using the value of σ estimated in Section 5.2.
+
+
+6     Comparisons
+It is clearly useful to compare our calculations to earlier ones. Since the number of these
+is too large to attempt a comprehensive comparison, we shall choose a few representative
+calculations (within which one may ﬁnd references to other calculations).
+    One of the earlier realistic attempts to calculate the ground states of all the representations
+of the cubic group was in [1], and this was extended to a smaller value of a(β) in [3]. The values
+for the masses of the states of greatest phenomenological interest, i.e. those that have masses
+< 3GeV, are consistent with ours (within two standard deviations) albeit with statistical
+errors at least ten times larger than ours. The point here is that the approximate masses of
+these states, and their level ordering, have been established for a very long time.
+    When one reduces the statistical errors, one also needs to reduce the systematic errors so
+that they do not become the dominant error. An important example is the need to improve the
+extrapolation to the continuum limit: in [1]. the mass ratios were consistent within errors with
+being independent of β, so that a constant extrapolation was justiﬁed, but with smaller errors
+a variation with β becomes visible and one needs to include at least an O(a2 σ) correction.
+One also needs to go to smaller values of a(β) to better control the continuum extrapolation,
+as for example in [3].
+    Another systematic error arises in the calculation of heavier glueballs. One needs the mass
+in lattice units, aM, to be not too large if one is to observe some kind of eﬀective mass plateau
+in the correlation function. One way to achieve this is to go to small enough a(β). (At the
+same time reaping beneﬁts in the continuum extrapolation.) An alternative is to note that it
+is the temporal lattice spacing at that appears in the correlator, so if one works on lattices
+where the spatial, as , and temporal lattice spacings diﬀer with at ≪ as one can achieve modest
+values for at M even if M is large, while working on L3s Lt lattices with Ls ≪ Lt which are of a
+manageable size. This technique proved invaluable in some of the earliest calculations of the
+lightest scalar and tensor glueballs [24] in providing evidence for eﬀective mass plateaux. It
+has been used subsequently to good eﬀect in a comprehensive calculation of the mass spectrum
+that includes many heavy glueball states [4, 5]. One weakness with such calculations is that
+they typically involve larger spatial lattice spacings as than those on symmetric lattices, and
+hence risk larger sytematic errors in the continuum extrapolation where the leading correction
+is O(a2s ). So, for example, the smallest value of as in [4, 5] is as Mg ≃ 3at Mg ≃ 0.84, where
+
+
+                                                18
+Mg is the mass gap, whereas the calculations in the present paper go down to as Mg ≃ 0.35.
+A second issue is that it is diﬃcult to estimate the corrections to the inputted tree level value
+                                                                    √
+of as /at , and the introduction of a physical scale such as r0 or σ will depend on this ratio.
+While the resulting uncertainty may be only at the (few) percent level, this becomes signiﬁcant
+in precise calculations.
+    A further important systematic error arises once one is more ambitious and wishes to cal-
+culate some signiﬁcant number of excited states in each RP C sector. The problem arises from
+the ﬁnite size of one’s operator basis: one will completely miss states which do not have a
+substantial overlap onto the basis. Such missing states can lead to problems in a comparison
+with theoretical predictions and in the identiﬁcation of the near degenerate multiplets associ-
+ated with a given continuum spin J. Here the best one can do is to make the operator basis
+as large as practical, as we have done in the present work.
+    If one is interested in the spin J that a lattice state extrapolates to, the identiﬁcation of
+the 2J + 1 nearly degenerate states in the appropriate cubic representations becomes rapidly
+problematic as the mass increases. Typically the density of states increases with increasing
+mass, and with ﬁnite errors that also increase with the mass, any apparent degeneracies
+are likely to be accidental. An alternative approach to determining J is to use sets of loop
+operators that are approximate rotations of each other by angles that are some fraction of
+π/2. Since the important operators have an extension that is constant in physical units, the
+approximate rotation invariance becomes better as a(β) deacreases, and one can resolve higher
+spins. This method has been used to good eﬀect in [6] where the spins of an extensive set of
+states in various RP C representations were determined.
+    We now turn to a comparison with the speciﬁc results of [5, 6]. In our calculations we
+have a large basis of 27 loops, with each typically constructed out of 5 or 6 diﬀerent levels of
+blocked links, which is a considerably larger basis of operators than that used in the earlier
+calculations we have discussed above. This has enabled us to calculate more excited states
+within each quantum number sector. Having these extra states also helps in the identiﬁcation
+of their continuum J using the 2J + 1 degeneracy partitioned amongst the lattice states as in
+Table 2. In practice we are able to so identify more states than in [5]. However apart from
+that we do broadly agree: for the 12 states listed in Table XXI of [5] we agree with the spin
+assignment and mass (within errors) of 10 and only have serious doubts about 2 of the heaviest
+states, the J P C = 0+− and the 3−− . The former state is based on the very heavy A1+− state
+which is quite possibly nearly degenerate with excited E +− , T 1+− and T 2+− states making
+it 4+− rather than 0+− . The claimed 3−− is based on the A2−− ground state and we do not
+see an excited T 1+− with a mass that is plausibly degenerate. But only better calculations
+will be able to tell. As for the lightest phenomologically interesting states, our masses agree
+remarkably well except for a signiﬁcant discrepancy for the 0++ ground state. (Which is
+slightly increased by the fact that the scale used in [5] is r0−1 = 410MeV while we use a later
+determination, r0−1 = 418MeV .) Since this state has large lattice spacing corrections, we put
+this down to our better control of the O(a2s ) corrections in taking the continuum limit.
+    The very diﬀerent method used in [6] for determining the spin J of lattice states is more
+powerful and allows more states to be categorised than we are able to do. This despite our
+much higher statistics and larger range of β which lead to much smaller statistical errors as
+
+                                               19
+well as a better control of the continuum limit. Within these large errors we are in agreement
+for most spins and masses, as we see by comparing our Table 14 to Tables 7.10,7.11 in [6].
+There are some diﬀerences: in the P C = ++ sector our candidate for the J = 4 ground state
+seems too light; in the P C = −+ sector two of our three nearly degenerate T1 states might
+be part of the J = 5 ground state according to [6]. We note that with this method one could
+identify states with spin up to J = 6 in the now rather old calculations of [6], something we
+could not hope to do despite our statistical errors being a factor of 3 or 4 smaller and our
+range of a(β) being signiﬁcantly larger.
+
+
+7    Topological fluctuations
+An interesting property of Euclidean non-Abelian gauge ﬁelds is that they possess non-trivial
+topological properties, characterised by a topological charge Q which is integer-valued in a
+space-time volume with periodic boundary conditions. This charge can be expressed as the
+integral over Euclidean space-time of a topological charge density, Q(x), where
+                                        1
+                             Q(x) =         ǫµνρσ T r{Fµν (x)Fρσ (x)}.                      (10)
+                                      32π 2
+Recalling that the plaquette matrix Uµν (x) = 1 + a2 Fµν (x) + .... on smooth ﬁelds, one can
+write a lattice topological charge density QL (x) as
+                              1
+                  QL (x) ≡         ǫµνρσ T r{Uµν (x)Uρσ (x)} = a4 Q(x) + O(a6 ).            (11)
+                             32π 2
+While this deﬁnition is adequate for suﬃciently smooth ﬁelds, it lacks the explicit reﬂection
+properties of the continuum operator in eqn(10), since all the plaquettes Uµν (x) are deﬁned
+as forward going in terms of our coordinate basis. So it needs to be extended to include
+terms with backward going plaquettes as well, if it is to be used on the ‘rough’ Monte Carlo
+generated ﬁelds, and so we employ the version of this operator that is antisymmetrised with
+respect to forward and backward directions [25].
+    The ﬂuctuations of realistic lattice gauge ﬁelds aﬀect the observed value of QL (x) in two
+important ways. Firstly we note that the ﬂuctuations of QL (x) are related to expectation
+value of the composite operator Q2L (x) whose operator product expansion contains the unit
+operator [25]. So these ﬂuctuations are powerlike in β while the average of QL (x) is O(a4 )
+and hence P exponentially suppressed in β. Thus as β increases the ﬂuctuations around QL (x)
+and QL = x QL (x) diverge compared to the physically interesting mean values. In addition
+the lattice composite operator also receives a multiplicative renormalisation Z(β) such that
+Z(β → ∞) = 1 but which at accessible values of β strongly suppresses the charge [26].
+    In practice all this means that one cannot extract
+                                                     P      the topological charge of a typical
+lattice gauge ﬁeld by directly calculating QL =         x L (x) on that gauge ﬁeld. However
+                                                          Q
+we note that the ﬂuctuations obscuring the value of Q are ultraviolet, while the physically
+relevant topological charge is on physical length scales. Thus if we perform a very limited local
+smoothening of the ﬁelds to suppress the ultraviolet ﬂuctuations, this should not aﬀect physics
+
+                                                20
+                                                P
+on long distance scales, and the value of QL = x QL (x) calculated on these smoothened ﬁelds
+should provide a reliable estimate of Q. Moreover, recalling that the total topological charge
+of a gauge ﬁeld is unchanged under smooth deformations, we can expect that even under a
+moderately large amount of continued smoothening the value of QL will not change, even
+though QL (x) itself does gradually change. One convenient way to smoothen the gauge ﬁelds
+is to locally minimise the action. Such a ‘cooling’ of the original ‘hot’ lattice gauge ﬁeld [27]
+involves sweeping through the lattice one link at a time, precisely like the Monte Carlo except
+that one chooses the link matrix that minimises the total action of the plaquettes containing
+that link matrix. This is a standard technique that one can ﬁnd described in more detail
+in, for example, [28]. An alternative and attractive smoothing method with purturbatively
+proven renormalisation properties is the gradient ﬂow [29, 30, 31] which has been shown to be
+numerically equivalent to cooling [32, 33, 34]. Cooling appears to perform nearly two orders of
+magnitude faster than the gradient ﬂow and since we are aiming for large statistics we adopted
+cooling. After the ﬁrst couple of cooling sweeps the ﬁelds are already quite smooth, as we
+shall see below. Since we are minimising the action and since in the continuum the minimum
+action ﬁeld with a given Q is a multi-instanton ﬁeld, we expect that under systematic cooling
+the lattice ﬁeld will be driven to become some multi-instanton ﬁeld, which one can see by
+calculating the distribution QL (x) on such a ﬁeld. Of course, because of the discretisation
+of space-time the topological properties of lattice ﬁelds are only approximately like those of
+a continuum ﬁeld. One can deform a large instanton by gradually shrinking its non-trivial
+core and on a lattice this core can shrink to within a hypercube. At this point what was an
+instanton has been transformed into a gauge singularity and the value of Q will now diﬀer
+from its original value by one unit. (Equally, one can gradually grow an instanton out of a
+hypercube.) This process can occur during cooling but it can equally occur during the course
+of our Monte Carlo. In the latter case, it is these changes in Q that allow us to sample all
+possible values of Q and hence maintain the ergodicity in Q of our Markov process. As β ↑
+the distance between physical and ultraviolet scales grows and these changes in Q become
+increasingly suppressed – in fact more strongly than the usual critical slowing down (see
+below).
+    One of our reasons for studying the topology of our SU(3) gauge ﬁelds is to establish that
+in our range of β we have not in fact lost ergodicity in the topology Q of the ﬁelds. In the
+process we shall provide some insights into how reliable is the cooling method for establishing
+the topological charge of the lattice gauge ﬁelds. As a side-product we will also provide an
+accurate calculation of the topological susceptibility, which has been much studied because
+of its appearance in sum rules for the lightest pseudoscalars in QCD. For a more detailed
+discussion of these issues we refer to, for example, [28].
+
+7.1    Topology on the lattice
+Since we calculate the topological charge Q by cooling the lattice gauge ﬁelds, it is relevant
+to ask how (un)ambiguous is the identiﬁcation of Q on those cooled ﬁelds. (Note that from
+now on we will use the labels Q and QL interchangeably unless speciﬁed otherwise.) The
+answer will depend on the value of β and since the intrinsic ambiguity in deﬁning topology is
+
+                                               21
+a lattice artifact we might expect that any ambiguity is greatest at the smallest values of β
+where the lattice spacing is largest. We therefore look at our smallest value of β, β = 5.6924,
+an intermediate value, β = 6.0625, and our largest value, β = 6.50. We note that the ﬁnal
+values of Q that we shall quote are those that are obtained after 20 cooling sweeps.
+    We begin with β = 5.6924, which we expect to be our ‘worst’ case. In Fig. 25 we show the
+distributions of Q obtained after 4, 8 and 20 cooling sweeps on a total of 96000 83 16 lattice
+gauge ﬁelds. We see that after 20 cooling sweeps any ambiguity in identifying Q – arising
+from the overlap of the tails between the peaks – is at most at the percent level. The peaks
+are shifted away from integer values due to the fact that the typical instanton size, ρ/a in
+units of the lattice spacing, is not large at this β. (One can calibrate the shifts using classical
+instanton solutions discretised on a lattice.) However, while the value of Q is well deﬁned after
+20 cooling sweeps, it is clearly quite ambiguous after 8 cooling sweeps, and totally invisible
+after 4 cooling sweeps.
+    We turn now to β = 6.0625 where we calculate Q on a total of 40000 143 20 lattice gauge
+ﬁelds. In Fig. 26 we show the distributions of Q obtained after 4 and 20 cooling sweeps. It
+is clear that after 20 cooling sweeps any ambiguity in identifying the value of Q is totally
+negligible. More interestingly, the value after only 4 cooling sweeps is reasonably well deﬁned
+with only a minor ambiguity. We also note that the peaks have moved closer to integer values,
+as should be the case since we expect the instanton sizes to be larger in lattice units at this
+larger β.
+    Finally we show in Fig. 27 the distributions of Q obtained after 4 and 20 cooling sweeps
+on 44000 263 38 lattice gauge ﬁelds generated at β = 6.50. Now any ambiguity is completely
+negligible even after only 4 cooling sweeps.
+    We see from the above that after 20 cooling sweeps the value of Q is very well deﬁned
+over our whole range of β. Now, although it is plausible that the value of Q after 20 cools
+reﬂects the value of Q of the original ‘hot’ ﬁeld conﬁguration, it is worth asking how well that
+expectation holds up. The ﬁrst obvious comment is that the smaller the number of cooling
+sweeps, the more convincing is the calculated value of Q. This is because the cooling is a
+local process to the same extent as the Monte Carlo heat bath, so a few cooling sweeps will
+deform the original ﬁelds only on correspondingly small distance scales. However one can ask
+if the ﬁelds with a certain value of Q after a very few cooling sweeps have the same value of
+Q after 20 cooling sweeps. To address this kind of question better we have taken a sample
+of 2750 ﬁelds generated at β = 6.50 and measured the value of Q for 1,2,3,4,5,10,15,....,50
+cooling sweeps. In Fig. 28 we plot the values of Q after 2 and after 20 cooling sweeps. We see
+that even after only 2 cooling sweeps the values of Q are peaked around near-integer values
+with little overlap so that we can assign each value of Q to an integer, QI , with a high level of
+conﬁdence. And since 2 cooling sweeps can only deform the ﬁelds over the shortest distance
+scales we can be conﬁdent that this topological charge provides a very accurate representation
+of the topological charge of the original lattice gauge ﬁelds. The interesting question now is
+whether the ﬁelds with a given QI after 2 cooling sweeps maintain that same value when we
+continue cooling the lattice gauge ﬁelds to, say, 20 cooling sweeps. The answer is yes to a
+very good approximation. As an example we show in Fig. 29 the values of Q obtained after 2
+cooling sweeps which lie between the minima that deﬁne the peak near Q = 1, as in Fig. 28,
+
+                                                22
+and which we therefore label by QI = 1. We follow these same ﬁelds to 20 cooling sweeps and
+plot their values of Q in the ﬁgure. They nearly all have Q ≃ 1. In fact of the 665 lattice
+ﬁelds that we assigned to QI = 1 at 2 cooling sweeps, 658 had Q ≃ 1 after 20 cooling sweeps
+with 4 at Q ≃ 0 and 3 at Q ≃ 2. Moreover, we observe at intermediate cooling sweeps that
+the 7 ﬁelds that end up with QI 6= 1 migrate gradually from QI = 1 to QI 6= 1 through
+intermediate values of Q in a way that is consistent with a narrow (anti)instanton shrinking
+out of the lattice with increased cooling.
+    We have given the ﬁelds with QI = 1 as an example. In Table 19 we show what happens
+to those ﬁelds possessing other values of QI at 2 cooling sweeps when one continues to cool
+these ﬁelds to a total of 50 cooling sweeps. We indicate the range of Q that we assign to
+each integer QI . That such a assignment should possess little ambiguity should be evident
+from the histogram of Q after 2 cooling sweeps in Fig. 28. We observe that the value of QI is
+almost completely unchanged between 2 and 50 cooling sweeps in all cases.
+    One might ask why we start with ﬁelds after 2 cooling sweeps rather than after just 1
+cooling sweep. The answer is indicated in Fig. 29 where we take the ﬁelds that we assign
+to QI = 1 after 2 cooling sweeps and we display the values of Q for those same ﬁelds after
+only one cooling sweep. While we do indeed observe a distribution of values that has a mean
+not too far from what one might expect, the width of the distribution is so large that it will
+clearly overlap heavily with ﬁelds that belong to neighbouring values of QI (and which are
+not shown). So after one cooling sweep we cannot make a plausible estimate of QI unless we
+run more highly cooled ﬁelds backwards as we have done here. This is even more so if we
+consider the ﬁelds prior to any cooling at all.
+    What this study demonstrates is that calculating Q after 20 cooling sweeps provides a
+reliable method for calculating the true integer-valued topological charge of our Monte Carlo
+generated lattice ﬁelds – at least once β is not too small.
+    The shift of the value of Q as calculated after 20 cooling sweeps from the integer value
+that it would have in the continuum limit is primarily due to the ﬁnite size in lattice units
+of the typical instanton in the cooled ﬁelds. That is to say, it is a lattice artifact. So if we
+assign the corresponding integer QI to a given ﬁeld – an assignment which we have seen is
+essentially unambiguous over our range of β – we can think of it as partially compensating for
+the lattice artifacts. Of course since diﬀerent lattice artifacts may mutually cancel, there is
+no guarantee that this will hasten the overall approach to the continuum limit. Nonetheless
+this integer-valued topological charge QI has at least as much validity as the measured charge
+Q and we shall present results for both.
+    The possibility of assigning an integer QI to a lattice ﬁeld depends on there being a
+clear multi-peak structure in the histogram of values of Q with a very small overlap between
+neighboring peaks. As we see from Fig. 26 and Fig. 27 this is the case not only after 20
+cooling sweeps but even after only 4 cooling sweeps for these values of β. So we also calculate
+an integer QI for all cooling sweeps where a reliable assignment is possible. (Variations in
+how one does this will make a negligible diﬀerence as long as one more-or-less assigns ﬁelds
+between neighbouring minima in the histogram of Q to the same value of QI .) Examples of
+such an assignment for β = 6.0625 and β = 6.50 are shown in Table 20 where we compare
+the values of hQ2 i and hQ2I i against the number of cooling sweeps. As we see, a property of
+
+                                              23
+hQ2I i is that it is essentially independent of the number of cooling sweeps, unlike the value of
+hQ2 i. (Note that the statistical errors shown are almost completely correlated when cooling,
+which is why we display them separately at the bottom of the Table.) This is a consequence
+of the fact that, as we have seen above, to a very good approximation the topological charge
+does not change with cooling. Beyond a very few cooling sweeps the topological charge only
+changes through an instanton shrinking out of the lattice (or the unlikely reverse), a process
+which becomes rapidly much rarer as β increases for any given number of cooling sweeps.
+    Note that the fact that hQ2I i does not vary with the number of cooling sweeps means that
+we can evaluate it at some ﬁxed number of cooling sweeps for any of our values of β. We shall
+choose to use 20 cooling sweeps unless otherwise stated.
+    As an aside, it is interesting to see how the average value of the lattice topological charge
+Qhot on the lattice ﬁelds prior to cooling, is related to the true (cooled) QI . We show the
+result of the comparison in Fig. 30. We see that the relation is a simple multiplicative constant
+to a good approximation, i.e. Qhot = Z(β)QI . Here we have indicated that we expect this
+constant to vary with the coupling β. Such a linear dependence is expected if one performs a
+perturbative calculation of Z(β) which at 1 loop leads to Z1−loop (β) = 1 − 5.451/β in SU(3)
+[26]. Note that the correction is O(1/β) in our range of β which means that we expect
+Qhot ≪ QI and this is certainly what we observe in Fig. 30. We have repeated this analysis
+for our other values of β and we list the values obtained for Z(β) in Table 21, together with
+the 1 loop perturbative predictions. We note that the latter are, given the large size of the
+leading correction, surprisingly close to our values.
+    As we remarked earlier, the ﬂuctuations of the topological charge in the pure gauge theory
+are of particular interest since they are related, through the UA (1) anomaly to the masses of
+the lightest pseudoscalars, up to 1/Ncolour corrections [35, 36]. In Table 22 we list our values
+for both hQ2 i and hQ2I i at our values of β. The interesting quantities are these values divided
+by the lattice volumes, i.e. the topological susceptibility a4 χt = hQ2 i/L3s Lt , where L3s Lt is the
+                                                                              1/4 √
+lattice volume, and the susceptibility expressed in physical units, e.g. χt / σ where a2 σ is
+the string tension at that β. These values are also shown in Table 22. We extrapolate these
+values to the continuum limit with a leading O(a2 σ) correction obtaining the continuum values
+given in the Table. The best ﬁts are displayed in Fig. 31. Not surprisingly the ﬁts deviate
+from our measurements at the two coarsest lattice spacings. At the largest β value we are
+beginning to lose ergodicity in topology (see below) so that our errors may be underestimates,
+but the overall ﬁts are still statistically acceptable. In Table 22 we show the result of ﬁtting
+to two diﬀerent ranges of β. The results are consistent within errors as are the continuum
+limits using Q and QI . If we take the most concervative value, based on the integer valued
+charge in the range 5.99 ≤ β ≤ 6.50, we obtain the continuum limit
+                                         1
+                                       χ4
+                                       √t = 0.4187 ± 0.0053                                      (12)
+                                        σ
+                            √
+To convert the scale from       σ to r0 one can use the conversion factor given in Table 17 giving
+                                          1
+                                      r0 χt4 = 0.4857 ± 0.0067.                                  (13)
+
+                                                 24
+                                                                1
+We note that this agrees, within errors, with the value r0 χt4 = 0.4928(62) obtained in [37]
+where the calculation of Q is performed by the very diﬀerent method of calculating the number
+of exact fermionic zero-modes using the Neuberger overlap-Dirac operator [38, 39]. One can
+now use eqn(8) to convert to ‘MeV’ units. If we do so we obtain
+                                        1
+                                       χt4 = 203 ± 4MeV                                      (14)
+                                1
+which agrees with the value χt4 = 208(6)MeV obtained in [40] using the gradient (Wilson)
+ﬂow technique. (Note that this value has been rescaled from that in the paper using the more
+recent value of r0 given in eqn(8). Note also that true systematic error in obtaining these
+physical ‘MeV’ units is no doubt underestimated.)
+    Our above calculation assumes that ﬁnite volume corrections to the topological suscepti-
+bility are negligible when working on the lattice volumes shown in Table 22. To check that
+this is so we have calculated the susceptibility on diﬀerent lattice sizes at β = 5.8941, β = 5.99
+and β = 6.235. When expressed in units of the string tension the lattice volumes in Table 22
+are spanned by the volumes 103 16 and 123 16 at β = 5.8941, by 143 20 at β = 5.99 and by 183 26
+at β = 6.235. So we have performed calculations of the integer valued topological charge on
+somewhat larger lattices at these three β values to see if there are any pronounced changes
+with the volume. The results are shown in Table 23 and we see that there are no signiﬁcant
+ﬁnite volume corrections within our small errors.
+
+7.2    Critical slowing down
+Since our Monte Carlo exploration of the phase space of all ﬁelds proceeds through local
+steps, by changing one link matrix at a time, the value of Q only changes when the core of a
+topological charge shrinks down to the scale of a lattice hypercube where it becomes nothing
+more than a gauge singularity. (Or the reverse process.) Once the lattice spacing a is small
+enough, a topological charge whose core is a few lattice spacings across will be embedded in a
+background gauge ﬁeld that is relatively smooth, and one can calculate its weight in the path
+integral using standard semiclassical methods. To be speciﬁc the weight of an instanton of
+size ρ is
+                                                           2
+                                              dρ 1 − g8π
+                                   D(ρ)dρ ∝         e   2 (ρ)
+                                                              ,                           (15)
+                                               ρ ρ4
+where we omit factors varying weakly with ρ. We note the scale-invariant integration measure,
+a factor to account for the fact that a ball of volume ρ4 can be placed in 1/ρ4 diﬀerent ways in
+a unit volume; and a factor arising from the classical instanton action, SI = 8π 2 /g 2 (ρ), where
+g 2 (ρ) is the running coupling on the scale ρ. When we insert the asymptotically free form of
+the coupling, we obtain                             ρ 6
+                                         D(ρ) ∝           ,                                   (16)
+                                                     ξ
+                                                                    √
+where ξ is a physical length scale of the theory, such as r0 , or σ, or ΛMOM . This formula
+should be reliable as long as ρ ≪ ξ. On the lattice it will also break down once ρ ∼ a in a way
+
+                                               25
+that depends on the particular lattice action, but it should be accurate once ρ & f ew × a. In
+order for Q to change on the lattice, an instanton will have to pass through sizes ρ ∼ f ew × a
+and as we see from eqn(17) such ﬁelds are suppressed by a factor ∼ (a/ξ)6 . That is to say,
+our sequence of Monte Carlo generated lattice ﬁelds will be locked into given values of Q once
+we are at large enough β and we will have lost ergodicity in Q. Whether any such loss of
+ergodicity in Q would have a signiﬁcant impact on the physics that we are interested in is not
+clear. (In QCD the situation is quite diﬀerent due to the associated zero-modes of the Dirac
+operator.) Nonetheless it is worth monitoring this potential loss of ergodicity, as we shall now
+do.
+    We focus on two quantities. The ﬁrst is to calculate directly the number of Monte Carlo
+sweeps, ξQ , that it takes to ‘decorrelate’ the value of Q, as deﬁned by
+                                   hQ(is)Q(is + ξQ )i
+                                                      = e−1 ,                               (17)
+                                         hQ2 i
+where is and is + ξQ label the number of MC sweeps and is is averaged over. This is of
+course not a physical quantity: it depends on our particular implementation of the Monte
+Carlo algorithm. However by comparing the value of ξQ (β) to the total number of sweeps at
+a given β we can judge how ergodic is our calculation. The values of ξQ (β) that we obtain
+in our calculations are plotted in Fig. 32. (We restrict our calculation to β ≥ 5.99 since we
+only calculate Q every 25 sweeps and so our determination of ξQ can only be reliable once
+ξQ ≫ 25.) Given that our calculations are typically based on ∼ 106 sweeps it is clear that
+we do not have a serious breakdown of ergodicity at any β although it is also clear that
+at β = 6.50 we are at the borderline given that our sequences of ﬁeld conﬁgurations are
+generated with 40000 prior thermalisation sweeps beginning from a Q = 0 ‘frozen’ starting
+conﬁguration. It is interesting to note that, as shown in Fig. 32, the dependence of ξQ (β) on
+                                    √
+a(β) can be ﬁtted by ξQ ∝ {a σ}−6 . This is what one would naively expect using eqn(16)
+with ρ ∼ a, about which value one expects a shrinking instanton to become a dislocation
+and then a Q = 0 gauge singularity. (Or the reverse.) However it is also possible that
+a tunnelling process is involved in the topology change, as discussed in [41, 42], in which
+case one would expect an exponential dependence on the free energy. Since the relevant
+                                                                        √
+length scale is ∼ 1/a and the typical√dynamical energy scale is ∼ σ, this would suggest a
+correlation length ξQ ∝ exp{const/a σ}. Fitting such a form to our calculated values we
+obtain the dashed curve in Fig. 32. This is an acceptable ﬁt given the quality of the data;
+the overshoot of the β = 6.50 value cannot be taken too seriously given the large error on
+that value (and, no doubt, the even larger relative error on the value of that error estimate).
+Nonetheless, while our calculated values of ξQ are not precise enough to discriminate between
+these diﬀerent pictures of topology change, they serve their main purpose which is to conﬁrm
+that the ‘freezing’ of the topological charge is not severe enough to raise doubts concerning
+our mass and string tension calculations.
+     The second quantity we calculate is the number of sweeps, τ|∆Q|=1, that is takes to change Q
+by one unit. We list our calculated values in Table 24. Clearly the probability of producing or
+annihilating an instanton as described above will be proportional to the space-time volume, √ so
+it is useful to give its value for a standard physical volume which we choose to be V = (3/ σ)4 ,
+
+                                               26
+which is very close to the volumes we actually used for calculating Q. The resulting values,
+labelled τ̃|∆Q|=1, are also listed in Table 32 and, not surprisingly,they are close to the values
+of τ|∆Q|=1. Now, since these changes in Q are randomly ±1 it takes roughly Q2 such changes
+to disorder a charge of Q. On our lattices we have hQ2 i ∼ 3 so the number of sweeps to
+disorder the lattice charge is ∼ hQ2 iτ̃|∆Q|=1 ∼ 3τ̃|∆Q|=1. This comes to about ∼ 4 × 103
+for β = 6.50, which is not very far from our other measure, displayed in Fig. 32. We note
+that since hQ2 i ∝ V and since τ|∆Q|=1 ∝ 1/V , we expect this measure of decorrelation to
+be approximately volume independent. In any case we conﬁrm that our calculations in this
+paper are reasonably ergodic in Q.
+
+
+8    Possible improvements
+The calculations in this paper cover a large enough range of a(β) for the continuum extrap-
+olations to be under reasonable control. And our large basis of loop operators means that it
+is unlikely that we are missing any glueball states in the part of the mass spectrum that we
+have presented. In addition we have checked that even at our largest values of β we maintain
+reasonable ergodicity as far as the topology of the gauge ﬁelds is concerned.
+    In this section we brieﬂy reﬂect upon the main ways in which our calculations can be
+improved.
+    While our calculation of the lightest states is adequate, the calculation of heavier states
+is less so. Here using lattices with an asymmetric discretisation, at ≪ as can be very useful.
+However since the glueball masses are calculated as at M while the physical scale, whether
+provided by σ or r0 , also involves the value of as , we need to know the value of the ratio
+                                                        √
+ξ = as /at to form dimensionless ratios such as M0++ / σ or M0++ r0 . To overcome any issues
+with the shift in the value of the asymmetry ξ = as /at from its inputted tree-level value,
+one can perform two calculations in parallel. The ﬁrst is with as = at and is much like the
+one presented in this paper but one that can be done with a much smaller basis of loop
+operators. It would be designed to calculate the lightest 0++ , 2++ and 0−+ states as well as
+the string tension. (And perhaps r0 and the spectrum of string excitations.)
+                                                                       √        This would
+                                                                                       √    give
+us accurate values of the continuum limit of ratios such as M0++ / σ and M2++ / σ. Our
+second calculation would be with some well chosen value of ξ = as /at > 1 with a large basis
+of loop operators and would be designed to provide accurate values of the heavy as well as the
+light glueball masses. This latter calculation would give the continuum limit of, for example,
+                                                                                             √
+MG /M0++ for the glueball G. Then one can, for √  example, multiply it by the value of M0++ / σ
+obtained in the ﬁrst calculation to obtain MG / σ.
+    The main reason to calculate the heavier states is to provide a target for theoretical and
+model calculations. However with only 5 rotational representations on the lattice, each will
+typically end up having a densely packed set of excited states making the challenge ambiguous.
+So it is (almost) essential to be able to identify the spin, J, towards which each lattice state
+tends as a → 0, and also its 2J + 1 (near) degenerate partners. Doing so by simply identifying
+nearly degenerate states partitioned appropriately amongst the 5 rotational representations of
+the lattice is not an option once the states become dense enough. This means incorporating
+
+
+                                               27
+something like the approach in [6] into the glueball calculations. Doing so could in addition
+have the beneﬁt of identifying the lightest high spin glueballs and hence the leading glueball
+Regge trajectory and so test the old idea that this trajectory is the Pomeron.
+    Amongst the more massive states will be multiglueball scattering states and we need to
+know if any of our supposed single glueball states are in fact of this type. (This is closely
+related to the issue of the decay widths of heavier glueballs.) While one expects there to
+be some suppression of the overlap between our single trace operators and the multi-trace
+operators that are the natural wave-functionals for multiglueball states, this is something
+that needs to be examined explicitly. A way to do this is to include some appropriate multi-
+trace operators in our basis. For example we can take our variationally selected lightest 0++
+glueball operator, give it a non-zero momentum, then take a product of two such operators
+with equal and opposite momenta to give a zero-momentum state. Do so for various momenta
+and possibly diﬀerent glueballs. States in the resulting spectrum that have a small overlap
+onto such multi-glueball states can be identiﬁed with more conﬁdence as being single glueballs.
+For a ﬁrst step in this direction see for example Section 7.2.3 of [6] where small overlaps are
+found indicating that the multi-glueball states are likely to be invisible to current glueball
+calculations. However this needs to be studied more systematically and should form part of
+an improved calculation.
+    The above discussion also extends to the question of identifying ditorelon states. For the
+lightest such states their large variation with the lattice volume makes them easy to detect.
+However when such states are heavier and are located in the dense part of the spectrum,
+identifying ﬁnite volume shifts becomes ambiguous and a direct study of overlaps, as for
+multiglueball states, becomes useful and should be one of the incorporated improvements.
+    While do not claim the above improvements to be exhaustive, they would represent a
+major qualitative improvement to this and earlier glueball spectrum calculations.
+
+
+9    Discussion
+In this paper we provide a new calculation of the glueball spectrum of SU(3) gauge theories
+which is designed to improve upon some limitations of earlier calculations. We have a very
+large basis of glueball operators which gives us conﬁdence that we are not missing any states
+in the important low-lying part of the spectrum. We perform high statistics calculations out
+to lattice spacings as small as a(β = 6.50) ≃ 0.042f m, which both improves our control
+of our extrapolations to the continuum limit and gives us a ﬁner resolution of the glueball
+correlators, which is particularly useful for the heavier glueballs. We perform a high statistics
+calculation to check that our spatial volume is large enough and identify the most important
+multi-torelon states so that we can exclude them from the spectrum. We perform a high
+statistics study of the topological ﬂuctuations of the gauge ﬁelds, with particular care in
+establishing the reliability of our measure of topology, so as to establish the ergodicity of
+our Monte Carlo sequences throughout our calculations. Given our cubic lattice, our glueball
+states fall into representations of the octahedral subgroup of the full rotation group, but
+using the observed near-degeneracies of various states we are able to assign a continuum spin
+
+
+                                               28
+to more states than previous calculations. At the same time, such an extensive calculation
+highlights important areas where improvements are needed: a parallel calculation with a
+lattice asymmetry allowing a much ﬁner discretisation of the correlators [24, 5] would be
+useful for the massive states; to systematically establish the continuum spins of the glueball
+states one needs to incorporate methods such as those used in [6]; to be sure one that one can
+distinguish multiglueball scattering states in the spectrum one needs to include the relevant
+operators into the calculations; and the same applies in controlling the contribution of the
+ﬁnite volume multi-torelon states.
+    Our results for the glueball spectrum of the continuum theory are listed in Tables 14, 15
+and 18. Table 14 lists the masses in units of the conﬁning string tension, and labels them
+by their parity P , charge conjugation C, and the irreducible representation of the rotation
+group of our cubic lattice. Table 15 translates these masses into ‘GeV’ units as explained in
+Section 5.2. In Table 18 we list those glueballs whose continuum spins J we can identify.
+    If we assume that the phenomenologically relevant states are those with masses . 3GeV
+then our calculations in Table 18 conﬁrm what has been established for a long time: these
+are the 0++ , 2++ , 0−+ , 2−+ , 1+− ground states and the ﬁrst excited 0++ . Of course our
+calculations are much more accurate than those early calculations, and improve signiﬁcantly
+upon the more recent ones as well, but at this stage the greatest phenomenological uncertainty
+lies in the translation of the masses into GeV units and that is something that a calculation
+in the pure gauge theory cannot deal with by itself; here we need glueball calculations in full
+QCD to be further pursued.
+    We have emphasised that an important role for the glueball spectrum lies in providing
+a benchmark challenge for theoretical and model approaches that attempt to understand
+the non-perturbative physics of the SU(3) gauge theory and hence of QCD, usually in some
+approximation. For this purpose our excited states in Table 18 are useful, as indeed is the
+more extensive set of states listed in Table 14 since a calculation in the continuum theory
+can always project the states into the representations of the octahedral subgroup of the full
+rotation group.
+
+
+Acknowledgements
+We thank Massimo D’Elia for discussions. AA has been ﬁnancially supported by the Euro-
+pean Union’s Horizon 2020 research and innovation programme “Tips in SCQFT” under the
+Marie Sklodowska-Curie grant agreement No. 791122. MT acknowledges support by Oxford
+Theoretical Physics and All Souls College. The numerical computations were carried out on
+the computing cluster in Oxford Theoretical Physics.
+
+
+References
+ [1] C. Michael and M. Teper, ’The Glueball Spectrum in SU(3)’, Nucl.Phys.B 314 (1989) 347
+
+
+
+                                              29
+ [2] C. Michael, ’The Glueball Spectrum From Lattice Gauge Theory’, Acta Phys.Polon.B 21
+     (1990) 119
+
+ [3] G.S. Bali, K. Schilling, A. Hulsebos, A.C. Irving, C. Michael, P.W. Stephen-
+     son, ’A comprehensive lattice study of SU(3) glueballs’, Phys.Lett.B 309 (1993) 378
+     [arXiv:hep-lat/9304012].
+
+ [4] C.J. Morningstar and M.J. Peardon, ’The Glueball spectrum from an anisotropic lattice
+     study’, Phys.Rev.D 60 (1999) 034509 [arXiv:hep-lat/9901004].
+
+ [5] Y. Chen, A. Alexandru, S.J. Dong, T. Draper, I. Horvath, F.X. Lee, K.F. Liu, N.
+     Mathur, C. Morningstar, M. Peardon, S. Tamhankar, B.L. Young, J.B. Zhang, ’Glueball
+     Spectrum and Matrix Elements on Anisotropic Lattices’, Phys.Rev.D 73 (2006) 014516
+     [arXiv:hep-lat/0510074].
+
+ [6] Harvey Meyer, ’Glueball        Regge    trajectories’,   Oxford   D.Phil   Thesis    2004
+     [arXiv:hep-lat/0508002].
+
+ [7] A. Athenodorou, B. Bringoltz, M. Teper, ’Closed flux tubes and their string description
+     in D=3+1 SU(N) gauge theories’, JHEP 02 (2011) 030 [arXiv:1007.4720].
+
+ [8] O. Aharony and Z. Komargodski, ’The Effective Theory of Long Strings’, JHEP 1305
+     (2013) 118 [arXiv:1302.6257].
+
+ [9] S. Dubovsky, R. Flauger, V. Gorbenko, ’Flux Tube Spectra from Approximate Integrability
+     at Low Energies’, J.Exp.Theor.Phys. 120 (2015) 399 [arXiv:1404.0037].
+
+[10] M. Teper, ‘An improved method for lattice glueball calculations’, Phys. Lett. B183 (1987)
+     345.
+
+[11] M. Teper, ‘The scalar and tensor glueball masses in lattice gauge theory’, Phys. Lett.
+     B185 (1987) 121.
+
+[12] B. Lucini, M. Teper, U. Wenger, ’Glueballs and k-strings in SU(N) gauge theories: Cal-
+     culations with improved operators’, JHEP 0406:012,2004 [arXiv:hep-lat/0404008].
+
+[13] M. Hamermesh, ‘Group Theory and its Applications to Physical Problems’, (Dover, 1989)
+
+[14] P. Conkey, S. Dubovsky, M. Teper, ‘Glueball Spins in D=3 Yang-Mills’, JHEP 10 (2019)
+     175 [arXiv:1909.07430].
+
+[15] M. Lüscher, ‘Volume Dependence of the Energy Spectrum in Massive Quantum Field
+     Theories. 1. Stable Particle States’, Commun.Math.Phys. 104 (1986) 177.
+
+[16] H.B. Meyer and M.J. Teper, ‘Glueball Regge trajectories and the pomeron: a lattice study’,
+     Phys.Lett. B605 (2005) 344 [arXiv:hep-ph/0409183]
+
+
+
+                                              30
+[17] C. Michael, G.A. Tickle, M.J. Teper, ‘The SU(2) Glueball Spectrum in a Small Volume’,
+     Phys.Lett.B 207 (1988) 313.
+
+[18] R. Sommer, ‘A new way to set the energy scale in lattice gauge theories and its applica-
+     tions to the static force and in SU(2) Yang-Mills theory’, Nucl. Phys. B411 (1994) 839,
+     [arXiv:hep-lat/9310022].
+
+[19] B. Lucini, M. Teper, ‘SU(N) gauge theories in four dimensions: exploring the approach
+     to N = infinity’, JHEP 0106:050,2001 [arXiv:hep-lat/0103027].
+
+[20] G. S. Bali, F. Bursa, L. Castagnini, S. Collins, L. Del Debbio, B. Lucini, M. Panero,
+     ‘Mesons in large-N QCD’, JHEP 06 (2013) 071 [arXiv:1304.4437].
+
+[21] R. Sommer, ‘Scale setting in lattice QCD’, PoS LATTICE2013 (2014) 015
+     [arXiv:1401.3270].
+
+[22] S. Capitani, M. Lüscher, R. Sommer and H. Wittig, ‘Non-perturbative quark
+     mass renormalization in quenched lattice QCD’, Nucl. Phys. B544 (1999) 669
+     [arXiv:hep-lat/9810063].
+
+[23] Silvia Necco, Rainer Sommer, ‘The Nf=0 heavy quark potential from short to intermediate
+     distances’ Nucl.Phys.B622( 2002) 328 [arXiv:hep-lat/0108008].
+
+[24] K. Ishikawa, G. Schierholz, M. Teper, ‘Calculation of the Glueball Mass Spectrum of SU(2)
+     and SU(3) Non-Abelian Lattice Gauge Theories I: Introduction and SU(2)’ Z.Phys.C 19
+     (1983) 327.
+
+[25] P.Di Vecchia, K.Fabricius, G.C.Rossi, G.Veneziano, ‘Preliminary evidence for UA(1)
+     breaking in QCD from lattice calculations’, Nucl. Phys. B192 (1981) 392.
+
+[26] M. Campostrini, A. Di Giacomo and H. Panagopoulos, ‘The Topological Susceptibility on
+     the Lattice’, Phys. Lett. B212 (1988) 206
+
+[27] M. Teper, ‘Instantons in the Quantized SU(2) Vacuum: A Lattice Monte Carlo Investi-
+     gation’, Phys. Lett. B162 (1985) 357.
+
+[28] D. Smith and M. Teper, ‘Topological Structure of the SU(3) Vacuum’, Phys. Rev. D 58,
+     014505 (1998) [arXiv:hep-lat/9801008]
+
+[29] M. Lüscher, ‘Properties and uses of the Wilson flow in lattice QCD’, JHEP 1008 (2010)
+     071, [arXiv:1006.4518].
+
+[30] M. Lüscher and P. Weisz, ‘Perturbative analysis of the gradient flow in non-abelian gauge
+     theories’, JHEP 1102 (2011) 051 [arXiv:1101.0963].
+
+[31] M. Lüscher, ‘Future applications of the Yang-Mills gradient flow in lattice QCD’, PoS
+     LATTICE 2013 (2014) 016 [arXiv:1308.5598].
+
+                                              31
+[32] C. Bonati and M. D’ Elia, ‘Comparison of the gradient flow with cooling in SU(3) pure
+     gauge theory’, Phys. Rev. D 89 (2014) 10, 105005 [arXiv:1401.2441].
+
+[33] C. Alexandrou, A. Athenodorou, K. Jansen, ‘Topological charge using cooling and the
+     gradient flow’, Phys. Rev. D92 (12) (2015) 125014 [arXiv:1509.04259].
+
+[34] C. Alexandrou, A. Athenodorou, K. Cichy, A. Dromard, E. Garcia-Ramos, K. Jansen,
+     U. Wenger and F. Zimmermann, ‘Comparison of topological charge definitions in Lattice
+     QCD’, Eur. Phys. J. C 80 (2020) no.5, 424 [arXiv:1708.00696].
+
+[35] G. Veneziano, ‘U(1) Without Instantons’, Nucl. Phys. B159 (1979) 213.
+
+[36] E. Witten, ‘Current Algebra Theorems for the U(1) Goldstone Boson’, Nucl. Phys. B156
+     (1979) 269.
+
+[37] L. Del Debbio, L. Giusti, C. Pica, ‘Topological susceptibility in the SU(3) gauge theory’,
+     [arXiv:hep-th/0407052]
+
+[38] H. Neuberger, ‘Exactly massless quarks on the lattice’, Phys.Lett. B417 (1998) 141
+     [arXiv:hep-lat/9707022].
+
+[39] H. Neuberger, ‘A practical implementation of the Overlap-Dirac operator’, Phys.Rev.Lett.
+     81 (1998) 4060 [arXiv:hep-lat/9806025].
+
+[40] M. Lüscher, F. Palombi, ‘Universality of the topological susceptibility in the SU(3) gauge
+     theory’, JHEP 09 (2010) 110 [arXiv:1008.0732].
+
+[41] L. Del Debbio, G. M. Manca, E. Vicari, ‘Critical slowing down of topological modes’,
+     Phys. Lett. B594 (2004) 315 [arXiv:hep-lat/0403001].
+
+[42] L. Del Debbio, H. Panagopoulos, P. Rossi, E. Vicari, ‘Spectrum of confining strings in
+     SU(N) gauge theories’, JHEP 0201 (2002) 009 [arXiv:hep-th/0111090].
+
+
+
+
+                                              32
+                             1                  √
+             β   lattice     3
+                               ReTrhUp i       a σ          amG       lattices
+          5.6924 103 16    0.5475112(71)   0.3999(58)     0.987(9)      83 16
+           5.80   123 16   0.5676412(36)   0.31666(66)    0.908(12)    103 16
+          5.8941 143 16    0.5810697(18)   0.26118(37)   0.7991(92) 123 16,103 16
+           5.99    184     0.5925636(11)   0.21982(77)   0.7045(65)    143 20
+          6.0625   204     0.6003336(10)   0.19472(54)   0.6365(43)    143 20
+           6.235   264      0.6167723(6)   0.15003(30)   0.4969(29) 343 26,183 26
+          6.3380   304      0.6255952(4)   0.12928(27)   0.4276(37)    223 30
+           6.50    384      0.6383531(3)   0.10383(24)   0.3474(22)    263 38
+
+Table 1: Parameters of the SU(3) calculations as well as the string tension, σ, and the mass
+gap, mG . On the right are shown other lattice sizes used for ﬁnite volume studies and for
+calculations of the topological charge.
+
+
+                                  continuum J ∼ cubic R
+                             J               cubic R
+                             0   ∼             A1
+                             1   ∼             T1
+                             2   ∼           E + T2
+                             3   ∼        A2 + T 1 + T 2
+                             4   ∼      A1 + E + T 1 + T 2
+                             5   ∼        E + 2T 1 + T 2
+                             6   ∼ A1 + A2 + E + T 1 + 2T 2
+                             7   ∼     A2 + E + 2T 1 + 2T 2
+                             8   ∼     A1 + 2E + 2T 1 + 2T 2
+
+     Table 2: Projection of continuum spin J states onto the cubic representations R.
+
+
+
+
+                                            33
+                               aM , β = 6.235 , PC=++
+                          R       343 26     263 26     183 26
+                         A1    0.4965(41) 0.4969(29) 0.4773(53)
+                                                     0.7002(73)
+                               0.8566(70) 0.8626(52) 0.842(18)
+                               1.130(15) 1.096(10)    1.050(9)
+                               1.129(14) 1.134(11)
+                                           1.054(27)
+                               1.144(13) 1.193(12)
+                               1.238(16) 1.226(17)
+                               1.329(22) 1.322(18)
+                         A2    1.166(12)    1.127(9) 1.100(11)
+                                 1.31(9)    1.25(6)    1.13(6)
+                               1.456(22) 1.429(16) 1.455(22)
+                          E                          0.6627(50)
+                               0.7354(26) 0.7342(45) 0.742(9)
+                                1.013(9)    1.013(6) 0.974(19)
+                               1.088(17) 1.067(25) 1.054(23)
+                               1.127(12)    1.122(8) 1.054(26)
+                                           1.206(11)
+                               1.242(15) 1.243(15)
+                               1.376(25) 1.332(17)
+                         T1    1.111(19)    1.148(7) 1.160(24)
+                               1.116(23) 1.137(23)    1.194(9)
+                               1.392(12) 1.407(12)     1.38(5)
+                               1.423(13) 1.392(51)
+                         T2    0.7439(35) 0.7374(31) 0.728(7)
+                                1.021(6)    1.025(6)  1.036(7)
+                               1.106(19) 1.096(18) 1.100(21)
+                                1.158(7)    1.152(8)  1.166(7)
+                        2aE(l) 1.479(12)    1.087(5)  0.674(5)
+
+Table 3: Finite volume check on glueball masses with P = + and C = + at β = 6.235 on the
+lattices shown. The masses are extracted from the same initial time and are not always the
+same as our best mass estimates listed in other tables. Intemediate gaps appear where there
+is a clear extra state on a smaller lattice. Last line gives twice the energy of a winding ﬂux
+tube.
+
+
+
+
+                                             34
+                                 aM , β = 6.235 , PC=-+
+                           R      343 26    263 26     183 26
+                           A1   0.806(13) 0.781(13) 0.772(12)
+                                 1.08(5)   1.12(4) 0.924(23)
+                                1.408(25) 1.437(20) 1.216(13)
+                                1.507(25) 1.485(22) 1.456(19)
+                           A2   1.420(24) 1.404(21) 1.519(21)
+                                 1.62(5)   1.60(3)    1.84(4)
+                            E   0.970(10) 0.958(5) 0.963(5)
+                                1.224(12) 1.249(8) 1.257(10)
+                                1.394(18) 1.422(15) 1.423(15)
+                           T1   1.277(52) 1.226(30) 1.258(33)
+                                1.303(11) 1.302(11) 1.322(10)
+                                1.335(11) 1.337(10) 1.398(11)
+                                 1.43(7)   1.46(7)    1.59(8)
+                           T2   0.958(7) 0.962(5) 0.971(6)
+                                1.234(9) 1.219(6) 1.251(8)
+                                 1,29(4)   1.23(4) 1.256(32)
+
+Table 4: Finite volume check on glueball masses with P = − and C = + at β = 6.235 on the
+lattices shown. Where possible the masses are extracted from the same initial time and so are
+not always the same as our best mass estimates listed in other tables.
+
+                                 aM , β = 6.235 , PC=+-
+                           R      343 26    263 26    183 26
+                           A1   1.397(22) 1.431(20) 1.486(30)
+                           A2   1.101(13) 1.095(9) 1.117(10)
+                                1.304(20) 1.307(18) 1.37(2)
+                                1.395(33) 1.395(19) 1.62(3)
+                            E   1.324(14) 1.306(10) 1.383(12)
+                                1.397(18) 1.416(13) 1.445(15)
+                                1.453(20) 1.455(16) 1.539(17)
+                           T1   0.910(10) 0.897(10) 0.928(11)
+                                1.063(21) 1.071(18) 1.067(16)
+                                1.175(8) 1.169(8) 1.156(7)
+                                1.301(24) 1.307(33) 1.26(3)
+                           T2   1.107(8) 1.109(7) 1.104(9)
+                                1.290(12) 1.258(27) 1.285(37)
+                                1.337(9) 1.333(12) 1.331(9)
+
+Table 5: Finite volume check on glueball masses with P = + and C = − at β = 6.235 on the
+lattices shown. Where possible the masses are extracted from the same initial time and so are
+not always the same as our best mass estimates listed in other tables.
+
+                                             35
+                                    aM , β = 6.235 , PC=–
+                            R       343 26     263 26    183 26
+                            A1    1.507(18) 1.512(21) 1.523(24)
+                                   1.50(2)    1.59(3)   1.53(3)
+                            A2    1.313(17) 1.340(18) 1.357(21)
+                                   1.59(3)    1.57(3)   1.60(3)
+                             E    1.203(10) 1.186(10) 1.213(8)
+                                   1.34(9)    1.38(6)   1.48(7)
+                                  1.39(10)    1.41(8) 1.566(20)
+                            T1    1.191(31) 1.163(24) 1.233(22)
+                                  1.283(40) 1.305(31) 1.351(11)
+                                  1.479(16) 1.490(12) 1.458(12)
+                            T2    1.184(24) 1.200(28) 1.221(9)
+                                  1.268(42) 1.283(25) 1.31(4)
+                                   1.41(7)    1.50(6)   1.25(3)
+
+Table 6: Finite volume check on glueball masses with P = − and C = − at β = 6.235 on the
+lattices shown. Where possible the masses are extracted from the same initial time and so are
+not always the same as our best mass estimates listed in other tables.
+
+
+
+
+                                               aM
+                                 RP C   β = 5.6924    β = 5.80
+                                 A++
+                                  1      0.987(9)    0.908(12)
+                                          1.89(8)    1.632(38)
+                                                       1.94(8)
+                                 E ++    1.95(5)     1.550(17)
+                                                       2.09(7)
+                                 T2++     2.02(5)    1.586(23)
+                                 A−+
+                                   1     2.36(14)    1.764(49)
+                                 E −+                  2.09(7)
+                                 T2−+                  2.03(5)
+                                 T1+−                1.938(32)
+                                 aEl    1.491(47)    1.1126(50)
+
+Table 7: Glueball masses at β = 5.6924 and β = 5.80 on a 103 16 and 123 16 lattices respectively,
+for all octahedral representations R, and for both values of parity, P, and charge conjugation,
+C. Also the energy El of a winding ﬂux tube.
+
+
+
+                                               36
+                                      aM , β = 5.8941
+                     R  P=+,C=+        P=-,C=+ P=+,C=- P=-,C=-
+                     A1  0.799(10)     1.440(25)   2.67(25) 2.74(51)
+                         1.345(14)      1.98(9)
+                          1.72(4)
+                          1.83(5)
+                    A2 1.933(60)         2.62(25)    1.95(8)     2.10(12
+                    E    1.280(15)      1.661(33)    2.27(8)     2.22(8)
+                         1.747(24)       2.07(8)
+                         1.814(36)
+                         1.976(48)
+                    T 1 1.924(40)        2.20(6)    1.591(18)     2.07(5)
+                         1.976(56)       2.17(8)     1.86(6)     2.22(12)
+                         2.35(11)        2.19(10)    2.05(5)
+                    T 2 1.276(11)       1.669(29)   1.907(23)    2.18(8)
+                         1.796(28)       2.05(5)     2.14(6)
+                         1.913(24)
+                         1.988(40)
+                                      aEl = 0.8770(27)
+
+Table 8: Glueball masses at β = 5.8941 on a 143 16 lattice for all octahedral representations,
+R, and for both values of parity, P, and charge conjugation, C. Also the energy El of a winding
+ﬂux tube.
+
+
+
+
+                                              37
+                                      aM , β = 5.99
+                    R    P=+,C=+      P=-,C=+ P=+,C=-          P=-,C=-
+                    A1   0.7045(65)   1.169(15)   2.14(11)     2.37(13)
+                          1.234(13)    1.69(5)
+                          1.543(27)    1.93(8)
+                          1.651(28)    1.82(8)
+                          1.729(41)
+                    A2    1.674(40)    1.94(12)    1.601(38)    2.00(7)
+                           1.79(6)     2.21(14)     1.88(5)
+                                                    2.04(7)
+                    E      1.082(8)    1.442(20)   1.904(42)   1.771(26)
+                          1.490(16)    1.790(35)    2.17(7)     2.02(6)
+                          1.611(27)     2.12(6)                2.21(10)
+                          1.627(28)
+                    T1    1.713(22)    1.983(43) 1.345(13)     1.747(37)
+                          1.715(25)     2.02(5)   1.634(21)     2.09(5)
+                           1.97(6)      1.98(4)   1.736(24)     2.15(7)
+                           2.02(5)      2.16(5)     1.94(4)
+                    T2     1.083(6)    1.411(12) 1.597(21)     1.792(30)
+                          1.459(16)    1.767(25) 1.871(36)     1.935(47)
+                          1.669(21)    1.849(38)    1.90(5)    2.103(53)
+                          1.657(24)    1.934(37)
+                          1.756(24)    1.994(46)
+                                      aEl = 0.8095(61)
+
+Table 9: Glueball masses at β = 5.99 on a 184 lattice for all octahedral representations, R,
+and for both values of parity, P, and charge conjugation, C. Also the energy El of a winding
+ﬂux tube.
+
+
+
+
+                                             38
+                                     aM , β = 6.0625
+                   R    P=+,C=+       P=-,C=+ P=+,C=-         P=-,C=-
+                   A1   0.6365(43)    1.001(32)   1.98(7)      1.93(8)
+                         1.111(11)    1.419(26)   2.13(8)      1.99(9)
+                         1.384(28)     1.83(7)    2.05(7)     2.15(12)
+                         1.467(17)     1.75(6)
+                         1.482(31)
+                          1.54(3)
+                   A2    1.476(31)     1.85(7)    1.433(21)   1.667(38)
+                         1.649(29)     1.94(8)     1.68(4)    1.888(78)
+                          1.81(6)                  1.85(6)     2.05(9)
+                    E   0.9623(61)    1.213(33)   1.710(33)   1.558(19)
+                          1.298(8)     1.60(3)    1.891(40)   1.824(32)
+                         1.432(15)     1.81(5)    1.845(42)    1.98(5)
+                         1.465(11)
+                         1.514(19)
+                   T1    1.518(15)    1.689(21)    1.194(8)   1.588(22)
+                          1.54(2)     1.727(23)    1.435(8)    1.81(3)
+                          1.74(3)     1.754(20)   1.547(16)    1.86(4)
+                                       1.91(4)    1.695(17)
+                   T2    0.948(13)    1.270(15)   1.418(11)    1.47(9)
+                         1.335(10)    1.575(16)   1.701(29)   1.58(14)
+                         1.487(13)     1.56(9)    1.656(25)    1.81(3)
+                         1.482(11)                 1.83(3)     1.98(5)
+                         1.567(17)
+                                     aEl = 0.7040(42)
+
+Table 10: Glueball masses at β = 6.0625 on a 204 lattice for all representations, R, of the
+cube, and for both values of parity, P, and charge conjugation, C. Also the energy El of a
+winding ﬂux tube.
+
+
+
+
+                                            39
+                                     aM , β = 6.235
+                    R    P=+,C=+ P=-,C=+ P=+,C=-                P=-,C=-
+                    A1   0.4969(29) 0.781(13) 1.431(20)         1.512(21)
+                         0.8626(52) 1.132(11) 1.482(25)         1.588(27)
+                          1.096(10) 1.437(20)     1.77(4)
+                          1.134(11) 1.485(22)
+                          1.054(27) 1.597(33)
+                          1.161(36)
+                    A2    1.082(32) 1.404(21)    1.095(9)       1.340(18)
+                           1.25(6)    1.45(13)  1.307(18)        1.57(3)
+                          1.429(16)             1.395(19)        1.67(4)
+                     E   0.7342(45) 0.926(13) 1.306(10)         1.186(10)
+                           1.013(6)   1.249(8)  1.416(13)        1.38(6)
+                          1.067(25) 1.422(15) 1.455(16)          1.41(8)
+                           1.122(8)               1.39(7)        1.49(8)
+                          1.206(11)                             1.587(21)
+                    T1     1.148(7)  1.226(30) 0.897(10)        1.163(24)
+                          1.137(23) 1.302(11) 1.071(18)         1.305(31)
+                          1.407(12) 1.337(10)    1.169(8)       1.490(12)
+                          1.392(51) 1.463(65) 1.307(33)         1.541(16)
+                          1.436(13)
+                    T2   0.7374(31) 0.962(5)    1.087(22)       1.200(28)
+                         1,0247(52) 1.219(6)    1.258(27)       1.283(25)
+                          1.096(18) 1.233(36) 1.333(12)          1.50(6)
+                           1.152(8)  1.333(11) 1.357(13)        1.557(17)
+                          1.145(25)             1.450(13)        1.54(7)
+                                    aEl = 0.5435(23)
+
+Table 11: Glueball masses at β = 6.235 on a 264 lattice for all octahedral representations, R,
+and for both values of parity, P, and charge conjugation, C. Also the energy El of a winding
+ﬂux tube.
+
+
+
+
+                                             40
+                                   aM , β = 6.3380
+                    R P=+,C=+ P=-,C=+ P=+,C=-                    P=-,C=-
+                    A1 0.4276(37)   0.688(8)    1.234(46)        1.327(17)
+                        0.7452(45) 0.956(22) 1.318(62)           1.277(50)
+                        0.9386(88)   1.16(5)     1.38(9)          1.39(6)
+                        0.939(18)    1.19(5)
+                        0.974(17)
+                        0.971(18)
+                    A2   0.992(8)   1.239(15) 0.963(10)          1.140(32)
+                        1.084(41)   1.411(20) 1.161(11)          1.335(70)
+                        1.232(44)    1.43(9)    1.152(33)
+                        1.191(47)                1.28(6)
+                    E 0.6356(27) 0.8099(63) 1.111(29)            1.008(21)
+                        0.8634(84) 1.061(17) 1.238(28)           1.193(32)
+                        0.934(14)   1.179(32) 1.261(38)          1.280(38)
+                        0.961(13)   1.230(39) 1.243(35)           1.33(4)
+                        0.967(16)                1.30(6)
+                    T 1 0.995(13)   1.108(18) 0.7797(60)         1.062(15)
+                        0.995(14)   1.119(20) 0.923(13)          1.165(17)
+                         1.263(7)   1.110(20)   1.020(5)         1.254(26)
+                        1.264(30)    1.25(4)    1.158(9)         1.288(32)
+                                     1.34(6)    1.201(22)
+                    T 2 0.6369(29) 0.8207(86) 0.952(11)          1.056(14)
+                        0.8856(39) 1.031(15) 1.131(22)           1.110(16)
+                        0.963(12)   1.169(19)   1.157(7)         1.296(37)
+                        0.968(10)   1.142(22) 1.202(22)          1.255(30)
+                         0.974(12   1.164(21) 1.269(28)           1.29(4)
+                                   aEl = 0.4652(21)
+
+Table 12: Glueball masses at β = 6.3380 on a 304 lattice for all octahedral representations, R,
+and for both values of parity, P, and charge conjugation, C. Also the energy El of a winding
+ﬂux tube.
+
+
+
+
+                                              41
+                                       aM , β = 6.50
+                    R  P=+,C=+        P=-,C=+ P=+,C=-          P=-,C=-
+                    A1 0.3474(22)     0.5568(50) 0.992(24)     1.016(47)
+                       0.6036(36)      0.761(12) 1.150(11)     1.034(36)
+                       0.7629(52)      0.948(21) 1.092(21)     1.037(74)
+                        0.768(10)      0.948(17) 1.169(34)     1.136(25)
+                         0.815(6)
+                         0.842(6)
+                    A2 0.795(10)       1.012(26)   0.763(11)   0.915(13)
+                        0.894(17)      1.081(33)   0.913(8)    1.055(10)
+                        1.058(27)      1.088(26)   0.932(18)   1.067(34)
+                        1.004(16)      1.234(49)   1.054(22)   1.215(13)
+                    E 0.5054(32)       0.657(8)    0.916(11)    0.839(9)
+                       0.6971(70)      0.837(9)    0.908(37)   0.975(13)
+                         0.779(9)      0.984(14)   1.058(15)   1.083(16)
+                         0.785(6)      1.004(19)   1.040(14)   1.121(24)
+                         0.810(9)
+                    T1   0.813(8)    0.894(9)    0.636(5)      0.859(10)
+                        0.806(12)    0.914(12)   0.758(7)      0.987(12)
+                         0.943(9)    0.910(27)   0.811(6)      0.993(13)
+                         0.951(8)    0.996(27) 0.911(10)       1.058(18)
+                                     0.997(35)   0.959(9)      1.034(18)
+                    T2   0.5057(19) 0.6638(63) 0.734(11)        0.854(7)
+                         0.6959(44)  0.840(8)    0.897(10)      0.945(9)
+                         0.8083(73) 0.939(10)    0.921(8)      0.998(10)
+                          0.806(9)   0.952(8)    0.955(10)      1.051(9)
+                          0.859(8)   0.976(7)    1.000(15)      1.125(8)
+                                    aEl = 0.3811(19)
+
+Table 13: Glueball masses at β = 6.50 on a 384 lattice for all octahedral representations, R,
+and for both values of parity, P, and charge conjugation, C. Also the energy El of a winding
+ﬂux tube.
+
+
+
+
+                                             42
+                                      √
+                                  MG / σ continuum limit
+                    R    P=+,C=+ P=-,C=+ P=+,C=-              P=-,C=-
+                    A1    3.405(21) 5.276(45)    9.32(28)      9.78(46)
+                          5.855(41)   7.29(13)                10.39(37)
+                          7.515(50)   9.18(26)
+                          7.38(11)    9.37(22)
+                    A2    7.705(85)   9.80(22)   7.384(90)     8.96(15)
+                          8.61(20)    11.17(30)  8.94(10)     10.21(20)
+                                                 8.90(21)
+                    E     4.904(20) 6.211(56)    8.77(12)      7.91(10)
+                          6.728(47)    8.23(9)   9.03(23)      9.39(18)
+                           7.49(9)    9.47(16)   10.39(21)    10.40(22)
+                          7.531(60)
+                    T1    7.694(81)   8.48(12)   6.065(40)     8.31(10)
+                          7.72(11)    8.57(13)    7.21(8)     9.30(14)*
+                                      8.66(15)    7.82(6)      9.72(15)
+                                      9.56(28)   8.92(10)
+                    T2    4.884(19) 6.393(45)     7.22(9)     8.198(80)
+                          6.814(31)    8.15(7)   8.72(11)     8.99(11)*
+                         7.716(70)* 9.23(12)*     9.06(8)      9.69(13)
+                          7.677(71)
+
+Table 14: Continuum limit of glueball masses in units of the string tension, for all repre-
+sentations, R, of the rotation symmetry of a cube, for both values of parity, P, and charge
+conjugation, C. Ground states and some ecited states. Stars indicate poor ﬁts (χ2 per degree
+of freedom greater than 2.5).
+
+
+
+
+                                            43
+                                        MG GeV
+                   R P=+,C=+         P=-,C=+ P=+,C=-         P=-,C=-
+                   A1 1.651(23)      2.599(39) 4.52(15)      4.74(23)
+                      2.840(40)       3.54(8)                5.04(19)
+                       3.65(6)        4.45(14)
+                       3.58(15)       4.54(12)
+                   A2  3.74(7)        4.75(13) 3.58(7)       4.35(9)
+                       4.18(11)       5.42(16) 4.34(8)       4.95(12)
+                                               4.32(12)
+                    E    2.378(31)   3.012(46) 4.25(8)       3.84(7)
+                          3.26(5)     3.99(7)  4.38(13)      4.55(11)
+                          3.63(7)     4.59(10) 5.04(12)      5.04(13)
+                          3.65(6)
+                   T1     3.73(6)     4.11(8)    2.942(41)   4.03(17)
+                          3.74(7)     4.16(8)     3.50(6)    4.51(9)*
+                                      4.20(9)     3.79(6)    4.71(10)
+                                      4.64(15)    4.33(8)
+                   T2    2.369(31)   3.101(44)    3.50(6)    3.98(7)
+                          3.30(5)     3.95(6)     4.23(8)    4.36(8)*
+                          3.74(6)*    4.48(8)*    4.39(7)    4.70(9)
+                          3.72(6)
+
+Table 15: Continuum glueball masses in GeV units using the value r0 = 472(5)f m from [21]
+to set the scale. Errors are statistical only.
+
+
+
+
+                                           44
+                            continuum J P C from cubic R
+              PC
+            J                                 cubic RP C
+            0++ gs    ∼                        A1++ gs
+            0++ ex1   ∼                        A1++ ex1
+            2++ gs    ∼                   E gs + T 2++ gs
+                                            ++
+
+            2++ ex1   ∼                 E ++ ex1 + T 2++ ex1
+            3++ gs    ∼*      A2 gs + T 1++ gs(ex1) + T 2++ ex3(ex2)
+                                 ++
+
+            4++ gs    ∼* A1++ ex2 + E ++ ex2 +T 1++ ex1(gs) + T 2++ ex2(ex3)
+            0−+ gs    ∼                        A1−+ gs
+            0−+ ex1   ∼                        A1−+ ex1
+            2−+ gs    ∼                   E −+ gs + T 2−+ gs
+            2−+ ex1   ∼                 E −+ ex1 + T 2−+ ex1
+            1−+ gs    ∼                        T 1−+ gs
+            1−+ ex1   ∼*                       T 1−+ ex1
+            1−+ ex2   ∼*                       T 1−+ ex2
+            2+− gs    ∼*                 E +− gs + T 2+− ex1
+            1+− gs    ∼                        T 1+− gs
+            1+− ex1   ∼                        T 1+− ex2
+            3+− gs    ∼            A2+− gs + T 1+− ex1 + T 2+− gs
+            4+− gs    ∼**    A1+− gs + E +− ex1 +T 1+− ex3 + T 2+− ex2
+            2−− gs    ∼                   E −− gs + T 2−− gs
+            1−− gs    ∼                        T 1−− gs
+
+Table 16: Identiﬁcation of continuum J P C states from the results for the cubic representations
+in Table 14. Ground state denoted by gs, i’th excited state by exi. Where there is some
+ambiguity, a single star denotes ’likely’ while two stars indicate ’signiﬁcant uncertainty’.
+                                       √
+                                   MG / σ continuum limit
+                   J       P=+,C=+ P=-,C=+ P=+,C=- P=-,C=-
+                   0 gs     3.405(21) 5.276(45)
+                   0 ex1    5.855(41)    7.29(13)
+                   2 gs     4.894(22)     6.32(9)  8.74(12)* 8.08(15)
+                   2 ex1    6.788(40)     8.18(8)
+                   1 gs                  8.48(12)  6.065(40) 8.31(10)
+                   1 ex1                8.57(13)*   7.82(6)
+                   1 ex2                8.66(15)*
+                   3 gs      7.71(9)*               7.27(12)
+                   4 gs     7.60(12)*             9.02(10)**
+                                        √
+                                      r0 σ = 1.160(6)
+
+Table 17: Continuum limit of glueball masses, in units of the string tension, for those J P C
+representations we can identify. Ground state
+                                           √ denoted by gs, i’th excited state by exi. Stars
+denote uncertainties. To change scale from σ to r0 use value indicated.
+
+                                              45
+                                         MG GeV
+                   J       P=+,C=+     P=-,C=+     P=+,C=-      P=-,C=-
+                   0 gs    1.653(26)   2.561(40)
+                   0 ex1   2.842(40)   3.54(8)
+                   2 gs    2.376(32)   3.07(6)     4.24(8)*     3.92(9)
+                   2 ex1   3.30(5)     3.97(7)
+                   1 gs                4.12(8)     2.944(42)    4.03(7)
+                   1 ex1               4.16(8)*    3.80(6)
+                   1 ex2               4.20(9)*
+                   3 gs    3.74(7)*                3.53(8)
+                   4 gs    3.69(8)*                4.38(8)**
+
+Table 18: Glueball masses in physical GeV units using r0 = 0.472(5)f m. For those glueballs
+whose J P C we can identify. Ground state denoted by gs, i’th excited state by exi. Stars
+denote a level of uncertainty as in Table 2. Errors are statistical only.
+
+
+
+
+                     QI (2 cools)          num conf with QI (50 cools)
+              QI      Q∈        num conf -2   -1    0     1     2     3
+              -2 [-2.20,-1.25]       176 170 6      0     0     0     0
+              -1 [-1.25,-0.40]       474 0 472 2          0     0     0
+               0 [-0.40,0.40]        741 0    1 739 1           0     0
+               1 [0.40,1.25]         658 0    0     5 653 0           0
+               2 [1.25,2.20]         330 0    0     0     4 325 1
+               3 [2.20,3.10]         225 0    0     0     0     1 224
+
+Table 19: Number ﬁelds with topological charge QI after 50 cooling sweeps of ﬁelds with the
+speciﬁed topological charge after 2 cooling sweeps. On a 263 38 lattice at β = 6.50. Charges
+QI at 2 cools assigned when lattice charge Q lies in the intervals shown.
+
+
+
+
+                                            46
+                          β = 6.50          β = 6.0625          β = 6.50
+                  cools hQ2 i hQ2I i       hQ2 i hQ2I i    cools hQ2 i hQ2I i
+                    4   1.804 2.139        2.002 2.679       1   1.518
+                    8   1.931 2.137        2.192 2.684       2   1.845 2.543
+                   12   1.975 2.136        2.257 2.669       3   2.054 2.555
+                   16   1.998 2.135        2.290 2.657       4   2.158 2.555
+                   20   2.012 2.135        2.312 2.649       5   2.218 2.555
+                                                            10   2.336 2.548
+                                                            20   2.400 2.548
+                                                            30   2.424 2.547
+                                                            40   2.437 2.547
+                                                            50   2.444 2.544
+                  error   0.20    0.21     0.022 0.026     error 0.46 0.48
+
+Table 20: Topological susceptibility versus number of cooling sweeps, using the lattice Q and
+the integer-valued projection, QI . For two values of β with a separate calculation at β = 6.50
+for a wider range of cooling sweeps. The statistical errors are highly correlated between cooling
+sweeps.
+
+
+
+
+                                          hQhot i = Z(β)QI
+                                 β         Z(β)         Z1−loop (β)
+                                 5.6924    0.0636(18) 0.0266
+                                 5.800     0.0869(30) 0.0447
+                                 5.990     0.130(18) 0.0750
+                                 6.0625    0.147(7)     0.0861
+                                 6.235     0.178(13) 0.1113
+                                 6.3380    0.207(15) 0.1258
+                                 6.500     0.236(23) 0.1476
+
+Table 21: Multiplicative renormalisation factor, Z(β), relating the average lattice topological
+charge, Qhot , calculated on the rough Monte Carlo ﬁelds and the integer valued topological
+charge QI calculated after 20 ‘cooling’ sweeps of those ﬁelds. Also the 1-loop perturbative
+prediction. At the values of β shown.
+
+
+
+
+                                                 47
+                                                           1/4 √                √
+            β        lattice         hQ2I i     hQ2 i    χI / σ           χ1/4 / σ
+            5.6924     83 16      5.452(29)   4.034(21) 0.4016(59)       0.3725(54)
+            5.80      103 16      5.111(16)   4.021(13) 0.4222(10)       0.3976(9)
+            5.8941    123 16      4.352(43)   3.570(35) 0.4289(13)       0.4081(12)
+            5.99      143 20      4.428(56)   3.790(48) 0.4312(21)       0.4147(20)
+            6.0625    143 20      2.649(26)   2.312(22) 0.4281(16)       0.4138(15)
+            6.235     183 26       2.55(13)   2.32(12) 0.4268(54)        0.4169(54)
+            6.3380    223 30       2.94(14)   2.72(13) 0.4261(51))       0.4178(50)
+            6.50      263 38       2.14(23)   2.01(22) 0.4075(106)       0.4011(97)
+            ∞      β ≥ 5.8941                           0.4259(28)       0.4203(26)
+                    β ≥ 5.99                            0.4187(53)       0.4125(47)
+
+Table 22: Fluctuations of the topological charge after 20 cooling sweeps. Q is the lattice value
+while QI is the corresponding integer value. Also the corresponding susceptibilities in units
+of the string tension, and their continuum limits where the ﬁts cover the range of β indicated.
+
+
+
+
+                                                1/4
+                                         aχI
+                     β = 5.8941          β = 5.99         β = 6.235
+                103 16 0.11258(25) 143 20 0.09478(30) 183 26 0.0640(9)
+                123 16 0.11201(28) 184     0.09435(17) 264   0.0632(8)
+                  3
+                14 16 0.11203(23)
+
+Table 23: The topological susceptibility, χI , on diﬀerent space-time volumes at the values of
+β shown.
+
+
+
+
+                            β      lattice     τ|∆Q|=1  τ̃|∆Q|=1
+                            6.0625 143 20       36(2)     37(2)
+                            6.235   183 26     123(2)   130(2)
+                            6.3380 223 30      255(4)   231(4)
+                            6.50    263 38    1323(50) 1382(52)
+
+Table 24: Average number of sweeps between changes in the topological charge by one unit,
+τ|∆Q|=1, on lattice
+                 √ volumes shown; τ̃|∆Q|=1 is corresponding value scaled to a standard lattice
+volume V = (3/ σ)4 at each value of β.
+
+
+
+                                              48
+                    1.6
+
+
+                    1.4
+
+
+                    1.2
+       aEef f (t)
+                      1
+
+
+                    0.8
+
+
+                    0.6
+
+
+                    0.4
+
+
+                    0.2
+
+
+                      0
+                          0   1   2   3   4    5    6    7   8   9   10 11 12
+                                                   t/a
+
+Figure 1: Eﬀective energy of the ground state of the winding ﬂux tube from which we extract
+the string tension. For β = 6.50, 6.338, 6.235, 6.0625, 5.99, 5.80, 5.6924 in ascending order.
+Pairs of lines represent ±1σ error bands for the best estimates of the energies.
+
+
+
+
+                                              49
+                       2
+
+                     1.8
+
+                     1.6
+
+
+       aEef f (t) 1.4
+                     1.2
+
+                       1
+
+                     0.8
+
+                     0.6
+
+                     0.4
+
+                     0.2
+
+                       0
+                           0    1      2      3      4      5      6      7      8
+                                                    t/a
+
+Figure 2: Eﬀective energies of the lightest 3 states from our ditorelon basis of operators for
+the A1++ , •, and E ++ , ◦, representations. On a 183 26 lattice at β = 6.235. Horizontal lines
+are estimated energies of lightest ditorelon states neglecting interactions between the torelons;
+dashed line for the lightest tritorelon state.
+
+
+
+
+                                               50
+                    1.2
+
+                    1.1
+
+                      1
+
+       aEef f (t) 0.9
+
+                    0.8
+
+                    0.7
+
+                    0.6
+
+                    0.5
+
+                    0.4
+
+                    0.3
+
+                    0.2
+                          0    1      2      3      4      5      6      7      8
+                                                   t/a
+
+Figure 3: Eﬀective energies of the lightest A1++ states from the basis of the usual single loop
+operators, •, and from the same basis but extended with our ditorelon operators, ◦. Horizontal
+line is the energy of the lightest ditorelon state neglecting interactions between the torelons.
+On a 183 26 lattice at β = 6.235.
+
+
+
+
+                                              51
+                    1.2
+
+
+                    1.1
+
+
+                      1
+       aEef f (t)
+                    0.9
+
+
+                    0.8
+
+
+                    0.7
+
+
+                    0.6
+
+
+                    0.5
+
+
+                    0.4
+                          0    1      2      3      4      5      6      7      8
+                                                   t/a
+
+Figure 4: Eﬀective energies of the lightest E ++ states from the basis of the usual single loop
+operators, •, and from the same basis but extended with our ditorelon operators, ◦. Horizontal
+line is the energy of the lightest ditorelon state neglecting interactions between the torelons.
+On a 183 26 lattice at β = 6.235.
+
+
+
+
+                                              52
+                    1.6
+
+
+                    1.4
+
+
+                    1.2
+
+       aEef f (t)
+                      1
+
+
+                    0.8
+
+
+                    0.6
+
+
+                    0.4
+
+
+                    0.2
+
+
+                      0
+                          0     1       2       3         4     5       6       7
+                                                    t/a
+
+Figure 5: Eﬀective energies of the lightest A1++ states from the basis of the usual single
+loop operators (ﬁlled points) and from the same basis but extended with our ditorelon oper-
+ators (unﬁlled points). Horizontal line is the energy of the lightest ditorelon state neglecting
+interactions between the torelons. On a 263 26 lattice at β = 6.235.
+
+
+
+
+                                              53
+                    1.4
+
+
+
+
+                    1.2
+       aEef f (t)
+
+                      1
+
+
+
+
+                    0.8
+
+
+
+
+                    0.6
+
+
+
+
+                    0.4
+                          0      1         2         3       4        5        6
+                                                    t/a
+
+Figure 6: Eﬀective energies of the lightest E ++ states from the basis of the usual single loop
+operators (ﬁlled points) and from the same basis but extended with our ditorelon opera-
+tors (unﬁlled points). Horizontal line is the energy of the lightest ditorelon state neglecting
+interactions between the torelons. On a 263 26 lattice at β = 6.235.
+
+
+
+
+                                               54
+                    0.8
+
+
+
+                    0.7
+
+      aMef f (t)
+                    0.6
+
+
+
+                    0.5
+
+
+
+                    0.4
+
+
+
+                    0.3
+
+
+
+                    0.2
+                          0   1    2    3     4    5     6    7    8     9    10
+                                                  t/a
+
+Figure 7: Eﬀective masses for the ground (•) and ﬁrst excited (◦) J P C = 0++ states. Also the
+ground and ﬁrst excited J P C = 2++ states: 2 of the 5 components from the E representation
+(, N) and the other 3 from the T2 representation (, △). Some points shifted for clarity.
+Horizontal lines are our best mass estimates. On the 384 lattice at β = 6.50.
+
+
+
+
+                                             55
+                    1.2
+
+
+
+
+                      1
+
+      aMef f (t)
+
+
+                    0.8
+
+
+
+
+                    0.6
+
+
+
+
+                    0.4
+                          0    1      2      3      4      5     6      7      8
+                                                   t/a
+
+Figure 8: Eﬀective masses for the ground (•) and ﬁrst excited (◦) J P C = 0−+ states. Also the
+ground and ﬁrst excited J P C = 2−+ states: 2 of the 5 components from the E representation
+(, N) and the other 3 from the T2 representation (, △). And the lightest three J P C = 1−+
+states (⋆, ×, +), each triply degenerate. Some points shifted for clarity. Horizontal lines are
+our best mass estimates. On the 384 lattice at β = 6.50.
+
+
+
+
+                                              56
+                    1.2
+
+
+
+
+                      1
+
+      aMef f (t)
+
+
+                    0.8
+
+
+
+
+                    0.6
+
+
+
+
+                    0.4
+                          0   1      2      3      4     5      6      7     8
+                                                  t/a
+
+Figure 9: Eﬀective masses for the ground (•) and for the ﬁrst excited (◦) J P C = 1+− states.
+Also the J P C = 2+− ground state: 2 of the 5 components from the ground state E ()
+and the other 3 from the ﬁrst excited T2 state (). And the J P C = 3+− ground state: one
+component from the A2 ground state (⋆), three from the T2 ground state (+), and three from
+the ﬁrst excited T1 state (×). Some points shifted for clarity. Horizontal lines are our best
+mass estimates. On the 384 lattice at β = 6.50.
+
+
+
+
+                                             57
+                    1.1
+
+
+
+
+      aMef f (t) 0.9
+
+
+
+
+                    0.7
+
+
+
+
+                    0.5
+                          0      1        2         3       4        5        6
+                                                   t/a
+
+Figure 10: Eﬀective masses for the J P C = 2−− ground state; 2 of the 5 components from
+the E representation () and the other 3 from the T2 representation (). Also the triply
+degenerate J P C = 1−− ground state (⋆). Some points shifted for clarity. Horizontal lines are
+our best mass estimates. On the 384 lattice at β = 6.50.
+
+
+
+
+                                              58
+                   4
+
+
+
+
+                  3.5
+
+         M0++
+          √
+            σ
+
+
+                   3
+
+
+
+
+                  2.5
+
+
+
+
+                   2
+                        0   0.02   0.04   0.06    0.08     0.1   0.12   0.14   0.16
+                                                      2
+                                                      aσ
+
+Figure 11: The lightest J P C = 0++ glueball with linear and quadratic extrapolations to the
+continuum limit.
+
+
+
+
+                                                 59
+                 9
+
+
+                 8
+
+
+                 7
+
+         MA1++ 6
+          √
+            σ
+
+                 5
+
+
+                 4
+
+
+                 3
+
+
+                 2
+
+
+                 1
+
+
+                 0
+                     0   0.02   0.04   0.06   0.08     0.1   0.12   0.14   0.16
+                                                   2
+                                               aσ
+
+Figure 12: Continuum extrapolations of the lightest two J P C = 0++ glueballs, • and ◦, as
+well as the next two heavier A1++ glueballs.
+
+
+
+
+                                              60
+                  8
+
+          M2++ 7
+           √
+             σ
+               6
+
+                  5
+
+                  4
+
+                  3
+                      0   0.02   0.04   0.06   0.08     0.1   0.12   0.14   0.16
+                                                    2
+                                                aσ
+
+Figure 13: Continuum extrapolations of the lightest two J P C = 2++ glueballs, as obtained
+from the lightest two E ++ states (•, each doubly degenerate) and the lightest two T 2++ states
+(◦, each triply degenerate). Hence the ﬁve components of each of the two J = 2 states.
+
+
+
+
+                  9
+
+
+          M3++
+           √
+             σ 8
+
+
+
+                  7
+
+
+
+                  6
+                      0   0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1
+                                                a2 σ
+
+Figure 14: Continuum extrapolation of the lightest J P C = 3++ glueball. Obtained from the
+lightest A2++ state (•), the lightest T 1++ state (◦, triply degenerate) and the third excited
+T 2++ states (⋆, triply degenerate): hence the seven components of the J = 3 ground state.
+
+
+
+                                               61
+                 9
+
+
+
+          M4++
+           √   8
+             σ
+
+
+
+                 7
+
+
+
+
+                 6
+                     0   0.01   0.02    0.03    0.04     0.05     0.06     0.07    0.08
+                                                    2
+                                                aσ
+
+Figure 15: Continuum extrapolation of the lightest J P C = 4++ glueball. Obtained from the
+second excited A1++ (•), the doubly degenerate second excited E ++ (◦), the triply degenerate
+ﬁrst excited T 1++ (♦), and the triply degenerate second excited T 2++ (⋆): hence the nine
+components of the J = 4 ground state.
+
+
+
+                 9
+
+                 8
+          M0−+
+           √
+             σ
+                 7
+
+                 6
+
+                 5
+
+                 4
+                     0   0.02   0.04   0.06    0.08     0.1     0.12     0.14   0.16
+                                                    2
+                                                aσ
+
+Figure 16: Continuum extrapolation of the two lightest J P C = 0−+ glueballs as obtained from
+the lightest two states of the A1−+ representation.
+
+
+                                               62
+                  10
+
+                   9
+          M2−+
+           √       8
+             σ
+                   7
+
+                   6
+
+                   5
+
+                   4
+                       0   0.02    0.04   0.06     0.08      0.1   0.12   0.14    0.16
+                                                    a2 σ
+
+Figure 17: Continuum extrapolations of the lightest two J P C = 2−+ glueballs, as obtained
+from the lightest two E −+ states (•, each doubly degenerate) and the lightest two T 2−+ states
+(◦, each triply degenerate). Hence the ﬁve components of each of the two J = 2 states.
+
+
+
+
+                  10
+          M1−+
+           √
+             σ     9
+
+
+                   8
+
+
+                   7
+
+                       0    0.01     0.02        0.03       0.04   0.05    0.06      0.07
+                                                        2
+                                                    aσ
+
+Figure 18: Continuum extrapolation of the masses of the lightest three J P C = 1−+ glueballs
+which appear to be (nearly) degenerate. They correspond to the lightest three T 1−+ states,
+each of which is triply degenerate (corresponding to the three components of each of these
+three J = 1 states).
+
+
+                                                  63
+                  11
+
+                  10
+          M2+−
+           √
+             σ
+                      9
+
+                      8
+
+                      7
+
+                      6
+                          0     0.02          0.04          0.06      0.08      0.1
+                                                     a2 σ
+
+Figure 19: Continuum extrapolation of the masses of the lightest J P C = 2+− glueball, com-
+posed of the lightest (doubly degenerate) E +− state, •, and the ﬁrst excited (triply degenerate)
+T 2+− state, ◦.
+
+
+
+
+                  9
+
+          M1+−
+           √   8
+             σ
+                  7
+
+                  6
+
+                  5
+
+                      0       0.02     0.04          0.06      0.08     0.1    0.12
+                                                     a2 σ
+
+Figure 20: Continuum extrapolation of the masses of the lightest and ﬁrst excited J P C = 1+−
+glueball states corresponding to the ground and second excited (triply degenerate) T 1+−
+states.
+
+
+                                                64
+                  9
+
+
+          M3+− 8
+           √
+             σ
+                  7
+
+
+                  6
+
+
+                  5
+                      0       0.01   0.02   0.03    0.04       0.05   0.06   0.07   0.08
+                                                        2
+                                                    aσ
+
+Figure 21: Continuum extrapolation of the lightest J P C = 3+− glueball as obtained from the
+lightest A2+− state (•), the ﬁrst excited T 1+− state (◦ and triply degenerate) and the lightest
+T 2+− states (⋆ and triply degenerate). Hence the seven components of the J = 3 ground
+state.
+
+
+                  12
+
+               11
+          M4+−
+           √
+             σ 10
+                      9
+
+                      8
+
+                      7
+
+                      6
+                          0   0.01   0.02   0.03        0.04   0.05   0.06   0.07   0.08
+                                                        2
+                                                    aσ
+
+Figure 22: Continuum extrapolation of the lightest J P C = 4+− glueball as obtained from
+the lightest A1+− (•), the doubly degenerate ﬁrst excited E +− (◦), the triply degenerate
+third excited T 1+− (♦), and the triply degenerate second excited T 2+− (⋆). Hence the nine
+components of this J = 4 state. This assignment is uncertain.
+
+
+                                                   65
+                  10
+
+                   9
+          M2−−
+           √
+             σ
+                   8
+
+                   7
+
+                   6
+
+                   5
+                       0   0.01   0.02   0.03        0.04   0.05   0.06   0.07   0.08
+                                                     2
+                                                 aσ
+
+Figure 23: Continuum extrapolation of the lightest J P C = 2−− glueball, as obtained from the
+lightest E −− state (•, doubly degenerate) and the lightest T 2−− state (◦, triply degenerate).
+Hence the ﬁve components of the two J = 2 state.
+
+
+
+
+                  10
+
+
+          M1−−     9
+           √
+             σ
+                   8
+
+
+                   7
+
+
+                   6
+                       0   0.01   0.02   0.03        0.04   0.05   0.06   0.07   0.08
+                                                     2
+                                                 aσ
+
+Figure 24: Continuum extrapolation of the mass of the lightest J P C = 1−− glueball state
+corresponding to the (triply degenerate) T 1+− ground state.
+
+
+
+                                                66
+        8000
+
+
+        7000
+
+
+        6000
+
+N (Q) 5000
+
+        4000
+
+
+        3000
+
+
+        2000
+
+
+        1000
+
+
+           0
+               0                 1                  2                  3                  4
+                                                   |Q|
+
+ Figure 25: Histogram of lattice Q after 4 cooling sweeps, ◦, 8 cooling sweeps, ⋆, and after 20
+ cooling sweeps, • on a 83 16 lattice at β = 5.6924.
+
+
+
+
+                                              67
+        12000
+
+
+
+        10000
+
+
+N (Q)
+         8000
+
+
+
+         6000
+
+
+
+         4000
+
+
+
+         2000
+
+
+
+            0
+                0                1                 2                  3                  4
+                                                  |Q|
+
+Figure 26: Histogram of lattice Q after 4 cooling sweeps, ◦, and after 20 cooling sweeps, • on
+a 143 20 lattice at β = 6.0625.
+
+
+
+
+                                             68
+        14000
+
+
+        12000
+
+
+
+N (Q) 10000
+
+         8000
+
+
+         6000
+
+
+         4000
+
+
+         2000
+
+
+            0
+                0            1              2              3             4              5
+                                                     |Q|
+
+ Figure 27: Histogram of lattice Q after 4 cooling sweeps, ◦, and after 20 cooling sweeps, •.
+ From 40000 measurements at β = 6.50 on a 263 38 lattice. Points corresponding to N(Q) = 0
+ are suppressed.
+
+
+
+
+                                                69
+        700
+
+
+        600
+
+
+
+N (Q) 500
+
+        400
+
+
+        300
+
+
+        200
+
+
+        100
+
+
+          0
+              0            1              2              3             4              5
+                                                   |Q|
+
+ Figure 28: Histogram of lattice Q on ﬁelds after 2 cooling sweeps, ◦, and after 20 cooling
+ sweeps, •. From 2500 measurements at β = 6.50 on a 263 38 lattice. Points corresponding to
+ N(Q) = 0 are suppressed.
+
+
+
+
+                                              70
+        500
+
+
+
+
+        400
+
+
+
+N (Q)
+        300
+
+
+
+
+        200
+
+
+
+
+        100
+
+
+
+
+         0
+               −0.5            0            0.5             1            1.5            2
+                                                  Q
+
+Figure 29: Histogram of Q for ﬁelds with Q ∈ [−0.40, 1.35] after 2 cooling sweeps, •. For the
+same ﬁelds a histogram for Q after 1 cooling sweep, ◦, and after 20 cooling sweeps, ✷. Points
+corresponding to N(Q) = 0 are suppressed.
+
+
+
+
+                                             71
+        1.5
+
+
+
+          1
+
+
+
+        0.5
+Qhot
+
+          0
+
+
+
+       −0.5
+
+
+
+        −1
+
+
+
+       −1.5
+              −5   −4     −3      −2     −1        0     1       2      3       4      5
+                                                   Q
+
+Figure 30: Average topological charge on lattice ﬁelds which have an integer-valued charge Q
+after 20 cools; on 263 38 lattices at β = 6.5.
+
+
+
+
+                                              72
+                   0.7
+
+
+                   0.6
+
+
+                   0.5
+            1
+           χ4
+           √
+               σ
+                   0.4
+
+
+                   0.3
+
+
+                   0.2
+
+
+                   0.1
+
+
+                    0
+                         0   0.02   0.04   0.06    0.08   0.1   0.12   0.14   0.16
+                                                   2
+                                                   aσ
+
+Figure 31: Topological susceptibility in units of the string tension. Continuum extropolation
+using raw Q, ◦, and integer valued Q, •, both after 20 cooling sweeps.
+
+
+
+
+                                              73
+                   104
+
+
+
+
+           ξQ
+                   103
+
+
+
+
+                   102
+
+
+
+                         0      0.01     0.02        0.03   0.04     0.05      0.06
+                                                     2
+                                                     aσ
+
+Figure 32: Correlation length ξQ for the SU(3) lattice topological charge deﬁned by the relation
+hQ(is)Q(is + ξQ )i/hQ2 i = e−1 where is and is + ξQ label the number of MC sweeps. Solid
+                 √                                   √
+line is ξQ ∝ 1/(a σ)6 , dashed line is ξQ ∝ exp{c/a σ}. Calculations are for β ∈ [5.99, 6.50].
+
+
+
+
+                                                74
+

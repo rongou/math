@@ -1,0 +1,1126 @@
+                                                                                                                   UCSD/PTH/98-36
+                                                           The glueball spectrum from an anisotropic lattice study    HLRZ1998/62
+
+                                                                                         Colin J. Morningstar
+                                                        Dept. of Physics, University of California at San Diego, La Jolla, California 92093-0319
+
+                                                                                            Mike Peardon
+arXiv:hep-lat/9901004v2 24 May 1999
+
+
+
+
+                                              John von Neumann-Institut für Computing and DESY, Forschungszentrum Jülich, D-52425 Jülich, Germany
+                                                                                           (January 7, 1999)
+
+                                                     The spectrum of glueballs below 4 GeV in the SU(3) pure-gauge theory is investigated using
+                                                   Monte Carlo simulations of gluons on several anisotropic lattices with spatial grid separations
+                                                   ranging from 0.1 to 0.4 fm. Systematic errors from discretization and finite volume are studied,
+                                                   and the continuum spin quantum numbers are identified. Care is taken to distinguish single glueball
+                                                   states from two-glueball and torelon-pair states. Our determination of the spectrum significantly
+                                                   improves upon previous Wilson action calculations.
+
+                                                   PACS number(s): 12.38.Gc, 11.15.Ha, 12.39.Mk
+
+
+
+                                                       I. INTRODUCTION                                the energies of the first-excited states. Our goal is then
+                                                                                                      to extract the masses of as many low-lying glueballs as
+                                         The gluon self-coupling in quantum chromodynamics            possible from the 141 measurements which were made.
+                                      (QCD) suggests the existence of glueballs, bound states         Since the spectrum of glue defined in a box with peri-
+                                      of mainly gluons. Incontrovertible experimental evidence        odic boundary conditions includes not only single glue-
+                                      for their existence remains elusive, however. A primary         ball states, but also states consisting of several glueballs
+                                      reason for this is the difficulty in extracting the proper-     and/or torelons (gluon excitations which wrap around
+                                      ties of glueballs from the QCD lagrangian. Investigating        the toroidal lattice), a means of identifying the single
+                                      glueball physics requires an intimate knowledge of the          glueballs must be employed to prune away all of the other
+                                      confining QCD vacuum, and such knowledge cannot be              unwanted states. An additional small-volume simulation
+                                      obtained using standard perturbative techniques. Nu-            is done to assist in this identification and to study the
+                                      merical simulations of the theory on a space-time lattice       systematic errors from finite volume. Finally, discretiza-
+                                      currently provide the most reliable means of studying           tion errors are treated by extrapolating the energies to
+                                      glueballs. However, correlation functions of gluonic exi-       the continuum limit and determining the continuum spin
+                                      tations are notoriously difficult quantities to measure in      quantum numbers. The end result is a nearly complete
+                                      Monte-Carlo simulations, requiring large-scale computer         survey of the glueball spectrum in the pure gauge theory
+                                      resources when applying standard stochastic techniques.         below 4 GeV. We find a total of thirteen glueballs; two
+                                      Recently, the use of spatially coarse, temporally fine lat-     other tentative candidates are also located. With the ex-
+                                      tices and improved actions was demonstrated to dramat-          ception of the light glueballs in the 0++ sector, our results
+                                      ically increase the efficiency of glueball simulations [1].     significantly improve upon those from previous studies
+                                         The objective in this paper is to apply the techniques       [2–4] of the complete low-lying glueball spectrum.
+                                      of Ref. [1] to substantially improve our knowledge of the          This paper is organized as follows. The details of the
+                                      glueball spectrum in the pure SU(3) gauge theory. De-           simulations, including the construction of the glueball op-
+                                      tailed information on this spectrum is important for val-       erators, the generation of the gauge-field configurations,
+                                      idating models of confined gluons and may help focus            the extraction of energies from Monte Carlo estimates of
+                                      experimental searches for candidate glueball resonances.        the correlation functions, and the lattice spacing determi-
+                                      We also view this calculation as a necessary first step         nations in terms of the hadronic scale r0 , are described in
+                                      before attempting to include the effects of quarks. Note        Sec. II. All of our energy estimates in terms of the inverse
+                                      that unlike the quenched approximation for mesons and           temporal lattice spacing are presented in this section. In
+                                      baryons, the pure glue theory is a physical quantum field       Sec. III, the differentiation of single glueball states from
+                                      theory with a unitary S-matrix. First, we perform six           two-glueball and torelon-pair states is discussed. System-
+                                      simulations for spatial lattice spacings ranging from 0.1       atic errors from finite volume are studied in Sec. IV. The
+                                      to 0.4 fm to determine the energies of the lowest-lying         removal of lattice spacing errors, including the extrapo-
+                                      stationary states in all of the symmetry channels allowed       lations to the continuum limit and the identification of
+                                      on a cubic lattice. In many channels, we also determine         the continuum spin quantum numbers, is described in
+Sec. V. We also discuss the problematical scalar states            AP  C    PC
+                                                                     1 , A2 , E
+                                                                                   PC
+                                                                                       , T1P C , and T2P C . For convenience, we
+in this section and cite ongoing efforts to reduce their           use R when referring to these labels in general. Note that
+discretization errors. Sec. VI presents a discussion of the        when we use one of these labels to identify a particular
+spectrum, and our findings are summarized with an out-             state, we refer to the lowest-lying zero-momentum state
+line of future work in the concluding Sec. VII.                    in the symmetry channel indicated by the representation
+                                                                   label. The first-excited state in a particular symmetry
+                                                                   channel will be denoted by the representation label with
+              II. SIMULATION DETAILS                               an asterisk.
+                                                                      The mass of a glueball G having spin J, parity P , and
+   Our glueball mass determinations rely on numerical              charge-conjugation parity C can be extracted from the
+simulations of gluons on a hypercubic Euclidean space-             large-t behavior of a lattice-regulated correlation function
+time lattice with spatial and temporal spacings as and             C(t) = h0|Φ̄(R) (t) Φ̄(R) (0)|0i, where R is any irreducible
+at , respectively. The gluons are described by the im-             representation of OhC occurring in the subduced represen-
+proved action SII used in Ref. [1]. The couplings in the           tation J P C ↓ OhC , and Φ̄(R) (t) = Φ(R) (t) − h0|Φ(R) (t)|0i
+action depend on two parameters, β and ξ, and are de-              is a gauge-invariant, translationally-invariant, vacuum-
+termined using a combination of (tree-level) perturbation          subtracted, real operator capable of creating a glueball
+theory and mean-field theory, implemented by renormal-             from the QCD vacuum |0i. As the temporal separa-
+izing the spatial link variables Uj (x) → Uj (x)/us , where        tion t becomes large, this correlator tends to a single de-
+us is given by the fourth root of the average plaquette            caying exponential limt→∞ C(t) = Z exp(−mG t), where
+[5]. The temporal link variables are not renormalized.             mG is the energy of the lowest-lying state which can
+The lattice anisotropy as /at is given by ξ at tree-level          be created by the operator Φ̄(R) (t). To determine mG ,
+in perturbation theory. This action is intended for use            the correlator C(t) must be calculated for large enough
+with at ≪ as , has O(a4s , a2t , αs a2s ) discretization errors,   t such that it is well approximated by its asymptotic
+where αs is the QCD coupling, and couples only nearest-            form. Unfortunately, stochastic fluctuations in C(t) re-
+neighbor time slices, ensuring the free-gluon propagator           main roughly constant with t while the signal falls rapidly
+has no spurious modes. In all cases, glueball effective            and hence, the use of a glueball operator for which C(t)
+masses are seen to converge monotonically from above.              attains its asymptotic form as quickly as possible is cru-
+This is a very desirable feature since it validates the use        cial for reliably extracting mG . The energies of ex-
+of variational techniques to minimize excited-state contri-        cited states in representation R can be obtained from
+butions to the glueball correlation functions. Such tech-          the large-t behavior of a matrix of correlation functions
+                                                                                  (R)      (R)
+niques are crucial for precise glueball mass extractions.          Cij (t) = h0|Φ̄i (t) Φ̄j (0)|0i, where each of the glueball
+   On a simple cubic lattice, zero-momentum station-                            (R)
+                                                                   operators Φ̄i (t) transforms as R under all symmetry
+ary glue states are characterized by their transformation
+                                                                   operations. Again, it is very important to use opera-
+properties under the octahedral point group O, combined
+                                                                   tors for which the matrix elements Cij (t) attain their
+with parity and charge conjugation operations. O has 24
+                                                                   expected asymptotic forms for t as small as possible.
+elements (which are all proper rotations) that fall into
+                                                                      Such operators can be constructed by exploiting link-
+five conjugacy classes; the single-valued irreducible repre-
+                                                                   smearing and variational techniques as previously de-
+sentations are labeled A1 , A2 , E, T1 , and T2 , (Schönfliess
+                                                                   scribed in Ref. [1]. For each irreducible representation R,
+notation [6]) and have dimensions 1, 1, 2, 3, and 3, re-
+                                                                   glueball operators on a given time-slice are constructed
+spectively [7]. The inclusion of parity results in the sym-
+                                                                   in a sequence of three steps. First, a set of six smear-
+metry group known as Oh = O ⊗ Ci , where Ci denotes
+                                                                   ing schemes are applied to the spatial link variables.
+the two-element group consisting of the identity opera-
+                                                                   Each scheme is a sequence of single-link and double-link
+tion and spatial inversion. The conventional labels for
+                                                                   mappings which depend on parameters λs and λf , re-
+the irreducible representations of Oh are obtained from
+                                                                   spectively. We use the same six schemes described in
+those of O by appending a subscript g for representations                                                             (R)
+corresponding to states which are even under parity and            Ref. [1]. Secondly, a set of basic real operators φα (t) is
+u for odd parity representations. However, we shall use            constructed using linear combinations of gauge-invariant,
+a slightly different notation. Instead of the subscripts           path-ordered products of the smeared link matrices about
+g and u, we use superscripts + and −, respectively, to             various closed spatial loops; each such linear combination
+indicate the eigenvalue P of parity. Glueball states are           is invariant under spatial translations and transforms ac-
+also eigenstates of charge conjugation. We denote the              cording to the irreducible representation R. The loop-
+eigenvalue of charge-conjugation parity by C, as usual,            shapes employed in our calculation, shown in Fig. 1, are
+and introduce an additional superscript in the represen-           chosen for their ease of computation; all orientations of
+tation labels. We refer to the full symmetry group of              these operators can be computed very efficiently by first
+zero-momentum glueball states on a simple cubic lattice            storing the untraced products of links around the twelve
+as OhC or OP C ; the irreducible representations are labeled       spatial plaquettes stemming from each site on a time-
+                                                                   slice, then tracing the appropriate products of these ob-
+                                                                 TABLE I. The glueball simulation parameters. Values for
+                                                              the coupling β, input aspect ratio parameter ξ, the mean-link
+                                                              parameter u4s , the single-link smearing weight λs , the two-link
+                                                              smearing weight λf , and the lattice sizes are listed. Results
+                                                              for the hadronic scale r0 in terms of the lattice spacing as are
+                                                              also given. The approximate spatial lattice spacings as are
+                                                              determined assuming r0−1 = 410(20) MeV.
+                                                               β    ξ u4s     λs    λf   Lattice     r0 /as      as /r0 as (fm)
+                                                              1.7   5 0.295   0.1   0.5 63 × 30    1.224(1)    0.8169(9)   0.39
+                                                              1.9   5 0.328   0.1   0.5 63 × 30    1.375(2)    0.727(1)    0.35
+                                                              2.2   5 0.378   0.1   0.5 83 × 40    1.761(2)    0.5680(5)   0.27
+                                                              2.4   5 0.409   0.1   0.5 83 × 40    2.180(6)    0.459(1)    0.22
+                                                              2.5   5 0.424   0.1   0.5 103 × 50   2.455(6)    0.407(1)    0.20
+                                                              3.0   3 0.500   0.4   0.5 153 × 45   4.130(24)   0.2421(14) 0.12
+
+
+  FIG. 1. The Wilson loop shapes used in making the basic
+glueball operators.
+                                                                          (R)
+                                                              operator Φ0 (t) which, under ordinary circumstances,
+                                                              best overlaps the lowest-lying glueball G0 in the channel
+jects. Both single and double windings around the paths                                                (R)      (R)
+are used; this allows us to double the number of raw oper-    of interest. A sequence of operators Φ1 (t), Φ2 (t), . . .
+ators with only a small increase in computational effort.     which predominantly overlap excited glueball states can
+For each symmetry channel except A2−+ , four irreducible      also be constructed using the higher-mass eigenvectors of
+combinations are then chosen and applied to the smeared       Eq. (3).
+links from each of the six schemes, yielding a total of 24       Monte Carlo estimates of the correlator matrix ele-
+basic operators in each channel. For the A−+                  ments given in Eq. (1) were obtained for all 20 irreducible
+                                               2 , only the
+last shape in Fig. 1 can be used and produces a total of      representations in five simulations using an input aspect
+12 basic operators. Lastly, the glueball operators Φ(R) (t)   ratio parameter ξ = 5. The values for the coupling β,
+are formed from linear combinations of the basic oper-        mean-link parameter us , smearing weights λs and λf , and
+                    P (R) (R)                                 the lattice sizes used in these runs are listed in Table I.
+ators, Φ(R) (t) = α vα φα (t), where the coefficients
+  (R)
+                                                              An additional run at a smaller lattice spacing (∼ 0.12 fm)
+vα are determined using the variational method. This          and using ξ = 3 was done for the A++   1 , E
+                                                                                                           ++
+                                                                                                              , and T2++
+involves first obtaining Monte Carlo estimates of the large   representations only. A smaller-as measurement helped
+correlation matrix                                            to obtain a reliable continuum-limit extrapolation for the
+                    X                  (R)                    troublesome A++     state. The input parameters for this
+         C̃αβ (t) =    h0|φ̄(R)
+                            α (τ +t) φ̄β (τ )|0i,       (1)                   1
+                                                              run are also given in Table I. All computations were
+                    τ
+                                                              carried out on DEC Alpha and Sun Ultrasparc work-
+        (R)        (R)              (R)                       stations. Configuration ensembles were generated us-
+where φ̄α (t) = φα (t) − h0|φα (t)|0i. In practise, this
+                                                              ing Cabibbo-Marinari (CM) pseudo-heatbath and SU(2)
+vacuum subtraction is only performed for the A++  1  chan-
+                                                              subgroup over-relaxation (OR) methods. Link variables
+nel as the expectation value vanishes identically in all
+                                 (R)                          were updated in serial order on the lattice. Three com-
+other sectors. The coefficients vα are then chosen to         pound sweeps were performed between measurements,
+minimize the effective mass                                   where a compound sweep is one CM updating sweep fol-
+                      "P     (R) (R)
+                                                 #            lowed by nOR OR sweeps. The measurements were av-
+                 1       αβ vα vβ     C̃αβ (tD )
+     m̃(tD ) = − ln P                              ,   (2)    eraged into bins of nmb , and nbins bins were obtained.
+                tD            (R) (R)
+                             vα v
+                               αβ      C̃αβ (0)
+                                          β                   For the β = 3.0, ξ = 3 run, nOR = 5, nmb = 50, and
+                                                              nbins = 80. For the β = 2.5, ξ = 5 run, nOR = 5,
+where the time separation for optimization is fixed to        nmb = 20, and nbins = 318. For all of the other simu-
+tD = 1. Other values of tD are used as consistency            lations, nOR = 3, nmb = 100, and nbins = 100. Crude
+checks. Let v(R) denote a column vector whose elements        checks for residual autocorrelations were done by over-
+                                            (R)
+are the optimal values of the coefficients vα . This vector   binning by factors of two and four; in all cases, statistical
+satisfies the eigenvalue equation                             error estimates remained unchanged.
+                                                                 In the final analysis phase, the glue energies mG were
+         C̃(tD ) v(R) = e−tD m̃(tD ) C̃(0) v(R) ,      (3)
+                                                              extracted using a two-step procedure. First, the large
+                         (R)                                  correlation matrices in each channel were reduced to
+and the eigenvector v0 corresponding to the lowest ef-
+                                                (R)           smaller 3 × 3 matrices CAB (t) for A, B = 0, 1, 2 using
+fective mass m̃0 (tD ) yields the coefficients v0α for the
+                           TABLE II. Glue energy estimates in terms of a−1   t   for the five ξ = 5 simula-
+                        tions. The levels are labeled by the irreducible representations of the cubic point
+                        group under which their corresponding stationary states transform. First-excited
+                        states in a representation are indicated by an asterisk.
+                                   β = 1.7         β = 1.9        β = 2.2         β = 2.4        β = 2.5
+                        A++
+                          1        0.578(5)        0.475(4)       0.362(3)        0.303(3)       0.288(4)
+                        A∗++
+                          1        1.19(2)         0.92(3)        0.697(6)        0.569(4)       0.511(7)
+                        A++
+                          2        1.43(2)         1.27(3)        1.018(12)       0.824(8)       0.713(14)
+                        E ++       0.924(8)        0.844(6)       0.667(4)        0.538(3)       0.472(4)
+                        E ∗++      1.29(2)         1.093(12)      0.878(7)        0.723(9)       0.652(8)
+                        T1++       1.55(2)         1.32(2)        1.00(2)         0.834(4)       0.728(8)
+                        T1∗++      1.73(3)         1.52(2)        1.23(4)         0.909(15)      0.823(13)
+                        T2++       1.103(8)        0.918(7)       0.686(4)        0.542(2)       0.477(3)
+                        T2∗++      1.41(2)         1.228(12)      0.938(5)        0.730(8)       0.660(6)
+
+                        A−+
+                          1        1.31(2)         1.06(5)        0.756(14)       0.605(11)      0.522(7)
+                        A∗−+
+                          1        1.86(9)         1.47(4)        1.08(2)         0.836(9)       0.72(2)
+                        A−+
+                          2          —–            1.63(5)        1.29(2)         1.036(12)      0.93(1)
+                        E −+       1.38(2)         1.167(14)      0.874(5)        0.698(4)       0.611(7)
+                        E ∗−+      1.85(5)         1.49(3)        1.085(9)        0.890(6)       0.782(13)
+                        T1−+       1.56(2)         1.42(2)        1.155(9)        0.873(13)      0.82(1)
+                        T2−+       1.297(14)       1.148(10)      0.882(5)        0.695(4)       0.619(3)
+                        T2∗−+      1.60(2)         1.39(2)        1.087(9)        0.880(5)       0.771(9)
+
+                        A+−
+                          1          —–            1.67(5)        1.32(2)         1.062(14)      0.94(1)
+                        A+−
+                          2          —–            1.29(2)        0.999(11)       0.796(7)       0.700(14)
+                        E +−         —–            1.52(3)        1.207(37)       0.929(8)       0.82(1)
+                        T1+−       1.186(13)       1.053(8)       0.819(4)        0.652(5)       0.590(5)
+                        T1∗+−      1.55(3)         1.297(14)      1.025(8)        0.794(9)       0.73(2)
+                        T2+−         —–            1.330(16)      0.983(17)       0.801(4)       0.701(7)
+                        T2∗+−        —–            1.45(2)        1.10(3)         0.929(15)      0.83(1)
+
+                        A−−
+                          1        1.83(7)         1.61(5)        1.354(20)       1.04(3)        0.98(1)
+                        A−−
+                          2          —–            1.65(6)        1.201(18)       0.96(3)        0.82(2)
+                        E −−       1.59(3)         1.38(2)        1.094(11)       0.875(6)       0.78(1)
+                        T1−−       1.72(4)         1.46(2)        1.07(3)         0.877(5)       0.760(9)
+                        T2−−       1.63(3)         1.41(2)        1.114(8)        0.886(6)       0.77(1)
+
+
+
+
+the variational coefficients of the three lowest mass eigen-       another estimate of mG0 , the M ×M optimized correlator
+states of Eq. (3):                                                 matrix was also fit for t = tmin , . . . , tmax using the form
+                            (R)         (R)                                       M−1
+                   X
+        CAB (t) =      h0|Φ̄A (τ +t) Φ̄B (τ )|0i.        (4)                      X            n                      o
+                    τ
+                                                                      CAB (t) =         ZAp ZBp e−mGp t + e−mGp (T −t) ,     (6)
+                                                                                  p=0
+Secondly, the expected large-t functional forms were fit
+to the elements of these optimized correlators. To ob-             for M = 2, 3. Various fit regions tmin to tmax were used
+tain an estimate of the energy mG0 (in terms of a−1                to check for consistency in the extracted values for the
+                                                      t )
+of the lowest-lying state in each channel, a single expo-          masses. Best-fit values were obtained using the corre-
+nential was fit to the ground-state correlator C00 (t) for         lated χ2 method. Error estimates were calculated using
+t = tmin , . . . , tmax :                                          a 1024−point bootstrap procedure; in all cases, error es-
+                                                                   timates were nearly symmetric about the central best-fit
+                                                                   values and were thus averaged to simplify presentation.
+                          n                 o
+        C00 (t) = Z00 e−mG0 t + e−mG0 (T −t) ,         (5)
+                                                                   Our fits are far too numerous to list here; additional de-
+                                                                   tails are available from the authors upon request.
+where T was the temporal extent of the periodic lattice.              Our final estimates of the glue energies in terms of a−1
+                                                                                                                            t
+To determine the energies mGp of the excited states and            for the ξ = 5 simulations are presented in Table II; energy
+  TABLE III. Glue energy estimates in units of a−1
+                                                t  from         volume in a markedly different way from that of a multi-
+the β = 3.0, ξ = 3 simulation.                                  glueball or torelon state.
+                                                                   A third possibility is to include additional operators
+               A++
+                 1                   0.318(4)                   in the correlation matrices which are expected to couple
+               E ++                  0.476(3)                   much more strongly with the two-glueball and torelon
+               T2++                  0.476(3)                   states. The construction of operators which best overlap
+                                                                the lowest-lying eigenstates of interest using the varia-
+                                                                tional method then involves not only single glueball op-
+                                                                erators, but also the new two-glueball and torelon op-
+estimates from the ξ = 3 run are listed in Table III. In or-    erators. The coefficients obtained from the variational
+der to convert these results into physical units, the lattice   optimization can be used to estimate the mixings of the
+spacings at must be determined for each simulation. The         additional operators with the low-lying eigenstates of in-
+hadronic scale parameter r0 [8] defined in terms of the         terest. If the mixings of the additional two-glueball and
+force between static quarks by [r2 dV (~r)/dr]r=r0 = 1.65,      torelon operators with an eigenstate are very small, a
+where V (~r) is the static-quark potential, is a useful quan-   single glueball interpretation is assured; in such a case,
+tity for this purpose. The values for r0 in terms of as cor-    the addition of the new operators does not affect the
+responding to each glueball simulation were determined          extracted energy. If the mixings are significant, the addi-
+by measuring the static-quark potential in separate sim-        tion of the two-glueball/torelon operators will lower the
+ulations. The results are listed in Table I. Further details    extracted energy, ruling out a single glueball interpreta-
+concerning the calculation of r0 /as are given in Ref. [1].     tion.
+Note that in computing r0 /as , the input value ξ was used         Ideally, it would be best to apply all three of these
+for the aspect ratio as /at . The consequences of doing so      methods. However, for this initial scan of the glueball
+are discussed in Sec. V A.                                      spectrum, we decided for reasons of simplicity to rely
+                                                                mainly on the first method. Having obtained the lowest-
+                                                                lying one or two states in each symmetry channel, we
+         III. GLUEBALL IDENTIFICATION                           determined the approximate locations of the two-glueball
+                                                                and torelon states. Simulation results lying near or above
+                                                                these thresholds were then excluded from further consid-
+   The spectrum in a box with periodic boundary condi-          eration. In other words, we used the two-glueball and
+tions includes not only single glueball states, but also        torelon thresholds as filters to remove possibly extrane-
+states consisting of several glueballs and/or torelons          ous states. One additional simulation was done to study
+(gluon excitations which wrap around the toroidal lat-          systematic errors from finite volume. This run also served
+tice). We expect that the operators used in our cor-            to confirm the single glueball nature of the states lying
+relators will couple most strongly to the single glueball       well below the two-glueball/torelon thresholds. Note that
+states, but we cannot be certain that mixings with the          the levels lying near or above these thresholds cannot be
+multi-glueball and torelon states will be negligible. Re-       ruled out as single glueball states; rather, one can say
+call that the asymptotic behavior of the correlation func-      only that the interpretation of such states requires addi-
+tion associated with an operator Φ(t) is dominated by           tional information.
+the lowest-lying eigenstate which mixes with Φ. If a
+multi-glueball or torelon state has a lower energy than
+the lightest glueball in a given symmetry channel, then                          A. Two-glueball states
+the possibility exists that the energy we extract from the
+asymptotic decay of the correlator will be that of the
+                                                                  In order to identify the genuine single glueball states,
+multi-glueball or torelon state. Thus, a means of differ-
+                                                                we first determined the approximate locations of the two-
+entiating the single glueball states from all other states
+                                                                particle states using the mass estimates of the lightest few
+is required.
+                                                                glueballs. In estimating these locations, we assumed that
+   First, given mass estimates of the lowest-lying few glue-
+                                                                the energy of a two-glueball state was given by
+balls, one can easily determine the approximate locations
+in a given symmetry channel of the two-glueball states
+                                                                                    q            q
+having zero total momentum. If the simulation results in                    E2G ≈ p~2 + m21 + p~2 + m22 ,                 (7)
+that channel lie significantly below the two-glueball en-       where m1 is the rest mass of the glueball having mo-
+ergy estimates, one can almost certainly rule out a multi-      mentum ~p and m2 is the rest mass of the other glueball
+glueball interpretation.                                        which has momentum −~      p. Note that on a periodic lat-
+   Secondly, one can study the manner in which each en-         tice having Ns sites in each of the three spatial directions,
+ergy level changes as the lattice volume is varied. The         the allowed momenta are discrete p~ = 2π(nx , ny , nz )/L,
+energy of a single glueball state depends on the lattice        where L = as Ns and nx , ny , and nz are integers satis-
+                                                                fying −Ns /2 < nj ≤ Ns /2. The above energy estimates
+  TABLE IV. The little groups of p    ~ = 2π(nx , ny , nz )/L on a   each choice of two glueballs G1 and G2 . For the mo-
+simple cubic lattice with periodic boundary conditions. Note         ment, assume that G1 and G2 are distinguishable. Note
+that l, m, n 6= 0 and l 6= m, m 6= n, and l 6= n.                    that G1 and G2 refer to the irreducible representations
+                                                                     of OhC , the little group for zero momentum. First, we
+             (nx , ny , nz )           Little group                  identified the little group L(~
+                                                                                                   p) of p~. Secondly, the char-
+                (0, 0, 0)                   Oh                       acters χ(G1 ) and χ(G2 ) of the representations G1 and
+               (0, 0, n)                    C4v                      G2 were subduced into the little group, yielding the
+               (0, n, n)                    C2v                      characters χ(Gj ) ↓ L(~ p), which were then decomposed
+               (n, n, n)                    C3v                      into the irreducible representations µ of the little group:
+               (0, m, n)                    Cs                       χ(Gj ) ↓ L(~p) =
+                                                                                        P (Gj ) (µ)
+                                                                                          µ cµ   χ . Next, for each µ1 such
+              (m, m, n)                     Cs                             (G )                                   (G )
+               (l, m, n)                    C1                       that cµ1 1 6= 0 and each µ2 such that cµ2 2 6= 0, we
+                                                                     formed the direct product χ(µ1 ⊗µ2 ) to obtain the char-
+                                                                     acter corresponding to the two-glueball state. Since the
+                                                                     total momentum of this two-glueball state is zero, it can
+                                                                     be characterized by the irreducible representations of OhC .
+neglect all interactions between the two glueballs; this
+                                                                     A representation of OhC was formed by constructing a set
+should not introduce serious error since we expect these
+                                                                     of coset representatives and applying the method of in-
+interactions to be short-ranged, being mediated by scalar
+                                                                     duction, and the induced character χ(µ1 ⊗µ2 ) ↑OhC was fi-
+glueball exchange at large distances. Eq. (7) also assumes
+                                                                     nally decomposed into the irreducible representations of
+that the rest masses and dispersion relations of the propa-
+                                                                     OhC . When G1 and G2 were indistinguishable, the above
+gating glueballs are unaffected by finite volume and finite
+                                                                     procedure was modified to include Bose symmetrization.
+lattice spacing errors. We have verified this assumption
+                                                                        This procedure was carried out using the rest energies
+in the case of the scalar glueball for n2x + n2y + n2z < 9 on
+                                                                     obtained in the β = 2.5, ξ = 5 simulation. The lowest-
+an 83 × 40 lattice at β = 2.4 and ξ = 5.                             lying two-glueball states in each symmetry channel are
+   To facilitate our discussion of the two-glueball states,          listed in Table V. These levels, along with all higher
+we first point out some features of single, propagating              lying levels, are shown as dashed line segments in the
+glueballs in a finite box with periodic boundary condi-              shaded region in Fig. 2. Any energy lying well below the
+tions. Here, glueball states are characterized by their              shaded region in this figure can be safely interpreted as
+transformation properties under Oh1C , the simple cu-                a single glueball state (these are indicated by the black-
+bic crystallographic space group Oh1 extended to include             outlined green-filled boxes). States lying slightly below
+charge-conjugation. The group Oh1 is isomorphic to the               (the orange boxes with no outlines) or above (the red
+semi-direct product of the group of pure (discrete) trans-           boxes) the two-glueball thresholds must be regarded with
+lations and the group of pure (discrete) rotations and               caution. Again, we remind the reader that we cannot
+reflections about a given center. Thus, a propagating                rule out a single glueball interpretation for these levels;
+glueball state may be classified by its momentum p~ and              additional information is needed to determine the nature
+by its transformation properties under the subgroup of               of these states. Since it is not our intent in this paper
+Oh1C which leaves p~ invariant (the little group of p~). The         to obtain such information, we exclude these levels from
+little groups corresponding to various momentum orien-               the spectrum of single glueball states for the time being.
+tations are listed in Table IV. Hence, the irreducible
+representations of the little group may be used to iden-
+tify propagating glueball states. The little group varies                                B. Torelon pairs
+with the momentum orientation. This means that the
+partitioning of the physical glueball states into the irre-
+                                                                        Torelons are gluonic excitations which wind around the
+ducible representations of the lattice symmetry groups
+                                                                     periodic boundaries of the lattice. They may be classi-
+differs depending on the momentum orientation. For ex-
+                                                                     fied according to their behavior under a set of discrete Z3
+ample, consider the 2++ glueball. When at rest, three of
+                                                                     symmetries of the SU(3) pure gauge theory. The gauge
+the five polarizations of this glueball appear in the T2++
+                                                                     action is invariant under multiplication of every link in
+representation of OhC , the little group of ~
+                                            p = (0, 0, 0), and
+                                                                     the µ direction (µ = 0, 1, 2, 3) at a given µ coordinate by
+two of its polarizations occur in the E ++ representation.
+                                                                     the same member of Z3 , the center of SU(3). The torelon
+When ~p = (0, 0, p) for p 6= 0, the five polarizations of the
+                                                                     is an eigenstate of the transfer matrix which transforms
+2++ glueball (which are no longer eigenstates of parity)
+                                                                     nontrivially under such symmetry operations. For exam-
+split across the A+     +     +
+                   1 , B1 , B2 , and E
+                                        +
+                                          representations of
+                   C                                                 ple, the spectrum of glue on a periodic lattice contains
+the little group C4v .
+                                                                     a torelon eigenstate which picks up a phase exp(2πi/3)
+   We determined the lowest-lying two-glueball states in
+                                                                     and a state which picks up a phase exp(−2πi/3) under
+each symmetry channel by repeating the following se-
+                                                                     the multiplication of every link in the x-direction at a
+quence of steps for each allowed momentum vector ~p and
+                                                                     given x coordinate by the center member exp(2πi/3). In
+  TABLE V. The lowest lying state consisting of two free                1.0
+glueballs in each symmetry channel for the β = 2.5, ξ = 5
+simulation. Each state is comprised of a glueball having a
+momentum ~   p = 2π(nx , ny , nz )/L, where L = 10as , and an-                                                                                              0
+                                                                                                                                                                +−
+
+other glueball having momentum −~     p.
+                                                                        0.8                                                                                                   2
+                                                                                                                                                                                  +−           2
+                                                                                                                                                                                                   +−
+                                                                                                                                                                                                            3
+                                                                                                                                                                                                                −−
+
+
+   Channel              Glueballs             (nx , ny , nz )                                                                       2
+                                                                                                                                        *−+
+                                                                                                                                                      *−+                                                            2
+                                                                                                                                                                                                                         −−
+                                                                                                                                                                                                                                    −−
+                                                                                                                                                  2                                                                           1 2
+                                                                                                                                                                                                                               −−
+    A++
+      1                (A++     ++
+                         1 , A1 )               (0, 0, 0)                                                ++
+                                                                                                                          *−+                                                          3
+                                                                                                                                                                                           +−
+                                                                                           ++        3                0
+    A++
+      2
+                         ++
+                       (A1 , E ++ )             (0, 0, 1)                              3                                                                             3
+                                                                                                                                                                         +−
+                                                                                                                                                                                               3
+                                                                                                                                                                                                   +−
+
+                                                                                                              *++
+    E ++               (A++     ++
+                         1 , A1 )               (0, 0, 1)                                       *++ 2
+
+    T1++                 ++     ++
+                       (A1 , A1 )               (0, 1, 2)               0.6                 2
+                                                                                                                                        −+
+                                                                                                                                                  2
+                                                                                                                                                      −+
+                                                                                                                                    2                                                      +−
+    T2++               (A++     ++
+                         1 , A1 )               (0, 1, 1)                                                                                                                              1
+
+
+
+
+                                                                 atmG
+    A−+
+      1
+                         −+
+                       (A1 , A++1 )             (0, 0, 0)                                                                 −+
+                                                                                  *++                                 0
+    A−+
+      2                (A++
+                         1 , T2
+                                ++
+                                   )            (0, 0, 1)                     0
+                                                                                                                 ++
+                                                                                                ++
+    E −+               (A++ , T ++
+                                   )            (0, 0, 1)                                   2                2
+                         1      2
+    T1−+               (A++
+                         1 ,E
+                                ++
+                                   )            (0, 0, 1)               0.4
+    T2−+                 ++
+                       (A1 , E )++
+                                                (0, 0, 1)
+    A+−
+      1                (A++
+                         1 , T1
+                                +−
+                                   )            (0, 1, 2)
+    A+−
+      2                (A1 , T1+− )
+                         ++
+                                                (0, 1, 1)                         ++
+                                                                              0
+    E +−               (A++
+                         1 , T1
+                                +−
+                                   )            (0, 1, 1)
+    T1+−                 ++     +−
+                       (A1 , T1 )               (0, 0, 0)               0.2
+    T2+−               (A++
+                         1 , T1
+                                +−
+                                   )            (0, 0, 1)
+    A−−
+      1
+                         ++     +−
+                       (A1 , T1 )               (0, 0, 1)
+    A−−
+      2                (A++
+                         1 , T1
+                                +−
+                                   )            (0, 1, 1)
+    E −−                 ++     +−
+                       (A1 , T1 )               (0, 0, 1)
+    T1−−               (A++
+                         1 , T1
+                                +−
+                                   )            (0, 0, 1)               0.0 A A E T T A A E T T A A E T T A A E T T
+                                                                                  1     2                1       2        1     2             1        2        1        2                 1       2    1       2             1     2
+    T2−−                 ++     +−
+                       (A1 , T1 )               (0, 0, 1)                      ++        −+        +−        −−
+                                                                    FIG. 2. Comparison of the pure-glue spectrum obtained
+                                                                 from the β = 2.5, ξ = 5 simulation to the approximate loca-
+                                                                 tions of the two glueball states. The boxes are the simulation
+fact, there are three such pairs of modes corresponding
+                                                                 results; the standard deviations in these mass estimates are
+to the x, y, and z directions. These torelons can also
+                                                                 indicated by the vertical heights of the boxes. The dotted
+have a center-of-mass momentum in the two spatial di-            line segments shown in the upper shaded region indicate the
+rections transverse to their flux direction. For large L,        approximate locations of states consisting of two free glue-
+a torelon at rest has an energy given approximately by           balls having zero total momentum. All energies are in terms
+σL, where σ is the string tension from the static-quark          of a−1
+                                                                      t . The representations of the cubic point group which
+potential and L is the spatial extent of the lattice. We         label the states are indicated along the horizontal axis. The
+have confirmed this in a simulation on an 83 × 24 lattice        most likely J P C interpretations of the states are also shown.
+at β = 2.4, ξ = 3. Hence, the torelon mass is strongly
+dependent on the volume of the lattice.
+   Our glueball operators, being closed Wilson loops             next section. No energy reductions of sufficient magni-
+which do not wrap around the lattice, are invariant un-          tude were found to suggest that any of our states could
+der these center symmetry transformations. This means            be interpreted as a torelon pair.
+that the glueball operators cannot create a single torelon
+state, but the creation of torelon pairs of opposite center
+charge is possible. If the two torelons of opposite charge                        IV. FINITE VOLUME ERRORS
+do not substantially interact, then the lowest energy of
+such a state is 2σL, which has the value 0.9 when placed            An additional simulation was done to measure the sys-
+on Fig. 2. This lies sufficiently high to discard from con-      tematic errors in our results from finite volume: a run at
+sideration, even for the A+− 1   state since a state of two      β = 2.4, ξ = 5 on a 63 × 40 lattice. The original 83 × 40
+torelons of opposite center charge and total zero mo-            lattice has a spatial volume of (1.76 fm)3 , assuming that
+mentum must be symmetric under charge conjugation.               as ∼ 0.22 fm from r0−1 = 410(20) MeV. The additional
+Fortunately, a torelon pair can be easily detected in a          simulation measures the changes in the glueball masses
+finite-volume study since their energy depends strongly          as the volume is reduced from (1.76 fm)3 to (1.32 fm)3 .
+on L. An additional simulation was done to measure the           The input parameters used in this small-volume run were
+changes in all energy levels as the lattice volume was re-       the same as those used in the larger volume simulation.
+duced. The results of this simulation are presented in the          Let mG denote the energy of a state G on the origi-
+                                                                   reason, we withhold judgment on whether or not this
+                                                                   level is a single glueball. Note that most of the states ly-
+                                                                   ing near or above the two-glueball thresholds (the orange
+                                                                   and red boxes in Fig. 2) show very little finite volume de-
+                                                                   pendence, suggesting that these states might actually be
+                                                                   long-lived glueball resonances. Further study would be
+                                                                   required to resolve this issue.
+
+
+                                                                             V. LATTICE SPACING ERRORS
+
+                                                                      There are two aspects to the removal of systematic
+                                                                   errors from finite lattice spacing: extrapolation of the re-
+                                                                   sults to the continuum limit as → 0, and the identification
+                                                                   of the continuum spin quantum numbers. In this section,
+                                                                   we first carry out the as → 0 extrapolations of the candi-
+                                                                   date single-glueball levels remaining after the analysis of
+                                                                   Sec. III, then deduce their continuum spin content.
+
+
+                                                                             A. Continuum limit extrapolations
+
+                                                                      The glueball mass estimates in terms of a−1     t , listed in
+  FIG. 3. Finite-volume effects on the results of the β = 2.4,
+                                                                   Table II, were combined with the determinations of the
+ξ = 5 simulation. Each point shows the fractional change           hadronic scale r0 /as presented in Table I. The results
+δG = 1 − mS                                                        are shown in Figs. 4-7. In these figures, the dimension-
+            G /mG in the energy of a stationary state G, where
+mG is the energy of G as measured on an 83 × 40 lattice, and       less products of r0 and the glueball mass estimates are
+mS                                                 3
+  G is the energy of G as measured on a smaller 6 ×40 lattice.
+                                                                   shown as functions of (as /r0 )2 . The solid symbols indi-
+The state G corresponding to a given point is specified by         cate the results from the ξ = 5 simulations. The open
+combining the representation label below the point along the       symbols appearing to the right of the vertical dashed lines
+horizontal axis with the P C value shown to its left along the     indicate results from the β = 3.0, ξ = 3 run, as well as
+vertical axis. The solid lines indicate δG = 0, the dotted lines   ξ = 3 results for the A++  1   and A∗++
+                                                                                                        1    channels previously
+above the solid lines indicate δG = 0.02, and the dotted lines     obtained in Ref. [1]. To remove discretization errors from
+below the solid lines indicate δG = −0.02.                         our glueball mass estimates, the results for each level in
+                                                                   these figures must be extrapolated to the continuum limit
+                                                                   as /r0 → 0. The discretization errors can then be seen as
+nal 83 × 40 lattice, and mSG denote the energy of G as             the deviations of the finite-as results from these limiting
+measured on the smaller 63 × 40 lattice. The fractional            values.
+change in the energy is defined by δG = 1−mSG /mG . The               From perturbation theory, the leading discretization
+results for these fractional changes are shown in Fig. 3.          errors in our action are expected to be O(a2t , a4s , αs a2s ).
+Each point shows the fractional change in the energy of            The agreement of the A++          ∗++
+                                                                                                          , E ++ , T2++ , and T1+−
+                                                                                                1 , A1
+a state G specified by combining the representation la-            glueball masses extracted using ξ = 3 and ξ = 5 (see
+bel below the point on the horizontal axis with the P C            Figs. 12 and 14 in Ref. [1]) suggests that the O(a2t ) er-
+value shown to its left on the vertical axis. The solid lines      rors are negligible. Some evidence for the smallness of
+indicate δG = 0, the dotted lines above the solid lines in-        the O(αs a2s ) errors comes from our earlier glueball sim-
+dicate δG = 0.02, and the dotted lines below the solid             ulations [9] which used the one-loop improved Lüscher-
+lines indicate δG = −0.02. The largest effects from finite         Weisz action [10]. After tadpole improvement, the ra-
+volume occur in the A∗++ 1    and T1∗+− states. All other          diative corrections to the couplings in this action were
+changes are statistically consistent with zero, indicating         found to be very small. For these reasons, we expect
+that systematic errors in these results from finite vol-           that the O(a2t , αs a2s ) errors will be negligible compared
+ume are negligible. These results confirm the single glue-         to the O(a4s ) errors.
+ball nature of all of the states, with the exception of the           In assuming as /at = ξ (where ξ is the input anisotropy
+A∗++
+  1    , lying well below the two-glueball thresholds (the         parameter in the action), we introduce O(αs ) errors in
+black-outlined green-filled boxes in Fig. 2). Although the         our estimates of the glueball masses multiplied by r0 .
+change in the energy of the A∗++1    is not very large, it is      (Note that these errors do not enter into ratios of the
+sufficient to warrant further study of this level. For this        glueball masses.) Such errors can be avoided by instead
+          10                                                                 12
+                                                    ++
+                                                   T1
+                   ++
+          9    3                                                                                                        *−+
+                                                                             11                                        A1
+                                                        ++
+                                                   A2                                                                             *−+
+                                                                                                                            E
+          8
+                                                                             10
+                                                    *++                               *−+                                   *−+
+          7        *++                             A1                             2                                     T2
+               0
+  r0m G
+
+
+
+
+                                                                     r0m G
+                                                        ++                   9    0
+                                                                                      *−+
+                                                   T2
+          6    2
+                   ++
+
+                                                       ++                                                         −+
+                                                   E                         8                                E
+          5                                                                           −+                          −+
+                                                                                  2                           T2
+
+               0
+                   ++
+                                                                             7
+          4                                         ++                                                        A1
+                                                                                                                  −+
+
+                                                   A1
+                                                                                      −+
+                                                                                  0
+          3                                                                  6
+                         0.0   0.2        0.4      0.6       0.8                            0.0   0.2        0.4       0.6              0.8
+                                               2                                                                  2
+                                     (as/r0)                                                            (as/r0)
+   FIG. 4.     Mass estimates of the P C = ++ glueballs in            FIG. 5. Mass estimates (solid symbols) of the P C = −+
+terms of r0 against the lattice spacing (as /r0 )2 . The solid     glueballs in terms of r0 against the lattice spacing (as /r0 )2 .
+symbols indicate results from the ξ = 5 simulations, and the       The solid curves are best fits of ϕ0 (as ) from Eq. (9) to the
+open symbols on the right-hand side of the vertical dashed         results for each state; the open symbols are the continuum
+line indicate results from the ξ = 3 simulations. The solid        limit extrapolations.
+curves are best fits to the simulation results for each state
+using ϕ1 (as ) from Eq. (10) for the A++1   and A∗++
+                                                  1   levels and
+ϕ0 (as ) from Eq. (9) for all other levels. The open symbols on       One way to estimate this uncertainty is to compare
+the left-hand side of the vertical dashed line show the extrap-    measurements of the static-quark potential extracted
+olations to the continuum limit using the best-fit forms.          from Wilson loops taken along the different spatial and
+                                                                   temporal axes of the lattice [11]. The anisotropy errors
+                                                                   can be quantified by defining as /at in terms of these
+setting as /at in a more physically motivated fashion, such        different potentials and comparing the result to ξ. If
+as by comparing the spatial and temporal length scales             we denote the determination of the aspect ratio from
+extracted from appropriate correlation functions. We can           the potentials by [as /at ]V and define Zξ by the rela-
+also use perturbation theory to adjust the couplings in            tion [as /at ]V = Zξ ξ, then the deviation of Zξ from unity
+our action to remove these errors order by order in αs .           gives us a measure of the fractional error from assum-
+However, we estimated the errors caused by imposing                ing as /at = ξ. The effect of these errors is to modify
+as /at = ξ (see below) and found them to be too small              the multiplicative r0 /at factors used to convert the sim-
+to warrant the additional complexity of another as /at -           ulation results given in terms of at−1 into units of r0−1
+setting scheme or the effort required to calculate the one-        suitable for extrapolation. Using the functional depen-
+loop corrections to the action. A simpler approach is to           dence of r0 /at on ξ from a fit to the static-quark poten-
+incorporate the O(αs ) anisotropy errors into our contin-          tial, we determine that (Zξ − 1)/2 gives us an estimate
+uum limit extrapolations. Unfortunately, their depen-              of the fractional uncertainty in our continuum limit re-
+dence on as is not well known and, as we shall see, they           sults from the aspect ratio errors. Without mean-link
+are generally smaller than the much more rapidly vary-             improvement, Zξ can deviate from unity by as much as
+ing O(a4s ) errors. Detecting their effects in a fit to about      30%. When the action includes mean-link factors, the
+five data points for as from 0.2 to 0.4 fm is not feasi-           corrections are found to be small, typically a few per
+ble. Thus, we decided to adopt the following approach:             cent. For example, for the β = 2.4, ξ = 5 run, we ob-
+to extrapolate assuming O(a4s ) errors only, then include          tained Zξ = 0.987(8); for β = 3.0, ξ = 3, an estimate
+a systematic uncertainty in our continuum-limit results            of Zξ = 0.99(1) was found. If we assign a conservative
+from the O(αs ) anisotropy errors.                                 2% error from Zξ , then this amounts to a 1% system-
+          12                                                                             12
+                                                                  +−
+                   +−                                         A1
+               0
+                                                                                                                                   −−
+                                                                                                                                  A2
+          11
+                                                                  +−
+                                                              E
+                   +−
+          10   2                                          *+−
+                                                         T2                              11
+                                                                                                                                         −−
+                                                                                                                                        T1
+                                                     +−
+                                                    T2
+  r0m G
+
+
+
+
+                                                                                 r0m G
+                                     *+−
+          9                      T1                           A2
+                                                                +−
+                   +−
+               3
+                                                                                                                                         −−
+                                                                                                  −−                                    T2
+                                                                                              3
+          8                                                                              10
+                                                                   +−
+                                                                T1
+                   +−                                                                             −−
+               1                                                                              2                                         E
+                                                                                                                                            −−
+          7                                                                                       −−
+                                                                                              1
+
+
+          6                                                                              9
+                        0.0    0.2         0.4      0.6                0.8                             0.0   0.2        0.4      0.6          0.8
+                                               2                                                                             2
+                                     (as/r0)                                                                       (as/r0)
+   FIG. 6. Mass estimates (solid symbols) of the P C = +−                         FIG. 7. Mass estimates (solid symbols) of the P C = −−
+glueballs in terms of r0 against the lattice spacing (as /r0 )2 .              glueballs in terms of r0 against the lattice spacing (as /r0 )2 .
+The solid curves are best fits of ϕ0 (as ) from Eq. (9) to the                 The solid curves are best fits of ϕ0 (as ) from Eq. (9) to the
+results for each state; the open symbols are the continuum                     results for each state; the open symbols are the continuum
+limit extrapolations.                                                          limit extrapolations.
+
+
+atic uncertainty in our continuum-limit results from the                       where r0 mG and c4 are the best-fit parameters, then add
+anisotropy errors.                                                             a 1% systematic uncertainty from the O(αs ) anisotropy
+  Another way to estimate the errors due to the as-                            errors. Eq. (9) worked well in all cases except for the
+pect ratio is from the perturbative calculation of Zξ us-                      A++
+                                                                                 1   and A∗++
+                                                                                            1    levels. The best-fit curves using Eq. (9)
+ing the anisotropic Wilson action (the analogous cal-                          are shown in Figs. 4-7; the extrapolations of these curves
+culation using SII has not yet been done). Modify-                             to the continuum limit are indicated in these figures by
+ing the results from Ref. [12] to include tadpole im-                          the open symbols on the left-hand sides of the vertical
+provement factors and writing the mean-link parameter                          dashed lines. Note that the extrapolation uncertainties
+              (2)
+us = 1 − αs us (ξ) + O(α2s ), one finds                                        shown in these plots do not yet include the systematic
+               n                          o                                    anisotropy error.
+ Zξ = 1 + αs 2π [cτ (ξ)−cσ (ξ)] + u(2)            2
+                                     s (ξ) + O(αs ), (8)                          As discussed in Ref. [1], our results for the A++    1
+                                                                               and A∗++1    levels remain problematical. These levels
+where the values for cτ (ξ) and cσ (ξ) can be obtained from                    have large finite-lattice-spacing errors which do not obey
+Fig. 1 in Ref. [12]. From this equation, one sees that                         Eq. (9). There is growing evidence that these large dis-
+when ξ = 3 − 5 and αs ∼ 0.2, the aspect ratio receives                         cretization errors are due to the presence of a critical
+less than a 2% correction; if the tadpole improvement                          end point of a line of phase transitions (not correspond-
+        (2)
+factor us (ξ) is omitted, a large 30% correction is found.                     ing to any physical transition found in QCD) in the
+For the improved action SII , we expect that these values                      fundamental-adjoint coupling plane [13–15]. It has been
+should be somewhat smaller. Again, we can assign a                             conjectured that this critical point defines the continuum
+conservative 2% error in Zξ to obtain a 1% systematic                          limit of a φ4 scalar field theory [14]. As one nears this
+uncertainty in our continuum estimates.                                        critical point, the coherence length in the scalar channel
+   To summarize, our approach is to extrapolate to the                         becomes large, which means that the mass gap in this
+continuum limit using                                                          channel becomes small; all other observables, including
+                                                                               glueball masses, appear to be affected to a much lesser
+                                            a4s                                extent. The effect of this critical point on the functional
+                    ϕ0 (as ) = r0 mG + c4       ,                        (9)
+                                            r04
+form of the discretization errors in the scalar glueball           TABLE VI. Number of times each irreducible representa-
+mass is not well known, so we must proceed somewhat             tion of the octahedral group O occurs in the subduced rep-
+                                                                resentations J ↓ O of the rotation group SO(3) restricted to
+empirically. One possibility is that the critical point
+                                                                subgroup O.
+might enhance the perturbative O(αs ) errors; another
+is that it may induce an O(a2s ) error which would not
+otherwise be present. We fit several simple functions to                   J      A1     A2     E      T1     T2
+the A++
+      1   mass results and found that the following two                    0      1      0      0      0      0
+functions worked very well:                                                1      0      0      0      1      0
+                                                                           2      0      0      1      0      1
+                          a4                                               3      0      1      0      1      1
+    ϕ1 (as ) = r0 mG + c4 4s                                               4      1      0      1      1      1
+                          r0
+                        2                                                  5      0      0      1      2      1
+                              a4 
+                                
+                      a                    −1
+                                                                           6      1      1      1      1      2
+               − d2 2s + d4 4s     ln(as Λ) ,           (10)
+                      r0      r0                                           7      0      1      1      2      2
+                          a 2
+                                  a4      a6                               8      1      0      2      2      2
+    ϕ2 (as ) = r0 mG + c2 2s + c4 4s + c6 6s ,          (11)               9      1      1      1      3      2
+                          r0      r0       r0
+                                                                           10     1      1      2      2      3
+where r0 mG , c4 , c6 , d2 , and d4 are the best-fit parame-               11     0      1      2      3      3
+ters. Eq. (11) is simply a cubic polynomial in (as /r0 )2 .                12     2      1      2      3      3
+Eq. (10) incorporates the expected leading dependence
+on the QCD coupling αs (as ) ∼ −1/ ln(as Λ) up to O(a4s ).
+Various estimates of the QCD scale parameter ΛMS sug-
+gest that r0 ΛMS ∼ 0.6. Hence, we used r0 Λ = 0.5 and           errors in the scalar glueball mass can be dramatically re-
+verified that our continuum limit estimates were insensi-       duced by simulating with an action which includes an
+tive to the choice of r0 Λ in the range from about 0.3 to       additional two-plaquette interaction [15]. With such an
+0.8. Both the d2 and d4 terms were needed to achieve            action, we should be able to substantially improve upon
+this insensitivity.                                             our determinations of the scalar-channel glueball masses
+   The best-fit curves using Eq. (10) are shown in Fig. 4.      in the near future. A study in SU(2) lattice gauge the-
+The best fit to the A++   1    results has χ2 /NDF = 0.57,      ory [16] has also shown that lattice-spacing errors in the
+                ∗++
+and for the A1 , we find χ2 /NDF = 0.35. The ex-                scalar glueball can be reduced by using the mean spa-
+trapolation of these curves to the continuum limit yields       tial and temporal links in Landau gauge for the values of
+r0 m(A++1 ) = 4.21(7) and r0 m(A1
+                                     ∗++
+                                         ) = 6.50(44). Using    the link variable renormalization parameters us and ut ,
+                              ++
+Eq. (11), we obtain r0 m(A1 ) = 4.30(8) with χ2 /NDF =          respectively.
+0.53 and r0 m(A∗++ 1   ) = 6.52(54) with χ2 /NDF = 0.35
+Since ϕ1 (as ) was more closely connected to a pertur-
+bative analysis, we chose the estimates obtained using                           B. Spin identification
+Eq. (10) for our final results, but added the differences be-
+tween the two extrapolations as a systematic error. After          The last step in our calculation of the glueball spec-
+including an additional 1% anisotropy error, we end up          trum is to identify the continuum spin content of each
+with r0 m(A++1 ) = 4.21(12) and r0 m(A1
+                                           ∗++
+                                               ) = 6.50(45).    level. This is done by matching the observed patterns of
+                     ++
+   Note that the A1 estimate differs slightly from our          degeneracies in the levels from different OhC representa-
+earlier estimate of 3.98(15) given in Ref. [1]. Our previous    tions to those expected for the various continuum J P C
+extrapolation suffered from the absence of a mass mea-          states. For example, a J = 0 state occurs only in the A1
+surement at a lattice spacing smaller than 0.2 fm; the          representation of O, a J = 2 state occurs in both the E
+need for such a measurement to obtain a reliable con-           and T2 representations, and a state of J = 3 gets split
+tinuum limit estimate for this level was acknowledged           across the A2 , T1 , and T2 representations. The numbers
+in Ref. [1]. The current study includes a new measure-          of times that the irreducible representations of the oc-
+ment at a lattice spacing near 0.1 fm; the inclusion of         tahedral group O occur in the subduced representations
+this new measurement is responsible for the slight differ-      J ↓ O of the rotation group SO(3) restricted to the sub-
+ence in the two extrapolations. Note that our improved          group O are listed in Table VI. Given the values in this
+estimate 4.21(12) agrees very well with the value 4.33(5)       table and either the continuum limit estimates in Figs. 4-
+obtained by extrapolating existing Wilson action data for       7 or the results shown in Fig. 2, we can then deduce the
+the scalar glueball mass. Unfortunately, the mass of the        continuum spin quantum numbers.
+A∗++
+  1    is very poorly determined because a measurement             Consider first the P C = ++ sector. The A++   1  state
+of the A∗++
+         1    mass was not obtained in the β = 3.0, ξ = 3       is not degenerate with any other level; hence, it can be
+simulation.                                                     identified as a J = 0 state. The E ++ and T2++ states
+   Recently, we have demonstrated that the discretization       are degenerate, implying that they correspond to the five
+polarizations of a J = 2 glueball. The A∗++              state is       TABLE VII. Final continuum-limit glueball mass esti-
+                                                     1
+seen to have no degenerate partners, suggesting a J = 0              mates mG . When a unique J interpretation for a state cannot
+                                                                     be made, the other possibilities are indicated in the second
+excited state. The A++        2   state can correspond to J =
+                                                                     column. States whose interpretation requires further study
+3, 6, 7, 9, . . .. For all of these J values, there should be an
+                                                                     are indicated by a dagger. In column 3, the first error is
+accompanying level in the T1++ channel, and such a level
+                                                                     the statistical uncertainty from the continuum-limit extrapo-
+is observed. We conclude that the A++        2   and T1++ states     lation and the second is the estimated uncertainty from the
+correspond most likely to a J = 3 state, but less likely             anisotropy. In the final column, the first error comes from the
+J = 6, 7, 9, . . . interpretations cannot be ruled out. The          combined uncertainties in r0 mG , the second from the uncer-
+J = 3 assignment is also supported by model predictions,             tainty in r0−1 = 410(20) MeV.
+discussed in Sec. VI.
+   In the P C = −+ sector, the A−+      1   and A∗−+
+                                                  1    states are
+easily identified with J = 0 states, and the degenerate                 JPC     Other J               r0 mG          mG (MeV)
+E −+ and T2−+ states must correspond to a J = 2 glue-                   0++                        4.21 (11)(4)    1730 (50) (80)
+ball. The degenerate E ∗−+ and T2∗−+ states most likely                 2++                        5.85 (2) (6)    2400 (25) (120)
+correspond to a J = 2 state as well, although as noted in               0−+                        6.33 (7) (6)    2590 (40) (130)
+                                                                        0∗++                       6.50 (44)(7)†   2670 (180)(130)
+Sec. III, the proximity of these levels to the two-glueball
+                                                                        1+−                        7.18 (4) (7)    2940 (30) (140)
+threshold leaves their status somewhat uncertain. Also,
+                                                                        2−+                        7.55 (3) (8)    3100 (30) (150)
+we cannot statistically rule out the possibility that, in
+                                                                        3+−                        8.66 (4) (9)    3550 (40) (170)
+combination with two states in the T1−+ irreducible rep-
+                                                                        0∗−+                       8.88 (11)(9)    3640 (60) (180)
+resentation, they are associated with a J = 5 glueball.                 3++     6, 7, 9, . . .     8.99 (4) (9)    3690 (40) (180)
+We cannot rule out an accompanying degenerate level                     1−−     3, 5, 7, . . .     9.40 (6) (9)    3850 (50) (190)
+in the A−+  1      channel. If such a state exists, then these          2∗−+    4, 5, 8, . . .     9.50 (4) (9)†   3890 (40) (190)
+could be the levels corresponding to a J = 4 or a J = 8                 2−−     3, 5, 7, . . .     9.59 (4) (10)   3930 (40) (190)
+glueball.                                                               3−−     6, 7, 9, . . .    10.06 (21)(10)   4130 (90) (200)
+   The T1+− state must correspond to a J = 1 glueball,                  2+−     5, 7, 11, . . .   10.10 (7) (10)   4140 (50) (200)
+and the degenerate A+−       2 , T1
+                                    ∗+−
+                                        , and T2+− levels corre-        0+−     4, 6, 8, . . .    11.57 (12)(12)   4740 (70) (230)
+spond to a J = 3 glueball. A glueball having J = 2 is
+the most likely interpretation for the degenerate E +− and
+T2∗+− states. However, we cannot rule out the possibility
+of accompanying levels in the T1+− and A+−          2  channels.
+                                                                     the most likely spin interpretations as described in the
+Taking all possibilities into account, the alternate inter-
+                                                                     previous section and accordingly combined the contin-
+pretations are J = 5, 7, 11. The very high lying A+−      1   can
+                                                                     uum limit extrapolations (shown as open symbols on the
+be interpreted as a J = 0 glueball, but J = 4, 6, 8, . . .
+                                                                     left-hand sides of the vertical dashed lines in Figs. 4-
+cannot be excluded.
+                                                                     7), then added the 1% anisotropy error, to obtain final
+   Finally, consider the P C = −− sector. The most prob-
+                                                                     estimates for the glueball masses in terms of r0 . The
+able scenario is as follows: the T1−− corresponds to a
+                                                                     combinations used to obtain these estimates are also
+J = 1 glueball, the degenerate E −− and T2−− are the
+                                                                     indicated in Figs. 4-7 by the J P C labels near the left
+five polarizations of a J = 2 glueball, and the A−−         2   is
+                                                                     vertical axes. Wherever applicable, we have also indi-
+a J = 3 state. Of course, we cannot rule out the pre-
+                                                                     cated in Table VII any alternative spin interpretations
+sumably higher-lying J = 6, 7, 9, 11, . . . interpretations
+                                                                     which cannot be ruled out. These final estimates are also
+for the A−−  2 . Another possibility is that the E
+                                                       −−
+                                                          , T1−− ,
+        −−                                                           shown in Fig. 8. The 0∗++ and 2∗−+ states are shown
+and T2 are degenerate, in which case they could cor-
+                                                                     as dashed hollow boxes to indicate that their interpreta-
+respond to a J = 5 glueball. Even less likely is that
+                                                                     tions as glueballs are tentative. Our concern about the
+all four levels are degenerate. In this case, one could
+                                                                     0∗++ state stems from its non-negligible finite volume ef-
+interpret them as a single J = 7 or J = 11 state, or
+                                                                     fects; for the 2∗−+ state, its nearness to the two-glueball
+as accidentally degenerate J = 3 and J = 2 glueballs.
+                                                                     threshold in our simulations is worrisome. Note that our
+However, all higher-spin interpretations would require a
+                                                                     estimates r0 m(0++ ) = 4.21(12) and r0 m(2++ ) = 5.85(6)
+degenerate ground state in either the T1−− or T2−− chan-
+                                                                     agree very well with 4.33(5) and 6.0(1), respectively, ob-
+nel. Our correlator fits suggest these degeneracies are
+                                                                     tained by extrapolating the Wilson action simulation re-
+missing, making J = 5, 6, 7 . . . interpretations unlikely.
+                                                                     sults from Refs. [2,3,17,18] to the continuum limit. Sev-
+                                                                     eral glueball mass ratios are presented in Table VIII. We
+          VI. RESULTS AND DISCUSSION
+                                                                     can determine these ratios very accurately since, as noted
+                                                                     earlier, they are not contaminated by anisotropy errors.
+                                                                     The uncertainties given in Table VIII are calculated us-
+  Our final results for the glueball spectrum in terms               ing the empirical fact that correlations between different
+of r0 are given in Table VII. In this table, we assumed              symmetry channels were found to be negligible. Note
+           TABLE VIII. Glueball mass ratios.
+                                                                      12                                    +−
+            m(2++ )/m(0++ )           1.39(4)                                                           0
+            m(0−+ )/m(0++ )           1.50(4)
+            m(0∗++ )/m(0++ )          1.54(11)                                                              +−         −−
+                                                                                                                      3−−
+            m(1+− )/m(0++ )           1.70(5)
+                                                                      10                     *−+
+                                                                                                        2
+                                                                                                                                 4
+                                                                                         2                            2−−
+            m(2−+ )/m(0++ )           1.79(5)                              3
+                                                                               ++
+                                                                                             *−+                      1
+                                                                                         0                  +−
+            m(3+− )/m(0++ )           2.06(6)                                                           3
+            m(0∗−+ )/m(0++ )          2.11(6)                         8                      −+
+                                                                                         2
+            m(0−+ ) /m(2++ )          1.081(12)                                                         1
+                                                                                                            +−                   3
+
+
+
+
+                                                                                                                                     mG (GeV)
+                                                                            *++
+                                                                           0                 −+
+
+
+
+
+                                                               r0mG
+                                                                                         0
+                                                                      6    2
+                                                                             ++
+
+
+
+
+that the pseudoscalar glueball is clearly resolved (at the                                                                       2
+7σ level) to be heavier than the tensor.                              4    0
+                                                                               ++
+
+   All of the glueball states shown in Fig. 8 are stable
+against decay to lighter glueballs. In the P C = ++ sec-
+tor, the threshold for decay into two identical 0++ glue-                                                                        1
+balls having zero total momentum is at twice the mass of              2
+the scalar glueball. Although this lies below the mass of
+the 3++ glueball, Bose symmetrization prohibits odd L
+partial waves, where L is the relative orbital angular mo-            0                                                          0
+mentum, so that the 3++ glueball cannot decay into two                              ++            −+             +−         −−
+identical scalar glueballs. In the P C = −+ sector, the                                                PC
+lowest-lying two-glueball state consists of the 0++ and
+2++ glueballs in a relative P -wave; all of our glueballs in      FIG. 8. The mass spectrum of glueballs in the pure SU(3)
+this sector have masses below the sum of the scalar and        gauge theory. The masses are given in terms of the hadronic
+tensor glueball masses. States of total zero momentum          scale r0 along the left vertical axis and in terms of GeV along
+and comprised of the 0++ and 1+− glueballs with rel-           the right vertical axis (assuming r0−1 = 410 MeV). The mass
+ative orbital angular momentum L are the lowest-lying          uncertainties indicated by the vertical extents of the boxes
+two-glueball states in the P C = +− sector when L is           do not include the uncertainty in setting r0 . The locations
+even and in the P C = −− sector when L is odd. Only            of states whose interpretation requires further study are indi-
+the 0+− glueball has sufficient mass to decay into two         cated by the dashed hollow boxes.
+such glueballs; however, this decay is forbidden because
+L = 1 is required to make a state of zero total angular
+momentum.                                                      ing exotic J P C will not mix with conventional hadrons
+   To convert our glueball masses into physical units, the     and would be ideal for establishing the existence of glue-
+value of the hadronic scale r0 must be specified. We used      balls. Unfortunately, our results indicate that the lightest
+r0−1 = 410(20) MeV from Ref. [1] to obtain the scale           such state, the 2+− glueball, has a mass greater than 4
+shown on the right-hand vertical axis of Fig. 8. This es-      GeV.
+timate was obtained by combining Wilson action calcu-             Kuti has recently pointed out [19] that the glueball
+lations of a/r0 with values of the lattice spacing a deter-    spectrum shown in Fig. 8 can be qualitatively understood
+mined using quenched simulation results of various phys-       in terms of the interpolating operators of minimal dimen-
+ical quantities, such as the masses of the ρ and φ mesons,     sion which can create glueball states. With the expecta-
+the decay constant fπ , and the 1P −1S splittings in char-     tion that higher dimensional operators create higher mass
+monium and bottomonium. Note that the errors shown             states, the authors in Ref. [20], following an approach
+in Fig. 8 do not include the uncertainty in r0−1 . For the     suggested in Refs. [21,22], constructed all operators of
+lowest-lying glueballs, we obtain m(0++ ) = 1730(50)(80)       dimension 4, 5, and 6 capable of creating glueballs from
+MeV and m(2++ ) = 2400(25)(120) MeV, where the first           the QCD vacuum. Such operators are gauge-invariant
+error comes from the uncertainty in r0 mG and the second       combinations of the chromoelectric and chromomagnetic
+error comes from the uncertainty in r0−1 . A great deal of     fields; operators equivalent to a total derivative or re-
+care should be taken in making direct comparisons with         lated to a conserved current are excluded. The lowest
+experiment since these values neglect the effects of light     dimensional operators capable of creating glueballs are
+quarks and mixings with nearby conventional mesons. It         of dimension four and have the form TrFµν Fαβ , where
+is this mixing which has made the search for an incontro-      Fµν is the gauge field strength tensor; these operators
+vertible experimental signal so difficult. A glueball hav-     create glueballs with J P C = 0++ , 2++ , 0−+ and 2−+ .
+The dimension five operators of the form TrFµν Dδ Fαβ ,                        ACKNOWLEDGMENTS
+where Dµ is the covariant derivative, produce only two
+new glueball states having J P C = 1++ and 3++ . At              We would like to thank Peter Lepage, Julius Kuti, Mike
+dimension six, operators of the form TrFµν Fαβ Fδσ pro-        Teper, Ron Horgan and Chris Michael for helpful dis-
+duce J P C = 0±+ , 1±± , 2±± , and 3±− ; operators of the      cussions. We are grateful to W. Korsch (University of
+form TrFµν {Dα , Dβ }Fδσ produce J P C = 1−+ , 3−+ , and       Kentucky) for access to computing resources in the early
+4±+ . Of course, this ordering should not be taken too         stages of the project. This work was supported by the
+quantitatively, but we find that the method provides a         U.S. DOE, Grant No. DE-FG03-97ER40546.
+reasonably satisfactory explanation of the observed spec-
+trum, especially given the simplicity of the approach. Of
+the lightest six states we resolve, four have the quantum
+numbers expected from the dimension-four interpolating
+operators. The method also explains the absence of any
+low-lying 0±− and 1−+ glueballs.
+  The spectrum of Fig. 8 can also be reasonably well            [1] C. Morningstar and M. Peardon, Phys. Rev. D56, 4043
+explained in terms of a simple constituent gluon model              (1997).
+in which the fundamental gluon field is replaced by the         [2] G. Bali et al. (UKQCD Collaboration), Phys. Lett. B
+Hartree modes of a constituent field with residual per-             309, 378 (1993).
+turbative interactions; the Hartree modes are taken to          [3] C. Michael and M. Teper, Nucl. Phys. B314, 347 (1989).
+be the modes of a free gluon inside a spherical cavity          [4] B. Berg and A. Billoire, Nucl. Phys. B221, 109 (1983);
+with confining boundary conditions. Such a (bag) model              B226, 405 (1983).
+has been recently revisited in Ref. [19]. Using values          [5] G.P. Lepage and P.B. Mackenzie, Phys. Rev. D 48, 2250
+for αs and the bag pressure appropriate for heavy-quark             (1993).
+spectroscopy and the static-quark potential, remarkable         [6] A.M. Schönfliess, Krystallsysteme und Krystallstructur
+                                                                    (Druck und Verlag von B.G. Teubner, Leipzig, 1891).
+agreement with the observed levels of Fig. 8 was found.
+                                                                [7] See, for example, J. F. Cornwell, Group Theory in
+                                                                    Physics (Academic Press, London, 1984), Vol. I.
+                                                                [8] R. Sommer, Nucl. Phys. B411, 839 (1994).
+                  VII. CONCLUSION
+                                                                [9] C. Morningstar and M. Peardon, in Lattice ’95, Proceed-
+                                                                    ings of the International Symposium, Melbourne, Aus-
+   In this paper, we used numerical simulations of glu-             tralia, edited by T.D. Kieu et al. [Nucl. Phys. B (Proc.
+ons on spatially-coarse, temporally-fine lattices to signif-        Suppl.) B47, 258 (1996)].
+icantly improve our knowledge of the glueball spectrum         [10] M. Lüscher and P. Weisz, Phys. Lett. 158B, 250 (1985).
+in SU(3) Yang-Mills theory. This is an important step          [11] C. Morningstar, in Lattice ’96, Proceedings of the In-
+towards understanding glueballs in the real world. Six              ternational Symposium, St. Louis, Missouri, edited by
+simulations for spatial grid separations ranging from 0.1           C. Bernard et al. [Nucl. Phys. B (Proc. Suppl.) B53, 914
+to 0.4 fm were performed on DEC Alpha and Sun Ultra-                (1997)].
+sparc workstations. Care was taken to differentiate single     [12] F. Karsch, Nucl. Phys. B205, 285 (1982).
+glueball states from unwanted two-glueball and torelon-        [13] A. Patel et al., Phys. Rev. Lett. 57, 1288 (1986).
+pair states. An additional small-volume simulation as-         [14] U. Heller, Phys. Lett. B 362, 123 (1995).
+sisted in the identification of the single glueball states     [15] C. Morningstar and M. Peardon, in Lattice ’98, Pro-
+and demonstrated the smallness of systematic errors from            ceedings of the International Symposium, Boulder, Col-
+finite volume. The simulation results were extrapolated             orado, edited by T. DeGrand et al., to appear (hep-
+                                                                    lat/9808045).
+to the continuum limit and the continuum spin quantum
+                                                               [16] N. Shakespeare and H. Trottier, Phys. Rev. D 59, 014502
+numbers were identified. The end result, shown in Fig. 8,
+                                                                    (1999).
+was a nearly complete survey of the glueball spectrum in
+                                                               [17] H. Chen et al., in Lattice ’93, Proceedings of the Inter-
+the pure glue theory below 4 GeV. A total of thirteen
+                                                                    national Symposium, Dallas, Texas, edited by T. Draper
+glueballs were found, and two other tentative candidates            et al. [Nucl. Phys. B (Proc. Suppl.) 34, 357 (1994)].
+were also located.                                             [18] P. de Forcrand et al., Phys. Lett. 160B, 137 (1985).
+   In the future, we plan to improve our determinations        [19] J. Kuti, in Lattice ’98 [15], to appear (hep-lat/9811021).
+of the scalar-channel glueballs by simulating with an ac-      [20] R.L. Jaffe, K. Johnson, and Z. Ryzak, Ann. Phys. 168,
+tion that includes an additional two-plaquette interac-             344 (1986).
+tion. We also intend to extend our anisotropic lattice         [21] H. Fritzsch and P. Minkowski, Nuovo Cim. 30A, 393
+technology to include quarks. With the help of femto-               (1975).
+universe techniques, we hope ultimately to investigate         [22] J.D. Bjorken, in Proceedings of the 1979 SLAC Sum-
+the properties of glueballs in reality.                             mer Institute on Particle Physics, Stanford, California,
+                                                                    p. 219.
+

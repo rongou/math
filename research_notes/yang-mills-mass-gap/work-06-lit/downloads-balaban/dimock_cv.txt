@@ -1,0 +1,366 @@
+Jonathan Dimock                                                                                Feb 6, 2024
+
+Department of Mathematics
+University at Buffalo
+Mathematics Building, Room 244
+Buffalo, NY 14260-2900
+
+Telephone: (716) 645-8809
+Fax: (716) 645-5039
+e-mail: dimock@buffalo.edu
+
+
+
+
+PLACE OF BIRTH:     Berkeley, California
+
+EDUCATION:          1966 B.A.    (Physics) Dartmouth College
+                    1971 Ph.D. (Physics) Harvard University
+
+
+
+
+PROFESSIONAL EMPLOYMENT:
+
+1971-73          Visiting Member, Courant Institute of Mathematical Sciences, New York University
+
+1973-77          Assistant Professor of Mathematics, State University of New York at Buffalo
+
+1975-76          On leave at the Department of Theoretical Physics, University of Geneva
+
+1977-83           Associate Professor of Mathematics, State University of New York at Buffalo
+
+1979-80           On leave at the Faculty of Natural Sciences, Institute for Advanced Study, Princeton
+
+1983-present      Professor of Mathematics, State University of New York at Buffalo
+
+Fall 1988         On leave Department of Mathematics, Cornell University
+
+1993-present      Adjunct Professor of Physics, State University of New York at Buffalo
+
+Fall 2002         On leave at School of Mathematics, Institute for Advanced Study, Princeton
+Jonathan Dimock                                                                     2
+
+
+
+RESEARCH GRANTS AND FELLOWSHIPS:
+
+   1.   NSF Grant PHY 75-06746 (7/1/76 to 12/31/77)
+        Quantum Field Theory Models as Functions of Their Defining Parameters       $ 7,400
+
+   2.   NSF Grant PHY 77-21740 (6/1/78 to 11/30/80)
+        Quantum Field Theory Models as Functions of Their Defining Parameters       $21,300
+
+   3.   NSF Grant PHY 80-01658 (7/1/80 to 12/31/82)
+        Selected Topics in Mathematical Quantum Field Theory                        $24,000
+
+   4.   NSF Grant PHY 82-04399 (6/15/82 to 11/30/84)
+        Selected Topics in Mathematical Quantum Field Theory                        $27,251
+
+   5.   NSF Grant PHY 9001178 ( 8/1/90-7/31/92)
+        Renormalization Group Methods                                               $51,336
+
+   6.   NSF Grant PHY 9200278 (6/1/92 to 5/31/94)
+        Renormalization Group Methods                                               $56,000
+
+   7.   NSF Grant PHY 9400626 (6/1/94 to 6/30/97)
+        Constructive Quantum Field Theory                                           $84,000
+
+   8.   NSF Grant PHY 9722045 (6/15/97 to 6/30/00)
+        Constructive Quantum Field Theory                                           $88,000
+
+   9.   NSF Grant PHY 0070905 (6/1/00 to 6/30/03)
+        Constructive Quantum Field Theory                                           $90,000
+
+   10. NSF travel grant to attend International Congress of Mathematical Physics,
+       Prague, (7/26/09-8/8/09)                                                     $2,712
+Jonathan Dimock                                                                                         3
+
+SELECTED INVITED TALKS:
+
+September 11, 1975     Talk given at Conference, Quantum Dynamics: Models and Mathematics, held at ZIF,
+                       University of Bielefeld, Bielefeld, Germany, 9/8/76 to 9/12/76.
+
+November 13, 1975 to
+December 4, 1975       Series of four two-hour lectures delivered for the Troisieme Cycle en Suisse Romande at the
+                       Ecole Polytechnique Federale, Lausanne, Switzerland.
+
+May 5, 1980            Talk given at French-American Seminar on Quantum Field Theory and Statistical Mechanics,
+                       Rutgers University.
+
+July 2, 1981           Talk given at Conference on Constructive Quantum Field Theory, Harvard University.
+
+August 2, 1983         Talk given at VII meeting of International Association of Mathematical Physicists, Boulder,
+                       Colorado.
+
+September 4, 1987      Talk given at Conference on Mathematical Quantum Field Theory and Related Topics,
+                       Universite’ de Montréal.
+
+February 9, 1991       Talk given at Ontario Mathematics Meeting, McMaster University.
+
+August 7, 1991         Talk given at X Meeting of International Association of Mathematical Physicists, Leipzig,
+                       Germany
+
+August 5, 1993         Lecture given at Mathematical Physics Summer School, Vancouver, Canada
+
+August 31, 1995        Talk given at conference Algebraic Quantum Field Theory and Constructive Field Theory,
+                       Göttingen, Germany
+
+July 8, 1996           Talk given at AMS Joint Summer Research Conference on Quantization, Mt. Holyoke
+
+May 8, 1998            Talk given at Conference on Mathematical Physics in honor of Arthur Jaffe, Harvard University
+
+July 6, 1998           Talk given at Conference on Rigorous Renormalization, Ascona, Switzerland
+
+August 22, 1999        Talk given at Workshop on Non-linear Dynamics and Renormalization Group, CRM, University
+                       of Montreal.
+
+July 22, 2000          Talk given at XIII Meeting of International Association of Mathematical Physicists, London, UK
+
+June 15, 2002          Talk given at Mathematisches Forchungsinstitut Oberwohlfach, Germany.
+
+July 28, 2003          Talk given at XIV Meeting of International Association of Mathematical Physicists, Lisbon.
+
+April 10, 2009          Talk given at Institute for Advanced Study, Princeton New Jersey
+
+July 6, 2010            Talk given at conference on Renormalization Group and Statistical Mechanics, UBC,
+                        Vancouver, Canada
+
+September 28, 2011      Talk given at workshop Rigorous Quantum Field Theory in the LHC Era, Erwin
+                                 Schrodinger International Institute for Mathematical Physics, Vienna, Austria.
+
+May 28, 2013           Talk given at workshop Analytical Aspects of Mathematical Physics, ETH, Zurich.
+
+July 23, 2015          Talk given at workshop Operator Algebras and Quantum Physics, Universidade de Sao
+                       Paulo, Brazil.                                                                                ‘
+
+August 3,2021          Talk given at International Congress on Mathematical Physics, Geneva, Switzerland.
+
+August 16, 2022        Talk give at IAMP one world mathematical physics seminar (remote)
+Jonathan Dimock                                                                                           4
+
+September 13,2022        Talk given at Qmath 15 conference, UC Davis, Davis, California.
+
+October 3-14, 2022       Series of 6 two-hour lectures given at Roma Tre Universita, Rome, Italy.
+
+September 22, 2023.      Talk given at 47th local quantum physics workshop, Poznan, Poland. (remote)
+
+
+BIBLIOGRAPHY:
+
+PAPERS PUBLISHED:
+
+    1.   (with R.W. Christy) Color Centers in TlCl, Physical Review 141 (1966), 806-814.
+
+    2.   Estimates, Renormalized Currents, and Field Equations in the Yukawa2 Field Theory, Annals of Physics 72
+         (1972), 177-242.
+
+    3.   Spectrum of Local Hamiltonians in the Yukawa2 Field Theory, Journal of Mathematical Physics 13 (1972), 477-
+         481.
+
+    4.   Perturbation Expansion for the P(Ø)2 Schwinger Functions, in Lecture Notes in Physics, Vol. 25: Constructive
+         Quantum Field Theory, G. Velo and A.S. Wightman, eds., Sprnger-Verlag, Berlin (1973), 317-320.
+
+    5.   (with J. Glimm) Measures on Schwartz Distructution Space and Applications to P(Ø)2 Field Theories, Advances in
+         Mathematics 12 (1974), 58-83.
+
+    6.   Asymptotic Perturbation Expansion in the P(Ø)2 Quantum Field Theory, Communications in Mathematical
+         Physics 35 (1974), 347-356.
+
+    7.   The P(Ø)2 Green’s Functions: Smoothness in the Coupling Constant, Journal of Functional Analyisis 121 (1976),
+         340-368.
+
+    8.   The P(Ø)2 Green’s Functions: Asymptotic Perturbation Expansion, Helvetica Physica Acta 49 (1976), 199-216.
+
+    9.   The Structure of (Real Time) P(Ø)2 Green’s Function, in Quantum Dynamics: Models and Mathematics, L. Streit,
+         ed. Springer-Verlag (1976).
+
+    10. (with J.-P. Eckmann) On the Bound State Scattering for Weakly Coupled (ø 6 – ø 4 )2 Communications in
+        Mathematical Physics 51 (1976), 41-54.
+
+    11. (with J.-P. Eckmann) Spectral Properties and Bound State Scattering for Weakly Coupled λP (Ø)2 Models,
+        Annals of Physics 103 (1977), 289-314.
+
+    12. The Non-relativistic Limit of P(Ø)2 Quantum Field Theories: Two Particle Phenomena, Communications in
+        Mathematical Physics 57 (1977), 51-66.
+
+    13. Scalar Quantum Field in an External Gauge Field, Journal of Mathematical Physics 20 (1979), 1791-96.
+
+    14. Scalar Quantum Field in an External Gravitational Field, Journal of Mathematical Physics 20 (1979), 2549-2555.
+
+    15. Algebras of Local Observables on a Manifold, Communications in Mathematical Physics 77 (1980), 219-228.
+
+    16. Dirac Quantum Fields on a Manifold, Transactions of the American Mathematical Society 269 (1982), 133-147.
+
+    17. (with B. Kay) Classical Wave Operators and Asymptotic Quantum Field Operators in Curved Space-time, Annales
+        de l’Institut Henri Poincare A. 37 (1982), 93-114.
+
+    18. P(Ø)2 Models with Variable Coefficients, Annals of Physics 154 (1984), 283-307.
+
+    19. Scattering for the Wave Equation on the Schwarzchild Metric, General Relativity and Gravitation 17 (1985), 353-
+        369.
+
+    20. (QED)2 in the Coulomb Gauge, Annales de l’Institut Henri Poincare A, 43 (1985), 167-179.
+Jonathan Dimock                                                                                             5
+BIBLIOGRAPHY:
+
+PAPERS PUBLISHED: (con’t)
+
+   21. (with B. Kay) Scattering for Scalar Field on Coulomb Potentials and Schwarzchild Metrics, Classical and Quantum
+       Gravity 3 (1986), 71-80.
+
+   22. (with B. Kay) Classical and Quantum Scattering for Linear Scalar Fields on the Schwarzchild Metric II, Journal of
+       Mathematical Physics 27 (1986), 2520-2525.
+
+   23. (with B. Kay) Classical and Quantum Scattering for Linear Scalar Fields on the Schwarzchild Metric I, Annals of
+       Physics 175 (1987), 366-426.
+
+   24. Infrared Asymptotic Freedom for the Pseudoscalar Yukawa Model at the Critical Point, Communications in
+       Mathematical Physics 109 (1987), 379-395.
+
+   25. Infrared Problems for (QED)4 and (Yukawa)4 on a Lattice, in Mathematical Quantum Field Theory and Related
+       Topics, J. Feldman, L. Rosen, Eds., American Mathematical Society, providence, (1988), 153-159.
+
+   26. QED on a lattice: Infrared asymptotic freedom for bounded fields, Annales de l’Institute Henri Poincaré 48
+       (1988), 355-386.
+
+   27. A Cluster Expansion for Stochastic Lattice Fields, Journal of Statistical Physics 58 (1990), 1181-1207.
+
+   28. The Kosterlitz-Thouless Phase in a Hierarchical Model, Journal of Physics A, 23 (1990), 1207-1215.
+
+   29. (with T. Hurd) A renormalization group analysis of the Kosterlitz-Thouless phase, Commun. Math. Phys. 137
+       (1991), 263-287.
+
+   30. (with T. Hurd) A renormalization group analysis of infrared QED, Journal of Mathematical Physics 33 (1992),
+       814-821.
+
+   31. (with T. Hurd) A renormalization group analysis of correlation functions for the dipole gas, Journal of Statistical
+       Physics 66 (1992), 1277-1318.
+
+   32. Quantized electromagnetic field on a manifold, Reviews in Mathematical Physics 4 (1992) 223-233.
+
+   33. (with T. Hurd) Construction of the two-dimensional sine-Gordon model for ß < 8π, Commun. Math. Phys. 156
+       (1993), 547-580.
+
+   34. (with D. Brydges, T. Hurd) Weak perturbations of Gaussian measures, Mathematical Quantum Theory I: Field
+       Theory and Many-body Theory, J. Feldman, R. Froese, L. Rosen, ed., American Mathematical Society,
+       Providence (1994), 1-28.
+
+   35. (with D. Brydges, T. Hurd) Applications of the renormalization group, Mathematical Quantum Theory I: Field
+       Theory and Many-body Theory, J. Feldman, R. Froese, ed., American Mathematical Society, Providence (1994),
+       171-189.
+
+   36. (with D. Brydges, T. Hurd) The short distance behavior of (Ø4)3, Comm. Math. Phys. 172 (1995), 143-186.
+
+   37. Canonical Quantization of Yang Mills on a circle, Reviews in Mathematical Physics 8 (1996), 85-102.
+
+   38. A non-Gaussian fixed point for the renormalization group, Perspectives in Quantization, L. Coburn, M.Rieffel,
+       Eds., American Mathematical Society, Providence (1998), 39-46.
+
+   39. (with D. Brydges, T. Hurd), Estimates on renormalization group transformations, Canadian Journal of
+       Mathematics 50 (1998), 756-793.
+
+   40. (with D. Brydges, T. Hurd), A non-Gaussian fixed point for Ø4 in 4-ε dimensions, Communications in
+       Mathematical Physics 198 (1998), 111-156.
+
+   41. Bosonization of massive fermions, Communications in Mathematical Physics 198 (1998), 247-281.
+Jonathan Dimock                                                                                            6
+BIBLIOGRAPHY:
+
+PAPERS PUBLISHED: (con’t)
+
+   42. Locality in free string field theory, Journal of Mathematical Physics 41 (2000), 40-61.
+
+   43. (with T. Hurd), Sine-Gordon revisited, Annales Henri Poincaré, 1 (2000), 491-541.
+
+   44. The sine- Gordon model at ß=4π , in Nonlinear Dynamics and Renormalization Group, I. M. Sigal, C. Sulem,
+       eds., American mathematical Society, Providence, (2001).
+
+   45. Notes on (QED)3, in XIII International Congress on Mathematical Physics, A. Grigoryan, A. Fokas, T. Kibble, B.
+       Zegarlinski, eds., International Press, Boston, (2001).
+
+   46. Locality in free string field theory-II, Annales Henri Poincaré, 3 (2002), 613-634.
+
+   47. Markov quantum fields on a manifold, Reviews in Mathematical Physics 16 (2004) 243-255.
+
+   48. (with S.G. Rajeev) Multiparticle Schrödinger operators with point interactions in the plane, Journal of Physics A,
+       37 (2004).
+
+   49. Local string field theory, Proceedings of XIV International Congress on Mathematical Physics, J.-C. Zambrini, ed.
+       World Scientific, (2006).
+
+   50. Transition amplitudes and sewing properties for bosons on the Riemann sphere, J. Math Phys. 48, 052308,
+       1-31 (2007).
+
+   51. More transition amplitudes on the Riemann sphere, J. Math. Phys 49, 062302, (2008), 1-20.
+
+   52. Infinite Volume limit for dipole gas, J. Stat. Phys. 135, (2009), 393-427.
+
+   53. The Dirac sea, Letters in Mathematical Physics 98, (2011), 157-166.
+
+   54. The renormalization group according to Balaban - I. small fields. Reviews in Mathematical Physics 25, 1330010
+       (2013), 1-64.
+
+   55. The renormalization group according to Balaban - II. large fields. Journal of Mathematical Physics 54, 092301
+       (2013), 1-85.
+
+   56. The renormalization group according to Balaban - III. convergence. Annales Henri Poincare 15 (2014), 2133-
+       2175.
+
+   57. Covariant axial gauge, Letters in Mathematical Physics 105, (2015), 959-987.
+
+   58. Nonperturbative renormalization of scalar QED in d=3, Journal of Mathematical Physics 56, 102304, (2015), 78
+       pages.
+
+   59. Ultraviolet regularity for QED in d=3, Journal of Mathematical Physics 59, 012301, (2018), 76 pages.
+
+   60. Multiscale block averaging for QED in d=3, Journal of Mathematical Physics 61, 032302, (2020), 46 pages.
+
+   61. Scattering on the Dirac magnetic monopole, Letters in Mathematical Physics 111, 40 (2021), 17 pages.
+
+   62. A Feynman-Kac formula for magnetic monopoles, Infinite Dimensional Analysis, Quantum Probability, and
+       Related Topics 24, 2150015, (2021), 18 pages.
+
+   63. Ultraviolet stability for QED in d=3, Annales Henri Poincare 23, (2022), 2113-2205.
+
+   64. Stability for QED in d=3: an overview, Journal of Mathematical Physics 63, 042305 (2022), 20 pages.
+
+   65. Quantum radiation from a classical point source, Reviews in Mathematical Physics 34, 2250032, (2022), 18
+       pages.
+Jonathan Dimock                                                                                          7
+    66. (with C. Yuan) Structural stability of the RG flow in the Gross-Neveu model, ArXiv 2303.07916, to appear in
+        Annales Henri Poincare, (2024), 79 pages
+
+    67. Correlation functions for the Gross-Neveu model, ArXiv 2406.16799, (2024), 29 pages.
+
+
+
+BOOKS PUBLISHED:
+
+Quantum Mechanics and Quantum Field Theory: a Mathematical Primer, Cambridge University Press, 2011
+
+
+
+PROFESSIONAL SERVICE:
+
+Editorial Board of Journal of Mathematical Physics, 2005-2007
+
+NSF review panel in Mathematical Physics, 2006.
+
+NSF review panel in Mathematical Physics, 2014.
+
+
+DOCTORAL THESES SUPERVISED:
+
+Edward Furlani (Physics) 1982
+
+Wei-Min Jin (Physics) 1999
+
+Gary Poon (Physics) 2009
+
+Guowei Zhao (Math) 2011
+
+Tuan Le (Math) 2013
+
+Abhishek Goswami (Physics) 2019
+

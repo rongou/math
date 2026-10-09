@@ -1,0 +1,2722 @@
+                                             A scaling limit of SU(2) lattice Yang–Mills–Higgs theory
+                                                                                    Sourav Chatterjee∗
+
+                                                                                    Stanford University
+arXiv:2401.10507v4 [math.PR] 11 Apr 2026
+
+
+
+
+                                                                                       April 14, 2026
+
+
+
+                                                                                           Abstract
+                                                       The construction of non-Abelian Euclidean Yang–Mills theories in dimension
+                                                   four, as scaling limits of lattice Yang–Mills theories or otherwise, is a central open
+                                                   question of mathematical physics. This paper takes the following small step to-
+                                                   wards this goal. In any dimension d ≥ 2, we construct a scaling limit of SU(2)
+                                                   lattice Yang–Mills theory coupled to a Higgs field (under the degenerate potential)
+                                                   transforming in the fundamental representation of SU(2). After unitary gauge fixing
+                                                   and taking the lattice spacing ε → 0, and simultaneously taking the gauge coupling
+                                                   constant g → 0 and the Higgs length α → ∞ in such a manner that αg is always
+                                                   equal to cε for some fixed c and g = O(ε50d ), a stereographic projection of the
+                                                   gauge field is shown to converge to a massive Gaussian field. This gives the first
+                                                   construction of a scaling limit of a non-Abelian lattice Yang–Mills theory in a di-
+                                                   mension higher than two, as well as the first rigorous proof of mass generation by
+                                                   the Higgs mechanism in such a theory. Analogous results are proved for U(1) the-
+                                                   ory as well. The question of constructing a non-Gaussian scaling limit remains open.
+
+                                                   Key words and phrases. Higgs mechanism, Yang–Mills theory, mass gap.
+                                                   2020 Mathematics Subject Classification. 70S15, 81T13, 81T25, 82B20.
+
+
+
+                                           Contents
+                                           1 Lattice Yang–Mills theory with a Higgs field                                                   2
+                                             1.1 Definition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         3
+                                             1.2 Gauge transforms and gauge fixing . . . . . . . . . . . . . . . . . . . . . .              4
+                                             1.3 Example: U(1) lattice Yang–Mills theory with a Higgs field . . . . . . . .                 4
+                                             1.4 Example: SU(2) lattice Yang–Mills theory with a Higgs field . . . . . . .                  5
+                                             ∗
+                                                 Department of Statistics, Stanford University, USA. Email: souravc@stanford.edu.
+
+
+
+
+                                                                                               1
+2 Random distributional 1-forms                                                             6
+  2.1 Definition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    6
+  2.2 The Euclidean Proca field . . . . . . . . . . . . . . . . . . . . . . . . . . .       6
+  2.3 Scaling and translation of the Euclidean Proca field . . . . . . . . . . . .          9
+  2.4 The mass of the Euclidean Proca field . . . . . . . . . . . . . . . . . . . .         9
+
+3 Main results                                                                             10
+  3.1 A scaling limit of U(1) Yang–Mills–Higgs theory . . . . . . . . . . . . . .          10
+  3.2 A scaling limit of SU(2) Yang–Mills–Higgs theory . . . . . . . . . . . . . .         12
+  3.3 Comparison with prior work . . . . . . . . . . . . . . . . . . . . . . . . . .       13
+  3.4 Sketch of the proof . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    14
+  3.5 Open questions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     16
+
+4 Proofs for the Euclidean Proca field                                                     16
+  4.1 Proof of Lemma 2.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       16
+  4.2 Proof of Lemma 2.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       20
+  4.3 The discrete Proca field and the proof of Lemma 2.4 . . . . . . . . . . . .          21
+  4.4 Proof of Lemma 2.5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       26
+  4.5 Proof of Lemma 2.6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       27
+  4.6 Some properties of the discrete Proca field . . . . . . . . . . . . . . . . . .      30
+
+5 Proofs of the main results                                                               33
+  5.1 Probability density of stereographic projection . . . . . . . . . . . . . . .        34
+  5.2 Probability density after gauge fixing . . . . . . . . . . . . . . . . . . . . .     35
+  5.3 The key estimate for SU(2) theory . . . . . . . . . . . . . . . . . . . . . .        37
+  5.4 Local free field approximation for SU(2) theory . . . . . . . . . . . . . . .        38
+  5.5 Proof of Theorem 3.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     40
+  5.6 The key estimate for U(1) theory . . . . . . . . . . . . . . . . . . . . . . .       45
+  5.7 Local free field approximation for U(1) theory . . . . . . . . . . . . . . . .       45
+  5.8 Proof of Theorem 3.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     46
+
+
+1    Lattice Yang–Mills theory with a Higgs field
+Quantum Yang–Mills theories are the building blocks of the Standard Model of particle
+physics. While these are quantum theories in Minkowski space, there are analogues
+in Euclidean space, known as Euclidean Yang–Mills theories. Physicists believe that
+calculations in the Euclidean theories can be carried over to the quantum theories. The
+constructive QFT program aims to justify this mathematically, although it is not yet
+well-developed for Yang–Mills theories [28, 34].
+    Euclidean Yang–Mills theories are supposed to be classical statistical mechanical
+models of quantum Yang–Mills theories. However, we do not know how to construct
+even these classical models in a rigorous way in dimensions higher than two. Lattice
+Yang–Mills theories, also known as lattice gauge theories, are discretized versions of
+Euclidean Yang–Mills theories that are mathematically well-defined.
+
+                                             2
+                                             e3
+
+
+
+                                  e4                     e2
+
+
+
+                                             e1
+
+       Figure 1: A plaquette bounded by four directed edges joined end-to-end.
+
+
+
+1.1   Definition
+Let G be a compact Lie group, called the gauge group of the theory. Let d ≥ 2 and
+L ≥ 1 be two integers, and let Λ := {−L, . . . , L}d . Our theory will be defined on Λ, and
+eventually L will be taken to infinity. Throughout this paper, we will consider theories
+on Λ with periodic boundary condition, meaning that opposite faces of Λ are identified
+to be the same, giving Λ the structure of a torus.
+    Let E denote the set of edges of Λ that are oriented in the positive direction (i.e.,
+edges like e = (x, y) where x ≺ y in the lexicographic ordering). Note that this definition
+makes sense even after identifying opposite faces, because two edges that are identified
+to be the same are either both positively oriented, or both negatively oriented. The
+space of gauge field configurations of the theory is Σ := GE . That is, a gauge field
+configuration is an assignment of group elements to edges. Let us denote configurations
+as U = (Ue )e∈E . If e = (x, y) ∈ E and e′ = (y, x) is the negatively oriented version of e,
+then we define Ue′ := Ue−1 .
+    A plaquette in Λ is a square bounded by four edges. Given a configuration U and a
+plaquette p bounded by four directed edges e1 , e2 , e3 , e4 joined end-to-end (see Figure 1),
+we define
+                                   Up := Ue1 Ue2 Ue3 Ue4 .
+Note that there is an ambiguity here about the choice of the first edge and the direction
+of traversal, but that would be immaterial because we will only deal with the quantities
+that are not affected by these choices.
+    Let K be a positive integer. A Higgs field ϕ is a map from Λ into CK . Let Γ := (CK )Λ
+denote the set of all Higgs fields (where again, vertices on opposite faces are identified
+to be the same). The space of configurations for our lattice gauge theory coupled to a
+Higgs field is Σ × Γ.
+    Choose a number g > 0, called the gauge coupling constant, and a number α > 0,
+called the Higgs length. Let ρ be a finite dimensional representation of G, and χρ be
+its character. Let σ be a representation of G in CK , which is unitary with respect to
+the usual inner product on CK . Let W : [0, ∞) → R be a function, called the Higgs
+potential, that grows faster than quadratic at infinity. The Yang–Mills action is defined
+
+
+                                              3
+as
+                   1 X                        X                              X
+      S(U, ϕ) :=       Re(χρ (Up )) + α2               Re(ϕ∗x σ(Ue )ϕy ) −         W (∥ϕx ∥).
+                   g2
+                     p∈P                   e=(x,y)∈E                         x∈Λ
+
+The theory defines a probability measure µ on Σ × Γ as
+                                                Y     Y
+                        dµ(U, ϕ) = Z −1 eS(U,ϕ)   dUe   dϕx ,
+                                                 e∈E        x∈Λ
+
+where Z is the normalizing constant, dUe denotes normalized Haar measure on G and
+dϕx denotes Lebesgue measure on CK .
+    Our main results will be for an infinite volume Gibbs measure for this model on the
+lattice Zd , when W is the degenerate potential that is zero at 1 and infinity away from 1
+(which simply means that ϕx is forced to take values on the unit sphere in CK ). Such
+Gibbs measures are obtained by taking weak limits of the probability measure µ defined
+above as L → ∞. Since we are considering only periodic boundary condition, any Gibbs
+measure obtained like this is automatically translation invariant. Until we arrive at the
+main results, however, we will continue the discussion around the models in finite volume
+(that is, on Λ).
+
+1.2   Gauge transforms and gauge fixing
+Let Θ := GΛ . That is, an element θ ∈ Θ assigns group elements to vertices. Elements
+of Θ are called gauge transforms. Gauge transforms form a group under pointwise
+multiplication, which acts on Σ × Γ as follows. For (U, ϕ) ∈ Σ × Γ and θ ∈ Θ, we define
+(V, ψ) := θ(U, ϕ) as
+                             Ve = θx Ue θy−1 , ψx = σ(θx )ϕx ,
+where e = (x, y). Using the unitarity of σ, it is not hard to verify that S is gauge
+invariant, that is, S(θ(U, ϕ)) = S(U, ϕ). Consequently, the theory has gauge symmetry,
+meaning that the probability measure µ is preserved by gauge transforms.
+    Any procedure that selects exactly one element from each orbit of Θ is called a
+method for fixing a gauge. To understand the behavior of a lattice Yang–Mills theory,
+it suffices to understand a gauge fixed version of the theory, because physically relevant
+observables are required to be invariant under gauge transforms.
+
+1.3   Example: U(1) lattice Yang–Mills theory with a Higgs field
+Let G := U(1), K = 1, and ρ = σ = the fundamental representation of U(1) (i.e.,
+the representation that acts on C by ordinary multiplication). Let W be the degenerate
+Higgs potential that is 0 on the unit circle S 1 and ∞ outside. This potential is a common
+choice in the literature [25, 39], partly because it simplifies calculations without damaging
+the physical relevance of the theory. This forces the Higgs field at each site to be an
+
+
+
+                                             4
+element of S 1 . We may therefore take the space of configurations to be Σ × Γ where
+Σ = U(1)E and Γ = (S 1 )Λ . The Yang–Mills action on this space is
+                             1 X                 X
+                  S(U, ϕ) = 2     Re(Up ) + α2         Re(ϕ∗x Ue ϕy ),          (1.1)
+                            g
+                                  p∈P               e=(x,y)∈E
+
+where ϕ∗x is the conjugate of the complex number ϕx . The probability measure µ on
+Σ × Γ is now defined as
+                                                Y     Y
+                        dµ(U, ϕ) = Z −1 eS(U,ϕ)   dUe   dϕx ,
+                                                  e∈E      x∈Λ
+
+where Z is the normalizing constant, dUe denotes normalized Haar measure on G and
+dϕx denotes the uniform probability measure on S 1 (instead of Lebesgue measure on C).
+    A standard way to fix the gauge in the above theory, known as unitary gauge fixing,
+is defined as follows. Take any configuration (U, ϕ). For each x ∈ Λ, let θx := ϕ∗x . Let
+(V, ψ) := θ(U, ϕ). Note that for any edge e = (x, y) ∈ E, Ve = ϕ∗x Ue ϕy , and for any
+vertex x ∈ Λ, ψx = 1. Thus, if our interest lies in understanding only the behavior of
+gauge invariant observables, it suffices to study the field V .
+
+1.4   Example: SU(2) lattice Yang–Mills theory with a Higgs field
+Let G := SU(2), K = 2, and ρ = σ = the fundamental representation of SU(2) (i.e.,
+the representation that acts on C2 in the usual way). Let W be the degenerate Higgs
+potential that is 0 on the unit sphere S 3 of R4 (i.e., the set {(w, z) ∈ C2 : |w|2 +|z|2 = 1},
+which is the same as the unit sphere S 3 ⊆ R4 ) and ∞ outside. This forces the Higgs
+field at each site to be an element of S 3 . Thus, the space of configurations is Σ × Γ where
+Σ = SU(2)E and Γ = (S 3 )Λ . The Yang–Mills action is
+                              1 X                         X
+                  S(U, ϕ) = 2      Re(Tr(Up )) + α2              Re(ϕ∗x Ue ϕy ),          (1.2)
+                             g
+                               p∈P                    e=(x,y)∈E
+
+where ϕ∗x is the conjugate transpose of the vector ϕx . The probability measure µ on
+Σ × Γ is now                                    Y      Y
+                        dµ(U, ϕ) = Z −1 eS(U,ϕ)   dUe    dϕx ,
+                                                  e∈E      x∈Λ
+where Z is the normalizing constant, dUe denotes normalized Haar measure on G and
+dϕx denotes the uniform probability measure on S 3 .
+    Unitary gauge fixing in this setting is defined as follows. Take any configuration
+(U, ϕ). For each x ∈ Λ, it is not hard to see that there is a unique element θx ∈ SU(2)
+such that                                         
+                                                  1
+                                   θx ϕx = e1 :=     .
+                                                  0
+Let (V, ψ) := θ(U, ϕ). Then for any edge e = (x, y) ∈ E, Ve = θx Ue θy∗ , and for any vertex
+x ∈ Λ, ψx = e1 . Thus, as before, if our interest lies in understanding only the behavior
+of gauge invariant observables, it suffices to study the field V .
+
+                                              5
+2     Random distributional 1-forms
+The main results of this paper are in the next section. The results show that the U(1) and
+the SU(2) lattice Yang–Mills theories defined in Subsections 1.3 and 1.4 converge, under
+appropriate scalings of the lattice, to random distributional 1-forms. In this section, we
+define these objects and describe some of their essential properties.
+
+2.1   Definition
+Recall that a function f : Rd → R is said to be rapidly decaying if for any α > 0, there
+is some C such that |f (x)| ≤ C(1 + ∥x∥)−α for all x ∈ Rd . Let S(Rd ) denote the space
+of real-valued Schwartz functions on Rd , i.e., infinitely differentiable functions f such
+that f and all its derivatives of all orders are rapidly decaying functions. We define a
+Schwartzian 1-form on Rd as a d-tuple f = (f1 , . . . , fd ) of real-valued Schwartz functions
+on Rd . As a matter of notation, we will write f = f1 dx1 + · · · + fd dxd . Let A(Rd ) denote
+the space of Schwartzian 1-forms on Rd .
+    Let (Ω, F, P) be a probability space. We define a random 1-form on Rd to be a
+measurable map X : Ω × Rd → Rd that satisfies, for any compact set K ⊆ Rd , any
+1 ≤ i ≤ d, and almost every ω ∈ Ω,
+                                  Z
+                                      |Xi (ω, x)|dx < ∞.
+                                    K
+
+Note that we are not imposing any smoothness assumptions on X. A random 1-form X
+defines a random linear functional on A(Rd ), which we also denote by X, as follows:
+                                         Z   d
+                                             X
+                           X(f )(ω) :=             Xi (ω, x)fi (x)dx.
+                                          Rd i=1
+
+Generalizing this type of random linear functional, we will say that any collection of
+random variables X = (X(f ))f ∈A(Rd ) is a random distributional 1-form if it satisfies the
+condition that for any f, g ∈ A(Rd ) and any a, b ∈ R,
+
+                  X(af + bg) = aX(f ) + bX(g) with probability one.
+
+We will say that a sequence of random distributional 1-forms {Xn }n≥1 converges in law
+to a random distributional 1-form X if for any f ∈ A(Rd ), the random variable Xn (f )
+converges in law to X(f ). By linearity of random distributional 1-forms, it is not hard
+to see that if Xn converges in law to X, then for any k and any f1 , . . . , fk , the random
+vector (Xn (f1 ), . . . , Xn (fk )) converges in law to (X(f1 ), . . . , X(fk )).
+
+2.2   The Euclidean Proca field
+We now define a particular random distributional 1-form, called the Euclidean Proca
+field. This field was defined by Gross [30] and Ginibre and Velo [26] as the Euclidean
+
+
+                                              6
+version of the Proca field from quantum field theory in Minkowski spacetime [43]. As
+we will see below, this field is massive (i.e., has exponential decay of correlations). The
+massless version of the Euclidean Proca field arises in lattice Maxwell theory [28, Chapter
+22].
+    Recall that d ≥ 2. Given λ > 0, define a function Kλ : Rd \ {0} → R as
+                                  Z ∞
+                                                       ∥x∥2
+                                                                 
+                                          1
+                      Kλ (x) :=                  exp −        − λt dt.                 (2.1)
+                                   0  (4πt)d/2           4t
+It is easy to check that this is well-defined. Moreover, by the dominated convergence
+theorem, it is easy to see that Kλ is a continuous function on its domain. We extend
+it to whole of Rd by defining Kλ (0) := ∞. We will view Kλ as an operator acting on
+Schwartz functions as                   Z
+                            Kλ f (x) :=     Kλ (x − y)f (y)dy.
+                                         Rd
+The following lemma, which encapsulates the essential properties of Kλ , will be proved
+in Subsection 4.1.
+Lemma 2.1. The operator Kλ is well-defined on S(Rd ). Moreover, it is a bijection from
+S(Rd ) onto itself, with Kλ−1 = −∆ + λI, where ∆ is the Laplacian operator and I is
+the identity operator. Lastly, Kλ commutes with the derivative operators ∂i := ∂/∂xi ,
+i = 1, . . . , d.
+     Having defined the operator Kλ on S(Rd ), we now define an operator Rλ on A(Rd )
+as
+                               d 
+                               X               d
+                                               X            
+                                            −1
+                       Rλ f :=    Kλ fi − λ      ∂i ∂j Kλ fj dxi .                     (2.2)
+                                i=1                j=1
+
+By Lemma 2.1, it is clear that Rλ maps A(Rd ) into itself. The following lemma, proved
+in Subsection 4.2, summarizes the main properties of Rλ .
+Lemma 2.2. The operator Rλ is a bijection of A(Rd ) onto itself, with Rλ−1 = Qλ
+given by
+                                d 
+                                X               d
+                                                X         
+                       Qλ f =      −∆fi + λfi +   ∂i ∂j fj dxi .                       (2.3)
+                                i=1                  j=1
+
+     We are now ready to define the Euclidean Proca field on Rd .
+Definition 2.3. We define the Euclidean Proca field on Rd with parameter λ to be a
+random distributional 1-form X with the property that for each f ∈ A(Rd ), X(f ) is a
+Gaussian random variable with mean zero and variance
+                                         Z
+                           (f, Rλ f ) :=   f (x) · Rλ f (x)dx,                  (2.4)
+                                          Rd
+
+where Rλ is the operator defined in equation (2.2).
+
+                                               7
+    The above definition is somewhat opaque. It is easier to understand once we start
+writing things in the language of differential geometry. Let d denote the exterior deriva-
+tive operator
+            Pacting   on R-valued differential forms on Rd . The exterior derivative of a
+              d
+1-form f = i=1 fi dxi is the 2-form
+                                  X
+                           df =          (∂i fj − ∂j fi )dxi ∧ dxj .
+                                 1≤i<j≤d
+
+The adjoint of the exterior derivative (sometimes called the exterior coderivative), de-
+noted by d∗ , is the operator that satisfies (df, g) = (f, d∗ g) for any
+                                                                      P k-form f and (k + 1)-
+form g, for any 0 ≤ k ≤ d − 1. The coderivative of 2-form g = 1≤i<j≤d gij dxi ∧ dxj is
+the 1-form
+                                          Xd X  d        
+                                 ∗
+                                d g=−               ∂j gij dxi .
+                                         i=1    j=1
+
+It is easy to check that the Laplacian operator acting on 1-forms as
+                                            d
+                                            X
+                                     ∆f =            ∆fi dxi
+                                               i=1
+                                                                                   Pd
+is equal to −(d∗ d + dd∗ ). On the other hand, for a 1-form f , d∗ f is simply −    i=1 ∂i fi ,
+and therefore,
+                                           Xd
+                                   ∗
+                                 dd f = −      ∂i ∂j fj dxi .
+                                            i,j=1
+
+Thus, the operator Qλ is equal to −∆ − dd∗ + λI, which simplifies to d∗ d + λI. Since
+by definition, the Proca field is a Gaussian field with inverse covariance kernel Qλ ,
+this means that heuristically, the probability density of the Proca field with respect
+‘Lebesgue measure’ on the space of fields is proportional to exp(− 12 (f, Qλ f )), which can
+be rewritten as
+                                                       
+                                     1           λ
+                              exp − (df, df ) − (f, f ) .                               (2.5)
+                                     2           2
+With the above interpretation, it is transparent why Rλ = Q−1
+                                                           λ . Indeed, since dd = 0,
+
+                   Qλ Rλ = (d∗ d + λI)(I + λ−1 dd∗ )Kλ
+                          = (d∗ d + dd∗ + λI)Kλ = (−∆ + λI)Kλ = I.
+It is not obvious that the Euclidean Proca field actually exists. The following lemma
+asserts that it does. It is proved in Subsection 4.3, by showing that a certain sequence
+of discrete fields converges to the Euclidean Proca field in a scaling limit.
+Lemma 2.4. In any dimension d ≥ 2 and for any λ > 0, the Euclidean Proca field
+exists.
+   Note that by linearity, Definition 2.3 determines the joint distribution of the random
+vector (X(f1 ), . . . , X(fk )) for any f1 , . . . , fk ∈ A(Rd ).
+
+                                                8
+2.3   Scaling and translation of the Euclidean Proca field
+We may intuitively think of any random distributional 1-form X as a random 1-form by
+formally defining X(x) := X(δx ), where δx is the Dirac delta at x. With this notation,
+linearity of X implies that we formally have
+                      Z              Z                     Z
+            X(f ) = X      f (x)δx dx =      X(δx )f (x)dx =    X(x)f (x)dx.
+                         Rd                 Rd                  Rd
+
+The advantage of this formal expansion is that it allows us to talk about scaling and
+translating X. Given a > 0 and b ∈ Rd , let us define
+
+                                     Y (x) := X(ax + b).                               (2.6)
+
+This is what we get upon rescaling spacetime (i.e., Rd in this case) by a and translating
+by b. What this means is that for any f ∈ A(Rd ),
+                          Z
+                 Y (f ) =     Y (x)f (x)dx
+                            d
+                          ZR
+                        =     X(ax + b)f (x)dx
+                           Rd Z
+
+                        = a−d     X(z)f ((z − b)/a)dz = a−d X(τa,b f ),
+                                Rd
+
+where τa,b f is the function g(x) := f ((x − b)/a). Thus, the rigorous way to define a
+random distributional 1-form Y that satisfies (2.6) is to define, for each f ∈ A(Rd ),
+Y (f ) := a−d X(τa,b f ). However, this is unnecessarily complicated and opaque; it makes
+much more sense to just go with the intuitive formula (2.6), as we do in the following
+lemma. The proof is in Subsection 4.4.
+
+Lemma 2.5. Let X be a Euclidean Proca field with parameter λ. Take any a > 0,
+b ∈ Rd , and let Y (x) := a(d−2)/2 X(ax + b), in the sense defined above. Then Y is a
+Euclidean Proca field with parameter a2 λ.
+
+    Thus, upon scaling and translation, a Proca field just becomes a Proca field with a
+different parameter.
+
+2.4   The mass of the Euclidean Proca field
+A theory is called massive if it has exponential decay of correlations. The decay exponent
+is called the mass of the theory. The following lemma, proved in Subsection 4.5, identifies
+the asymptotic form of the correlation in the Euclidean Proca field. In particular,√      it
+shows that the mass of the Euclidean Proca field with parameter λ is equal to λ.
+    In the following, we say that a map f : Rd → R is a bump function if it is infinitely
+differentiable, and zero outside a compact region. For a bump function f and a vector
+x ∈ Rd , let f x denote the translate of f by x, that is, f x (y) := f (x + y). We will say
+
+
+                                             9
+that f ∈ A(Rd ) is a bump function if each component of f is a bump function. For two
+bump functions f, g ∈ S(Rd ), a vector u ∈ S d−1 , and a number λ > 0, we define
+                                       ZZ                √
+                      Ψ(f, g, u, λ) :=    f (y)g(y − v)e− λu·v dvdy,
+
+where the integrals are over Rd . The following lemma is proved in Subsection 4.5.
+
+Lemma 2.6. Let X be a Euclidean Proca field with parameter λ. Let {xn }n≥1 be a
+sequence in Rd such that ∥xn ∥ → ∞ and ∥xn ∥−1 xn → u ∈ S d−1 . Then for any two
+bump functions f, g ∈ A(Rd ),
+
+                     E(X(f )X(g xn ))
+             lim               √
+            n→∞ ∥x ∥−(d−1)/2 e− λ∥xn ∥
+                   n
+                 (d−3)/4
+                         X  d                                d                              
+                 λ                                       −1
+                                                              X
+             =                       Ψ(fi , gi , u, λ) + λ            Ψ(∂i fi , ∂j gj , u, λ) .
+               2(2π)(d−1)/2    i=1                            i,j=1
+
+   The main consequence of the lemma is that√
+                                               the correlation between X(f ) and X(g x )
+behaves like a constant times ∥x∥−(d−1)/2 e− λ∥x∥ when ∥x∥ is large, where the constant
+                                           −1
+                            √ vector ∥x∥ x. In particular, the Euclidean Proca field
+depends on f , g, λ and the unit
+with parameter λ has mass λ.
+
+
+3     Main results
+We are now ready to state the two main results of the paper. The first result establishes
+the limit of U(1) Yang–Mills–Higgs theory under a certain scaling of the gauge coupling
+constant and the Higgs length. The second result gives the analogous statement for
+SU(2) theory.
+
+3.1   A scaling limit of U(1) Yang–Mills–Higgs theory
+Recall the gauge field V defined in Subsection 1.3, obtained by unitary gauge fixing of
+the original theory, but in infinite volume. That is, consider any infinite volume Gibbs
+measure obtained by taking a weak limit of the models on Λ under periodic boundary
+condition, as L → ∞. The result stated below does not depend on the choice of the
+infinite volume measure, as long as it is a weak limit of finite volume measures under
+periodic boundary conditions.
+    For each edge e in Zd , Ve is an element of U(1), which can be viewed as the unit
+circle S 1 ⊆ R2 . We obtain a projection of Ve on the real line as follows. For each n,
+consider the following variant of stereographic projection of the unit sphere S n−1 in Rn .
+Let e1 , . . . , en denote the standard basis vectors of Rn . For each x ∈ S n−1 \ {−e1 }, take
+the line passing through x and −e1 , and let y = (y1 , . . . , yn ) be the unique point at the
+intersection of this line and the plane x1 = 1. (That is, y is the stereographic projection
+
+
+                                                 10
+                                                              y = (1, σ1 (x))
+                                                     x
+
+
+
+
+                   (−1, 0)                  (0, 0)            (1, 0)
+
+
+
+
+                     Figure 2: Stereographic projection σ1 : S 1 → R.
+
+
+
+of x on the plane x1 = 1; see Figure 2.) Let σn−1 (x) := (y2 , . . . , yn ) ∈ Rn−1 . Note that
+σn−1 defines a bijection between S n−1 \ {−e1 } and Rn−1 .
+    For each e, define
+                                           1
+                                    Ae := σ1 (Ve ).
+                                           g
+Although σ1 is undefined at −e1 , it is easy to see that the probability that Ve is equal
+to −e1 is zero. Thus, with probability one, Ae is well-defined for all e ∈ E.
+    Given the field A, we define a random 1-form Y as follows. For each x ∈ Zd and
+each y in the interior of the Voronoi cell of x (i.e., the set of points z ∈ Rd such that x
+is closer to z than any other element of Zd ), and for each 1 ≤ i ≤ d, define
+
+                                     Yi (y) := A(x,x+ei ) .
+
+On the boundaries of the Voronoi cells, define Yi in any arbitrary manner. The following
+theorem identifies the scaling limit of the random 1-form Y as g → 0 and α → ∞ obeying
+certain constraints.
+
+Theorem 3.1. Take any d ≥ 2 and let Y be the random 1-form defined above. Define
+a rescaled version of Y on the lattice εZd as
+
+                                Z(x) := ε−(d−2)/2 Y (ε−1 x).
+
+Suppose that as ε → 0, we simultaneously send α → ∞ and g → 0 such that αg remains
+equal to cε for some fixed constant c. Further, suppose that g = O(ε50d ) as ε → 0. Then
+Z converges in law to the Euclidean Proca field with parameter c2 .
+
+                                              11
+    One remarkable aspect of the above result is that the scaling limit only demands
+that αg be held equal to a constant times the lattice spacing ε. If that is true, and g
+goes to zero at least as fast as ε50d , then no matter how fast we take g to zero (and
+therefore, α to infinity), we end up getting the same scaling limit. It seems, therefore,
+that the behavior of the product αg is what determines the nature of the scaling limit
+in this model. We ponder on this further in Subsection 3.5.
+
+3.2   A scaling limit of SU(2) Yang–Mills–Higgs theory
+Recall that any element of SU(2) has the form
+                                            
+                                        a b
+                                               ,
+                                        −b a
+
+where a, b ∈ C satisfy |a|2 + |b|2 = 1. Writing a = x + iy and b = w + iz, we see
+that any element of SU(2) corresponds to a 4-tuple of real numbers (x, y, w, z) such that
+x2 + y 2 + w2 + z 2 = 1. This gives a bijection τ : SU(2) → S 3 . It is not hard to show
+that the pushforward of the normalized Haar measure under τ is the uniform probability
+measure on S 3 , and conversely, the pushforward of the uniform probability measure on
+S 3 under τ −1 is the normalized Haar measure on SU(2).
+    Now recall the gauge field V defined in Subsection 1.4, obtained by unitary gauge
+fixing of the original theory, but in some infinite volume limit as we did for U(1) theory
+in Subsection 3.1. Recall the stereographic projection map σn : S n → Rn defined in
+Subsection 3.1. For each edge e ∈ E, define
+                                          √
+                                            2
+                                    Ae :=     σ3 (τ (Ve )).
+                                           g
+With probability one, Ae = (A1e , A2e , A3e ) is a well-defined R3 -valued random vector.
+Given the field A, we define a 3-tuple of random 1-forms Y = (Y 1 , Y 2 , Y 3 ) as follows.
+For each x ∈ Zd and each y in the interior of the Voronoi cell of x, and for each 1 ≤ i ≤ d
+and 1 ≤ j ≤ 3, define
+
+                                   Yij (y) := Aj(x,x+ei ) .                           (3.1)
+
+On the boundaries of the Voronoi cells, define Yij in any arbitrary manner. The following
+theorem identifies the scaling limit of Y as g → 0 and α → ∞ under certain constraints.
+Theorem 3.2. Take any d ≥ 2 and let Y be the 3-tuple of random 1-forms defined
+above. Define a rescaled version of Y on the lattice εZd as
+
+                               Z(x) := ε−(d−2)/2 Y (ε−1 x).                           (3.2)
+
+Suppose that as ε → 0, we simultaneously send α → ∞ and g → 0 such that αg remains
+equal to cε for some fixed constant c. Further, suppose that g = O(ε50d ) as ε → 0. Then
+Z converges in law to a 3-tuple of independent Euclidean Proca fields with parameter
+c2 /2.
+
+                                             12
+    Just as in Theorem 3.1, notice that here, too, the scaling limit depends on the
+behavior of the product αg rather than the individual parameters α and g.
+    Notice that in Theorem 3.2, as in Theorem 3.1, the mass generation happens only
+after passing to the scaling limit. Neither of these theorems say anything about expo-
+nential decay of correlations before passing to the scaling limit, i.e., for the models on
+the lattice.
+
+3.3   Comparison with prior work
+Scaling limits of U(1) theory coupled to a Higgs field have appeared in the prior literature,
+mostly in the late 70s and early 80s. Some notable contributions are due to Brydges,
+Fröhlich, and Seiler [12], Balaban, Imbrie, Jaffe, and Brydges [8] and Kennedy and King
+[35], who established mass generation by the Higgs mechanism in various versions of
+the U(1) Yang–Mills–Higgs model on a lattice in d = 2 and d = 3. In d = 3, Balaban
+[2, 3, 4, 5] proved ultraviolet stability of U(1) theory coupled to a Higgs field, which
+is the first step towards the construction of a continuum limit. For a survey of these
+and other results, see Borgs and Nill [10]. The closest cousins of Theorem 3.1 in the
+literature are the results of Gross [31] and Driver [22], who proved convergence of the
+curvature forms of pure U(1) theory (i.e., without a Higgs field) to massless versions of
+the Euclidean Proca field in d = 3 and d = 4, respectively.
+    In a different setup, Dimock [20, 21] has proved ultraviolet stability of U(1) theory
+coupled to fermions in d = 3, using Balaban’s approach to renormalization. This is the
+theory of quantum electrodynamics in d = 3. A key difference between these works and
+Theorem 3.1 is that it is the first result that obtains a massive field in the scaling limit,
+in a dimension greater than two. All of the above results are either in d = 2, or obtain
+a massless field in d ≥ 3.
+    Similarly, Theorem 3.2 is the first construction of a massive scaling limit of a non-
+Abelian lattice Yang–Mills theory in dimensions bigger than two. For prior progress on
+constructions of scaling limits of non-Abelian Yang–Mills theories in d ≥ 3, see the works
+of Balaban [6, 7] and Magnen, Rivasseau, and Sénéor [37]. There has been a resurgence of
+interest in this topic in recent years, with contributions from the probability community.
+An approach to constructing Euclidean Yang–Mills–Higgs theories via rigorous stochastic
+quantization was initiated by Shen [41] and Chandra, Chevyrev, Hairer, and Shen [15,
+16]. For a survey of this rapidly evolving area, see [18]. For a different approach based on
+regularization by Yang–Mills heat flows, see Gross [32] and Cao and Chatterjee [13, 14].
+None of these approaches have yet reached their ultimate goal of constructing non-
+Abelian Euclidean Yang–Mills theories in d ≥ 3, but the case looks promising.
+    In d = 2, on the other hand, we now have a fairly complete understanding of scaling
+limits of non-Abelian Yang–Mills theories, due to the contributions of many authors,
+such as Driver [23], Gross, King, and Sengupta [33], Fine [24], Sengupta [40], Lévy [36]
+and Chevyrev [17]. More recently, Chevyrev and Shen [19] have characterized the 2D
+Yang–Mills measure as the unique invariant measure of the Langevin dynamic; this is
+important for universality of scaling limits.
+    However, the construction of Yang–Mills–Higgs theories in the continuum remains
+
+                                             13
+open even in 2D. The most important recent progress in this direction is the work
+of Bringmann and Cao [11], which proves global well-posedness of the Abelian Yang–
+Mills–Higgs heat flow in 2D, essentially giving a dynamical construction of Abelian
+Yang–Mills–Higgs theory in 2D.
+    Two recent works that are analogous to Theorem 3.2 in that they obtained Gaussian
+limits of discrete models with non-Abelian symmetries are those of Aru, Garban, and
+Sepúlveda [1] and Giuliani and Ott [27]. These papers look at the spin O(N ) models in
+d = 2 and obtain Gaussian scaling limits. Unlike Theorem 3.2, however, the scaling limits
+obtained in [1, 27] are non-massive. The proof sketch provided in the next subsection
+will show the Higgs mechanism generates the mass in the scaling limits in Theorem 3.1
+and Theorem 3.2.
+    Proving mass gap in Yang–Mills theories is a fundamental open question in d ≥ 3.
+For pure gauge theories on the lattice (i.e., no Higgs field and no scaling limit), mass gap
+was rigorously proved at strong coupling (large g) by Osterwalder and Seiler [38] using
+the cluster expansion technique of Glimm, Jaffe, and Spencer [29]. Similar arguments
+were used by Seiler [39] to prove mass gap in Yang–Mills–Higgs models on lattices when
+αg is large enough. An important recent work on mass gap is the paper by Shen, Zhu,
+and Zhu [42], which improves the large g condition in [38]. In particular, [42] allows g
+to be chosen uniformly in N for SU(N ) theory.
+    The problem with holding αg larger than a constant, however, is that the correlation
+length does not diverge to infinity [39] and therefore one cannot pass to a continuum
+limit. In this sense, Theorem 3.2 is the first rigorous proof of the validity of the Higgs
+mechanism in the continuum limit of a Euclidean Yang–Mills theory in a dimension
+bigger than two. It also gives a partial explanation for the phase diagrams constructed
+by Fradkin and Shenker [25], Banks and Rabinovici [9] and many subsequent authors in
+the physics literature, which suggest that a mass gap can be present even if αg is very
+small.
+    In Fradkin and Shenker [25, Fig. 2], for instance, the phase diagram for the U(1)
+model on the lattice (without taking a scaling limit) indicates that correlations decay
+exponentially when either g is bigger than some threshold g0 (which is already provable
+rigorously from the results of [38]), or if α2 is bigger than some concave function of 1/g 2
+growing slower than linearly. In particular, this phase diagram (if true) implies that the
+region of exponential decay of correlations contains values of (α, g) such that the product
+αg is smaller than any given constant. This goes beyond the ‘strong coupling’ region
+given by Seiler [39] where αg is bigger than a fixed constant. It is difficult, however,
+to compare such phase diagrams with our results, since we obtain exponential decay of
+correlations only in the continuum scaling limit. But we do take αg to zero while taking
+this limit, which gives partial support for the predictions from the physics papers.
+
+3.4   Sketch of the proof
+The following is a sketch of the proof of Theorem 3.2. Throughout the sketch, C1 , C2 , . . .
+will denote constants that do not vary with ε (and in particular, do not depend on L,
+α, or g). Also, let us keep L fixed in the beginning instead of being sent to infinity. Let
+
+                                             14
+Σ := SU(2)E . Let Σ′ be the subset of Σ consisting of all U such that ∥Ue − I∥ ≤ α−1
+for all e, where ∥ · ∥ denotes Euclidean (i.e., Frobenius) norm. It is not hard to see that
+                                                      d
+the normalized Haar measure of Σ′ is ≥ (C1 α)−C2 L .
+    Now, recall the field V defined in Section 1.4. In Lemma 5.5, we obtain the key
+estimate
+                                              C1     C2 log α
+                              E∥Ve − I∥2 ≤    4  2
+                                                   +          .
+                                             α g       α2
+Note that this bound has no dependence on L. This is the crucial fact that allows us to
+first send L → ∞ and then construct the continuum limit, as follows.
+     Note that since the above bound has no dependence on L, we may as well send
+L → ∞ and still retain the bound. Let Λ′ := {−M, . . . , M }d , where M will be chosen
+later (to grow as ε → 0). Let E ′ denote the set of edges of Λ′ . Then
+                                                1 X
+                     P(max′ ∥Ve − I∥ > δ) ≤          E∥Ve − I∥2
+                        e∈E                     δ2 ′
+                                                 e∈E
+                                               C8 M d C9 M d log α
+                                             ≤ 4 2 2+              .
+                                              α g δ      α2 δ 2
+
+Choosing α = g κ−1 , M = g −4κ and δ = g 1−6dκ for some sufficiently small κ, this bound
+can be taken to zero as g → 0. Armed with this and several other estimates of a similar
+nature, the rest of the analysis proceeds by perturbative expansion around a Gaussian
+measure, which scales to the Euclidean Proca field.
+    Roughly speaking, the formula for the probability density function of V shows that
+if Ve = I + gAe + o(g), then the probability density function of the matrix-valued field
+A is proportional to
+
+                                    α2 g 2 X
+                                                                       
+                      1X        2                 2
+              exp −        ∥Ap ∥ −           ∥Ae ∥ + lower order terms ,
+                      2               4
+                       p∈P                e∈E
+
+where Ap is the sum of Ae ’s around the plaquette p with appropriate signs. If we set
+the lattice spacing to be ε := αg, and g goes to zero sufficiently fast as ε → 0, then the
+lower order terms in the above display do not interfere in the final outcome, and the
+field converges to a massive Proca field. This is because the Proca field is the scaling
+limit of a discrete field B on Zd with probability density function proportional to
+
+                                                 ε2 X
+                                                              
+                                  1X        2                2
+                           exp −       ∥Bp ∥ −         ∥Be ∥ .
+                                  2              4
+                                   p∈P               e∈E
+
+The three components of A decouple because the couplings are all in the lower order
+terms, arising due to the non-Abelian nature of SU(2). Sending g → 0 sufficiently fast
+suppresses this non-Abelian interference.
+   Lastly, let us remark on why the same technique does not work for non-Abelian gauge
+groups other than SU(2). Recall that we showed in Subsection 1.4 that unitary gauge
+
+                                             15
+fixing in SU(2) theory eliminates the Higgs field completely, and leaves us with only a
+gauge field to study. The term in the action corresponding to the interaction of the
+Higgs field and the gauge field gets replaced by a mass term for the gauge field, as shown
+by the formula for the probability density function. One cannot employ such a trick
+for SU(3), for instance, when the Higgs field is either in the fundamental or the adjoint
+representation. There seems to be no simple gauge fixing procedure that transforms the
+problem to that of studying only a gauge field where a mass term appears in the action.
+The issue is that even after gauge fixing, a nontrivial Higgs field remains, because the
+stabilizer of the gauge action is nontrivial.
+
+3.5   Open questions
+It is evident from the discussion in the previous subsection that holding αg = cε is the
+key fact that gives rise to a massive field in the scaling limit. It is natural to ask whether
+sending g to zero so fast that g = O(ε50d ) is really necessary for obtaining this limit.
+The answer may depend on the model. For U(1) theory, it is possible that simply under
+the conditions that αg = cε and g → 0 as ε → 0, with no further conditions on the
+decay rate of g (or perhaps a very slow decay rate), we obtain the scaling limit given
+by Theorem 3.1. For SU(2) theory, it seems likely that a slow decay of g will cause
+non-Abelian effects to manifest themselves, possibly leading to a different scaling limit.
+It would be interesting to figure out the various regimes for both theories. But holding
+αg = cε seems to be a necessary condition for mass generation in all cases.
+    Another open problem is to extend the results to general Higgs potentials, going
+beyond the degenerate potential considered in this paper. It is not clear how to make
+this extension.
+
+
+4     Proofs for the Euclidean Proca field
+All proofs for the results about the Euclidean Proca field are in this section, presented
+in the same order as the respective results have appeared in previous sections.
+
+4.1   Proof of Lemma 2.1
+We begin with a preliminary upper bound on Kλ (x).
+
+Lemma 4.1. The function Kλ satisfies the bound
+                      √
+                   −∥x∥ λ/2
+           C(d)e           ∥x∥−(d−2)                        if d ≥ 3,
+                                                                                 √
+           
+                       √
+   Kλ (x) ≤ C(d)e−∥x∥ λ/4 (1 + λ−1 )                         if d = 2 and ∥x∥ ≥ 2 λ,
+                      √                √                                        √
+             C(d)e−∥x∥ λ/4 (λ−1 + log(2 λ/∥x∥))              if d = 2 and ∥x∥ < 2 λ,
+           
+
+
+for all x ∈ Rd \ {0}, where C(d) is a constant that depends only on d.
+
+
+
+
+                                             16
+Proof. First, let d ≥ 3. Making the change of variable s = ∥x∥2 /4t in the integral
+defining Kλ (x) in equation (2.1) shows that
+                                     Z ∞
+                                           s(d−4)/2          λ∥x∥2
+                                                                  
+                              1
+                   Kλ (x) =                         exp −s −        ds.              (4.1)
+                            ∥x∥d−2   0      4π d/2            4s
+
+Now note that by the AM-GM inequality,
+                                                      1/2       √
+                         s λ∥x∥2             sλ∥x∥2
+                                         
+                                                              ∥x∥ λ
+                           +     ≥                           = √ .
+                         2   4s                2s                2
+By (4.1), this shows that
+                                      √
+                                 e−∥x∥ λ/2 ∞ s(d−4)/2 −s/2
+                                          Z
+                        Kλ (x) ≤                     e     ds.
+                                  ∥x∥d−2   0  4π d/2
+It is easy to see that the above integral is finite, since d ≥ 3. This completes the proof
+when d ≥ 3. Next, let d = 2. First, note that by an application of the AM-GM inequality
+similar to the above, we get
+                                   √    Z ∞
+                                                          ∥x∥2 λt
+                                                                    
+                               −∥x∥ λ/4        1
+                    Kλ (x) ≤ e                    exp −          −     dt.
+                                         0   4πt            8t     2
+                                                                     √                 √
+We break up the above integral into two parts, from 0 to ∥x∥/2 λ, and from ∥x∥/2 λ
+to infinity. For the second part, note that
+                Z ∞                                     Z ∞
+                                    ∥x∥2 λt
+                                               
+                          1                                        1 −λt/2
+                      √      exp −        −       dt ≤         √     e     dt.
+                 ∥x∥/2 λ 4πt         8t      2           ∥x∥/2 λ 4πt
+            √
+If ∥x∥ ≥ 2 λ,√then the right side is bounded above by C/λ for a universal constant
+                                                                             √
+C. If ∥x∥ < 2 λ, we further break up the integral into an integral from ∥x∥/2 λ and
+an integral from 1 to ∞. The second
+                                 √ integral is bounded above by C/λ, and the first
+integral is bounded above C log(2 λ/∥x∥). Next, note that by the change of variable
+s = ∥x∥2 /4t, we get
+       Z ∥x∥/2√λ                           Z ∞
+                             ∥x∥2 λt                          s λ∥x∥2
+                                                                   
+                    1                                1
+                       exp −     −    dt =       √      exp − −         ds
+        0          4πt        8t   2        ∥x∥/2 λ 4πs       2  8s
+                                           Z ∞
+                                                     1 −s/2
+                                         ≤       √      e   ds.
+                                            ∥x∥/2 λ 4πs
+                                                                                    √
+By a similar argument
+               √      as above, this
+                                  √  is bounded by a universal constant C if ∥x∥ ≥ 2  λ
+and by C log(2 λ/∥x∥) if ∥x∥ < 2 λ. This completes the proof in the case d = 2.
+
+   The bound from Lemma 4.1 shows that Kλ f is well-defined and finite for any f ∈
+S(Rd ). The next lemma proves some of the properties asserted by Lemma 2.1.
+
+
+                                              17
+Lemma 4.2. The operator Kλ sends Schwartz functions to Schwartz functions, and
+commutes with the derivative operators ∂i := ∂/∂xi , i = 1, . . . , d.
+Proof. Take any f ∈ S(Rd ). Note that Kλ f can be alternatively expressed as
+                                      Z
+                           Kλ f (x) =   Kλ (y)f (x − y)dy.
+                                         Rd
+
+Since f ∈ S(Rd ), there is a finite constant C such that for any x, y, z ∈ Rd ,
+                            |f (x + z − y) − f (x − y)| ≤ C∥z∥.
+By the bound from Lemma 4.1, Kλ is integrable on Rd . From these two observations,
+it follows by the dominated convergence theorem that Kλ f is a differentiable function,
+and for each i,
+                                   ∂i Kλ f = Kλ ∂i f.
+This proves, in particular, that Kλ commutes with the derivative operators. By iteration,
+this also proves that Kλ f is infinitely differentiable for any f ∈ S(Rd ), and Kλ commutes
+with any product of derivative operators.
+    Thus, to show that Kλ maps S(Rd ) into S(Rd ), it suffices to prove that for any
+rapidly decaying function f ∈ C ∞ (Rd ), Kλ f is also rapidly decaying. Take any such f ,
+and any α > 0. By the rapidly decaying nature of f , we know that there is some C such
+that |f (x)| ≤ C(1 + ∥x∥)−α for all x. Suppose that d ≥ 3. Then by Lemma 4.1, we have
+                                   Z
+                     |Kλ f (x)| ≤      Kλ (y)|f (x − y)|dy
+                                    Rd
+                                                 √
+                                           e−∥y∥ λ/2
+                                      Z
+                                ≤ C1            d−2
+                                                      (1 + ∥x − y∥)−α dy,
+                                       R d   ∥y∥
+where C1 depends only on d and f . Now, for ∥y∥ ≤ ∥x∥/2,
+                    √                            √
+              e−∥y∥ λ/2                     e−∥y∥ λ/2
+                         (1 + ∥x − y∥)−α ≤            (1 + ∥x∥/2)−α ,
+                ∥y∥d−2                        ∥y∥d−2
+and for ∥y∥ > ∥x∥/2,
+                             √                           √
+                        e−∥y∥ λ/2                   e−∥y∥ λ/2
+                                  (1 + ∥x − y∥)−α ≤           .
+                         ∥y∥d−2                       ∥y∥d−2
+Using these two bounds in these two regions, and passing to polar coordinates in the
+second integral below, we get
+                                                 √                             √
+                                            e−∥y∥ λ/2                     e−∥y∥ λ/2
+                                  Z                             Z
+                               −α
+   |Kλ f (x)| ≤ C2 (1 + ∥x∥/2)                   d−2
+                                                      dy + C3                  d−2
+                                                                                    dy
+                                   ∥y∥≤∥x∥/2 ∥y∥                 ∥y∥>∥x∥/2 ∥y∥
+                                           √
+                                  Z
+                                      e−∥y∥ λ/2
+                                                         Z ∞        √
+                               −α                                 −r λ/2
+              ≤ C4 (1 + ∥x∥/2)             d−2
+                                                dy + C 5        re       dr
+                                   Rd ∥y∥                 ∥x∥/2
+
+             ≤ C6 (1 + ∥x∥/2)−α + C7 e−C5 ∥x∥ ,
+
+
+                                              18
+where C2 , . . . , C7 depend only on d, f and λ. This shows that Kλ f is rapidly decaying
+if d ≥ 3. For d = 2, all steps go through exactly as above, using the bound from Lemma
+4.1.
+
+   The next lemma proves the remaining properties of Kλ asserted by Lemma 2.1,
+thereby completing the proof of Lemma 2.1.
+Lemma 4.3. The operator Kλ is a bijection of S(Rd ) onto itself, and its inverse is the
+operator −∆ + λI, where ∆ is the Laplacian operator and I is the identity operator.
+Proof. Take any f ∈ S(Rd ) and let g := Kλ f . By Lemma 4.2, g is a Schwartz function,
+and ∆g = Kλ ∆f . Thus, by Fubini’s theorem,
+                     Z
+             ∆g(x) =     K(x − y)∆f (y)dy
+                      Rd
+                     Z Z ∞
+                                               ∥x − y∥2
+                                                           
+                                  1
+                   =                    exp −           − λt ∆f (y)dtdy
+                      Rd 0     (4πt)d/2           4t
+                     Z ∞Z
+                                               ∥x − y∥2
+                                                           
+                                  1
+                   =                d/2
+                                        exp −           − λt ∆f (y)dydt.
+                      0     Rd (4πt)              4t
+Note that for any t > 0,
+                                     ∥x − y∥2
+                 Z                               
+                        1
+                          d/2
+                              exp −           − λt ∆f (y)dy
+                  Rd (4πt)              4t
+                                              ∥x − y∥2
+                           Z                          
+                                  1
+                 ≤ ∥∆f ∥∞           d/2
+                                        exp −            dy = ∥∆f ∥∞ ,
+                            Rd (4πt)              4t
+where ∥∆f ∥∞ denotes the supremum norm of ∆f . This uniform bound shows that
+                       Z ∞Z
+                                              ∥x − y∥2
+                                                          
+                                  1
+           ∆g(x) = lim              d/2
+                                        exp −          − λt ∆f (y)dydt.
+                   ε↓0 ε    Rd (4πt)             4t
+Take any t > 0. Applying integration by parts (which is valid since the integrand is
+sufficiently well-behaved and ∆f is rapidly decaying), we get
+
+                                 ∥x − y∥2
+                    Z                      
+                        exp −                ∆f (y)dy
+                     Rd              4t
+                                  d
+                                       ∂2         ∥x − y∥2
+                      Z          X                        
+                    =      f (y)         2 exp  −           dy
+                        Rd            ∂y i           4t
+                                 i=1
+                                           ∥x − y∥2          ∥x − y∥2
+                      Z                                            
+                                      d
+                    =      f (y) − +                  exp −             dy.
+                        Rd           2t       4t2               4t
+Plugging this into the previous display, and again applying Fubini’s theorem, we get
+                Z Z ∞
+                                                ∥x − y∥2          ∥x − y∥2
+                                                                             
+                            1              d
+   ∆g(x) = lim                    f (y)  −    +            exp  −          − λt  dtdy.
+            ε↓0 Rd ε     (4πt)d/2          2t      4t2               4t
+
+
+                                           19
+Now note that for any distinct x and y,
+
+                                      ∥x − y∥2
+                                             
+                   ∂       1
+                                exp −
+                  ∂t (4πt)d/2            4t
+                                      ∥x − y∥2         ∥x − y∥2
+                                                             
+                         1        d
+                   =           − +               exp −            .
+                     (4πt)d/2     2t     4t2              4t
+
+Using this in the previous display, we get
+                       Z Z ∞
+                                                            ∥x − y∥2
+                                                                   
+                                       −λt ∂    1
+          ∆g(x) = lim           f (y)e                exp −            dtdy.
+                    ε↓0 Rd ε              ∂t (4πt)d/2          4t
+
+Take any ε > 0. Using integration by parts, we get
+    Z ∞
+                                 ∥x − y∥2
+                                        
+          −λt ∂       1
+         e                exp −               dt
+      ε       ∂t (4πt)d/2           4t
+                                       Z ∞
+                             ∥x − y∥2                                 ∥x − y∥2
+                                                                             
+          −λε    1                                 −λt    1
+     = −e              exp −            +       λe              exp −           dt.
+              (4πε)d/2          4ε          ε          (4πt)d/2          4t
+
+Combining this with the previous step gives us
+
+                                                         ∥x − y∥2
+                         Z                                       
+                                   −λε    1
+        ∆g(x) = − lim       f (y)e               exp −             dy
+                     ε↓0 Rd            (4πε)d/2             4ε
+                           Z Z ∞
+                                                                ∥x − y∥2
+                                                                        
+                                            −λt    1
+                    + lim           λf (y)e              exp −            dtdy.           (4.2)
+                        ε↓0 Rd ε                (4πt)d/2            4t
+
+By the change of variable z = ε−1/2 (x − y), we have
+
+                               ∥x − y∥2
+     Z                                       Z
+                   1                                                 1          2
+          f (y)      d/2
+                         exp −           dy =      f (x − ε1/2 z)      d/2
+                                                                           e−∥z∥ /4 dz.
+       Rd       (4πε)             4ε            Rd                (4π)
+
+By the dominated convergence theorem, this shows that the first limit in (4.2) is equal to
+f (x). Again, by the dominated convergence theorem and Fubini’s theorem, the second
+limit equals λg(x). Thus, ∆g(x) = −f (x) + λg(x). This proves that (−∆ + λI)Kλ = I.
+Since Kλ commutes with differential operators, this also proves that Kλ (−∆ + λI) = I.
+These two identities imply that Kλ is a bijection of S(Rd ) onto itself, and Kλ−1 =
+−∆ + λI.
+
+4.2   Proof of Lemma 2.2
+It is clear that Qλ maps A(Rd ) into itself, and by Lemma 4.2, the same is true for Rλ .
+Now take any f ∈ A(Rd ) and let g := Rλ f and h := Qλ g. Then for 1 ≤ i ≤ d, using
+
+
+
+
+                                             20
+Lemma 4.2 and Lemma 4.3, we get
+                           d
+                           X
+  hi = −∆gi + λgi +              ∂i ∂j gj
+                           j=1
+                              d
+                               X             Xd                   d
+                                                                    X             
+                            −1                                   −1
+      = (−∆ + λI) Kλ fi − λ      ∂i ∂j Kλ fj +   ∂i ∂j Kλ fj − λ      ∂j ∂k Kλ fk
+                                            j=1                 j=1                       k=1
+                   d
+                   X                  d
+                                      X                         d
+                                                                X
+      = fi − λ−1         ∂i ∂j fj +         ∂i ∂j Kλ fj − λ−1           ∂i ∂j2 ∂k Kλ fk
+                   j=1                j=1                       j,k=1
+                   d
+                   X                        d
+                                            X
+      = fi − λ−1         ∂i ∂j fj + λ−1            ∂i ∂k Kλ (λI − ∆)fk
+                   j=1                       k=1
+      = fi .
+Thus, Qλ Rλ = I. By Lemma 4.2, Qλ and Rλ commute. Thus, Rλ Qλ = I. This proves
+that Qλ and Rλ are both bijections of A(Rd ) onto itself, and Qλ = Rλ−1 .
+
+4.3     The discrete Proca field and the proof of Lemma 2.4
+We will prove Lemma 2.4 by showing that a certain sequence of random 1-forms converges
+in law to the Euclidean Proca field, in the sense that each coordinate converges in law
+to the required limit. The following lemma shows that this is sufficient for proving the
+existence of the field.
+Lemma 4.4. Let {Xn }n≥1 be a sequence of random distributional 1-forms such that
+for each f ∈ A(Rd ), Xn (f ) converges in law as n → ∞. Then there is a random
+distributional 1-form X such that Xn converges in law to X.
+Proof. Linearity implies that for any f1 , . . . , fk , (Xn (f1 ), . . . , Xn (fk )) converges in law.
+                                                                                         d
+This determines a consistent family of finite dimensional laws on RA(R ) . By the
+Kolmogorov consistency theorem, this implies the existence of X = (X(f ))f ∈A(Rd )
+such that for any k and any f1 , . . . , fk , the random vector (Xn (f1 ), . . . , Xn (fk )) con-
+verges in law to (X(f1 ), . . . , X(fk )). In particular, since for any given a, b ∈ R and
+f, g ∈ A(Rd ), Xn (af + bg) = aXn (f ) + bXn (g) with probability one for each n, it fol-
+lows that X(αf + βg) = αX(f ) + βX(g) with probability one. Thus, X is a random
+distributional 1-form and Xn converges in law to X as n → ∞.
+
+    Let Λ, E and P be as in Subsection 1.1, but now without identifying opposite faces.
+For a vector x = (x(e))e∈E ∈ RE and a plaquette p ∈ P , we define the number x(p) as
+follows. Let e1 , e2 , e3 , e4 be the edges of p, numbered such that the left endpoint of e1 is
+the smallest vertex of p in the lexicographic ordering, e4 is incident to the left endpoint
+of e1 , and e2 is incident to the right endpoint of e1 (see Figure 3, and notice the difference
+with Figure 1). Then we define
+                                 x(p) := x(e1 ) + x(e2 ) − x(e3 ) − x(e4 ).                     (4.3)
+
+                                                         21
+                                             e3
+
+
+
+                                  e4                     e2
+
+
+
+                                             e1
+
+            Figure 3: A plaquette bounded by four positively oriented edges.
+
+
+
+Definition 4.5. We define the discrete Proca field on Λ with parameter ε2 and free
+boundary condition to be the Gaussian random vector X = (X(e))e∈E with probability
+density proportional to
+                                            ε2 X
+                                                        
+                               1X        2             2
+                         exp −       x(p) −        x(e) .
+                               2            2
+                                       p∈P           e∈E
+
+    Note that this is a discretization of the continuum Proca field, with λ replaced
+by ε2 , by the differential geometric representation of the density of the Proca field in
+equation (2.5).
+    Given X, we define a random 1-form Y as follows. For each v ∈ εZd and each w in
+the interior of the Voronoi cell of v (i.e., the set of points x ∈ Rd such that v is closer to
+x than any other element of εZd ), and for each 1 ≤ i ≤ d, define
+                     (
+                       ε−(d−2)/2 X(ε−1 v, ε−1 v + ei ) if (ε−1 v, ε−1 v + ei ) ∈ E,
+           Yi (w) :=                                                                     (4.4)
+                       0                                  if not.
+
+The following theorem shows that Y converges in law to the Euclidean Proca field in
+a certain scaling limit. In particular, it shows that the Euclidean Proca field exists,
+thereby proving Lemma 2.4. We will also need for other purposes later.
+Theorem 4.6. Suppose that we take L → ∞ and ε → 0 along a sequence satisfying
+L ≥ ε−1−δ for some δ > 0. Then for any f ∈ A(Rd ), Y (f ) converges in law to a Gaussian
+random variable with mean zero and variance (f, R1 f ), where R1 is the operator defined
+in equation (2.2) with λ = 1. Thus, the Euclidean Proca field exists for any λ > 0, and
+Y converges in law to the Euclidean Proca field with λ = 1.
+Proof. Take any g ∈ A(Rd ). Throughout this proof, O(εk ) will denote any quantity
+whose magnitude is bounded above by Cεk for some constant C that depends only on
+g, d and δ. Let ∇g denote the gradient of g, Hg denote the Hessian of g, and ∆g denote
+the Laplacian of g. Fixing ε and L ≥ ε−1−δ , let
+
+                             R(e, e′ ) := ε−(d−2) E(X(e)X(e′ )).                        (4.5)
+
+
+                                             22
+We will say that two edges e, e′ ∈ E are neighbors if they belong to a common plaquette.
+If e and e′ are neighbors belonging to a common plaquette p, then we will say that they
+are positive neighbors if they are either the first two edges of p or the last two edges of
+p, when the edges are ordered as in the definition (4.3) of x(p). Otherwise, we will say
+that they are negative neighbors. Define Q ∈ RE×E as
+                       
+                       (2d − 2)ε
+                                 d−2 + εd   if e = e′ ,
+           Q(e, e′ ) := 2εd−2                if e and e′ are positive neighbors,      (4.6)
+                       
+                        −2εd−2               if e and e′ are negative neighbors.
+                       
+
+It is easy to check that for any x ∈ RE ,
+                                        X            X
+                           x∗ Qx = εd−2   x(p)2 + εd   x(e)2 .
+                                            p∈P                 e∈E
+
+
+This shows that for any x ∈ RE ,
+
+                                         x∗ Qx ≥ εd ∥x∥2 .
+
+In particular, Q is invertible, and the smallest eigenvalue of Q is at least εd . It is clear
+that R = Q−1 . Thus, the largest eigenvalue of R is at most ε−d .
+    For e = (a, a + ei ) ∈ E (where now, and in the following, e1 , . . . , ed denote the
+standard basis vectors of Rd ), let x(e) := gi (εa). Let z := Qx. Note that
+                                                    X                   X
+       z(e) = ((2d − 2)εd−2 + εd )x(e) + 2εd−2           x(e′ ) − 2εd−2       x(e′ ),
+                                                       e′ ∈N + (e)            e′ ∈N − (e)
+
+where N + (e) is the set of positive neighbors of e and N − (e) is the set of negative
+neighbors of e.
+    Now suppose that e = (a, a+ei ) is not a boundary edge of Λ. Then the set of positive
+neighbors of e consists of the edges (a + ei , a + ei + ej ) and (a − ej , a) as j runs over
+{1, . . . , d} \ {i}. The set negative neighbors of e consists of the edges (a ± ej , a ± ej + ei )
+and the edges (a, a + ej ) and (a − ej + ei , a + ei ) for j ∈ {1, . . . , d} \ {i}. Since g ∈ A(Rd ),
+all third-order derivatives of the components of g are at most of order (1 + ∥εa∥)−K in
+a 2ε-neighborhood of εa, where K is an arbitrary positive constant that will be chosen
+later. Thus, by Taylor expansion,
+                 X              X
+                       x(e′ ) =   (gj (εa + εei ) + gj (εa − εej ))
+           e′ ∈N + (e)         j̸=i
+             X                                      ε2 2         ε2 2
+                                                                              
+           =   2gj (εa) + ε∂i gj (εa) − ε∂j gj (εa) + ∂i gj (εa) + ∂j gj (εa)
+                                                     2            2
+               j̸=i
+
+                         + O(ε3 (1 + ∥εa∥)−K ).
+
+
+
+                                                  23
+Similarly,
+        X                     X
+                   x(e′ ) =          (gi (εa + εej ) + gi (εa − εej ) + gj (εa) + gj (εa − εej + εei ))
+     e′ ∈N − (e)              j̸=i
+                           X
+                         =   2gi (εa) + ε2 ∂j2 gi (εa) + 2gj (εa) + ε∂i gj (εa) − ε∂j gj (εa)
+                              j̸=i
+                                                  ε2            ε2
+                                                                                                    
+                                                 + ∂i2 gj (εa) + ∂j2 gj (εa) − ε2 ∂i ∂j gj (εa)
+                                                  2             2
+                                           + O(ε3 (1 + ∥εa∥)−K ).
+
+Thus, we get
+                                                    X                       X
+                      (2d − 2)x(e) +                          x(e′ ) −                 x(e′ )
+                                                e′ ∈N + (e)              e′ ∈N − (e)
+                                  X
+                       = ε2              (∂i ∂j gj (εa) − ∂j2 gi (εa)) + O(ε3 (1 + ∥εa∥)−K )
+                                  j̸=i
+                                  d
+                                  X
+                       =ε     2
+                                         (∂i ∂j gj (εa) − ∂j2 gi (εa)) + O(ε3 (1 + ∥εa∥)−K ).
+                                  j=1
+
+Putting it all together, we see that for any e = (a, a + ei ) ∈ E that is not a boundary
+edge,
+                                                         d
+                                                         X
+     z(e) = εd gi (εa) − εd ∆gi (εa) + εd                       ∂i ∂j gj (εa) + O(εd+1 (1 + ∥εa∥)−K ).    (4.7)
+                                                          j=1
+
+Next, define f := Q1 g, where Q1 is the operator defined in equation (2.3) with λ = 1.
+For e = (a, a + ei ) ∈ E, define w(e) := εd fi (εa). Then, if e not a boundary edge, (4.7)
+shows that
+
+                                         z(e) − w(e) = O(εd+1 (1 + ∥εa∥)−K ).
+
+On the other hand, since g and f are Schwartzian 1-forms, we have the crude estimate
+
+                                            z(e) − w(e) = O(εd−2 (εL)−K )
+
+for any boundary edge e. Thus, considering z and w as vectors in RE , we get
+                       L
+                      X                                                                        
+   ∥z − w∥2 = O                   (1 + r)d−1 ε2d+2 (1 + εr)−2K + Ld−1 ε2d−4 (εL)−2K
+                        r=0
+                  ⌊1/ε⌋
+                    X                     L
+                                          X                                 
+                               d−1 2d+2       −2K 2d+2−2K    2d−4−2K d−1−2K
+               =O       (1 + r) ε       +   r    ε        +ε        L
+                         r=0                                   r=⌊1/ε⌋
+                        d+2                  2d+1
+               = O(ε              ) + O(ε           ) + O(ε2d−4−2K Ld−1−2K ),                             (4.8)
+
+
+                                                                 24
+provided that K > 1/2. Since L−1 ≤ ε1+δ , we can choose K large enough (depending
+on d and δ) such that
+
+                  ε2d−4−2K Ld−1−2K ≤ ε2d−4−2K ε(1+δ)(2K+1−d) ≤ εd+2 .
+
+Thus, with such a choice of K, we get
+
+                                   ∥z − w∥2 = O(εd+2 ).                               (4.9)
+
+Let D denote the Voronoi cell of 0 in Zd , so that the Voronoi cell of εa ∈ εZd is εD + εa.
+Then note that
+                                    X                Z
+                     Y (f ) =                Yi (εa)       fi (q)dq.
+                                e=(a,a+ei )∈E                εD+εa
+
+
+Thus, Y (f ) is a Gaussian random variable with mean zero and variance u∗ Ru, where
+u ∈ RE is defined as
+                                              Z
+                             u(a, a + ei ) :=    fi (q)dq.                    (4.10)
+                                                     εD+εa
+
+Since f ∈ A(Rd ), we have that for any e = (a, a + ei ) ∈ E,
+                                          Z
+            u(e) − Vol(εD + εa)fi (εa) =          (fi (q) − fi (a))dq
+                                                εD+εa
+                                            = O(ε(1 + ∥εa∥)−K )Vol(εD + εa).
+
+But note that
+                       Vol(εD + εa) = Vol(εD) = εd Vol(D) = εd ,
+where the last identity holds because Vol(D) = 1 by a simple density argument. Thus,
+
+                          u(e) − w(e) = O(εd+1 (1 + ∥εa∥)−K ).
+
+From this, by the same calculation as in (4.8), we get
+
+                                   ∥u − w∥2 = O(εd+2 ).                             (4.11)
+
+Moreover, note that for any e = (a, a + ei ) ∈ E, u(e) and w(e) are both of order
+εd (1 + ∥εa∥)−K . Thus,
+                                   ∞
+                                  X                                     
+          max{∥u∥2 , ∥w∥2 } = O          (1 + r)d−1 ε2d (1 + εr)−2K
+                                   r=0
+                                ⌊1/ε⌋
+                                  X                 X             
+                                             d−1 2d    d−1 2d −2K
+                             =O       (1 + r) ε +     r ε (εr)
+                                    r=0                        r=⌊1/ε⌋
+                                   d
+                             = O(ε ),                                               (4.12)
+
+
+                                                25
+choosing K large enough. Recalling our earlier observation that ∥R∥ = O(ε−d ) (where
+∥R∥ denotes the ℓ2 operator norm of R), and combining with (4.11) and (4.12), we get
+
+                  |u∗ Ru − w∗ Rw| ≤ |u∗ R(u − w)| + |(u − w)∗ Rw|
+                                    ≤ ∥u∥∥R∥∥u − w∥ + ∥u − w∥∥R∥∥w∥
+                                    = O(ε).
+
+Similarly, by (4.9),
+
+                       |w∗ Rw − w∗ Rz| ≤ ∥w∥∥R∥∥w − z∥ = O(ε).
+
+Combining the last two displays, and observing that Rz = RQx = x, we get
+
+                                    |u∗ Ru − w∗ x| = O(ε).                          (4.13)
+
+But notice that
+                                           X
+                              w∗ x =                   εd gi (εa)fi (εa).
+                                       e=(a,a+ei )∈E
+
+If ε → 0, L → ∞ and L ≥ ε−1−δ , then from the above formula and the fact that
+f, g ∈ A(Rd ), it follows that w∗ x tends to (f, g). But f = Q1 g, and therefore, by Lemma
+2.2, g = R1 f . Thus, by (4.13) and the fact that Y (f ) ∼ N (0, u∗ Ru), it follows that
+Y (f ) converges in law to N (0, (f, R1 f )). Since Q1 is a bijection of A(Rd ) and g is an
+arbitrary element of A(Rd ), this conclusion holds for all f ∈ A(Rd ). Thus, by Lemma
+4.4, the Euclidean Proca field with λ = 1 exists, and Y converges to it in law. The
+existence for arbitrary λ follows from Lemma 2.5.
+
+4.4     Proof of Lemma 2.5
+Take any f ∈ A(Rd ), and let g := τa,b f . Note that
+
+                       ∆g(x) = a−2 ∆f ((x − b)/a) = a−2 τa,b ∆f (x).
+
+Thus,
+
+                        (−∆ + λI)τa,b f = −a−2 τa,b ∆f + λτa,b f
+                                             = a−2 τa,b (−∆ + a2 λI)f.
+
+To put it more succintly,
+
+                            (−∆ + λI)τa,b = a−2 τa,b (−∆ + a2 λI).
+
+Multiplying on the left by Kλ throughout and on the right by Ka2 λ throughout, and
+applying Lemma 2.1, we get
+
+                                   τa,b Ka2 λ = a−2 Kλ τa,b .
+
+
+                                                26
+Similarly, since
+                           ∂i g(x) = a−1 ∂i f ((x − b)/a) = a−1 τa,b ∂i f,
+we have ∂i τa,b = a−1 τa,b ∂i . Thus,
+
+                           d 
+                           X                    d
+                                                X                 
+                                             −1
+                   Rλ g :=    Kλ τa,b fi − λ      ∂i ∂j Kλ τa,b fj dxi
+                            i=1                               j=1
+                                d 
+                                X                                   d
+                                                                    X                        
+                            2                                  −1
+                        =a             τa,b Ka2 λ fi − λ                  ∂i ∂j τa,b Ka2 λ fj dxi
+                                i=1                                 j=1
+                                      d 
+                                      X                                   d
+                                                                          X                   
+                            2                                 −2 −1
+                        = a τa,b            Ka2 λ fi − a            λ           ∂i ∂j Ka2 λ fj dxi
+                                      i=1                                 j=1
+                            2
+                        = a τa,b Ra2 λ f.                                                            (4.14)
+
+Now, note that for any u, v ∈ A(Rd ),
+                                            d Z
+                                            X
+                     (τa,b u, τa,b v) =                 ui ((x − b)/a)vi ((x − b)/a)dx
+                                            i=1    Rd
+                                                 d Z
+                                                 X
+                                             d
+                                       =a                    ui (z)vi (z)dz = ad (u, v).
+                                                 i=1    Rd
+
+
+From this and (4.14), we get
+
+                      (g, Rλ g) = a2 (τa,b f, τa,b Ra2 λ f ) = ad+2 (f, Ra2 λ f ).
+
+Now recall that Y (f ) = a(d−2)/2 a−d X(g). Therefore, Y is a Gaussian random variable
+with mean zero and variance
+
+                                  ad−2 a−2d (g, Rλ g) = (f, Ra2 λ f ).
+
+This proves that Y is a Euclidean Proca field with parameter a2 λ.
+
+4.5    Proof of Lemma 2.6
+We need the following lemmas.
+
+Lemma 4.7. As ∥x∥ → ∞,
+                                                                        √
+                                              λ(d−3)/4 e− λ∥x∥
+                                  Kλ (x) ∼                         ,
+                                           2(2π)(d−1)/2 ∥x∥(d−1)/2
+
+meaning that the ratio of the two sides tends to 1 as ∥x∥ → ∞.
+
+
+
+                                                         27
+Proof. Note that for any x and t,
+                                                   2
+                         ∥x∥2             ∥x∥ √        √
+                                       
+                              + λt =       √ − λt + λ∥x∥
+                          4t              2 t
+                                                 √
+                                        (∥x∥ − 2 λt)2 √
+                                      =              + λ∥x∥.
+                                              4t
+Thus,
+                        Z ∞
+                                              ∥x∥2
+                                                      
+                                1
+               Kλ (x) =               exp −        − λt dt
+                         0   (4πt)d/2          4t
+                           √    Z ∞                          √ 2
+                                         1           (∥x∥ − 2  λt)
+                      = e− λ∥x∥            d/2
+                                               exp −               dt.
+                                  0   (4πt)                4t
+Making the change of variable
+                                                 
+                                         1    ∥x∥
+                                  s= p     t− √
+                                      ∥x∥    2 λ
+in the above integral yields
+               √
+           e− λ∥x∥ ∞                       ∥x∥ −d/2             4λ3/2 ∥x∥s2
+                     Z                                                      
+                                    p                                           p
+  Kλ (x) =       d/2
+                           q       s ∥x∥ + √          exp − p                     ∥x∥ds
+            (4π)      − 12
+                             ∥x∥
+                              λ
+                                           2 λ                4s λ∥x∥ + 2∥x∥
+             √           Z ∞                       −d/2
+          e− λ∥x∥                                                  4λ3/2 ∥x∥s2
+                                                                               
+                                        s      1
+   =                                  p    +   √         exp  −   p               ds.
+     (4π)d/2 ∥x∥(d−1)/2 − 21 ∥x∥
+                              q
+                                  λ
+                                       ∥x∥   2   λ              4s  λ∥x∥  + 2∥x∥
+By the dominated convergence theorem, it is easy to show that the above integral con-
+verges to
+                    Z ∞ √                           √ d/2
+                                                          r
+                               d/2 −2λ3/2 s2                 2π
+                        (2 λ) e              ds = (2 λ)
+                     −∞                                     4λ3/2
+as ∥x∥ → ∞. This gives the desired result.
+Corollary 4.8. Take any y ∈ Rd . Let xn be a sequence of points in Rd such that
+∥xn ∥ → ∞ and ∥xn ∥−1 xn → u ∈ S d−1 . Then
+                                  Kλ (xn + y)     √
+                                lim           = e− λu·y .
+                              n→∞  Kλ (xn )
+Proof. Note that as ∥x∥ → ∞ (with y fixed),
+                                 p
+                 ∥x + y∥ − ∥x∥ = ∥x∥2 + ∥y∥2 + 2x · y − ∥x∥
+                                    s
+                                            ∥y∥2    2x · y
+                               = ∥x∥ 1 +        2
+                                                  +        − ∥x∥
+                                            ∥x∥      ∥x∥2
+                                                             
+                                            x·y            −2
+                               = ∥x∥ 1 +          + O(∥x∥ ) − ∥x∥
+                                           ∥x∥2
+                                  1
+                               =     x · y + O(∥x∥−1 ).
+                                 ∥x∥
+By Lemma 4.7, this proves the claim.
+
+                                             28
+Lemma 4.9. For any two bump functions f, g ∈ S(Rd ) and any sequence xn such that
+∥xn ∥ → ∞ and ∥xn ∥−1 xn → u ∈ S d−1 ,
+
+               f (y)Kλ g xn (y)dy                     √
+             R                      ZZ
+         lim                      =    f (y)g(y − v)e− λu·v dvdy = Ψ(f, g, u, λ).
+        n→∞        Kλ (xn )
+
+Proof. Note that for any x,
+                Z                      ZZ
+                   f (y)Kλ g x (y)dy =    f (y)Kλ (z)g x (y − z)dzdy
+                                       ZZ
+                                     =    f (y)Kλ (z)g(x + y − z)dzdy
+                                       ZZ
+                                     =    f (y)Kλ (v + x)g(y − v)dvdy.                        (4.15)
+
+By Corollary 4.8, for any fixed v,
+
+                                   Kλ (v + xn )     √
+                                lim             = e− λu·v .                                   (4.16)
+                               n→∞  Kλ (xn )
+
+Since f and g are bump functions, there is some C such that if ∥y∥ > C or ∥y − v∥ > C,
+then f (y)g(y − v) = 0. But if both of these quantities are ≤ C, then ∥v∥ ≤ 2C. Take
+any such v. Now, Lemma 4.7 implies that there are positive constants B, C1 and C2
+such that for any y with ∥y∥ ≥ B/2, we have
+
+                                            Kλ (y)
+                             C1 ≤                   √     ≤ C2 .                              (4.17)
+                                      ∥y∥−(d−1)/2 e− λ∥y∥
+
+Without loss, we may assume that B ≥ 4C. Then, for any n is so large that ∥xn ∥ ≥ B,
+we have ∥v + xn ∥ ≥ ∥xn ∥ − ∥v∥ ≥ B − 2C ≥ B/2. Thus, (4.17) holds for y = xn and
+y = xn + v. By the calculation in the proof of Corollary 4.8, this implies that there are
+positive constants C3 and C4 such that for any n satisfying ∥xn ∥ ≥ B and any v such
+that ∥v∥ ≤ 2C, we have
+
+                                         Kλ (v + xn )
+                                  C3 ≤                ≤ C4 .                                  (4.18)
+                                          Kλ (xn )
+
+By (4.15), (4.16), (4.18) and the dominated convergence theorem, we get the desired
+result.
+
+   We are now ready to complete the proof of Lemma 2.6. Take any two bump functions
+f and g in A(Rd ), and let X be a Euclidean Proca field with parameter λ. Then note
+that for any x,
+
+           Var(X(f + g x )) = (f + g x , Rλ (f + g x ))
+                             = (f, Rλ f ) + (g x , Rλ g x ) + (f, Rλ g x ) + (g x , Rλ f ).
+
+
+                                                29
+On the other hand, since X(f ) and X(f x ) have mean zero,
+
+             Var(X(f + g x )) = Var(X(f ) + X(g x ))
+                              = Var(X(f )) + Var(X(g x )) + 2E(X(f )X(g x ))
+                              = (f, Rλ f ) + (g x , Rλ g x ) + 2E(X(f )X(g x )).
+
+Thus,
+                                 1
+                E(X(f )X(g x )) = ((f, Rλ g x ) + (g x , Rλ f )) = (f, Rλ g x ),
+                                 2
+where the last identity holds because, by a simple verification, Rλ is a self-adjoint oper-
+ator for the L2 inner product on A(Rd ). Now note that
+                      d ZZ 
+                      X                            d
+                                                   X                      
+                x                     x         −1                   x
+         (f, Rλ g ) =       fi (y)Kλ gi (y) − λ      fi (y)∂i ∂j Kλ gj (y) dy
+                      i=1                              j=1
+                      d ZZ 
+                      X                            d
+                                                   X                         
+                                      x         −1                       x
+                    =       fi (y)Kλ gi (y) + λ      ∂i fi (y)Kλ (∂j gj ) (y) dy,
+                      i=1                              j=1
+
+where the second identity follows by integration by parts and the fact that Kλ , derivatives
+and translations commute. By Lemma 4.7 and Lemma 4.9, this completes the proof.
+
+4.6     Some properties of the discrete Proca field
+In this subsection, we do not identify opposite faces of Λ. Recall the discrete Proca
+field defined in Definition 4.5 of Subsection 4.3. In this subsection, we will prove some
+properties of this field that will be useful later. Define a graph structure on E by
+declaring that two edges are neighbors if they share a common plaquette. Let d(e, e′ )
+denote the graph distance between two edges e and e′ on this graph.
+
+Lemma 4.10. Let X be a discrete Proca field on Λ = {−L, . . . , L}d with parameter
+ε2 ≤ 1. Then for any e, e′ ∈ E,
+                                                                      ′
+                       |E(X(e)X(e′ ))| ≤ ε−2 (1 − (16d)−1 ε2 )d(e,e ) .
+
+Proof. Let R denote the covariance matrix of ε−(d−2)/2 X, and recall that R is the inverse
+of the matrix Q defined in (4.6). Notice that the sum of the absolute values of the entries
+on any row of Q is ≤ 16(d − 1)εd−2 + εd ≤ 16dεd−2 . By a standard fact about real
+symmetric matrices, this implies that largest eigenvalue of Q is ≤ 16dεd−2 . On the other
+hand, as observed in the proof of Theorem 4.6, the smallest eigenvalue of Q is ≥ εd .
+Thus, if we define
+
+                                  S := I − (16dεd−2 )−1 Q,
+
+
+
+                                              30
+then S is a real symmetric matrix whose eigenvalues lie between 0 and 1 − (16d)−1 ε2 .
+In particular, ∥S∥ ≤ 1 − (16d)−1 ε2 < 1, where ∥S∥ denotes the ℓ2 operator norm of S.
+Consequently, we can expand
+                                                               ∞
+                                                               X
+                                        (I − S)−1 =                  Sk.
+                                                               k=0
+
+But (I − S)−1 = 16dεd−2 R. Thus,
+                                                                 ∞
+                                                                 X
+                                                     d−2 −1
+                                     R = (16dε             )             Sk.
+                                                                 k=0
+
+Now, note that S(e, e′ ) = 0 unless e and e′ are either the same edge, or share a plaquette.
+Thus, S k (e, e′ ) = 0 unless d(e, e′ ) ≤ k. On the other hand, for any e and e′ ,
+
+                           |S k (e, e′ )| ≤ ∥S∥k ≤ (1 − (16d)−1 ε2 )k .
+
+Combining, we get that for any e and e′ ,
+                                       ∞
+                                       X
+        |R(e, e′ )| ≤ (16dεd−2 )−1                (1 − (16d)−1 ε2 )k
+                                     k=d(e,e′ )
+                                                                     ′
+                                     (1 − (16d)−1 ε2 )d(e,e )                             ′
+                  = (16dεd−2 )−1                              = ε−d (1 − (16d)−1 ε2 )d(e,e ) .
+                                           (16d)−1 ε2
+
+This completes the proof of the lemma.
+
+    Let ∂E denote the set of boundary edges of Λ. Given a vector x = (xe )e∈∂E ∈ R∂E ,
+let X ′ be generated from the discrete Proca field on Λ with parameter ε2 , conditional
+on the boundary values being equal to components of x. Define a random 1-form Y ′
+using X ′ just as we defined Y using X in equation (4.4). In the following, for an edge
+e = (a, a + ei ), we will write Y (e) and Y ′ (e) as shorthands for Yi (εa) and Yi′ (εa).
+
+Lemma 4.11. Let Y ′ be as above and suppose that L ≥ ε−3 ≥ 1. Then for any f ∈
+A(Rd ), and any choice of B > 0, there exists C depending only on f , d and B (and not
+on L or ε), such that |E(Y ′ (f )) − E(Y (f ))| ≤ CL−B ∥x∥ and |Var(Y ′ (f )) − Var(Y (f ))| ≤
+CL−B .
+
+Proof. Let E ◦ := E \ ∂E. Let R be defined as in (4.5) and u be defined as in (4.10), so
+that Var(Y (f )) = u∗ Ru, as observed in the proof of Theorem 4.6. Also, it is clear that
+E(Y (f )) = 0. Let S := (R(e, e′ ))e,e′ ∈∂E , and for any e ∈ E, let q(e) := (R(e, e′ ))e′ ∈∂E .
+Note that by Lemma 4.10, if an edge e is at an ℓ∞ distance r from the boundary, then
+                                                      2                        2
+                     ∥q(e)∥2 ≤ |∂E|ε−2d e−Cε r ≤ C1 Ld−1 ε−2d e−C2 ε r ,                         (4.19)
+
+
+
+
+                                                      31
+where C, C1 and C2 depend only on d. Since f ∈ A(Rd ), for an edge e at ℓ∞ distance r
+from the origin,
+
+                                            |u(e)| ≤ Cεd (1 + εr)−A                                                     (4.20)
+
+for any choice of A > 0, where C depends only on f , d and A. In the following,
+C, C1 , C2 , . . . will denote positive constants whose values depend only on d, f , and the
+choice of A, and may change from line to line. First, note that by (4.19) and (4.20),
+                                                       L
+                                                                       2
+             X                                         X
+                     |u(e)|∥q(e)∥ ≤ C1 L     (d−1)/2
+                                                              e−C2 ε (L−r) (1 + εr)−A
+             e∈E ◦                                     r=0
+                                                        X                                                          
+                                                                      −C2 ε2 L/2
+                                                                                             X
+                                             (d−1)/2                                                           −A
+                                   ≤ C1 L                          e                +                   (εL/2)
+                                                           r≤L/2                        L/2<r≤L
+                                             (d+1)/2        −C4 ε2 L        −A −A
+                                   ≤ C3 L              (e              +ε       L       ).                              (4.21)
+
+Similarly,
+                                      X
+                                              |u(e)| ≤ C1 Ld−1−A εd−A                                                   (4.22)
+                                     e∈∂E
+
+and
+                     X                      L
+                                            X
+                         |u(e)| ≤ C1 εd           (1 + r)d−1 (1 + εr)−A
+                 e∈E ◦                      r=0
+                                             X                                 X                              
+                                        d                          d−1                           d−1      −A
+                               ≤ C1 ε                    (1 + r)           +                 r         (εr)
+                                             0≤r≤1/ε                           1/ε≤r≤L
+                                        d −d               d −A A−d
+                               ≤ C1 ε ε           + C2 ε ε        ε        ≤ C3 ,                                       (4.23)
+
+provided that A > d. Now, by standard facts about multivariate Gaussian distributions,
+we have that for e, e′ ∈ E ◦ ,
+
+      E(Y ′ (e)) = q(e)∗ S −1 x,     Cov(Y ′ (e), Y ′ (e′ )) = Cov(Y (e), Y (e′ )) − q(e)∗ S −1 q(e′ ).
+                                                                                                   (4.24)
+
+On the other hand, if e ∈ ∂E, then Y ′ (e) = x(e), and if either of e and e′ is in ∂E, then
+Cov(Y (e), Y (e′ )) = 0. Thus,
+                                         X
+             |E(Y (f )) − E(Y ′ (f ))| ≤   |E(Y ′ (e))u(e)|
+                                                   e∈E
+                                                    X                                    X
+                                              =             |u(e)q(e)∗ S −1 x| +                   |x(e)u(e)|,          (4.25)
+                                                   e∈E ◦                                 e∈∂E
+
+
+
+
+                                                             32
+and
+                                              X
+        |Var(Y (f )) − Var(Y ′ (f ))| ≤              |Cov(Y (e), Y (e′ ))u(e)u(e′ )|
+                                          e,e′ ∈∂E
+                                                          X
+                                              +2                     |Cov(Y (e), Y (e′ ))u(e)u(e′ )|
+                                                    e∈∂E, e′ ∈E ◦
+                                                    X
+                                              +               |u(e)u(e′ )q(e)∗ S −1 q(e′ )|.           (4.26)
+                                                  e,e′ ∈E ◦
+
+Since S is a principal submatrix of the real symmetric matrix R, the smallest eigenvalue
+of S is bounded below by the smallest eigenvalue of R. Thus, the largest eigenvalue of
+S −1 is bounded above by the largest eigenvalue of Q = R−1 , which is at most of order
+εd−2 (since that is the order of the maximum of the row sums of the absolute values
+of the entries of Q). Since S is a positive semidefinite matrix, this shows that the ℓ2
+operator norm of S −1 is at most O(εd−2 ). By (4.21), (4.22) and (4.25), this proves that
+                                      X                    X
+ |E(Y (f )) − E(Y ′ (f ))| ≤ εd−2 ∥x∥   |u(e)|∥q(e)∥ + ∥x∥    |u(e)|
+                                     e∈E ◦                                e∈∂E
+                                 (d+1)/2 d−2              −C2 ε2 L        −A −A
+                        ≤ C1 L            ε       ∥x∥(e              +ε     L     ) + C3 ∥x∥Ld−1−A εd−A .
+
+If L ≥ ε−3 , then with a suitably large choice of A (depending only on f , d and B), the
+right side above can be made smaller than CL−B ∥x∥, where C, too, depends only f , d
+and B. Similarly, by (4.20), (4.21), (4.26) and Lemma 4.10,
+
+      |Var(Y (f )) − Var(Y ′ (f ))|
+              X                                            X             2
+                               ′              ′        d−2
+       ≤3            |u(e)u(e )Cov(Y (e), Y (e ))| + ε        |u(e)|∥q(e)∥
+          e∈∂E, e′ ∈E                                                   e∈E ◦
+                    L
+                                                             2
+                    X
+      ≤ C1 L   d−1 d
+                  ε   (1 + r)d−1 (1 + εL)−A (1 + εr)−A e−C2 ε (L−r)
+                    r=0
+                                       2
+                 + C3 Ld+1 εd−2 (e−C4 ε L + ε−2A L−2A )
+                             2                                                      2
+      ≤ C1 Ld−1 εd (Ld e−C2 ε L + Ld−2A ε−2A ) + C3 Ld+1 εd−2 (e−C4 ε L + ε−2A L−2A ).
+
+Again, if L ≥ ε−3 , then with a large enough choice of A (depending only on f , d and
+B), this bound can be made smaller than CL−B .
+
+
+5     Proofs of the main results
+In this section, we prove the main results — that is, Theorem 3.1 and Theorem 3.2.
+The proofs are quite similar, so we first work out the SU(2) case in complete detail, and
+then the U(1) case is worked out by analogous arguments where the complete details are
+sometimes omitted.
+
+
+                                                     33
+5.1     Probability density of stereographic projection
+Consider the following map from Rn to the unit sphere S n in Rn+1 . For x ∈ Rn , let
+Pn (x) denote the unique point on the line joining (1, x) ∈ Rn+1 to the point −e1 =
+(−1, 0, . . . , 0) ∈ S n . It is easy to check by explicit calculation that
+
+                                       4 − ∥x∥2
+                                                                         
+                                                    4x1            4xn
+                            Pn (x) =            ,          ,...,            ,
+                                       4 + ∥x∥2 4 + ∥x∥2         4 + ∥x∥2
+because ∥Pn (x)∥ = 1 and Pn (x) is a convex combination of (1, x) and −e1 . Note that
+Pn is simply the inverse of the stereographic projection map σn defined in Subsection
+3.1 — see Figure 2.
+Lemma 5.1. Consider the probability measure µ on Rn that has probability density
+(with respect to Lebesgue measure) proportional to (4 + ∥x∥2 )−n . The pushforward of
+this measure under Pn is the uniform probability measure on S n .
+Proof. Let ν be the pushforward of µ under Pn . It is easy to see that ν is preserved
+under rotations that fix the first axis in Rn+1 , because µ is invariant under all rotations
+in Rn . Thus, to show that ν is the uniform probability measure on S n , it suffices to
+prove that for any t ∈ [−1, 1], the ν-measure of the cap Ct := {x ∈ S n : x1 ≤ t} is
+proportional to the n-dimensional volume of the cap. But
+
+                                                 4 − ∥x∥2
+                                                             
+                        Pn−1 (Ct ) = x ∈ Rn :             ≤  t
+                                                 4 + ∥x∥2
+                                                                
+                                             n      2   4(1 − t)
+                                   = x ∈ R : ∥x∥ ≥                 .                   (5.1)
+                                                          1+t
+Thus,
+
+                     ν(Ct ) = µ(Pn−1 (Ct ))
+                              Z
+                                                              1
+                            ∝                                    2 n
+                                                                     dx
+                             {x∈Rn : ∥x∥2 ≥4(1−t)/(1+t)} (4 + ∥x∥ )
+                            Z ∞
+                                               rn−1
+                           ∝ √                      2 n
+                                                        dr,
+                               4(1−t)/(1+t) (4 + r )
+
+where the last step was obtained by changing to polar coordinates. Making the change
+of variable u = (4 − r2 )/(4 + r2 ) in the above integral, we get
+                                        Z t
+                              ν(Ct ) ∝      (1 − u2 )(n−2)/2 du.
+                                         −1
+
+Thus, we have to show that if a point X is picked uniformly at random from S n , then the
+first coordinate of X has probability density proportional to (1 − u2 )(n−2)/2 in [−1, 1].
+This is a standard fact, easily provable by geometric considerations or otherwise.
+
+   Lemma 5.1 implies the following corollary.
+
+                                              34
+Corollary 5.2. Let n and N be two positive integers, and let f : (S n )N → R be any
+bounded measurable function. There is a constant Cn depending only on n such that
+           Z
+                  f (x1 , . . . , xN )dx1 · · · dxN
+              (S n )N
+                        Z                                         N
+                                                                  Y           1
+             = CnN               f (Pn (y1 ), . . . , Pn (yN ))                        dy1 · · · dyN ,
+                        (Rn )N                                          (4 + ∥yi ∥2 )n
+                                                                  i=1
+
+where dxi on the left denotes integration with respect to the uniform probability measure
+on S n and dyi on the right indicates integration with respect to Lebesgue measure on Rn .
+
+5.2   Probability density after gauge fixing
+Recall the field V obtained from U(1) theory after unitary gauge fixing in Subsection 1.3,
+for the theory on the finite box Λ (and not in infinite volume). The following lemma
+gives the probability density of V .
+Lemma 5.3. The probability density of V with respect to the product of Haar probability
+measures on U(1)E is proportional to
+                            X                              
+                              1                 2
+                                                  X
+                        exp 2       Re(Up ) + α     Re(Ue )
+                             g
+                                           p∈P                     e∈E
+
+at U ∈ U(1)E .
+Proof. Take any bounded measurable function f : U(1)E → R. Let g denote the map
+that takes (U, ϕ) to V . That is, if W := g(U, ϕ), then for any e = (x, y) ∈ E, We =
+ϕ∗x Ue ϕy . Note that
+
+                                        f (g(U, ϕ))eS(U,ϕ) dU dϕ
+                                     RR
+                         E(f (V )) =       RR                    ,
+                                              eS(U,ϕ) dU dϕ
+where S is the Yang–Mills action defined in equation (1.1) and dU and dϕ stand for
+integration with respect to the product Haar measure on U(1)E and the product uniform
+measure on (S 1 )Λ , respectively.
+    Now take any ϕ, and consider the map U 7→ g(U, ϕ). It is easy to see that this map
+preserves the product Haar measure. Also, it is easy to see that for any U ,
+
+                                          S(U, ϕ) = S(g(U, ϕ), 1),
+
+where 1 denotes the Higgs field that is equal to 1 everywhere. Thus, for any ϕ,
+       Z                         Z                              Z
+                      S(U,ϕ)                    S(g(U,ϕ),1)
+          f (g(U, ϕ))e       dU = f (g(U, ϕ))e              dU = f (U )eS(U,1) dU.
+
+Similarly,                            Z                     Z
+                                           S(U,ϕ)
+                                          e         dU =        eS(U,1) dU.
+
+
+                                                       35
+Combining, we get
+
+                                        f (U )eS(U,1) dU dϕ         f (U )eS(U,1) dU
+                                   RR                           R
+                  E(f (V )) =           RR                  =        R               .
+                                           eS(U,1) dU dϕ               eS(U,1) dU
+
+Thus, the probability density of V is proportional to eS(U,1) at U , which is what we
+wanted to show.
+
+   Next, recall the field V obtained from SU(2) theory after unitary gauge fixing in
+Subsection 1.4, again on the finite box Λ. The following lemma gives the probability
+density of V . This is very similar to Lemma 5.3, but with a crucial difference in one of
+the constants — there is now a denominator 2 below α2 .
+Lemma 5.4. The probability density of V with respect to the product of Haar probability
+measures on SU(2)E is proportional to
+                                             α2 X
+                       X                                       
+                         1
+                  exp 2        Re(Tr(Up )) +        Re(Tr(Ue ))
+                        g                    2
+                                   p∈P                      e∈E
+
+at U ∈ SU(2)E .
+Proof. Take any bounded measurable function f : SU(2)E → R. Let g denote the map
+that takes (U, ϕ) to V . Recall that in this case, g is defined as follows. Given ϕ, for each
+x we let θx be the unique element of SU(2) such that θx ϕx = e1 (uniqueness follows from
+the fact that there is a unique element of SU(2) which sends e1 to ϕx ). Then we define
+W := g(U, ϕ) as We = θx Ue θy∗ for every e = (x, y) ∈ E. Note that
+
+                                          f (g(U, ϕ))eS(U,ϕ) dU dϕ
+                                       RR
+                          E(f (V )) =        RR                    ,
+                                                eS(U,ϕ) dU dϕ
+where S is the Yang–Mills action defined in equation (1.2) and dU and dϕ stand for in-
+tegration with respect to the product Haar measure on SU(2)E and the product uniform
+measure on (S 3 )Λ , respectively.
+    Now take any ϕ, and consider the map U 7→ g(U, ϕ). As before, this map preserves
+the product Haar measure. Now note that for any U and W := g(U, ϕ),
+                        1 X                               X
+            S(U, ϕ) =       Re(Tr(Up )) + α2                        Re(ϕ∗x Ue ϕy )
+                        g2
+                             p∈P                        e=(x,y)∈E
+                        1 X                                X
+                    =              Re(Tr(Wp )) + α2                 Re(ϕ∗x θx∗ θx Ue θy∗ θy ϕy )
+                        g2
+                             p∈P                        e=(x,y)∈E
+                      1 X                                  X
+                    = 2   Re(Tr(Wp )) + α2                          Re(e∗1 We e1 ).
+                     g
+                             p∈P                        e=(x,y)∈E
+
+But for any A ∈ SU(2),
+                                                     1
+                                    Re(e∗1 Ae1 ) =     Re(Tr(A)).
+                                                     2
+
+                                                   36
+Thus, we get
+
+                         1 X               α2              X
+             S(U, ϕ) =       Re(Tr(Wp )) +                          Re(Tr(We )) =: H(W ).
+                         g2                2
+                           p∈P                        e=(x,y)∈E
+
+This shows that for any ϕ,
+        Z                          Z                          Z
+                        S(U,ϕ)                  H(g(U,ϕ))
+           f (g(U, ϕ))e        dU = f (g(U, ϕ))e          dU = f (U )eH(U ) dU.
+
+Similarly,                        Z                   Z
+                                      eS(U,ϕ) dU =         eH(U ) dU.
+
+As before, this completes the proof.
+
+5.3   The key estimate for SU(2) theory
+Let V be the field obtained from SU(2) theory after unitary gauge fixing in Subsec-
+tion 1.4, the finite box Λ. Let ∥ · ∥ denote the Euclidean (i.e., Frobenius) norm on SU(2).
+Note that for any U ∈ SU(2),
+
+                     ∥I − U ∥2 = Tr((I − U )∗ (I − U ))
+                                  = Tr(I) + Tr(U ∗ U ) − Tr(U ∗ ) − Tr(U )
+                                  = 4 − 2 Re(Tr(U )).                                       (5.2)
+
+Together with Lemma 5.4, this shows that probability density of V is proportional to
+e−H(U ) , where
+                            1 X                α2 X
+                 H(U ) := 2       ∥I − Up ∥2 +        ∥I − Ue ∥2 .
+                           2g                  4
+                                      p∈P                          e∈E
+
+The following lemma gives the key estimate for proving Theorem 3.2.
+Lemma 5.5. Suppose that α ≥ 2 and αg ≤ 1. Then for any e ∈ E,
+                                                  C      C log α
+                                 E∥I − Ve ∥2 ≤    4  2
+                                                       +         ,
+                                                 α g       α2
+where C depends only on the dimension d.
+Proof. Throughout this proof, C, C1 , C2 , . . . will denote positive constants that only
+depend on d, whose values may change from line to line. Let Σ′ be the subset of Σ =
+SU(2)E consisting of all U such that ∥I − Ue ∥ ≤ α−1 for all e. Using the correspondence
+τ between SU(2) and S 3 defined in Subsection 3.2, it is easy to see that the normalized
+                                      d
+Haar measure of Σ′ is ≥ (C1 α)−C2 L . Also, it is easy to see that for any U ∈ Σ′ and
+p ∈ P , ∥I − Up ∥ ≤ 4α−1 . Thus, if p(U ) := e−H(U ) , then for U ∈ Σ′ , we have
+                                                       d      −2
+                                      p(U ) ≥ e−CL (αg) .
+
+                                                 37
+This shows that             Z
+                                                               d        −2        d
+                                         Y
+                                 p(U )         dUe ≥ e−C1 L (αg) (C2 α)−C3 L .
+                                         e∈E
+
+Consequently,
+                                         1                         d     −2       d
+                            R            Q              ≤ eC1 L (αg) (C2 α)C3 L .
+                                 p(U )       e∈E dUe
+
+But
+                                                     p(U )−1 p(U ) e∈E dUe
+                                                 R                Q
+                            1
+                R           Q                =         R      Q            = E(p(V )−1 ).
+                    p(U )       e∈E dUe                  p(U ) e∈E dUe
+
+Thus, for any t ≥ 0,
+
+                       P(H(V ) ≥ t) = P(p(V )−1 ≥ et ) ≤ e−t E(p(V )−1 )
+                                                           d       −2         d
+                                              ≤ e−t eC1 L (αg) (C2 α)C3 L .
+
+But also, P(H(V ) ≥ t) ≤ 1. Thus,
+                              Z ∞
+                  E(H(V )) =      P(H(V ) ≥ t)dt
+                               0
+                              Z ∞
+                                               d    −2       d
+                            ≤     min{e−t eC1 L (αg) (C2 α)3L , 1}dt
+                                          0
+                                     C3 Ld
+                                    ≤ 2 2 + C4 Ld log α.
+                                     α g
+               2 P
+But H(V ) ≥ α4                 2
+                    e∈E ∥I−Ve ∥ , and by symmetry (due to periodic boundary), E∥I−Ve ∥
+                                                                                       2
+
+is the same for all e. This completes the proof.
+
+5.4   Local free field approximation for SU(2) theory
+In this subsection, we will show that the field A defined in Subsection 3.2 behaves
+approximately like a discrete Proca field in a small enough neighborhood of the origin.
+In the following, we will use the following convention. We will work with the field defined
+on the finite box Λ for most of the proof, only taking L → ∞ at the very end. Thus, in
+the following discussion A = (Ae )e∈E is defined only on E.
+    Given a configuration B ∈ (R3 )E and an edge e ∈ E, we will denote by O(g a Beb ) any
+quantity whose absolute value is bounded above by Cg a (1 + ∥Be ∥)b for some constant
+C depending only on d (not to be confused with the component Beb of Be ). Also, for
+any plaquette p bounded by four edges e1 , e2 , e3 , e4 ∈ E, we will denote by O(g a Bpb ) any
+quantity whose absolute value is bounded above by Cg a max1≤i≤4 (1 + ∥Bei ∥)b , where
+C depends only on d. A matrix whose terms are all O(g a Bpb ) will also be denoted by
+O(g a Bpb ). More generally, for any expression X, O(X) will denote any quantity whose
+absolute value is bounded above by C|X|, where C depends only on d. Lastly, if the
+
+                                                          38
+edges e1 , e2 , e3 , e4 are numbered such that the left endpoint of e1 is the smallest vertex
+of p in the lexicographic ordering, e4 is incident to the left endpoint of e1 , and e2 is
+incident to the right endpoint of e1 (see Figure 3), then we define
+
+                                     Bp := Be1 + Be2 − Be3 − Be4 .
+
+The following lemma gives a useful representation of the probability density function
+of A.
+
+Lemma 5.6. The probability density function of the random field A, at a point B ∈
+(R3 )E , is proportional to
+
+                                               α2 g 2 X
+                                                                         
+                    1X          2     2 16                    2     2 4
+             exp −        (∥Bp ∥ + O(g Bp )) −          (∥Be ∥ + O(g Be )) .
+                    2                           4
+                      p∈P                                         e∈E
+
+Proof. Let τ be the map defined in Subsection 3.2 that takes√SU(2) to S 3 , and let
+P3 : R3 → S 3 be the map defined in Subsection 5.1. Let ξ := 2g −1 P3−1 ◦ τ , so that
+Ae = ξ(Ve ). By Lemma 5.4, Corollary 5.2, and the identity (5.2), the probability density
+of A with respect to Lebesgue measure on (R3 )E at a point B ∈ (R3 )E is proportional
+to
+                                  α2 X
+                                                         Y
+          1 X          −1     2                 −1      2               1
+  exp − 2        ∥I − ξ (B)p ∥ −          ∥I − ξ (B)e ∥               1 2          . (5.3)
+         2g
+             p∈P
+                                   4
+                                     e∈E                    e∈E
+                                                                (4 + 2 g ∥Be ∥2 )3
+
+Now, note that
+                          
+                              1 − 81 g 2 ∥Be ∥2    √1 gB 1           √1 gB 2           √1 gB 3        
+         −1/2                                         2     e           2     e           2     e
+    P3 (2       gBe ) =                         ,                ,                 ,                    .
+                              1 + 81 g 2 ∥Be ∥2 1 + 18 g 2 ∥Be ∥2 1 + 18 g 2 ∥Be ∥2 1 + 18 g 2 ∥Be ∥2
+
+Thus,
+
+ ξ −1 (Be ) = τ −1 (P3 (2−1/2 gBe ))
+                                                                                                    !
+                     1               1 − 81 g 2 ∥Be ∥2 + √12 igBe1    √1 gB 2 + i √1 gB 3
+                                                                         2     e      2     e
+            =                                                                                           . (5.4)
+                  1 2
+              1 + 8 g ∥Be ∥2           − √12 gBe2 + i √12 gBe3     1 − 18 g 2 ∥Be ∥2 − i √12 gBe1
+
+Let e1 , e2 , e3 , e4 be four edges bounding a plaquette p, in the order described prior to the
+statement of the lemma. Let Uei := ξ −1 (Bei ) for 1 ≤ i ≤ 4, and let Up := Ue1 Ue2 Ue−1     3
+                                                                                               Ue−1
+                                                                                                 4
+                                                                                                    .
+Note that by the above formula, we have that for each i,
+
+                                                     iBe1i     Be2i + iBe3i
+                                                                                        
+                                         1
+         Uei = (1 + O(g 2 Be2i )) I + √ g                                     + O(g 2 2
+                                                                                     B ei )
+                                           2    −Be2i + iBe3i     −iBe1i
+                                  iBe1i      Be2i + iBe3i
+                                                         
+                         1
+               =I+√ g             2     3                   + O(g 2 Be4i ).                    (5.5)
+                          2    −Bei + iBei     −iBe1i
+
+
+
+                                                      39
+Now, by (5.4) and the fact that Uei ∈ SU(2), we have
+                                                                                                      !
+                    1           1 − 81 g 2 ∥Bei ∥2 − i √12 gBe1i     − √12 gBe2i − i √12 gBe3i
+      Ue−1 =                       √1 gB 2 − i √1 gB 3
+                                                                                                          .
+        i        1 2
+             1 + 8 g ∥Bei ∥2          2     ei      2     ei       1 − 18 g 2 ∥Bei ∥2 + i √12 gBe1i
+
+Thus,
+
+                                       −iBe1i           −Be2i − iBe3i
+                                                                       
+                          1
+                 Ue−1 =I+√         g                                        + O(g 2 Be4i ).
+                   i
+                                 2   Be2i − iBe3i          iBe1i
+
+From this, it follows that
+
+                                    iBp1     Bp2 + iBp3
+                                                       
+                             1
+                   Up = I + √ g                           + O(g 2 Bp16 ).
+                              2  −Bp2 + iBp3   −iBp1
+
+Together with (5.3) and (5.5), this completes the proof.
+
+5.5     Proof of Theorem 3.2
+Throughout this subsection, C, C1 , C2 , . . . will denote positive constants whose values
+depend only on d, and may change from line to line. Consider SU(2) theory defined
+on the finite box Λ = {−L, . . . , L}d . Take some M < L and let Λ′ := {−M, . . . , M }d .
+Let E ′ denote the set of oriented nearest-neighbor edges of Λ′ (not identifying opposite
+faces), and let ∂E ′ denote the boundary edges. Fix some δ0 , δ ∈ (g, 1), with δ0 < δ, to be
+chosen later. Let E be the event that ∥I − Ve ∥ ≤ δ for all e ∈ E ′ \ ∂E ′ and ∥I − Ve ∥ ≤ δ0
+for all e ∈ ∂E ′ . Let ν denote the law of V and ν ′ denote the law of V conditional on the
+event E. The following lemma shows that ν and ν ′ are close in total variation distance
+under suitable choices of M and δ (depending on α and g).
+
+Lemma 5.7. The total variation distance between ν and ν ′ is bounded above by
+
+                     CM d         CM d log α CM d−1 CM d−1 log α
+                                +           + 4 2 2 +            ,
+                     α4 g 2 δ 2     α2 δ 2   α g δ0   α2 δ02
+
+where C depends only on d.
+
+Proof. By Lemma 5.5,
+                               X                                X
+               ν(E) ≥ 1 −                 P(∥I − Ve ∥ > δ) −            P(∥I − Ve ∥ > δ0 )
+                            e∈E ′ \∂E ′                        e∈∂E ′
+                             1 X                 1 X
+                    ≥1−        2
+                                   E∥I − Ve ∥2 − 2     E∥I − Ve ∥2
+                             δ   ′
+                                                δ0   ′
+                                e∈E                        e∈∂E
+                        CM d    CM d log α CM d−1 CM d−1 log α
+                    ≥1− 4 2 2 −           − 4 2 2 −            .                                          (5.6)
+                       α g δ      α2 δ 2   α g δ0   α2 δ02
+
+
+
+                                                   40
+Thus, for any event A,
+                                                    ν(A ∩ E)
+                         |ν(A) − ν ′ (A)| = ν(A) −
+                                                       ν(E)
+                                           |ν(A)ν(E) − ν(A ∩ E)|
+                                         =
+                                                     ν(E)
+                                                1 − ν(E) ν(A ∩ E c )
+                                         ≤ ν(A)           +
+                                                  ν(E)          ν(E)
+                                                ν(E c ) ν(E c )    2ν(E c )
+                                         ≤ ν(A)        +        ≤           ,
+                                                ν(E)      ν(E)      ν(E)
+where E c denotes the complement of the event E. By this bound and the inequality (5.6),
+we get the desired upper bound on |ν(A) − ν ′ (A)|.
+    The next lemma gives an equivalent way of expressing the event E in terms of the
+field A.
+Lemma 5.8. The event E happens if and only if for all e ∈ E ′ \ ∂E ′
+                                                 23/2 δ
+                                         ∥Ae ∥ ≤ √       ,
+                                                g 8 − δ2
+and for all e ∈ ∂E ′ ,
+                                                23/2 δ0
+                                        ∥Ae ∥ ≤ p        .
+                                               g 8 − δ02
+Proof. Note that by (5.2), ∥I − Ve ∥ ≤ δ if and only if Re(Tr(Ve )) ≥ 2 − 12 δ 2 . This is
+equivalent to saying that the first coordinate of τ (Ve ) is at least 1 − 41 δ 2 . But by (5.1),
+this happens if and only if
+                                                       4δ 2
+                                 ∥P3−1 (τ (Ve ))∥2 ≤        .
+                                                     8 − δ2
+            √
+Since Ae = 2g −1 P3−1 (τ (Ve )), this completes the proof.
+                                                ′
+    Take any D = (De )e∈∂E ′ ∈ (R3 )∂E . Let γD denote the law of A′ := (Ae )e∈E ′
+given that E holds and Ae = De for all e ∈ ∂E ′ . Let ζD denote the joint law of three
+independent discrete Proca fields on Λ′ with boundary condition D and parameter 12 α2 g 2 .
+The following lemma shows that γD and ζD are close in total variation distance under
+suitable conditions.
+Lemma 5.9. For any boundary condition D satisfying the constraint imposed by E, the
+total variation distance between γD and ζD is bounded above by
+                                                                          2 2
+                          C1 (g 2 + α2 g 4 )(g −1 δ)16 M d + C1 M d e−C2 α δ ,
+provided that
+                                   M d−1 (αg)(d−6)/2 δ0 δ −1 ≤ C3 ,                       (5.7)
+where C1 , C2 and C3 are positive constants depending only on d.
+
+                                                    41
+                                                                                           ′
+Proof. By Lemma 5.6, the probability density of γD at a point B ∈ (R3 )E satisfying
+the given boundary values is proportional to
+                         
+                             1 X
+             p(B) := exp −           (∥Bp ∥2 + O(g 2 Bp16 ))
+                             2
+                               p∈P ′
+                                      α2 g 2 X
+                                                                       
+                                  −              (∥Be ∥2 + O(g 2 Be4 )) 1E (B), (5.8)
+                                        4      ′ e∈E
+
+where 1E (B) = 1 if B satisfies the condition imposed by E (as in Lemma 5.8), and 0 if
+not. On the other hand, the probability density of ζD is proportional to
+
+                                                   α2 g 2 X
+                                                                   
+                                    1 X         2                 2
+                   q(B) := exp −           ∥Bp ∥ −           ∥Be ∥ .             (5.9)
+                                    2    ′
+                                                    4      ′
+                                        p∈P                            e∈E
+
+Let Zp and Zq be the normalizing constants of p and q. Then by Lemma 5.8 and the
+identities (5.8) and (5.9) (and the fact that g −1 δ ≥ 1), we get
+                             Z
+                       Zp = p(B)dB
+                                                               Z
+                              O((g 2 +α2 g 4 )(g −1 δ)16 M d )
+                          ≥e                                     q(B)1E (B)dB
+                                    2   2 4     −1 δ)16 M d )
+                        = ρeO((g +α g )(g                       Zq ,                           (5.10)
+
+where                                      R
+                                               q(B)1E (B)dB
+                                    ρ :=        R           .
+                                                  q(B)dB
+Now, if 1E (B) = 0, then p(B) = 0, and hence, (Zp−1 p(B) − Zq−1 q(B))+ = 0 (where x+
+denotes the positive part of a real number x). On the other hand, if 1E (B) = 1, then
+by (5.10), (5.8) and (5.9), we get
+                                                     2    2 4      −1 δ)16 M d )
+                    Zp−1 p(B) ≤ Zq−1 ρ−1 eO((g +α g )(g                            q(B).
+
+Thus, if 1E (B) = 1, then we have
+
+                                   Zp−1 p(B)
+                                                    +
+  (Zp−1 p(B) − Zq−1 q(B))+ =                    −1        Zq−1 q(B)
+                                   Zq−1 q(B)
+                           ≤ (ρ−1 O((g 2 + α2 g 4 )(g −1 δ)16 M d ) + O(ρ−1 − 1))Zq−1 q(B),
+
+provided that
+
+                               (g 2 + α2 g 4 )(g −1 δ)16 M d ≤ 1.                              (5.11)
+
+
+
+
+                                                 42
+Thus, under (5.11),
+         Z                          Z
+            (Zp p(B) − Zq q(B)) dB = (Zp−1 p(B) − Zq−1 q(B))+ 1E (B)dB
+              −1        −1     +
+
+                                                    Z
+         ≤ (ρ O((g + α g )(g δ) M ) + O(ρ − 1)) Zq−1 q(B)dB
+              −1    2    2 4  −1 16 d       −1
+
+
+           = ρ−1 O((g 2 + α2 g 4 )(g −1 δ)16 M d ) + O(ρ−1 − 1),                      (5.12)
+
+where the integrals are over the set of B satisfying the given boundary values.
+   Now, let W = (W 1 , W 2 , W 3 ) be a random configuration drawn from the probability
+measure ζD . Take any 1 ≤ i ≤ 3. Define ε := √12 αg, so that W i is a discrete Proca field
+on Λ′ with boundary condition D and parameter ε2 . Note that by Lemma 5.8,
+
+                                   ∥D∥2 ≤ CM d−1 g −2 δ02 .
+
+Let q, R and S be as in the proof of Lemma 4.11, but with E replaced by E ′ . Then
+by the same calculation as for (4.19), we get that for an edge e ∈ E ′ that is at an ℓ∞
+distance r from the boundary ∂E ′ ,
+                                                              2
+                              ∥q(e)∥2 ≤ C1 M d−1 ε−2d e−C2 ε r .
+
+Just as we had (4.24), we now have for all e ∈ E ′ ,
+
+               E(W i (e)) = ε(d−2)/2 q(e)∗ S −1 D,
+               Var(W i (e)) = εd−2 (R(e, e) − q(e)∗ S −1 q(e)) ≤ εd−2 R(e, e).
+
+As in Lemma 4.11, we deduce that ∥S −1 ∥ = O(εd−2 ). Thus, for any e ∈ E ′ ,
+
+                          |E(W i (e))| ≤ ε(d−2)/2 ∥q(e)∥∥S −1 ∥∥D∥
+                                       = O(M d−1 ε(d−6)/2 g −1 δ0 ).
+
+Also, as in the proof of Theorem 4.6, we have that ∥R∥ = O(ε−d ). Thus, Var(W i (e)) =
+O(ε−2 ) for each e. Since W i (e) is a Gaussian random variable for each e and i, this
+shows that (by Lemma 5.8)
+                              3
+                                                           23/2 δ
+                              X      X                             
+                                                i
+                     1−ρ≤                 P |W (e)| > √ √
+                          i=1 e∈E ′ \∂E ′
+                                                         g 3 8 − δ2
+                                           C2 (g −1 δ)2
+                                                       
+                               d
+                        ≤ C1 M exp −                     ,
+                                               ε−2
+
+provided that g −1 δ ≥ CM d−1 ε(d−6)/2 g −1 δ0 for a sufficiently large constant C (depending
+only on d). Substituting the value of ε and using this bound in (5.12) completes the
+proof.
+
+
+                                              43
+    We are now ready to complete
+                            √      the proof of
+                                             √ Theorem 3.2. By Lemma 2.5, it suffices
+to prove the claim for c = 2, that is, αg = 2ε. Suppose that g and    √ L 1/κ
+                                                                            vary as in the
+statement of the theorem. Let κ > 0 be √ the number  such that  g = (   2ε)    .
+    By √
+       definition of κ, we have α = ( 2ε)/g = g   κ−1 . Let δ := g 1−aκ , δ0 := g 1−bκ and
+M := ⌊ 2g   −4κ ⌋ (assuming M < L, which we will eventually guarantee below), where a
+and b will be chosen later. Let Ae ∈ (R3 )E be a random configuration drawn from the
+law of A conditional on the event E. Let Ye be defined using A  e in place of A in (3.1),
+and define Ze using Ye just as we defined Z using Y in (3.2). Note that with the above
+choices of δ and M , we have
+            Md          M d log α      2d/2 g −4κd       2d/2 g −4κd log(1/g)
+                      +           ≤                    +
+           α4 g 2 δ 2    α2 δ 2     g 4κ−4 g 2 g 2−2aκ      g 2κ−2 g 2−2aκ
+                                 = 2d/2 g κ(−4d−4+2a) + 2d/2 g κ(−4d−2+2a) log(1/g).
+
+This goes to zero as g → 0 if
+
+                                           a > 2d + 2.                                    (5.13)
+
+Next, note that
+  M d−1        M d−1 log α   2(d−1)/2 g −4κ(d−1) 2(d−1)/2 g −4κ(d−1) log(1/g)
+             +             ≤                     +
+  α4 g 2 δ02      α2 δ02      g 4κ−4 g 2 g 2−2bκ        g 2κ−2 g 2−2bκ
+                          = 2(d−1)/2 g κ(−4(d−1)−4+2b) + 2(d−1)/2 g κ(−4(d−1)−2+2b) log(1/g).
+
+This goes to zero as g → 0 if
+
+                                        b > 2(d − 1) + 2.                                 (5.14)
+
+Thus, if both (5.13) and (5.14) hold, then Lemma 5.7 implies that to prove Theorem 3.2,
+it suffices to prove convergence for Ze instead of Z.
+    Let W be as in the proof of Lemma 5.9, with the set of boundary values given by
+De = A  ee for e ∈ ∂E ′ . Define a triple of random 1-forms Q = (Q1 , Q2 , Q3 ) using W , via
+the same procedure that we used to define Z using A in (3.1) and (3.2). Note that
+
+  M d−1 (αg)(d−6)/2 δ0 δ −1 ≤ 2(d−1)/2 g κ(−4(d−1)+(d−6)/2+a−b) = 2(d−1)/2 g κ((2−7d)/2+a−b) .
+
+To make this go to zero as g → 0, we need
+                                                  7d − 2
+                                        a−b>             .                                (5.15)
+                                                    2
+Thus, if (5.15) holds, then the condition (5.7) is satisfied for sufficiently small g. Now
+note that with C2 being the constant from Lemma 5.9,
+                                                               2 2
+                     (g 2 + α2 g 4 )(g −1 δ)16 M d + M d e−C2 α δ
+                                                                       2κ−2 g 2−2aκ
+                      ≤ 2d/2 g 2 g −16aκ g −4κd + 2d/2 g −4κd e−C2 g
+                                                                  (2−2a)κ
+                      = 2d/2 g 2−κ(16a+4d) + 2d/2 g −4κd e−C2 g             .
+
+
+                                                44
+To make this go to zero as g → 0, it suffices to have
+                                                      2
+                                 a > 1,    κ<               .                        (5.16)
+                                                   16a + 4d
+
+Thus, by Lemma 5.9, if the conditions (5.15) and (5.16) hold, then to prove that Z      e
+converges to the required limit, it suffices to prove the same for Q. First of all, since
+none of the bounds depend on L, we can fix all other parameters and send L to infinity.
+Next, let us send g → 0, keeping κ fixed, so that ε → 0, M → ∞ and α → ∞. Since
+M ε3 ≥ g −κ → ∞ as ε → 0 and ∥D∥ is growing at most polynomially in M , Lemma 4.11
+implies that for any f ∈ A(Rd ), Q(f ) converges in law to the required limit. Thus, to
+complete the proof of Theorem 3.2, we only need to find a and b such that the conditions
+(5.13)–(5.16) are satisfied. This is accomplished by choosing, for example, b = 2d + 1
+and a = 6d, and noting that κ < 1/50d. Since we are considering g = O(ε50d ), κ is
+eventually less than 1/50d as ε → 0.
+
+5.6   The key estimate for U(1) theory
+Let V be the field obtained from U(1) theory after unitary gauge fixing in Subsection 1.3,
+on the finite box Λ. Note that for any U ∈ U(1),
+
+                                 |1 − U |2 = 2 − 2 Re(U ).                           (5.17)
+
+Together with Lemma 5.3, this shows that probability density of V is proportional to
+e−H(U ) , where
+                             1 X                α2 X
+                  H(U ) := 2       |1 − Up |2 +       |1 − Ue |2 .
+                            2g                  2
+                                    p∈P                    e∈E
+
+The following lemma gives the key estimate for proving Theorem 3.1.
+
+Lemma 5.10. Suppose that α ≥ 2 and αg ≤ 1. Then for any e ∈ E,
+                                               C      C log α
+                              E|1 − Ve |2 ≤    4  2
+                                                    +         ,
+                                              α g       α2
+where C depends only on the dimension d.
+
+Proof. Let Σ′ be the subset of Σ consisting of all U such that |1 − Ue | ≤ α−1 for all
+                                                                                   d
+e. It is easy to see that the normalized Haar measure of Σ′ is ≥ (C1 α)−C2 L (where
+C1 and C2 depend only on d), because the Haar measure on U(1) is just the uniform
+probability measure on the unit circle S 1 . The rest of the proof is exactly like the proof
+of Lemma 5.5.
+
+5.7   Local free field approximation for U(1) theory
+Adopting the same notational conventions as in Lemma 5.6, we have the following result.
+
+
+                                              45
+Lemma 5.11. The probability density function of the random field A, at a point B ∈ RE ,
+is proportional to
+
+                                            α2 g 2 X 2
+                                                                     
+                     1X 2         2 16                          2 4
+              exp −    (Bp + O(g Bp )) −              (Be + O(g Be )) .
+                     2                        2
+                         p∈P                                e∈E
+
+
+Proof. Let P1 : R → S 1 be the map defined in Subsection 5.1. Let ξ := g −1 P1−1 , so
+that Ae = ξ(Ve ). By Lemma 5.3, Corollary 5.2, and the identity (5.17), the probability
+density of A with respect to Lebesgue measure on RE at a point B ∈ RE is proportional
+to
+                                      α2 X
+                                                          Y
+              1 X          −1     2               −1     2          1
+      exp − 2        |1 − ξ (B)p | −        |1 − ξ (B)e |                   .   (5.18)
+             2g                        2                        4 + g 2 Be2
+                 p∈P                         e∈E                        e∈E
+
+Now, note that
+
+                                                  4 − g 2 Be2      4gBe
+                       ξ −1 (Be ) = P1 (gBe ) =         2   2
+                                                              +i             .
+                                                  4 + g Be       4 + g 2 Be2
+
+Let e1 , e2 , e3 , e4 be four edges bounding a plaquette p, in the order described prior
+to the statement of Lemma 5.6. Let Uei := ξ −1 (Bei ) for 1 ≤ i ≤ 4, and let Up :=
+Ue1 Ue2 Ue−1
+           3
+              Ue−14
+                    . Note that by the above formula, we have that for each i,
+
+                                Uei = 1 + igBei + O(g 2 Be4i ).                     (5.19)
+
+Since Uei ∈ U(1), this also shows that
+
+                                Ue−1
+                                  i
+                                     = 1 − igBei + O(g 2 Be4i ).
+
+Thus,
+
+                                 Up = 1 + igBp + O(g 2 Bp16 ).
+
+Together with (5.18) and (5.19), this completes the proof.
+
+5.8     Proof of Theorem 3.1
+Throughout this subsection, C, C1 , C2 , . . . will denote positive constants whose values
+depend only on d, and may change from line to line. Take some M < L and let
+Λ′ := {−M, . . . , M }d . Let E ′ denote the set of oriented nearest-neighbor edges of Λ′
+(not identifying opposite faces), and let ∂E ′ denote the boundary edges. Fix some
+δ0 , δ ∈ (g, 1), with δ0 < δ, to be chosen later. Let E be the event that |1 − Ve | ≤ δ for
+all e ∈ E ′ \ ∂E ′ and |1 − Ve | ≤ δ0 for all e ∈ ∂E ′ . Let ν denote the law of V and ν ′
+denote the law of V conditional on the event E. The following lemma shows that ν and
+ν ′ are close in total variation distance under suitable choices of M and δ (depending on
+α and g).
+
+                                              46
+Lemma 5.12. The total variation distance between ν and ν ′ is bounded above by
+                     CM d         CM d log α CM d−1 CM d−1 log α
+                                +           + 4 2 2 +            ,
+                     α4 g 2 δ 2     α2 δ 2   α g δ0   α2 δ02
+where C depends only on d.
+Proof. This is exactly like the proof of Lemma 5.7, but using Lemma 5.10 instead of
+Lemma 5.5. We omit the details.
+
+    The next lemma gives an equivalent way of expressing the event E in terms of the
+field A.
+Lemma 5.13. The event E happens if and only if for all e ∈ E ′ \ ∂E ′
+                                                  2δ
+                                        |Ae | ≤ √       ,
+                                               g 4 − δ2
+and for all e ∈ ∂E ′ ,
+                                                 2δ0
+                                        |Ae | ≤ p        ,
+                                               g 4 − δ02
+
+Proof. Note that by (5.17), |1 − Ve | ≤ δ if and only if Re(Ve ) ≥ 1 − 12 δ 2 . By (5.1), this
+happens if and only if
+                                                   4δ 2
+                                 |P1−1 (Ve )|2 ≤        .
+                                                 4 − δ2
+Since Ae = g −1 P1−1 (Ve ), this completes the proof.
+                                        ′
+   Take any D = (De )e∈∂E ′ ∈ R∂E . Let γD denote the law of A′ := (Ae )e∈E ′ given that
+E holds and Ae = De for all e ∈ ∂E ′ . Let ζD denote the law of the discrete Proca field
+on Λ′ with boundary condition D and parameter α2 g 2 . The following lemma shows that
+γD and ζD are close in total variation distance under suitable conditions.
+Lemma 5.14. For any boundary condition D satisfying the constraint imposed by E,
+the total variation distance between γD and ζD is bounded above by
+                                                                         2 2
+                         C1 (g 2 + α2 g 4 )(g −1 δ)16 M d + C1 M d e−C2 α δ ,
+
+provided that
+
+                                  M d−1 (αg)(d−6)/2 δ0 δ −1 ≤ C3 ,
+
+where C1 , C2 and C3 are positive constants depending only on d.
+Proof. This proof is an exact copy of the proof of Lemma 5.9, with minor modifications
+at the appropriate locations.
+
+   Given Lemma 5.14, the rest of the proof of Theorem 3.1 goes through exactly as the
+proof of Theorem 3.2, with essentially no changes.
+
+                                                 47
+Acknowledgements
+I thank David Brydges, Erhard Seiler, Steve Shenker, Tom Spencer and Edward Witten
+for many helpful conversations, and the two anonymous referees for a number of excellent
+suggestions. This work was partially supported by NSF grants DMS-2113242 and DMS-
+2153654, and a membership at the Institute for Advanced Study.
+
+
+References
+ [1] J. Aru, C. Garban, and A. Sepúlveda. Percolation for 2D classical Heisenberg model
+     and exit sets of vector valued GFF. arXiv preprint arXiv:2212.06767, 2022.
+
+ [2] T. Balaban. (Higgs)2,3 quantum fields in a finite volume. I. Communications in
+     Mathematical Physics, 85(4):603–626, 1982.
+
+ [3] T. Balaban. (Higgs)2,3 quantum fields in a finite volume. II. Communications in
+     Mathematical Physics, 86(4):555–594, 1982.
+
+ [4] T. Balaban. (Higgs)2,3 quantum fields in a finite volume. III. Communications in
+     Mathematical Physics, 88(3):411–445, 1983.
+
+ [5] T. Balaban. Regularity and decay of lattice Green’s functions. Communications in
+     Mathematical Physics, 89(4):571–597, 1983.
+
+ [6] T. Balaban. Ultraviolet stability of three-dimensional lattice pure gauge field theo-
+     ries. Communications in Mathematical Physics, 102(2):255–275, 1985.
+
+ [7] T. Balaban. Large field renormalization. II. Localization, exponentiation, and
+     bounds for the R operation. Communications in Mathematical Physics, 122(3):
+     355–392, 1989.
+
+ [8] T. Balaban, J. Imbrie, A. Jaffe, and D. Brydges. The mass gap for Higgs models
+     on a unit lattice. Annals of Physics, 158(2):281–319, 1984.
+
+ [9] T. Banks and E. Rabinovici. Finite Temperature Behavior of the Lattice Abelian
+     Higgs Model. Nuclear Physics B, 160:349–379, 1979.
+
+[10] C. Borgs and F. Nill. The phase diagram of the Abelian lattice Higgs model. A
+     review of rigorous results. Journal of Statistical Physics, 47:877–904, 1987.
+
+[11] B. Bringmann and S. Cao. Global well-posedness of the stochastic Abelian-Higgs
+     equations in two dimensions. arXiv preprint arXiv:2403.16878, 2024.
+
+[12] D. Brydges, J. Fröhlich, and E. Seiler. On the construction of quantized gauge
+     fields. I. General results. Annals of Physics, 121(1-2):227–284, 1979.
+
+[13] S. Cao and S. Chatterjee. A state space for 3D Euclidean Yang-Mills theories. arXiv
+     preprint arXiv:2111.12813, 2021.
+
+                                           48
+[14] S. Cao and S. Chatterjee. The Yang-Mills heat flow with random distributional
+     initial data. Communications in Partial Differential Equations, 48(2):209–251, 2023.
+[15] A. Chandra, I. Chevyrev, M. Hairer, and H. Shen. Langevin dynamic for the 2D
+     Yang–Mills measure. Publications Mathématiques de l’IHÉS, 136(1):1–147, 2022.
+[16] A. Chandra, I. Chevyrev, M. Hairer, and H. Shen. Stochastic quantisation of Yang-
+     Mills-Higgs in 3D. arXiv preprint arXiv:2201.03487, 2022.
+[17] I. Chevyrev. Yang–Mills measure on the two-dimensional torus as a random distri-
+     bution. Communications in Mathematical Physics, 372(3):1027–1058, 2019.
+[18] I. Chevyrev. Stochastic quantization of Yang–Mills.       Journal of Mathematical
+     Physics, 63(9), 2022.
+[19] I. Chevyrev and H. Shen. Invariant measure and universality of the 2D Yang–Mills
+     Langevin dynamic. arXiv preprint arXiv:2302.12160, 2023.
+[20] J. Dimock. Ultraviolet regularity for QED in d = 3. Journal of Mathematical
+     Physics, 59(1), 2018.
+[21] J. Dimock. Multiscale block averaging for QED in d = 3. Journal of Mathematical
+     Physics, 61(3), 2020.
+[22] B. K. Driver. Convergence of the U (1)4 lattice gauge theory to its continuum limit.
+     Communications in Mathematical Physics, 110(3):479–501, 1987.
+[23] B. K. Driver. YM2 : Continuum expectations, lattice convergence, and lassos. Com-
+     munications in Mathematical Physics, 123:575–616, 1989.
+[24] D. S. Fine. Quantum Yang–Mills on a Riemann surface. Communications in Math-
+     ematical Physics, 140:321–338, 1991.
+[25] E. Fradkin and S. H. Shenker. Phase diagrams of lattice gauge theories with Higgs
+     fields. Physical Review D, 19(12):3682, 1979.
+[26] J. Ginibre and G. Velo. The free Euclidean massive vector field in the Stückelberg
+     gauge. Annales de l’IHP Physique Théorique, 22(3):257–264, 1975.
+[27] A. Giuliani and S. Ott. Low temperature asymptotic expansion for classical o(n)
+     vector models. arXiv preprint arXiv:2302.07299, 2023.
+[28] J. Glimm and A. Jaffe. Quantum Physics: A Functional Integral Point Of View.
+     Springer-Verlag, New York, second edition, 1987.
+[29] J. Glimm, A. Jaffe, and T. Spencer. A convergent expansion about mean field
+     theory: I. The expansion. Annals of Physics, 101(2):610–630, 1976.
+[30] L. Gross. The free Euclidean Proca and electromagnetic fields. In Report to the
+     Cumberland Lodge Conference on Functional Integration and its Applications, 1974.
+
+                                           49
+[31] L. Gross. Convergence of U (1)3 lattice gauge theory to its continuum limit. Com-
+     munications in Mathematical Physics, 92(2):137–162, 1983.
+
+[32] L. Gross. The Yang-Mills heat equation with finite action in three dimensions.
+     Memoirs of the American Mathematical Society. American Mathematical Society,
+     2022.
+
+[33] L. Gross, C. King, and A. Sengupta. Two dimensional Yang-Mills theory via
+     stochastic differential equations. Annals of Physics, 194(1):65–112, 1989.
+
+[34] A. Jaffe and E. Witten. Quantum Yang–Mills theory. In The millennium prize
+     problems, pages 129–152. Clay Mathematics Institute, Cambridge, MA., 2006.
+
+[35] T. Kennedy and C. King. Spontaneous symmetry breakdown in the abelian Higgs
+     model. Communications in Mathematical Physics, 104(2):327–347, 1986.
+
+[36] T. Lévy. Yang–Mills measure on compact surfaces. Memoirs of the American Math-
+     ematical Society. American Mathematical Soc., 2003.
+
+[37] J. Magnen, V. Rivasseau, and R. Sénéor. Construction of YM4 with an infrared
+     cutoff. Communications in Mathematical Physics, 155:325–383, 1993.
+
+[38] K. Osterwalder and E. Seiler. Gauge field theories on a lattice. Annals of Physics,
+     110(2):440–471, 1978.
+
+[39] E. Seiler. Gauge Theories as a Problem of Constructive Quantum Field Theory and
+     Statistical Mechanics. Springer, Berlin, Heidelberg, 1982.
+
+[40] A. Sengupta. Gauge theory on compact surfaces. Memoirs of the American Mathe-
+     matical Society. American Mathematical Soc., 1997.
+
+[41] H. Shen. Stochastic quantization of an Abelian gauge theory. Communications in
+     Mathematical Physics, 384(3):1445–1512, 2021.
+
+[42] H. Shen, R. Zhu, and X. Zhu. A stochastic analysis approach to lattice Yang–Mills at
+     strong coupling. Communications in Mathematical Physics, 400(2):805–851, 2023.
+
+[43] E. C. G. Stückelberg. Interaction energy in electrodynamics and in the field theory
+     of nuclear forces. Helv. Phys. Acta, 11(3):225, 1938.
+
+
+
+
+                                           50
+

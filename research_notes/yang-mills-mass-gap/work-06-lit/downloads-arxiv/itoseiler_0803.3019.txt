@@ -1,0 +1,744 @@
+                                         Further discussion of Tomboulis’ approach to
+arXiv:0803.3019v1 [hep-th] 20 Mar 2008
+
+
+
+
+                                                   the confinement problem
+                                                                   K. R. Ito ∗
+                                                 Department of Mathematics and Physics
+                                                            Setsunan University
+                                                     Neyagawa, Osaka 572-8508, Japan
+                                                                   E. Seiler †
+                                         Max-Planck Institut für Physik (Werner-Heisenberg-Institut)
+                                                              Föhringer Ring 6
+                                                        D-80805 München, Germany
+
+                                                                          March 20, 2008
+
+
+
+                                                                                Abstract
+
+                                                We discuss in some detail certain gaps and open problems in the re-
+                                                cent paper by E. T. Tomboulis, which claims to give a rigorous proof
+                                                of quark confinement in 4D lattice Yang-Mills theory for all values of
+                                                the bare coupling. We also discuss what would be needed to fill the
+                                                gaps in his proof.
+
+                                                PACS: 05.10.Cc, 11.15.Ha, 12.38.Aw
+                                                Keywords: lattice gauge theory, renormalization group, quark confine-
+                                                ment, Migdal-Kadanoff type
+                                          ∗
+                                              E-mail : ito@mpg.setsunan.ac.jp
+                                          †
+                                              E-mail : ehs@mppmu.mpg.de
+
+
+
+
+                                                                                   1
+1      Introduction
+A paper by E. T. Tomboulis that was posted last year on the arXiv [1] claims
+to present a rigorous proof of quark confinement [2] in 4D lattice gauge the-
+ory. This problem has been fascinating many physicists since the last century
+and still remains an important open problem; in fact, its resolution probably
+would represent a first step towards the solution of one of the millennium
+problems posed by the Clay Mathematics Institute [3]. In a comment posted
+on the arXiv [4] we pointed out that in our opinion the proof in [1] depended
+on a claim which remains to be proved. The purpose of this public comment
+was to prevent confusion in the community about the question whether con-
+finement on the lattice was proven or not. Tomboulis then posted a reply [5]
+on the arXiv stating that the presumed gap found by us was simply due to
+a misunderstanding of his argument.
+We appreciate that Tomboulis gave a concise and clear exposition of the logic
+of his argument in his reply. But we still think that our original criticism
+stands and in this note we try to give a more detailed explanation of the main
+open problems we see in Tomboulis’ approach. We also discuss possible ways
+to complete his proof.
+
+
+2      Tomboulis’ claimed theorem
+To make this note self-contained, we summarize Tomboulis’ notation and his
+arguments with some simplifications:
+
+    1. Λ ⊂ Z4 is a box in Z4 of size L1 × . . . × L4 with center at the origin,
+       where Li = abni , ni >> 1, i = 1, . . . , 4 and a, b are positive integers
+       larger than 1.
+    2. Λ(k) ⊂ Z4 is the box in Z4 of each side length Li b−k obtained from Λ
+       by k steps of the renormalization transformation of Migdal-Kadanoff
+       type (Λ = Λ(0) ). Periodic boundary conditions are employed in all
+       directions of µ = 1, . . . , 4. (actually periodic boundary conditions in
+       the directions of µ = 3, 4 would be enough.)
+                           P
+    3. f ({cj }, U) = 1 + j6=0 cj dj χj (U) where dj is the dimension of the
+       representation χj , and we assume U ∈ G = SU(2). Moreover U =
+
+                                        2
+                 Q
+           Up = b∈∂p Ub for a plaquette p ⊂ Λ which consists of bonds b ∈ ∂p
+           oriented positively with respect to p.
+
+We start with
+                                           
+                        β
+                    exp   χ1/2 (U)         = F0 (0)f ({cj }, U)                                (2.1a)
+                        2
+                                                  X
+                              f ({cj }, U) = 1 +      cj dj χj (U)                             (2.1b)
+                                                                  j6=0
+                                                          Z                   
+                                                                     β
+                                    F0 (0) =                     exp   χ1/2 (U) dU             (2.1c)
+                                                                     2
+where dU is the Haar measure of G = SU(2). We then apply the renor-
+malization group (RG) recursion formulas of Migdal-Kadanoff (MK) type
+[6] with some modifying parameters. If there are no such parameters (the
+standard recursion formula), we have
+
+                       f (n−1) (U) = f ({cj (n − 1)}, U)
+                                          X
+                                   = 1+       cj (n − 1)dj χj (U)
+                                                          j6=0
+
+                                       → f (n) (U) = f ({cj (n)}, U)
+
+where
+                          Z
+     (n)           1                                                                       2
+                                                                                               Y
+ f         (U) =               [ f (n−1) (UU1 )f (n−1) (U1−1 U2 ) · · · f (n−1) (Ub2 ) ]b          dUk
+                 F0 (n)          |                      {z                           }
+                                                                    b2
+                                                                                               (2.2a)
+                  Z                            b2
+                                        2
+     F0 (n) =          [f (n−1) (U)]b dU                                                       (2.2b)
+
+or equivalently
+                                                      2          Fj (n)
+                       cj (n) ≡ (ĉj (n))b =                                                   (2.3a)
+                                                                 F0 (n)
+                                       Z                                            b2
+                                                     (n−1)          b2 χj (U)
+                       Fj (n) =                 [f            (U)]              dU             (2.3b)
+                                                                          dj
+in terms of the coefficients of the character expansions. Then [7]:
+
+                                                          3
+Theorem 2.1 For D ≤ 4 and for G = SU(N) or G = U(N),
+
+                            lim cj (n) = 0               for j 6= 0
+                           n→∞
+
+
+These recursions are just approximate and yield upper bounds for the parti-
+tion functions [1]. Tomboulis [1] then introduces two parameters α ∈ (0, 1]
+and t > 0 and a function h(α, t) ∈ (0, 1], designed so that this transformation
+becomes numerically exact for the partition function:
+
+                     Z         Y
+             Z =         dUΛ         f ({cj }, Up )                                      (2.4a)
+                               p⊂Λ
+                                              Z             Y
+                             h(α,t) |Λ(1) |
+                 = [F0 (1)           ]            dUΛ(1)            f ({c̃j (α)}, Up )   (2.4b)
+                                                           p⊂Λ(1)
+
+            = Z̃1 (c̃(α), t)                                                             (2.4c)
+           Q
+where dUΛ = b∈Λ dUb ,
+                                                           (1)
+                 Z̃1 (c̃(α), t) = [F0 (1)h(α,t) ]|Λ | Z1                                 (2.5a)
+                                  Z            Y
+                           Z1 =      dUΛ(1)         f ({c̃j (α)}, Up )                   (2.5b)
+                                                      p⊂Λ(1)
+                  Q
+and as usual, Up = b∈∂p Ub are plaquette actions defined as the product of
+group elements Ub = U(x,x+eµ ) ∈ G attached to the (oriented) bonds b ∈ Λ.
+Moreover
+
+                          h(α, t) = exp[−t(1 − α)/α]                                     (2.6a)
+                                                (1)
+                           c̃j (α) =          c̃j (α) = αcj (1)                          (2.6b)
+                                              Fj (1)
+                            cj (1) =                 ,                                   (2.6c)
+                                              F0 (1)
+
+(where without loss of generality we have chosen one particular form of the
+function h, as suggested in [1]). Given t > 0, α ∈ [0, 1] is chosen so that the
+above relation becomes exact; thus α has to be considered as a function of t.
+The author of [1] then introduces a vortex sheet V = {v ⊂ Λ} [8, 9] which is
+a collection of plaquettes {v = {x0 + n3 e3 + n4 e4 , x0 + e1 + n3 e3 + n4 e4 , x0 +
+
+                                                  4
+e2 + n3 e3 + n4 e4 , x0 + e1 + e2 + n3 e3 + n4 e4 }, ni = 0, 1, , . . . , Li , (i = 3, 4)}, i.e.
+a plaquette p = (x0 , x0 + e1 , x0 + e1 + e2 , x0 + e2 ) in an x1 − x2 plane and its
+translates along the axis normal to p (say, 3rd and 4th axis). Following [1]
+we define
+                                  Z       Y
+                        (−)
+                      Z      =      dUΛ      f ({cj }, (−1)ν(p) Up )                      (2.7)
+                                                p⊂Λ
+
+where                                          
+                                                     0 if p ∈
+                                                            /V
+                                    ν(p) =                                                 (2.8)
+                                                     1 if p ∈ V
+and then
+                                    Z           Y                 X
+                         (−)
+                     Z          =       dUΛ                (1 +          cj dj χj (Up ))
+                                               p⊂Λ\V              j6=0
+                                        Y            X
+                                    ×         (1 +            (−1)2j cj dj χj (Uq ))       (2.9)
+                                        q⊂V            j6=0
+
+
+Note that the position of the vortex sheet V ⊂ Λ can be freely moved in the
+x1 − x2 plane by gauge invariance.
+                                                       Q        P
+First of all, note that the coefficients of χj (U) in p (1 + j6=0 cj dj χj (Up ))
+and       Y        X                   Y      X
+              (1 +    cj dj χj (Up )) + (1 +      cj dj χj ((−1)ν(p) Up ))
+             p        j6=0                         p             j6=0
+
+are nonnegative. The main claims in [1] are:
+
+Claim 2.1 (1) There exist t, t+ > 0 and functions α and α+ such that
+                             (−)                   (−)          (n)
+                           ZΛ ({cj })    ZΛ(n) ({c̃j (α+ (t+ ))})
+                                       =            (n)
+                            ZΛ ({cj })    ZΛ(n) ({c̃j (α(t))})
+where
+                                     (n)
+                                    c̃j (α(t)) = α(t)cj (n).
+(2) For large n such that {cj (n)} are sufficiently small, there exists a t∗ ≥ 0
+(the same for numerator and denominator!) such that
+                                 (−)                 (−)         (n)
+                               ZΛ ({cj })   Z (n) ({c̃j (α(t∗ ))})
+                                           = Λ        (n)
+                                ZΛ ({cj })  ZΛ(n) ({c̃j (α(t∗ ))})
+
+                                                       5
+If this were correct, the following would be true:
+                         (−)            (−)    (n)
+                       ZΛ ({cj })   Z (n) ({c̃j (α(t))})
+                                   = Λ        (n)
+                        ZΛ ({cj })  ZΛ(n) ({c̃j (α(t))})
+                                                                        (n)
+Since for the (unmodified) Migdal-Kadanoff RG described above, {cj ≥ 0}
+tends to the high temperature fixed point(i.e. {cj (n)} → 0) as n → ∞ if the
+dimension is ≤ 4, whether G is abelian or non-abelian (see the remark below
+and [7]), this would mean strict positivity of ’t Hooft’s string tension and thus
+establish permanent confinement of quarks in the sense of Wilson at least for
+all values of the bare coupling constant [9, 10] in 4 dimensional lattice gauge
+theory, thereby solving part of a longstanding problem in modern physics
+(the missing part, as Tomboulis makes clear, would still be the proof that
+there is a continuum limit in which confinement persists).
+As pointed out in our earlier note [4], this cannot possibly be correct, however,
+since there exists a deconfining transition in 4D lattice gauge theory based
+on abelian gauge groups. But it is meaningful for the future study of the
+confinement problem to ask what is going wrong in reaching this conclusion.
+The original idea to study vortex free energies in order to understand con-
+finement was formulated by Mack and Petkova in [9]. They fix boundary
+variables G∂Λ ≡ {gb ∈ G; b = (x, x + eµ ) ∈ ∂Λ} and take the maximum of
+  (−)
+ZΛ /ZΛ over G∂Λ . On the other hand ’t Hooft’s string tension is defined
+using (twisted) periodic boundary conditions at ∂Λ, see [10]. The following
+are well-known facts:
+
+Theorem 2.2 Define
+                                              (−)
+                                      ZΛ
+                                  F ≡ − log
+                                       ZΛ
+(1) Let G = U(1) or G = SU(2). Then there is a β1 > 0 such that for β < β1
+                              1
+                      lim          F ≤ const exp[−σL1 L2 ]
+                    L3 L4 →∞ L3 L4
+
+(area decay law). σ > 0 is, if chosen maximally, is ’t Hooft’s string tension.
+(2) Let G = U(1). Then there is a β0 < ∞ such that for β > β0
+                                   1               1
+                            lim         F ≥ const
+                         L3 L4 →∞ L3 L4           L1 L2
+(deconfinement).
+
+                                        6
+(1) is a standard result of the convergent high-temperature expansion (see for
+instance [14]). The analogous statement for SU(N) holds with Z (−) replaced
+by Z ω , the partition function twisted by an element ω of the center of SU(N).
+(2) is a variation of the results of [11] and [12] (see [13]).
+                                                                  P
+Remarks 2.1 (1) The introduction of 0 < α ≤ 1 into 1 + j6=0 cj dj χj (U)
+does not violate conditions (positivity, analyticity, class functions etc.) on
+f (n) (v) in [7] since
+                                                                      !
+                  X                                  X
+             1+      αcj dj χj (U) = (1 − α) + α 1 +     cj dj χj (U)
+               j6=0                                            j6=0
+
+
+and 0 < α ≤ 1. Then {cj (n) ≥ 0} tends to 0 as n → ∞ (if r = 1, see Section
+3.3).
+(2) The conjecture raised in [9] is proved rigorously in [10]. Namely ’t Hooft’s
+string tension is smaller than or equal to Wilson’s string tension.
+(3) The center of G = U(1) is again U(1). Then we consider U(p) = cos(θp )
+and Uω (p) = cos(θp + ω) for p ∈ V . Uω (p) = −U(p) for ω = π.
+(4) The argument in [11] uses the Fourier transformation of eβ cos θ and
+Poincaré’s lemma. Since Λ is a torus, Poincaré’s lemma has to be replaced
+by the Hodge decomposition in order to adapt the arguments in [11] or [12].
+See [13] and [14].
+
+
+3     Tomboulis’ Proof revisited
+We now analyze the arguments in [1] in more detail. First, using the fact
+that the partition function Z = ZΛ increases by the Migdal-Kadanoff (MK)
+recursion formula [1], Tomboulis introduces two interpolation parameters α
+(Z increases as α ր 1) and t (the factor [F0 (n)]h(α,t) decreases as t increases).
+Then he claims that there exist functions α(t) and α+ (t) such that
+                                                (1) |
+             ZΛ ({cj }) = [F0 (1)]h(α(t),t)|Λ           ZΛ(1) ({c̃j (α(t))})       (3.1a)
+                                    h(α+ (t),t)|Λ(1) |
+             ZΛ+ ({cj }) = [F0 (1)]                      ZΛ+(1) ({c̃j (α+ (t))})   (3.1b)
+
+where
+                                   1
+                              Z + = (Z + Z (−) )
+                                   2
+                                         7
+and the right hand sides are manifestly independent of t.
+The author of [1] then claims is that there exists a t∗ > 0 such that
+
+                               α(t∗ ) = α+ (t∗ )                        (3.2)
+
+which yields
+                          ZΛ+ ({cj })   ZΛ+(1) ({c̃j })
+                                      =                                 (3.3)
+                          ZΛ ({cj })    ZΛ(1) ({c̃j })
+where
+                               c̃j = c̃j (α(t∗ )).
+
+The procedure is then iterated to produce an analogous relation involving
+the n−th iteration of the MK RG transformation.
+Two arguments are given in [1] for this proof.
+
+ large β region: p.24–p.26, based on the arguments in pages 14,15,22, 23 and
+      Appendix B.
+
+ small β region: p.26–p.27 and Appendix C.
+
+The first argument is used to drive the system to the high-temperature (small
+β) region by the MK recursion formulas, and the second argument depends
+on the implicit function theorem to derive the main claim which yields strict
+positivity of ’t Hooft’s string tension.
+
+
+3.1     Outline of the Proof in [1]
+To understand the proof in in [1], we streamline the arguments in [1] by
+extracting key parts from [1] (some equations are added below by the present
+authors). But before doing so, we have to stress that Tomboulis is modifying
+the MK recursion by introducing a further parameter r ∈ (0, 1] (Eq. (2.19) in
+[1]), which is the source of some serious problems, because any choice r < 1
+it changes the MK RG flow for large β drastically (see below).
+                                                          2
+r is introduced by replacing (2.3a) with cj (n) = ĉj (n)b r (this amounts to
+replacing the b2 convolutions in Eq.(2.2a) by b2 r convolutions).
+
+
+
+                                       8
+     Quotation (I): [page 14]
+               (m)
+            ∂αΛ,h (t, r)      (m)
+                         = v(αΛ,h (t, r), t, r)                          (3.25)
+               ∂t
+     where
+                                 ∂h(α, t)/∂t
+            v(α, t, r) ≡ −                                              (3.26)
+                             ∂h(α, t)
+                                      + AΛ(m) (α, r)
+                               ∂α
+
+with ∂h(α, t)/∂t = −[(1 − α)/α]h(α, t) < 0 and
+
+     with
+                                   1              ∂
+     AΛ(m) (α, r) =                                   log ZΛ(m) ({c̃j (m, α, r)}) > 0
+                          |Λ(m) | log F0U (m) ∂α
+                                                                         (3.27)
+
+     [ page 15] We require that
+
+            δ ′ < αΛ,h (t, r) < 1 − δ                                    (3.30)
+
+     . . . by choosing r to vary, if necessary, away from unity in the
+     domain
+
+            1>r >1−ε                                                    (3.31)
+
+     where 0 < ε << 1 with ε independent of |Λ(m) |. With (3.30) in
+     place, (3.25) and (3.29) imply (Appendix B) that
+
+            ∂
+               αΛ,h (t, r) > η1 (δ) > 0                                  (3.32)
+            ∂t
+     [page 23] by letting the parameter r vary, if necessary, in (3.31).
+     From this, it follows that the analog of (3.32):
+
+          ∂ +
+            α (t, r) > η1+ (δ + ) > 0, . . .                             (4.25)
+          ∂t Λ,h
+     holds . . .
+
+                                           9
+(italics introduced by us for emphasis).
+
+     Quotation (II): [page 25] . . . (5.4), taken at general r, implies
+     that . . .
+                                               
+            +                              1
+          αΛ,h (t, r) − αΛ,h (t, r) ≤ O                       (5.6)
+                                          |Λ1 |
+     . . .. For any given t+
+                           1 , choose t1 in Z̃Λ,h (β, αΛ,h (t1 ), t1 ) so that
+                                 +
+         h(αΛ,h (t1 ), t1 ) = h(αΛ,h (t+     +
+                                       1 ), t1 )                       (5.7)
+     This is clearly always possible by (3.32) and (4.25), and by (5.6).
+
+     [top of page 26] We may now iterate this procedure (n − 1) deci-
+     mation steps . . ., at each step choosing tm and t+
+                                                       m such that
+             (m)                    +(m)
+        h(αΛ,h (tm ), tm ) = h(αΛ,h (t+     +
+                                      m ), tm )                         (5.9)
+     Carrying out . . . one obtains
+                  !                      +(n)
+            ZΛ
+              (−)
+                        2Z̃Λ+(n) (β, h, αΛ,h (t+ ), t+ )
+        1+          =                     (n)
+                                                                        (5.10)
+             ZΛ            Z̃Λ(n) (β, h, α (t), t)
+                                             Λ,h
+
+
+     Quotation (III): [middle of page 26] Next, consider (5.10) rewrit-
+     ten as
+                  !                                  !      (−)
+                                                                                 !
+              (−)
+            ZΛ                     ZΛ+(n−1)               ZΛ(n) ({c̃j (. . .)})
+       1+           =                      (n)
+                                                       1+
+             ZΛ         Z̃ +(n−1) (β, h, αΛ,h(t), t)      Z̃Λ(n) ({c̃j (. . .)})
+                                Λ
+                                                                        (5.13)
+                                                                                 (n)
+     . . .. It is then natural to ask whether there exists a value t = tΛ,h
+     such that
+                         (n)
+        Z̃Λ+(n−1) (β, h, αΛ,h (t), t) = ZΛ+(n−1)                       (5.14)
+                                    (n)            +(n)                        (n)
+     Note that the graphs of αΛ,h (t) and αΛ,h (t) must intersect at tΛ,h .
+     A unique solution to (5.14) indeed exists as shown in Appendix
+     C provided
+        AΛ(n) (α, r) ≥ A+
+                        Λ(n)
+                             (α, r)                                    (5.15)
+
+
+                                            10
+(The above assertion is to be interpreted as affirmative.)
+
+     [near top of page 27] V.1 Consider n successive decimation steps
+     performed according the scheme (4.28). Assume that there is
+     an n0 such that the upper bound coefficients cUj (n) become suffi-
+     ciently small for n > n0 .
+     [Appendix C, page 44] With the notation
+                        1       1
+        Φ+
+         Λn (α) ≡       U
+                                      ln ZΛ+n ({c̃j (n, α)})         (C.5)
+                    ln F0 (n) |Λ(n) |
+     we now define
+     Ψ(λ, t) ≡ h(α(t), t) + (1 − λ)Φ+    +            +              +
+                                    Λn (αh (tI )) + λΦΛn (αh (t)) − ΦΛn−1
+
+                                                                     (C.6)
+     and consider the equation
+        Ψ(λ, t) = 0                                                  (C.7)
+     At λ = 0, eq.(C.7) is solved by setting t = t0 . . .. By the implicit
+     function theorem, if grad Ψ is continuous and ∂Ψ/∂t 6= 0, there
+     exists a branch t(λ) through (0, t0 ) on a . . .. Thus, from (C.8),
+     t(λ) . . . extends to the solution t(1) > t0 .
+
+Quotation (III) is the main result and quotation (II) is used as the bridge to
+reach the main conclusion. The summary of the argument in [1] is:
+
+ (I) If r < 1 − ε then α < 1 − δ < 1 and α+ < 1 − δ < 1. (δ > 0). Thus
+      v = ∂α(t, r)/∂t and v + = ∂α+ (t, r)/∂t are bounded from below by
+      strictly positive constants η1 > 0 and η2 > 0.
+ (II) Since |α+ (t+ ) − α(t)| = O(|Λ1|−1 ), the existence of t1 such that
+                                                   +
+                           h(αΛ,h (t1 ), t1 ) = h(αΛ,h (t+     +
+                                                         1 ), t1 )
+
+     follows by a shift of t. Moreover it says that one can find t = tm suc-
+     cessively to obtain ZΛ+(m) (α+(m) (t+ ))/ZΛ(m) (α(m) (t)). This proves Claim
+     2.1 (1).
+ (III) After some steps, {c̃j (n) ≥ 0} are sufficiently small for j 6= 0 and
+      we can find t = tn such that α(n) (t) = α+(n) (t) by using the implicit
+      function theorem. This leads us to Claim 2.1 (2).
+
+                                         11
+3.2    Problematic parts in the proof
+The previous proof may look perfect, but there must be something missing
+since this proof seems to work even for G = U(1). We mention some prob-
+lematic points:
+
+
+ Problem 1. The existence of tm satisfying (5.9) in [1] or in (II) is not
+     established.
+ Problem 2. The existence of t∗ satisfying
+                                +(n)             (n)
+                              αΛ(n) ,h (t∗ ) = αΛ(n) ,h (t∗ )             (3.4)
+      is not established.
+ Problem 3. The implicit function theorem is used to obtain t(λ) which
+     satisfies Ψ(λ, t) = 0. It is not proven that t(λ) can be extended from
+     t = 0 to t = 1 even if Ψt 6= 0.
+
+First we remark that all these claims depend on the hypothesis that both
+∂α(n) (t)/∂t and ∂α+(n) (t)/∂t are bounded from below by strictly positive
+constants η1 > 0 and η2 > 0 respectively, uniformly in t ∈ R. But this
+cannot be correct without assuming α(t) ≤ 1 − δ (δ > 0) for all t uniformly
+in n or Λ(n) because of the form of h(α, t) = exp[−t(1 − α)/α]. See (I). It is,
+however, very plausible that α is very close to 1 since the original (α = 1)
+MK approximate formulas are very accurate. To ensure those lower bounds,
+the parameter r is introduced. We suspect that this is the origin of the
+contradictions as we explain in the next subsection.
+Secondly we need to find t∗ such that α(t∗ ) = α+ (t∗ ), otherwise we compare
+two different physical systems, which is absolutely meaningless. To do so,
+the author of [1] appeals to the implicit function theorem. But his claim does
+not follow from this theorem directly. We need that the map is contractive
+to ensure that this claim is correct.
+
+
+3.3    The origin of the problems.
+The author of [1] tries to ensure that ∂α/∂t = v and ∂α+ /∂t = v + are
+strictly bounded away from zero, and this is the reason for the introduction
+
+                                        12
+of the parameter r. The derivatives v and v + contain 1 − α in the numerator
+and AΛ(m) in the denominator which may make v and v + small. Here AΛ(m)
+is (almost) equivalent to the derivative of the free energy by the (inverse)
+temperature and is similar to the specific heat, see (3.27) in Quotation (I)
+or in [1]. It is easily seen that AΛ(m) > 0 is bounded from above since
+f ({cj }, U) ≥ 0. So the denominator is not dangerous.
+Thus we have to worry about 1 − α → 0. Since the MK recursion formulas
+are very accurate for large β, α seems to be very close to 1 for large β. (This
+is so even though the MK recursion formulas fail to describe the deconfining
+transition of the U(1) model even for α = r = 1.) For this reason, the
+parameter r ∈ (0, 1] is introduced by eq.(2.19) in [1] so that α < 1 − δ. But
+the price to pay for this is that cj (n) may not converge to 0 (the strong
+coupling fixed point) as n → ∞ !
+                                   2
+As remarked above, cj (n) = ĉj (n)b r means that we replace b2 convolutions in
+(2.2a) by b2 r convolutions. If r is chosen less than 1, the effective dimension
+of the MK recursion formula increases from D = 4 to D ≥ 4:
+                                                2 log r
+                      D =4→D =4−
+                                            2 log b + log r
+see [7, 6]. The choice r = 1 corresponds to the original MK formula and D =
+4 becomes the critical dimension in the sense that the number of convolutions
+(i.e. b2 ) is equal to the number of block plaquettes to be glued together (i.e.
+b2 ).
+If r < 1, the recursion formula drives the system to the weak coupling fixed
+point if β is large and α is close to 1. Namely if r < 1 and β is large, Theorem
+2.1 does not hold and limn→∞ cj (n) 6= 0 in general.
+The following pedagogical example makes this clear: Set f0 (U) = exp[−βθ2 /2],
+where β > 0 and θ ∈ R. This corresponds to (non-compact) abelian lattice
+QED. Then for the choice of r ∈ (0, 1], from (2.2a), we get
+                                                  
+                                              β 2
+                       f0 → fn (θ) = exp − n θ
+                                             2r
+which for r < 1 converges to the weak coupling fixed point (δ(θ) with suit-
+able normalization). If r < 1, the same result will hold for compact U(N)
+and SU(N) lattice gauge theories for large β. This is plausible because in
+this regime the Gaussian approximation is good; it has been confirmed also
+
+                                       13
+numerically by us and [15]. As an illustration we show in the figure the re-
+sults of numerical iteration for G = SU(2) r = 0.9 and α = 1. There is a
+‘critical point’ at β ≈ 4.8: for β ≥ 4.8 the modified MK flow goes to the
+weak coupling fixed point, whereas for β ≤ 4.79 it still flows to the strong
+coupling fixed point.
+
+
+
+
+Figure 1: Evolution of cj /c0 under Tomboulis’ modified MK RG with r = 0.9.
+β = 4.80 (left plot), β = 4.79 (right plot); lines drawn to guide the eye.
+
+It should not be difficult to prove this rigorously. These examples show that
+one has to be very careful if r is chosen < 1: depending on β, r has to be
+chosen close to 1, which in turn will mean that α is close to 1.
+The author of [1] says that “choose r < 1 if necessary . . . ” in several places
+(e.g. 3rd, 16th lines on page 15, 8th line on page 18, 15th line on page 23,
+etc.) Though it is said that “r < 1 is actually irrelevant for G = SU(2)” in
+the 9th line on page 19, r is chosen < 1 throughout the paper. On the other
+hand, to ensure limn→∞ cj (n) = 0, 1 − r will have to be chosen very small
+for large β. But then the required upper bound α(r, t) < 1 − δ becomes very
+subtle.
+So we have two choices:
+
+  1. r < 1. The larger β, the closer to one r will have to be chosen to make
+     sure that the flow goes to the strong coupling fixed point. But then it
+
+                                      14
+     will be very difficult to ensure that α is sufficiently far from 1.
+  2. r = 1. All parameters depend on β and |Λ| in a very subtle way in this
+     case. (But this is sure to fail for G = U(N).)
+
+These subtle points are not addressed in [1].
+Finally there is a problem with proving the existence of a t such that α(t) =
+α+ (t) after sufficiently many iterations of the MK recursion formulas or when
+{cj } are small. To obtain the function t(λ) satisfying Ψ(λ, t) = 0 with
+t(0) = 0, the author of [1] appeals to the implicit function theorem. Since
+                                 h         +       (1)
+                                                                         i
+          log Z + ({cj }) = log F0 (1)h(α (t),t)|Λ | Z1+ ({c̃(α+ (t))})
+                                 h         +        (1)
+                                                                            i
+                          = log F0 (1)h(α (tI ),t)|Λ | Z1+ ({c̃(α+ (tI ))})
+
+by the parametrization invariance ( t-invariance) of the partition function
+(this is the definition of α+ ), we have
+
+            Ψ(λ = 0, t) = h(α(t), t) − h(α+ (tI ), tI )                     (3.5a)
+                                   1
+            Ψ(λ = 1, t) =
+                          log F0 (1)|Λ(1) |
+              h                                          i               
+                         h(α(t),t)|Λ(1) | +                       +
+            × log F0 (1)                 Z1 ({c̃j (α(t))}) − log Z ({cj }) (3.5b)
+
+We assume that the equation Ψ(λ = 0, t) = 0 is solved by t = t0 , and the
+equation Ψ(λ, t) = 0 is our required equation, and we want to know if the
+solution t = t(λ) with t(0) = t0 can be continued to t(1). We have
+                                              Z λ
+                     t(λ) = φ(t)(λ) ≡ t0 +        F (s, t(s))ds     (3.6)
+                                                  0
+                               Ψs (s, t(s))
+               F (s, t(s)) = −                                               (3.7)
+                               Ψt (s, t(s))
+where
+                                              
+                           hα (α, t) + λA+ (α)
+         Ψt (λ, t) = 1 −                         ht (α, t)                  (3.8a)
+                            hα (α, t) + A(α)
+                            1
+         Ψλ (λ, t) =   (1)
+                     |Λ | log F0 (1)
+                                                                        
+                     × log Z1+ ({c̃j (α(t))}) − log Z + ({c̃j (α+ (t)})     (3.8b)
+
+                                       15
+and
+                            1−α                        t
+              ht (α, t) = −       h(α, t), hα (α, t) = 2 h(α, t)       (3.9)
+                              α                       α
+The integral equation t(λ) = φ(t)(λ) can be solved analytically by the iter-
+ations if F (s, t) is bounded in the region. As Tomboulis pointed out in [1],
+A ≥ A+ if {cj ≥ 0} are small and the high-temperature expansion converges.
+But the condition Ψt (λ, t) 6= 0 does not guarantee that t(λ) can be defined
+for all λ. The following example is given by Kanazawa [16]:
+                              Ψ(λ, t) = e−t − 1 + 2λ
+To justify the claim in [1], we need contractivity of the map φ (in a suitable
+set of continuous functions) and to prove it is again not trivial at all.
+
+
+4     Discussion
+To sum up, the paper [1] contains several problematic points which remain to
+be proved or confirmed. It seems that the remaining problems are, however,
+not easy to solve.
+If the conventional wisdom of quark confinement in 4D non-abelian lattice
+gauge theory is correct, the alleged theorem in [1] is certainly very plausible
+and may hold for G = SU(N). But it is again a very subtle problem to show
+the existence of t∗ such that α(t∗ ) = α+ (t∗ ) for a value of r close enough to
+1 to ensure convergence of the MK RG to the strong coupling fixed point.
+The case of G = U(1) highlights this subtlety: For large β and r = 1 such
+a t∗ does not exist, whereas for r < 1 t∗ may exist, but does not imply
+confinement. We think in this note we made clear why it is so subtle to
+establish the existence of t∗ .
+Though the MK RG recursion formulae cannot distinguish non-abelian groups
+from abelian ones, the velocities of the convergences of {cj (n)}∞ j=1/2 to 0 as
+n → ∞ are very different. We are skeptical about the idea that the prob-
+lem of quark confinement can be solved by soft analysis like this, but if the
+MK RG formulas should play a role in a rigorous proof of quark confine-
+ment in lattice gauge theory, these different velocities would certainly have
+to come into play. Presumably the dependence of r and hence α on β and Λ
+must be clarified, but unfortunately it is very difficult to find out what the
+relationship is.
+
+                                       16
+Acknowledgments. We would like to thank Prof. J.Greensite for use-
+ful correspondences concerning Appendix C of [1]. K.R.Ito would like to
+thank Dr.T.Kanazawa of Tokyo University who showed him the example
+for the implicit function theorem, and Prof.T.Yoneya and Prof.H.Suzuki for
+useful discussions and computer simulation data on this problem. K.R.I.’s
+work is financially supported by the Grant-in-Aid for Scientific Research (C)
+17540208 from JSPS.
+
+
+References
+ [1] E. T. Tomboulis, Confinement for all values of the coupling in 4D SU(2)
+     gauge theory, hep-th/0707.2179v1
+ [2] K. Wilson, Confinement of quarks, Phys. Rev. D10 (1975) 2445.
+ [3] A. Jaffe and E. Witten, Quantum Yang-Mills Theory, Clay Mathematics
+     Institute,
+     http://www.claymath.org/millennium/Yang-Mills Theory
+ [4] K. R. Ito and E. Seiler, On the recent paper on quark confinement by
+     Tomboulis, hep-th/0711.4930v1
+ [5] E. T. Tomboulis, Reply to arXiv:0711.4930[hep-th] by Ito and Seiler,
+     hep-th/0712.2620v1
+ [6] A. A. Migdal, Recursion equations in gauge field theories, JETP 69
+     (1975) 810; L. Kadanoff, Notes on Migdal’s recursion formulas, Ann.
+     Phys. 100 (1976) 359.
+ [7] K. R. Ito, Permanent quark confinement in 4D hierarchical lattice gauge
+     theories of Migdal-Kadanoff type, Phys.Rev.Letters 55 (1985) 558.
+ [8] G. ’t Hooft, Nucl. Phys. B138 (1978) 1; B153 (1979) 141.
+ [9] G. Mack and V. B. Petkova, Sufficient condition for confinement of static
+     quarks by a vortex condensation mechanism, Ann. of Physics 123 (1980)
+     117.
+[10] C. Borgs and E. Seiler, Lattice Yang-Mills theory at non-zero tempera-
+     ture and the confinement problem, Commun.Math.Phys. 91 (1983) 329.
+
+                                     17
+[11] J. Fröhlich and T. Spencer, Massless Phases and Symmetry Restorations
+     in Abelian Gauge Theory and Spin System, Commun.Math.Phys. 83
+     (1982) 411.
+
+[12] A. Guth, Existence Proof of a non-confining phase in 4D U(1) lattice
+     gauge theory, Phys. Rev. D21, (1980) 2291.
+
+[13] K. R. Ito and E. Seiler, ’t Hooft’s string tension in Lattice Quantum
+     Electrodynamics, preprint in preparation.
+
+[14] E. Seiler, Lattice Gauge Theory as a Problem of Constructive Quan-
+     tum Field Theory and Statistical Mechanics, Lecture Notes in Physics
+     (Springer Verlag, Heidelberg and New York 1982)
+
+[15] H. Suzuki, Private communication to K. R. Ito.
+
+[16] T. Kanazawa, private communication to K .R. Ito.
+
+
+
+
+                                    18
+

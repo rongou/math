@@ -1,0 +1,4685 @@
+Commun. Math. Phys. 155, 325-383 (1993)
+
+C o m m u n i c a t i o n s IΠ
+
+Mathematical
+Physics
+
+© Springer-Verlag 1993
+
+Construction of YM4 with an Infrared Cutoff
+Jacques Magnen, Vincent Rivasseau and Roland Seneor
+Centre de Physique Theorique, CNRS, UPR14, Ecole Poly technique,
+F-91128 Palaiseau Cedex, France
+Received February 17, 1992; in revised form September 8, 1992
+Abstract. We provide the basis for a rigorous construction of the Schwinger functions
+of the pure SU(2) Yang-Mills field theory in four dimensions (in the trivial topological
+sector) with a fixed infrared cutoff but no ultraviolet cutoff, in a regularized axial
+gauge. The construction exploits the positivity of the axial gauge at large field. For
+small fields, a different gauge, more suited to perturbative computations is used;
+this gauge and the corresponding propagator depends on large background fields
+of lower momenta. The crucial point is to control (in a non-perturbative way) the
+combined effect of the functional integrals over small field regions associated to a
+large background field and of the counterterms which restore the gauge invariance
+broken by the cutoff. We prove that this combined effect is stabilizing if we use cutoffs
+of a certain type in momentum space. We check the validity of the construction by
+showing that Slavnov identities (which express infinitesimal gauge invariance) do
+hold non-perturbatively.
+
+I. Introduction and Outline
+Non-abelian gauge theories form the core of modern high energy physics, and in the
+recent years they have been very important in pure mathematics too. Perhaps the main
+reason for this success lies in the discovery that these theories (at the perturbative
+level) are renormalizable and asymptotically free. Therefore most physicists are
+convinced that the ultraviolet problem in non-abelian gauge theories is well understood
+and void of any surprises. However it remains to substantiate this belief rigorously
+beyond perturbation theory.
+The first rigorous program of study of this problem is the one of Balaban [B]. This
+program defines a sequence of block-spin transformations for the pure Yang-Mills
+theory in a finite volume on the lattice and shows that, as the lattice spacing tends to
+0 and these transformations are iterated many times, the resulting effective action on
+the unit lattice remains bounded. From this result the existence of an ultraviolet limit
+for gauge invariant observables such as "smoothed Wilson loops" should follow, at
+
+326
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+least through a compactness argument using a subsequence of approximations; but
+the limit is not necessarily unique. Clearly this is a point which requires further work.
+Although very impressive, Balaban's work is not easily accessible, partly because the
+use of the lattice regularization is the source of many technical complications and
+partly because the results are scattered over many publications; hence to check the
+consistency of all the arguments is very difficult. Also it does not address the problem
+of constructing the expectation values of products of the field operators in a particular
+gauge (the Schwinger functions), because these are not gauge invariant observables.
+It is true that physical quantities should be gauge invariant. Nevertheless the gauge
+fixed framework is obviously the most convenient for perturbative computations, and
+one can consider in fact that the ultraviolet problem for the Yang-Mills field theory
+is not yet understood until this point is clarified.
+A related program was also undertaken by Federbush [F].
+In this paper we provide another approach to the same problem, by constructing
+the Schwinger functions of the pure SU(2) Yang-Mills field in the axial gauge, with
+an infrared cutoff such as a finite volume box. We outline the construction in a single
+self-contained paper, but it remains admittedly still very complicated and technical.
+It certainly requires some knowledge of constructive theory; we assume familiarity
+of the reader with a reference on the construction of just renormalizable models such
+as [R]. We do not repeat most of the arguments which are already contained there.
+We do not claim to provide here the proofs of convergence of our expansion in all
+detail. However we think that this paper, which summarizes many years of efforts and
+trials on this problem, both provides a detailed outline of these proofs and remains
+relatively short and (hopefully!) readable.
+Beside these remarks our program has in fact a lot in common with the one of
+Balaban. We are indebted to him because his pioneering efforts encouraged us to
+attack this problem; we did not take our technical tools directly in his works, but
+meeting similar difficulties we think we found often very similar solutions. We do not
+use the lattice cutoff but a momentum cutoff of a certain type which breaks gauge
+invariance and requires gauge restoring counterterms which stabilize the field at sizes
+of order λ" 1 . We think that the role of this stabilizing cutoff is quite similar to the role
+played by compactness of integration over the gauge group in Balaban: it provides
+us with the initial information that the field variables in the Lie algebra are of order
+1
+at most λ" . This information by itself is not enough to start perturbation theory,
+but we have found that if we combine it with the positivity of the axial gauge, then
+the field variables in the Lie algebra become of order roughly X~l//2. The fact that
+1 2
+the field is of order roughly λ" / is however true only in probability. To exploit
+this fact we have to make a division of the phase space for the field into small field
+regions and large field regions, and expect that the large field regions are so rare that
+they can be resummed and controlled. This makes an explicit change of the gauge
+possible in the small field regions, and in turn this change of gauge allows the use
+of perturbation theory there (remember that in the axial gauge alone, perturbation
+theory is sick). However because not all couplings between high and low momenta
+are of a form which can be dominated in the technical constructive sense, we have to
+use a background dependent gauge and a background dependent propagator for the
+analysis of the small field perturbative region. The background field at a given scale
+and position is roughly speaking made of all the large fields of lower frequencies
+located at this position.
+
+Construction of YM4 with Infrared Cutoff
+
+327
+
+The use of these background dependent gauge and propagator is a source of
+technical complications for the cluster expansions of constructive theory and it is
+also the source of a new difficulty with the evaluation of the large field regions;
+their functional integral is "renormalized" or "dressed" by their coupling to higher
+momenta small field regions. As could be understood quite intuitively, this coupling
+results in a determinant which reflects the difference in normalization between the
+Gaussian .measure with a given background field, and the ordinary Gaussian measure
+when this background field is 0. One of the main points of this paper is to prove
+that this determinant can be controlled; it turns out that this is true in the case of the
+stabilizing cutoffs that we use.
+As a justification that our construction is correct we show that the Schwinger
+functions that we construct satisfy the Slavnov identities which are the remnant
+of gauge invariance under small gauge transformations at the level of Schwinger
+functions. This is our main result, formulated at the end of Sect. VIII.
+The drawbacks of our approach are that for the moment it is limited to the axial
+gauge (Feynman gauge or similar ones which are Euclidean invariant and convenient
+for perturbative computations, and which we use in the small field regions, cannot be
+used directly at the beginning because of their lack of positivity). Also the stability
+property that we require for our ultraviolet cutoff allows many different cutoffs but
+certainly for the moment rules out many others. It would be nice to understand in a
+deeper way why some cutoffs stabilize the theory and others do not.
+We do not investigate invariance under large gauge transformations and non-trivial
+topological effects such as instantons; also we do not try to remove the infrared cutoff,
+since this would lead to large values of the coupling constant, and presumably to socalled non-perturbative effects corresponding to confinement. These problems are for
+the moment still out of the realm of our constructive methods, especially because
+there is no easy solvable model of these phenomenons around which to expand.
+Concerning the axioms of quantum field theory, we cannot study the complete set
+of Osterwalder-Schrader axioms, also because we do not remove our fixed infrared
+cutoff. However we think that the main axiom, the OS positivity, could be shown to
+hold with some additional work in the following way. It was proved in [L] and [OS]
+that OS positivity holds in the lattice gauge theory relative to the hyperplanes of the
+lattice. We could then use as a first cutoff a lattice cutoff, then use the momentum
+cutoffs of this paper for slicing and analyzing the theory. If we start the slicing at a
+scale quite below the inverse of the lattice spacing we think that the gauge-restoring
+counterterms are close to what they are in the ansatz of this paper. We think that in
+this way OS positivity can be proved.
+In conclusion our statement can be formulated as follows:
+The ultraviolet limit as ρ —>• oo of the Schwinger functions which are the moments
+of the bare measure defined below in (11.77) exists; futhermore these functions in the
+ultraviolet limit satisfy the Slavnov identities (VIII.6) adapted to the particular infrared
+cutoff chosen.
+In this paper we do not provide a detailed proof of this statement but we give
+all the elements necessary to write such a proof, emphasizing those aspects which
+we consider technically the most difficult and original. We think that the writing up
+of such a detailed self-contained proof, which would presumably be several hundred
+pages long, remains an extremely valuable task.
+
+328
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+II. The Starting Ansatz
+A) The Model, Notations
+We consider the pure Yang-Mills theory with an infrared cutoff, which we never
+try to lift. This cutoff may be imposed on the propagator, or we could consider the
+4
+theory on a finite volume with some boundary conditions, or on the sphere 5 , the
+4
+4
+torus A = M /Z or another compact Riemannian fourdimensional manifold. Naive
+infrared regularization breaks gauge invariance, but compactification of space and
+the choice of a particular bundle with fiber G defines an unbroken group of gauge
+transformations. For instance in the case of the torus with the trivial SU(2) bundle,
+the gauge transformation are simply the functions x —> g(x) from M4 to G which are
+periodic with period lattice Z 4 . The momentum space corresponds to discrete Fourier
+analysis on the dual lattice Λ* ~ Z 4 . Moreover the constant fields or the zero mode
+in Fourier space is deleted in all our functional integrals, hence there is no infrared
+problem.
+For the pure SU(2) Yang-Mills theory the vector potential is a field A with
+components Aaμ, μ = 0,1,2,3, a = 1,2,3 with Lorentz (greek) indices and Lie
+algebra (latin) indices (the group is noted SU(2) and the algebra su(2)). We have
+also often to distinguish between the index μ = 0, called the time, and the three
+other indices, called the spatial indices, usually noted m, n, ..., m,n, . . . = 1,2,3.
+Geometrically A is a connection on the considered principal bundle; again in the
+case of the trivial SU(2) bundle one can consider that each Aμ is simply a function
+with values in su(2). Our conventions are those of [IZ], which we recall briefly;
+later to simplify the notations we will forget indices most of the time. We write
+3
+
+A = Σ Aata,
+
+with ta = (iσa/2), where the σ's are the three usual hermitian Pauli
+
+α=l
+
+matrices. With this convention the covariant derivative is Dμ = dμ — λ[A ,.] We
+have Tr tatb = ~ -ψ. The field curvature is:
+, AJ = (d Λ A - λ[A, A]),
+
+(Π.l)
+
+λ being the coupling constant; the second notation is a condensed one in which indices
+are omitted (and dA is the exterior derivative). Remark that in the three dimensional
+su(2) space, the commutator is a wedge product: [A^,A^] = ε^A^A^. The pure
+Yang-Mills action is:
+
+j
+
+l
+
+[J2«uF^
+
+(11.2)
+
+(for e.g. Euclidean canonical metric on the flat torus the raising of "Lorentz" indices
+is trivial so that Fμv = Fμy). To simplify, we define a scalar product (A, B) on
+space time tensors A and B of the same type with values in the Lie algebra, by the
+convention that a trace is taken over all correspondent space time indices and minus a
+trace over group indices, so that it is positive definite with a factor 1/2 in component
+notation. We also write simply A2 for (A,A)9 and with this convention we can write
+the action as ^ / F2. We distinguish between the quadratic, trilinear and quartic pieces
+A
+
+Construction of YM4 with Infrared Cutoff
+
+329
+
+of F 2 , writing:
+F2 = F2 + XF3 + λ 2 F 4 .
+
+(II.3)
+
+This action is invariant under the gauge transformations:
+A ^
+
++
+
+d -
+
+1
+
+(II4)
+
+In what follows these gauge transformations are limited to a particular topological
+sector, for instance the functions from the compact space to G. It is often useful
+to consider the infinitesimal gauge transformations 7 with values in the Lie algebra,
+which are tangent to the gauge transformations, such that g = ε λ 7 ; the corresponding
+formula is:
+where D = d — λ[yl,.] is the covariant derivative. Finally for technical reasons it
+is also useful to introduce infinitesimal gauge transformations which correspond to
+expanding to a finite order in 7 the exponential in (II.4). For instance we are interested
+in the regime where A = \~{l2~ε\ and 7 = λ~ 1//2 ~ ε2 , where εx and ε2 are very small
+and we want to keep all terms not small as Λ —• 0. Then we should define
+Af
+
+= Aμ + DμΊ + λ/2[7, dμΊ].
+
+(IL6)
+
+This "truncated" gauge transformed configuration A1'2 is a polynomial of second
+order in 7 and its derivatives. We could define further expansions of the gauge
+transformations; with these notations, if g = ε λ 7 , we have A9 = A 7 ' 0 0 and
+Our starting point is the Yang-Mills theory in the axial gauge.
+This gauge is defined by the condition
+
+This is a gauge condition that can be imposed in the sense that for any field
+configuration A there is a gauge transformation such that A9 in (II.4) satisfies it;
+indeed we can take
+μ
+
+,
+
+(Π.8)
+
+where the P means a path ordered exponential (limit of a Trotter product of
+exponentials along the path), and the path goes from {O,x}, the point on the
+hyperplane x 0 = 0 to x, hence this path is parallel to the direction 0.
+Remark that such an axial gauge condition a priori is not complete, in the sense that
+even after imposing it there remains a subgroup of the gauge group which acts still
+on the configurations satisfying (II.7), namely the gauge transformations independent
+of x0, the "time coordinate." We do not fix this remaining invariance yet. Remark
+also that (II.7) is not Euclidean invariant, and the corresponding correlation functions
+are therefore not Euclidean invariant. However in principle physical quantities (which
+are gauge invariant and Euclidean covariant observables) can be recovered from the
+gauge fixed theory. Since these observables involve composite operators, they have to
+be renormalized and we do not provide the corresponding constructions in this paper,
+although the task seems accessible to us with our methods.
+
+330
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+The main advantage of the axial gauge condition is that it provides some definite
+positivity. Another advantage (perhaps related...) is that there is no Fadeev-Popov
+determinant in the axial gauge (more precisely it is a constant absorbed in the
+normalization), which is a big simplification.
+Indeed in the axial gauge we have
+
+where the spatial part of F2 is by definition
+
+Fsp = - \jdAxΊxFmnFmn
+A
+
+=\ j
+A
+
+Σ ^
+
+(11.10)
+
+a
+
+and both pieces in (II.9) are obviously positive. Also the piece {Ap^A) is quadratic,
+hence (II.9) looks almost like the usual case of a positive quadratic measure and
+a positive interaction. This is not the case in e.g. the Feynman gauge where the
+interaction is not positive in itself but only when combined to the Gaussian measure.
+We want to have a well defined functional integral to start with. The scale of our
+ultraviolet cutoff is called Mρ, and the ultraviolet limit is when ρ —> oo.
+From standard renormalization group analysis we learn that in order to get a finite
+non-trivial renormalized theory at the unit scale of our finite box, we should use a
+bare coupling constant which has the usual asymptotic behavior with ρ implied by
+asymptotic freedom. Hence a good ansatz for the bare coupling λρ should be:
+λρ
+λ
+
+=
+
+-/? 2 (LogM)ρ + β3/β2logρ
+
++C '
+
+( (ΠΠ Π ))
+
+"
+
+where C is a large constant, and β2 and β3 axe the usual first non-vanishing coefficients
+of the β function, whose numerical value is given in standard textbooks like [IZ].
+Then one hopes that the renormalized coupling constant λ ren , which should be defined
+as the last one in a sequence of effective constants, is finite and arbitrarily small as
+C becomes arbitrarily large (if perturbative renormalization group analysis turns out
+to be correct). Let us define first the tentative effective coupling at scale i as
+(X1)2
+
+(TΓ I ? )
+
+Later (in Sect. V) we will have performed the necessary expansions to compute the
+flow of exact effective coupling constants \% which will be very close to the tentative
+ones.
+The class of ultraviolet cutoffs we consider is defined as follows, r is a fixed
+function which is between 0 and 1, is 1 near 0 and decreases at infinity. For instance
+we take a one variable Cfi° function, monotone decreasing, which is 0 for x > 2
+and is 1 for x < 1 (the monotone decreasing and CQ° character are perhaps not
+essential but it is important that the slices built out of this cutoff by the scaling
+process defined below have good spatial decay; it is also useful (although perhaps not
+absolutely necessary) that they vanish identically at zero momentum, a property which
+we call "good momentum conservation": this property will be used several times
+in our construction when we need to bound contributions which violate momentum
+conservation rules. We will usually not provide the corresponding arguments, referring
+the reader to the last section of [FMRS1] for an example treated in detail.
+
+Construction of YMd
+
+331
+
+with Infrared Cutoff
+
+Then we define our scaled momentum cutoff κQ to be:
+(11.13)
+where K is the following function:
+φ)
+
+= 1 if
+
+\p\ < 1,
+if
+
+Φ) =
+φ)=
+φ)
+
+1/2
+
+if
+
+1 < \p\ < 2 ,
+
+(11.14)
+
+2< |p| < 2 + TΓ
+
+= (l/2)r(\p\-l~η-1) if
+
+where 77 is a small constant. This unusual form, shown in Fig. II. 1 leads to a stabilizing
+AA counterterm whose strength can be made as large as desired and to a stabilizing
+functional integral for large background fields; both effects are obtained by taking η
+sufficiently small as shown in Sect. III.
+
+1/2--
+
+2+η"1
+
+3+ir
+
+Fig. 11.1. The ultraviolet cutoff
+
+We write also
+(11.15)
+
+if
+
+The quadratic form p2Q is not invertible when p0 = 0 and in order to have a good
+t 2
+2 t
+1
+propagator we add and subtract YJ(X l) (A,p K (p)A)
+to the action . We warn the
+i
+
+2 2
+
+2
+
+reader that below we usually write λ p instead of Σ ( λ * ) p V ( p ) which is quite
+ι
+heavy.
+The term added is used to create a well defined positive quadratic form which is
+useful for generating a well defined starting ansatz; also together with the p\ term it
+1
+
+This small term which makes the propagator well defined is harmless since as shown below the
+cutoffs that we later use will generate a term - c X4A4 in the action which can be used to bound
+the bad interaction term
+\2{A,p2A)
+
+332
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+will be used to prove that the field cannot be much larger than λ~1//2 in probability.
+The subtracted piece is treated as an interaction. We define
+(A,C~lA).
+
+(11.16)
+
+For the moment our formal functional integral in the axial gauge without cutoff
+is:
+(l/2)(-F^-(A,p20A)+Σ(λl)2(A,(p2κ\P))A))
+v
+
+J
+
+e
+i
+dμ0,
+(11.17)
+where dμ0 is the normalized Gaussian measure with propagator C o .
+The support of a Gaussian measure such as dμ0 in (11.17) is made of distributions,
+as is well known, and since the multiplication of distributions is illegal, (11.17) is still
+formal. To make sense out of it we have to introduce now a first "fake" ultraviolet
+cutoff of the theory, at a scale MQλ, with ρλ ^> ρ. This will not be the true cutoff
+of the theory but is useful in order to manipulate as soon as possible well defined
+quantities.
+We could write instead of (11.17) the functional measure of the theory as:
+
+(
+
+dμOρι(A)e
+which is proportional to
+
+where dμQρι is the Gaussian measure with propagator C0(p)κρι(p\
+and the sum over
+i in (11.18) stops at ρx, and the Gaussian measure dμaxiSLl and propagators C a x i a l are
+obtained by joining to C o the quadratic piece (A, pi A):
+
+(A,p2A)
+This formula is still formal, because the positive exponential cannot be integrated
+simply with the Gaussian measure dμ0
+(this would give back the ill-defined
+Lebesgue measure). Fortunately this is also not the correct starting point because any
+continuous ultraviolet cutoff really breaks gauge invariance and to check ultimately
+Slavnov identities we have to introduce gauge-variant counterterms to compensate
+these gauge breaking effects of the ultraviolet cutoff. All our construction relies on
+the use of the additional positivity given by these counterterms.
+However these counterterms cannot be computed in perturbation theory in the
+axial gauge (11.18) because the axial gauge is still incompletely fixed in perturbation
+theory. In particular our trick of introducing λ2p2 to create a well defined propagator
+does not allow perturbative computations. It is only a technical trick to extract easily
+a small factor for the large field regions at a later stage where the true ultraviolet
+cutoff and the stabilizing counterterms have been introduced.
+All our perturbative computations will be done in the small field region, in which
+we pass to a particular gauge well suited for perturbation theory, which we call the
+homothetίc gauge. It is defined exactly as the Feynman or Landau gauge but with a
+parameter, called λ in [IZ] and ζ in this paper, which takes a value close to 3/132 .
+This value is chosen so that there is no infinite wave function renormalization; indeed
+More precisely we pass to a background dependent homothetic gauge as discussed below
+
+Construction of YM4 with Infrared Cutoff
+
+333
+
+the one loop wave function renormalization is proportional to 10/3 -h (1 — 1/Q, hence
+vanishes for ζ — 3/13 [IZ]. Taking a value close to 3/13 we can ensure vanishing at
+any given order, hence a finite total wave function renormalization either exactly 0
+or as small as we want (if we want an explicit formula for ζ).
+We want to have an ultraviolet cutoff that gives us simple gauge-breaking effects,
+computable in perturbation theory in the homothetic gauge. An explicit and still
+relatively simple cutoff in the axial gauge will transform in a complicated cutoff in
+this homothetic gauge. Therefore we prefer to impose as our true cutoff a second
+cutoff which has a simple form in the homothetic gauge.
+It is therefore in the way our true ultraviolet cutoff is defined that we incorporate
+the missing piece of information that we are going to use the homothetic gauge when
+the field A is small. This piece of information is critical because we actually compute
+the stabilizing A4 term generated by the ultraviolet cutoff by a one-loop perturbative
+computation made in the homothetic gauge.
+Remark that the stabilizing term which is part of our initial ansatz is used to
+stabilize the theory when the field is large although its value is given by a perturbative
+computation, which seems to require small fields. The ultimate justification of this
+apparent contradiction lies in the fact that it allows to construct the model with
+correct Slavnov identities; but we can add a further comment. Stabilization could not
+be achieved in the large field regions by artificial means such as irrelevant operators
+(A6 and so on) because these operators would not be enhanced correctly at lower
+momenta. In contrast the A4 term has a flow governed by the small field perturbative
+regions, which keeps it in tune with the increasing coupling constant at lower scales,
+and we think that this is the deep reason why its value, computed in the small field
+region, can also be used to stabilize the large field regions.
+The formal formula for passing from the axial gauge to the homothetic gauge is
+obtained by writing
+1 =det[K(A)] / dje-^/Z)^Λ»
+
+}
+
+,
+
+(11.20)
+
+where the determinant is the usual determinant of the Fadeev-Popov operator K(A) =
+dμDμ, with Dμ as in (II.5) (see [IZ]).
+This formula in itself cannot contain any new information. But we will use an
+approximation to (11.20) which amounts no longer to insert 1 but to insert cutoffs,
+hence there is no contradiction.
+Remark that we have written (11.20) in terms of an integration variable 7 which lies
+in the Lie algebra rather than in the Lie group. Indeed it will be easier for us to give
+a well defined analogue of this functional integration on a flat Lie algebra variable,
+using standard techniques of constructive field theory such as Gaussian measures
+perturbed by polynomial interactions.
+7 2
+First we will modify (11.20) by using an approximate gauge transformation A '
+Ί
+3
+instead of A '°° . Also a well defined Gaussian measure with cutoff will be used
+on 7 together with a polynomial which ensures that 7 is small compared to λ " 1
+(so that small fields after gauge transformations remain small) but large compared to
+λ~1//2 (so that for small fields the formula performs its usual job of integrating out
+gauge degrees of freedom and changing the gauge at the price of a Fadeev-Popov
+determinant).
+3
+In fact to have correct renormalization group flows to third order in later sections we have to be
+more cautious and would need something like A 7 ' 1 0 . But the corresponding formulas are just more
+complicated and the use of A1'2 should make clear how they work in a more general case
+
+334
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+Then we will introduce the true ultraviolet cutoff on the transformed field A 7 ' 2 ,
+which as we said is effectively put in the homothetic gauge in the small field region.
+The gauge restoring counterterms can be therefore perturbatively computed in the
+homothetic gauge as we desired. These counterterms are also written in terms of
+A1'2. The combination of cutoff and counterterms is balanced so as to restore Slavnov
+identities.
+There is a problem with the use of an ordinary homothetic gauge, which is that
+some couplings of high momentum fields to low momentum fields are not dominable.
+This and the meaning of dominable is explained in [R], to which we refer the reader
+not familiar with this terminology. This problem can be tackled by using covariant
+derivatives with respect to the low momentum field instead of ordinary derivatives.
+The price to pay is that the homothetic gauge condition has also to be written with
+a covariant derivative in a background field instead of an ordinary one. This makes
+formulas more complicated. The total field is written as the sum of two fields, the one
+associated with the large field regions and the one associated with small field regions.
+The gauge transformation of the total field is divided into a gauge transformation on
+the small field and a rotation on the large field. The background field at a given scale
+is then made of the large field of lower scales. For this reason it is convenient to
+introduce the small/large field decomposition before to give the precise form of the
+ultraviolet cutoff, although it is possible to proceed also in the reverse order, but this
+would require slightly correcting the formulas by an expansion which suppresses the
+unwanted small fields from the background.
+B) The Small Field and Large Field Decomposition
+We want to decide, for a sequence of frequencies M \ i = 1, . . . , ρ and a sequence of
+adapted boxes whether the corresponding fields are smaller or larger than \~ι/2~εK
+This is done by a first expansion. When the field is large, the boxes will be put
+in the so-called large field region and the axial gauge positivity together with the
+stabilizing counterterms, which restore gauge invariance after imposition of the cutoff,
+will provide an associated small factor. This factor is so small that it can be used to
+finance the creation of protection corridors around the large field regions.
+In each box of the small field region the sum of the gradients of the fields of smaller
+frequencies localized in the box is small because of the A4 term and the protection
+corridors around the initial large field region. However for technical reasons it is
+convenient to increase the strength of this effect. This is done by a second expansion;
+the boxes which do not satisfy the strengthened condition give small factors and are
+rejected in the large field region.
+At the end of all these tests, in the remaining small field region where all these
+conditions are satisfied, it will be at last possible to perform the change of gauge
+which brings us to the homothetic gauge.
+We start with the first main test, whether the field A is large or small. The positivity
+will come from the axial propagator C a x i a l . This propagator is very anisotropic, hence
+we need to introduce a corresponding anisotropic momentum decomposition.
+For every value of i = 1, . . . , ρx we introduce an index a with integer values
+between Nτ and i + 1 , where Nt is the integer part of i — | ln(λ*)/ In M\ (this rule seems
+obscure but is introduced because when \p\ is of order Mι we want to decompose
+p0 between \Mι and Mι+ι). The full set of ordered pairs (i,α) is called P, and the
+letter j is used for a typical pair (i, a) of P. On this set we introduce an ordering
+relation, namely we say that jf — (i7, a') < j = (iΊa) iff i' < i or i' — i and a' < a.
+
+Construction of YM4 with Infrared Cutoff
+
+335
+
+For aφ N^ and j = (i, a) we define
+α
+
+Nt
+
+κ'(p) = ^ ' ( p , p 0 ) = ^(p)^ (Po),
+
+(Π.21a)
+
+and for α = iVz we put
+α
+
+ι
+
+K? = «*' (p,p 0 ) = κ (p)κa(p0).
+
+(Π.21b)
+
+In this way we have allowed all values of p0 down to p 0 = 0.
+We extend also formula (11.15) to pair of indices j = (i, α) by setting
+(IL22)
+
+κ3(p) = Σκj'w>
+j'<3
+
+and the frequencies appearing in (11.22) are called the low or background frequencies
+(relative to the pair j).
+We decompose the field in direct space as follows:
+ha
+
+A = J2k
+
+* 4 Ξ ^ ^
+
+P
+
+(11.23)
+
+jEP
+
+(where the tilde means the Fourier transform).
+We introduce also anisotropic lattices D^ for (i, a) G P. The union of these
+lattices is called D. D^ α is the lattice of boxes of side M~ι in the directions 1,2,3
+and of side M~a in the direction 0. It is convenient to take M an integer and these
+boxes as refinements of a fixed lattice at the unit scale.
+In each box Δ e D we write the expansion:
+-^-s)^
+
+e
+
+J
+o
+
+,
+
+(11.25)
+
+where:
+
+where P% = {\\)-£^2.
+The set of boxes in which the error term is chosen in (11.25) is called the kernel of
+the large field region (KLFR). This region will be surrounded by protection corridors
+and enlarged several times, so to have an idea of what is possible, let us announce in
+advance a lemma whose full proof will be completed later in the paper, and give a
+sketch of its proof:
+Lemma ILL To each box of KLFR Π Όι>n we can associate a small factor in the
+functional integral which is e~ ( λ ^ e\for some ε — 0.
+Sketch of proof Let us consider the propagator C a x i a l obtained by combining
+e-(i/2)<A,p0A) t 0 ^ ^ a s m (ji.18). This propagator is multiplied in (11.18) by a positive
+interaction. If we slice the propagator C a x m l (p) according to the partition of unity given
+by the functions ^'(p), we obtain pieces C a x i a l (p) = κJ(p)CaxM(p) which satisfy, for
+any fixed large integer q,
+KM11
+λ
+
+(
+
+\
+
+\1 + \x0 - yo\M<* l +
+
+l
+\x-y\M
+
+(Π.27)
+
+336
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+where Kq is some constant depending on q. This bound is immediate if we use
+integration by parts and the bound
+Λ/f 3i ]\/f a
+M
+
+2a
+
+M
+
+7l/f2i
+3i
+
+a
+
+2ra
+
+r
+
+ι r)
+
+<M M M- λ-W- >M-* - <¥-
+
+if
+
+r=l/2.
+
+M
+
+Remark that the anisotropic nature of C a x i a l leads to different rates of spatial decay
+in the zero component and the spatial component of x — y. This is the reason for
+which we must use rectangular boxes with a double index. Remark also that the
+factor 1/λ in (11.27) means, as announced, that the Gaussian measure corresponding
+to C a x i a l gives for a field A7 a typical size M z λ~ 1 / / 2 , which is large compared to the
+size Mι corresponding to Gaussian integration with the propagator of the homothetic
+gauge, but small compared to the size Mιλ~ι where perturbation theory becomes
+meaningless.
+In theory it might be sufficient to take q in (11.27) equal to 4, so that the propagator
+is summable, but in practice we will take it to be large, e.g. 100, in order to have
+some margin for the convergence of cluster expansions.
+Using the bound (11.27) we can perform a cluster expansion between the rectangular
+boxes of the large field region 4 . Each factor EΔ contains Pi fields which are integrated
+with respect to C a x i a l . As is usual when the spatial decrease of the propagator is
+matched to the shape of the boxes in which the cluster expansion is performed, we
+obtain a product of local factorials in the number of the fields in each box [R].
+Therefore for each box A we have a factor
+
+(\IΓP*KP*(PJ2)\ < e-^~ει/2
+
+(11.28)
+
+if λ* is small enough (such that y/K(Xl)3ε^4
+< 1/e, recalling that Pi = (λ*)~ ε i/ 2 ).
+This is the small factor announced in Lemma ILL However the complete proof of
+Lemma II. 1 is of course more complicated than this sketch; indeed the functional
+integral (11.18) contains the negative factor — F^ which helps in reducing the value
+of the functional integral, but also the positive factor X(A,p2A); it is also incomplete
+because we should add to it both the counterterms required to restore gauge invariance
+and a term coming from the functional integrals over a certain set of small fields
+associated to the large field box A. This last term, a normalizing determinant
+announced in the introduction, comes from the dependence in the background field
+of the Gaussian measure used in the small field regions.
+The stability estimates of Sect. VI then prove that the total weight of the positive
+2
+factor X(A,p A), the counterterms CT [see (11.40)] and the normalizing determinant
+coming form the functional integrals over small field regions associated to any large
+field box is bounded by 1. This really achieves the proof of Lemma II. 1, but we think
+that to state it here may help the reader understand the choice of the factors (Π.25-26)
+and the definition of protection corridors which we introduce later.
+The morale of Lemma II. 1 is that we can associate a small factor not only to any
+box of KLFR but also to a lot of neighboring boxes; first the ordinary neighboring
+boxes in the same slices D7 up to a certain distance, but also boxes which are included
+into or contain a box of KLFR and have neighboring values of their index j . The small
+factor of Lemma II. 1 finances the creation of all these corridors later in this paper
+4
+
+The large field frequency splitting is in fact performed on the field, not on the axial propagator
+[see (11.23)] so that the covariance is not diagonal; this complicates slightly the cluster expansion,
+but the conclusion is the same
+
+Construction of YM4 with Infrared Cutoff
+
+337
+
+provided we respect to golden rule that their width both in space and momentum
+(index) directions be bounded so that this small factor in the (11.28) divided into the
+total number p of boxes in the corridors around a single large field box is still small as
+λ —> 0 (i.e. λ~ ε i / / 2 ^> p). This rule is necessary for the cluster and Mayer expansions
+to converge (see e.g. [DMR] for a simple example of such a situation).
+Let us return to the complete definition of the large field region.
+We need further to know in each box of D whether the sum of the gradient of
+the fields of lower frequencies localized in the box is large or small. To gain a small
+factor we need to create a gap between the scale of the box and the frequencies tested.
+In every box of D we write:
+1
+
+1 = τ(HΔ) - j dsHΛτ'{{\ - s)HΔ),
+
+(Π.29a)
+
+o
+where r is our reference CQ° function and
+
+HΔ = ^ I\(λlΫ~(£ι/6Λ)M-2iVB(Δ,x))p^^
+
+,
+
+(II.29b)
+
+Δ
+
+where Pλi is an even integer close to (λ*)~ ε i / 3 2 ,
+B(Δ,x) =
+
+X4'0*0*i',α' * A
+
+Σ
+AfeD%loi,
+
+(11.29c)
+
+,r{Δ)>r{A')-k{A)
+
+with r(Δ) = (3i + α)/4, and if A G D a:
+Mk{Λ)
+
+=(λίΓei/16.
+
+(11.30)
+
+The large field region is now defined as the set Dj of boxes in which the error term
+of (11.25) is chosen, plus their protection corridors, i.e. the boxes Δ! which intersect
+a box A of Όx and satisfy to (λj) 1 / 1 6 < Mr{A)-r{A>)
+< (λ^Γ 1 / 1 6 , to which we add
+the set D 2 of boxes in which the error term in (II.29a) is chosen, plus a protection
+corridor around them of the same type but with smaller width, i.e. the boxes Δ! which
+intersect some A which belongs to D 2 and satisfy
+1
+
+(λ*) /
+
+128
+
+Δ) r
+
+f)
+
+< M^ - ^
+
+1
+
+< (λ^Γ /
+
+128
+
+.
+
+(11.31)
+
+Before the final bounds are derived, let us again explain in anticipation why the
+boxes with the error terms have a small factor attached to them. The reasoning is
+similar to the sketch of proof of Lemma ILL This is because a VB field of scale i2
+produced at level ix > i2 is evaluated by a factor A~ 1 / 2 M 2 < * < λ ~ 1 / 2 M 2 ϊ l M ~ 2 ( ΐ l ~ i 2 ) .
+The local factorials created by accumulation of many VJ3 factors coming from the
+many boxes of scale ix in the same box of scale i2 are then compensated by the
+M~ 2 ( z i ~* 2 ) factors. The rest of the argument is as in Lemma II. 1, the value of P{i
+being adapted for it to work.
+Finally we want to prepare the formulas better for the small field change of gauges.
+We want that the background field is reduced to the field of the low momentum
+large field regions. Recall that the rationale for introducing this background field and
+a modified homothetic gauge in background field, was that some interaction terms
+between high and low momentum field were not dominable; hence it is necessary to
+
+338
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+absorb them into the propagator. However fields in the small field region are always
+dominable (by the small field condition). Therefore we do not need to put them in the
+background. Furthermore it would be bad to leave them in the background, because
+we want to perform a gauge transformation on the full small field, region and to
+decompose the field into a gauge-transformed small field plus a rotated background
+field.
+The large field region is called LFR = | J Li a. Its complement is the small field
+region SFR =
+
+(J Sia.
+
+We are going to introduce relations between the rectangular
+
+i,αGP
+
+boxes of SFR and LFR. A box A G Si a is called relevant if there exists a box
+A' G Li , such that A C A'. In this case we call the smallest such box Af the
+ancestor of A. If this is not the case the box Z\, called irrelevant, is divided into
+Mι+ι~a boxes of the standard lattice D i ? and we forget about the corresponding
+division of frequencies on p0. This is justified because in these regions the frequencies
+on pQ do not have any cutoff imposed by the presence of large field boxes (recall that
+there cannot be any ultraviolet limitation on p0 because of our definition of protection
+corridors). Since in the small field region an Euclidean invariant propagator is going
+to be introduced, there is therefore no need to keep the decomposition' over a and
+over rectangular boxes. From now on, when we consider a small field region it is
+therefore made of relevant rectangular boxes associated to specific ancestors boxes
+of large field regions with same index i but lower index a, and of ordinary cubes of
+D^. For these cubes A we also define a notion of ancestor. We consider in turn all
+indices i' < i, starting with i1 — % — 1, then %' = i — 2 and so on, and for each such
+value of i' we search for the smallest rectangular box of Lif , containing the cubic
+box A. The first rectangular box found in this way is called the ancestor of A. The
+cubes which have no ancestor are said to be in the main small field region. All the
+small field boxes which have as common ancestor the large field box A' are said to
+form the small field region SFR(Z\;) associated to Δ', or in short the A'-small field
+region.
+Because of the rarity of large field boxes (see Lemma II. 1), the reader should
+imagine that most boxes are small field boxes in the main region, i.e. without ancestors.
+In Sect. IV-VI, it will be shown how the functional integrals corresponding to a Asmall field region give a non-trivial contribution associated to the large field box
+A which has to be bounded in a non-perturbative way. In the next subsection we
+will indeed prepare a background-dependent gauge in the small field region which is
+responsible for this non-trivial effect.
+C) The Modified Homothetic Gauge in the Background Field
+A gauge transformation which acts on the sum of two fields can be decomposed into
+a gauge transformation on the first and a rotation on the second:
+7
+
+7 00
+
+(A + #) '°° = A '
+
+mt
+
++ B ^°°
+
+.
+
+(II.32a)
+
+This is also true for the truncated versions of the gauge transformations introduced
+above:
+7 n
+7 n
+rot7 n
+(A + £ ) ' = A ' + £
+' ,
+(IL32b)
+where the index n means that the gauge transformation for A and the rotation for
+B are truncated at order n. The term BτotΊ is the linear part in B of the gauge
+
+339
+
+transformation BΊ. For example
+(11.32c)
+We decompose the full field A as the sum of the small field As, and the large field
+a
+
+A3(x)=
+
+Σ
+
+Λ^ (x),
+
+B^x) =
+
+Σ
+
+A ^(x),
+
+(11.33)
+
+l
+
+(11.34)
+
+(i,a),ΔeLiίCX,x£Δ
+
+hence A = As + Bt.
+We put together the factors associated to the small field and large field conditions
+as %LFR(^) : SFR is then automatically the complement of LFR.
+The functional measure of the theory is now written as:
+Φo > f f l U)XLFR(^)e
+
+(1/2) (-FS2p-(A,pgA>+Σ(λ*)2(A,(PV(p))A>)
+V
+
+'
+
+(Π.35)
+
+LFR
+
+and we insert now our analogue of the Fadeev-Popov formula (11.20).
+We want that the gauge transformations 7 in (11.20) cover all the small field regions.
+As explained in the outline the scale given by the axial gauge positivity plus the AA
+counterterm is A' = λ~χ/2Mτ. Since we need a small margin to gain some small
+factor in the large field region, the small field region was chosen in (11.26) to be of
+the type A1 < {\\)~ι^2~ειMι. Therefore we use as a measure over 7 a quadratic
+form which gives to 7 at scale i a typical size (λ*)~ ( 1 / 2 + ε 2 ) , where 1 > ε2 > ev
+Hence we choose as propagator
+
+=y^
+i=\
+
+ι=\
+
+where ρ2 <C Qv The Gaussian measure on 7 with covariance ΓQi is called dvρ2{η).
+According to the decomposition (11.15) we can also split in Fourier space 7 as
+£ f (p), 7 2 (p) = ^ 2 (p)7(p) (we do not need the anisotropic indices at this stage
+because the homothetic gauge and the corresponding Fadeev-Popov formula that we
+are going to introduce are perfectly isotropic).
+A Gaussian measure to bound the size of 7 is however not sufficient; for technical
+reasons we need to reinforce its strength by a polynomial of high degree. In order for
+this polynomial to behave at small 7 as a small perturbation of a Gaussian measure so
+that perturbative analysis remains all right, we take this polynomial to give a slightly
+larger size, (λ^)~ ( 1 / / 2 + 2 ε 2 ) , to 7, (still much smaller than Λ" 1 ). Therefore we define
+
+/
+
+dVB2(Ί)e-«WBlA.,BιΛ,2»\
+V((ι)
+,
+(π.37)
+where N is some large integer,
+ζ is the number close to 3/13 defining the homothetic
+gauge, and VB is the covariant derivative in the background field, which is defined
+in the case of our truncated transformations by
+\
+
+^
+
+^
+
+\
+
+%],
+
+(11.38)
+
+340
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+where the star is a convolution in x-space, and for simplification the Fourier transform
+of κ3 ,Kj ... is from now on also noted κ3\κ
+The rotation Aτotn is defined in
+(IL32a-c).
+From now on we warn the reader that most of the time we use simply the notation
+λ instead of λ* and leave to the reader to reconstruct the correct value according to
+the frequency of the fields concerned; for instance in (11.38), λ should be understood
+as λ*. This wil simplify the rather complicated formulas of this section. Similarly we
+omit from now on the explicit dependence in λ* in (II.35-37) etc.
+Kρ2{A) is well defined since it is a functional integral of a bounded polynomial
+interaction with a Gaussian measure with ultraviolet cutoff.
+Then we write instead of (11.18) the functional measure of the theory as:
+
+LFR '
+x
+
+e
+
+\
+
+F
+
+T
+
+/ e-vς/^AVj3tAs,i^,7,z))
+
+(Π 39)
+
+We impose now the true cutoff at a scale MQ with ρ < ρ2 <C ρv To compensate the
+gauge breaking effects of this true cutoff will require some well defined counterterms
+which are computed in Sect. III. For the moment these counterterms are written simply
+
+as CΊρ.
+
+This true cutoff changes the formula (11.39) into
+tLFR(4)β
+LFR'1
+6
+χ
+
+-(ζ/2)(VB(AS)BhΊ,2f
+
+e
+
+CΊρ{AΊa)
+
+e
+
+(1/2) ί-F^-(A,p20A)+Σ^2(A,(p2^(p))
+*
+.
+
+A))
+(Π.40)
+
+It remains to explain what is Kρ ρ in this formula. It is an analogue of Kρ in
+(11.36) but takes into account the addition of the true cutoff at scale ρ to the fake
+protecting cutoff at scale ρ2. However its precise definition is somewhat complicated
+and we want to postpone it for a while, but let us explain at least the guiding idea here.
+We want to have a cutoff of the same scale and shape for the propagator of the A field
+in the homothetic gauge and the propagator of the Fadeev-Popov ghosts. Therefore we
+do not want to use directly the functional integral Kρ (A), which is our analogue of
+the Fadeev-Popov determinant; it would not have the correct cutoff on the ghost field
+propagator. We use the fact that this functional integral tends to the usual FadeevPopov determinant in the limit A —» 0, and we replace it by a different functional
+integral K
+in which the propagator of the ghost field is cut again at scale ρ, this
+time in the way we want for nice perturbative computations. The reader might object
+that therefore we have not inserted really the value 1 as in (11.20), hence the formula
+does not correspond really to the axial gauge starting point. This remark applies also
+to the imposition of the cutoff on A1'2, and indeed we explained already that our
+ansatz contains more than simply the axial gauge ansatz. However the difference
+ρ
+Ql
+between Kρ ρ and Kρ will be made of terms with momenta between M and M .
+They will not affect the validity of Slavnov identities for the final theory, since their
+effect on any fixed scale vanishes in the limit ρ —> oo, hence the replacement of K
+by Kρ
+can be also considered as part of the definition of our ultraviolet cutoff. Let
+us stress that this point is technical; it would be presumably possible to use the cutoff
+
+Construction of YM4 with Infrared Cutoff
+
+341
+
+given by K
+but the computation of the ghost contribution to the gauge breaking
+counterterms, in particular the graph G 4 in Sect. Ill would be more difficult. Since
+the contribution of this graph is much smaller than the contributions of Gλ, G2 or G3
+in Sect. Ill, the conclusions concerning the stability of the ultraviolet cutoff would be
+presumably almost the same. However we prefer to use a complicated redefinition of
+the initial cutoff on the 7 field which is our substitute for the Fadeev-Popov ghosts,
+in order to allow in the next section a simpler perturbative computation of CT^.
+We are going to give later in this section the precise definition of Kρ ρ . This
+definition like most of the ansatz (11.40) is best expressed in terms of A 7 ' 2 , the
+correct variable in (11.40) for a small field. We explain therefore first the change of
+variables which consists in using as a new variable for the main functional integration
+A! = A 7 ' 2 instead of A.
+Remark that this change of variables is one to one, namely it is possible to compute
+directly the initial field A in terms of A', since the transformation A —> A7'2 is
+invertible. The inversion formula exists (also for higher orders approximations to
+true gauge transformations) and is a rational function of 7. (There are also good
+polynomial approximations to the inverse transformation, namely the transformations
+A _• A~ 7 ' n ). For instance, if we write A1 = A 7 ' 2 = T(ry).A + U(n\ with
+T.A = A - λ[A,7] and U = dη + \/2[η,dη\, in su(2) space the matrix of T
+is
+Tabh) = δab-εabcλ%.
+(11.41)
+Its inverse is
+
+d
+
+where H is a small matrix; the transformation A —• A' is therefore inverted by
+A = T-1(A'-U).
+Furthermore the Jacobian of the change of variables associated to a true gauge
+transformation is one, since the linear piece is an inner automorphism. For the
+truncated gauge transformation this is no longer exactly true. For instance for the
+truncated transformation A -* A 7 ' 2 the linear piece is A —> TA, and the Jacobian is
+2
+2
+1
+J(7)Ξ(l + λ 7 Γ .
+Ί2
+The formal Lebesgue measure changes therefore, if A' = A ' as:
+
+J J dA(x) -+ J J dA\x) JJ(1 + λ 2 7 2 (x))- 1 .
+
+(11.43)
+
+X X
+
+X
+
+Since we use Gaussian measures, we have a well defined analogue of this formal
+formula. Let us consider again dμ0 (A) which is the initial normalized Gaussian
+measure with propagator Co
+used to define our functional integral over A. This
+measure can be recomputed exactly in terms of A! = A 7 ' 2 using as a guide the
+following formal manipulations: A = T~ι(Af — t/(7)),
+
+Λ
+
+-
+
+= dμ0
+
+(A')
+
+G ( A
+
+'7)
+
+,
+
+(11.44)
+
+342
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+where G contains correction terms in the difference H between T~ι and Id, and terms
+inEΛ
+
+x e
+
+°' ρ i
+
+">*!
+
+°' ρ i
+
+. (11.45)
+
+Our initial axial field A has only nine scalar components since Ao was identically
+0. We want that the special-gauge field A' contains the usual twelve components.
+7 2
+In fact one should have A'Q = 0 ' = <907 + (λ/2) [7, <907]. But since the change of
+variables 7 —» <907 is not invertible and we need to keep in our formulas a functional
+integration over 7, it is convenient (although not necessary) to create the Af0 field ex
+nihilo by a functional formula which peaks it automatically around the desired value.
+This formula is
+1
+
+= L o, ρ i (7) jdμCQQ^A'Q)F{A^Ί),
+•I"1
+
+(11.46)
+
+J(A'0-d0Ί-l/2λ[Ί,d0Ί})N'
+Δ
+
+,
+
+(Π.47)
+
+f
+
+where N is some large integer and L o is the inverse of the integral in (11.46) so
+that (11.46) is true; it is a slowly varying function of 7 which can be integrated with
+the measure on 7 in (11.37). In this way, since the frequency ρ2 is much smaller
+than ρx the field A'Q coincides very accurately at scale ρ2 with the desired expression
+We write
+A'a = A^2
+r
+
+B[ = B\0^2
+
+(A's)0 = ^
+
+(Bz')0 Ξ 0
+
+(11.48)
+
+x
+
+so that A = A s + B[.
+We obtain:
+
+Jdμ^ρi(A/)duρ2(Ί)χL¥R(A)G(A/Π)e
+LFR
+X
+
+(1/2) (-F s 2 (A)-<A,p A )+X:A<A,(p^(p))A))
+
+\
+
+l
+
+4 ) ,
+
+_
+
+(Π.49)
+
+where now:
+Vβ,
+
+A; = dμ(A's)μ
+
+- 5 j ; λ [ K j * {B[)μ, *? * ( ^ ' s ) μ ] .
+
+(11.50)
+
+3
+
+The operator V 5 / is very important in what follows, because the covariance of
+A's in the small field regions where we will perform most of our analysis is built out
+of it. This operator has of course a spatial index μ which is omitted in (II.49-50);
+we hope that the scalar product in (11.49) is clear; the role played by the factor dμAμ
+in the Landau, Feynman or homothetic gauge condition is now played by the factor
+In this way we have both a functional integral over a twelve component field
+A' and a three component functional integral over 7. In (11.49) it is now the old
+
+Construction of YMA with Infrared Cutoff
+
+343
+
+field A which should be considered a function of A' and 7 through the formula
+A{A',Ί) = T-\Ά
+-U).
+Let us turn now to the precise definition of KQ Q . It is given by an integral over
+a variable which we will call 7' to distinguish it from the variable 7 in (11.50). We
+have first to reexpress Kρ in terms of the new variable A!.
+Instead of using the inverse transformation T~ι we will use the approximate
+inverse transformation so that we have polynomial error terms. More precisely we
+write:
+
+γΓΊ
+
+2
+
++ Rμ(A, 7),
+
+Π*7,2)Π>«(-7),2 + R,^Bί
+
+Bμ =
+
+(Π.51)
+
+7 ) j
+
+(Π
+
+5 2 )
+
+Rμ(A, 7) = X2([Uμ, 7], 7] + (1/2) ίίdμΊ, 7], 7]),
+
+(Π.53)
+
+2
+
+(11.54)
+
+Rμ(A,Ί)
+We have first to express K
+
+= λ [[Aμ,Ί],Ί].
+
+(A) in terms of A' and 7:
+
+f
+,
+)
+=
+J
+dv
+{
+lΊ
+Qi Ί')e
+
+/
+
+(see (11.37) for definition of our notation VB(A, B, 7,2)).
+We can now compute:
+((A's)-^2
+
++ Rμ(A,Ίψ'
+
+2
+
+= (A's)μ + Dμ(A's) • (7' - 7) + Sμ(A's,Ί,Ί'),
+
+Sμ(A', 7,7') = +(λ/2) {[dμ(Ί - 7'), 7'] + [7 - 7', dμl]
+2
+
+O(λ ) = R-
+
+2
+
++ O(λ ),
+
+2
+
+λ[R,7'] - X ([[A'μ,7],7'] + (1/2)[[7,a μ 7],7Ί)
+
+(11.56)
+(11.57)
+(Π.58)
+
+Similarly:
+((S
+
+/ ) r o t - 7 l 2 + fl/yoty ,2 = (^/jioKy-^j + 5-/)
+S' = R!-
+
+2
+
+\[R',j'] - \ [[B', 7], 7'].
+
+(II
+
+5 9 )
+
+(11.60)
+
+We substitute (11.56-60) into (11.55). We find:
+
+Vβ(G4'sΓ7 2 + i y ^ l W Γ " " 7 ' 2 + R'μ(Bι,'γ),Ί',2)
+= dμ[(A's)μ + Dμ(A's) (7' - 7) + Sμ(A's, 7,7')]
+
+3
+
++ Dμ(A's) W - 7) +
+
+Sμ(A's,Ί,7'))]
+
+= ( V Λ B , y - Λ ( K ) μ + Dμ{A's){Ί' - 7)) + S" ,
+where the operators VRB
+
+(11.61)
+
+y _ 7 is defined by
+
+( V f i β , y _ 7 ) μ ^ = δ ^ ' " Σ λ K * (-Bί)^ V " 7 ) l 2 . «J * A1]
+
+(11.62)
+
+344
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+and
+λ
+
+S" = dS-J2
+]
+
+K *S'>κ° * K + D(Af8) (V - 7) + SK,7, V))]
+
+^
+
+^ , 7 , V)]
+
+(Π.63)
+
+i
+Therefore
+/
+
+,y7μ
+= (Vββ,y_7
+
+β
+
+)(7 / - 7)) μ + S") 2
+
+(A's + D(A'S) (7' - 7))) 2 + £(Λ', 7, l"),
+
+(Π.64)
+
+where
+Γ(Λ', 7 , 7 ' ) = 2S"'(V Λ B i 7 ,_ 7 • (A's + D(A'S) (7' - 7))) + (S"f
+
+(11.65)
+
+,
+
+is a small correction term which will be treated as an interaction. (There are some
+implicit summations over μ in the formulas above.)
+With these notations:
+
+χ
+
+e
+
+( C / 2 ) ( V H β ) y _ 7 (Λs+D(As)(7/-7)))2 e-(ζ/2)Σ(A',Ί,Ί')
+
+Let us develop V Λ β y _ 7
+
+^
+
+^ l 6 ^
+
+D. We have
+
+V Λβ , 7 /_ 7 ' O K ) = U{A'a,B[) + m l , B | , y - 7),
+2
+
+f
+
+C^K, B[) = d -
+
+(Π.67)
+j
+
+\d[A s1.] - λ ^ [ ^ * B'u n * 5.],
+
+(11.68)
+
+ί
+
+V(A'S,BΊ, Ί' - 7) = + λ2 £ ) [ « , * [B,',7' - 7], κi * d.]
+3
+2
+
++ λ Σ[Kj
+
+* ( S i ' Γ i ' - \ κ>*\A'a, •]] •
+
+(Π.69)
+
+3
+
+Again we write
+(U + V + VRBn,_Ί • A'sf
+
+= (U + V H B > y _ 7
+
+^ ) 2 + W,
+
+(to simplify these formulas we write them like squares instead of scalar products,
+and we omit the necessary transpositions of operators, which are straightforward).
+Since V is small (with a factor λ 2 ), we can treat Σ + W in the integral over 7' as
+a complicated interaction, and we group together the measure dvρi(ηf) with the main
+ti
+
+2
+
+tτ
+
+quadratic piece (ζ/2)(y — 7, U U(j' - 7)). Again we write U for U U, etc.
+If the measure dvρ2(η') had been translation invariant we would have as a main
+piece a Gaussian integral over 7' — 7. This is not exactly the case, but by our condition
+ε2 > εx it will be approximately true in the small field region and the correction terms
+will be the ones containing powers of Γ~ι,ι Γ being the propagator (11.35) for dv
+
+.
+
+Construction of YM4 with Infrared Cutoff
+
+345
+
+Therefore we define a new Gaussian variable η" which has propagator (ζU2 + Γ~ι)~ι
+and which is defined by:
+
+We define also
+B, 7 /_ 7
+
+/L 2 ; - 7 1
+
+7.
+
+We see that Ω is small as Γ 1 when Γ 1 —> 0. This is the reason for which we
+can treat it as an interaction, and it is here that enters in a key way the fact that our
+explicit Fadeev-Popov averaging formula effectively covers all the small field region,
+where it performs therefore correctly its gauge fixing job.
+Now we obtain, rewriting everything in terms of 7",
+
+x e
+
+-1/2
+
+CU2 + Γ~ι\~1^2 ί
+
+/
+
+Kρ2(A>,7) = (^det <>U +J
+
+j
+
+J
+
+i
+
+dπQi{Ί")
+ί
+
+by completing the square.
+
+(
+K
+
+ι
+
+(A)~
+
+/~Tj2
+
+_ι_ 7^—1 \ 1/2
+
+det-——χ
+
+= (det(l + ζΓU2))ι/2
+
+J
+
+which appears in
+
+is the analogue of the Fadeev-Popov determinant (up to the constant
+
+normalization d e t Γ " 1 ) . In particular if we neglect Γ~ι (which is small as λ 1 / / 2 £ 2 )
+and rewrite det \U\ as a fermionic integral over ghosts, we recover the ordinary ghostghost propagator p2 and the complete ghost-ghost-field coupling at least for fields of
+lower momentum than the momentum of the ghosts. Indeed in this case the total field
+A's + B[ appears in U. This justifies the perturbative computations of the next section.
+Indeed since κJ *B[ has only low frequencies, we have λf^ *B'υ κj *d.] = Xd[κj *
+B[, K? * .], and therefore U(A'8 + B[) = dμ Σ Dμ{κό * (A's + B[) + (1 - Kj) * A'a)κ,U.
+j
+
+We are at last in the position to define Kρ Q . We write A for the ordinary Laplacian
+and
+
+j
+
+~λ (c/i'+r-') ( β [ A ' ] + Σ > i * Bi> ^ * d
+
+A
+
+(d[A's,.] + γ^[Kj * B[, *? * d.]Λ
+s
+
+,
+
+(Π.74)
+
+346
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+and we change this operator into:
+
+Γ-ι)(l-Xκ0(p)
+
+(ζΔ2 + Γ-1)
+
+3
+
+3
+
+We define
+
+In this formula the remaining functional integral is close to one since Σ + W + Ω
+is a small interaction, as explained above. The main piece is the determinant which
+is nothing but the ordinary Fadeev-Popov term. The important fact about this way
+to reimpose a cutoff at scale ρ is that in the small field regime and at zero external
+momenta for Af, the only contribution of Kρρ to the counterterm X4A/4 (see below)
+comes from the ordinary Fadeev-Popov determinant. At this order we obtain therefore
+as only contribution (taking out constant factors, in particular a global power of ζ)
+
+detz\ 2
+V
+
+V
+
+1 -XK (p)Δ-ι(d[A's,.]
+V
+2
+
++ Y][κj*B'ι,κ:ι
+3
+
++ Yjtκ}
+
+- Xκρ(p)Δ~ ίd[A's,.]
+
+*d.]
+
+j
+
+* B[, κ * d.]\ Δ
+
+λ
+= det
+
+I
+
+L
+
+s* J
+
+/ vL 3
+
+ί'
+
+(11.77)
+
+which is the same as the ordinary Fadeev-Popov determinant with a cutoff on the
+ghosts propagator of the desired simple form, and a ghost-ghost-field vertex which is
+the ordinary coupling to the full field A' at least at zero momentum external field A'.
+This proves that the gauge breaking effect associated to this cutoff can be computed
+in the way this is done in the next section.
+
+Construction of YM4 with Infrared Cutoff
+
+347
+
+Let us recapitulate our starting point:
+
+J
+
+LFR
+χ
+
+ι ι
+2 2 f f
+-(l/2)(A',[(κρΓΓ
+-l](p
+-l](p
+)A
+)A)
+
+CΎρ(Af)
+
+e
+
+(1/2)
+
+e
+
+(-F2{A)-{A,p2A)+Σ\2{Aχv2κ\p))A)\
+
+0
+
+)
+
+ρ
+
+i
+
+; 7 ) ,
+
+(11.78)
+
+where K
+is defined by (11.76), and we can fix e.g. TV = 100 in what follows.
+This functional integral is now similar in the first orders of perturbation theory
+to the ordinary functional integral with ultraviolet cutoff κ ρ (p) both on the field and
+ghosts propagator. In these conditions it is easy to compute the counterterms CTρ{A')
+which restore Slavnov identities. We show now how to perform this task.
+
+III. Computation of the Counterterms due to the Ultraviolet Cutoff
+In all this section the collaboration of Feldman is gratefully acknowledged. The main
+result on the stability of certain types of cutoffs was derived with him around 1986;
+there is also an exposition of this result in [S] and [R].
+The computation of the gauge variant counterterms which restore Ward identities
+is made in terms of the field Af. For this computation we can assume that A' = A's
+and B[ = 0. Furthermore in this section we write A for simplicity instead of A!'.
+Our ultraviolet cutoff does not break global SU(2) or Euclidean invariance (small
+Euclidean breaking effects nevertheless occur due to the infrared cutoff; for instance
+in the case of a torus there exist such effects due to the lattice structure of Λ*9 but
+they are tied to the unit scale and do not need counterterms). Therefore the only new
+relevant or marginal operators that we should consider are — ΎτAA,
+(— Tr AμAμ)2,
+2
+(-TrAμ(-Δ)Aμ)
+and -ΊxψμAμ)
+which we abbreviate respectively as A2, A4,
+2
+A(—Δ)A and (dA) (recall the convention that traces are definite negative). This is
+only true for the SU(2) theory, for an SU(iV) theory there would be a longer list of
+operators to consider and the analysis would be more complicated.
+In fact our gauge breaking cutoff also disturbs the magic relation Z2Z4 = Z2
+which relates the multiplicative renormalization of F2, F3 and F 4 in F2 and expresses
+the fact that up to a rescaling of A only the coupling constant Λ is renormalized
+[IZ]. To correct this problem, using the possibility of rescaling A, we need only to
+introduce a single counterterm, for instance of the type F4.
+Therefore the counterterms that we introduce are:
+Ll
+
+e
+
+-aρ J(A4/4l)-bρ J(A2/2l)-cρ J(A(-Δ)A)-dρ J(dA)2-eρ J F4
+=e
+Λ
+A
+A
+A
+A .
+2
+
+The relevant counterterm bρf(A /2)
+
+(ΠI.l)
+
+must be fine tuned exactly to have a
+
+A
+
+renormalized mass which is zero. This is the same problem as fixing the critical bare
+mass in infrared φ\ [FMRS1], [R] and should be solved by a fixed point argument
+as in [R] or using a full renormalization of the two point function (and a one particle
+irreducible analysis) as in [FMRS1]. For the marginal counterterms, an analysis to
+
+348
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+lowest order in perturbation theory is in fact enough for our purpose (because of
+asymptotic freedom, further orders again should give no contributions to finite scales
+in the limit ρ —• oo). We obtain:
+Lemma III.1.
+4
+
+e, = e λ .
+
+(III.2)
+
+Furthermore by choosing the cutoff of the form (11.14) with η small enough (depending
+5
+on the shape of τ), the coefficient a is strictly positive .
+Proof. We recall the Feynman rules for the pure SU(2) gauge theory in a general
+gauge with parameter ζ (the case ζ — 1 corresponds to the Feynman gauge, and
+ζ = oo corresponds to the Landau gauge) [IZ].
+The propagators for the Yang-Mills fields and the ghost fields are respectively:
+ϋ
+
+_ab
+
+(IΠ.3)
+
+p2
+
+The interaction vertices are of three kinds. For simplicity we always forget to
+write the overall multiplication factor (of 2τr) and the δ function which expresses
+momentum conservation which equips them. These three kinds of vertices are then
+pictured in Fig. III. 1.
+
+Fig. III.l. The vertices of pure Yang-Mills.
+
+A field propagator;
+
+a ghost propagator
+
+We concentrate on the computation of the A4 counterterms, which is the most
+interesting, and include also the computation of the A2 counterterm. The other ones
+are less interesting and left to the reader.
+At one loop, which also means at order λ 4 in perturbation theory, there are 4 graphs
+which may contribute to the A4 term. They are pictured in Fig. III.2 and called G 1 ?
+G 2 , G 3 and G 4 . To compute their contribution to the coefficient α, we may assume
+by symmetry that in all four external legs, both the space time and group indices are
+equal to 1.
+
+)CX
+\
+G3
+Fig. III.2. The graphs contributing to A4
+
+a) Computation of Gx. The graph is obtained by applying 4 derivatives —j
+
+on
+
+(jA.γ
+
+(1/21) (-F2/4)2.
+5
+
+The result is 3(d2F2/4)2
+
+where derivatives are taken with respect
+
+It is not clear whether a cutoff for which a would be negative (or zero) is strictly forbidden for
+a constructive analysis. The answer may indeed depend on considering irrelevant counterterms of
+higher order generated by the cutoff, which may stabilize the theory. The analysis woul certainly be
+much more complicated and we will therefore not try to explore this possibility here
+
+Construction of YMΛ with Infrared Cutoff
+
+349
+
+to A\. The only non-vanishing pieces come from the derivatives acting on the
+commutator in F , hence d2F2/4 gives (1/2) ψF)2.
+Moreover we have dF^β — εclb[Abδal
+- A^δβ^, where ε is the usual antisymmetric tensor. But remark that if a — β = 1 the term vanishes. Hence when
+developing the square (1/2) φF)2 the cross terms vanish. Therefore this square gives
+(εclb)2(Abβ)26al,
+β Φ 1. There are now two possible Wick contractions, a sum over
+three values (2, 3 and 4) for β and a sum over 2 values (2 and 3) for b. Collecting
+all factors we obtain a positive coefficient 3.4(3 + 3(l/ζ - l)/2 + 5(1 /ζ - l) 2 /8) =
+d4k
+2
+2 i n fr
+f t h e
+36 + 18(1/C - 1) + 15Q/C - I ) /
+°nt °
+integration / — over the loop
+momentum of Gx.
+b) Computation of G2. We apply 4 derivatives on ( l / 3 ! ) ( - F 2 / 4 ) 3 . The result is
+- 6 ( < 9 2 / F 2 / 4 ) ( < 9 J F 2 / 4 ) 2 , where derivatives are again with respect to A\. The term in
+d2F2/4 is the same as before, hence gives (εclb)2(Abβ)2δal,
+β φ I. But we have now
+two trilinear vertices in dF2/4, hence terms with derivative couplings; remark that a
+partical derivative dμ can be replaced by —ikμ. The computation of this term leads to
+two identical vertices, one which gives εlrnnAμ\[dιArμn
+- dμAψ], and the other with
+ra, n, μ respectively replaced by p, q, λ. In the Wick contraction schemes we can first
+contract to form the line between these two trilinear vertices. Since the two half legs
+of the remaining vertex bear the same index β φ 1, a tedious computation gives that
+the only term compatible with future contractions is (εlπιn)2(A™)2
+[Ak\ -f- k2]. Using
+lmn 2
+2
+2
+Euclidean symmetry, this is equivalent to (ε )
+(A™) [5k ]. Contracting with the
+remaining vertex, we have now as before two possible Wick contractions, a sum over
+three values (2, 3 and 4) for β and a sum over 2 values (2 and 3) for b. Collecting
+all factors we obtain a negative coefficient
+
+-6 2 2\\5k\/kλ -
+
++ Σ kχλ/kUa/ζ-ιf
+μφ\,μφ\
+
+)
+) II
+
+Σ
+
+μφ^μφ\
+
+)\
+
+which is equivalent by Euclidean symmetry to - 9 0 - 45(l/ζ - 1) - 15(1/C — I ) 2 in
+d4k
+front of the integration J —j- over the loop momentum of G2.
+2
+
+4
+
+c) Computation of Gv We apply 4 derivatives on ( l / 4 ! ) ( - F / 4 ) . The result is
+-H<9F2/4)4, where derivatives are again with respect to A\. The term in dF2/4
+gives the same trilinear vertex as before, hence gives εlmnA7μι[dιAμn
+— d A™].
+In the Wick contraction schemes we can first choose one particular leg of vertex
+1 to form a first line between two trilinear vertices. To choose the vertex (2, 3
+and 4) to which this leg contracts gives a factor 3. After this contraction has
+been performed, the line equipped with two not yet contracted fields gives a term
+lmn 2
+2
+2
+2
+( ε ) [2k\(A^) + k μ(A™) - 3/c1/c/iA™A™]. Here we can assume μ φ 1. We
+can now contract once more to create one line between the two remaining vertices,
+and this can be done in all possible ways, hence gives a different term, which is
+lmn 2
+2
+2
+2
+2
+( ε ) [4/c G4p + k μ(A™) - 6kxkμA™A™ + kμkxA™A™l We can assume that
+μ Φ 1 in the first three terms and that μ — X = 1 is excluded in the last one.
+It remains to contract together both expressions. We have as before two possible
+Wick contractions, a sum over three values (2, 3 and 4) for μ and a sum over 2
+
+350
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+values (2 and 3) for m. After collecting all factors and taking into account Euclidean
+d4k
+symmetry to convert it into units of j —^-, we find a final factor in front of the
+integration over the loop momentum of G 3 6(9+ l / 4 + 9 ( l / C - l)/2+5(l/C~ l) 2 /4) =
+55.5 + 27Q/C - 1) + 7.5(1/C - I) 2 .
+d) Computation of G 4 . We apply 4 derivatives on (1/4!) (F.P.)4, where F.P. means
+the Fadeev-Popov term dμήa(Dμη)a,
+with D the covariant derivative. The result is
+Φ\fιaεahιηh)A.
+The combinatoric is easier. We obtain a factor 6 for the Wick contractions, a factor 2 for summations over latin indices and a minus sign corresponding to
+the fermionic loops, which comes from reordering correctly the anticommuting fields
+η and ή. Hence the contribution is —12 k\ in front of the integration over the loop
+momentum of G4. Applying the same conversion rate, we obtain in units of (k2)2 a
+final combinatoric factor of —1.5.
+Remark that when the cutoff is 1 we can all add the terms together and the
+4 coefficients add up to 0. This is a particular case of the famous miracle of
+renormalizability (at one loop...) of four dimensional gauge theories.
+Let us perform now a similar analysis for the A2 counterterm. There are three
+graphs contributing at order λ 2 , pictured in Fig. III.3.
+
+G(
+
+G2
+
+G3
+
+2
+
+Fig. III.3. The graphs contributing to A
+
+The first graph, G[, gives a computation quite similar to that of Gγ. We have
+dd(-F2/4) = -(1/2) (OF)2. Again dFcaβ = εclb[Abβδal - Abaδβι] which is non-zero
+only for α, β φ 1. The cross terms therefore again vanish and we find (εc[b)2
+(Abβ)2δal,
+β φ 1. There are two values for b and three for β. Hence the contribution is
+—6(1 + (1/C — l)/4) in front of the integration over the loop momentum (in units of
+2
+
+l/k ).
+2
+
+2
+
+ΪΎnn
+
+n
+
+Ύ a
+
+2
+
+The second graph, G'2, is given by 99(1/2) (F /4) = {ε A μ[dιA μ - dμA™])
+(which is non-zero only for μ φ 1). The contribution is 2(9k2/k4 + (1/C — 1) i^2μk2 +
+2 2
+6
+k μk f)/k ) = (9/2+6(l/ζ—1)/4) in front of the integration over the loop momentum.
+2
+2
+2
+The last graph, with ghosts, G'3, gives dd(l/2)(F.P.) = (dF.P.) =
+Φxηaεabιηh) .
+There is a minus sign due to the fermion loop (two minus signs due to the rule
+dμ —» — ik compensate; beware that there is a sign mistake in the corresponding
+computation in [R]). The contributions is therefore —2k\/kA = —(1/2) /k2 in front
+of the integration over the loop momentum.
+The result for the (A2/2) term in the region where the ultraviolet cutoff is one is
+obtained by adding all the terms and is —6—6/4(l/C— 1)— l/2+9/2+6/4(l/C— 1) =
+— 2 times the loop integration. Remark that this result is independent of ζ.
+To complete the lemma, we want to study the sign of the A4 counterterm. Let
+us explain why it is important to us. Our strategy is to cancel explicitly the A4
+and A2 contributions due to the gauge breaking character of our ultraviolet cutoff
+by appropriate counterterms. Remark that strictly speaking, only the A2 contribution
+
+Construction of YM4 with Infrared Cutoff
+
+351
+
+diverges as ρ —»• oo and requires a counterterm (for the A4 term the coefficient
+of the divergent piece is 0, as computed above). However this A2 counterterm is
+positive (since the contribution is negative, see the —2 above). This is dangerous for
+stability estimates. We will use the (finite) A4 counterterm to control this dangerous
+A2 term and stabilize the theory. But this requires that we use an ultraviolet cutoff
+such that the A4 counterterm is negative, hence such that the total A4 contribution
+induced by the cutoff is positive. As a consequence of our expansion the leading
+contribution is the one-loop contribution; we want its sign to be positive. We show
+now that this is possible if we start with a cutoff function of a particular shape such
+as (11.14) η being a small constant. This explains at last the curious definition (11.14)
+of our ultraviolet cutoff. Later we will show that this particular shape also leads to a
+stabilizing functional integral associated to a large background field.
+Let κ(p) be the ultraviolet cutoff function in momentum space. Up to now we did
+not take it into account. Remark that since there is one cutoff per propagator the cutoff
+acts differently Gλ, G2, G3 and G 4 . More precisely using the coefficients computed
+in the preceding section, the one loop contribution to the (A4/'24) term is, for a single
+cutoff κρ(p) = κ(pM~ρ) (all our integrals are infrared regularized and "finite" means
+finite as ρ —• oo):
+
+^ | [(36 + 18(1/C - 1) + 7.5(1/C - l ) V 2 ( p M ~ β ) - (90 + 45)1/C - 1)
++ 15(1/C - l)2)κ3(pM~β)
+= 0 Q + finite terms,
+
+l)2)κ4(pM~β)]
+(ΠI.4)
+
++ (54 + 27)1/C - 1) + 7.5(l/ζ -
+
+where the finite terms are finite functions of the particular shape of K and are therefore
+difficult to compute in the general case. However we are going to use a shape such
+as (11.14) in which there is a free parameter η that we can vary, and we will study
+the finite terms in the limit η —» 0. In this case it is easy to analyze the asymptotic
+behavior of the finite terms in (III.4)
+For K defined as in (II. 13-14), the corresponding contribution is indeed:
+
+4
+
+P
+
+2
+
+3
+
+ρ
+
+2
+
+4
+
+ρ
+
++ (54 +27)1/C- l) + 7.5(l/ζ- l) )n (pM~ )]
+
+I5(l/ζ-I) )κ (pM~ )
+
+—f [(36+ 18(1/C- 1) + 7.5(1/C- :
+-(90 + 45)l/C-l)+15(l/C-l) 2 )κ 3 (pM- £ ')
+2
+
++ (54 + 27)l/ζ- l) + 7.5(l/ζ- l) )κ
+
+f
+
+J
+
+4
+
+d*p r36+18(l/C-l) + 7.5(l/C-l)
+4
+
+P [
+
+2
+
+4
+
+2<\p\M-β<2+η~ι
+
+9O + 45(1/C-1)+15(1/C-D 2 + 54 + 27(l/C- 1) + 7.5(1/C- D21
+8
+16
+
+(
+
+m
+
+352
+
+J. Magnen, V. Rivasseau, and R. Sέneor
+2
+
+As a consequence the one loop (A /24) contribution behaves as
+2
+
+'36 + 18(l/ζ - 1) + 7.5Q/C - I) ) _ 90 + 45(l/C - 1) + 15(l/ζ - I)
+8
+
+2
+
+l)2
+
++ l^^Lll^
+
+-' ' ' " ^ / »
+\ ( _ i n η ) + finite terms
+16
+)
+2
+5 12
+2
+= 9/8(1 + (1/C - I / + / ( ! / C - !) ) I Inr l + finite terms,
+
+(III.6)
+
+where "finite terms" now means terms which are uniformly bounded both as ρ tends
+to +oo and η tends to 0. The polynomial 1 + (l/ζ - 1)2 + (5/12) (1/C - I) 2 is always
+positive and greater than 17/20. Since (17/20) (9/8) > 1/2, taking η small enough
+(depending on the details of our cutoff, which are responsible for the particular value
+of the finite terms) we can always achieve our goal of a positive total A4 contribution,
+hence of a negative stabilizing counterterm, with value at least
+-(\/2)J(A4/24)\\nη\
+e
+Λ
+.
+
+(III.7)
+
+Remark that the coefficient of this stabilizing term can be made as large as we want,
+if η is small enough.
+
+IV. The Propagators for Large and Small Fields
+Let us recall our starting point:
+-
+
+f
+
+')dvρ2(Ί)χLFR(A)G(A ,Ί)e
+]Γ / dμo(A')
+SFR ^
+2
+
+χ
+
+p )A'
+-(\/2){Af,[{κρΓλ-\}{p2)A')
+
+e
+
+(1/2)
+
+CΊρ(A')
+
+e
+
+( - F h A ) - { l l
+
+2
+
+2
+
+l
+
+This starting point is clearly well defined because we have both finite volume and
+ultraviolet cutoff on each of the fields involved. Hence the sample fields are smooth.
+4
+Furthermore for large fields A! the leading terms are the F4 term and the (A') term
+in CT ρ , which are respectively positive and positive definite. The 7 integrals are also
+convergent at large 7 thanks to the protecting term in 7 1 0 0 . Remark however that it
+is only for fields of order λ" 1 that the {A')4 term provides convergence, so this term
+alone does not confine the field in the true perturbative region (A' <^ λ " 1 ) . It is only
+the combination of this term with the axial gauge positivity which does this. Our goal
+in this section is to manipulate the complicated expression (IV.l) in order to extract
+the Gaussian pieces which are essential for our analysis and to combine them with
+the (fake) measure dμ0 (which is used mainly as a substitute for the non-existence of
+a continuum Lebesgue functional measure). These essential pieces are all contained
+in the Yang-Mills action. We use a rather complicated symmetric way to extract them
+in order to preserve positivity as much as possible (positivity is indeed essential for
+constructive estimates).
+
+Construction of YM4 with Infrared Cutoff
+
+353
+
+The Yang-Mills action is invariant under exact gauge transformations. However
+if we use truncated transformations, i.e. such as A! = AΊ'2 the action is not exactly
+invariant, but the difference is a complicated polynomial with at least two powers of λ:
+
+F2p(A) + (AyP2A) = F\Af) + M(Λ 7),
+
+M(A, 7) = O(λ 2 ).
+
+Our goal is to perform a multiscale analysis of the theory and we stop at this
+point to explain further why we need to pay some special attention to some vertices
+in (IV. 1) which are called non-dominable. The main problem when one tries such a
+multiscale expansion is that some low momentum fields derived by cluster expansions
+at a certain scale have to be bounded using the stability of an effective potential in the
+interaction, otherwise (for instance if they are integrated with respect to the Gaussian
+measure) they give rise to divergent factorials which are a remnant of the divergence
+of perturbation theory [R]. The interaction vertices created by the various error terms
+of Sect. II [or by formula (IV.2)] correspond to factors such that, when the low
+momentum fields A's are bounded using the small field condition, the low momentum
+fields B[ are bounded using the (B[)A counterterm, and the low momentum 7 fields are
+bounded using the 7 1 0 0 term in (IV. 1), a small factor remains. We have therefore to
+examine the vertices which come from F2{A') in (IV.2). If we simplify the situation
+by considering that we have two fields, A and B, where A is high momentum and B
+low momentum, the vertices with only one high momentum field can be eliminated
+because they violate momentum conservation; the other vertices which couple A to
+B have at most two A fields. When the B field is of the small field type Ars, there is
+never any domination problem, because the small field condition itself can be used to
+dominate the field, and a small factor remains (because the size of the field at which
+no small factor remains is λ " 1 and the small field condition acts well before that size).
+Hence we conclude that only couplings with low momentum large fields can be
+non-dominable. Such fields are called background fields. (This is the reason for which
+we use the same generic letter B (as in background) both for low momentum fields
+and for large fields.) Let us consider two such background fields; if they occur in the
+form of a commutator, there is no problem because the decoupled effective action for
+the B field contains a commutator squared [in F4(B)] and the situation is therefore
+4
+analogous to that of a positive polynomial coupling such as φ (see e.g. [R]). If there
+is a single B field with a partial derivative acting on it, there is still no problem.
+The small factor then comes from the fact that B is of a much lower frequency than
+A, hence the derivative gives a small factor compared to the initial scale of A (also
+called the localization scale). This small factor is in turn related to the gap between
+the frequencies of A and B, hence related to the creation of protection corridors (see
+Sect. II.B).
+Therefore we can conclude that the only vertices which are not dominable are
+the ones with one or two large B fields coming both from a commutator of the
+type [A, B]. These are the only remaining possibilities as far as the vertices of F2
+are concerned. Since such vertices cannot be treated as interaction, the only other
+possibility that remains is to put them in the measure for A with respect to which the
+cluster expansion is performed. It is very fortunate indeed that this operation gives a
+Gaussian measure, albeit a independent one; were it not the case we could not do
+anything because up to now Gaussian functional integrals are the only ones that we
+know how to perform explicitly. In fact the corresponding measure on A is just similar
+to F2(A) [see (II.3)], but with ordinary derivatives replaced by covariant derivatives
+in the background field.
+
+354
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+Furthermore if we return to (IV. 1) we remark that it contains also the analogue of
+the Fadeev-Popov determinant (the term K~ιρ2), which up to small correction terms
+is equal to the determinant (11.76). This determinant can be written in the usual way
+as an integral over anticommuting ghosts; this is only a formal trick which is useful
+to summarize the rules of perturbation theory. We realize then that there are two
+types of vertices coupling the ghosts to the field, namely the ordinary vertex coupling
+ghosts to A's, which is the small field, and new vertices which couple the ghosts
+fields of a given frequency to the sum of the large fields B[ of lower frequencies;
+these new vertices are the direct remnant of the fact that we used a gauge condition
+which depends on the large background field. If we consider the usual multiscale
+analysis of the theory we have to give special attention to the vertices which couple
+different scales and are not dominable. By Pauli principle, low momentum ghosts
+fields are dominable [R]; their functional integration gives a determinant which can
+be evaluated without any factorial effect. Low momentum fields of the type A's can
+be dominated using the small field condition; hence we conclude that the only nondominable vertices coming from the Fadeev-Popov determinant are the ones which
+contain two high momentum ghosts and one B{ field. Together with the free measure
+on the ghosts which is the Laplacian in (11.76) these vertices form an object which
+cannot be expanded in perturbation theory. The corresponding functional integral
+compared to the functional integral when the low momentum field B[ is absent gives
+a quotient of determinants. This quotient for a constant background field B is exactly
+the same as the normalized functional integral over ghosts of the ordinary FadeevPopov determinant of this constant background field B (indeed the position of the d
+operator in (11.76) relative to B is then irrelevant since dB = 0 for a low momentum
+field).
+The conclusion of this discussion is that we have to use background dependent
+propagators both for the field A! and for the ghosts. Only large low momentum fields
+need to be considered as background. The normalization of the Gaussian measures
+with background field gives a factor which can be associated to the large field regions.
+This factor will be called the large field dressing factor. It must correspond in [Ba9]
+to the problem of renormalizing the large field regions. A nonperturbative evaluation
+of this factor is crucial in proving that the total weight of the functional integrals over
+these large field regions is small compared to the weight of the small field regions,
+hence to complete the rigorous version of the sketchy Lemma ILL
+We start now to implement this program of extracting the desired Gaussian
+measures with background fields from the functional integral (IV. 1).
+We want to group together the pieces which involve VB/ in the Yang-Mills action
+with the gauge condition in (IV. 1) in order to obtain a Gaussian factor
+
+We write for simplicity —ΔBt instead of V β /
+
+V β /. This Gaussian piece is exactly
+
+the analogue of the homothetic gauge Gaussian measure on A's but with background
+field B[.
+The Yang-Mills action is therefore decomposed as:
+Fμv(A's
+
++ B'ι) = Dμ{B[) • (A'χ
+
+- DV(B[) • (A's)μ - \[(A'β)μ, (A'χ]
+
++
+
+Fμv(B[)
+
+= (V B | O μ K) I / -(V B /) I / (A' β ) ί t
+- λ[(A's)μ, (A'χ] + F(B[)
+
++ Gμv{B[, A'J,
+
+(IVA)
+
+Construction of YMA with Infrared Cutoff
+
+355
+
+,ΛA'*> β ί) = ~ ( Σ λ[(1 ~ ^ * ( S ' V ^ * (A*M - 0* ~* ") )
+
+G
+μ
+
+(IV.5)
+
+We introduce also a protection corridor around LFR and call ELFR (extended large
+field region) the region LFR plus its corridor. The region complementary to ELFR,
+called the core small field region CSFR is contained in SFR and protected from LFR
+by the corridor (see Fig. IV. 1). The region ELFR-LFR is called the boundary region
+BR. Returning to the definitions of Sect. II we see that roughly speaking Afs lives on
+SFR and B[ leaves on LFR; in particular B[ is heavily suppressed in CSFR. This
+allows us to extract in these regions the correct pieces that we want to join to dμ0,
+namely in CSFR the piece to create the propagator with covariance (ΔB,)~ι
+on A's
+and in LFR the piece {B'^p^B'j) to create the propagator C a x i a l .
+
+CSFR
+
+Fig. IV.l. The small and large field regions
+
+In the boundary region BR it is enough to keep the initial measure dμ0 and to
+remark that F 2 , which is treated as an interaction, remains positive. This gives a
+bad normalization to the boxes of this boundary (of the order of λ~ O ( 1 ) per such
+box), which is compensated by the excellent small factor for the boxes of LFR (see
+ε
+Lemma II. 1) if the width of the protection corridors is in λ~ with ε very small. For
+a simple example of how to treat such normalization effects we refer e.g. to [DMR].
+Now we decompose F2 in three pieces in a way which respects the positivity of
+each piece:
+F\Ά)
+
+= F2(A')csm
+
++ F2(A')LFR
+
++ F2(A%R ,
+
+(IV.6)
+
+Σ FμΛ
+
+Σ
+Σ
+More generally an index like CSFR, LFR, BR etc. is a short notation for a
+decomposition of the type (IV.6-9).
+
+356
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+In this decomposition we substitute the value (IV.4) of Fμu in terms of Afs,B{.
+Furthermore we want to replace the background field B[ by a background field B[
+which is piecewise constant and corresponds to the average of B[ on the box A
+appearing in the decomposition (IV.7-9). The constant value B[ in such a box A
+is noted B[ Δ when necessary. A difference term such as B[ — —— j B[, where the
+box A is the one appearing in (IV.7-9) is noted δB[. Such terms can be treated as
+interaction and are dominable, since we can rewrite them as integrals of gradients
+applied on B[\ using (II.29a-c) these gradients are bounded. Therefore we write:
+<&B()μ (A'χ
+
+F\A\m
+
+- (Vβ,),,(A' s ) μ ) 2 CSFR + H(A'ΰ, B[),
+
+(IV. 10)
+
++ K(A'S, B\),
+
+(W.I 1)
+
+= {(BIPIBI))^
+
+where H and K, which are localized respectively in CSFR and LFR will be treated
+as small interactions. One has:
+H = (terms with at least one G, one
+
+Fμv{A's),
+
+one commutator [A's, A's] or one difference δBl)CSFR
+K
+
+= (^spί^ίMcLFR + (
+
+termS W i t h
+
+at leaSt 0Πe
+
+,
+
+(IV. 12)
+;
+
+( V β j V K ) , ~ (V β /),(A s ) μ ,
+
+one G or one commutator [A's, A'S])LΈR .
+
+(IV. 13)
+
+(We used the fact that (B't)0 = 0 to replace F%^(B[) by {B'vp^B[).)
+We want now to extract the fact that the gauge condition in (V β / A's)2 is almost
+equal to the desired one (V^/ ^S)CSFR Again to respect positivity we decompose
+the gauge condition as:
+
+(V B ,
+
+A'f = ( V s , A'sfcsm + ( V B { A's)2ELm
+
++ J,
+
+(IV. 14)
+
+where J is a term localized in CSFR containing at least one difference δB[. Finally
+we use the fraction of the gauge condition localized in CSFR to write:
+
+C(V B /
+
+A'S)2CSFR
+
+In this formula let us explain what are AB and L. Let us introduce the "homothetic"
+Laplace operator _/\ h o m o t h e t l c which in Fourier space is simply p2δμι/ — (1 — ζ)pμpu\
+its inverse is l/p2(δμy — (1 - ζ~ι)pμpu/p2)Then the operator AB in (IV.15) can
+be thought of as the analogue of _ / i h o m o t h e t l c but with covariant derivatives in the
+background field instead of ordinary ones. More precisely it is defined by
+
+Σ
+
+Σ
+j
+
+ΔB,J,Δ
+
+Δ
+
+B,J,Δ>
+
+Z^
+
+Ξ
+
++ (C -
+
+^
+
+This operator is clearly positive but not strictly positive (in the Appendix, bounds
+are given in the case of a constant background field).
+
+Construction of YM4 with Infrared Cutoff
+
+357
+
+Finally L in (IV. 15) is a correction term which is treated as an interaction. This
+term contains indeed either derivatives acting on B[ or commutators of the background
+field [A[ ,A!lv\ which are dominable as explained above. Indeed usually when one
+2
+combines the quadratic piece Σ Σ ( ^ μ ^ J ~ ΦμAv)(duAμ)
+coming from F2 with
+μ
+
+v
+
+the homothetic gauge condition ζί ΣdμAμ\
+\ μ
+
+(ΣduAΛ
+
+) V v
+
+one needs an integration
+)
+
+by parts, so that the gauge condition combines with the term with the minus sign,
+2
+leaving the term Σ Σ ( 9 μ ^ ) + (C - ^)ΈΈΦμK)ΦuAμ)
+which corresponds to
+μ
+
+v
+
+μ
+
+v
+
+the homothetic propagator l/p2(δμι/ — (1 - ζ~ι)pμpu/p2)* In our case this integration
+by parts is no longer exact for two reasons. First the partial derivatives are replaced
+by covariant derivatives. However if the background field is constant the reader can
+check that at least for su(2) the formula of integration by parts is still true up to a
+term proportional to [A[ ,A[ J [A'sμ,Afsv\.
+The fact that the field B[ is piecewise
+constant then gives an error term containing derivatives of this field.
+We want to use this Gaussian measure to perform a multiscale cluster expansion.
+The units corresponding to this expansion are roughly speading small field cubes and
+blocks of large field cubes. The fact that the propagator corresponding to joining
+the quadratic form (IV. 16) to the "fake" measure dμ0 is not translation invariant
+forces us to use an expansion more complicated than usual, inspired by random path
+expansions used for propagators with boundary conditions such as Dirichlet, in which
+one writes the propagator as a product of a regular translation invariant operator for
+which spatial decay is easy to prove, a "first hitting time" to the boundary and then
+a messy non-translation invariant piece.
+V. The Expansion
+A) The Preparation of the Propagator
+We want to perform a multiscale cluster expansion, i.e. starting from the propagator
+Δβl we have to distinguish momentum slices with index j = ρ,ρ— 1, . . . , 1. Recall
+that by our convention operators such as ΔB are the analogues of minus Laplacians, so
+that they are of positive type. (This convention saves a lot of minus signs). The main
+problem is the fact that Δ~^ is not translation invariant, due to the presence of large
+field regions and their associated background fields. We shall introduce a modified
+version of this propagator Δ^1 which is better suited for a cluster expansion. The
+large field region ELFR is first divided into connected components Eλ,E2, . . . , En,
+where a connected component means a maximal set of boxes of LFR belonging to
+a connected component (in the ordinary sense!) of ELFR. Therefore two boxes of
+Ei are connected if they are close enough, and between the Eτ9s there are wide
+separation corridors. Our goal is to decompose the field into an orthogonal sum of
+n
+
+fields, A = Ao + Σ ^i- The general field Ao extends in the full space and has a good
+2=1
+
+propagator. Each field A% is localized in or near the connected component Ei = \J E\,
+3
+
+where E\ is the subset of the ith large field region made of its boxes of scale j . Such
+a field A% has a non-translation invariant, hence poorly decreasing propagator, but
+this propagator has no longer any memory of the existence of the other large field
+regions, so this formalism is suited for the factorization of these regions. This is the
+
+358
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+general outline. Before to proceed, we suggest eventually to read reference [DMR]
+for a more detailed account of such a scenario in a simpler but similar case.
+More precisely we define an inductive resolvent expansion. An ordinary resolvent
+expansion is of the type
+
+A +δ
+
+A
+
+Δ
+
+Δ + δ'
+
+In our case we imagine A to be a translation invariant propagator suited for a cluster
+expansion in the small field region such as (_^homothetic^-i? a n ( j m e perturbation δ
+contains the background field, hence it is variable. Even inside the small field region
+we cannot iterate formula (V.I) infinitely many times because the background fields
+produced in δ could lead to factorials when bounded. Also in the large field region
+we must certainly keep this expansion in a resummed form, since the true Gaussian
+measure there, which has propagator C a x i a l is very far from the small field region
+propagator. This is the source of many technical difficulties.
+First because large fields cannot be bounded effectively we must forget about using
+a background independent propagator for —. But derivatives of background fields can
+be dominated quite effectively. This suggests that we should first compare in the small
+field region the general propagator to be propagator built with constant background
+fields.
+The interest of using propagators with constant background field is that they are
+translation invariant and have obviously good spatial decrease. But even when the
+background field is constant these propagators still have a defect; the Laplacian with
+background field can have a zero mode if all spatial components of the background
+field are aligned in su(2) space. As a consequence the bounds on the inverse Laplacian
+with covariant derivatives are not the same as for the ordinary Laplacian. We need
+a further decomposition of the momentum around the dangerous zero mode which
+corresponds to pμ = \{B[jΔ)μ-e, where the scalar product is in su(2) and the vector e
+is the unit vector of su(2) which is aligned with, say {B[ Δ)x. Since this decomposition
+is only necessary when all (B'ιΔ)μ,
+μ = 1,2,3 are approximately aligned, the
+particular choice of μ = 1 for e is unimportant.
+This decomposition is done in the following way. Let us consider some large field
+box A of scale Z, and the corresponding set of boxes in the small field region which
+have it as ancestor, with scales m> I. We redefine only the cutoffs corresponding to
+ι
+the scales m between Z and V, where M is the order of magnitude of the modulus
+of \{B[ Δ). If we introduce the corresponding sum of slices k\ = ] ζ Km we
+redecompose the function κ\, as
+ι<m<ι
+i'
+j/
+
+K
+
+>
+
+x
+
+=
+
+>
+
+K™
+
++E
+
+i
+
+(V 2)
+
+m=l+\
+
+where K7?,
+
+restricts \p — ^(B't Δ)μ.e\
+
+to be of order M m , i.e. we simply translate
+
+the cutoff without changing its shape (using the same CQ° function), and
+is an error term which is the difference between the cutoff κt and κκtt translated at
+The error term Eι g/
+field box A.
+
+corresponds to a field which can be associated to the large
+
+Construction of YM4 with Infrared Cutoff
+
+359
+
+In other words the set of slices is no longer cut around the point p = 0 but around
+the point pμ = λBμ.e. The important fact is that we have now for each slice of the
+propagator in the background field the same scaling and, using integration by parts,
+the same spatial decrease as for the ordinary slices with the ordinary propagator (see
+the Appendix). (The reader can think of the background field as a kind of mass so
+that when the momentum is not almost aligned with it, there is good spatial decay.)
+In order not to obscure too much the notations, we forget in most of what follows
+the dependence in B[ of the cutoffs n.
+Combining the quadratic form (IV. 16) with the "fake" measure dμQ we have a
+Gaussian measure on A's whose propagator is the inverse of
+
+\2Vσ{κ?)ι'2χΔ(κ?)ι'2Vσ6μv
+
+if
+μt/
+
+if
+
+Δe CSFR,.,
+Δe ELFR,..
+
+(V.3a)
+(V.3b)
+
+We write
+
+"Σ Σ
+
+1
+
+\
+B
+
+(v.4)
+
+n
+
+Now we can prepare the theory in order to use a propagator but with constant
+background field, for an horizontal (i.e. slice by slice) cluster expansion. To reach
+this goal we perform a rewriting of the covariance which replaces the theory with
+variable background field by a theory with constant background field.
+Let us introduce for A e
+
+(C -
+
+J μ B t Δ Ό
+
+,
+
+(V.5a)
+
+μi/
+
+3
+
+where (R ) = ^2J/<J+IQ
+
+&
+
+for Δ e ELFR^ we write simply
+
+Δ°Δ = \2Vσ{R3γ/2χΔ{h3γ/2Vσδμv
+
+Δ
+
+μ
+
+,
+
+(V.5b)
+
+One expansion step on the propagator consists in writing
+
+^= Σ
+
+Σ
+Δ
+
+(Δ°Δ, - Δ%) + l] -^j κ>'χΔ,{y).
+
+(V.6)
+
+360
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+Each difference of the type (Δ°Δ — Δ°B) is then rewritten as (here for simplification
+we consider only the diagonal terms in bμv and neglect the terms proportional to ζ — 1
+which are exactly similar):
+
+- Σ
+
+(V.7)
+
+For each box Δ" e CSFRy,, j " < j + 10 we get a difference B[Λ - B'lA,,
+which we can rewrite in terms of a gradient acting on B[ times a length bounded
+by the distance between Δ and Δ". This term will deliver a small factor because
+the background field with a gradient can be bounded using (Π.29a-c). This bound
+delivers a small factor because either the path between the ends of the propagator
+remain in the small field region and the coupling constant is not completely consumed
+in the bound [see (Π.29a-c)], or it crosses some large field region and the small factor
+comes from the width of the corridor BR, combined with the good decrease of the
+propagator.
+Finally we might worry that repeating this argument might generate a large number
+of gradients of background fields; but this concern is taken care of by a rule below
+which stops the expansion as soon as five error terms have been produced.
+In the difference (V.7) there is also an error term
+
+;
+L ,Zλ
+
+,)σ(^")I/2X^(^")1/2(V5;
+
+ί ,ZΛ
+
+)σ,
+
+with j " > j + 10. This term will also deliver a small factor through momentum
+conservation corresponding to integration of x in the box Δ.
+In the case where either one of these two terms is chosen in (V.7) the expansion
+step (V.6) is reiterated on —^- with Δ replaced by Δ".
+B
+
+There remains terms such as ( V s ,
+2
+
+/2
+
+)σ(κ3")ι/2χΔn(κj")ι/2(VBt
+j
+
+1/2
+
+) σ , j " < j + 10,
+
+Δ" e ELFRy, or - λ V σ θ / V X 4 " ( « " )
+V σ , Δ" e ELFR^,,.'
+These error terms couple Δ to a box Δ" of ELFR. Remark that this coupling
+arises through a propagator with constant background field. When any of these terms
+is chosen we stop the expansion.
+An important additional rule is the following one; when more than five low
+momentum background fields have been produced we stop the expansion and consider
+that the boxes of the corresponding string of propagators are attached to the large field
+region of the corresponding lower scale; therefore we do not need to consider it as a
+part of the small field region any longer. This rule is necessary even when both ends
+x and y of our propagators are localized in the small field region, where we have by
+(II.29a-c) a good compact support restriction on the size of these gradients, because
+the path of integration from x to y can cross large field regions where the gradient
+of the field is no longer bounded in a Cfi° way and factorials of accumulation could
+occur.
+
+Construction of YM4 with Infrared Cutoff
+
+361
+
+If we apply this process symmetrically on Δ and Δ\ i.e. at both ends of (V.6),
+we obtain the covariance in the form
+^ ~ ~M)~ — ^11 + ^12 + ^21 + ^22 ?
+^11 =
+
+XCSFR^B^XCSFR ί
+
+/
+
+^12 = XcSFR^ί^ ^CSFR + XELFR] >
+
+/y gx
+
++ X E L F R] -ΓQ" [Γ'χ C S F R + % ELFR ] ,
+
+where Γ is some string of propagators each corresponding to a constant background
+field (with insertions of VB[ or of momentum violating terms) and Γ' = ΓL> ELFR ,
+where £> ELFR is an insertion explicitly localized in some box of ELFR of scale j .
+Then we introduce an interpolation parameter t G [0,1] which at t = 0 suppresses
+the coupling pieces Cu and C 2 1 . Hence we write C(£) = Cn + tCn + ^ 2 1 + ^22This is still a positive operator since Cn and C 2 2 are positive. Then we perform a
+first order Taylor expansion in this parameter.
+The interpolating terms contain an explicit C 1 2 or C 2 1 link which connects one
+or two boxes Δ.Δ'...
+to one large field box of scale j in the middle (either in
+the form of a £*ELFR insertion or simply by a χ E L F R factor). For this error term we
+add Z\, . . . , Δ' to the large field region ELFR. The process is then reiterated on
+the remaining —^- factor with this new definition of ELFR, until finally it stops by
+^B
+
+exhaustion of all boxes in CSFR.
+The decoupled term at t = 0 corresponds to a new covariance Cn
+we introduce the simpler covariance Cn
+
++ C22 with C22 = χELFR
+
++ C22. If
+
+—r— XELFR> t n e n
+Δ
+
+B
+
+we can perform the change of variables A —• (1 + XCSFR^O^ and obtain the same
+theory with the simplified covariance but a more complicated interaction. The Cn
+piece links boxed of CSFR through strings of propagators in constant background
+fields, which have both good power counting and good spatial decay. The C22 lives
+purely in ELFR. However it is not true that at t = 0 the CSFR and ELFR regions
+have been factorized. Indeed the field is now non-local, so the interaction still couples
+both regions. This coupling however is easy to control since it occurs through the
+r
+6
+well controlled Γ operator.
+
+B) Decoupling of the Different Connected Components
+of the Large Field Regions
+We have not yet a satisfying propagator for performing cluster expansions, because the
+distant large field regions still interact together through the C22 piece of the propagator
+in (V.8). In this subsection we should describe a general method for removing this
+interaction. We return to our decomposition of the large field region into connected
+6
+
+In all this discussion we have considered that a £> E L F R insertion is equivalent to a χ E L F R
+characteristic function. Strictly speaking this is not true; the DELFR insertion contains a χ E L F R term
+but followed by a controlled non-local operator {κ3)1/2. The necessary modifications to take this into
+account are inessential but painful. They require the use of the corridor BR and some modifications
+of the formulas. We do not include them in order not to distract the reader from the main argument
+
+362
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+components E1,E2,
+.., En (we recall our rule that two regions close together are in
+fact connected, so that the distance between two large field regions is at least a fixed
+number of boxes of the scale considered). Recall that we want to decompose the field
+n
+
+into an orthogonal sum of fields, A = Ao + ]Γ Aτ, each A% being associated with Ei9
+with a poorly decreasing propagator, but this propagator has no longer any memory
+of the existence of the other large field regions, so that these regions factorize. Instead
+of that we have at the end of the preceding section, V, A the sum of twofields,one
+in the small field region and the other in the large field region, but not factorized over
+its connected components.
+The construction of the fields Ai and of their measure is performed as follows.
+We introduce for the ith region Ei the operator Δ°B which is roughly speaking the
+same as Δ°B but in which the other regions Ej, j φ i are now treated as small field
+regions. More precisely the formula (V.3b) for Δ°B is changed into formula (V.3a)
+for Δ e Ej, j φ i, where the background field B[ is now introduced also for the
+boxes of E . Finally we can introduce also the operator ΔB in which formula (V.3b)
+is replaced by (V.3a) for every Δ e Eτ, i = 1, . . . , n.
+We introduce also χi = χE. for the characteristic function of E{. In addition to
+the background field each insertion ΔB — ΔB contains a characteristic function χi
+and each insertion Δ°B — Δ°B contains a characteristic function χ0, j φi. Let us for
+a moment forget the background fields and consider the structure of the expansion
+according to the localizations.
+We start with χ E L F R —Q- X E L FR t s e e (V.8)]. We want to decouple a first large field
+region, say E{, from the rest. We insert a first resolvent step which is
+1
+
+(V.9)
+~ " *
+
+"
+
+Λ\J.VJ
+
+••-'
+
+ΛVJ.VJ
+
+"
+
+/iυ
+
+I
+
+B
+
+Then we decompose the difference (ΔB — Δ°B) as a sum over insertions of χτ,
+1, . . . , n.
+Iterating this formula at infinity we obtain chains of arbitrary length. In these chains
+we formally resum every series of insertions of at least two consecutive identical
+i=
+
+functions χ{. This reconstructs the operator — ^
+
+sandwiched by characteristic
+
+functions χτ on both sides; furthermore each —^ is sandwiched by χi on one
+Δ
+side and χ on the other side with i Φ j .
+B
+In order not to use too heavy notations, let us call C o the kernel for —QQ. Then
+Δ
+formally our expansion has the structure:
+B
+C
+
+XELFR -TO" XELFR = Σ
+Σ
+Xio^Xή o
+B
+20,ii,...,ip+i
+p>0
+
+• - coXipcoXip+ι
+
+( γ 10)
+
+This theory is therefore equivalent to a theory with a substitution rule for the
+n
+
+field corresponding to the C 2 2 covariance: A —> Σ Ai9 in which the Aτ's form an
+independent set of orthogonal random variables, each Ai being distributed with a
+
+Construction of YM4 with Infrared Cutoff
+
+363
+
+Gaussian measure of covariance χi —Q— χτ, plus a quadratic interaction of the form
+Δβ
+
+Σ
+
+Σ
+
+AτCoχH...CoχipCoAj
+
+i>k¥i>k+\ik=ιi ~iP-1
+
+e
+
+(V.ll)
+
+m
+
+This interaction and the propagator χ% — ^ χ% for Ai generates precisely the chains
+(V.10) (see [DMR]). The fact that we can consider the transition terms A%...A
+in
+(V.ll) as interactions is due to the fact that they are indeed small because of our
+rule that two disjoint regions Ev Ej are separated by a corridor of some finite (large)
+width.
+The covariance Co = —^
+
+can indeed be now controlled by the same method as
+
+Δ
+
+B
+
+in part A) and has therefore good decrease properties.
+In this way the remaining covariances —^7 a r e n o w factorized over each connected
+large field regions. To decouple truly the large field regions there are two equivalent
+possibilities. The first is to use (V.ll) and to expand the corresponding quadratic
+interaction up to infinity. There is no factorial associated to this expansion, since
+it is Gaussian. On the chains developed in this way we can read algebraically the
+connections between large field regions. We do not need any inteφolation parameters.
+Positivity of the Gaussian measure is therefore automatically respected. The only
+drawback of this approach is that one has to be careful that the insertions χi in (V.10)
+really are a short notation for an insertion of Δ°£® —Δ0^, which contains a background
+field localized in Ei. There can be arbitrary accumulations of such background fields
+in the same region. If we dominate them naively (e.g. by the e~~Λ B term) we would
+generate local factorials and the series corresponding to the expansion at infinity of
+the exponential in (V.ll) would not converge. But this is a problem only for B large
+and we can use the fact that each insertion is paired with a new Co = (Δβ ) ~ ι
+propagator which precisely decays exactly in the same way at large B.
+A second possibility, instead of expanding (V.I0-11) to infinity, is to test
+inductively the coupling of Eλ to E2 U . . . U En and to iterate. This generates only one
+link at a time, hence prevents the accumulation of background fields. But this process
+requires inteφolation parameters a la Brydges-Battle-Federbush, and we need to do it
+symmetrically from both sides of C22 in order to preserve positivity. This is done by
+applying (V.9) for i = 1 on both sides of —^- as in (V.6). We give the corresponding
+result on one side for simplicity:
+B
+l
+
+4-
+
+l
+
+0
+
+M '
+
+0
+
+ι
+
+A°> λ
+
+1
+
++
+
+1
+
+0 1
+
+M '
+
+0
+
+A ϊ
+
+l
+
+( V
+
+1 2 )
+
+Then we multiply the differences Δβ — Δ°B by an inteφolation parameter s l 9 Taylor
+expand to first order, decompose the remainder term as a sum over χ ? , j φ 1 and
+iterating, with Eλ and E- joined together, and iterate.
+
+364
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+In both strategies expansion (V.6) (iterated at most five times) has to be used on
+C o to complete the argument, together with the good spatial decrease (A.29) of the
+homothetic propagator in a fixed background field.
+Remark that we could have used more complicated formulas which at once perform
+the decoupling of the small field regions and the large field regions, hence gathered
+subsections A) and B) into a single step, but we think it is easier to understand this
+complicated construction in successive stages.
+
+C) Horizontal Decoupling
+At this stage we have factorized the connected large field regions from one another
+and from the small field region. For each slice i = ρ, ..., 1, it remains to perform
+an ordinary cluster expansion between all boxes in the small field region with
+respect to the Gaussian measures with propagators Co as prepared in the previous
+subsections. This is done a la Brydges-Battle-Federbush [R]. A key requirement for
+such an expansion is to preserve positivity of the underlying quadratic form. We
+have to perform both an ordinary cluster expansion in the small field region, using
+the propagator Cn in (V.8), for which expansion (V.6), iterated at most five times,
+allows good spatial decrease [see (A.29)]. The positivity requirements are satisfied
+because of the symmetry of the expansion step (V.6).
+Recall also that in each large field region Eτ we must combine the measure
+Ci — (Z\β) - 1 on the field Ai with the p$ piece in (IV. 11) to reconstruct a propagator
+with which we can contract the fields produced in the large field expansion (11.25),
+as required in Lemma II. 1.
+
+D) Vertical Decoupling
+We need to perform an inductive decoupling of the various momentum slices. There
+are several facts to consider. First there are interactions which are dominable, but
+couple different momentum slices. A typical interaction of such a type is a term like
+[A, A] [B, B], where A is a high momentum field of slice i and B a low momentum
+field of slice j . These interactions are treated as regular dominable interactions of
+the φ\ type. This means that a parameter tΔ is introduced for each box A and an
+expansion to fifth order is performed in each of these parameters in the standard
+manner explained in [R]. We should not repeat the corresponding details here.
+Some new features however require more explanations. The existence of rectangular anisotropic boxes (the double valuedness of the momentum indices j = (i,αθ)
+should not confuse the reader. As explained in Sect. II, the small field boxes, in which
+the propagator is isotropic, are themselves isotropic, except when they have a large
+field ancestor of same index i and lower index a. In this case we perform the vertical
+expansion also for the p0 slices, which means that a parameter is introduced which
+tests the coupling, at fixed i, between the p0 frequencies larger and smaller than a.
+This vertical piece of the expansion should be thought of really as an auxiliary one,
+however, because we show in Sect. VII that it is superrenormalizable.
+The vertical expansion between large field boxes is similar, except that here like
+in the horizontal expansion we must first consider that neighboring boxes in index
+space, one contained into the other, are automatically linked. In this way the necessary
+vertical expansion to decouple large field regions one from another will give summable
+
+Construction of YM4 with Infrared Cutoff
+
+365
+
+links plus small factors for the same reason as in the horizontal case, namely because
+the vertical distance is at least some large constant.
+The background dependence of the Gaussian measure, which still couples small
+field regions to large field regions of smaller frequency, is also a new feature and
+requires a vertical decoupling.
+The main remark here is to consider that in the vertical decoupling, the parameter
+tΔ is introduced in the Gaussian measure with propagator —— which we constructed
+B
+.
+in the previous subsections, but not in the determinant which corresponds to the
+normalization of this measure, and also not in the non-dominable part of the FadeevPopov determinant. These determinants (or more precisely the effective potential
+extracted from them) are associated to the normalization of the corresponding large
+field regions. This is because if we were to develop these determinants which precisely
+contain the non-dominable piece of the interaction, domination by the X4B4 in term
+in the small field boxes would give a large product of terms of order 1, not bounded
+by the single small factors associated to the large field box; alternatively domination
+in the large field box would cost a factorial not summable.
+This problem forces us to attribute the corresponding normalization to the large
+field regions considered and to bound it with a special argument in Sect. VI. For
+the normalized background dependent Gaussian measure, there is no such problem,
+because the corresponding propagators hit ordinary dominable vertices which provide
+the necessary coupling constants, hence the necessary small factors.
+We have to define the tΔ interpolation that we introduce on the explicit propagators
+created by the previous expansion steps (in particular the horizontal cluster expansion).
+Finally we should explain the modifications introduced by the use of the slices
+(V.2) around B[ (the decomposition with the cutoffs (V.2)). The reader should not
+consider that these slices are new momentum slices but rather that they replace former
+slices. In the vertical expansion we introduce therefore also a dependence in tΔ, in the
+corresponding cutoffs, that is we write, if the ancestor of Δl is the large field box Δ:
+
+=Σ
+
+m=l+l
+
+where n™ ^,
+
+restricts \pμ - λtΔ,(BΊ
+
+)
+
+Δ
+
+m
+
+,e\ to be of order M .
+
+In this way the
+
+parameter tΔ, inteφolates smoothly between the translated slices at t = 1 and the
+ordinary slices at t = 0.
+In the usual way we perform for each box Δ a fifth order Taylor expansion in
+tΔ. Each derivative creates at least one badly localized low momentum field. The
+connected objects which have at most four such low momentum legs, hence which
+need renormalization are in this way necessarily decoupled terms at tΔ = 0.
+E) The Renormalization and the Flow of the Effective Coupling Constant
+To simplify the notations we now call B(Δ) or sometimes simply B the averaged
+field called previously B[ Δ.
+After the horizontal and vertical decoupling has been performed at a given scale,
+one is in a position to renormalize the divergent two and four point contributions.
+This requires first a Mayer expansion in order to render these contributions translationinvariant. For the details of such a Mayer expansion we refer to [R], Once the divergent
+contributions are free from hardcore constraints they can be cancelled by counterterms
+
+366
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+of the desired form. These counterterms in turn generate a flow for the coupling
+constant of the theory which is the one of an asymptotically free theory such as the
+Gross-Neveu model in two dimensions and treated in the same way [FMRS2, R]. In
+this way the ansatz (11.11) is justified. The effective constants λ^ at scale i are shown
+in the standard way to be very close to the simplified effective couplings given by
+formula (11.12), since the true flow corresponds really to a bounded flow for the
+constant C in (11.11). Remark that to control the flow we are not forced to construct
+the correct β function (which would contain renormalons); as explained e.g. in [R]
+it is enough to get the two first terms correctly, plus a uniform bound of the correct
+order on the rest, which remains expressed in terms of the effective couplings.
+Remark also that we have to distinguish from the rest the case of the normalization
+determinant corresponding to the background dependent Gaussian measure and the
+non-dominable part of the Fadeev-Popov determinant. Because these determinants are
+not expanded in the vertical expansion but directly associated to the corresponding
+large field regions, we do not have a complete cancellation between the background
+field counterterms and the corresponding polymers with two or four background field
+external legs. One could believe that the not-cancelled counterterms together with the
+determinants simply form subtracted determinants of the det4 type. We recall that
+K^
+
+K^
+
+det4(l + K) < det(l + K)eΎr~K+^~~~+~*~
+
+K^
+
+.
+
+(V.14)
+
+But to our surprise this turned out not to be true. The non-dominable part of the
+Fadeev-Popov determinant plus the corresponding uncancelled counterterms gives
+indeed a det4. But because counterterms are gauge dependent and the background field
+gauge does not coincide with the ordinary gauge where the small field flows (hence
+the counterterms) are computed, it appears a difference between the normalization
+determinant plus the counterterms, άεΓι/2 Ah°ffiQtic e C T ( β ) and det~ 1 / 2 Z^°™Jhetic.
+This difference is computed in detail in the next section, and plays a crucial role in
+the final bound on the large field regions.
+The only special difficulty in this case has to do with the fact that the flow keeps
+the structure of the theory unchanged. In the standard textbooks about perturbative
+renormalization of gauge theories such as [IZ] one proves that the renormalization
+group flow keeps the effective interaction of the theory of the Yang-Mills form but
+with a running coupling constant. This is usually done in perturbation theory using
+dimensional regularization. In our case this fact will also be true, provided we take
+4 4
+into acount the flow of our gauge-restoring counterterms in X A , because our cutoff
+is not gauge invariant and is used at every scale with the same shape to construct the
+new cutoff of the effective theory. This has really to be done only at the one loop
+4 4
+order for the X A term, but concerning the relevant mass operator, the value of the
+mass counterterm has to be fixed exactly by a fixed point method (as is done e.g. for
+the critical value of the mass in infrared φ\ [R]).
+Remark however that if we consider the renormalization group flow of non-abelian
+gauge theories in an ordinary gauge, there is usually both coupling constant and
+wave function renormalization. This makes the discussion of the normalization of the
+Gaussian measure in the background field much less transparent. We prefer to use the
+homothetic gauge in which there is almost no or no wave function renormalization
+(depending on whether one wants a completely explicit formula for this gauge, or
+one is satisfied with the solution of an implicit function theorem). This is a technical
+trick which could presumably be circumvented by a more complicated analysis but it
+is very convenient in this respect.
+
+Construction of YM4 with Infrared Cutoff
+
+367
+
+F) The Effective Potential
+It remains now to prepare the theory in order to compute effectively the normalization
+of the background dependent Gaussian measure and of the Fadeev-Popov determinant
+which have to be attributed to the large field regions. In order to do this we use the
+effective potential method [BG, MS, dCMSdV]. This means that for a given large
+field box we want to introduce specific boundary conditions so that we can compute
+explicitly the functional integral over the associated small field region.
+This in turn requires to create some gap between the size of the large field cube
+A which we suppose of index j ' = (i, a) and the frequencies of the fields in the small
+field region whose functional integration gives the dressing factor. We have to recall
+that the boxes are rectangular rather than cubic. We have to distinguish two cases:
+- if both p0 and p are large compared to the respective scales Ma and Mι of the
+large field box A (i.e. |p| > M ί + 1 0 ° and | p o | > M α + 1 0 °), there is no problem with the
+boundary conditions. As in the usual effective potential method, the boundary effects
+are negligible compared to the functional integral in the whole volume A.
+- if p0 or p are small, we can use a rough bound such as
+I det(l + K)\ < e(U2)τr(κ+κ*+κ,κ*)
+
+( V 1 5 )
+
+on the corresponding determinants; since the corresponding momentum integrals are
+unbounded either in three or one dimensions, the resulting bound in X2B2 is either
+linearly divergent or convergent. We can add it to the quadratically divergent X2B2
+term computed in Sect. Ill, and bound the total by increasing slightly the coefficient of
+this term. In Sect. VI it is shown that this term is controlled by the effective potential
+generated by the dressing factor.
+This effective potential method (up to small error terms) yields in each large field
+box A a determinant of the operator A^™^hhc, combined with the non-dominable
+part of the Fadeev-Popov determinant; we have to compare it to the normalization
+of a small field box in which the Gaussian measure is the one obtained with the
+usual homothetic gauge covariance; this is exactly the same determinant but in which
+B(A) = 0. Similarly the Fadeev-Popov determinant has to be divided by the FadeevPopov determinant at B(A) — 0. The reader should indeed keep in mind that the
+typical case is (a posteriori, after all estimates have been performed) ELFR = 0, in
+which case the covariance of the A's field (which is then equal to the full A' field)
+is simply l/p2(δμι/ - (1 - ζ~ι)pμpjp2),
+the homothetic gauge covariance (up to the
+2 2
+small "fake" term X p which can be recombined with the corresponding counterterm
+in (VI. 1).
+To this determinant we have to add the effective action for a constant B field
+-i?4
+λ
+B
+F
+which reduces to the e
+= e~ ^ ^ term in e~ . Finally as mentioned in the
+previous subsection we have to add to this term the uncancelled pieces of the independent counterterms. Returning to Sect. Ill, Eq. (III. 1), we remark that the terms
+with derivatives of B cancel in the effective potential computation. We have therefore
+2
+4
+2
+to consider only the terms in B , B and [B,B] . The uncancelled piece of the
+4
+2
+X [B, B] counterterm is a small correction to the action term in X2[B, B]2, and we
+do not need to compute it precisely. But the B2 and B4 terms are crucial. Using
+Sect. Ill the reader can check that at one loop the totality of these counterterms is
+uncancelled because the graphs Gι,G2,G3,G4,G[,G'2,
+and G\ only contain vertices
+of the non-dominable type [A,B]. Therefore in the effective potential the full value
+of these counterterms has to be included.
+
+368
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+The conclusion of this analysis is that we have to bound the product of these
+x [B B]
+counterterms, of an e~ '
+, and of a quotient of properly normalized determinants
+in which the background field is a constant and there are e.g. periodic boundary
+conditions on the operator in the determinant; the proper normalization means simply
+that at B(Δ) = 0 this quotient of determinants is simply 1. The precise form of this
+factor is written down in the next section [Eq. (VI. 1)].
+To obtain a non-perturbative bound on this object is one of the main points of this
+paper and is explained in detail in Sect. VI. Again the solution ultimately depends of
+a correct choice of the ultraviolet cutoff function.
+
+VI. The Main Stability Estimate for a Large Field Region
+In this section we prove that the non-trivial factor associated to the large field regions
+which come from the B dependent gauge fixing and functional integration in the
+associated small field regions can be bounded uniformly in B by 1, if the ultraviolet
+cutoff is of a certain stabilizing shape. This result (a kind of non-perturbative stability)
+is at the core of our whole analysis.
+We have to consider the small field functional integral associated to the normalization of a unit of the large field domain such as a fixed cube A of D ! ' α . As explained
+in the preceding section, we can compute this normalization in the case of a constant
+background field B(Δ) = B and of e.g. periodic boundary conditions (the type of
+boundary conditions being inessential).
+This functional integration is (taking into account the action Fμv(B) which for a
+constant B reduces to (\2/2)f[B,
+B]2):
+A
+
+det n Λ(FP)
+
+C
+
+Cϊ%^Δ-λ2/2
+
+2
+
+f[B,B]
+Δ
+
+<VU)
+
+where A G D I Q ! is a cube of scale z,α, hence of volume |Z\| = M~3ι~a (at
+-1
+4z
+most λ M ~ ) ; det^ Δ(BF) means the determinant with the appropriate cutoffs
+corresponding to our background dependent measure on the small field region
+associated to A; it has infrared cutoff of the type κι(p)κa(p0) and ultraviolet cutoff
+given by the exact shape of the small field domain associated to A; this domain in the
+typical case of an isolated large field cube corresponds to an integral over momenta
+ρ
+with the ultraviolet cutoff κ (p) of scale ρ. As explained in Sect. V, the case of more
+complicated large field domains reduce to this case. Finally CT^ Δ is the associated
+set of counterterms (which contains a positive, potentially dangerous B2 counterterm
+and a B4 counterterm, which thanks to our choice of ultraviolet cutoff is negative
+and stabilizing); the exact value of these counterterms depends on the precise shape
+of the ultraviolet cutoff, and in particular of the parameter η in (11.14).
+Similarly det^ a Δ(¥P) is the background dependent determinant corresponding to
+the integration over the ghosts in the small field region associated to A; it is equal to
+an ordinary Fadeev-Popov determinant.
+More precisely, if we rewrite the cutoff simply as ft(p2) and take into account our
+form of the cutoff and the normalization at B = 0, we have a twelve by twelve matrix
+
+Construction of YM4 with Infrared Cutoff
+
+369
+
+4
+
+BF in su(2) 0 M space (we forget to put the su(2) indices):
+
++ ( C 1 - 1) ^ )
+
+x [ - (D2δμσ - (1 - OGμDσ)(δσv
+
+- p2δμι^ , (VI.2)
+
+where repeated indices are summed, and
+
+μ
+
+= [p22δδab + 2ipμεabcλBcμ
+
++ \2BcμBμδab(l
+
+- δac) - \2BaμBbμ(l
+
+- δab)], (VI.3)
+
+Similarly the Fadeev-Popov operator (normalized at B — 0) is a three by three
+matrix in su(2) space:
+
+Using the Euclidean and global SU(2) symmetry and the fact that Bo = 0 (because
+of the axial gauge), we can explore completely the function g% α Λ by considering
+a field B with only two non-zero components B\ = x/λ and B\ — y/X. Then
+\2B2 = x2 -\- y2 and X4[B, B]2 = x 2 y 2 . The function gt a Δ becomes a symmetric
+function of x and y. We are going to prove the following uniform estimate:
+Lemma VI.1. For a sufficiently wide ultraviolet cutoff {in the sense of the parameter
+η in (11.14) being small) we have:
+We are going to compute this function gτ a Δ as the exponential of an action
+integrated over Δ, and prove that this action is always negative. Let us stress that a
+constant bound such as 0(1) M4τ on this action would not be sufficient because the
+volume of the cube can be as large as X~xM~Al if a is quite small compared to i,
+and the small factor gained from the positivity of the axial gauge for such a cube is
+in e λ , not in e Λ .
+We write ψ = κ% a(p2)/p2. It is convenient to define Pμ such that Dμ = iPμ (in
+Fourier space). With these conventions we have in su(2) space:
+
+0
+
+(Po
+Po =
+
+0
+
+Po
+
+V0
+
+0
+0
+
+0 pn,
+0
+
+P, =
+
+iPx
+
+0
+
+0
+\ 0
+
+Pι
+
+ix
+
+0
+
+~
+
+•
+
+'•"
+"
+
+(VI.6)
+
+••
+
+-ix
+pι
+
+The Fadeev-Popov operator K¥ΐ> = - d D =
+p2
+0
+
+o
+p2
+
+ip2y \
+~iPιx
+
+.
+
+(VI.7)
+
+370
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+The hermitian matrix —D2 = P2 is
+
+—D = r
+
+=I
+
+ϋ
+-2ip2y
+
+p -\-x
+2ipxx
+
+2ip2y
+—2ιpχx
+p2 + x2 + τ/2
+
+(VI.8)
+
+The twelve by twelve matrix BF that has to be computed in the general case
+ζ Φ 1 is decomposed into a four by four matrix of three by there su(2) blocks:
+
+{P26μσ - (1 -
+
+BF =
+
+QPμPσ)
+
+(VI.9)
+where
+
+=
+
+V =
+
+2
+
+2
+
+P -p =
+
+y2
+0
+^-2ip2y
+
+0
+x2
+2ipxx
+
+o
+(l/ζ-l)x2
+
+2φ2y \
+-2ipxx
+,
+2
+2
+x +y J
+d/ζ-Oip2y
+-(l/ζ-ζ)iPιx
+
+(VI. 10)
+
+I , (VI.11)
+
+and
+
+(VI. 12a)
+0
+0
+(1 - 0 I 0
+0
+0 ipox
+0
+0
+-ipoy
+0
+0
+
+= - (1 - O
+
+0
+-ipox
+0
+0
+0
+0
+
+0
+0
+ip3x
+
+0
+0
+0
+-i
+0
+
+0
+
+0
+
+0
+V ~ip3y
+
+0
+0
+
+0
+0
+
+(VI. 12b)
+
+(VI. 12c)
+
+(VI.12d)
+
+(VI.12e)
+
+Construction of YM4 with Infrared Cutoff
+/
+
+wu =
+
+371
+
+0
+(i - C)2 PxPi
+xy
+ζ
+P2
+
+, (VI.12f)
+iPlx(ζ-l/ζ)
+
+-0
+-0
+i/C)
+
+(VI.12g)
+
+-I/O
+y
+
+ζ
+0
+
+P2
+
+- iPιy(l
+
+- I/O
+
+-0
+2
+
+-φ2x(l - 0
+
+(i - O P1P2
+C
+
+0
+
+-*P2ί/(C-i/O
+- i/O
+0
+0
+
+P2
+
+(VI.12h)
+
+372
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+Similarly we can compute the three by three matrix FP:
+ι
+
+FP=l+ψ(KFP-p )
+
+0
+1
+
+1
+0
+
+=
+
+(VI. 13)
+
+Remark that all these matrices are homogeneous. We introduce the variables
+u = p2M~2\ θ and φ such that p\ = uM2i cos2 θ and p\ = uM2i sin2 θ cos2 φ. Then
+d4p is proportional to M4ιudu sin2 θ sin φdθdφ. We represent the effect of the infrared
+and ultraviolet cutoffs by the cutoff κijOί(p) = κρ_i(p2M~21)
+= κk(u), k = ρ - i.
+Indeed we can limit ourselves to the case where a takes its minimum value, in which
+case there is no particular cutoff on the value of po; as explained in Sect. V, other
+cases are similar.
+We can suppose that y < x, since the function gi a Δ is symmetric in x and y. We
+put υ = p2/x2 = uM2%/x2, β — κk{u)/v — x2M~2lnk(u)/u
+(β is a function of k, u
+and x), K = ^^(w) and y = tx, t e [0,1].
+Remark that |Z\|M + 4 ΐ = M%~a. With these notations we can compute explicitly
+the three by three determinant (VI. 13) and in principle the twelve by twelve
+determinant (VI.9) and we find (forgetting the commutator [B,B]2 in (VI. 1), which
+is positive and plays no role anyway):
+Γ +oo
+
+ί udu(2/π) ί sin2 θdθ(l/2) ί sin
+
+\Δ\M4ι(
+1
+
+x In 11 -
+
++ 1 2 sin
+
+- (1/2) ln(l + βP(β, «, ί, cos β, sin 0, C, I/O)
+
+udu(β/2) [6(1
+L
+
+3(1/C -
+
+2
+
+t)
+
+o
+
+- +00
+
+ί udu(β2/2A) [(36 + 18(1/C - 1) + 7.5(1/C - I) 2 )
+-o
+2
+
+2
+
+- κ(90 + 45(1/ζ - 1) + 15(1/C - I) + κ (54 + 27(1/C - 1)
+(VI. 14)
+where P is a polynomial in all the variables listed, whose explicit computation requires
+the evaluation of the twelve by twelve determinant (VI.9). In the case of the Feynman
+gauge ζ = 1, this determinant simplifies into a three by three determinant to the fourth
+power, which is easily computed, and one finds:
+(1 + βP(β, K, t, cos 0, sin φ, ζ, I/O)
+2
+
+2
+
+2
+
+2
+
+2
+
+= [[1 + 2/?(l - 2^(cos θ + t sin θ cos φ)) + /? ]
+2
+
+2
+
+2
+
+2
+
+2
+
++ βt [2 - β(t + 3 - 4/<cos 6> + sin 6> cos 0)) +
+
++ ί2)]]4.
+
+(VI. 15)
+
+373
+
+Remark that the relative normalization of the terms and the counterterms in (VI. 14)
+is crucial for what follows. To check that this relative normalization is correct the
+reader should check that the mass term (in x2) which comes from the Fadeev-Popov
+determinant in (VI. 14) agrees with the mass counterterm from the same Fadeev-Popov
+J°udu(β/2)(κ/2)(l+t2)
+
+determinant computed in Sect. Ill, which is the piece e °
+mass counterterm
+
+in the total
+2
+
+/ uduφ/2) L6(l+(l/C-l)/4)-«((9/2)+6(l/C-Ό/4)+κ/2] (1+ί )
+
+e o
+
+(VI. 16)
+
+as computed in Sect. III. Also the quartic term coming from the Fadeev-Popov
+determinant matches the corresponding computation of the graph G4 in Sect. Ill (recall
+that the natural normalization in Sect. Ill of the quadratic counterterm was A2 /2 and
+of the quartic counterterm was A4/24, see (III. 1)).
+In the general case we do not attempt the computation of P, but we compute only
+the integral over θ and φ of its first order term in β which is much more accessible.
+It can be done by tracing the twelve by twelve matrix (VI.9) and its square, which is
+much easier than computing the determinant. Equivalently one can perform a graphical
+computation; one finds the same graphs as in Sect. Ill (remember that they have the
+opposite sign of the counterterms in (VI. 14)), plus additional pieces which come from
+the new vertex (ζ/2) [(P A)2 — (p A)2] which is due to our background dependent
+gauge fixing. This new vertex is (ζ/2)(2εabcBbμAμd,A«
++ eahcεalhfc,BhμA^
+AΪ\
+hence we obtain additional graphs G'[ and G'{ analogous to G\ and G'2. After a
+straightforward computation, the contribution of G'[ is —2£(1 + (1/C - l)/4) and the
+contribution of G2 is κ{-2 + (3/2)0 (beware that in the computation of G2 one
+has to add the case with two "new" vertices to the case with one old and one "new"
+vertex). Hence adding the contribution of the ordinary graphs G\ and G2 we have
++7Γ
+
++7Γ
+
+r
+
+sin2 θdθ( 1/2) / sinφdφ - (l/2)ln(l + βP, M ? c o s 0 , sin0,C, 1/0)
+
+/
+o
+
+o
+2
+
+= (/?/2) (1 + t ) (-6(1 + (1/C - l)/4) - 2C(1 + (1/C - D/4)
+2
+
++ «[(9/2) + (3/2) (1/C - 1) - 2 + (3/2) CD + O(β ).
+
+(VI. 17)
+
+We will prove Lemma VI. 1 using a crude bound which follows form (VI. 17)
+and the fact that the polynomial P has a fixed number of (in principle) computable
+coefficients. But in Appendix A we provide also an explicit computation of (VI. 14)
+in the tractable case of the Feynman gauge C — 1 which the reader might find
+enlightening.
+Using the asymptotic expansion (VI. 17) near β = 0, we find
++π
+2
+
++π
+r
+
+2
+
+2
+
+2
+
+2
+
+sin θdθ(l/2) / smφdφ\n\\ - /3/φos θ + t sin θcos φ]\
+
+/
+
+J
+
+0
+
+0
+
+- (1/2)ln(l +/?P(/?, M , cos 0, sin </>, C, I/O)
++ [(β/2) [6(1 + (1/C - l)/4) - κ(4 + 3(1/C - D/2)] (1 + ί 2 )]
+^ _ 0 (/?/2)(l + ί 2 ) [-3C/2 - 1/2 - κ(2 - (3/2)01 + O(β2).
+
+(VI.18)
+
+374
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+If we restrict us to the region 0 < ζ < 1, we have
+2
+
+(/?/2) (1 +1 ) [-3C/2 - 1/2 - ft(2 - (3/2)Q] < -(/J/4) (1 + ft) < -(/3/4). (VI. 19)
+1
+
+Now using the fact that ft, t, cos 0, sin φ, ζ and ζ"" all vary in compact intervals (for
+ι
+ζ and ζ~ this is because we can restrict us to a small interval centered respectively
+around 3/13 or 13/3), and the fact that the logarithms of explicit polynomials in β
+such as those of (VI. 14) are bounded by a constant times β at large β (uniform in
+-1
+ft, t, cos 0, sin φ, ζ and £ by compactness) it is easy to check the following lemma:
+Lemma VI.2. IfO<ζ<
+
+1 there exists two (large...) constants Kx and K2 such that
+
++π
+
++π
+2
+
+(2/τr) / sin θdθ(l/2) / ήnφdφln |1 - /3/φos 2 θ + t 2 sin2 6> cos2 0]|
+o
+o
+- (1/2) ln(l + βP(β, ft, ί, cos 0, sin φ, ζ, I/O)
+[6(1 + (1/C ~ l)/4) - ft(4 + 3(1/C if
+
+β>(Kxyι
+/f
+
+(VI.20a)
+1
+
+/? < ( i ^ ! ) " -
+
+(VI.20b)
+
+We can then complete the proof of Lemma VI. 1. Indeed we write (using the fact
+that β = KJV and 0 < ft < 1 and using (III.7)):
+
+\
+
+K2βvdv -
+
+x4
+
+\Δ\
+\
+
+lυ<K{
+
+Γ ί
+
+/ vdυ(β2/24) [(36
+
+LJ
+
++ 7.5(1/C - I) 2 ) - «(90 + 45(1/C - 1) + 15(1/C - I) 2 )
++ ft2(54 + 27(1/C - 1) + 7.5(1/C - I) 2 )] (1 + t2)2
+4
+
+< e x p d ^ l x ^ ^ - |logτ7|]) < 1
+
+(VI.35)
+
+if, again, we choose the parameter η in Sect. Ill sufficiently small so that | log 771 >
+KXK2. This achieves the proof of the lemma.
+
+VII. The Convergence of the Expansion: Bounds on Error Terms
+In this section we summarize the reasons for convergence of our expansion.
+We have to give a rough description of the polymers which, at a given stage of the
+expansion, have to be summed for the Mayer expansion to converge. We know that
+in this type of expansion convergence follows if in the amplitudes of the polymers
+there is an adjustable small constant per box (such as Λ), and if furthermore we can
+resum all the polymers containing a fixed box.
+The small constant per box is the easiest part to check. The case of empty small
+field boxes is taken into account by the normalization. A small field box which is
+not empty must contain some explicit vertex or error term, which by inspection is
+small. The large field boxes are small because of the Lemma II. 1 corrected by the
+computation to the previous section which justifies the existence of an associated
+
+375
+
+small factor. But we must check that given some fixed box we can perform the sum
+over all the boxes linked to it by previous horizontal, vertical or Mayer expansions
+using the decay of the corresponding links. The structure of these sums is basically
+similar to the case considered in [R] with one most notable exception, the existence
+of various lattices with anisotropic shapes. Therefore we focus first on explaining the
+convergence of this new feature. More precisely let us explain why at fixed value of
+i the vertical expansion in α, the index labeling the slices for p 0 , is convergent.
+Let us consider the small field propagator in a slice of index j — {i, a}. From
+the point of view of power counting the homothetic gauge is similar to the Feynman
+gauge, hence to simplify notations let us pretend the small field propagator to be
+simply l/p2. The same propagator in the slice j would then be Cj = κj(p)/p2. It
+satisfies the estimate
+Cj(x
+
+-y)<
+
+KQMιMa
+9
+
+(•
+\l + \xy\M«
+
+—
+
+*
+l+
+
+(VII.l)
+
+.Ά, λ
+\xy\M*J
+
+for some large integer q.
+The power counting of the worse vertex (which is a trilinear vertex with derivative
+coupling A2dA rather than a quartic A4 vertex) integrated in a box of D * is
+z (3/2)(z+a)M~3ί-a
+
+M M
+
+=
+
+M
+
+-(i-α)/2
+
+χ h i s
+
+γ e r t e χ
+
+i §
+
+e q u i p p e d
+
+w
+
+jth
+
+o n e
+
+factor χ
+
+However by parity a single such vertex vanishes. Therefore we have at least two such
+vertices, which means the same power counting as a single quartic vertex (of power
+counting M2{ί+a)M~3i-a
+= M~{i~a)) with coupling λ 2 .
+Since the smallest value of the index a ai i fixed is α m i n such that M~ ( z - C * m i n ) <
+1
+λ"" (see IL21a-b), we conclude that in the vertical expansion any contribution of
+scale a to attached to a box of scale a1, with α m i n < a1 < a can be resummed in
+the box of scale a' (which contains Ma~a boxes of scale a) using one coupling
+constant λ < M ~ ( α ~ α } ; furthermore there remains a small factor of size at least Λ.
+Finally there remains a factor at least M ~ ( ϊ ~ α ) which means that the sum over a
+can be performed and that in fact most of the sum comes from the case a = i. This
+confirms the auxiliary nature of this expansion. We have to perform it because we
+had to keep the decomposition of the isotropic small field propagator into anisotropic
+scales in the case of relevant small field boxes in the sense of Sect. lib. Otherwise we
+would not have the right spatial decay in the x0 direction (this is due to the fact that
+in the domain of a large field box the small field cutoffs is limited by the ancestor of
+the small field boxes). However we see that the main small field contribution comes
+really from the case i = α, so this decomposition is not very important.
+The other types of links are either horizontal between small field boxes, in which
+case we have enough spatial decay to resum these links, or vertical links; in the case
+of five or more legs (tΔ ^ 0) power counting provides the necessary factor M~5\ι~ι '
+to resum a box of scale i among the MA^~ι ' boxes of scale i contained in a box
+of scale i1. In the case of two and four point functions, renormalization performs the
+same task in the usual way.
+We have also a new type of links if we compare to the multiscale expansion of [R]
+which are the "proximity" links, both in the vertical and horizontal directions between
+large field boxes (and the associated "protection corridors" introduced previously). All
+these links extend only to a bounded distance, independent of λ. It is possible to resum
+over such links (which costs only a factor independent of λ) using a piece of the small
+factors O(e~λ ε) associated to the large field regions (see 11.28).
+
+376
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+We have to check that the functional integral over 7 can be performed. In
+particular, one problem which might worry the reader is that our use of polynomial
+approximations to the true gauge transformations might forbid us from doing exact
+computations at all orders in perturbations theory. Strictly speaking this is correct,
+but as explained already we need only to perform, e.g. for the flow of the coupling
+constant, one and two loop computations, and to show that the remainders are of the
+72
+1 2
+next order. Since A ' gives vertices small only as λ / , it is not, strictly speaking,
+Ί:2
+7 10
+adapted to this problem. But we can replace everywhere in Sect. II A
+by e.g. τ4 ' ,
+and still control all the integrals in the same way, using the fact that the factor N
+in (II.36-40) can be made arbitrarily large; the resulting formulas are simply more
+complicated7.
+In the small field region the bounds we use are similar to the case of the infrared φ\
+critical theory (see [FMRS1, R]); remark however that for the "domination" process,
+we have to use the small field conditio e'EΛ
+in (11.25), which costs a factor \{/2+ει
+4 4
+per field, rather than the X A term (which would cost one full λ). In this way a
+vertex such as X2[A,A]2 with the worst case of three badly localized legs has still
+a small factor of order Xι/2+εχ, because it has at least one well localized leg, and if
+this well localized leg is a small field A's, its Gaussian integration does not cost any
+fraction of λ.
+At this point the attentive reader may ask what happens if this well localized leg
+is of the large field type. More generally why do the vertical couplings between high
+momentum large field regions and lower momentum small field regions also lead to
+small factors? For instance a vertex such as X[Bι, A1 ] with i' < z, using the X4B4
+term for domination of the B field seems to eat up the factor λ, hence to lead to
+no small factor. This is not true because the vertical corridor that we decided to
+include can be made much bigger in the direction of lower frequencies than of higher
+frequencies. Indeed there are M 4 boxes of the next higher frequency in a typical cubic
+box, which in practice limit us to consider corridor of bounded width (independent of
+λ) in the vertical direction upwards. But there is only one box which contains a box in
+the next lower frequency. If we take into account the fact that we have a small factor
+of order e~Λ* in a large field box of scale i, we can include all the boxes which
+contain it until frequency i' = i — K\ log λ| in the protection corridor (K being a large
+constant), and still attribute a small factor of similar order (with ε slightly smaller) to
+all these boxes. It is then true that the integration of the well localized B' field using
+e.g. the λ 4 i? 4 terms eats up the coupling constants, but this is more than compensated
+by the fact that if we dominate the A1 field using the small field condition we gain a
+small factor M~K\Xo^x\ which comes from writing M1' < M W - κ l l o s λ l This factor
+is by itself a very large power of Λ so the corresponding terms are indeed extremely
+small.
+VIII. Slavnov Identities
+Slavnov identities can be used in a perturbative gauge such as the Feynman or Landau
+gauge to check the necessary relations which ensure order by order that up to a
+rescaling of A (wave function renormalization) there is only a coupling constant
+7
+
+It is,presumably even possible to use the true gauge transformations AΊ>°° in our change of gauge
+formulas (II.36-40) but it is less clear how to define an adequate analogue of the protection term in
+this case
+
+Construction of YM4 with Infrared Cutoff
+
+377
+
+renormalization (perturbative renormalizability of the model). These identities can be
+expressed in terms of the Schwinger functions of the theory, but in this form they
+were of course up to now true only in the sense of formal power series.
+Our bare ansatz is written for a theory with field A satisfying an axial gauge
+condition, hence the Slavnov identities that we have to check are the identities
+adapted to this condition. However one can also reexpress these identities in terms
+of the small field A'\ one would then prove the usual identities in the perturbative
+homothetic gauge, up to a remainder which is not 0 but which vanishes to any order
+in perturbation theory, and which corresponds to the large field regions in which the
+field has been kept in the axial gauge. These identities are those used in the preceding
+sections at order 3 in perturbation theory to control the renormalization group flow
+of the coupling constant.
+To derive the exact form of Slavnov identities in the axial gauge, one introduces
+the generating functional for the theory with gauge condition AQ = 0. Formally we
+can write this functional as:
+p2
+
++J
+
+A
+
+δ(A0)) = (e
+
+W(J) = (e- ^
+
+J A
+
+)ax ,
+
+(VIII. 1)
+
+where the first expectation value is with respect to the formal Lebesgue measure,
+and the second one is the expectation value in the axial gauge constructed by the
+limit process described above. The A field can be though of as the corresponding —
+oJ
+functional derivation. Then in (VIII. 1) we perform a change of variables A —• A+Dj;
+by (infinitesimal) gauge invariance, there is no first order dependence in 7, which gives
+the "Ward" or "Slavnov" equation:
+ab
+m
+
+dx°
+
+I — 1 eJ'A\
+
+-0
+
+Integrating by parts and taking into account the fact that ArnDrn
+rewrite this identity simply as:
+
+= Am
+
+we can
+
+This identity gives rise to a hierarchy of identities with any number TV of external
+sources. For instance the two point function identity is obtained by applying one
+functional derivative — (y) to (VIII.3) and is simply (exchanging the names of x
+6 J
+and y);
+Aa(χ)
+
+n v
+
+[dyn
+
+"
+
+' '
+
+'
+
+-
+
+"
+
+(VIII.4)
+
+We should of course understand this identity as applied to two test functions of x
+and y.
+Similarly we can write e.g. an identity involving N point functions:
+riV-l
+
+/
+
+N-\
+
+Π
+
+Π A(^) I—
+
+A
+
+°n(v)\ I ^ n ) > = o .
+
+(viπ.5)
+
+378
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+For a theory with a fixed infrared-cutoff of a given type, the linear term in 7 for
+a gauge transformation A —» A -f JD7 receives a contribution from the presence in
+(VIII. 1) of the cutoff. This leads to correction terms in the Slavnov identities. For
+example Eq. (VIII.5) takes the form
+N-l
+
+x
+
+Π A<a
+
+7Γ^ <(2/>
+
+N-l
+
+,
+
+N-l
+
+TΓo
+
+)
+
+= N({XJ})
+E
+
+>
+
+(VΠI.6)
+
+where EN can be computed for any given infrared cutoff. If this cutoff is a finite
+compact box with some kind of boundary conditions, we see that EN can be
+interpreted as a boundary term, because the gauge invariance is exact inside the
+box.
+The identities (VIII.6) are those that we are going to check in the limit ρ —* 00. In
+order to prove them we write first approximate identities which are satisfied for the
+theory with cutoffs (both infrared and ultraviolet) and gauge restoring counterterms.
+These identities take the form of equality between the left-hand side of (VIII.6)
+where (.)ax is replaced by (. ) a x ^, the normalized functional integral of our theory
+with cutoff and a right-hand side which is no longer EN, but EN + δN(ρ) because
+of the effects δN of the gauge transformation A -» A + Dη on the ultraviolet
+cutoff and on the gauge restoring counterterms. When ρ —• 00, the left-hand side,
+made of normalized Schwinger functions with cutoff ρ, by definition tends to the
+same Schwinger functions without ultraviolet cutoff that we have constructed. Our
+expansion proves that in the right-hand side the error term δN(ρ) tends to zero, because
+it is made of contributions tied to the ultraviolet cutoff.
+This achieves our sketch of proof of the main statement in the introduction.
+Appendix 1
+In this appendix we provide some explicit bounds and computations of the determinants considered in Sect. VI in the simpler case of the Feynman gauge ζ = 1.
+We start by a warm up: the case t = 0. The integral over φ is then trivial and we
+have to compute:
+υdv (4/π) / sin'
+
+x l n | l - βκcoszθ\
+
+(A.I)
+
+β[6-4κ]υdυ
+
+We perform first at fixed β and K, hence fixed i?, the angular integral over θ. In
+order to simplify slightly the computation we remark first that we have the rigorous
+inequality (since 0 < K < 1):
+- 2 l n ( l + 2β - 4βκcos2 θ + β2) < -2ln(l
+
+- 2βcos 20 + β2).
+
+(A.2)
+
+379
+
+Using this inequality, we can simply compute:
+7Γ
+
+G(β) = (4/π) / sin2 θdθln |1 - /focos2 θ\ - 21n(l - 2/3 cos 20 + /32).
+
+(A.3)
+
+o
+To study G when β varies we can e.g. differentiate once again, so that the θ
+integration can be performed by elementary contour integrals. Then we integrate the
+result. The outcome is:
+G(β) = -2(1 + In4) - 4β + 4/φn) + 21n(/?«) + 2 In
+
+1 - Λ/1 - 0κ
+
+= -2(l+ln(4/K))-61n/?+^-^+21n^^=^
+βκ>
+1 — V 1 — pft
+if
+
+(A.4)
+
+\<β<\/κ,
+
+if
+
+[3K,
+
+β>\lκ.
+
+The function G" is always negative (remark that G'(0) = - 4 - rc/2; this value
+is critical for the rest of our analysis). Therefore G is always negative (this can also
+be checked directly on (A.4)); moreover for β < 1 we have G(β) < (—4 — κ/2)β.
+Therefore, taking into account the fact that βυ = K < 1, hence that /3 > 1 implies
+v < 1, and the shape of K chosen in Sect. Ill:
+
+v
+
+< exp / f x 4 [ - c + 9/2 +
+
+< exp ί(x\-c
+
+2
+
++ 9/2) + x M
+
+/
+
+2/c
+
+4/3vch; +
+
+/
+
+6βυdv
+
+ί @ , \\
+—
+
+(8 + 6/2 - (I/877))) < 1
+
+/
+
+— dv I 1
+
+J
+
+4
+
+κ=l/2
+
+II
+/ /
+
+(A.5)
+
+A
+
+if we take the parameter η in (11.14) sufficiently small, so that the constant c (which
+diverges like | log 771) is bigger than 9/2 and such that 77 is smaller than 1/88; of course
+in (A.5) we assumed a cutoff with the particular shape of Fig. II. 1. Many other shapes
+will work as well, but it seems that cutoffs which tend very slowly to zero spending
+a lot of time between 1/2 and 0 are ruled out by this method.
+Let us return to the general case ζ = 1 but t ^ 0.
+The third order polynomial in β in (VI. 15) becomes if we put τ = t2:
+[1 + 2/3(1 - 2κ;(cos2 θ + τ sin2 θ cos 2 φ) + β2]
+2
+
+2
+
+2
+
+2
+
++ βτ[2 + β(r + 3 - 4/<cos θ + sin θ cos φ)) + β {\ + r)]
+2
+
+2
+
+2
+
+2
+
+> [1 + 2/3(1 - 2(cos 6> + r sin 6> cos <£)) + β ] + 7/3r/4 .
+
+(A.6)
+
+380
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+If we put s = v^cos φ and w — s2, we have therefore to bound the integral
+y/r
+
+π
+
+-^
+
+/ (4/τr) sin2 θdθ In 11 — /Mcos 2 6> + w sin2 θ) \
+
+- 21n(l +2/3(1 + 7/8τ - 2 cos2 6> - 2w sin2 0) + β2).
+
+(A.7)
+
+The singularity in the logarithm is integrable hence the result is obviously well
+defined and real. However to compute it we decide to regularize the singularity in
+the logarithm by adding +iε and taking the real part (there are non-trivial imaginary
+parts corresponding to the way we avoid the singularity but we can just throw them
+away since l n | / | = Rein/). Then we derive with respect to β and changing to the
+variable z = e2ιθ we have a rational contour integral to compute. It is convenient to
+define β' — nβ. Then one finds:
+v
+
+H(β) = (\/2) J ^=(l/2iπ) j
+-y/ϊ
+
+^(2-z-l/z)
+
+1*1 = 1
+
+x lim Reln(4 - 4βκw - βκ(l - w) (2 + z + l/z) + Aiε)
+- 21n(l + 2/3(1 + 7τ/8) - β{\ - w)
+x (2 + z + l/z) - Aβw + β2),
+
+(A.8)
+
+ί
+
+(A.9)
+
+-4wz-(l~w)(2z
+
+(-2)-
+
+2βz
+. (A.ll)
+- 2βw)z - β(l - w) (z2 + 1) + /32^ + lβrz/4_
+
+The first integral, Λ, has poles at z = 0 and at
+
+^()
+
+(A. 12)
+The pole at z = 0 for the first piece of the integrand gives a real contribution
+equal to
+^ ( l - β '
+
+(/?')2(1.-if)
+
++ β'w).
+
+(A.13)
+
+381
+
+When 1 < β1 < l/w the two poles at z± are approximately on the contour of
+integration and are approximately complex conjugate; if ε is small positive one of the
+two poles z± is inside the unit circle and the other outside (the one inside depends
+on the convention for the square root, but with the most natural convention it is z+
+for 2/(1 + w) < β' < l/w and z__ for 1 < βf < l/w). However we do not need to
+take these residues into account since they become purely imaginary when ε goes to
+0, hence when we take the real part they disappear.
+For β; < 1 there is the contribution of one real pole inside the unit disk, with
+residue
+(β')2(l - W)y/l -β'-β'w
+
++ Φ'Ϋw
+
+For β' > l/w there is another pole inside the unit circle with residue:
+4(/?' - 1)
+2
+
+(β') (l
+
+(A.15)
+
+- W)yJ\ ~ β' - βrW + {βf)2W '
+
+Hence
+2
+
+A=
+x
+
+Γ
+
+L
+
+- 2 + β'{\ -w)+-7=
+
+1(\
+—
+ft'Λ 1
+y
+μ
+' =\ if
+
+/(\ - β>){\ - β'w)\
+
+Γ
+
+x
+
+1
+
+2(\ - Θ')
+
+- 2 + /?'(! -w)--=
+
+=\
+
+if β'>\/w.
+
+The term B has a pole at z — 0 giving the contribution
+2
+
+β (i
+
+κ
+
+-w)
+
+H
+
+M
+
+Finally there is a pole inside the unit disk at the location
+
+(1 - βf + βτ' - y/{\ - 2βw + β2+ βτ')1 - 4β2(l + w2)
+- w)
+where τ' Ξ 7r/4, which gives the contribution
+^ 2 (l-^) λ /(l-/3) 2 [(l + /3)2-4/?iί;] + /3r / (2-4^
+Therefore we have
+B = -r-^
+
+11 - β2 - 2β + 2/Jw
+2
+
+((l-β^βr'Hl-β )
+2
+
+2
+
+2
+
+;
+
+- β) [(1 + β) - 4βw] + βτ'{2 - Aβw + 2β + /3r )
+
+(A. 18)
+
+382
+
+J. Magnen, V. Rivasseau, and R. Seneor
+
+Adding KA and B we find
++
+
+2
+~ β\\ - w)
+x
+
+1 - 2/κ - β{\ - w) - β2 +
+
+if
+
+- β) [(1 + β) - 4βw] + βτ'(2 - 4βw + 2β + βr
+βκ<\,
+(A.23)
+2
+
+2
+
+2
+
+2
+
+- w)
+x
+
+1 - 2/κ - /3(1 - w) - β2
+
+- β)2 [(1 + β) 2 - 4βw] + /?τ'(2 - 4βw + 2/?2 + /3τ
+if
+
+if
+
+(A.24)
+
+Kβκ<l/w,
+2
+
+/?)2 [(1 + /^)2 - Λβw] + ^ ( 1 - 4/?tι; + 2/?2 + /?r
+βκ>l/w.
+(A.25)
+
+If we use this explicit computation to expand the function — H(β) near β = 0
+we find that it behaves as
+^
+
+- w
+-1 — 2tt; -f- 3io2) — 2 + 8u> — 6u>2 — 2τ ; (l — t^))
+= - 4 - 3τ - («/2) (1 + r ) ,
+
+(A.26)
+
+2
+
+using the fact that ic = s .
+Hence the slope of the function H near β = 0 is more negative than when r = 0. It
+is possible to integrate explicitly the formula for H, but we do not give the expression
+here. Using the asymptotic expansion (A.26) near β = 0, the fact that r varies in the
+compact interval [0,1] and the fact that the derivative of H is bounded by a constant
+at large β we can of course always achieve a uniform bound as in Sect. VI. We want
+mothetlc
+also to derive a bound showing the strict positivity of _^\^
+i n a constant field
+B, unless all the components of B are in the same direction in su(2) space, and p is
+then exactly aligned with the corresponding (unique) vector XB. For this we use the
+fact that
+δ
+
+μvDl
+
+~ 10/13VμV1/ > 3/13D 2
+
+δμvp2 - \0/l3pμpy
+
+< 23/13p2
+
+(A.27)
+
+Construction of YM4 with Infrared Cutoff
+
+383
+
+in order to show that the normalized operator (_^\|>mothetic^_^homothetic^-i i s
+12
+bounded up to a factor (3/23) exactly by the same bound as in the Feynman case
+of ordinary Laplacians. In that case we can use the explicit computations above
+to establish the necessary bounds. In particular this proves that the determinant of
+omothetic
+(-Z\^
+) (_^homothetic)-i i s bounded away from 0 up to a constant factor by the
+bound (A.6). The only zeroes of the right-hand side of (A.6)
+2
+
+2
+
+2
+
+2
+
+([1 + 2/5(1 - 2(cos θ + τ sin θ cos φ)) + β ] + Ίβτ/4)
+
+(A.28)
+
+occur for r = 0, β = 1 and 0 = 0, which correspond to the announced case of
+all components of B aligned in su(2) space (since τ = 0) and B aligned with the
+momentum p (β = 1, θ = 0). We can consider that for a fixed B (with approximate
+alignment of all components in su(2) space) the zero at p = 0 of the ordinary Laplace
+operator p2 is simply translated. If we use a cutoff function ύβ as in (V.2) with
+correct scaling around this translated zero of the operator (—^homothenc)w ^ constant
+background, we obtain the correct polynomial bounds on the spatial decay using
+integration by parts on the cutoff function:
+(A.29)
+It is this decrease which is finally used in the horizontal cluster expansion.
+Acknowledgements. We thank warmly J. Feldman for his collaboration at an early stage of this work.
+V. Rivasseau, who by himself alone would have abandoned this difficult technical problem, thanks
+particularly J. Magnen for his tenacity and for all his ideas.
+
+References
+Balaban, T.: Commun. Math. Phys. 95, 17 (1984); 96, 223 (1984); 98, 17 (1985); 99,
+75 (1985); 99, 389 (1985); 102, 277 (1985); 109, 249 (1987); 116, 1 (1988); 119, 243
+(1988); 122, 175 (1989); 122, 355 (1989)
+[BG]
+Balaban, T., Gawedzki, K.: Ann. Inst. Henri Poincare 36, 271 (1982)
+[dCMSdV] de Calan, C , Magnen, J., Seneor, R., da Veiga, P.: In preparation
+[DMR]
+Dunlop, F., Magnen, J., Rivasseau, V.: Preprint Ecole Polytechnique (February 1992)
+[F]
+Federbush, P.: A phase cell approach to Yang-Mills theory. I-VII. Commun. Math. Phys.
+107, 319 (1986); 110, 293 (1987); 114, 317 (1988); Ann. Inst. Henri Poincare 47, 17
+(1987)
+[FMRS1] Feldman, J., Magnen, J., Rivasseau, V., Seneor, R.: Construction of infrared φ\ by a
+phase space expansion. Commun. Math. Phys. 109, 437 (1987)
+[FMRS2] Feldman, J., Magnen, J., Rivasseau, V., Seneor, R.: A renormalizable field theory; the
+massive Gross-Neveu model in two dimensions. Commun. Math. Phys. 103, 67 (1986)
+[IZ]
+Itzykson, C , Zuber, J.B.: Quantum field theory. New York: McGraw-Hill 1980
+[L]
+Luscher, M.: Construction of a self-adjoint, strictly positive transfer matrix for the
+Euclidean lattice gauge theories. Commun. Math. Phys. 54, 283 (1977)
+[MS]
+Magnen, J., Seneor, R.: In Third International Conference on Collective Phenomena.
+New York: The New York Academy of Sciences 1980
+[OS]
+Osterwalder, K., Seiler, E.: Gauge field theories on the lattice. Ann. Phys. 110, 440
+(1978)
+[R]
+Rivasseau, V.: From perturbative to constructive renormalization. Princeton, NJ: Princeton University Press 1991
+[S]
+Seneor, R.: In: Renormalization of quantum field theories with non-linear field transformations, Breitenlohner, P., Maison, D., Sibold, K. (eds.), Lect. Notes Physics, Vol. 303.
+Berlin, Heidelberg, New York: Springer 1988
+[B]
+
+Communicated by A. Jaffe
+
+
