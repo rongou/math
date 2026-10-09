@@ -1,0 +1,28 @@
+Boundary-cost diagnostics: Python standard library; seed 20261009
+4D SU(2) geometry/algebra, scalar controls, and EXACT 2D Z2 comparison checks.
+NOT a SU(2) partition-function calculation, analytic proof, RG estimate, or mass-gap claim.
+test_arbitrary_reweighting_cancels_the_wilson_suppression (__main__.ExactZ2ChessboardTests.test_arbitrary_reweighting_cancels_the_wilson_suppression) ... ok
+test_duplicate_block_negative_control (__main__.ExactZ2ChessboardTests.test_duplicate_block_negative_control) ... ok
+test_event_chessboard_for_distinct_blocks_exactly (__main__.ExactZ2ChessboardTests.test_event_chessboard_for_distinct_blocks_exactly) ... ok
+test_exact_gauge_image_and_partition (__main__.ExactZ2ChessboardTests.test_exact_gauge_image_and_partition) ... ok
+test_64_classes_distinct_blocks_and_reflected_pullback (__main__.GeometryTests.test_64_classes_distinct_blocks_and_reflected_pullback) ... ok
+test_all_star_energies_cannot_be_called_disjoint (__main__.GeometryTests.test_all_star_energies_cannot_be_called_disjoint) ... ok
+test_incidence_and_reflection_half_split (__main__.GeometryTests.test_incidence_and_reflection_half_split) ... ok
+test_reflected_stars_have_no_shared_plaquettes (__main__.GeometryTests.test_reflected_stars_have_no_shared_plaquettes) ... ok
+test_frustrated_exterior_is_not_a_conditional_tail (__main__.QuaternionAndScopeTests.test_frustrated_exterior_is_not_a_conditional_tail) ... ok
+test_one_link_sublevel_band_volume_and_covariance (__main__.QuaternionAndScopeTests.test_one_link_sublevel_band_volume_and_covariance) ... ok
+test_overlapping_edits_need_declared_losses (__main__.QuaternionAndScopeTests.test_overlapping_edits_need_declared_losses) ... ok
+test_padding_has_no_volume_proportional_energy_gain (__main__.QuaternionAndScopeTests.test_padding_has_no_volume_proportional_energy_gain) ... ok
+test_product_cap_energy_and_haar_constant (__main__.QuaternionAndScopeTests.test_product_cap_energy_and_haar_constant) ... ok
+test_source_components_have_paid_witness_density (__main__.QuaternionAndScopeTests.test_source_components_have_paid_witness_density) ... ok
+test_su2_reflection_energy_and_probability_haar_maps (__main__.QuaternionAndScopeTests.test_su2_reflection_energy_and_probability_haar_maps) ... ok
+test_zero_minimum_does_not_remove_frozen_winding_holonomy (__main__.QuaternionAndScopeTests.test_zero_minimum_does_not_remove_frozen_winding_holonomy) ... ok
+test_counted_tail_and_nonvacuous_large_h_example (__main__.ScalarTests.test_counted_tail_and_nonvacuous_large_h_example) ... ok
+test_exact_constant_chain (__main__.ScalarTests.test_exact_constant_chain) ... ok
+test_joint_tail_layer_cake_integral (__main__.ScalarTests.test_joint_tail_layer_cake_integral) ... ok
+test_partial_cooling_and_exception_budgets_exactly (__main__.ScalarTests.test_partial_cooling_and_exception_budgets_exactly) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 3.201s
+
+OK

@@ -2,6 +2,8 @@
 
 **Second research pass, October 9, 2026.** This follows the [finite-volume criterion](../README.md). It establishes a concrete finite-block replacement estimate under an explicit boundary condition, plus an arbitrary-boundary excess-energy estimate. It also disproves the stronger arbitrary-boundary all-small filling claim. **It does not prove the cutoff-comparison estimate, construct a continuum theory, or solve Yang–Mills.** No novelty claim is made.
 
+**Follow-up:** the [third pass](../boundary_cost/README.md) now supplies raw Wilson marginal costs for large boundary minima, a counted bound for actual rough components, and a near-minimum partial-cooling kernel. It does not invalidate the obstruction below or establish general compatible filling or weighted/RG control. The statements below retain their second-pass scope.
+
 Read the [proof PDF](rough_region_replacement.pdf) or its [LaTeX source](rough_region_replacement.tex).
 
 ## 1. An unrestricted replacement theorem would be false

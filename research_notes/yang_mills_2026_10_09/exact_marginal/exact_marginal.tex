@@ -1,0 +1,638 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\one}{\mathbf1}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\supp}{\operatorname{supp}}
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdftitle={Exact sparse Wilson marginals and one step repair bounds},pdfauthor={Research note},pdfsubject={Finite SU(2) lattice marginalization, not an RG flow or continuum theorem}}
+\title{Exact sparse Wilson marginals and one step repair bounds}
+\author{Research note}
+\date{October 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We integrate one $SU(2)$ Wilson link, then any fixed family of links no
+two of which share a plaquette, exactly. Each integrated star contributes
+$e^{-6H}F(Hb)$, where $b$ is the norm of its six-staple sum and
+$F(t)=2I_1(t)/t$, with its continuous value one at zero. Extracting the
+conditional minimum $6-b$ leaves a bounded remainder of size $O(\log H)$.
+The resulting interaction is genuinely not a sum of original
+elementary-cell interactions, so the preceding weighted class is not
+closed even under one removal. Nevertheless, a retained-link edit lifts
+to at most seven times as many original links. The original Wilson
+energy moment and minimizer-cap estimate give a one-region weighted
+repair/exception bound in the exact marginal, with explicit local costs.
+For a reflection-invariant sparse pattern the complete marginal inherits
+site-reflection positivity; no positivity of its individual induced terms
+is assumed. The rough labels after integration are declared separately
+from missing original plaquettes. This is one exact partial
+marginalization, with no rescaling or repeated-RG stability, no signed
+covering construction, and no continuum or mass-gap conclusion. No
+novelty claim is made.
+\end{abstract}
+\tableofcontents
+
+\section{Model and the removed-link set}
+We start with the \emph{pure} Wilson model, not with an arbitrary weighted
+endpoint from the fourth pass. On
+$\Lambda_L=(\mathbb Z/L\mathbb Z)^4$, $L=2^m$, $m\ge2$, set
+\[
+ E(U)=\sum_qs(U_q),\quad s(g)=1-\tfrac12\Tr g,
+ \quad\mu_H(\dd U)=Z_H^{-1}e^{-HE(U)}\dd U,\quad H\ge1.
+\]
+Every positively oriented link has a variable in $\SU$; its reverse has
+the inverse. Each unoriented plaquette is counted once. The reference
+$\dd U$ is product \emph{probability} Haar. Let $D$ be a fixed set of
+removed links such that each plaquette contains at most one link of $D$.
+Write $R$ for the retained links and $z=U_R$. The exact marginal is
+$\nu_D=(U\mapsto U_R)_*\mu_H$. Selection of $D$ from the source
+configuration is not part of this statement.
+
+For $e\in D$, its six plaquettes have energy
+\[
+ E_e(u_e,z)=\sum_{j=1}^6\left(1-\tfrac12\Tr(u_eS_{ej}(z)^{-1})\right),
+\]
+where $S_{ej}$ is the three-link detour from the source of $e$ to its
+target. All detour links are retained. Identify these matrices with unit
+quaternions, put
+\begin{equation}
+ B_e=\sum_{j=1}^6s_{ej},\qquad b_e=|B_e|\in[0,6],\qquad m_e=6-b_e.
+ \label{eq:staples}
+\end{equation}
+The quaternion inner product gives $E_e=6-u_e\cdot B_e$ and
+$m_e=\min_{u_e}E_e$. For $b_e=0$ every $u_e$ is a minimizer. Gauge
+transformations act by common left/right endpoint multiplication on the
+staples, preserving $b_e$ and $m_e$.
+
+Let $E_0(z)$ sum exactly those original plaquettes containing no removed
+link. Since the removed stars have disjoint plaquette sets,
+\begin{equation}
+ E(U_D,z)=E_0(z)+\sum_{e\in D}E_e(u_e,z).
+ \label{eq:decomposition}
+\end{equation}
+Stars may share retained links and vertices. Conditional factorization
+in the removed variables does not mean independence of the induced
+factors under the marginal law.
+
+\section{Exact integral and a uniform logarithmic remainder}
+Define for $t\ge0$
+\begin{equation}
+ F(t)=\frac2\pi\int_0^\pi e^{t\cos\theta}\sin^2\theta\dd\theta
+     =\sum_{j=0}^\infty\frac{(t^2/4)^j}{j!(j+1)!}.
+ \label{eq:F}
+\end{equation}
+Thus $F(0)=1$ and $F(t)=2I_1(t)/t$ for $t>0$. This normalization agrees
+with the primary integral and power-series definitions
+\cite[10.32.2, 10.25.2]{dlmf}. The series can also be obtained directly
+by expanding the exponential and integrating the even spherical moments.
+
+\begin{theorem}[Exact retained density]\label{thm:marginal}
+For every admissible fixed $D$,
+\begin{equation}
+ \nu_D(\dd z)=\frac1{Z_H}e^{-HE_0(z)}
+        \prod_{e\in D}\left[e^{-6H}F(Hb_e(z))\right]\dd z.
+ \label{eq:exact}
+\end{equation}
+There is no extra gauge-volume factor or unknown normalizing constant:
+integrating the displayed numerator gives exactly $Z_H$.
+\end{theorem}
+\begin{proof}
+For $b_e>0$, left multiplication by the unit quaternion $B_e/b_e$
+rotates the linear form $u_e\cdot B_e$ to $b_e\cos\theta$. Probability
+Haar on $\SU\simeq S^3$ has angular density
+$(2/\pi)\sin^2\theta\dd\theta$. The integral over $u_e$ is therefore
+$e^{-6H}F(Hb_e)$. At $b_e=0$ it is $e^{-6H}$, in agreement with
+$F(0)=1$. Apply Fubini to \eqref{eq:decomposition}. All factors are
+positive, bounded and measurable in this finite volume.
+\end{proof}
+
+Set
+\begin{equation}
+ r(t)=t-\log F(t),\qquad
+ r_H=\tfrac12+\log24+\tfrac32\log(1+6H).
+ \label{eq:r}
+\end{equation}
+\begin{lemma}[Uniform remainder including zero staple sum]\label{lem:r}
+For every $t\ge0$,
+\begin{equation}
+ 0\le r(t)\le\tfrac12+\log24+\tfrac32\log(1+t),\quad r(0)=0.
+ \label{eq:rbound}
+\end{equation}
+In particular $0\le r(Hb_e)\le r_H$. For $t>0$,
+$0<F'(t)/F(t)<1$, so $0<r'(t)<1$.
+\end{lemma}
+\begin{proof}
+Write
+$e^{-r(t)}=\E_{\mathrm{Haar}}e^{-t(1-\cos\theta)}\le1$.
+On the cap $\theta\le\rho=(1+t)^{-1/2}\le1$,
+$t(1-\cos\theta)\le t\rho^2/2\le1/2$.
+The previously proved elementary Haar-cap bound gives this cap mass
+at least $\rho^3/24$. Hence
+$e^{-r(t)}\ge e^{-1/2}/[24(1+t)^{3/2}]$, proving \eqref{eq:rbound}.
+The logarithmic derivative $F'/F$ is the expectation of $\cos\theta$
+under its positive tilted angular law. It is strictly less than one.
+Pairing angles $\theta$ and $\pi-\theta$ shows $F'(t)>0$ for $t>0$.
+\end{proof}
+Define
+\begin{equation}
+ \mathcal E_D(z)=E_0(z)+\sum_{e\in D}m_e(z)
+               =\min_{U_D}E(U_D,z),\qquad
+ W_D(z)=-\sum_{e\in D}r(Hb_e(z)).
+ \label{eq:effective}
+\end{equation}
+Then the exact same density is
+\begin{equation}
+ \nu_D(\dd z)=Z_H^{-1}e^{-H\mathcal E_D(z)+W_D(z)}\dd z.
+ \label{eq:split}
+\end{equation}
+This separates an order-$H$ leading action from a logarithmic remainder;
+it does not drop the boundary-forced minimum as a scalar.
+
+\paragraph{Why the separation matters.}
+For one actual frozen star, both $b=0$ (three $+I$ and three $-I$
+staples) and $b=6$ (identical staples) are realizable. The log-integral
+factor $-6H+\log F(Hb)$ thus has oscillation
+\[
+ \log F(6H)=6H-r(6H)\ge6H-r_H.
+\]
+It is not an $O(\log H)$ perturbation of $E_0$ uniformly in all boundary
+data. Only the remainder after extracting $6-b$ has that bound.
+Moreover $r(H|B|)$ and $6-|B|$ separately have a cusp at $B=0$;
+the full expression does not. Indeed
+$F(t)=1+t^2/8+O(t^4)$, so
+$-H(6-b)-r(Hb)=-6H+\log F(Hb)$ is smooth in the four coordinates of
+$B$. A Hessian argument must not differentiate the separated leading
+minimum as if it were everywhere smooth.
+
+\section{Support spreading and inherited reflection positivity}
+\begin{proposition}[Failure of elementary-cell closure]\label{prop:nonclosure}
+For $H>0$, even the marginal from one removed link generally cannot be
+written, up to a constant, as the exponential of a sum of functions
+supported on individual original elementary four-cells of retained links.
+This statement concerns the original cells and no new auxiliary variables.
+\end{proposition}
+\begin{proof}
+Take $e=(0,e_0)$. Set retained links to identity except the two parallel
+middle links of its $+e_1$ and $-e_1$ staples, with values
+$\exp(i\alpha\sigma_3)$ and $\exp(i\beta\sigma_3)$ respectively. These
+two links lie at transverse coordinates $+1$ and $-1$; no original
+unit cell contains both, including for period four. The other four
+staples are identity. In quaternion coordinates,
+\[
+ b(\alpha,\beta)=|4+e^{i\alpha}+e^{i\beta}|,\quad
+ b^2=18+8\cos\alpha+8\cos\beta+2\cos(\alpha-\beta).
+\]
+At the origin $b=6$, its first derivatives vanish, and
+$\partial_\alpha\partial_\beta b=1/6$. Consequently
+\begin{equation}
+ \left.\partial_\alpha\partial_\beta\log F(Hb)\right|_{0,0}
+ =\frac H6\frac{F'(6H)}{F(6H)}>0.
+ \label{eq:mixed}
+\end{equation}
+Every cell-supported summand, and every retained original plaquette,
+depends on at most one of these two variables after the others are fixed.
+Its mixed four-point difference is zero. The smooth exact log-density
+has a nonzero mixed difference for sufficiently small equal nonzero
+angles by \eqref{eq:mixed}. This argument does not assume differentiability
+of a putative cell decomposition. If equality is asserted only Haar-almost
+everywhere, Fubini makes its mixed four-point difference zero almost
+everywhere in the common exterior and four link values. The nonzero
+difference of the continuous exact log-density persists on open
+neighborhoods of the displayed choices, which have positive Haar measure.
+Thus an almost-everywhere decomposition is ruled out as well.
+\end{proof}
+Larger supports do not by themselves destroy reflection positivity of
+the \emph{complete exact marginal}. If a site reflection $\vartheta$
+preserves $D$ as an unoriented link set, the retained-coordinate projection
+commutes with it. A bounded real retained positive-half function lifts to a
+fine positive-half function, so
+\begin{equation}
+ \E_{\nu_D}[f\vartheta f]=\E_{\mu_H}[\widetilde f\vartheta\widetilde f]
+ \ge0.
+ \label{eq:rp}
+\end{equation}
+This uses the fine model's site-reflection positivity proved in the
+preceding notes. It does not assert positivity of the individual
+$m_e$ or $r(Hb_e)$ interactions, or of an arbitrary non-invariant marginal.
+
+A concrete nonempty periodic pattern is
+\begin{equation}
+ D_0=\{(x,x+e_0):x_1,x_2,x_3\text{ even},\ x_0\text{ arbitrary}\}.
+ \label{eq:pattern}
+\end{equation}
+It has $V/8$ links. A plaquette involving direction zero has two parallel
+direction-zero links at opposite transverse parities, hence contains at
+most one removed link. A plaquette in the other directions contains none. Normal site reflection changes the starting $x_0$ by an odd shift
+but $x_0$ is unrestricted; transverse site reflections preserve even
+parity. Thus $D_0$ is invariant under every integer-site coordinate
+reflection. The marginal retains those positivities, translations by one
+in direction zero, and translations by two in the other directions.
+It is not a Wilson model on a rescaled complete hypercubic lattice.
+
+\section{Local closure and moment bounds in the exact marginal}
+Fix a nonempty $J\subset R$, with $n=|J|$. Let
+\begin{equation}
+ A_D(J)=\{e\in D:F_e\cap J\ne\varnothing\},\quad a=|A_D(J)|,\quad
+ K=J\cup A_D(J),\quad s=|K|=n+a,
+ \label{eq:closure}
+\end{equation}
+where $F_e$ consists of the 18 retained detour links in the removed star.
+Since an original plaquette contains at most one removed link and each
+retained link belongs to six plaquettes,
+\begin{equation}
+ a\le6n,\qquad s\le7n.
+ \label{eq:closurebound}
+\end{equation}
+Keep every term of every affected star, not only its plaquettes which
+happen to touch $J$. Define the local leading energy
+\begin{equation}
+ G_J(z)=\sum_{\substack{q\cap J\ne\varnothing\\q\cap D=\varnothing}}s(z_q)
+                +\sum_{e\in A_D(J)}m_e(z).
+ \label{eq:G}
+\end{equation}
+Then $\mathcal E_D-G_J$ depends only on retained links outside $J$.
+For the local remainder $W_J=-\sum_{e\in A_D(J)}r(Hb_e)$, $W_D-W_J$
+also depends only on that exterior. Every $J$-edit obeys
+\begin{equation}
+ |W_D(z)-W_D(y)|\le a r_H\le6nr_H.
+ \label{eq:editcost}
+\end{equation}
+The full leading energy may change by order $Hn$ in the exponent; that
+change is accounted for by its energy gain, not by \eqref{eq:editcost}.
+
+For an original fine-link set $K$, write $E_K$ for the sum of all
+original plaquettes touching $K$. No plaquette touching $K$ contains a
+removed link outside $A_D(J)$. Thus, as a function of the remaining
+retained data and the removed variables $u_A$,
+\begin{equation}
+ E_K(u_A,z)=
+ \sum_{\substack{q\cap J\ne\varnothing\\q\cap D=\varnothing}}s(z_q)
+       +\sum_{e\in A_D(J)} E_e(u_e,z),\qquad
+ G_J(z)=\min_{u_A}E_K(u_A,z).
+ \label{eq:lift}
+\end{equation}
+Let $w=z_{R\setminus J}$ and
+\begin{equation}
+ g_J(w)=\min_{z_J}G_J(z_J,w)
+       =\min_{z_J,u_A}E_K(u_A,z_J,w).
+ \label{eq:gmin}
+\end{equation}
+Both minima are continuous by compactness. Removed variables outside
+$A_D(J)$ are irrelevant to these functions and cannot secretly supply
+frozen-boundary terms.
+
+Recall the established original Wilson moment \cite{boundary}:
+\[
+ \E_{\mu_H}e^{HE_K/128}\le e^{b_H|K|},\qquad
+ b_H=\tfrac12a_H+\frac{\log2}{64},\quad
+ a_H=\tfrac32+\log24+\tfrac32\log(8H).
+\]
+\begin{theorem}[Inherited local energy and boundary-minimum tails]
+\label{thm:moment}
+For the exact marginal of every admissible fixed $D$,
+\begin{equation}
+ \E_{\nu_D}e^{HG_J/128}\le e^{b_H(n+a)},\qquad
+ \E_{\nu_D}e^{Hg_J/128}\le e^{b_H(n+a)}.
+ \label{eq:moment}
+\end{equation}
+Consequently for $v\ge0$,
+\begin{equation}
+ \nu_D(G_J\ge v),\ \nu_D(g_J>v)
+ \ \le\ \min\{1,e^{-Hv/128+b_H(n+a)}\}.
+ \label{eq:tails}
+\end{equation}
+The second is a tail in the \emph{actual retained exterior marginal},
+not at an arbitrarily fixed boundary. The estimates need no new
+chessboard inequality on the decimated graph.
+\end{theorem}
+\begin{proof}
+For every fine configuration, $0\le g_J\le G_J\le E_K$ by
+\eqref{eq:lift}--\eqref{eq:gmin}. Expectation of a retained-coordinate
+function under $\nu_D$ equals its expectation under $\mu_H$ exactly.
+Apply the original moment and then Markov's inequality. In particular,
+this proof works even if $D$ is not reflection invariant.
+\end{proof}
+
+\section{A retained-link sublevel kernel without differentiating a cusp}
+\begin{theorem}[Retained near-minimum replacement]\label{thm:kernel}
+For every $J$ there is a Borel gauge-covariant retained-link probability
+kernel, independent of the original values in $J$, freezing all retained
+links outside $J$, with conditional density on the edited coordinates
+relative to product probability Haar on $\SU^J$ at most
+\begin{equation}
+ M_J=(24H^{3/2})^n=e^{\ell_H n},\qquad
+ \ell_H=\log24+\tfrac32\log H,
+ \label{eq:density}
+\end{equation}
+and every output satisfies
+\begin{equation}
+ G_J(y_J,w)\le g_J(w)+12n/H.
+ \label{eq:kernelenergy}
+\end{equation}
+The constant uses $n$, not the larger lift size $n+a$.
+\end{theorem}
+\begin{proof}
+Use probability Haar restricted to the retained sublevel
+$\mathcal B_J(w)=\{y_J:G_J(y_J,w)\le g_J(w)+12n/H\}$.
+It remains to bound its Haar volume.
+
+For a fixed $w$, take any full minimizer $(v_J,v_A)$ of the smooth
+fine energy $E_K$ in \eqref{eq:gmin}. Hold $v_A$ fixed and vary only
+$v_e\exp(tX_e)$ for $e\in J$, with $\norm{X_e}_{\rm op}\le H^{-1/2}$.
+The first derivative of $E_K$ at zero vanishes. As in the earlier
+minimizer-cap proof \cite{rough}, the product rule and original
+four-link/six-plaquette incidences give
+\[
+ |E_K''(t)|\le24\sum_{e\in J}\norm{X_e}_{\rm op}^2.
+\]
+Terms of $E_K$ not touching $J$ have zero derivative. Taylor's integral
+remainder therefore gives
+$E_K(v_Je^X,v_A,w)\le g_J(w)+12n/H$.
+Since $G_J(v_Je^X,w)\le E_K(v_Je^X,v_A,w)$, the full product of $n$
+retained caps lies in $\mathcal B_J(w)$. Its Haar mass is at least
+$(24H^{3/2})^{-n}$. This proof differentiates only the smooth lifted
+energy, not the potentially nonsmooth $G_J$.
+
+Continuity of $G_J$ and $g_J$ makes the sublevel Borel and its
+positive-volume normalization Borel by parameter integration.
+Gauge transformations carry the minimized fine configurations and the
+retained sublevel into their transformed counterparts, preserving Haar
+volume. Normalized restriction is therefore gauge covariant. No
+measurable choice of $(v_J,v_A)$ is used to define the kernel.
+\end{proof}
+This kernel does not resample the removed links into the output, and is
+not claimed to preserve a finer conditional distribution, reflection
+positivity, mixed-loop holonomies, or a continuum topological charge.
+It is an existence result, not an implemented generic minimizer or
+sublevel sampler.
+
+\section{Which rough labels survive marginalization}
+The local leading energy is a sum over a fixed inventory of nonnegative
+\emph{effective labels}:
+\begin{itemize}
+\item an original plaquette $q$ containing no removed link, with
+value $s(z_q)$ and its four retained links as declared support;
+\item a removed-link star $e\in D$, with value $m_e(z)$ and its 18
+retained detour links $F_e$ as declared support.
+\end{itemize}
+These are labels of the exact minimized action, not a reassignment of
+independent plaquette matrices. Each original removed plaquette has
+ceased to be an observable of $z$ alone. In particular, an $m_e$ label
+is not the roughness of an individual eliminated plaquette.
+
+Declare a label rough if its value exceeds $p^2/(2H)$, for $p>0$.
+Let $N_p^D(J)$ count rough labels whose declared support meets $J$.
+The values of all effective labels whose declared support meets $J$ sum
+exactly to $G_J$; the sum over only the rough ones is bounded by $G_J$.
+An unremoved plaquette is rough
+precisely at the original curvature threshold $p/\sqrt H$, but a star
+value ranges up to six rather than two. Thus all effective rough labels
+are empty at $p^2\ge12H$; the earlier all-plaquette cutoff $p^2\ge4H$
+must not be applied to star labels.
+
+For a positive integer $k$ split the event
+$\mathcal R_{J,k}=\{N_p^D(J)\ge k\}$ at
+\begin{equation}
+ \mathcal A_{J,k}=\mathcal R_{J,k}\cap\{g_J\le kp^2/(4H)\},\qquad
+ \mathcal B_{J,k}=\{g_J>kp^2/(4H)\}.
+ \label{eq:split_events}
+\end{equation}
+These are events of the exact marginal and its retained boundary.
+If $kp^2\ge96n$, sources in $\mathcal A_{J,k}$ and every kernel output
+obey
+\begin{equation}
+ N_p^D(J;y)\le3k/4,\qquad
+ H(\mathcal E_D(z)-\mathcal E_D(y))\ge kp^2/8.
+ \label{eq:gain}
+\end{equation}
+Indeed $G_J(z)>kp^2/(2H)$ while
+$G_J(y)\le kp^2/(4H)+12n/H$; unaffected leading terms cancel. The
+output rough count is at most $2HG_J(y)/p^2$.
+
+\begin{theorem}[One-step weighted repair and exceptional-label control]
+\label{thm:repair}
+Let $kp^2\ge96n$. For the retained sublevel kernel $\mathcal K_J$,
+set $T_{J,k}(z,\dd y)=\one_{\mathcal A_{J,k}}(z)\mathcal K_J(z,\dd y)$.
+As measures on the retained link space,
+\begin{equation}
+ \nu_D T_{J,k}\le
+ \exp[-kp^2/8+\ell_Hn+a r_H]\nu_D.
+ \label{eq:output}
+\end{equation}
+The exceptional branch in the \emph{same exact marginal} satisfies
+\begin{equation}
+ \nu_D(\mathcal B_{J,k})\le
+ \min\{1,\exp[-kp^2/512+b_H(n+a)]\}.
+ \label{eq:exception}
+\end{equation}
+Consequently
+\begin{equation}
+ \nu_D(\mathcal R_{J,k})\le\min\{1,
+ e^{-kp^2/8+\ell_Hn+a r_H}
+ +e^{-kp^2/512+b_H(n+a)}\}.
+ \label{eq:repair}
+\end{equation}
+No new unknown or restricted partition function enters these bounds.
+\end{theorem}
+\begin{proof}
+On accepted input/output pairs, the exact density \eqref{eq:split},
+the gain \eqref{eq:gain}, and the residual edit bound \eqref{eq:editcost}
+give
+\[
+ e^{-H\mathcal E_D(z)+W_D(z)}
+ \le e^{-kp^2/8+a r_H}e^{-H\mathcal E_D(y)+W_D(y)}.
+\]
+Bound the retained-output kernel density by $e^{\ell_Hn}$ and integrate
+the original $z_J$ over probability Haar. Tonelli leaves the full
+normalized marginal on the output, proving \eqref{eq:output} against
+every nonnegative output test function. Its total accepted mass is
+$\nu_D(\mathcal A_{J,k})$. Apply \eqref{eq:tails} at $v=kp^2/(4H)$
+for \eqref{eq:exception}, and then use
+$\mathcal R_{J,k}\subset\mathcal A_{J,k}\cup\mathcal B_{J,k}$.
+\end{proof}
+For useful explicit absorption it suffices to add
+\begin{equation}
+ kp^2\ge16(\ell_Hn+a r_H),\qquad
+ kp^2\ge1024b_H(n+a).
+ \label{eq:absorb}
+\end{equation}
+The two terms in \eqref{eq:repair} are then at most
+$e^{-kp^2/16}$ and $e^{-kp^2/1024}$. Since $a\le6n$ and
+$r_H,\ell_H,b_H=O(\log H)$, these are genuinely region-proportional
+costs for one exact step, independent of $|D|$ and the ambient volume.
+A direct moment estimate is stronger for source probabilities alone:
+\begin{equation}
+ \nu_D(N_p^D(J)\ge k)
+ \le\min\{1,e^{-kp^2/256+b_H(n+a)}\}.
+ \label{eq:rough}
+\end{equation}
+The split theorem's additional information is its accepted \emph{output}
+domination. It neither removes all effective rough labels nor restores
+the old plaquette inventory.
+
+\section{Geometric counts, overlap and accepted composition}
+Each retained link lies in at most six effective supports: every one
+is witnessed by one of its six original incident plaquettes, whose
+removed link is either absent or unique. Every effective support has
+at most 18 links. Hence the adjacency graph in which retained links
+share an effective support has maximum degree at most
+$6(18-1)=102$.
+
+Let $C_p^D(e_0)$ be the actual component through a fixed retained root of
+all retained links incident to a rough effective label, with size zero
+if the root is absent. A component of size at least $n$ contains a
+connected $n$-link subset $J$ through that root. Each such link has a
+rough witness; one label can witness at most 18 links, so
+$N_p^D(J)\ge\lceil n/18\rceil$. Counting at most $102^{2(n-1)}$ rooted
+connected subsets and applying \eqref{eq:rough} with $n+a\le7n$ gives
+\begin{equation}
+ \nu_D(|C_p^D(e_0)|\ge n)
+ \le\min\{1,102^{2(n-1)}e^{-n[p^2/4608-7b_H]}\}.
+ \label{eq:components}
+\end{equation}
+This pays source-dependent geometry in a single fixed marginal, not by
+conditioning on a selected support and then pretending its law is the
+original conditional Gibbs law.
+
+Accepted operators satisfying $\nu_DT_i\le c_i\nu_D$ compose by order
+of measures: $\nu_DT_1\cdots T_r\le(\prod_i c_i)\nu_D$.
+All gates and gains must be evaluated at the actual intermediate state.
+For a concrete adaptive accepted kernel, choose the \emph{current}
+nonempty component $J=C_p^D(e_0)$, let $k=\lceil|J|/18\rceil$, and
+accept $\mathcal K_J$ only on its low-minimum branch. Rejected sources
+contribute mass zero to this subprobability kernel. If
+\begin{equation}
+ p^2\ge1728,\qquad d_H=p^2/144-\ell_H-6r_H>2\log102,
+ \label{eq:adaptivebudget}
+\end{equation}
+then counting the possible $J$ in \eqref{eq:output} gives
+\begin{equation}
+ \nu_DT\le c_H\nu_D,\qquad
+ c_H=\frac{e^{-d_H}}{1-102^2e^{-d_H}},\qquad
+ \nu_DT^r\le c_H^r\nu_D.
+ \label{eq:adaptive}
+\end{equation}
+Here $c_H<1$ when $d_H>\log10405$. This concerns repeated \emph{repairs
+inside one fixed marginal}, not repeated integrations or an RG flow.
+A process that stays put on rejected sources is a different operator.
+
+Retained exceptional identity branches still do not multiply as small
+operators: encountering the same event twice costs its probability once,
+not its square. For joint labels evaluated on one configuration, one
+available estimate is as follows. For a nonempty finite family of nonempty
+fixed $J_i$ let
+$K_i=J_i\cup A_D(J_i)$, $K_\cup=\bigcup_iK_i$, and
+$M=\max_q|\{i:q\cap K_i\ne\varnothing\}|$. Then
+\begin{equation}
+ \E_{\nu_D}\exp\left[\frac H{128M}\sum_i g_{J_i}\right]
+ \le e^{b_H|K_\cup|}.
+ \label{eq:joint}
+\end{equation}
+The proof is the pointwise bound
+$\sum_i g_{J_i}\le\sum_i E_{K_i}\le M E_{K_\cup}$ under the fine lift.
+Even disjoint retained $J_i$ can have overlapping lifted closures; $M$
+must be computed, not set to one. This is not a joint estimate for
+labels evaluated in different, adaptively changed exteriors.
+
+\section{What this exact step does not establish}
+\paragraph{Not the previous cell class.}
+Proposition~\ref{prop:nonclosure} is an actual counterexample to original
+cellwise additive support after one removal. Even after the order-$H$
+minimum is extracted, the remainder retains larger supports; the leading
+energy is a sum of minima, not a Wilson plaquette sum. The proof of the
+new bound does not import the fourth-pass cell theorem without checking
+its hypotheses: it instead uses the exact fine-to-marginal identity,
+the closure $K$, and a smooth fine minimizer.
+
+\paragraph{The factorization hypothesis matters.}
+If two removed links share a plaquette, \eqref{eq:decomposition} fails:
+the plaquette energy depends on both variables. Multiplying one-link
+integrals with the other removed link treated as frozen is not joint
+marginalization. The accompanying exact finite-group negative control
+exhibits this failure. Disjoint stars can still share retained variables;
+their effective weights are not probabilistically independent.
+
+\paragraph{Not an iterated renormalization theorem.}
+This operation does not introduce coarse links of a new lattice spacing,
+match a running coupling, or control the next exact marginal. The induced
+multi-staple factors will generally couple links chosen for a later
+removal even if they share no \emph{original} plaquette. The one-step
+closure factor seven, residual costs and effective-label inventory cannot
+simply be reused at every depth. Starting from the fourth-pass weighted
+cell class also need not give a product integral: a cell potential can
+couple several otherwise plaquette-disjoint removed links.
+
+\paragraph{No conditional repair of impossible boundaries.}
+The bounds on $m_e$ and $g_J$ are marginal costs, not claims that arbitrary
+frozen holonomies can be made small. The frustrated star, finite-area
+loop constraints and flat winding holonomies from earlier passes remain.
+A low leading-energy label does not specify an all-small filling of each
+integrated star; a partial reduction in effective rough count is not an
+inventory-preserving surgery. Signed or complex covering activities,
+restricted normalizers and continuum-sector identifications are not
+introduced here.
+
+\paragraph{Next concrete target.}
+Specify a second exact elimination or a true block-link map, track the
+induced supports and retained defect inventory, and determine whether a
+positive endpoint class has depth-uniform local energy moments and edit
+costs. A valid obstruction or explicit growth law is as useful as a
+closure lemma: do not assume the one-step constant is stable. Joint
+retained defects and mandatory signed covering identities remain separate
+requirements. The fixed-physical-size defect test, cutoff comparison and
+nontrivial continuum reconstruction are still downstream.
+
+\section{Verification scope}
+The executable checks test probability-Haar normalization, the Bessel
+power series versus independent angular quadrature, the zero-staple
+endpoint and logarithmic remainder, exact integer noncommuting quaternion
+link algebra, sparse-pattern reflection geometry, lifted supports,
+conditional minima in finite-group models, and output/overlap budgets.
+Exact $\mathbb Z_2$ and quaternion-group integrations are finite-model
+diagnostics, not calculations of the four-dimensional $\SU$ partition
+function or formal proofs of the analytic claims. Deliberately corrupted
+normalizations, lost star terms and falsely factorized shared plaquettes
+are negative controls. Existing checks and Lean scalar certificates are
+retained; no new analytic theorem is Lean-formalized. The separate audit
+files distinguish independent agent review from the author's checks;
+neither is external expert certification or a novelty assessment.
+
+\begin{thebibliography}{9}
+\bibitem{dlmf}
+NIST, \emph{Digital Library of Mathematical Functions},
+modified Bessel functions, equations 10.32.2 and 10.25.2, inspected
+October 9, 2026. Exact source locators are in \texttt{sources.md}.
+\bibitem{boundary}
+\emph{Marginal boundary energy costs in the Wilson model}, third-pass
+local note, October 9, 2026,
+\texttt{../boundary\_cost/boundary\_cost.tex}, Theorem 1.1.
+The input remains the documented written theorem, not a Lean-certified
+analytic result.
+\bibitem{rough}
+\emph{Local link replacement with explicit boundary conditions},
+second-pass local note, October 9, 2026,
+\texttt{../rough\_region/rough\_region\_replacement.tex}, minimizer-cap
+lemma and robust one-link obstruction.
+\bibitem{weighted}
+\emph{Weighted boundary costs and accepted local repairs}, fourth-pass
+local note, October 9, 2026,
+\texttt{../weighted\_boundary/weighted\_boundary.tex}, weighted output
+domination, elementary-cell class and its stated limits.
+\end{thebibliography}
+\end{document}

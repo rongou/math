@@ -1,0 +1,582 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdftitle={Marginal boundary energy costs in the Wilson model},pdfauthor={Research note},pdfsubject={Finite lattice estimates, not a continuum Yang--Mills construction}}
+\title{Marginal boundary energy costs in the Wilson model}
+\author{Research note}
+\date{October 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The preceding rough-region note disproved all-small filling with arbitrary
+frozen boundary links. We now pay for large boundary-forced energy in the
+\emph{unconditioned} Wilson measure, instead of assuming it can always be
+removed. On four-dimensional periodic cubes of side $L=2^m$, $m\ge2$,
+site-reflection positivity, the standard event chessboard estimate, and a
+64-class link decomposition give an exponential moment bound for the energy
+of every fixed edited-link set. The same bound controls its conditional
+minimum in the actual exterior marginal. It also gives a counted tail for
+source-defined rough-link components, without a boundary compatibility
+hypothesis. Constants and overlap losses are explicit. These estimates do
+not produce an all-small compatible filling, an unrestricted lower bound
+on removable energy, or control of general renormalized or reweighted measures. A sublevel kernel additionally gives partial cooling on a low-minimum
+class, with a separately paid exceptional label in the raw measure.
+These are finite Wilson-model inputs, not a continuum construction, mass-gap proof, or novelty
+claim. The imported chessboard theorem and the locally proved geometric
+application are distinguished below.
+\end{abstract}
+\tableofcontents
+
+\section{Model and main estimates}
+Work on $\Lambda_L=(\mathbb Z/L\mathbb Z)^4$, $L=2^m$, $m\ge2$.
+There are $V=L^4$ sites, $4V$ positively oriented links and $6V$ plaquettes.
+Each link has a variable $U_e\in\SU$, the reverse link has $U_e^{-1}$,
+and the reference measure is product \emph{probability} Haar. Set
+\[
+ s(g)=1-\tfrac12\Tr g=\tfrac12\norm{\one-g}_{\rm op}^2,
+ \quad E(U)=\sum_p s(U_p),\quad
+ \mu_H(\dd U)=Z_H^{-1}e^{-HE(U)}\prod_e\dd U_e,\quad H\ge1.
+\]
+For a fixed link set $J$, let $n=|J|$ and let $P(J)$ contain \emph{all}
+plaquettes touching $J$. Write
+\[
+ E_J(U)=\sum_{p\in P(J)}s(U_p),\qquad
+ e_{*,J}(z)=\min_{x\in\SU^J}E_J(x,z),\quad z=U_{J^c}.
+\]
+The minimum exists and is continuous in $z$. It obeys
+$0\le e_{*,J}(U_{J^c})\le E_J(U)$. Define
+\begin{equation}
+ a_H=\tfrac32+\log24+\tfrac32\log(8H),\qquad
+ b_H=\tfrac12a_H+\frac{\log2}{64}.
+ \label{eq:constants}
+\end{equation}
+These constants are deliberately loose and differ from the second pass's
+compatible-kernel constants.
+
+\begin{theorem}[Unconditioned local energy and boundary cost]
+\label{thm:moment}
+For every fixed $J$ and $0<\theta<1$,
+\begin{equation}
+ \E_{\mu_H}\exp\!\left(\frac{\theta H}{64}E_J\right)
+ \le \exp\!\left[n\left(\theta a_H-
+                  \frac{\log(1-\theta)}{64}\right)\right].
+ \label{eq:moment}
+\end{equation}
+The same bound holds with $E_J$ replaced by
+$e_{*,J}(U_{J^c})$. In particular, for $v\ge0$,
+\begin{align}
+ \mu_H(E_J\ge v)&\le\min\{1,e^{-Hv/128+b_Hn}\},\label{eq:energytail}\\
+ \mu_H(e_{*,J}(U_{J^c})\ge v)
+ &\le\min\{1,e^{-Hv/128+b_Hn}\}.\label{eq:mintail}
+\end{align}
+The second probability is under the Wilson \emph{exterior marginal}.
+It is not a statement conditional on an arbitrary fixed exterior.
+\end{theorem}
+
+For a roughness parameter $p>0$, call a plaquette rough when
+$\norm{\one-U_p}_{\rm op}>p/\sqrt H$, and write $N_p(J)$ for the number
+of rough plaquettes in $P(J)$. The letter $p$ here is a parameter, not a
+plaquette index. All such events are empty if $p/\sqrt H\ge2$.
+
+\begin{corollary}[Rough counts without boundary compatibility]
+\label{cor:rough}
+For fixed $J$ and a positive integer $k$,
+\begin{equation}
+ \mu_H(N_p(J)\ge k)
+ \le\min\{1,\exp[-kp^2/256+b_Hn]\}.
+ \label{eq:rough}
+\end{equation}
+\end{corollary}
+\begin{proof}
+The event implies $E_J>kp^2/(2H)$. Apply \eqref{eq:energytail}.
+\end{proof}
+These conclusions do not say that the rough plaquettes can be removed
+while preserving $J^c$. Their original energy and their boundary-forced
+minimum are separate quantities.
+
+\section{A volume-proportional lower bound on the partition function}
+Let $C_\rho$ be the geodesic cap in $\SU$ of angle at most $\rho$, with
+$0<\rho\le1$. The previous note's elementary Haar calculation gives
+\[
+ \operatorname{Haar}(C_\rho)
+ =\frac{\rho-\sin\rho\cos\rho}{\pi}\ge\frac{\rho^3}{24}.
+\]
+If every link lies in this cap, each plaquette has operator curvature at
+most $4\rho$, by telescoping its four unitary factors, and hence
+$E\le48V\rho^2$. Take $\rho=(8H)^{-1/2}$. Integrating just over this
+product cap gives
+\begin{equation}
+ Z_H\ge(\rho^3/24)^{4V}e^{-48HV\rho^2}
+       =e^{-4Va_H}.
+ \label{eq:partition}
+\end{equation}
+No independence of plaquette matrices, gauge fixing, or weak-coupling
+expansion is used. Probability Haar and the nonnegative-action convention
+are essential to the subsequent numerator bound by one.
+
+\section{Site reflection and the chessboard input}
+\label{sec:reflection}
+Reflect a coordinate $x_i$ to $2a-x_i$ modulo $L$, where $a$ is an integer.
+The reflection has two fixed planes, at $a$ and $a+L/2$. An oriented link
+is transported geometrically; if its orientation reverses, its matrix is
+inverted. This is a Haar-preserving involution. Tangential links on the
+fixed planes remain pointwise fixed. Plaquette energy is preserved,
+because reversal and change of base point invert or conjugate holonomy.
+
+Let $z$ be the links wholly contained in these two planes, and $x_+,x_-$
+the remaining links in the two closed half-lattices. No elementary
+plaquette involves strict interiors on both sides: its extent in the
+reflected coordinate is zero or one, while the reflecting planes have
+integer coordinates. Consequently
+\[
+ E=E_P(z)+E_+(x_+,z)+E_-(x_-,z),
+ \qquad E_-(x_-,z)=E_+(\vartheta x_-,z).
+\]
+For a bounded real function $f$ supported in the positive closed half,
+\begin{equation}
+ \E_{\mu_H}[f\,\vartheta f]
+ =\frac1{Z_H}\int e^{-HE_P(z)}
+   \left[\int e^{-HE_+(x_+,z)}f(x_+,z)\dd x_+\right]^2\dd z\ge0.
+ \label{eq:rp}
+\end{equation}
+Reflection symmetry also gives the symmetric bilinear form. This proves
+site-reflection positivity directly. It does not claim positivity for an
+arbitrary boundary-conditioned law or for an arbitrary extra interaction.
+
+\paragraph{Imported standard theorem.}
+Tile by closed cubes of side two,
+$B_t=a+2t+\{0,1,2\}^4$, indexed by
+$\mathcal T=(\mathbb Z/(L/2)\mathbb Z)^4$, with
+$M=|\mathcal T|=V/16$; the origin $a$ can be translated.
+Neighboring blocks share boundary links. For an event $A$ on the base
+block, let $\vartheta_t A$ denote its reflected translate to block $t$:
+local coordinate $v_j$ becomes $v_j$ for even $t_j$ and $2-v_j$ for odd
+$t_j$, followed by translation by $a+2t$.
+The event chessboard inequality is
+\begin{equation}
+ \mu_H\!\left(\bigcap_{j=1}^r\vartheta_{t_j}A_j\right)
+ \le\prod_{j=1}^r
+ \mu_H\!\left(\bigcap_{t\in\mathcal T}\vartheta_t A_j\right)^{1/M},
+ \qquad t_1,\ldots,t_r\text{ distinct}.
+ \label{eq:chessboard}
+\end{equation}
+We use the event formulation in Biskup--Koteck\'y
+\cite[\S2.2, Theorem 2.4, (2.10)]{bk}, retaining its power-of-two
+restriction on $L/2$. Its usual repeated Cauchy--Schwarz proof applies to
+the closed-half \emph{edge algebras} just described: the needed facts are
+support under reflection, multiplication, commuting coordinate
+reflections, and \eqref{eq:rp}. These hold for links at their geometric
+midpoints, including inversion of reversed orientations. Shared-face
+variables belong to both closed halves and are integrated as $z$ in
+\eqref{eq:rp}; they are not independently copied. Thus neither independent
+blocks nor an identification of outgoing links with spins at their tails
+is assumed. This is the standard chessboard argument on an edge-decorated
+lattice, not a new chessboard theorem.
+
+Only the event version \eqref{eq:chessboard} is needed below. We derive
+exponential moments from it explicitly, rather than silently importing a
+stronger functional version. The geometric extension to these edge
+algebras and the ensuing analysis are written arguments, not Lean
+certificates or external expert verification.
+
+\section{Reflected stars and the 64 link classes}
+For a link $e$, write
+\[
+ E_e=E_{\{e\}}=\sum_{q\ni e}s(U_q).
+\]
+A prototype link in a side-two block has direction $\mu$, local starting
+coordinate $r\in\{0,1\}$ in direction $\mu$, and starting coordinate one
+in each of the other three directions. All six incident plaquettes lie
+in the block. Each of their relative interiors lies inside that block:
+two coordinates span a unit interval, and the other two equal one.
+In particular no such plaquette is wholly on a block face.
+
+It follows that the reflected copies of a prototype star have
+\emph{disjoint plaquette sets}. They may share links on block faces;
+no probabilistic independence follows or is needed. Their energies obey
+\begin{equation}
+ \sum_{t\in\mathcal T}E_{e(t)}\le E.
+ \label{eq:disjoint}
+\end{equation}
+For $u\ge0$, dissemination of $\{E_e\ge u\}$ forces $E\ge Mu$.
+Its constrained partition numerator is at most $e^{-HMu}$ since total
+reference mass is one. Equations \eqref{eq:partition} and
+\eqref{eq:chessboard} therefore give
+\begin{equation}
+ \mu_H\!\left(\bigcap_t\{E_{e(t)}\ge u\}\right)^{1/M}
+ \le q_H(u):=\min\{1,\exp[-Hu+64a_H]\}.
+ \label{eq:starweight}
+\end{equation}
+The factor $64$ here is $4V/M=4\cdot16$, not the number of plaquettes
+in a star.
+
+Partition all links by their direction and the four parities of their
+starting site: $4\cdot2^4=64$ classes. Fix direction $\mu$ and parity
+vector $c$. Choose the block grid with
+$a_\mu=c_\mu$ and $a_\nu\equiv c_\nu-1\pmod2$ for $\nu\ne\mu$.
+Every link of this class is the lower prototype ($r=0$) in a distinct
+block of that grid, and all of its incident plaquettes are in that block.
+When pulling an event back to the base block, odd $t_\mu$ replaces this
+prototype by $r=1$; both prototypes satisfy \eqref{eq:disjoint}.
+Thus \eqref{eq:chessboard} allows different pulled-back prototypes.
+
+\begin{lemma}[Joint star tails within a class]\label{lem:classtails}
+For a fixed set $S$ in one of these 64 classes and thresholds $u_e\ge0$,
+\begin{equation}
+ \mu_H(E_e\ge u_e\text{ for all }e\in S)
+ \le\prod_{e\in S}q_H(u_e).
+ \label{eq:classtails}
+\end{equation}
+The same bound holds with each $E_e$ replaced by
+$e_{*,\{e\}}(U_{e^c})$, by event inclusion.
+\end{lemma}
+\begin{proof}
+The events occupy distinct blocks of the common grid. Each reflected
+prototype has the bound \eqref{eq:starweight}. Apply
+\eqref{eq:chessboard}. For the final assertion use
+$e_{*,\{e\}}\le E_e$ pointwise.
+\end{proof}
+In particular the sharper one-link boundary bound is
+\begin{equation}
+ \mu_H(e_{*,\{e\}}\ge u)\le q_H(u).
+ \label{eq:singleminimum}
+\end{equation}
+For the second pass's staple mismatch
+$\mathcal D=\sum_{i<j}\norm{S_i-S_j}_{\rm op}^2$,
+$e_{*,\{e\}}=\mathcal D/(6+|\sum s_j|)\ge\mathcal D/12$, hence
+\begin{equation}
+ \mu_H(\mathcal D\ge d)\le\min\{1,e^{-Hd/12+64a_H}\}.
+ \label{eq:mismatch}
+\end{equation}
+This pays a marginal statistical cost for large one-link frozen-loop
+mismatch. It is not an estimate conditional on that mismatch having
+already been frozen.
+
+\section{From joint tails to arbitrary edited sets}
+Put $K=64a_H$ and $T_e=HE_e$. Within a class,
+\eqref{eq:classtails} bounds joint upper tails by products of
+$q(v)=\min\{1,e^{K-v}\}$. For $0<\theta<1$ use
+\[
+ e^{\theta T_e}=1+\int_0^\infty
+                  \theta e^{\theta v}\one_{\{T_e>v\}}\dd v.
+\]
+Expand a finite product and apply Tonelli and
+Lemma~\ref{lem:classtails} to every subset. The result is
+\begin{align}
+ \E\exp\!\left(\theta\sum_{e\in S}T_e\right)
+ &\le\left[1+\int_0^\infty\theta e^{\theta v}q(v)\dd v\right]^{|S|}
+   \nonumber\\
+ &=\left[\frac{e^{\theta K}}{1-\theta}\right]^{|S|}.
+ \label{eq:classmoment}
+\end{align}
+The equality follows by splitting the integral at $K\ge0$.
+This is an upper-tail comparison, not a claim of independent energies.
+
+\begin{proof}[Proof of Theorem~\ref{thm:moment}]
+For $J$, write $S_c$ for its intersections with the 64 classes. Every
+plaquette in $P(J)$ is counted at least once in $\sum_{e\in J}E_e$, so
+$E_J\le\sum_{e\in J}E_e$. Apply H\"older with 64 equal exponents and
+then \eqref{eq:classmoment}:
+\begin{align*}
+ \E e^{\theta HE_J/64}
+ &\le \E\prod_c\exp\!\left(\frac\theta{64}
+                                      \sum_{e\in S_c}T_e\right)\\
+ &\le\prod_c\left[\E\exp\!\left(\theta
+                                      \sum_{e\in S_c}T_e\right)\right]^{1/64}\\
+ &\le\exp\!\left[\frac n{64}
+                   (\theta K-\log(1-\theta))\right].
+\end{align*}
+Empty classes contribute one; no independence across classes is used.
+Substitute $K=64a_H$. The minimum bound follows pointwise from
+$e_{*,J}\le E_J$. Markov's inequality at $\theta=1/2$ proves the tails.
+\end{proof}
+
+\begin{corollary}[Explicit overlap loss for retained minima]
+\label{cor:overlap}
+Let $J_1,\ldots,J_r$ be fixed nonempty link sets, let $I=\bigcup_iJ_i$,
+and let
+\[
+ m_* =\max_{q\in P(I)}|\{i:q\in P(J_i)\}|.
+\]
+Then
+\begin{equation}
+ \E\exp\!\left[\frac{H}{128m_*}
+                  \sum_i e_{*,J_i}(U_{J_i^c})\right]
+ \le e^{b_H|I|}.
+ \label{eq:overlap}
+\end{equation}
+For disjoint link sets, $m_*\le4$, not necessarily one.
+\end{corollary}
+\begin{proof}
+Pointwise, $\sum_i e_{*,J_i}\le\sum_i E_{J_i}\le m_*E_I$.
+Apply \eqref{eq:moment}. A plaquette has four distinct links, so it
+can touch at most four disjoint $J_i$.
+\end{proof}
+This controls a sum of retained energy labels. It does not make energy
+gains from simultaneous replacements additive.
+
+\section{A near-minimum kernel for every boundary}
+The marginal bound can be paired with a replacement that retains, rather
+than deletes, the unavoidable minimum. This is a probability-kernel
+construction, not an efficient sampling algorithm.
+
+\begin{proposition}[Uniform sublevel replacement]\label{prop:sublevel}
+For every fixed nonempty $J$ there is a Borel gauge-covariant kernel,
+independent of the original edited links, which freezes $J^c$, has
+conditional Haar density at most $(24H^{3/2})^n$, and obeys for every output
+\begin{equation}
+ E_J(y,z)\le e_{*,J}(z)+12n/H,\qquad
+ N_p(J;y,z)\le \frac{2He_{*,J}(z)+24n}{p^2}.
+ \label{eq:sublevel}
+\end{equation}
+Its edited-link law depends only on the frozen links of affected plaquettes.
+It need not remove every rough plaquette or preserve reflection positivity.
+\end{proposition}
+\begin{proof}
+Define
+\[
+ B_J(z)=\{y:E_J(y,z)\le e_{*,J}(z)+12n/H\},\quad
+ v_J(z)=\operatorname{Haar}_J(B_J(z)),\quad
+ K_z(\dd y)=\frac{\one_{B_J(z)}(y)}{v_J(z)}\dd y.
+\]
+To lower-bound $v_J$, choose any minimizer $V$ for this one fixed $z$.
+For $y_e=V_e e^{X_e}$ with $\norm{X_e}_{\rm op}\le\rho=H^{-1/2}$, the
+second pass's minimizer-cap estimate gives
+$E_J(y,z)\le e_{*,J}(z)+12\sum_e\norm{X_e}^2$.
+For clarity, its proof differentiates $E_J(Ve^{tX},z)$ twice: each
+plaquette contributes at most $(\sum_{e\in\partial q\cap J}\norm{X_e})^2$,
+and four links per plaquette and six plaquettes per link give
+$|E_J''(t)|\le24\sum_e\norm{X_e}^2$. The first derivative is zero at
+an unrestricted minimizer. Taylor's integral remainder supplies the
+factor 12. Thus $B_J(z)$ contains a product cap of Haar mass at least
+$(\rho^3/24)^n$, proving the density bound.
+
+Continuity of $E_J$ and $e_{*,J}$ makes the joint sublevel set Borel;
+parameter integration makes $v_J$ Borel and strictly positive. This proves
+measurability without choosing a minimizer measurably. A site gauge maps
+$B_J(z)$ bijectively to $B_J(z^g)$ and preserves edited-link Haar, proving
+covariance and equality of normalizing volumes. Copying the exterior
+leaves all unaffected plaquettes unchanged. Finally each rough output
+plaquette contributes more than $p^2/(2H)$ energy, yielding
+\eqref{eq:sublevel}.
+\end{proof}
+
+\begin{corollary}[Partial cooling with a paid exceptional label]
+\label{cor:partialcooling}
+For fixed $J$ and positive integer $k$, put
+\[
+ A=\{N_p(J)\ge k,\ e_{*,J}\le kp^2/(4H)\},\qquad
+ \ell_H=\log24+\tfrac32\log H.
+\]
+If $kp^2\ge96n$, the kernel of Proposition~\ref{prop:sublevel} sends
+sources in $A$ to at most $3k/4$ rough affected plaquettes, with
+\begin{equation}
+ H(E(x)-E(y))\ge kp^2/8.
+ \label{eq:partialgain}
+\end{equation}
+If also $kp^2\ge16n\ell_H$, then for every nonnegative measurable
+$\mathcal Q$ with $0<Z_{\mathcal Q}=\int e^{-HE}\mathcal Q<\infty$,
+\begin{equation}
+ I_{\mathcal Q}(A):=\frac1{Z_{\mathcal Q}}
+       \int_A e^{-HE(x)}(K\mathcal Q)(x)\dd x
+ \le e^{-kp^2/16}.
+ \label{eq:partialintegral}
+\end{equation}
+The complementary high-minimum label has the \emph{raw Wilson} bound
+\begin{equation}
+ \mu_H(e_{*,J}>kp^2/(4H))
+ \le\min\{1,e^{-kp^2/512+b_Hn}\}.
+ \label{eq:exception}
+\end{equation}
+If $kp^2\ge1024b_Hn$, the last expression is at most
+$e^{-kp^2/1024}$.
+\end{corollary}
+\begin{proof}
+On $A$, \eqref{eq:sublevel} gives
+$N_p(J;y,z)\le k/2+24n/p^2\le3k/4$. The source energy is greater than
+$kp^2/(2H)$ and output energy at most $kp^2/(4H)+12n/H$, giving
+$H(E(x)-E(y))\ge kp^2/4-12n\ge kp^2/8$.
+
+For completeness, the bounded-density replacement argument is as follows.
+Writing $x=(\xi,z)$ and $y=(\eta,z)$, use the pointwise energy drop on
+$A$ to replace $e^{-HE(\xi,z)}$ by
+$e^{-kp^2/8}e^{-HE(\eta,z)}$. Bound the edited-output density by
+$M_H=e^{n\ell_H}$; integrating the original $\xi$ over its probability
+Haar space costs at most one. Tonelli leaves exactly
+$Z_{\mathcal Q}$ as the remaining integral. Hence
+$I_{\mathcal Q}(A)\le e^{-kp^2/8+n\ell_H}\le e^{-kp^2/16}$.
+Apply \eqref{eq:mintail} for \eqref{eq:exception} and absorb $b_Hn$
+under the last numerical budget.
+\end{proof}
+The literal integral in \eqref{eq:partialintegral} evaluates $\mathcal Q$
+at the \emph{output}; it is not the $\mathcal Q$-weighted probability of
+$A$. For $\mathcal Q=1$ it equals the raw probability. The exceptional
+label in \eqref{eq:exception} is not paid for an arbitrary $\mathcal Q$.
+Consequently these two inequalities cannot be combined into an
+unrestricted weighted/RG replacement theorem. Some affected plaquettes
+may become newly rough: the conclusion concerns their \emph{total count},
+not containment in the old rough inventory. Adaptive supports still
+require the following counting step, and iteration needs gains and density
+bounds along the actual sequence of outputs.
+
+\section{Counting source-dependent rough regions}
+Connect two lattice links when they share a plaquette. This graph has
+maximum degree 18. A connected set of $n$ links containing a given root
+has a deterministic spanning-tree traversal of length $2(n-1)$, and the
+traversal determines its visited set. Hence there are at most
+$18^{2(n-1)}$ such sets.
+
+Let $\mathcal R_p(U)$ be \emph{all} links incident to at least one rough
+plaquette. Its connected components are determined by the source
+configuration. For a root link $e_0$, let $C_p(e_0)$ be its component,
+with size zero if $e_0\notin\mathcal R_p$. Put
+\begin{equation}
+ \kappa_H(p)=p^2/1024-b_H.
+ \label{eq:kappa}
+\end{equation}
+
+\begin{theorem}[Actual rough-component size tail]\label{thm:components}
+For every integer $n\ge1$,
+\begin{equation}
+ \mu_H(|C_p(e_0)|\ge n)
+ \le\min\{1,18^{2(n-1)}e^{-\kappa_H(p)n}\}.
+ \label{eq:componenttail}
+\end{equation}
+Thus there is an exponentially decreasing size bound when
+$\kappa_H(p)>2\log18$. For $p=(\log H)^P$ and any $P>1/2$, this condition
+holds for all sufficiently large $H$.
+\end{theorem}
+\begin{proof}
+A component of size at least $n$ contains a connected $n$-link subset $J$
+through $e_0$. Every link in $J$ has a rough witness plaquette in $P(J)$.
+One plaquette can witness at most four links, so
+$N_p(J)\ge\lceil n/4\rceil$. For each \emph{fixed} such $J$,
+Corollary~\ref{cor:rough} bounds this event by
+$\exp[-np^2/1024+b_Hn]$. Sum over the deterministic list of possible
+$J$. This treats adaptive selection by a union bound, not by conditioning
+on the event that a particular $J$ was selected. Finally
+$b_H=(3/4)\log H+O(1)$ proves the last assertion.
+\end{proof}
+
+There is a similar bound for connected retained-minimum labels. If
+$\lambda=Hu/128-b_H>2\log18$ and $N\ge1$, then
+\begin{equation}
+ \mu_H\!\left(\exists J\ni e_0\text{ connected},\ |J|\ge N,
+          \ e_{*,J}\ge u|J|\right)
+ \le\min\left\{1,
+ \frac{18^{2(N-1)}e^{-\lambda N}}{1-18^2e^{-\lambda}}\right\}.
+ \label{eq:adaptivemin}
+\end{equation}
+This follows by summing \eqref{eq:mintail} over geometries and sizes.
+No regular conditional Gibbs formula is applied after choosing $J$.
+
+\section{What this supplies and what it does not}
+\paragraph{The supplied input.}
+Large boundary-forced energy now has a volume-uniform \emph{marginal}
+cost in the original finite Wilson model. The one-link holonomy mismatch
+has the explicit tail \eqref{eq:mismatch}. The components of the actual
+rough-link set have a paid source-selection count and the witness density
+$N_p(J)\ge |J|/4$ needed for \eqref{eq:componenttail}. Arbitrary overlapping
+fixed supports can be handled with the declared loss \eqref{eq:overlap}.
+None of these statements assumes the second pass's forest compatibility.
+Proposition~\ref{prop:sublevel} also supplies an every-boundary near-minimum
+kernel. Corollary~\ref{cor:partialcooling} gives a genuine energy gain and
+rough-count reduction on its specified low-minimum class, with an explicit
+raw-measure cost for the complementary label.
+
+\paragraph{Not enough removable energy.}
+Outside that low-minimum class, the quantity available to a boundary-preserving edit is at most
+$E_J-e_{*,J}$. Bounds on the separate marginal tails of $E_J$ and $e_{*,J}$
+do not bound their ratio or difference on a selected rough event.
+The frustrated star still has $E_e=e_{*,\{e\}}=6$ for every central-link
+value when its exterior is fixed. Its large-minimum exterior is expensive
+in \eqref{eq:singleminimum}, but its conditional removal gain is still zero.
+One cannot replace marginal rarity by conditional repairability.
+Likewise one isolated $-\one$ link in identity background has total
+energy 12, regardless of padding the editable region: it cannot pay a
+volume-proportional replacement entropy in an arbitrarily enlarged set.
+
+\paragraph{A minimum is not a full holonomy label.}
+Take constant commuting links $U_0=\exp(i\phi\sigma_3/L)$, the other
+directions identity, with $0<\phi<\pi$. Every plaquette is flat, so
+$e_{*,J}=0$ for every $J$. Choose $J$ to be the direction-one links
+starting at $(x_0,0,0,0)$ for all $x_0$. Its frozen touched graph contains
+the full direction-zero loop at $x_1=x_2=x_3=0$, of holonomy
+$\exp(i\phi\sigma_3)\ne\one$. Thus even zero boundary-forced plaquette
+energy does not enforce trivial frozen cycles for arbitrary, possibly
+wrapping, regions. Small-energy estimates cannot silently replace the
+specified forest compatibility condition.
+
+\paragraph{The raw measure is essential.}
+For $\mathcal Q=e^{HE}$, reweighting $\mu_H$ gives product Haar. For one
+plaquette its holonomy is Haar, since its four links are distinct and
+independent. Therefore
+$\mu_{H,\mathcal Q}(s(U_q)>1)=1/2$ for every $H$, whereas the corresponding
+raw Wilson tail tends to zero. General positive weights, signed RG
+expansions, or extra long-range interactions do not inherit this result.
+Their reflection positivity or a replacement/comparison estimate would
+have to be proved separately. The bound also does not cover arbitrary
+fixed boundary conditions, non-dyadic volumes, or all Gibbs states.
+
+\paragraph{Next analytic task.}
+Either strengthen the partial-cooling dichotomy to an all-small,
+boundary-compatible repair with controlled enlargement and a lower bound on
+$E_J-e_{*,J}$ per edited link, or build a retained-defect expansion whose
+weights, normalizers, and interaction changes remain controlled after
+renormalization. A new kernel must still track all affected plaquettes,
+its Haar density, output-evaluated weights, and overlap along the actual
+sequence of edits. Neither task is accomplished by the marginal bounds
+here. The fixed-physical-box defect test, cutoff comparison, nontrivial
+continuum fields and reconstruction remain downstream obligations.
+
+\section{Verification and literature scope}
+The accompanying script checks the 64-class embedding, reflected-star
+plaquette disjointness, the absence of plaquettes crossing both strict
+halves, SU(2) reflection invariance, the constants and tail integrations,
+and the obstruction, padding, overlap and flat-holonomy negative controls.
+It also checks event chessboard inequalities by exact enumeration in a
+small two-dimensional $\mathbb Z_2$ gauge model. That finite-group model is
+a diagnostic of the bookkeeping, not a numerical evaluation of the
+four-dimensional $\SU$ partition function or a proof of its probabilities.
+No new analytic result is Lean-formalized; the earlier scalar certificates
+retain their original scope. This pass is self-audited, not independently
+agent-reviewed or externally certified.
+
+The only imported analytic inequality is the standard chessboard estimate
+in \cite{bk}. Older gauge-theory literature already discusses
+volume-uniform suppression of large plaquette fluctuations; see, for
+context only, \cite[\S1.1, (4)]{bvf} and the Mack--Petkova paper cited
+there. We do not import that reported bound or its asymptotic constants,
+and make no novelty claim for the present deliberately weak application.
+Exact source and access details are recorded in \texttt{sources.md}.
+
+\begin{thebibliography}{9}
+\bibitem{bk}
+M.~Biskup and R.~Koteck\'y,
+\emph{Forbidden gap argument for phase transitions proved by means of
+chessboard estimates}, Commun. Math. Phys. \textbf{264} (2006), 631--656,
+arXiv:math-ph/0505011. Author manuscript, \S2.2, Definition 2.2 and
+Theorem 2.4, (2.10), pp.~4--5.
+\bibitem{bvf}
+O.~Borisenko, S.~Voloshin and M.~Faber,
+\emph{Plaquette representation for 3D lattice gauge models:
+I. Formulation and perturbation theory}, arXiv:hep-lat/0508003,
+\S1.1, (4), and reference [20]. Context only, not a proof input.
+\end{thebibliography}
+\end{document}

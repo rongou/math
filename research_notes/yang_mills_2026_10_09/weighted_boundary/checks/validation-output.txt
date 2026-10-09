@@ -1,0 +1,21 @@
+Fourth-pass finite-diagnostic mutation validation.
+Source SHA-256: f33e7adb33e866caabcd96540349ef8ea3324f4dd89ebb2d76a931415ea365a7
+Original suite under python -O: PASS
+Ran 30 tests in 0.876s
+OK
+REJECTED as expected: Cell-incidence budget 8n -> 7n; exit=1
+  FAIL: test_gauge_invariance_and_bounded_cell_edit_cost (__main__.CellGeometryAndNonabelianTests.test_gauge_invariance_and_bounded_cell_edit_cost)
+  FAILED (failures=1)
+REJECTED as expected: Omit inversion of reflected normal links; exit=1
+  FAIL: test_exact_noncommuting_Q8_reflections_and_wrong_orientation_control (__main__.CellGeometryAndNonabelianTests.test_exact_noncommuting_Q8_reflections_and_wrong_orientation_control)
+  FAILED (failures=1)
+REJECTED as expected: Replace normalized projected density by one; exit=1
+  FAIL: test_exterior_tilt_defeats_edit_stability_exactly (__main__.MarginalAndComparisonTests.test_exterior_tilt_defeats_edit_stability_exactly)
+  FAIL: test_holder_marginal_transfer_with_finite_and_infinite_exponents (__main__.MarginalAndComparisonTests.test_holder_marginal_transfer_with_finite_and_infinite_exponents)
+  FAIL: test_local_projection_has_full_normalizer_and_mean_one (__main__.MarginalAndComparisonTests.test_local_projection_has_full_normalizer_and_mean_one)
+  FAILED (failures=3)
+REJECTED as expected: Confuse output weight with source weight in the literal integral; exit=1
+  FAIL: test_output_weighted_integral_is_not_a_weighted_probability (__main__.MarginalAndComparisonTests.test_output_weighted_integral_is_not_a_weighted_probability)
+  FAILED (failures=1)
+All four mutations rejected; temporary copies removed.
+Scope: finite checks only, not independent review, analytic certification, or RG closure.

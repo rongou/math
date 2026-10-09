@@ -1,0 +1,681 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\osc}{\operatorname{osc}}
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdftitle={Weighted boundary costs and accepted local repairs},pdfauthor={Research note},pdfsubject={A scoped finite lattice comparison, not a Yang--Mills or RG construction}}
+\title{Weighted boundary costs and accepted local repairs}
+\author{Research note}
+\date{October 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We separate two requirements for weighted rough-region estimates:
+control of a weight's change during an edit and control of its bias on
+frozen boundary labels. The former does not imply the latter, even for
+positive, local, gauge-invariant weights: an exterior-only tilt can make
+a rare frustrated boundary likely while remaining unchanged by the edit.
+We prove a one-region comparison under an explicit local marginal-density
+condition, and verify a different sufficient structural class without
+assuming that density condition: bounded reflection-symmetric interactions
+on elementary four-cells. In this class, weighted boundary-energy moments
+and local edit costs have constants proportional to the affected region,
+not the full volume. An accepted low-minimum repair has an output
+submeasure dominated by a small multiple of the same weighted measure;
+this permits composition of specified successful repairs. Exceptional
+retained labels do not admit that multiplication rule. All conclusions
+are for positive finite-lattice base measures. We do not establish a
+mandatory covering expansion, RG closure, cutoff comparison, or a
+continuum Yang--Mills theory. No novelty claim is made. The third-pass
+input has been adversarially reread and its geometric application made
+explicit; this is not independent expert or agent certification.
+\end{abstract}
+\tableofcontents
+
+\section{Definitions and the third-pass input}
+Use $\Lambda_L=(\mathbb Z/L\mathbb Z)^4$, $L=2^m$, $m\ge2$, with
+$V=L^4$ sites, $4V$ links, and $6V$ plaquettes. Orient each link positively
+and assign $U_e\in\SU$, with the inverse on its reverse. The reference
+measure is product probability Haar. For $H\ge1$ put
+\[
+ s(g)=1-\tfrac12\Tr g=\tfrac12\norm{\one-g}_{\rm op}^2,\quad
+ E=\sum_qs(U_q),\quad
+ \mu_H(\dd U)=Z_H^{-1}e^{-HE(U)}\dd U.
+\]
+For a fixed nonempty editable link set $J$, let $n=|J|$, let $P(J)$
+contain every plaquette touching $J$, and set
+\[
+ E_J=\sum_{q\in P(J)}s(U_q),\qquad
+ m_J(z)=\min_{x\in\SU^J}E_J(x,z),\quad z=U_{J^c}.
+\]
+Let $F_J$ be the frozen links appearing on these plaquettes and
+$\mathcal F_J=\sigma(U_e:e\in F_J)$. Then $m_J$ is continuous and
+$\mathcal F_J$-measurable, with $|F_J|\le18n$. This local sigma algebra
+is smaller than that of the complete frozen exterior.
+
+Let $N_p(J)$ count plaquettes in $P(J)$ with operator curvature greater
+than $p/\sqrt H$, where $p>0$. Define
+\begin{equation}
+ \ell_H=\log24+\tfrac32\log H,\quad
+ a_H=\tfrac32+\log24+\tfrac32\log(8H),\quad
+ b_H=\tfrac12a_H+\frac{\log2}{64}.
+ \label{eq:constants}
+\end{equation}
+The third-pass note \cite{third} proves
+\begin{equation}
+ \E_{\mu_H}e^{HE_J/128}\le e^{b_Hn},\qquad
+ \mu_H(m_J>v)\le\min\{1,e^{-Hv/128+b_Hn}\}.
+ \label{eq:raw}
+\end{equation}
+It also constructs a Borel gauge-covariant kernel $K_J$ which freezes
+$J^c$ and samples probability Haar restricted to
+\[
+ B_J(z)=\{y:E_J(y,z)\le m_J(z)+12n/H\}.
+\]
+Its edited-link density is at most $M_J=e^{\ell_Hn}$. The minimizer-cap
+argument ensures the target has positive Haar volume at least $M_J^{-1}$;
+no measurable choice of a minimizer is needed. This is an existence
+construction, not an efficient algorithm for sampling or optimization.
+
+For a positive integer $k$ write
+\begin{equation}
+ \begin{split}
+ R_{J,k}&=\{N_p(J)\ge k\},\qquad u=kp^2/(4H),\\
+ A_{J,k}&=R_{J,k}\cap\{m_J\le u\},\qquad
+ B_{J,k}=\{m_J>u\}.
+ \end{split}
+ \label{eq:events}
+\end{equation}
+Thus $R_{J,k}\subset A_{J,k}\cup B_{J,k}$. If $kp^2\ge96n$, every
+output from $A_{J,k}$ obeys
+\begin{equation}
+ N_p(J;y)\le3k/4,\qquad H(E(x)-E(y))\ge kp^2/8.
+ \label{eq:gain}
+\end{equation}
+This reduces the total affected rough count, not necessarily each old
+rough plaquette; individual newly rough plaquettes are allowed.
+
+\section{Adversarial audit of the chessboard application}
+\label{sec:audit}
+The analytic input behind \eqref{eq:raw} is the standard event chessboard
+inequality \cite[\S2.2, Theorem 2.4]{bk}. The closed-block convention and
+the fact that only the designated block-boundary reflections are needed
+are also explicit in \cite[\S5.3, Theorem 5.8]{notes}. We retain the
+power-of-two restriction, and use no assertion of independent blocks.
+
+Here is a precise geometric encoding for the link-variable application.
+Put the variable for $(x,x+e_\mu)$ at $2x+e_\mu$ on the refined torus
+$(\mathbb Z/(2L)\mathbb Z)^4$. These are exactly the points with one odd
+coordinate and the other three even. Fill the other refined sites with
+deterministic dummy variables. An original reflection
+$x_i\mapsto2a-x_i$ becomes $v_i\mapsto4a-v_i$. It preserves this parity
+pattern, swaps the two closed-half edge algebras, and inverts the group
+variable if its odd coordinate is $i$. Tangential fixed-plane variables
+are pointwise fixed. Reflections in different coordinate directions
+commute, including their orientation inversions. No commutation of
+parallel reflections at different positions is asserted.
+
+For the Wilson action no plaquette meets both strict halves. With $z$
+the fixed-plane links and $x_+,x_-$ the remaining variables, the energy
+splits as $E_P(z)+E_+(x_+,z)+E_-(x_-,z)$ with the two half-energies
+reflections of each other. Thus for a bounded real positive-half function
+$f$, its reflection $\vartheta f$ satisfies
+\begin{equation}
+ \E_{\mu_H}[f\vartheta f]
+ =Z_H^{-1}\int e^{-HE_P(z)}
+   \left(\int e^{-HE_+(x_+,z)}f(x_+,z)\dd x_+\right)^2\dd z\ge0.
+ \label{eq:rp}
+\end{equation}
+Original side-two blocks become closed side-four refined blocks; the
+factor torus still has $M=V/16$ blocks. Their shared boundary variables
+are precisely the variables kept as $z$, not independent replicas. This
+checks the support and reflection-algebra assumptions used in the
+repeated Cauchy--Schwarz proof of the event chessboard estimate.
+
+A prototype link has local starting coordinate 0 or 1 along its direction
+and 1 in the other three coordinates. All six star plaquettes have
+relative interiors inside its side-two block. Reflected stars in
+different blocks therefore have disjoint plaquette sets. The 64 classes
+are direction plus four starting-site parities. For each class the grid
+can be shifted so its links occupy distinct blocks; an odd longitudinal
+block changes the pulled-back prototype from 0 to 1. Both prototypes
+satisfy the same disjointness bound. This verifies the hypotheses for
+unequal thresholds at different stars.
+
+Finally, a product cap of radius $(8H)^{-1/2}$ gives
+$Z_H\ge e^{-4Va_H}$. A disseminated event requiring star energy at least
+$v$ forces total energy at least $Mv$, hence has chessboard weight at
+most $\min\{1,e^{-Hv+64a_H}\}$. Within a class, joint tails factorize
+\emph{as an inequality}. Layer-cake integration and H\"older over the
+64 classes give \eqref{eq:raw}. The four occurrences of each plaquette
+in the uncolored sum of all stars are not discarded as if disjoint.
+
+No mathematical error requiring a change to the third-pass proof was
+found in this bounded reread. Its restricted volume class, raw-marginal
+scope, overlap losses, and distinction between output-weighted integrals
+and probabilities remain necessary. This is a same-agent audit, not an
+independent certification. The accompanying exact finite-model and
+geometric tests are additional diagnostics, not proofs of the analytic
+chessboard theorem.
+
+\section{The missing marginal condition and a counterexample}
+Let $Q>0$ be finite almost everywhere and satisfy
+$0<\E_{\mu_H}Q<\infty$. Define
+\[
+ \nu_Q(\dd U)=\frac{Q(U)}{\E_{\mu_H}Q}\mu_H(\dd U),\qquad
+ r_J=\frac{\E_{\mu_H}[Q\mid\mathcal F_J]}{\E_{\mu_H}Q}.
+\]
+Then $r_J$ is exactly the Radon--Nikodym density of the weighted
+$F_J$ marginal relative to the raw one. For any $\mathcal F_J$-measurable
+event $B$,
+\begin{equation}
+ \nu_Q(B)=\E_{\mu_H}[r_J\one_B].
+ \label{eq:marginal}
+\end{equation}
+The normalization is the \emph{full} expectation of $Q$. A conditional or
+restricted normalizer cannot be substituted without changing this law.
+
+\begin{proposition}[Edit stability alone gives no exceptional-label cost]
+\label{prop:counterexample}
+There are strictly positive local gauge-invariant weights, constant on
+every $J$-edit, which assign any prescribed probability $s\in(0,1)$ to
+a given high-minimum boundary event of raw probability $t\in(0,1)$.
+\end{proposition}
+\begin{proof}
+For one link take $B=\{m_J>v\}$ with $0<v<6$. The balanced frustrated
+star has $m_J=6$, identity staple data have $m_J=0$, and both have open
+neighborhoods on the corresponding side of the threshold. The finite
+Wilson law has everywhere positive continuous density, so $0<t=\mu_H(B)<1$.
+The event depends only on the 18 frozen staple links and is gauge invariant.
+Set
+\[
+ Q=q\one_B+\one_{B^c},\qquad q=\frac{s(1-t)}{(1-s)t}.
+\]
+This weight is positive, finite and unchanged by any edited central-link
+value, but $\nu_Q(B)=qt/(qt+1-t)=s$. Its normalized local marginal density
+is $s/t$ on $B$ and $(1-s)/(1-t)$ on $B^c$. Hence, for $r>1$,
+\begin{equation}
+ \norm{r_J}_{L^r(\mu_H)}^r
+ =s^r t^{1-r}+(1-s)^r(1-t)^{1-r}.
+ \label{eq:sharpness}
+\end{equation}
+The missing marginal cost becomes large as $t$ decreases at fixed $s$,
+although the edit ratio stays exactly one.
+\end{proof}
+The phenomenon is not an artifact of discontinuous weights. Choose a
+continuous function $f(m)$ that vanishes for $m\le v$, equals one on
+$m\ge v'>v$ with $v'<6$, and lies in $[0,1]$. Then $Q_T=e^{Tf(m_J)}$
+is continuous, positive, gauge invariant and edit-invariant, while
+$\nu_{Q_T}(B)\to1$ as $T\to\infty$: a positive-measure subset of $B$
+has weight $e^T$, while $B^c$ has weight one. No uniform amplitude bound
+in $T$ or $H$ is claimed.
+
+\begin{lemma}[Local marginal transfer]\label{lem:holder}
+For $1<r\le\infty$, let $\alpha=1-1/r$ (with $1/\infty=0$). If
+$\norm{r_J}_{L^r(\mu_H)}\le e^{c n}$, then
+\begin{equation}
+ \nu_Q(B_{J,k})\le
+ \min\{1,e^{cn}\mu_H(B_{J,k})^\alpha\}
+ \le\min\{1,\exp[-\alpha kp^2/512+(c+\alpha b_H)n]\}.
+ \label{eq:holder}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Apply H\"older to \eqref{eq:marginal}, and then \eqref{eq:raw} at
+$v=kp^2/(4H)$. Using the bound without its truncation by one is valid;
+the final probability can again be truncated by one.
+\end{proof}
+This is an explicit sufficient hypothesis, not a proof that an arbitrary
+RG-generated weight satisfies it. It concerns a local projection of $Q$,
+not its whole-volume $L^r$ norm. Equation~\eqref{eq:sharpness} explains
+why some quantitative control of boundary bias is indispensable.
+
+A directly verified elementary class is $Q=e^W$ with
+$\sup W-\inf W\le c n$: then $r_J\le e^{cn}$ and every edit ratio is at
+most $e^{cn}$. For example a perturbation supported on at most $s n$
+links, with total log-oscillation at most $c_0s n$, has this property.
+\emph{Local support alone} is not the bound, and adding an arbitrary
+exterior factor destroys the argument. An extensive bounded interaction
+usually has total oscillation of order $V$; the next structural class
+avoids importing that whole-volume loss into a local estimate.
+
+\section{An output domination lemma for positive weights}
+For a source event $A$, write
+\[
+ T_{J,A}(x,\dd y)=\one_A(x)K_J(x,\dd y).
+\]
+This is an accepted-transition subprobability kernel, not the Markov
+kernel obtained by staying put on rejected sources.
+
+\begin{lemma}[Weighted accepted output]\label{lem:domination}
+Suppose on source/kernel-output pairs from $A$,
+\[
+ H(E(x)-E(y))\ge g,\qquad Q(x)\le e^{d n}Q(y).
+\]
+Then as measures,
+\begin{equation}
+ \nu_Q T_{J,A}\le C_J\nu_Q,\qquad
+ C_J=\exp[-g+(\ell_H+d)n].
+ \label{eq:domination}
+\end{equation}
+In particular $\nu_Q(A)\le\min\{1,C_J\}$, and for every measurable $f$
+with $\E_{\nu_Q}|f|<\infty$,
+\begin{equation}
+ \frac1{Z_Q}\int_A e^{-HE(x)}Q(x)(K_J|f|)(x)\dd x
+ \le C_J\E_{\nu_Q}|f|,
+ \quad Z_Q=\int e^{-HE}Q.
+ \label{eq:observable}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Write $x=(\xi,z)$, $y=(\eta,z)$ and let $k_z(\xi,\eta)\le M_J$ be
+the edited-output density. On the indicated pairs,
+$e^{-HE(\xi,z)}Q(\xi,z)\le e^{-g+dn}e^{-HE(\eta,z)}Q(\eta,z)$.
+For a nonnegative output test function $f$, insert this inequality, bound
+$k_z$ by $M_J$, and integrate the original $\xi$ over probability Haar.
+Its mass is at most one. Tonelli leaves at most
+$e^{-g+dn}M_J\int f\dd\nu_Q$, proving measure domination. Since $K_J$
+is a probability kernel, the total mass on the left is $\nu_Q(A)$.
+Apply the result to $|f|$ for \eqref{eq:observable}.
+\end{proof}
+The positive base weight remains at the actual output after the
+comparison. Signed or complex \emph{test functions} may be estimated by
+their absolute values; signed/complex base densities are not allowed.
+For contrast the earlier literal integral
+$Z_Q^{-1}\int_Ae^{-HE(x)}(K_JQ)(x)\dd x$ has a bound without $e^{dn}$,
+but is not in general $\nu_Q(A)$. These expressions are not identified.
+
+\begin{theorem}[One-region comparison with declared weight hypotheses]
+\label{thm:general}
+Assume $kp^2\ge96n$, the edit-ratio bound of
+Lemma~\ref{lem:domination} on $A_{J,k}$, and the local marginal bound of
+Lemma~\ref{lem:holder}. Then
+\begin{equation}
+ \nu_Q(R_{J,k})\le\min\left\{1,
+ e^{-kp^2/8+(\ell_H+d)n}
+ +e^{-\alpha kp^2/512+(c+\alpha b_H)n}\right\}.
+ \label{eq:general}
+\end{equation}
+The low-minimum transition has the output domination
+\eqref{eq:domination} with $g=kp^2/8$ and reduces its rough count as in
+\eqref{eq:gain}.
+\end{theorem}
+\begin{proof}
+Use $R_{J,k}\subset A_{J,k}\cup B_{J,k}$ and apply the two lemmas in the
+\emph{same} measure $\nu_Q$. They control different branches, with
+separate hypotheses.
+\end{proof}
+
+\section{A verified class of extensive positive perturbations}
+\label{sec:cells}
+For each $x\in\Lambda_L$ let $C_x=x+[0,1]^4$ be an elementary four-cell,
+including its 32 links. There are $V$ such cells. Each link belongs to
+exactly eight cells. We admit
+\begin{equation}
+ Q=e^W,\qquad W=\sum_C\phi_C,
+ \label{eq:cellweight}
+\end{equation}
+where $\phi_C$ is a bounded real Borel function of the links in $C$,
+gauge invariant, and $\osc\phi_C\le\varepsilon$. Require translation
+covariance and covariance under every integer-site coordinate reflection,
+including orientation reversal of links:
+$\phi_{\vartheta C}(\vartheta U)=\phi_C(U)$. No smoothness or sign
+restriction on the real $\phi_C$ is needed. The Boltzmann weight itself
+is always positive. The amplitude $\varepsilon\ge0$ may depend on $H$;
+useful small-field budgets will require it to be sufficiently small
+relative to $p^2$, not necessarily an absolute small constant.
+
+Subtract $\inf\phi_C$ from each term. These are configuration-independent
+constants and do not change $\nu_Q$ or edit ratios; covariance is retained.
+Thus we may assume
+\begin{equation}
+ 0\le\phi_C\le\varepsilon,\qquad 0\le W\le\varepsilon V.
+ \label{eq:range}
+\end{equation}
+Although the global range is extensive, the resulting local estimates
+below are not multiplied by $e^{\varepsilon V}$.
+
+\begin{lemma}[Weighted reflection and local edit cost]\label{lem:cellrp}
+The measure $\nu_W=Z_W^{-1}e^{-HE+W}\dd U$ is site-reflection positive.
+For any pair of configurations differing only on $J$,
+\begin{equation}
+ |W(x)-W(y)|\le8\varepsilon n.
+ \label{eq:edit}
+\end{equation}
+\end{lemma}
+\begin{proof}
+An elementary cell has extent one in each coordinate, so its link support
+cannot meet both strict halves separated by an integer-coordinate plane.
+All terms in $W$ therefore split into plane and reflected half terms,
+just as the Wilson plaquettes do. The positive fixed-plane factor and
+the square in \eqref{eq:rp} are replaced by
+\[
+ e^{-HE_P(z)+W_P(z)},\qquad
+ \left(\int e^{-HE_+(x_+,z)+W_+(x_+,z)}f(x_+,z)\dd x_+\right)^2.
+\]
+This proves positivity. Only cells containing a link of $J$ can change
+under the edit, and there are at most $8n$ such cells. Sum their
+oscillation bounds. No independence of cells is used.
+\end{proof}
+
+\begin{theorem}[Weighted local energy moments]\label{thm:cellmoment}
+For the class \eqref{eq:cellweight}, for every fixed $J$ and $0<\theta<1$,
+\begin{equation}
+ \E_{\nu_W}e^{\theta HE_J/64}
+ \le\exp\left[n\left(\theta(a_H+\varepsilon/4)
+                      -\frac{\log(1-\theta)}{64}\right)\right].
+ \label{eq:cellmoment}
+\end{equation}
+The same bound holds with $E_J$ replaced by $m_J$. Set
+$\widehat b_H=b_H+\varepsilon/8$. Then
+\begin{equation}
+ \nu_W(E_J\ge v),\ \nu_W(m_J>v)
+ \ \le\ \min\{1,e^{-Hv/128+\widehat b_H n}\}.
+ \label{eq:celltail}
+\end{equation}
+These constants are uniform in the dyadic volume and all admitted
+potentials with the given oscillation bound.
+\end{theorem}
+\begin{proof}
+The centered weight satisfies $W\ge0$, so the product cap still gives
+$Z_W\ge e^{-4Va_H}$. A disseminated star event forcing $E\ge Mu$ has
+numerator at most $e^{-HMu+\varepsilon V}$. Its chessboard weight is
+therefore at most
+\begin{equation}
+ q_{H,\varepsilon}(u)
+ =\min\{1,\exp[-Hu+64a_H+16\varepsilon]\}.
+ \label{eq:tiltedstar}
+\end{equation}
+Lemma~\ref{lem:cellrp} licenses the same event chessboard inequality in
+$\nu_W$. The geometric disjointness and the 64 classes are unchanged.
+
+For completeness, write $K=64a_H+16\varepsilon$ and $T_e=HE_e$.
+Within a class, joint tails are bounded by products of
+$q(t)=\min(1,e^{K-t})$. Expanding
+$e^{\theta T_e}=1+\int_0^\infty\theta e^{\theta t}\one_{T_e>t}\dd t$
+in a finite product and applying Tonelli gives
+\[
+ \E_{\nu_W}e^{\theta\sum_{e\in S}T_e}
+ \le\left(1+\int_0^\infty\theta e^{\theta t}q(t)\dd t\right)^{|S|}
+ =\left(\frac{e^{\theta K}}{1-\theta}\right)^{|S|}.
+\]
+Since $E_J\le\sum_{e\in J}E_e$, H\"older with 64 equal exponents proves
+\eqref{eq:cellmoment}. Pointwise $m_J\le E_J$ and Markov's inequality at
+$\theta=1/2$ prove \eqref{eq:celltail}.
+\end{proof}
+This theorem proves the needed exceptional-label tail \emph{directly in
+the weighted measure}. It does not prove, and does not require, the
+local likelihood-ratio hypothesis of Lemma~\ref{lem:holder} relative to
+$\mu_H$. These are two distinct sufficient routes.
+
+\begin{corollary}[Verified one-region weighted comparison]\label{cor:cellsplit}
+For \eqref{eq:cellweight}, if $kp^2\ge96n$, then
+\begin{equation}
+ \nu_W(R_{J,k})\le\min\left\{1,
+ e^{-kp^2/8+(\ell_H+8\varepsilon)n}
+ +e^{-kp^2/512+\widehat b_Hn}\right\}.
+ \label{eq:cellsplit}
+\end{equation}
+The low-minimum output submeasure is dominated by the first exponential
+times $\nu_W$, for any nonnegative output test function. The exceptional
+label is measured in that same $\nu_W$. If also
+\begin{equation}
+ kp^2\ge16n(\ell_H+8\varepsilon),\qquad
+ kp^2\ge1024n\widehat b_H,
+ \label{eq:budgets}
+\end{equation}
+then the first term is at most $e^{-kp^2/16}$ and the second at most
+$e^{-kp^2/1024}$.
+\end{corollary}
+\begin{proof}
+Combine \eqref{eq:edit} with Lemma~\ref{lem:domination} on $A_{J,k}$.
+For $B_{J,k}$ apply \eqref{eq:celltail} with $v=kp^2/(4H)$.
+The numerical absorptions follow directly from \eqref{eq:budgets}.
+\end{proof}
+As a direct probability estimate the split is weaker than the consequence
+$\nu_W(R_{J,k})\le\min\{1,e^{-kp^2/256+\widehat b_Hn}\}$ of
+\eqref{eq:celltail}. Its additional content is the \emph{accepted output
+domination}, with a retained exceptional branch in the same measure.
+
+\paragraph{A nontrivial explicit example.}
+Take
+\begin{equation}
+ W_\gamma=\gamma\sum_q s(U_q)^2,\qquad\gamma\in\mathbb R.
+ \label{eq:example}
+\end{equation}
+Each plaquette belongs to four elementary four-cells, and a cell contains
+24 plaquettes. The decomposition
+$\phi_C=(\gamma/4)\sum_{q\subset C}s(U_q)^2$ has
+$\osc\phi_C\le24|\gamma|$, since $0\le s^2\le4$. Thus
+$\widehat b_H=b_H+3|\gamma|$ is valid. Directly summing only the affected
+plaquettes improves the edit constant to
+\[
+ |W_\gamma(x)-W_\gamma(y)|\le4|\gamma||P(J)|\le24|\gamma|n.
+\]
+Use this in place of $8\varepsilon n$ in \eqref{eq:cellsplit} and
+\eqref{eq:budgets}. Both signs of $\gamma$ are allowed. This is not just
+a change of the coefficient of $s(U_q)$ in the continuous $\SU$ model.
+It is an example of the proved class, not a claim that exact RG stays
+inside it.
+
+\section{Counting and what composition actually permits}
+The link-sharing-a-plaquette graph has degree at most 18. For the actual
+rough-link component through a fixed root $e_0$, the same fixed-subset
+counting argument as in \cite{third} now gives
+\begin{equation}
+ \nu_W(|C_p(e_0)|\ge n)
+ \le\min\{1,18^{2(n-1)}e^{-n[p^2/1024-\widehat b_H]}\}.
+ \label{eq:components}
+\end{equation}
+Every selected link has a rough witness, and a plaquette witnesses at
+most four links; no boundary compatibility or independence is assumed.
+The total weight $W$ is fixed before choosing supports. Rarity is not
+re-evaluated under a separately chosen measure for each region.
+For $\varepsilon_H=O(\log H)$ and $p=(\log H)^P$, $P>1/2$, the component
+and one-region absorption budgets hold eventually when $k\ge n/4$.
+This is only a large-$H$ arithmetic assertion in the declared model class.
+
+\begin{proposition}[Composition of accepted repairs]\label{prop:composition}
+Fix one positive base measure $\nu_Q$. Suppose nonnegative
+subprobability kernels $T_i$ satisfy
+$\nu_QT_i\le c_i\nu_Q$. Then
+\begin{equation}
+ \nu_QT_1\cdots T_r\le\left(\prod_{i=1}^r c_i\right)\nu_Q.
+ \label{eq:composition}
+\end{equation}
+In particular this applies to the low-minimum kernels in
+Corollary~\ref{cor:cellsplit} on predetermined supports, with their gates
+$A_{J_i,k_i}$ evaluated on each \emph{actual intermediate state}.
+No disjointness of affected plaquettes is required for this statement.
+\end{proposition}
+\begin{proof}
+A nonnegative kernel preserves order of measures. Apply $T_2$ to
+$\nu_QT_1\le c_1\nu_Q$, then use $\nu_QT_2\le c_2\nu_Q$, and iterate.
+For the asserted application, every one-step energy drop is proved
+against its actual source by \eqref{eq:gain}; gains are not all measured
+against the common original configuration.
+\end{proof}
+For adaptive support choice from a fixed finite or countable family,
+partition the source-selection events and use the corresponding accepted
+kernels. Their sum is dominated by $\sum_Jc_J$ times the base measure.
+For connected $J$ of size $n$ through a fixed root with a uniform
+$k\ge n/4$ budget, there are at most $18^{2(n-1)}$ terms. This explicitly
+pays the support count. A choice over arbitrary roots costs its additional
+locations. A policy depending on history needs a valid bound for each
+encoded history or a genuine aggregate kernel bound; the fixed-family
+statement does not silently supply one.
+
+\begin{corollary}[A counted adaptive accepted kernel]\label{cor:adaptive}
+Fix a root $e_0$ and the cell-weight measure $\nu_W$. On each source choose
+its current nonempty rough-link component $J=C_p(e_0)$ and set
+$k_J=\lceil|J|/4\rceil$. Apply $K_J$ only when
+$m_J\le k_Jp^2/(4H)$, and otherwise give this accepted kernel $T$ mass
+zero. If $p^2\ge384$ and
+\[
+ d_H=p^2/32-\ell_H-8\varepsilon>2\log18,
+\]
+then
+\begin{equation}
+ \nu_W T\le c_H\nu_W,\qquad
+ c_H=\frac{e^{-d_H}}{1-18^2e^{-d_H}}.
+ \label{eq:adaptive}
+\end{equation}
+Thus $\nu_WT^r\le c_H^r\nu_W$. In particular $c_H<1$ if
+$d_H>\log325$. This covers only paths on which all $r$ selected repairs
+are accepted; the root and weight remain fixed.
+\end{corollary}
+\begin{proof}
+The component has at least $k_J$ rough witnesses and
+$k_Jp^2\ge96|J|$, so every accepted fixed-$J$ transition has domination
+constant at most $e^{-d_H|J|}$. The finite collection of component-selection
+events partitions the nonempty sources. Count its connected supports
+through $e_0$ by $18^{2(n-1)}$ and sum the geometric series, extending the
+finite size range to infinity for an upper bound. This is an aggregate
+one-step kernel estimate, not a conditional Gibbs calculation. Apply
+Proposition~\ref{prop:composition}. The condition for $c_H<1$ is
+$325e^{-d_H}<1$.
+\end{proof}
+This construction recalculates the component from the actual output at
+its next step. It may introduce individual new rough plaquettes and
+change component geometry; the aggregate estimate already counts those
+possibilities at each accepted step. It is not a mandatory-inventory
+preserving repair and does not treat the retained-exception branches.
+
+\paragraph{Unconditional sublevel output.}
+For the cell class, $E(y)\le E(x)+12n/H$ holds for every source/output
+pair of the ungated $K_J$. Thus the same domination proof with $g=-12n$
+gives
+\begin{equation}
+ \nu_WK_J\le e^{(12+\ell_H+8\varepsilon)n}\nu_W.
+ \label{eq:ungated}
+\end{equation}
+This permits specified ungated edits with an \emph{accumulating} density
+cost, not cost-free reuse of the original measure.
+
+\paragraph{Retained exceptional labels do not multiply.}
+The identity branch $S_B(x,\dd y)=\one_B(x)\delta_x(\dd y)$ obeys
+$\nu_QS_B=\one_B\nu_Q$, which is not dominated by
+$\nu_Q(B)\nu_Q$ if $0<\nu_Q(B)<1$. Applying it twice still has mass
+$\nu_Q(B)$, not $\nu_Q(B)^2$. A small marginal probability is not the
+small \emph{operator} domination needed in
+Proposition~\ref{prop:composition}. Joint exceptional events need a
+joint-energy/overlap estimate or additional decorrelation; no product of
+one-label tails is asserted. Even disjoint link edits can share affected
+plaquettes, and a history can revisit the same boundary defect.
+
+For fixed sets $J_i$, one available joint input remains
+\[
+ \E_{\nu_W}\exp\left[\frac H{128m_*}\sum_i m_{J_i}\right]
+ \le e^{\widehat b_H|\bigcup_iJ_i|},\qquad
+ m_* =\max_q|\{i:q\in P(J_i)\}|,
+\]
+by $\sum_i m_{J_i}\le m_*E_{\cup_iJ_i}$ and
+Theorem~\ref{thm:cellmoment}. It concerns labels evaluated on \emph{one}
+configuration, not a sequence of changed exteriors.
+
+\section{Limits and the next precise obligation}
+\paragraph{Why the hypotheses cannot be discarded.}
+Proposition~\ref{prop:counterexample} disproves an exceptional-label
+bound from local edit stability alone. Reflection symmetry and positivity
+of a weight alone also do not imply reflection positivity: two symmetric
+spins $\sigma_\pm\in\{-1,1\}$ with weight
+$e^{-\tau\sigma_+\sigma_-}$, $\tau>0$, have
+$\E[\sigma_+\vartheta\sigma_+]=-\tanh\tau<0$. The interaction crosses
+both strict halves. This simple example is not a counterexample to the
+cell-local theorem; it explains why a longer interaction needs its own
+positivity proof.
+
+The weight $Q=e^{HE}$ cancels Wilson suppression. It even has a cell
+representation with $\varepsilon=12H$, by distributing plaquette energies
+over their four cells. Our resulting constants are then too large to
+imply small rough probabilities: $\widehat b_H\ge3H/2$, while
+$p^2<4H$ in the nonempty rough regime. Thus the admitted-class theorem
+does not claim a useful bound at arbitrary perturbation amplitudes.
+
+The frustrated star, padded isolated defect, flat winding holonomy, and
+the overlapping-edit example from the preceding notes remain valid.
+Neither rarity nor a reduction in rough count implies an all-small
+boundary-compatible filling or preservation of a prescribed inventory.
+The probability statements remain restricted to periodic dyadic cubes,
+not arbitrary frozen boundary conditions or all Gibbs states.
+
+\paragraph{What is now discharged.}
+For the explicitly admitted positive cell-interaction class, both branches
+of a one-region comparison are controlled in the \emph{same} weighted
+measure with region-proportional costs. The accepted low-minimum output
+has enough measure domination to compose specified successful repairs.
+For general positive weights the exact missing local marginal-density
+hypothesis is isolated and shown not to follow from edit stability.
+
+\paragraph{What remains.}
+The spin-model endpoint comparison inspected in \cite[\S\textup{Integrated
+comparison of endpoint densities}, equations labeled
+\texttt{eq:orig-16} and \texttt{eq:orig-22}]{o3} uses a mandatory covering
+sum with fixed inventories and signed/complex activities. Our cellwise
+exponential class is not that covering class and is not proved invariant
+under a gauge-theory RG step. Before claiming a cutoff comparison, one
+must establish a suitable positive endpoint class, prove its boundary
+marginal or energy-moment control with uniform constants, and treat the
+exact covering identities, residual inventories and all eligibility queries.
+Signed restricted sums must not be used as normalizers.
+
+A concrete next deliverable is to test one explicitly specified
+coarse-graining step or covering-weight construction against these two
+requirements: a local edit cost and a uniform exceptional-label estimate
+in its \emph{positive complete endpoint measure}. If elementary-cell
+support or the declared reflection structure is lost, prove a replacement
+hypothesis instead of assuming closure. Composition involving retained
+exceptional labels and adaptive histories also requires a joint bound
+rather than repeated marginal tails. The fixed-physical-size defect test,
+nontrivial continuum fields and reconstruction remain downstream.
+
+\section{Checks and scope of verification}
+The accompanying standard-library script tests exact finite conditional
+marginals, normalized reweighting, local likelihood norms, input/output
+weight distinctions, domination and composition of accepted kernels,
+cell incidence and reflection geometry, and noncommuting quaternion-group
+link identities. A two-dimensional finite $\mathbb Z_2$ torus is enumerated
+exactly for weighted event chessboard diagnostics. These finite models do
+not calculate the four-dimensional $\SU$ probabilities and do not prove
+universal analytic assertions. The earlier Python checks and standalone
+Lean scalar certificates are retained and rerun; no new analytic or gauge
+result is Lean-formalized. Independent review remains outstanding.
+
+\begin{thebibliography}{9}
+\bibitem{third}
+\emph{Marginal boundary energy costs in the Wilson model}, third-pass
+local research note, October 9, 2026,
+\texttt{../boundary\_cost/boundary\_cost.tex}. Reviewed source SHA-256 is
+recorded in \texttt{audit\_third\_pass.md}.
+\bibitem{bk}
+M.~Biskup and R.~Koteck\'y,
+\emph{Forbidden gap argument for phase transitions proved by means of
+chessboard estimates}, Commun. Math. Phys. \textbf{264} (2006), 631--656,
+arXiv:math-ph/0505011, author manuscript \S2.2, Theorem 2.4, (2.10).
+\bibitem{notes}
+M.~Biskup, \emph{Reflection positivity and phase transitions in lattice
+spin models}, author lecture notes, \S5.3, Theorem 5.8, (5.35), pp.~43--46.
+\bibitem{o3}
+OpenAI, \emph{The canonical massive continuum limit of the
+two-dimensional $O(3)$ model}, October 4, 2026, supplied repository,
+\texttt{build/sections/comparison.tex}. Inspected comparison requirements;
+no transfer of its continuum result to the Wilson model is assumed.
+\end{thebibliography}
+\end{document}

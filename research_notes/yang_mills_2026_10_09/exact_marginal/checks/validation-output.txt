@@ -1,0 +1,27 @@
+Exact-marginal diagnostic mutation validation.
+Source SHA-256: d260f52b980d3353776f926b5a145eef06b4b22928587330bcd7563f89765380
+Original under python -O: PASS
+Ran 31 tests in 1.031s
+OK
+REJECTED as expected: Wrong SU(2) integral normalization F(0)=1/2
+  FAIL: test_F_zero_and_sphere_normalization (__main__.IntegralTests.test_F_zero_and_sphere_normalization)
+  FAIL: test_exact_factor_and_leading_remainder_identity (__main__.IntegralTests.test_exact_factor_and_leading_remainder_identity)
+  FAIL: test_log_remainder_bound_small_and_large_arguments (__main__.IntegralTests.test_log_remainder_bound_small_and_large_arguments)
+  FAIL: test_series_and_independent_angular_integral (__main__.IntegralTests.test_series_and_independent_angular_integral)
+  FAIL: test_zero_staple_cusp_cancels_only_in_the_complete_action (__main__.IntegralTests.test_zero_staple_cusp_cancels_only_in_the_complete_action)
+  FAILED (failures=5)
+REJECTED as expected: False local closure bound 6n -> 5n
+  FAIL: test_local_closure_bound_six_is_attained (__main__.GeometryAndLiftTests.test_local_closure_bound_six_is_attained)
+  FAILED (failures=1)
+REJECTED as expected: Omit integrated-star minima from the local leading energy
+  FAIL: test_fine_decomposition_and_leading_local_lift (__main__.GeometryAndLiftTests.test_fine_decomposition_and_leading_local_lift)
+  FAILED (failures=1)
+REJECTED as expected: Drop removed-link probability-Haar normalization in finite marginal
+  FAIL: test_exact_joint_marginal_normalization_and_Haar_factors (__main__.ExactFiniteMarginalTests.test_exact_joint_marginal_normalization_and_Haar_factors)
+  FAIL: test_exact_minimum_and_remainder_decomposition (__main__.ExactFiniteMarginalTests.test_exact_minimum_and_remainder_decomposition)
+  FAILED (failures=2)
+REJECTED as expected: Double the opposite-staple mixed derivative coefficient
+  FAIL: test_opposite_staple_mixed_derivative_and_cell_additivity_failure (__main__.IntegralTests.test_opposite_staple_mixed_derivative_and_cell_additivity_failure)
+  FAILED (failures=1)
+Five mutations rejected; temporary variants removed.
+Scope: finite diagnostics, not a formal analytic or RG certificate.
