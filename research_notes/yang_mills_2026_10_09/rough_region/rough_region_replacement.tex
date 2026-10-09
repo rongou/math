@@ -1,0 +1,512 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={Local link replacement with explicit boundary conditions},pdfauthor={Research note and proof audit},pdfsubject={Finite SU(2) Wilson estimates and an obstruction; not a continuum Yang--Mills proof}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\one}{\mathbf1}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\setlength{\emergencystretch}{3em}
+\title{Local link replacement with explicit boundary conditions}
+\author{Research note and proof audit}
+\date{October 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We examine the rough-region replacement step suggested by Family 215's
+spin-model argument. An unconditional extension that preserves arbitrary
+frozen gauge boundary links while removing every rough plaquette is false:
+we exhibit an open set of frustrated one-link boundaries. We prove instead
+an excess-energy tail estimate for every boundary, and an explicit
+measurable gauge-covariant replacement kernel for a sufficient class of
+compatible boundaries. For $n$ edited links in four-dimensional $SU(2)$
+Wilson theory at inverse coupling $H\ge1$, the latter kernel has density
+at most $(24H^{3/2})^n$, makes every affected plaquette curvature at most
+$4/\sqrt H$, and gives a conditional energy--entropy bound
+$\exp[-kp^2/2+n(48+\log24+\tfrac32\log H)]$ for $k$ plaquettes of
+curvature greater than $p/\sqrt H$.
+The compatibility condition is explicit, gauge invariant, sufficient but
+not necessary. No estimate is supplied for the probability of incompatible
+boundaries, for arbitrary renormalized interactions, or for cutoff
+comparison. This is not a continuum construction or a mass-gap proof,
+and no novelty claim is made.
+\end{abstract}
+\tableofcontents
+
+\section{Finite lattice and the exact task}
+Work on a four-dimensional rectangular periodic lattice whose periods are
+at least four. Each positively oriented link $e$ has a variable
+$U_e\in\SU$; its reverse has variable $U_e^{-1}$. Each unoriented elementary
+plaquette is counted once with a fixed orientation. Set
+\begin{equation}
+ s(g)=1-\tfrac12\Tr g,\qquad
+ E(U)=\sum_p s(U_p),\qquad
+ \mu_H(\dd U)=Z_H^{-1}e^{-HE(U)}\prod_e\dd U_e,
+ \quad H\ge1,
+ \label{eq:model}
+\end{equation}
+with probability Haar measure on every link. The trace of an $SU(2)$
+matrix is real. The nonnegative-action convention here differs from the
+unshifted Wilson convention only by an extensive constant.
+
+Fix, \emph{before integrating}, a nonempty set $J$ of editable links, and
+write $n=|J|$, $x=U_J$, $z=U_{J^c}$. Let $P(J)$ consist of all plaquettes
+that touch at least one link in $J$, and let $q_p=|\partial p\cap J|$.
+Define
+\[
+ E_J(x,z)=\sum_{p\in P(J)}s(U_p).
+\]
+Each link belongs to six plaquettes, so
+\begin{equation}
+ |P(J)|\le6n,\qquad \sum_{p\in P(J)}q_p=6n,\qquad
+ \sum_{p\in P(J)}q_p^2\le24n.\label{eq:incidence}
+\end{equation}
+For an open finite complex with all affected plaquettes included, the
+corresponding statements are inequalities. Only $E_J$ changes when $x$
+is replaced. The conditional law given $z$ is proportional to
+$e^{-HE_J(x,z)}\dd x$.
+
+The original spin replacement in \cite{repo-o3} combines exterior
+compatibility, a small-density-cost sampling kernel, and a lower bound
+on original energy proportional to the edited volume. These are distinct
+requirements. In a gauge theory one must edit \emph{links}, not independent
+plaquette matrices; this automatically respects all algebraic identities
+among plaquettes, but does not guarantee small plaquette curvature.
+
+\section{Geometry and Haar-volume constants}
+Use the chordal operator metric
+$d(g,h)=\norm{g-h}_{\mathrm{op}}$. It is bi-invariant and obeys
+\[
+ d(\one,g_1\cdots g_m)\le\sum_{j=1}^m d(\one,g_j),\qquad
+ d(g^{-1},h^{-1})=d(g,h).
+\]
+If the eigenvalues of $g$ are $e^{\pm i\theta}$, $0\le\theta\le\pi$, then
+\begin{equation}
+ d(\one,g)=2\sin(\theta/2),\qquad
+ s(g)=\tfrac12 d(\one,g)^2.\label{eq:energy-metric}
+\end{equation}
+Let $C_\rho$ be the geodesic cap $\theta\le\rho$, for $0<\rho\le1$.
+Every $g\in C_\rho$ obeys $d(\one,g)\le\rho$ and is $e^X$ for a
+traceless anti-Hermitian $X$ with $\norm X_{\mathrm{op}}\le\rho$.
+Probability Haar measure is uniform measure on the unit three-sphere, so
+\begin{equation}
+ b(\rho):=\operatorname{Haar}(C_\rho)
+ =\frac2\pi\int_0^\rho\sin^2\theta\dd\theta
+ =\frac{\rho-\sin\rho\cos\rho}{\pi}
+ \ge\frac{\rho^3}{24}.\label{eq:cap}
+\end{equation}
+The lower bound follows from $\sin\theta\ge\theta/2$ for
+$0\le\theta\le1$ and $\pi<4$. These deliberately loose constants suffice.
+
+\section{Why arbitrary frozen boundaries cannot be filled smoothly}
+\begin{proposition}[A robust one-link obstruction]\label{prop:obstruction}
+There is a frozen exterior for one editable link in the lattice
+\eqref{eq:model} such that $E_J(U,z)=6$ for every $U\in\SU$.
+For every $U$, at least three affected plaquettes obey
+$d(\one,U_p)\ge\sqrt2$. Thus no replacement preserving that exterior can
+make all affected plaquettes have curvature less than any $t<\sqrt2$.
+The impossibility persists on an open set of frozen exterior data.
+\end{proposition}
+\begin{proof}
+For one oriented link from $x$ to $y$, the six adjacent plaquettes can,
+using trace cyclicity and inversion, be written with energies
+$1-\tfrac12\Tr(U S_j^{-1})$, where $S_j$ is transport from $x$ to $y$
+along the other three edges of that plaquette. These six staple paths
+are internally edge-disjoint when the periods are at least four.
+Set three staple transports to $+\one$ and three to $-\one$, assigning
+central signs on a distinct edge of each path and identity on the rest.
+These are actual link assignments, so plaquette constraints hold exactly.
+Other, unaffected plaquettes may be rough; their contribution is constant
+in the conditional law of the edited link.
+
+Write $a=\Tr U/2\in[-1,1]$. The six energies are three copies each of
+$1-a$ and $1+a$, with sum six. If $a\ge0$, the latter three are at
+least one; if $a\le0$, the former three are. Apply
+\eqref{eq:energy-metric}. The conditional law of $U$ is exactly Haar,
+independently of $H$.
+
+If each staple remains within chordal distance $\delta$ of its assigned
+sign, bi-invariance and the reverse triangle inequality show that for
+every $U$ the same three large-curvature plaquettes have curvature at
+least $\sqrt2-\delta$. For fixed $t<\sqrt2$ choose
+$0<\delta<\sqrt2-t$. Staple transports depend continuously on frozen
+links, so this condition contains an open neighborhood of the displayed
+boundary. Every nonempty open cylinder of link data has positive Haar
+measure, and positive probability at every finite $H$ under the finite
+Wilson law. No lower bound on that probability uniform in $H$ is asserted.
+\end{proof}
+
+\begin{proposition}[An explicit one-link boundary-defect quantity]
+Identify $SU(2)$ with unit quaternions. For the six frozen staple
+transporters let $s_j\in S^3\subset\R^4$, let $B=\sum_{j=1}^6s_j$, and
+put
+\[
+ \mathcal D(z)=\sum_{i<j}d(S_i,S_j)^2.
+\]
+Then the boundary-forced minimum is exactly
+\begin{equation}
+ e_*(z)=6-|B|=\frac{\mathcal D(z)}{6+|B|},\qquad
+ \frac{\mathcal D(z)}{12}\le e_*(z)\le\frac{\mathcal D(z)}6.
+ \label{eq:staple-defect}
+\end{equation}
+The quantity $\mathcal D$ is gauge invariant and consists of frozen-loop
+holonomy mismatches, since
+$d(S_i,S_j)=d(\one,S_iS_j^{-1})$.
+\end{proposition}
+\begin{proof}
+The fundamental normalized trace of $US_j^{-1}$ is the Euclidean inner
+product $u\cdot s_j$, so $E_J(U,z)=6-u\cdot B$ and minimization over
+$|u|=1$ gives $6-|B|$. Chordal operator distance of two quaternion
+matrices is their Euclidean quaternion distance. Expanding the pairwise
+squares gives $\mathcal D=36-|B|^2$, proving the identity and the bounds
+using $0\le|B|\le6$. Gauge transformations act on all staples by the same
+left and right unit quaternions, hence orthogonally on $\R^4$.
+\end{proof}
+This identifies a boundary quantity to retain or charge in the simplest
+case. It does not show that it is statistically rare or decompose the
+multi-link minimum into independent one-link quantities. Minimizing
+aggregate energy also need not minimize the largest individual curvature.
+
+The obstruction is boundary frustration, not an appeal to continuum
+instanton topology. An unrestricted finite lattice has a connected
+product of $SU(2)$ link spaces. A gauge transformation given at finitely
+many boundary vertices can always be assigned arbitrary values at the
+remaining vertices. A nonzero-degree continuous map $S^3\to SU(2)$
+therefore does \emph{not}, by itself, prohibit a discrete link filling.
+Continuum extension obstructions become relevant only with additional
+regularity, interpolation, admissibility, or sector constraints, which
+must be specified separately.
+
+\section{An arbitrary-boundary excess-energy estimate}
+Set $e_*(z)=\min_x E_J(x,z)$; the minimum exists by compactness.
+It is continuous in $z$, since the uniform difference of the two energy
+functions bounds the difference of their minima.
+
+\begin{lemma}[A cap near a conditional minimizer]\label{lem:minimizer}
+For every frozen $z$, choose any minimizer $V$ of $E_J(\cdot,z)$.
+For $x_e=V_e e^{X_e}$ with $\norm{X_e}_{\mathrm{op}}\le\rho$,
+\[
+ E_J(x,z)\le e_*(z)+12\sum_{e\in J}\norm{X_e}_{\mathrm{op}}^2
+ \le e_*(z)+12n\rho^2.
+\]
+\end{lemma}
+\begin{proof}
+Take the simultaneous path $x_e(t)=V_e e^{tX_e}$. A reversed occurrence
+has inverse $e^{-tX_e}V_e^{-1}$. Differentiating a plaquette product twice
+and using unitary operator norms gives
+\[
+ \left|\frac{\dd^2}{\dd t^2}s(U_p(t))\right|
+ \le\left(\sum_{e\in\partial p\cap J}\norm{X_e}_{\mathrm{op}}\right)^2.
+\]
+Here $|\Tr A|/2\le\norm A_{\mathrm{op}}$, including nonsymmetric
+complex matrices. Cauchy--Schwarz and the incidence bound imply
+\[
+ |E_J''(t)|\le\sum_p q_p\sum_{e\in\partial p\cap J}\norm{X_e}^2
+ \le24\sum_{e\in J}\norm{X_e}^2.
+\]
+The first derivative at zero is zero because $V$ minimizes on the smooth
+compact product manifold. Integrate the second derivative with weight
+$1-t$ from zero to one.
+\end{proof}
+
+\begin{theorem}[Uniform excess above the boundary minimum]\label{thm:excess}
+For every frozen exterior $z$ and $h\ge0$,
+\begin{equation}
+ \mu_H\{E_J\ge e_*(z)+h\mid z\}
+ \le \min\{1,\exp[-Hh+n(12+\log24+\tfrac32\log H)]\}.
+ \label{eq:excess}
+\end{equation}
+\end{theorem}
+\begin{proof}
+At $\rho=H^{-1/2}$, the product cap in Lemma~\ref{lem:minimizer} has
+Haar mass $b(\rho)^n$ and energy at most $e_*(z)+12n/H$. It gives the
+conditional partition-function lower bound
+$b(\rho)^n e^{-He_*(z)-12n}$. The event numerator is at most
+$e^{-H(e_*(z)+h)}$, since its Haar mass is at most one.
+Divide and apply \eqref{eq:cap}. This pointwise argument uses no
+measurable choice of a minimizer as $z$ varies.
+\end{proof}
+This theorem does not bound $e_*(z)$ itself. In
+Proposition~\ref{prop:obstruction} it equals six and every link value is
+already a minimizer. The theorem is therefore compatible with rough
+plaquettes having conditional probability one.
+
+\section{A sufficient boundary compatibility condition}
+Let $F_J$ be the set of nonedited links occurring on plaquettes in $P(J)$,
+and let $W_J$ contain all endpoints of links on those plaquettes. Form the
+frozen graph $(W_J,F_J)$, including isolated vertices. Choose a spanning
+forest, one root per component, and path orientations by a deterministic
+ordering depending only on $J$ and lattice labels, never on link values.
+For vertex $x$ let $T_x(z)$ be ordered transport from its component root
+to $x$ along the tree, and set $h_x=T_x^{-1}$. For each frozen link
+$e=(x,y)$ define
+\begin{equation}
+ R_e(z)=h_x^{-1}z_eh_y,\qquad
+ \eta_J(z)=\max_{e\in F_J}d(\one,R_e(z)),\label{eq:residual}
+\end{equation}
+with the maximum over an empty set defined as zero. Tree residuals are
+identity. All other residuals are fundamental-cycle holonomies.
+
+\begin{lemma}[Meaning and covariance of compatibility]\label{lem:compatibility}
+The function $\eta_J$ is continuous and gauge invariant. The condition
+$\eta_J=0$ says exactly that every frozen-graph cycle has identity
+holonomy, equivalently that there are vertex frames satisfying
+$z_{xy}=h_xh_y^{-1}$ on all frozen links. For every $\eta>0$, the event
+$\eta_J(z)<\eta$ contains a nonempty open neighborhood of identity
+frozen data.
+\end{lemma}
+\begin{proof}
+For site gauges $g_x$, path transports transform as
+$T_x(z^g)=g_{r(x)}T_x(z)g_x^{-1}$. Thus
+$h_x(z^g)=g_xh_x(z)g_{r(x)}^{-1}$ and every frozen residual transforms
+by conjugation at its component root. Continuity and metric invariance
+prove the first claim. Tree paths and fundamental cycles prove the flat
+claim directly. At identity data all residuals are identity; continuity
+proves the last assertion.
+\end{proof}
+The condition depends on the chosen forest quantitatively, not through
+gauge choice. It is sufficient, not necessary, for low-curvature filling.
+A long loop can have nontrivial holonomy while each individual plaquette
+in a spanning surface is small. Exact flat data may be a measure-zero
+class; the positive-tolerance version below avoids relying on that class.
+No estimate on how often a useful tolerance is satisfied is supplied.
+
+\section{A gauge-covariant link replacement kernel}
+\begin{theorem}[Compatible-boundary cap replacement]\label{thm:kernel}
+For $0<\rho\le1$ and fixed $J$, there is a Borel replacement kernel
+$K_z(x,\dd y)$ with these properties:
+\begin{enumerate}
+\item All links outside $J$ stay exactly fixed. The conditional law of the
+new edited links $y_J$ depends only on the frozen links in $F_J$, not
+on the original $x$. The full-output law additionally copies the exterior.
+\item Its conditional density in $y_J$ with respect to product Haar is at
+most $b(\rho)^{-n}\le(24\rho^{-3})^n$.
+\item Under every site gauge transformation it pushes forward to the
+kernel for the transformed data.
+\item For every output and each $p\in P(J)$,
+\begin{equation}
+ d(\one,y_p)\le q_p\rho+(4-q_p)\eta_J(z).\label{eq:output-curvature}
+\end{equation}
+If $\eta_J(z)\le\rho$, then every affected curvature is at most $4\rho$
+and $E_J(y,z)\le48n\rho^2$. If $\eta_J(z)=0$, the sharper bound
+$E_J(y,z)\le12n\rho^2$ holds.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+For each connected component $C$ of the frozen graph choose an independent
+Haar frame $A_C$. Put $S_x=h_xA_{C(x)}$.
+Independently choose each $Q_e$, $e\in J$, with normalized Haar restricted
+to $C_\rho$, and set
+\begin{equation}
+ y_e=S_xQ_eS_y^{-1}\quad(e=(x,y)\in J),\qquad
+ y_e=z_e\quad(e\notin J).\label{eq:kernel}
+\end{equation}
+All maps are finite products of continuous maps and Borel cap indicators,
+so the law is a Borel kernel. Given the component frames, left/right Haar
+invariance gives joint density at most $b(\rho)^{-n}$; averaging frames
+preserves that bound. There is no division by a gauge-orbit volume.
+
+Under a gauge transform couple $A_C^g=g_{r(C)}A_C$ and keep the same
+$Q_e$. The transformed frames satisfy $S_x^g=g_xS_x$, while the coupled
+root frames retain their independent Haar laws. Thus
+$y_{xy}^g=g_xy_{xy}g_y^{-1}$, proving covariance.
+
+In the $S$ frames, edited links equal $Q_e$ and each frozen link equals
+$A_C^{-1}R_eA_C$. The metric triangle inequality around a plaquette gives
+\eqref{eq:output-curvature}, including reversed edge orientations.
+If $\eta_J\le\rho$, use
+$s(y_p)\le(4\rho)^2/2$ and $|P(J)|\le6n$. For exact flat data, use
+$s(y_p)\le q_p^2\rho^2/2$ and \eqref{eq:incidence}.
+\end{proof}
+Since the outputs are link configurations, all plaquette identities hold
+automatically. Every loop consisting entirely of unedited links is
+preserved exactly. No claim is made about preservation of loops traversing
+$J$, an instanton number defined on an admissible interpolation, or any
+sector label not included in the frozen data. No reflection-positivity
+claim is made for the measure pushed forward by this kernel.
+
+\section{The integrated energy--entropy estimate}
+The following elementary measure argument is the useful replacement for
+an unjustified invertible ``surgery.'' It tracks lost information by a
+density bound, not by asserting a change-of-variables inverse.
+
+\begin{lemma}[Bounded-density replacement]\label{lem:integrated}
+Let $x=(x_J,z)$ have product probability reference measure. Let
+$\mathcal Q\ge0$ be measurable with
+$Z_{\mathcal Q}=\int e^{-HE(x)}\mathcal Q(x)\dd x\in(0,\infty)$.
+Suppose a probability kernel changes only $J$, has conditional density
+at most $M$, and for all original $x$ in a measurable event $\mathcal A$
+and almost all outputs $y$ obeys
+$E(x)-E(y)\ge h$ for one fixed real $h$. Then
+\begin{equation}
+ \frac1{Z_{\mathcal Q}}
+ \int_{\mathcal A}e^{-HE(x)}
+       \E_{K_x}[\mathcal Q(y)]\dd x\le M e^{-Hh}.
+ \label{eq:integrated}
+\end{equation}
+For $\mathcal Q=1$ the left side is $\mu_H(\mathcal A)$.
+For the probability under the $\mathcal Q$-weighted law, additionally
+assuming $\mathcal Q(x)\le e^{Ln}\mathcal Q(y)$ on these pairs yields
+$\mu_{H,\mathcal Q}(\mathcal A)\le e^{Ln}M e^{-Hh}$.
+\end{lemma}
+\begin{proof}
+On the kernel support replace $e^{-HE(x)}$ by
+$e^{-Hh}e^{-HE(y)}$. Bound the kernel density by $M$ and then discard
+all restrictions on the original $x_J$ and the frozen $z$. Tonelli's
+theorem applies to the nonnegative integrand. Integrating the original
+$x_J$ contributes at most one; the remaining integral in $(y_J,z)$ is
+$Z_{\mathcal Q}$. For the last statement use the extra comparison of
+$\mathcal Q(x)$ and $\mathcal Q(y)$ before applying the same argument.
+\end{proof}
+No probability claim for an arbitrary $\mathcal Q$ follows by silently
+identifying $\mathcal Q(x)$ with $\mathcal Q(y)$. Signed or complex
+perturbations require an appropriate positive base weight and a separate
+absolute-value/control argument. This lemma does not supply the
+renormalized model's interaction bounds or its covering expansion.
+
+Let $p\ge4$, let $k$ be a positive integer, and set
+$\rho=H^{-1/2}$, $t=p/\sqrt H$.
+Define the event, for fixed $J$,
+\[
+ \mathcal A_{J,k}=
+ \{\eta_J(z)\le H^{-1/2},\quad
+   |\{p'\in P(J):d(\one,U_{p'})>t\}|\ge k\}.
+\]
+When $t\ge2$ the rough-plaquette event is empty; the interesting regime
+is $p<2\sqrt H$.
+
+\begin{theorem}[Compatible rough-plaquette suppression]\label{thm:bad}
+For each boundary with $\eta_J(z)\le H^{-1/2}$, the conditional probability
+of at least $k$ rough affected plaquettes has the following bound. The
+same bound holds for the joint event $\mathcal A_{J,k}$ under the finite
+Wilson law:
+\begin{equation}
+ \mu_H(\mathcal A_{J,k})
+ \le\min\{1,\exp[-kp^2/2+n c_H]\},\qquad
+ c_H=48+\log24+\tfrac32\log H.\label{eq:bad}
+\end{equation}
+The exponential bound, without truncation by one, holds for the
+replacement integral \eqref{eq:integrated} with any nonnegative
+$\mathcal Q$ and this event. That integral need not be a probability.
+All originally rough affected plaquettes are removed by the output, and
+no affected plaquette exceeds $t$. Unaffected plaquettes do not change.
+For exactly flat compatible boundary data, replace 48 by 12 in the
+conditional bound.
+\end{theorem}
+\begin{proof}
+On the event, \eqref{eq:energy-metric} gives
+$HE_J(x,z)\ge kp^2/2$. Theorem~\ref{thm:kernel} gives
+$HE_J(y,z)\le48n$ and density at most $(24H^{3/2})^n$.
+Unaffected energies cancel exactly. Apply Lemma~\ref{lem:integrated}.
+The output curvature is at most $4/\sqrt H\le t$.
+For a fixed boundary the same proof uses only product Haar on $J$.
+\end{proof}
+The signed/nonlocal factors generated by renormalization are not assumed
+to meet this theorem's raw-Wilson energy bound. The displayed general
+$\mathcal Q$ integral is a restricted interface, not a proof that they do.
+
+\section{Edited volume, counting, and what is still missing}
+One bad plaquette does not imply original energy proportional to the
+number of edited links. For example, in identity background set one link
+to $-\one$ and take $J$ to be an arbitrarily large connected link set
+containing it. Only six plaquettes are nonidentity, and $E_J=12$
+independently of $|J|$. Thus the density cost cannot be charged to
+edited volume without a separate geometric energy-density statement.
+
+\begin{corollary}[A scoped animal bound]\label{cor:animals}
+Suppose an event for each fixed connected $J$ imposes its compatibility
+condition and at least $|J|/s$ rough affected plaquettes, where $s\ge1$.
+If $p^2\ge4s c_H$, its probability is at most
+$\exp[-|J|p^2/(4s)]$.
+Connect two lattice links when they share a plaquette. For a fixed root
+link and $\kappa=p^2/(4s)>2\log18$, the probability of at least one such
+connected event containing that link is at most
+\[
+ \frac{e^{-\kappa}}{1-18^2e^{-\kappa}}.
+\]
+\end{corollary}
+\begin{proof}
+Apply \eqref{eq:bad} with $k\ge n/s$ and absorb $nc_H$ using the
+assumed budget. The link adjacency graph has degree at most $6\cdot3=18$.
+Every connected set of $n$ links containing the root has a deterministically
+chosen spanning-tree traversal of length $2(n-1)$; the traversal determines
+the visited set. Thus there are at most $18^{2(n-1)}$ such sets.
+The union bound and a geometric series prove the claim; no independence
+of the region events is used.
+\end{proof}
+For $p=(\log H)^P$ and $s=(\log H)^q$, the elementary absorption is
+available for large $H$ if $2P>q+1$. This numerical budget is meaningful
+only after the asserted compatible regions and bad-plaquette density
+have actually been obtained.
+
+Disjoint edited link sets do not suffice for additive local estimates
+when their affected plaquettes overlap. If the sets $P(J)$ are disjoint,
+energies and product-kernel density costs can be combined; otherwise one
+must use the union with its actual affected plaquettes. For regions
+chosen from the original configuration, freeze their geometry in each
+integration term and sum possible geometries explicitly. The animal
+bound covers the listed events, not an unconstructed decomposition of
+all rough configurations.
+
+\subsection*{Unresolved inputs for the cutoff-comparison program}
+\begin{enumerate}
+\item A local region-selection or defect-label scheme must handle typical
+\emph{incompatible} boundaries. The frustrated example cannot simply be
+excluded; its probability or alternative retained energy must be bounded.
+\item Such a scheme must supply enough original energy per edited link
+and controlled counts of regions and boundary labels. The raw one-link
+estimate and the forest condition do not do this automatically.
+\item Exact renormalization generates interactions beyond the original
+Wilson sum. Their changes under replacement, locality, and signed
+covering weights need independent uniform estimates.
+\item Only after those estimates could one seek a cutoff-comparison
+error small on a fixed physical box. Continuum observables and their
+reconstruction remain additional tasks, as in the first research note.
+\end{enumerate}
+The present results settle the proposed \emph{unrestricted local filling}
+in the negative and give two precise restricted replacements. They do
+not establish the nonperturbative cutoff-comparison lemma or resolve
+Yang--Mills existence and mass gap.
+
+\section{Verification scope}
+The accompanying audits independently check the boundary obstruction,
+frame covariance and density, and integrated estimates. The Python
+checks exercise the link geometry, matrix identities, gauge covariance,
+curvature bounds, incidence constants, and frustrated negative controls.
+Numerical tests are not proofs of the theorems. Any Lean certificate is
+restricted to the stated scalar arithmetic; no analytic, gauge-theory,
+or continuum formalization is claimed. The first research pass and
+published repository sources are preserved. Literature context and
+precise source-access limits are in \texttt{audits/literature.md}.
+
+\begin{thebibliography}{9}
+\bibitem{repo-o3}
+OpenAI, \emph{The canonical massive continuum limit of the two-dimensional
+$O(3)$ model}, October 4, 2026. Supplied repository,
+\texttt{build/sections/comparison.tex}, Lemma ``Replacement and its energy
+bounds'' and equation labeled \texttt{eq:orig-22}.
+\bibitem{wilson}
+K. G. Wilson, \emph{Confinement of quarks}, Physical Review D
+\textbf{10} (1974), 2445--2459.
+\url{https://doi.org/10.1103/PhysRevD.10.2445}.
+\bibitem{clay}
+A. Jaffe and E. Witten, \emph{Quantum Yang--Mills Theory}, official Clay
+problem description.
+\url{https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf}.
+\end{thebibliography}
+\end{document}

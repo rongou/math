@@ -1,0 +1,32 @@
+SU(2) Wilson transfer interface: reproducible standard-library diagnostics
+Python 3.12.3; seed=20261009; periods=(4, 5, 4, 5); lattice beta=3/8
+Character cutoff=100; Simpson panels=4096 and 2048; labels=0,...,6
+WARNING: finite samples/truncations/quadrature are DIAGNOSTICS, NOT PROOFS.
+No full-lattice partition-function integration or physical spectrum is computed.
+SU(2) inputs: determinant/unitarity error=4.44e-16
+Lattice counts: sites=400, links=1600, plaquettes=2400
+Direction 0: period=4, N=100, seam_plaquettes=300, action_error=2.71e-15, inverse_error=4.48e-16, seam_inverse_error=4.48e-16, wrong_seam_control=1.9
+Direction 1: period=5, N=80, seam_plaquettes=240, action_error=1.03e-15, inverse_error=4.58e-16, seam_inverse_error=4.58e-16, wrong_seam_control=1.96
+Direction 2: period=4, N=100, seam_plaquettes=300, action_error=1.27e-15, inverse_error=4.34e-16, seam_inverse_error=4.34e-16, wrong_seam_control=1.9
+Direction 3: period=5, N=80, seam_plaquettes=240, action_error=3.82e-16, inverse_error=4.58e-16, seam_inverse_error=4.58e-16, wrong_seam_control=1.9
+Gauge covariance: plaquette_error=1.1e-15, independent_endpoint_error=1.1e-15, holonomy_error=8.95e-16, action_error=2.78e-16
+Temporal gauge 0: nonclosing_identity_error=6.66e-16, retained_holonomy_error=0, action_error=6.52e-15
+Seam witness 0: six wrapping plaquettes; erasing holonomy changes log_weight by 2.25 (negative control detected)
+Temporal gauge 1: nonclosing_identity_error=7.77e-16, retained_holonomy_error=0, action_error=1.07e-14
+Seam witness 1: six wrapping plaquettes; erasing holonomy changes log_weight by 2.25 (negative control detected)
+Temporal gauge 2: nonclosing_identity_error=6.66e-16, retained_holonomy_error=0, action_error=2.27e-15
+Seam witness 2: six wrapping plaquettes; erasing holonomy changes log_weight by 2.25 (negative control detected)
+Temporal gauge 3: nonclosing_identity_error=8.88e-16, retained_holonomy_error=0, action_error=8.48e-15
+Seam witness 3: six wrapping plaquettes; erasing holonomy changes log_weight by 2.25 (negative control detected)
+Beta=0: sampled plaquette/magnetic/electric integrands all equal 1 in all directions
+Beta=0 exact finite constant-kernel model: K1=1, K^2=K, weighted K*=K, nonzero mean-zero null vector; Tr K^n=1 for n=1,2,4,5,8,16
+Beta=0 limitation: rank-one propagation gives D_0(n)=0; the criterion alone cannot establish nontriviality (proof in audit)
+Finite character/quadrature diagnostics ONLY: not proofs of positivity, Haar identities, convergence, or trace class
+  beta=0: truncated_trace_rel_error=0, coefficient_quad_error=2.22e-16, grid_difference=1.37e-17
+  beta=0.125: truncated_trace_rel_error=1.96e-16, coefficient_quad_error=2.22e-16, grid_difference=1.71e-17
+  beta=1: truncated_trace_rel_error=1.63e-16, coefficient_quad_error=2.22e-16, grid_difference=2.99e-17
+  beta=3: truncated_trace_rel_error=0, coefficient_quad_error=4.44e-16, grid_difference=2.22e-16
+  beta=10: truncated_trace_rel_error=1.65e-16, coefficient_quad_error=3.41e-13, grid_difference=1.14e-13
+Exact parent arithmetic: 24576*2^-26=3/8192<1/2048; volume-constant cancellation checked at n=4,...,10
+This checks constants only, not the parent's conditional spectral implication.
+ALL DIAGNOSTIC CHECKS PASSED. Mathematical proofs and caveats are in the audit.

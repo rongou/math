@@ -1,0 +1,11 @@
+test_adaptive_support_requires_counting (__main__.ScalarControls.test_adaptive_support_requires_counting) ... ok
+test_arbitrary_staple_minimum_diagnostic (__main__.ScalarControls.test_arbitrary_staple_minimum_diagnostic) ... ok
+test_central_balanced_staples_exact (__main__.ScalarControls.test_central_balanced_staples_exact) ... ok
+test_compatible_volume_absorption_exact (__main__.ScalarControls.test_compatible_volume_absorption_exact) ... ok
+test_density_cost_is_necessary (__main__.ScalarControls.test_density_cost_is_necessary) ... ok
+test_positive_weight_integral_can_exceed_one (__main__.ScalarControls.test_positive_weight_integral_can_exceed_one) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK

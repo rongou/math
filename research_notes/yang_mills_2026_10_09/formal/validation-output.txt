@@ -1,0 +1,41 @@
+Validation date: 2026-10-09
+All temporary test files were created inside formal/ and removed.
+
+Compiler:
+Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+
+Positive test: lean --trust=0 ScalarConstants.lean
+Exit code: 0; output matches compiler-output.txt; six empty axiom audits.
+
+Direct dependencies (lean --deps ScalarConstants.lean):
+/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/lib/lean/Init.olean
+/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/lib/lean/Init.olean
+/home/rou/.elan/toolchains/leanprover--lean4---v4.34.1/lib/lean/Std.olean
+
+Mutation test: Weighted699
+False closed arithmetic: weighted coefficient 700 changed to 699.
+Command: lean --trust=0 Weighted699.lean (temporary file)
+Expected rejection: exit code 1
+First compiler diagnostic: Weighted699.lean:57:2: error: Tactic `decide` proved that the proposition
+
+Mutation test: Remainder1859
+False polynomial identity: fourth-stage remainder 1860 changed to 1859.
+Command: lean --trust=0 Remainder1859.lean (temporary file)
+Expected rejection: exit code 1
+First compiler diagnostic: Remainder1859.lean:125:4: error: Type mismatch
+
+Mutation test: Loss35
+Unsupported conclusion: second-stage coefficient 36 changed to 35.
+Command: lean --trust=0 Loss35.lean (temporary file)
+Expected rejection: exit code 1
+First compiler diagnostic: Loss35.lean:279:38: error: Type mismatch
+
+Mutation test: ZeroDenominatorAllowed
+Invalid cancellation hypothesis: permit a zero denominator.
+Command: lean --trust=0 ZeroDenominatorAllowed.lean (temporary file)
+Expected rejection: exit code 1
+First compiler diagnostic: ZeroDenominatorAllowed.lean:235:73: error: Application type mismatch: The argument
+
+Result: all validation checks passed; all four mutations were rejected.
+
+Source safety scan (comments excluded): no forbidden declarations, placeholders, or native decisions.

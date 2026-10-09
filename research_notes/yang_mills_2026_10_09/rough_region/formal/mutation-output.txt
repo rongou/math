@@ -1,0 +1,5 @@
+Scalar-only mutation tests, October 9, 2026.
+TooSmallBound: correctly rejected (exit 1)
+TooSmallBound.lean:49:31: error: unsolved goals
+WrongDegree: correctly rejected (exit 1)
+WrongDegree.lean:61:2: error: Tactic `decide` proved that the proposition

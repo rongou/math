@@ -1,0 +1,6 @@
+'ScalarConstants.constant_checks' does not depend on any axioms
+'ScalarConstants.polynomial_checks' does not depend on any axioms
+'ScalarConstants.nonnegative_gap_checks' does not depend on any axioms
+'ScalarConstants.scalar_induction' does not depend on any axioms
+'ScalarConstants.zero_bounds' does not depend on any axioms
+'ScalarConstants.endpoint_bounds' does not depend on any axioms

@@ -1,0 +1,44 @@
+SU(2) rough-link replacement: bounded independent standard-library diagnostics
+Python 3.12.3; seed=20261009; streams seed+[0,1,2,3,4]; grids=((4, 4, 4, 4), (4, 5, 4, 5))
+WARNING: finite tests are DIAGNOSTICS, NOT PROOFS; analytic 'every J/U/output' belongs to parent.
+E=sum over ALL touched plaquettes; caps theta<=rho (geodesic); no density, continuum, or mass-gap claim.
+Incidence (4, 4, 4, 4): all 1024 singleton incidences; 26 fixed J; q=1,2,3,4; |P|<=6n, sum q=6n, sum q^2<=24n; dense equality
+Incidence (4, 5, 4, 5): all 1600 singleton incidences; 26 fixed J; q=1,2,3,4; |P|<=6n, sum q=6n, sum q^2<=24n; dense equality
+SU(2): 1541 quaternion/matrix loops (including wrapping and reversed edges); unitarity/det error=4.44e-16, holonomy error=3.51e-16, s=||I-U||op^2/2 error=8.88e-16
+Replacement empty, H=16, eta=rho: n=0, roots=0, P=0, E=0 <= 0; max d/local_bound=0.000000
+Replacement empty, H=16, flat: n=0, roots=0, P=0, E=0 <= 0; max d/local_bound=0.000000
+Replacement empty, H=1024, eta=rho: n=0, roots=0, P=0, E=0 <= 0; max d/local_bound=0.000000
+Replacement empty, H=1024, flat: n=0, roots=0, P=0, E=0 <= 0; max d/local_bound=0.000000
+Replacement single-seam, H=16, eta=rho: n=1, roots=1, P=6, E=0.2770766 <= 3; max d/local_bound=0.413931
+Replacement single-seam, H=16, flat: n=1, roots=1, P=6, E=0.018822044 <= 0.75; max d/local_bound=0.316835
+Replacement single-seam, H=1024, eta=rho: n=1, roots=1, P=6, E=0.001521807 <= 0.046875; max d/local_bound=0.277535
+Replacement single-seam, H=1024, flat: n=1, roots=1, P=6, E=0.0019075888 <= 0.01171875; max d/local_bound=0.806922
+Replacement plaquette-4, H=16, eta=rho: n=4, roots=1, P=21, E=0.76289325 <= 12; max d/local_bound=0.552563
+Replacement plaquette-4, H=16, flat: n=4, roots=1, P=21, E=0.37307269 <= 3; max d/local_bound=0.899707
+Replacement plaquette-4, H=1024, eta=rho: n=4, roots=1, P=21, E=0.011395017 <= 0.1875; max d/local_bound=0.538745
+Replacement plaquette-4, H=1024, flat: n=4, roots=1, P=21, E=0.0091238011 <= 0.046875; max d/local_bound=0.962593
+Replacement two-stars, H=16, eta=rho: n=16, roots=4, P=48, E=2.1149055 <= 48; max d/local_bound=0.543879
+Replacement two-stars, H=16, flat: n=16, roots=4, P=48, E=2.109426 <= 12; max d/local_bound=0.867257
+Replacement two-stars, H=1024, eta=rho: n=16, roots=4, P=48, E=0.042877781 <= 0.75; max d/local_bound=0.538537
+Replacement two-stars, H=1024, flat: n=16, roots=4, P=48, E=0.025874271 <= 0.1875; max d/local_bound=0.856546
+Replacement sparse-23, H=16, eta=rho: n=23, roots=1, P=134, E=5.3308642 <= 69; max d/local_bound=0.611084
+Replacement sparse-23, H=16, flat: n=23, roots=1, P=134, E=2.5440603 <= 17.25; max d/local_bound=0.980463
+Replacement sparse-23, H=1024, eta=rho: n=23, roots=1, P=134, E=0.090540907 <= 1.078125; max d/local_bound=0.637420
+Replacement sparse-23, H=1024, flat: n=23, roots=1, P=134, E=0.036553714 <= 0.26953125; max d/local_bound=0.988575
+Replacement all, H=16, eta=rho: n=1600, roots=400, P=2400, E=175.19345 <= 4800; max d/local_bound=0.847730
+Replacement all, H=16, flat: n=1600, roots=400, P=2400, E=176.78388 <= 1200; max d/local_bound=0.822819
+Replacement all, H=1024, eta=rho: n=1600, roots=400, P=2400, E=2.7085317 <= 75; max d/local_bound=0.790062
+Replacement all, H=1024, flat: n=1600, roots=400, P=2400, E=2.8257143 <= 18.75; max d/local_bound=0.854490
+Mixed radii eta=0.02, rho=0.15: E=0.17774864; max d/local_bound=0.745214
+Mixed radii eta=0.15, rho=0.02: E=0.15672981; max d/local_bound=0.639041
+Mixed radii eta=0.1, rho=0: E=0.070023022; max d/local_bound=0.418609
+Locality: 27 outputs, no changed links outside J, all unaffected plaquettes exact; 8951 frozen loops unchanged (8553 nontrivial); old-J independence checked
+Forest covariance: 4 components including isolates; frame=5.58e-16, canonical=4.44e-16, link=5.66e-16, plaquette=1.12e-15, frozen-loop=9.09e-16, defect=7.98e-17, energy=3.55e-15
+Invariant cap coupling: conjugation radius error=1.53e-16, common-frame output error=4.58e-16; forgotten g_root control=1.71245 DETECTED
+One-link star obstruction: actual 18 frozen links, staples +I x3 / -I x3, sum=0; 516 U samples incl +/-I and Tr U=0: E=6 error=0, minimum count d>=sqrt(2) is 3
+Negative control DETECTED: erasing incompatible boundary (eta_J=2) fakes E=0 by editing 3 links OUTSIDE J; frozen-loop trace -2 -> +2
+Negative control DETECTED: counting only three outgoing plaquettes fakes E=0; all six affected plaquettes give E=6 (three backward/seam plaquettes omitted)
+Open-obstruction diagnostic: 8 noncentral perturbations of all 18 frozen links, eps=0.015625; max staple shift=0.0342599 <= 0.046875
+  Including minimizing/maximizing U: minimum E=5.9422639 >= 5.71875; minimum third-largest curvature=1.4062811 >= 1.3673386; nonconstant staple amplitude up to 0.0577361
+Cap-volume diagnostic ONLY: 6 geodesic radii in [1e-6,1], Simpson 1024/2048; min b(rho)/(rho^3/24)=4.1661769, grid difference=1.1e-14; NOT a proof
+ALL REPLACEMENT DIAGNOSTICS PASSED. Optional finite-difference Hessian omitted; no proof or mass-gap claim.

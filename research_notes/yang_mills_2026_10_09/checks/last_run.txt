@@ -1,0 +1,20 @@
+test_cutoff_comparison_volume_factor (__main__.ExactConstantTests.test_cutoff_comparison_volume_factor) ... ok
+test_elementary_strong_coupling_bound (__main__.ExactConstantTests.test_elementary_strong_coupling_bound) ... ok
+test_inductive_linear_caps (__main__.ExactConstantTests.test_inductive_linear_caps) ... ok
+test_iterated_majorant (__main__.ExactConstantTests.test_iterated_majorant) ... ok
+test_recursion_and_threshold (__main__.ExactConstantTests.test_recursion_and_threshold) ... ok
+test_every_telescoping_order (__main__.FormalIdentityTests.test_every_telescoping_order) ... ok
+test_final_weighted_defect (__main__.FormalIdentityTests.test_final_weighted_defect) ... ok
+test_rectangle_identities (__main__.FormalIdentityTests.test_rectangle_identities) ... ok
+test_unsquared_direction_bookkeeping (__main__.FormalIdentityTests.test_unsquared_direction_bookkeeping) ... ok
+test_actual_four_dimensional_product_models (__main__.NumericalRegressionTests.test_actual_four_dimensional_product_models) ... ok
+test_one_transfer_direction_is_insufficient (__main__.NumericalRegressionTests.test_one_transfer_direction_is_insufficient) ... ok
+test_positive_entries_do_not_imply_positive_operator (__main__.NumericalRegressionTests.test_positive_entries_do_not_imply_positive_operator) ... ok
+test_positive_spectra_purity_and_squaring (__main__.NumericalRegressionTests.test_positive_spectra_purity_and_squaring) ... ok
+test_uniform_gap_does_not_control_trace_multiplicities (__main__.NumericalRegressionTests.test_uniform_gap_does_not_control_trace_multiplicities) ... ok
+test_vacuum_multiplicity_blocks_small_defect (__main__.NumericalRegressionTests.test_vacuum_multiplicity_blocks_small_defect) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.063s
+
+OK
